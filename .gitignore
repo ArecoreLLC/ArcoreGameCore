@@ -20,3 +20,7 @@ builds/
 # OS
 .DS_Store
 Thumbs.db
+
+# Python scaffold validation
+__pycache__/
+*.pyc

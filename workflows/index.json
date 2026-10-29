@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "workflows": [
+    {
+      "id": "phaser-to-godot",
+      "status": "scaffold",
+      "dimensions": [
+        "2d"
+      ],
+      "guide": "workflows/phaser-to-godot/README.md",
+      "example": "workflows/phaser-to-godot/example.md",
+      "shared": [
+        "shared/migration-contract.md"
+      ]
+    },
+    {
+      "id": "godot-windows-to-android",
+      "status": "scaffold",
+      "dimensions": [
+        "2d",
+        "3d"
+      ],
+      "guide": "workflows/godot-windows-to-android/README.md",
+      "example": "workflows/godot-windows-to-android/example.md",
+      "shared": [
+        "shared/migration-contract.md"
+      ]
+    },
+    {
+      "id": "godot-to-unreal",
+      "status": "exploratory",
+      "dimensions": [
+        "2d",
+        "3d"
+      ],
+      "guide": "workflows/godot-to-unreal/README.md",
+      "example": "workflows/godot-to-unreal/example.md",
+      "shared": [
+        "shared/migration-contract.md"
+      ]
+    }
+  ]
+}
