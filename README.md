@@ -1,7 +1,14 @@
 # ArcoreGameCore
 
-Reusable Godot 4 / C# framework for porting Phaser 3 / TypeScript games to Godot.
-Every Arcore game port starts from this base.
+AI-assisted game-development framework organized by dimension and migration use case.
+
+## Start here: assisted workflows
+
+- [Workflow catalog](workflows/README.md): Phaser → Godot, Godot Windows → Android, and exploratory Godot → Unreal.
+- [2D systems](2d/README.md), [3D systems](3d/README.md), and [shared contracts](shared/README.md).
+- [Agent guidance](AGENTS.md) and [scaffold validation tools](tools/README.md).
+
+The new folders provide guides and illustrative work packets, not automatic converters or completed runtime modules. Existing Godot 4 / C# code below is preserved in place as the legacy foundation. Its historical docs and CLI are not proof of current build/export readiness. The configured Boot scene is absent; run-specific game validation is still required. No language migration is performed by this scaffold.
 
 ## Docs
 
