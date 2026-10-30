@@ -19,7 +19,7 @@ class ScaffoldValidationTests(unittest.TestCase):
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)
         source = SCRIPT.parents[1]
-        for name in ('2d', '3d', 'shared', 'workflows', 'tools', 'docs', 'porting'):
+        for name in ('2d', '3d', 'shared', 'workflows', 'tools', 'docs', 'porting', 'framework'):
             shutil.copytree(source / name, self.root / name, ignore=shutil.ignore_patterns('__pycache__'))
         for name in ('README.md', 'AGENTS.md'):
             shutil.copy2(source / name, self.root / name)

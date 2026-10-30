@@ -15,6 +15,7 @@ The new folders provide guides and illustrative work packets, not automatic conv
 | Document | Purpose |
 |----------|---------|
 | [docs/README.md](docs/README.md) | Framework overview — autoloads, adapters, structure |
+| [framework/README.md](framework/README.md) | Game design process, ShammyVerse case study, and printable grade-level worksheets |
 | [docs/PHASER_TO_GODOT.md](docs/PHASER_TO_GODOT.md) | Complete Phaser → Godot mapping reference |
 | [docs/IMPLEMENTATION_PLAN.md](docs/IMPLEMENTATION_PLAN.md) | Generic port phases checklist |
 | [porting/README.md](porting/README.md) | AI-assisted porting system — CLI usage and workflow |
