@@ -133,6 +133,36 @@ fallback detects independent low/mid/high band onsets and maps them to kick 36,
 snare 38 and closed hi-hat 42. It does not identify fills, toms, open hats or cymbal
 types. Confidence is recorded as zero, and the output must remain unreviewed.
 
+### Timing and note-loss pitfalls (measured in the second pilot pass)
+
+The first pass sounded slightly behind the beat and missed notes. Each cause was
+measured per lane against the separated stem (onsets at ~1.5 ms resolution, matched
+within 50 ms):
+
+- **Causal band filters delay drums.** `scipy.signal.sosfilt` on 4th-order band-pass
+  filters adds group delay, most in the kick band. Use zero-phase `sosfiltfilt`.
+- **Onset-strength peaks are late.** Report the backtracked energy rise, not the
+  flux peak. Detect with a ~46 ms window (a ~23 ms window produced many false hits),
+  then snap each event to the nearest precise stem attack. Together these moved
+  drums from +17 ms late to ~0 ms with a 90th-percentile error near 3 ms.
+- **Basic Pitch's defaults drop short notes.** `predict()` defaults to a 127.7 ms
+  minimum note length, longer than a 120 BPM sixteenth. Default thresholds also add
+  false notes. Run inference once, then score a small grid of onset threshold, frame
+  threshold and minimum length against the stem's own onsets per song and lane; no
+  single setting won across songs or lanes.
+- **Frame-quantized note starts.** Basic Pitch starts land on an 11.6 ms grid. Snap
+  each note start to a stem attack within ~35 ms; keep notes without one unchanged.
+- **Presets speak late.** Measure each preset's attack delay per pitch (time to 25% of
+  peak RMS after note-on) and start notes that much earlier, capped (80 ms in the pilot).
+- **Bleed-only stems add wrong instruments.** Six-stem guitar/piano can sit 20–35 dB
+  below the other stems. Transcribing them renders hundreds of notes from bleed.
+  Gate lanes by stem level relative to the sum of stems (−24 dB in the pilot); render
+  them for review but leave them out of the mix.
+
+Report recall, precision, F1 and median/90th-percentile offset per lane for every
+revision, alongside the previous revision. Onset matching against separated stems is a
+consistent proxy, not ground truth, and does not replace listening.
+
 ## 5. Assign instruments and render
 
 Search SoundCore for suitable banks/sample packs and inspect returned license,
@@ -146,6 +176,13 @@ hash, manifest and license. Initial GM mappings use electric finger bass (33),
 nylon guitar (24), acoustic piano (0), string ensemble (48) for Other, and the
 standard percussion bank (128/program 0). These are zero-based program numbers
 and provisional arrangements, not recognized source instruments.
+
+Fixed per-stem assignments were a major source of wrong-sounding parts (for example
+strings on a percussive Other stem, whose slow swell also blurs timing). The second
+pass renders a short candidate list per lane and keeps the preset whose output best
+matches the stem (onset F1 plus mean log-mel spectral similarity), recording every
+candidate's scores. That is a measured proposal, not instrument recognition; a
+musician still decides.
 
 The full-length adapter uses RustySynth 1.3.8, the same pinned synthesis engine and
 settings as Alchemist: 48 kHz stereo, master volume 0.5, dry output, sample-position
