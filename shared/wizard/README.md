@@ -17,6 +17,10 @@ A wizard template (`workflows/<id>/wizard.json`) is the **single source of truth
 | `wizard.steps` | How the hub groups fields and stages into screens, with previews and review gates. | Hub only |
 | `acceptance` | `passed` / `failed` / `blocked` / `not_run`. A passed check needs evidence; a no-AI badge needs a passed `no_ai_run`. | Hub badges, reviewers |
 
+## ArcoreFlow nodes
+
+ArcoreFlow's optional **gamedev** node pack (categories Game, Music and Media) is generated from these templates. Each stage becomes one node, `flow_category` sets its palette category, and artifact media types become typed ports. After changing a template, regenerate the pack from the ArcoreFlow checkout with `pnpm packs:gamedev`. `pnpm packs:gamedev:check` reports drift. Business deployments of Flow never show the pack: it appears only when the deployment offers it and a user turns it on.
+
 ## Rules
 
 - Stage status must match reality. `script_only` means a production script exists but needs code edits; the template status cannot be `implemented` until every stage is `verified`.
