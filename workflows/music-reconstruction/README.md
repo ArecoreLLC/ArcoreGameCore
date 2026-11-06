@@ -159,6 +159,33 @@ within 50 ms):
   Gate lanes by stem level relative to the sum of stems (−24 dB in the pilot); render
   them for review but leave them out of the mix.
 
+### Double hits (found by listening to the third pass)
+
+- **Independent drum bands stack.** Kick, snare and hat band detectors each fire on the
+  same hit (a snare's low end triggers the kick band, its noise the hat band), giving
+  2–3 drums per real attack, sometimes a few ms apart (flams). Detect each attack once on
+  the full drum stem, then classify it by how much each band rises relative to that
+  band's typical hit; add a second drum only when its band also rises strongly. All
+  drums of one attack share one start time.
+- **Drum bleed becomes pitched notes.** Remove pitched notes that start on a drum attack
+  with no attack in their own stem, and merge same-pitch retriggers within 90 ms.
+- **Mono/legato SFZ instruments slide.** Overlapping notes on a mono bass glide instead
+  of re-attacking; end each note just before the next when rendering such libraries.
+- **Measure compensation with the checks' own onset definition.** Timing a sample by a
+  fraction of its peak (for example 25%) over-compensates slow-rising samples by ~20 ms.
+  Use the same backtracked onset detector the timing checks use.
+
+### Validation gate
+
+Run an automatic validator on every song of every revision before anyone listens, record
+pass/warn/fail with value and limit, and do not export failing songs for review. The
+ShammyVerse pilot's `validate_reconstruction.py` checks drum hits per attack, flams, drum
+and pitched retriggers, drum bleed in pitched lanes, per-lane median and 90th-percentile
+attack offsets, and doubled attacks in the rendered instrumental versus the original
+stems. Revision 3 (the first pass with stacked drums) failed on all 11 songs; record such
+failures rather than tuning limits to pass. Passing is a precondition for listening, not
+a substitute for it.
+
 Report recall, precision, F1 and median/90th-percentile offset per lane for every
 revision, alongside the previous revision. Onset matching against separated stems is a
 consistent proxy, not ground truth, and does not replace listening.
@@ -286,6 +313,8 @@ artifact. Validate each stage before claiming completion:
 - All six stems aligned, finite and readable.
 - MIDI readable; events in bounds, velocities/programs valid; raw candidates kept.
 - Rendered outputs have expected duration/rate/channels and no clipped samples.
+- Validation gate passes (no fails) for every exported song: drum hits per attack, flams,
+  retriggers, drum bleed in pitched lanes, attack offsets and doubled mix attacks.
 - Every `.arcore` project loads through Alchemist's native project loader.
 - At least one section rerenders through Alchemist's actual Compose engine.
 - SoundCore publication returns real stable IDs and a saved dependency manifest.
