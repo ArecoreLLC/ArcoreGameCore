@@ -50,6 +50,164 @@
         "docs/agents.md"
       ],
       "runtime": "asset-service"
+    },
+    {
+      "id": "flow",
+      "root": "../ArcoreFlow-repo",
+      "role": "Workflow designer; shows wizard runs as graphs through its optional gamedev node pack",
+      "required_files": [
+        "package.json",
+        "packages/node-registry/src/index.ts"
+      ],
+      "runtime": "workflow-designer"
     }
-  ]
+  ],
+  "mcp": {
+    "hub": {
+      "id": "gamecore-hub",
+      "status": "planned",
+      "role": "The only MCP server agents register. It exposes wizard-level tools and calls the servers below itself, with typed arguments and no LLM in the loop.",
+      "transport": "stdio",
+      "tools": [
+        {
+          "name": "list_wizards",
+          "writes": false,
+          "purpose": "Wizard templates, their status and assistance level"
+        },
+        {
+          "name": "describe_wizard",
+          "writes": false,
+          "purpose": "Fields, presets, stages and review gates for one template"
+        },
+        {
+          "name": "check_readiness",
+          "writes": false,
+          "purpose": "Capability probes and downstream MCP availability for a template"
+        },
+        {
+          "name": "plan_run",
+          "writes": false,
+          "purpose": "Validate inputs and return the resolved plan without running it"
+        },
+        {
+          "name": "start_run",
+          "writes": true,
+          "purpose": "Start a validated plan; returns a run id"
+        },
+        {
+          "name": "get_run",
+          "writes": false,
+          "purpose": "Run state, stage progress, artifacts and pending reviews"
+        },
+        {
+          "name": "cancel_run",
+          "writes": true,
+          "purpose": "Cancel owned work; completed outputs are kept"
+        },
+        {
+          "name": "submit_review",
+          "writes": true,
+          "purpose": "Record a human review decision bound to exact artifact revisions"
+        },
+        {
+          "name": "publish_to_flow",
+          "writes": true,
+          "purpose": "Create or update the matching ArcoreFlow workflow for a template or run"
+        }
+      ]
+    },
+    "servers": [
+      {
+        "id": "model-forge",
+        "component": "model-forge",
+        "transport": "streamable-http",
+        "url": "http://127.0.0.1:{port}/mcp",
+        "connection": "Port and agent token from ModelForge > Agent connections; the app must be open.",
+        "auth": {
+          "type": "bearer",
+          "token_env": "ARCORE_MCP_TOKEN_MODEL_FORGE",
+          "url_env": "ARCORE_MCP_URL_MODEL_FORGE"
+        },
+        "tools": [
+          "get_model",
+          "check_model",
+          "blender_run",
+          "blender_render",
+          "create_design_iteration"
+        ],
+        "write_tools": [
+          "blender_run",
+          "create_design_iteration",
+          "check_model"
+        ]
+      },
+      {
+        "id": "sound-core",
+        "component": "sound-core",
+        "transport": "streamable-http",
+        "url": "http://127.0.0.1:{port}/mcp",
+        "connection": "Port and bearer token from SoundCore > Agent connections (saved in its connection.json); the app must be open.",
+        "auth": {
+          "type": "bearer",
+          "token_env": "ARCORE_MCP_TOKEN_SOUND_CORE",
+          "url_env": "ARCORE_MCP_URL_SOUND_CORE"
+        },
+        "tools": [
+          "list_categories",
+          "search_sounds",
+          "get_sound",
+          "collect_sounds"
+        ],
+        "write_tools": [
+          "collect_sounds"
+        ]
+      },
+      {
+        "id": "unreal-editor",
+        "component": "openworld",
+        "transport": "streamable-http",
+        "url": "http://127.0.0.1:8000/mcp",
+        "connection": "Epic's built-in editor MCP; the project must be open in the editor. Tools are schema-discovered per call sequence, never assumed.",
+        "auth": {
+          "type": "none",
+          "url_env": "ARCORE_MCP_URL_UNREAL_EDITOR"
+        },
+        "tools": [],
+        "write_tools": []
+      },
+      {
+        "id": "arcore-flow",
+        "component": "flow",
+        "transport": "stdio",
+        "command": [
+          "node",
+          "packages/mcp-server/src/index.mjs"
+        ],
+        "connection": "Spawned from the Flow checkout; needs the Flow API gateway (FLOW_GATEWAY_URL) and ARCORE_NODE_PACKS=gamedev on its workflow service.",
+        "auth": {
+          "type": "env",
+          "env": {
+            "FLOW_NODE_PACKS": "gamedev"
+          },
+          "token_env": "FLOW_TOKEN"
+        },
+        "tools": [
+          "list_nodes",
+          "get_node",
+          "validate_workflow",
+          "create_workflow",
+          "update_workflow",
+          "publish_workflow",
+          "list_versions",
+          "generate_workflow_from_wizard"
+        ],
+        "write_tools": [
+          "create_workflow",
+          "update_workflow",
+          "publish_workflow",
+          "generate_workflow_from_wizard"
+        ]
+      }
+    ]
+  }
 }

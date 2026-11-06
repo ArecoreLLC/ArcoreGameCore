@@ -141,6 +141,38 @@ Use provider APIs/MCP and typed process arguments. Never interpolate user-entere
 
 The repair UI should offer concrete actions: Locate missing file, Open tool, Reconnect, Retry failed step, Rebuild affected outputs, Choose compatible preset, or View details. Explain what will be preserved. Back/Edit keeps completed outputs and invalidates only affected descendants; never overwrite source media or user review saves.
 
+## MCP: one registered entry point
+
+Agents register **only the GameCore hub's MCP server**. The hub calls the other Arcore MCP servers itself, so an agent never needs ModelForge, SoundCore, Unreal or Flow credentials. It also can't bypass the wizard's validation, confirmations or receipts.
+
+```mermaid
+flowchart LR
+    A[Agent] -->|the only registration| H[GameCore hub MCP]
+    UI[Wizard UI] --> S[Shared command and validation service]
+    H --> S
+    S --> R[Runner]
+    R -->|streamable HTTP| MF[ModelForge MCP]
+    R -->|streamable HTTP| SC[SoundCore MCP]
+    R -->|streamable HTTP| UE[Unreal editor MCP]
+    R -->|stdio| FL[ArcoreFlow MCP]
+```
+
+- **Registry.** `shared/ecosystem.json` → `mcp` holds the hub's own tool surface and the downstream servers. For each server it records the transport, the loopback URL or launch command, the auth environment variables, the tools the hub depends on and which of those write. `python tools/mcp_registry.py` checks the structure. `--probe` connects to each server, sends initialize and tools/list only, and reports `passed`, `failed` (a required tool is missing), `not_running` or `not_configured`.
+- **Hub tools** (planned): `list_wizards`, `describe_wizard`, `check_readiness`, `plan_run`, `start_run`, `get_run`, `cancel_run`, `submit_review` and `publish_to_flow`. They mirror the wizard steps. The hub does not pass downstream tools through to agents.
+- **Stage bindings.** A wizard stage lists the downstream tool calls it makes under `calls`: server, tool, purpose, `proposed` or `verified` status, `writes`, typed arguments referencing the stage's own `field:` and `artifact:` inputs, and the artifacts the result provides. `tools/validate_wizards.py` rejects any of the following:
+  - an unregistered server, or a tool the server doesn't declare;
+  - a call to a write tool without `writes: true`;
+  - a reference to a field or artifact the stage doesn't take as input;
+  - a result naming an artifact the stage doesn't output.
+- **No LLM in the loop.** The runner calls tools directly with values from validated fields. A tool's result is read through declared result mappings, never interpreted by a model.
+- **Safety.**
+  - Only registered servers and tools can be called.
+  - Write calls follow the step's explicit confirmation (for example **Render**), and destructive tools need a separate confirmation.
+  - Bearer tokens come from the user's connection settings, through environment variables or the OS keychain, and never from templates, receipts or logs.
+  - HTTP servers must be on loopback.
+- **Transports.** ModelForge, SoundCore and the Unreal editor use streamable HTTP; Flow uses stdio. The Rust hub can use the official MCP Rust SDK (`rmcp`) for both. If the hub later prefers HTTP only, Flow's SDK-based server can add an HTTP transport without changing its tools.
+- **Status.** The registry, bindings, validator and probe exist. The hub MCP server and runner don't exist yet. Every logo-sting binding is `proposed` until a recorded run against the real server marks it `verified`.
+
 ## Apply the wizard contract to all 30 templates
 
 | Template family | IDs | Shared controls | Principal limitation to expose |

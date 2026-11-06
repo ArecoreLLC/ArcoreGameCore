@@ -10,6 +10,8 @@ python3 -m unittest discover -s tools/tests -v
 
 The validator checks required workflow IDs, statuses, dimensions, referenced files, repository-contained paths and local Markdown link targets in the new scaffold and root README. It emits a compact JSON result and exits nonzero on errors. It does not check external URLs, heading anchors, engine APIs, game behavior or export compatibility.
 
+`mcp_registry.py` checks the MCP registry in `shared/ecosystem.json`. `--probe` performs MCP initialize and tools/list against each downstream server; it never calls a tool, and it takes URLs and tokens only from the environment variables the registry names.
+
 `validate_wizards.py` checks every `wizard` template listed in the index against [the wizard schema](../shared/wizard/README.md) and its cross-reference rules.
 
 Tests cover a valid scaffold and invalid manifests/paths/links. No packages, engines or SDKs are installed by these commands. Historical documents remain outside link-validation scope except when linked from the scaffold.

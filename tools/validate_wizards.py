@@ -12,6 +12,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 SCHEMA_PATH = 'shared/wizard/wizard-template.schema.json'
+ECOSYSTEM_PATH = 'shared/ecosystem.json'
 TYPES = {'object': dict, 'array': list, 'string': str, 'boolean': bool, 'null': type(None)}
 
 
@@ -86,7 +87,45 @@ def check_field_value(name, field, value, where, errors):
         errors.append(f'{where}: {name} longer than {field["max_length"]}')
 
 
-def check_references(t, errors, workflow_ids):
+def _references(value, path=''):
+    """Yield (argument path, reference string) for field:/artifact: references at any depth."""
+    if isinstance(value, dict):
+        for key, item in value.items():
+            yield from _references(item, f'{path}.{key}' if path else key)
+    elif isinstance(value, list):
+        for i, item in enumerate(value):
+            yield from _references(item, f'{path}[{i}]')
+    elif isinstance(value, str) and (value.startswith('field:') or value.startswith('artifact:')):
+        yield path, value
+
+
+def check_calls(tid, stage, servers, errors):
+    """Downstream MCP calls must target registered servers/tools and reference the stage's own inputs."""
+    sid = stage['id']
+    fields = set(stage['inputs'].get('fields', []))
+    artifacts = set(stage['inputs'].get('artifacts', []))
+    for call in stage.get('calls', []):
+        where = f'{tid}.{sid}.calls[{call["server"]}.{call["tool"]}]'
+        server = servers.get(call['server']) if servers is not None else None
+        if servers is not None:
+            if server is None:
+                errors.append(f'{where}: server is not in {ECOSYSTEM_PATH} mcp.servers')
+                continue
+            if server.get('tools') and call['tool'] not in server['tools']:
+                errors.append(f'{where}: tool is not declared for server {call["server"]}')
+            if call['tool'] in server.get('write_tools', []) and not call.get('writes'):
+                errors.append(f'{where}: tool writes, so the call must declare writes: true')
+        for name, value in _references(call['arguments']):
+            if value.startswith('field:') and value[6:] not in fields:
+                errors.append(f'{where}: argument {name} references field {value[6:]}, which is not a stage input')
+            if value.startswith('artifact:') and value[9:] not in artifacts:
+                errors.append(f'{where}: argument {name} references artifact {value[9:]}, which is not a stage input')
+        for art in call.get('results', {}):
+            if art not in stage['outputs']:
+                errors.append(f'{where}: result {art} is not an output of the stage')
+
+
+def check_references(t, errors, workflow_ids, servers=None):
     tid = t['template_id']
     fields, artifacts, caps = t['fields'], t['artifacts'], t['capabilities']
     if workflow_ids is not None and t['workflow'] not in workflow_ids:
@@ -137,6 +176,7 @@ def check_references(t, errors, workflow_ids):
             check_ids.add(check['id'])
         if not t['assistance']['ai_required'] and stage.get('assistance') == 'required':
             errors.append(f'{tid}.{sid}: requires AI but the template claims ai_required=false')
+        check_calls(tid, stage, servers, errors)
         stage_ids.append(sid)
     for art in artifacts:
         if art not in produced:
@@ -181,7 +221,7 @@ def check_references(t, errors, workflow_ids):
         errors.append(f'{tid}: proposed status but some stages are parameterized; use partial')
 
 
-def validate_template(path, schema, workflow_ids=None):
+def validate_template(path, schema, workflow_ids=None, servers=None):
     errors = []
     try:
         template = json.loads(Path(path).read_text(encoding='utf-8'))
@@ -190,8 +230,13 @@ def validate_template(path, schema, workflow_ids=None):
     check_schema(template, schema, schema, Path(path).name, errors)
     if errors:
         return errors
-    check_references(template, errors, workflow_ids)
+    check_references(template, errors, workflow_ids, servers)
     return errors
+
+
+def load_servers(ecosystem):
+    """Downstream MCP servers the hub may call, keyed by id (the hub itself is not callable)."""
+    return {s['id']: s for s in ecosystem.get('mcp', {}).get('servers', [])}
 
 
 def validate(root):
@@ -199,8 +244,10 @@ def validate(root):
     try:
         schema = json.loads((root / SCHEMA_PATH).read_text(encoding='utf-8'))
         index = json.loads((root / 'workflows/index.json').read_text(encoding='utf-8'))
+        ecosystem = json.loads((root / ECOSYSTEM_PATH).read_text(encoding='utf-8'))
     except (OSError, ValueError) as exc:
         return [str(exc)], 0
+    servers = load_servers(ecosystem)
     ids = {w.get('id') for w in index.get('workflows', [])}
     errors, count = [], 0
     for entry in index.get('workflows', []):
@@ -212,7 +259,7 @@ def validate(root):
         if not path.is_file():
             errors.append(f'{entry.get("id")}: missing wizard file {rel}')
             continue
-        errs = validate_template(path, schema, ids)
+        errs = validate_template(path, schema, ids, servers)
         if not errs:
             template = json.loads(path.read_text(encoding='utf-8'))
             if template['workflow'] != entry.get('id'):

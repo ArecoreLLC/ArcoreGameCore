@@ -12,66 +12,406 @@
     "optional_ai": []
   },
   "capabilities": {
-    "blender": {"title": "Blender (Cycles, AgX)", "kind": "tool", "version": "5.2.3", "probe": "blender-version"},
-    "gpu-render": {"title": "GPU render device (HIP, CUDA or OptiX)", "kind": "hardware", "probe": "blender-gpu-devices", "notes": "Standalone blender -b ignores user GPU preferences; the render adapter must enable the device. CPU is an explicit, slower fallback, never a silent switch."},
-    "ffmpeg": {"title": "FFmpeg and FFprobe", "kind": "tool", "probe": "ffmpeg-version", "notes": "Do not use the drawtext filter on Windows (fontconfig crash)."},
-    "python-audio": {"title": "Python audio stack", "kind": "python_package", "version": "numpy 2.5, scipy 1.18, tinysoundfont 0.3.7 (--no-deps)", "probe": "python-audio-imports"},
-    "pillow": {"title": "Pillow", "kind": "python_package", "probe": "pillow-import"},
-    "modelforge": {"title": "ArcoreModelForge catalog", "kind": "provider", "probe": "ecosystem-model-forge"},
-    "soundcore": {"title": "ArcoreSoundCore catalog", "kind": "provider", "probe": "ecosystem-sound-core"},
-    "licensed-font": {"title": "Licensed font file", "kind": "font", "notes": "Font file and license must be recorded in the production record."}
+    "blender": {
+      "title": "Blender (Cycles, AgX)",
+      "kind": "tool",
+      "version": "5.2.3",
+      "probe": "blender-version"
+    },
+    "gpu-render": {
+      "title": "GPU render device (HIP, CUDA or OptiX)",
+      "kind": "hardware",
+      "probe": "blender-gpu-devices",
+      "notes": "Standalone blender -b ignores user GPU preferences; the render adapter must enable the device. CPU is an explicit, slower fallback, never a silent switch."
+    },
+    "ffmpeg": {
+      "title": "FFmpeg and FFprobe",
+      "kind": "tool",
+      "probe": "ffmpeg-version",
+      "notes": "Do not use the drawtext filter on Windows (fontconfig crash)."
+    },
+    "python-audio": {
+      "title": "Python audio stack",
+      "kind": "python_package",
+      "version": "numpy 2.5, scipy 1.18, tinysoundfont 0.3.7 (--no-deps)",
+      "probe": "python-audio-imports"
+    },
+    "pillow": {
+      "title": "Pillow",
+      "kind": "python_package",
+      "probe": "pillow-import"
+    },
+    "modelforge": {
+      "title": "ArcoreModelForge catalog",
+      "kind": "provider",
+      "probe": "ecosystem-model-forge"
+    },
+    "soundcore": {
+      "title": "ArcoreSoundCore catalog",
+      "kind": "provider",
+      "probe": "ecosystem-sound-core"
+    },
+    "licensed-font": {
+      "title": "Licensed font file",
+      "kind": "font",
+      "notes": "Font file and license must be recorded in the production record."
+    }
   },
   "fields": {
-    "output_folder": {"type": "folder", "title": "Output folder", "required": true, "widget": "folder_picker", "help": "Version folder, e.g. ArcoreModelForge/design/<brand>/<version>/. Must be backed up or versioned."},
-    "sting_id": {"type": "string", "title": "Sting id", "required": true, "max_length": 64, "help": "<brand>-<version>, e.g. arecore-v3-pro-1.5x."},
-    "brand": {"type": "enum", "title": "Brand spelling", "required": true, "values": ["AreCore", "Arcore"], "default": "AreCore", "widget": "select", "help": "AreCore for game studio/framework material; Arcore for business-side material."},
-    "subject_scene": {"type": "file", "title": "Starting scene", "required": true, "extensions": [".blend"], "media_type": "blend_scene", "widget": "file_picker", "help": "The previous version's .blend. It is never modified; a new .blend is saved."},
-    "subject_model": {"type": "asset_reference", "title": "Logo model (ModelForge version)", "provider": "modelforge", "media_type": "model_3d", "widget": "asset_picker", "help": "Pin an exact ModelForge file id and version when the logo comes from the catalog."},
-    "animation_preset": {"type": "enum", "title": "Animation preset", "required": true, "values": ["v3-pro-hero-ignite"], "default": "v3-pro-hero-ignite", "widget": "select", "help": "Only the captured production's action is supported. Bespoke animation is an explicit Blender handoff."},
-    "camera_preset": {"type": "enum", "title": "Camera", "values": ["v3-pro-default"], "default": "v3-pro-default", "widget": "camera_preset"},
-    "lighting_preset": {"type": "enum", "title": "Lighting", "values": ["v3-pro-linked-hero"], "default": "v3-pro-linked-hero", "widget": "select", "help": "Hero lit separately from the stage via light linking."},
-    "background_color": {"type": "color", "title": "Background", "default": "#05070c", "widget": "color", "advanced": true},
-    "resolution": {"type": "enum", "title": "Resolution", "values": ["1920x1080"], "default": "1920x1080", "widget": "select", "help": "Vertical or square needs a camera and title-safe change, not a crop."},
-    "fps": {"type": "rational", "title": "Frame rate", "values": ["24/1"], "default": "24/1", "widget": "select"},
-    "source_frame_end": {"type": "integer", "title": "Last source frame", "minimum": 24, "maximum": 720, "default": 384, "unit": "frames", "widget": "number", "help": "Animation length at 1.0x. The cut length is derived from speed and shown with any rounding."},
-    "speed": {"type": "enum", "title": "Playback speed", "values": [1, 1.5], "default": 1.5, "widget": "select", "help": "Retimes by re-rendering with frame_map_old/new (3 to 2 gives 1.5x), never by dropping frames."},
-    "render_device": {"type": "enum", "title": "Render device", "values": ["auto", "HIP", "CUDA", "OPTIX", "CPU"], "default": "auto", "widget": "select", "advanced": true},
-    "music_source": {"type": "enum", "title": "Music", "required": true, "values": ["preset-score", "supplied-audio", "none"], "default": "preset-score", "widget": "select", "help": "Generic new composition is not offered without a preset or adapter."},
-    "music_preset": {"type": "enum", "title": "Score preset", "values": ["v3-pro-sting-score"], "default": "v3-pro-sting-score", "widget": "audio_audition", "visible_when": {"music_source": "preset-score"}},
-    "supplied_music": {"type": "asset_reference", "title": "Supplied music", "provider": "soundcore", "media_type": "audio", "widget": "asset_picker", "visible_when": {"music_source": "supplied-audio"}},
-    "soundfont": {"type": "file", "title": "SoundFont bank", "extensions": [".sf2"], "widget": "file_picker", "visible_when": {"music_source": "preset-score"}, "help": "Recorded with its license, e.g. GeneralUser GS from ArcoreSonicAlchemist."},
-    "foley_pack": {"type": "asset_reference", "title": "Foley sources", "provider": "soundcore", "media_type": "audio", "widget": "asset_picker", "help": "CC0 or licensed recordings; license metadata comes from SoundCore."},
-    "cue_overrides": {"type": "cue_table", "title": "Cue adjustments", "widget": "cue_table", "advanced": true, "help": "Source frame, story beat, music, effect, pan. Times in the cut are derived."},
-    "master_peak_dbfs": {"type": "number", "title": "Master peak", "minimum": -6, "maximum": 0, "default": -1, "unit": "dBFS", "widget": "number", "advanced": true},
-    "end_card_line_1": {"type": "string", "title": "End card line 1", "required": true, "max_length": 60, "widget": "text", "help": "Approved wording; the historical example's wording is not reused silently."},
-    "end_card_line_2": {"type": "string", "title": "End card line 2", "max_length": 80, "widget": "text"},
-    "end_card_font": {"type": "file", "title": "End card font", "required": true, "extensions": [".ttf", ".otf"], "media_type": "font", "widget": "file_picker"},
-    "end_card_color": {"type": "color", "title": "Accent color", "default": "#2f6bff", "widget": "color"},
-    "end_card_start_frame": {"type": "integer", "title": "End card starts at source frame", "minimum": 1, "maximum": 720, "default": 177, "unit": "frames", "widget": "number", "help": "Start after the story payoff, not over the action."},
-    "video_crf": {"type": "integer", "title": "H.264 quality (CRF)", "minimum": 0, "maximum": 51, "default": 16, "widget": "slider", "advanced": true}
+    "output_folder": {
+      "type": "folder",
+      "title": "Output folder",
+      "required": true,
+      "widget": "folder_picker",
+      "help": "Version folder, e.g. ArcoreModelForge/design/<brand>/<version>/. Must be backed up or versioned."
+    },
+    "sting_id": {
+      "type": "string",
+      "title": "Sting id",
+      "required": true,
+      "max_length": 64,
+      "help": "<brand>-<version>, e.g. arecore-v3-pro-1.5x."
+    },
+    "brand": {
+      "type": "enum",
+      "title": "Brand spelling",
+      "required": true,
+      "values": [
+        "AreCore",
+        "Arcore"
+      ],
+      "default": "AreCore",
+      "widget": "select",
+      "help": "AreCore for game studio/framework material; Arcore for business-side material."
+    },
+    "subject_scene": {
+      "type": "file",
+      "title": "Starting scene",
+      "required": true,
+      "extensions": [
+        ".blend"
+      ],
+      "media_type": "blend_scene",
+      "widget": "file_picker",
+      "help": "The previous version's .blend. It is never modified; a new .blend is saved."
+    },
+    "subject_model": {
+      "type": "asset_reference",
+      "title": "Logo model (ModelForge version)",
+      "provider": "modelforge",
+      "media_type": "model_3d",
+      "widget": "asset_picker",
+      "help": "Pin an exact ModelForge file id and version when the logo comes from the catalog."
+    },
+    "animation_preset": {
+      "type": "enum",
+      "title": "Animation preset",
+      "required": true,
+      "values": [
+        "v3-pro-hero-ignite"
+      ],
+      "default": "v3-pro-hero-ignite",
+      "widget": "select",
+      "help": "Only the captured production's action is supported. Bespoke animation is an explicit Blender handoff."
+    },
+    "camera_preset": {
+      "type": "enum",
+      "title": "Camera",
+      "values": [
+        "v3-pro-default"
+      ],
+      "default": "v3-pro-default",
+      "widget": "camera_preset"
+    },
+    "lighting_preset": {
+      "type": "enum",
+      "title": "Lighting",
+      "values": [
+        "v3-pro-linked-hero"
+      ],
+      "default": "v3-pro-linked-hero",
+      "widget": "select",
+      "help": "Hero lit separately from the stage via light linking."
+    },
+    "background_color": {
+      "type": "color",
+      "title": "Background",
+      "default": "#05070c",
+      "widget": "color",
+      "advanced": true
+    },
+    "resolution": {
+      "type": "enum",
+      "title": "Resolution",
+      "values": [
+        "1920x1080"
+      ],
+      "default": "1920x1080",
+      "widget": "select",
+      "help": "Vertical or square needs a camera and title-safe change, not a crop."
+    },
+    "fps": {
+      "type": "rational",
+      "title": "Frame rate",
+      "values": [
+        "24/1"
+      ],
+      "default": "24/1",
+      "widget": "select"
+    },
+    "source_frame_end": {
+      "type": "integer",
+      "title": "Last source frame",
+      "minimum": 24,
+      "maximum": 720,
+      "default": 384,
+      "unit": "frames",
+      "widget": "number",
+      "help": "Animation length at 1.0x. The cut length is derived from speed and shown with any rounding."
+    },
+    "speed": {
+      "type": "enum",
+      "title": "Playback speed",
+      "values": [
+        1,
+        1.5
+      ],
+      "default": 1.5,
+      "widget": "select",
+      "help": "Retimes by re-rendering with frame_map_old/new (3 to 2 gives 1.5x), never by dropping frames."
+    },
+    "render_device": {
+      "type": "enum",
+      "title": "Render device",
+      "values": [
+        "auto",
+        "HIP",
+        "CUDA",
+        "OPTIX",
+        "CPU"
+      ],
+      "default": "auto",
+      "widget": "select",
+      "advanced": true
+    },
+    "music_source": {
+      "type": "enum",
+      "title": "Music",
+      "required": true,
+      "values": [
+        "preset-score",
+        "supplied-audio",
+        "none"
+      ],
+      "default": "preset-score",
+      "widget": "select",
+      "help": "Generic new composition is not offered without a preset or adapter."
+    },
+    "music_preset": {
+      "type": "enum",
+      "title": "Score preset",
+      "values": [
+        "v3-pro-sting-score"
+      ],
+      "default": "v3-pro-sting-score",
+      "widget": "audio_audition",
+      "visible_when": {
+        "music_source": "preset-score"
+      }
+    },
+    "supplied_music": {
+      "type": "asset_reference",
+      "title": "Supplied music",
+      "provider": "soundcore",
+      "media_type": "audio",
+      "widget": "asset_picker",
+      "visible_when": {
+        "music_source": "supplied-audio"
+      }
+    },
+    "soundfont": {
+      "type": "file",
+      "title": "SoundFont bank",
+      "extensions": [
+        ".sf2"
+      ],
+      "widget": "file_picker",
+      "visible_when": {
+        "music_source": "preset-score"
+      },
+      "help": "Recorded with its license, e.g. GeneralUser GS from ArcoreSonicAlchemist."
+    },
+    "foley_pack": {
+      "type": "asset_reference",
+      "title": "Foley sources",
+      "provider": "soundcore",
+      "media_type": "audio",
+      "widget": "asset_picker",
+      "help": "CC0 or licensed recordings; license metadata comes from SoundCore."
+    },
+    "cue_overrides": {
+      "type": "cue_table",
+      "title": "Cue adjustments",
+      "widget": "cue_table",
+      "advanced": true,
+      "help": "Source frame, story beat, music, effect, pan. Times in the cut are derived."
+    },
+    "master_peak_dbfs": {
+      "type": "number",
+      "title": "Master peak",
+      "minimum": -6,
+      "maximum": 0,
+      "default": -1,
+      "unit": "dBFS",
+      "widget": "number",
+      "advanced": true
+    },
+    "end_card_line_1": {
+      "type": "string",
+      "title": "End card line 1",
+      "required": true,
+      "max_length": 60,
+      "widget": "text",
+      "help": "Approved wording; the historical example's wording is not reused silently."
+    },
+    "end_card_line_2": {
+      "type": "string",
+      "title": "End card line 2",
+      "max_length": 80,
+      "widget": "text"
+    },
+    "end_card_font": {
+      "type": "file",
+      "title": "End card font",
+      "required": true,
+      "extensions": [
+        ".ttf",
+        ".otf"
+      ],
+      "media_type": "font",
+      "widget": "file_picker"
+    },
+    "end_card_color": {
+      "type": "color",
+      "title": "Accent color",
+      "default": "#2f6bff",
+      "widget": "color"
+    },
+    "end_card_start_frame": {
+      "type": "integer",
+      "title": "End card starts at source frame",
+      "minimum": 1,
+      "maximum": 720,
+      "default": 177,
+      "unit": "frames",
+      "widget": "number",
+      "help": "Start after the story payoff, not over the action."
+    },
+    "video_crf": {
+      "type": "integer",
+      "title": "H.264 quality (CRF)",
+      "minimum": 0,
+      "maximum": 51,
+      "default": 16,
+      "widget": "slider",
+      "advanced": true
+    }
   },
   "presets": {
     "arecore-v3-pro-1-5x": {
       "title": "AreCore V3 Pro at 1.5x (captured production)",
       "description": "Technical settings of the first production. Branding text is deliberately not included.",
-      "values": {"brand": "AreCore", "animation_preset": "v3-pro-hero-ignite", "camera_preset": "v3-pro-default", "lighting_preset": "v3-pro-linked-hero", "resolution": "1920x1080", "fps": "24/1", "source_frame_end": 384, "speed": 1.5, "music_source": "preset-score", "music_preset": "v3-pro-sting-score", "end_card_start_frame": 177, "video_crf": 16, "master_peak_dbfs": -1}
+      "values": {
+        "brand": "AreCore",
+        "animation_preset": "v3-pro-hero-ignite",
+        "camera_preset": "v3-pro-default",
+        "lighting_preset": "v3-pro-linked-hero",
+        "resolution": "1920x1080",
+        "fps": "24/1",
+        "source_frame_end": 384,
+        "speed": 1.5,
+        "music_source": "preset-score",
+        "music_preset": "v3-pro-sting-score",
+        "end_card_start_frame": 177,
+        "video_crf": 16,
+        "master_peak_dbfs": -1
+      }
     }
   },
   "artifacts": {
-    "readiness_report": {"title": "Readiness report", "media_type": "report", "path": "readiness.json"},
-    "scene_blend": {"title": "Version scene", "media_type": "blend_scene", "path": "<sting_id>.blend"},
-    "check_frames": {"title": "Key-beat check frames", "media_type": "image_sequence", "path": "check/"},
-    "playblast": {"title": "Workbench playblast and motion checks", "media_type": "video", "path": "playblast.mp4"},
-    "scene_frames": {"title": "Rendered scene frames", "media_type": "image_sequence", "path": "frames/frame_####.png"},
-    "cue_sheet": {"title": "Cue sheet", "media_type": "cue_sheet", "path": "cue-sheet.json"},
-    "soundtrack": {"title": "Soundtrack mix", "media_type": "audio", "path": "soundtrack.wav", "requires_human_review": true},
-    "stems": {"title": "Music and SFX stems", "media_type": "audio_stems", "path": "music.wav, sfx.wav"},
-    "soundtrack_timeline": {"title": "Soundtrack timeline plot", "media_type": "image", "path": "soundtrack-timeline.png"},
-    "endcard_frames": {"title": "End card frames (RGBA)", "media_type": "image_sequence", "path": "endcard/card_####.png", "requires_human_review": true},
-    "final_video": {"title": "Final MP4", "media_type": "video", "path": "<sting_id>.mp4", "requires_human_review": true},
-    "validation_report": {"title": "MP4 validation", "media_type": "report", "path": "mp4-validation.json"},
-    "contact_sheet": {"title": "Final contact sheet", "media_type": "image", "path": "final-contact.png"},
-    "production_record": {"title": "Production record", "media_type": "record", "path": "README.md"}
+    "readiness_report": {
+      "title": "Readiness report",
+      "media_type": "report",
+      "path": "readiness.json"
+    },
+    "scene_blend": {
+      "title": "Version scene",
+      "media_type": "blend_scene",
+      "path": "<sting_id>.blend"
+    },
+    "check_frames": {
+      "title": "Key-beat check frames",
+      "media_type": "image_sequence",
+      "path": "check/"
+    },
+    "playblast": {
+      "title": "Workbench playblast and motion checks",
+      "media_type": "video",
+      "path": "playblast.mp4"
+    },
+    "scene_frames": {
+      "title": "Rendered scene frames",
+      "media_type": "image_sequence",
+      "path": "frames/frame_####.png"
+    },
+    "cue_sheet": {
+      "title": "Cue sheet",
+      "media_type": "cue_sheet",
+      "path": "cue-sheet.json"
+    },
+    "soundtrack": {
+      "title": "Soundtrack mix",
+      "media_type": "audio",
+      "path": "soundtrack.wav",
+      "requires_human_review": true
+    },
+    "stems": {
+      "title": "Music and SFX stems",
+      "media_type": "audio_stems",
+      "path": "music.wav, sfx.wav"
+    },
+    "soundtrack_timeline": {
+      "title": "Soundtrack timeline plot",
+      "media_type": "image",
+      "path": "soundtrack-timeline.png"
+    },
+    "endcard_frames": {
+      "title": "End card frames (RGBA)",
+      "media_type": "image_sequence",
+      "path": "endcard/card_####.png",
+      "requires_human_review": true
+    },
+    "final_video": {
+      "title": "Final MP4",
+      "media_type": "video",
+      "path": "<sting_id>.mp4",
+      "requires_human_review": true
+    },
+    "validation_report": {
+      "title": "MP4 validation",
+      "media_type": "report",
+      "path": "mp4-validation.json"
+    },
+    "contact_sheet": {
+      "title": "Final contact sheet",
+      "media_type": "image",
+      "path": "final-contact.png"
+    },
+    "production_record": {
+      "title": "Production record",
+      "media_type": "record",
+      "path": "README.md"
+    }
   },
   "stages": [
     {
@@ -81,10 +421,55 @@
       "flow_category": "game",
       "adapter": "gamecore.readiness",
       "implementation": "not_started",
-      "requires": ["blender", "ffmpeg", "python-audio", "pillow"],
-      "inputs": {"fields": ["output_folder", "sting_id", "brand", "subject_scene", "subject_model", "soundfont", "foley_pack", "end_card_font", "render_device"]},
-      "outputs": ["readiness_report"],
-      "checks": [{"id": "dependencies_ready", "title": "Required tools, assets and licenses present", "kind": "automatic"}]
+      "requires": [
+        "blender",
+        "ffmpeg",
+        "python-audio",
+        "pillow"
+      ],
+      "inputs": {
+        "fields": [
+          "output_folder",
+          "sting_id",
+          "brand",
+          "subject_scene",
+          "subject_model",
+          "soundfont",
+          "foley_pack",
+          "end_card_font",
+          "render_device"
+        ]
+      },
+      "outputs": [
+        "readiness_report"
+      ],
+      "checks": [
+        {
+          "id": "dependencies_ready",
+          "title": "Required tools, assets and licenses present",
+          "kind": "automatic"
+        }
+      ],
+      "calls": [
+        {
+          "server": "model-forge",
+          "tool": "get_model",
+          "status": "proposed",
+          "purpose": "Confirm the pinned ModelForge model and version exist and read their quality evidence before any expensive work.",
+          "arguments": {
+            "model_id": "field:subject_model"
+          }
+        },
+        {
+          "server": "sound-core",
+          "tool": "get_sound",
+          "status": "proposed",
+          "purpose": "Confirm the foley source exists and that its license is recorded (not Unspecified).",
+          "arguments": {
+            "id": "field:foley_pack"
+          }
+        }
+      ]
     },
     {
       "id": "build-scene",
@@ -93,9 +478,50 @@
       "flow_category": "media",
       "adapter": "blender.logo-sting.build",
       "implementation": "script_only",
-      "requires": ["blender"],
-      "inputs": {"fields": ["subject_scene", "subject_model", "animation_preset", "camera_preset", "lighting_preset", "background_color", "source_frame_end"], "artifacts": ["readiness_report"]},
-      "outputs": ["scene_blend"]
+      "requires": [
+        "blender"
+      ],
+      "inputs": {
+        "fields": [
+          "subject_scene",
+          "subject_model",
+          "animation_preset",
+          "camera_preset",
+          "lighting_preset",
+          "background_color",
+          "source_frame_end"
+        ],
+        "artifacts": [
+          "readiness_report"
+        ]
+      },
+      "outputs": [
+        "scene_blend"
+      ],
+      "calls": [
+        {
+          "server": "model-forge",
+          "tool": "blender_run",
+          "status": "proposed",
+          "writes": true,
+          "purpose": "Apply the preset animation, camera and lighting in headless Blender on the pinned model and save the result as a new library version.",
+          "arguments": {
+            "model_id": "field:subject_model",
+            "script": "logo_sting/build_scene.py",
+            "save": true,
+            "params": {
+              "animation_preset": "field:animation_preset",
+              "camera_preset": "field:camera_preset",
+              "lighting_preset": "field:lighting_preset",
+              "background_color": "field:background_color",
+              "source_frame_end": "field:source_frame_end"
+            }
+          },
+          "results": {
+            "scene_blend": "New library version saved by blender_run (save=true)."
+          }
+        }
+      ]
     },
     {
       "id": "check-frames",
@@ -104,22 +530,59 @@
       "flow_category": "media",
       "adapter": "blender.logo-sting.check",
       "implementation": "script_only",
-      "requires": ["blender"],
-      "inputs": {"artifacts": ["scene_blend"]},
-      "outputs": ["check_frames", "playblast"],
-      "checks": [{"id": "motion_checks", "title": "No floor penetration or single-frame flips", "kind": "automatic"}]
+      "requires": [
+        "blender"
+      ],
+      "inputs": {
+        "artifacts": [
+          "scene_blend"
+        ]
+      },
+      "outputs": [
+        "check_frames",
+        "playblast"
+      ],
+      "checks": [
+        {
+          "id": "motion_checks",
+          "title": "No floor penetration or single-frame flips",
+          "kind": "automatic"
+        }
+      ]
     },
     {
       "id": "render-frames",
       "title": "Render frames on the GPU",
-      "description": "Retimed render via frame_map_old/new with placeholders and no-overwrite so a crashed render resumes with the same command. Never mixes frames from different scene revisions.",
+      "description": "Retimed render via frame_map_old/new with placeholders and no-overwrite so a crashed render resumes with the same command. Never mixes frames from different scene revisions. Runs as a bounded local Blender process: ModelForge's blender_render returns single stills, not resumable frame sequences.",
       "flow_category": "media",
       "adapter": "blender.logo-sting.render",
       "implementation": "script_only",
-      "requires": ["blender", "gpu-render"],
-      "inputs": {"fields": ["resolution", "fps", "speed", "source_frame_end", "render_device"], "artifacts": ["scene_blend"]},
-      "outputs": ["scene_frames"],
-      "checks": [{"id": "frames_complete", "title": "All frames present and non-empty", "kind": "automatic"}],
+      "requires": [
+        "blender",
+        "gpu-render"
+      ],
+      "inputs": {
+        "fields": [
+          "resolution",
+          "fps",
+          "speed",
+          "source_frame_end",
+          "render_device"
+        ],
+        "artifacts": [
+          "scene_blend"
+        ]
+      },
+      "outputs": [
+        "scene_frames"
+      ],
+      "checks": [
+        {
+          "id": "frames_complete",
+          "title": "All frames present and non-empty",
+          "kind": "automatic"
+        }
+      ],
       "resumable": true,
       "cancellable": true
     },
@@ -130,8 +593,19 @@
       "flow_category": "music",
       "adapter": "gamecore.logo-sting.cue-sheet",
       "implementation": "not_started",
-      "inputs": {"fields": ["fps", "speed", "cue_overrides"], "artifacts": ["scene_blend"]},
-      "outputs": ["cue_sheet"]
+      "inputs": {
+        "fields": [
+          "fps",
+          "speed",
+          "cue_overrides"
+        ],
+        "artifacts": [
+          "scene_blend"
+        ]
+      },
+      "outputs": [
+        "cue_sheet"
+      ]
     },
     {
       "id": "soundtrack",
@@ -140,10 +614,55 @@
       "flow_category": "music",
       "adapter": "python.logo-sting.soundtrack",
       "implementation": "script_only",
-      "requires": ["python-audio", "ffmpeg"],
-      "inputs": {"fields": ["music_source", "music_preset", "supplied_music", "soundfont", "foley_pack", "master_peak_dbfs"], "artifacts": ["cue_sheet"]},
-      "outputs": ["soundtrack", "stems", "soundtrack_timeline"],
-      "checks": [{"id": "audio_auditioned", "title": "A person listened on speakers and headphones", "kind": "human"}]
+      "requires": [
+        "python-audio",
+        "ffmpeg"
+      ],
+      "inputs": {
+        "fields": [
+          "music_source",
+          "music_preset",
+          "supplied_music",
+          "soundfont",
+          "foley_pack",
+          "master_peak_dbfs"
+        ],
+        "artifacts": [
+          "cue_sheet"
+        ]
+      },
+      "outputs": [
+        "soundtrack",
+        "stems",
+        "soundtrack_timeline"
+      ],
+      "checks": [
+        {
+          "id": "audio_auditioned",
+          "title": "A person listened on speakers and headphones",
+          "kind": "human"
+        }
+      ],
+      "calls": [
+        {
+          "server": "sound-core",
+          "tool": "get_sound",
+          "status": "proposed",
+          "purpose": "Read the absolute path and license text of each foley source before mixing.",
+          "arguments": {
+            "id": "field:foley_pack"
+          }
+        },
+        {
+          "server": "sound-core",
+          "tool": "get_sound",
+          "status": "proposed",
+          "purpose": "Resolve supplied music (music_source = supplied-audio) to its path and license.",
+          "arguments": {
+            "id": "field:supplied_music"
+          }
+        }
+      ]
     },
     {
       "id": "end-card",
@@ -152,10 +671,32 @@
       "flow_category": "media",
       "adapter": "python.logo-sting.endcard",
       "implementation": "script_only",
-      "requires": ["pillow", "licensed-font"],
-      "inputs": {"fields": ["end_card_line_1", "end_card_line_2", "end_card_font", "end_card_color", "end_card_start_frame", "resolution", "fps", "speed"]},
-      "outputs": ["endcard_frames"],
-      "checks": [{"id": "end_card_copy_approved", "title": "End card wording approved by the requester", "kind": "human"}]
+      "requires": [
+        "pillow",
+        "licensed-font"
+      ],
+      "inputs": {
+        "fields": [
+          "end_card_line_1",
+          "end_card_line_2",
+          "end_card_font",
+          "end_card_color",
+          "end_card_start_frame",
+          "resolution",
+          "fps",
+          "speed"
+        ]
+      },
+      "outputs": [
+        "endcard_frames"
+      ],
+      "checks": [
+        {
+          "id": "end_card_copy_approved",
+          "title": "End card wording approved by the requester",
+          "kind": "human"
+        }
+      ]
     },
     {
       "id": "finish",
@@ -164,10 +705,32 @@
       "flow_category": "media",
       "adapter": "ffmpeg.logo-sting.finish",
       "implementation": "script_only",
-      "requires": ["ffmpeg"],
-      "inputs": {"fields": ["video_crf", "sting_id"], "artifacts": ["scene_frames", "endcard_frames", "soundtrack"]},
-      "outputs": ["final_video", "validation_report", "contact_sheet"],
-      "checks": [{"id": "mp4_validation", "title": "Resolution, frame rate, frame count, audio duration and full decode", "kind": "automatic"}]
+      "requires": [
+        "ffmpeg"
+      ],
+      "inputs": {
+        "fields": [
+          "video_crf",
+          "sting_id"
+        ],
+        "artifacts": [
+          "scene_frames",
+          "endcard_frames",
+          "soundtrack"
+        ]
+      },
+      "outputs": [
+        "final_video",
+        "validation_report",
+        "contact_sheet"
+      ],
+      "checks": [
+        {
+          "id": "mp4_validation",
+          "title": "Resolution, frame rate, frame count, audio duration and full decode",
+          "kind": "automatic"
+        }
+      ]
     },
     {
       "id": "deliver",
@@ -176,21 +739,163 @@
       "flow_category": "game",
       "adapter": "gamecore.delivery",
       "implementation": "not_started",
-      "inputs": {"fields": ["output_folder", "sting_id", "brand"], "artifacts": ["final_video", "validation_report", "contact_sheet", "stems", "scene_blend"]},
-      "outputs": ["production_record"],
-      "checks": [{"id": "contact_sheet_reviewed", "title": "Contact sheet reviewed and MP4 played through", "kind": "human"}]
+      "inputs": {
+        "fields": [
+          "output_folder",
+          "sting_id",
+          "brand",
+          "subject_model"
+        ],
+        "artifacts": [
+          "final_video",
+          "validation_report",
+          "contact_sheet",
+          "stems",
+          "scene_blend"
+        ]
+      },
+      "outputs": [
+        "production_record"
+      ],
+      "checks": [
+        {
+          "id": "contact_sheet_reviewed",
+          "title": "Contact sheet reviewed and MP4 played through",
+          "kind": "human"
+        }
+      ],
+      "calls": [
+        {
+          "server": "model-forge",
+          "tool": "create_design_iteration",
+          "status": "proposed",
+          "writes": true,
+          "purpose": "Group the version scene and its exports in ModelForge as one design iteration labelled with the sting id.",
+          "arguments": {
+            "model_id": "field:subject_model",
+            "label": "field:sting_id",
+            "change_summary": "Logo sting delivery",
+            "tool": "GameCore logo-sting wizard"
+          }
+        }
+      ]
     }
   ],
   "wizard": {
     "steps": [
-      {"id": "project", "title": "Choose project and recipe", "summary": "Output folder, sting id and supported animation preset; scope and editor handoffs are shown before starting.", "fields": ["output_folder", "sting_id", "animation_preset"], "stages": ["readiness"]},
-      {"id": "subject", "title": "Select subject and branding", "summary": "Starting scene or pinned ModelForge version, approved end card wording and font.", "fields": ["brand", "subject_scene", "subject_model", "end_card_line_1", "end_card_line_2", "end_card_font"], "stages": ["readiness"]},
-      {"id": "look", "title": "Set the look", "summary": "Camera, lighting and background presets with quick representative frames.", "fields": ["camera_preset", "lighting_preset", "background_color"], "stages": ["build-scene", "check-frames"], "preview": "check-frames"},
-      {"id": "timing", "title": "Set motion and timing", "summary": "Length and speed; frame count derived from rational fps with rounding shown; cue timeline recomputed.", "fields": ["source_frame_end", "speed", "fps", "resolution"], "stages": ["cue-sheet"], "preview": "cue-sheet"},
-      {"id": "sound", "title": "Add music and effects", "summary": "Preset score, supplied music or none; foley sources; audition.", "fields": ["music_source", "music_preset", "supplied_music", "soundfont", "foley_pack"], "stages": ["soundtrack"]},
-      {"id": "adjust", "title": "Preview and adjust", "summary": "Cue placement, mix level and end card layout; changes invalidate affected checks.", "fields": ["cue_overrides", "master_peak_dbfs", "end_card_color", "end_card_start_frame"], "stages": ["soundtrack", "end-card"], "preview": "end-card"},
-      {"id": "render", "title": "Check and render", "summary": "Required apps, actual device, size estimate and blockers, then render, composite and validate.", "fields": ["render_device", "video_crf"], "stages": ["render-frames", "finish"]},
-      {"id": "review", "title": "Review and export", "summary": "Play the final output, complete visual, audio and copy review, save the delivery package. Technical completion and creative acceptance stay separate.", "fields": [], "stages": ["deliver"], "review": true}
+      {
+        "id": "project",
+        "title": "Choose project and recipe",
+        "summary": "Output folder, sting id and supported animation preset; scope and editor handoffs are shown before starting.",
+        "fields": [
+          "output_folder",
+          "sting_id",
+          "animation_preset"
+        ],
+        "stages": [
+          "readiness"
+        ]
+      },
+      {
+        "id": "subject",
+        "title": "Select subject and branding",
+        "summary": "Starting scene or pinned ModelForge version, approved end card wording and font.",
+        "fields": [
+          "brand",
+          "subject_scene",
+          "subject_model",
+          "end_card_line_1",
+          "end_card_line_2",
+          "end_card_font"
+        ],
+        "stages": [
+          "readiness"
+        ]
+      },
+      {
+        "id": "look",
+        "title": "Set the look",
+        "summary": "Camera, lighting and background presets with quick representative frames.",
+        "fields": [
+          "camera_preset",
+          "lighting_preset",
+          "background_color"
+        ],
+        "stages": [
+          "build-scene",
+          "check-frames"
+        ],
+        "preview": "check-frames"
+      },
+      {
+        "id": "timing",
+        "title": "Set motion and timing",
+        "summary": "Length and speed; frame count derived from rational fps with rounding shown; cue timeline recomputed.",
+        "fields": [
+          "source_frame_end",
+          "speed",
+          "fps",
+          "resolution"
+        ],
+        "stages": [
+          "cue-sheet"
+        ],
+        "preview": "cue-sheet"
+      },
+      {
+        "id": "sound",
+        "title": "Add music and effects",
+        "summary": "Preset score, supplied music or none; foley sources; audition.",
+        "fields": [
+          "music_source",
+          "music_preset",
+          "supplied_music",
+          "soundfont",
+          "foley_pack"
+        ],
+        "stages": [
+          "soundtrack"
+        ]
+      },
+      {
+        "id": "adjust",
+        "title": "Preview and adjust",
+        "summary": "Cue placement, mix level and end card layout; changes invalidate affected checks.",
+        "fields": [
+          "cue_overrides",
+          "master_peak_dbfs",
+          "end_card_color",
+          "end_card_start_frame"
+        ],
+        "stages": [
+          "soundtrack",
+          "end-card"
+        ],
+        "preview": "end-card"
+      },
+      {
+        "id": "render",
+        "title": "Check and render",
+        "summary": "Required apps, actual device, size estimate and blockers, then render, composite and validate.",
+        "fields": [
+          "render_device",
+          "video_crf"
+        ],
+        "stages": [
+          "render-frames",
+          "finish"
+        ]
+      },
+      {
+        "id": "review",
+        "title": "Review and export",
+        "summary": "Play the final output, complete visual, audio and copy review, save the delivery package. Technical completion and creative acceptance stay separate.",
+        "fields": [],
+        "stages": [
+          "deliver"
+        ],
+        "review": true
+      }
     ]
   },
   "acceptance": {

@@ -15,6 +15,7 @@ REPO = SCRIPT.parents[1]
 SCHEMA = json.loads((REPO / wizards.SCHEMA_PATH).read_text(encoding='utf-8'))
 LOGO = json.loads((REPO / 'workflows/logo-sting-video/wizard.json').read_text(encoding='utf-8'))
 IDS = {'logo-sting-video'}
+SERVERS = wizards.load_servers(json.loads((REPO / wizards.ECOSYSTEM_PATH).read_text(encoding='utf-8')))
 
 
 class WizardTemplateTests(unittest.TestCase):
@@ -26,7 +27,7 @@ class WizardTemplateTests(unittest.TestCase):
     def errors(self):
         path = Path(self.temp.name) / 'wizard.json'
         path.write_text(json.dumps(self.template), encoding='utf-8')
-        return wizards.validate_template(path, SCHEMA, IDS)
+        return wizards.validate_template(path, SCHEMA, IDS, SERVERS)
 
     def assertError(self, fragment):
         errors = self.errors()
@@ -92,6 +93,30 @@ class WizardTemplateTests(unittest.TestCase):
     def test_implemented_needs_verified_stages(self):
         self.template['implementation_status'] = 'implemented'
         self.assertError('requires every stage verified')
+
+    def test_call_to_unregistered_server(self):
+        self.stage('readiness')['calls'][0]['server'] = 'not-a-server'
+        self.assertError('server is not in shared/ecosystem.json')
+
+    def test_call_to_undeclared_tool(self):
+        self.stage('readiness')['calls'][0]['tool'] = 'delete_everything'
+        self.assertError('tool is not declared')
+
+    def test_write_tool_must_declare_writes(self):
+        del self.stage('build-scene')['calls'][0]['writes']
+        self.assertError('must declare writes: true')
+
+    def test_call_argument_must_reference_stage_input(self):
+        self.stage('readiness')['calls'][0]['arguments']['model_id'] = 'field:end_card_line_1'
+        self.assertError('references field end_card_line_1')
+
+    def test_nested_call_argument_checked(self):
+        self.stage('build-scene')['calls'][0]['arguments']['params']['extra'] = 'artifact:final_video'
+        self.assertError('params.extra references artifact final_video')
+
+    def test_call_result_must_be_stage_output(self):
+        self.stage('build-scene')['calls'][0]['results'] = {'final_video': 'nope'}
+        self.assertError('result final_video is not an output')
 
     def test_unknown_workflow(self):
         self.template['workflow'] = 'not-a-workflow'
