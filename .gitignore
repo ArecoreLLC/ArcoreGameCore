@@ -24,3 +24,9 @@ Thumbs.db
 # Python scaffold validation
 __pycache__/
 *.pyc
+
+# Local credentials and conversation attachments
+.env
+.env.*
+!.env.example
+.codex-attachments/

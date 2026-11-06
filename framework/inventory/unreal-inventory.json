@@ -1,0 +1,2943 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-02",
+  "engine": {
+    "name": "Unreal Engine",
+    "version": "5.8.4",
+    "changelist": 58902052,
+    "platform": "Windows Win64"
+  },
+  "framework_version": "0.1.0",
+  "revision_note": "Neither source directory is a Git checkout at review time; use per-file hashes and source snapshot digests as the baseline.",
+  "execution_status": "inventory_only; no engine or asset operations executed",
+  "scope": {
+    "source_config": "framework/inventory/unreal-sources.json",
+    "binary_assets_included": false,
+    "saved_evidence_copied": false,
+    "declarations_are_not_execution_results": true
+  },
+  "sources": [
+    {
+      "id": "world-framework",
+      "root": "../ArcoreWorldFramework",
+      "ownership": "Reusable implementation maintained in ArcoreWorldFramework",
+      "files": 52,
+      "snapshot_sha256": "820f4b1a63454cde2451497530776f3c716e4df46904903ac9be6ff8310fba8c"
+    },
+    {
+      "id": "open-world",
+      "root": "../ArcoreOpenWorld",
+      "ownership": "Consuming project adapters, procedural fixtures and validation harnesses",
+      "files": 127,
+      "snapshot_sha256": "72bb6dc90b3d34e7d1e9f3d35200659e2449bd9ad5b3caa42a7eec880379977f"
+    }
+  ],
+  "entries": [
+    {
+      "source": "world-framework",
+      "path": "AGENTS.md",
+      "sha256": "c4846534666bc9ca0312b00116445edb5de2137c86d98036d0a8a6c883476d94",
+      "bytes": 2090,
+      "role": "framework documentation and packaging",
+      "summary": "ArcoreWorldFramework development rules",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "README.md",
+      "sha256": "740550ef1fad4caecfa8fd2a5b46bfcfae81bc28f93026fc8032ef016a9a1bac",
+      "bytes": 4458,
+      "role": "framework documentation and packaging",
+      "summary": "ArcoreWorldFramework",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "Unreal/ArcoreFrameworkRuntime/ArcoreFrameworkRuntime.uplugin",
+      "sha256": "f090021ecf9d0239d0bbb771b96e31354fde43250e581ad3c07540ec851ef60e",
+      "bytes": 431,
+      "role": "Unreal runtime plugin",
+      "summary": "",
+      "execution_environment": "Unreal build or runtime",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "Unreal/ArcoreFrameworkRuntime/Source/ArcoreFrameworkRuntime/ArcoreFrameworkRuntime.Build.cs",
+      "sha256": "ad050a7e6d273b6e711a488b6673c105f18d423e3cef14debd0d9dc52a1e3295",
+      "bytes": 410,
+      "role": "Unreal runtime plugin",
+      "summary": "",
+      "execution_environment": "Unreal build or runtime",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "Unreal/ArcoreFrameworkRuntime/Source/ArcoreFrameworkRuntime/Private/ArcoreFrameTelemetry.cpp",
+      "sha256": "d7f9bbdeb887d876ec88d386294b06dc89db7fdf6e57764dc6d17de7622d5f9c",
+      "bytes": 3546,
+      "role": "Unreal runtime plugin",
+      "summary": "",
+      "execution_environment": "Unreal build or runtime",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "Unreal/ArcoreFrameworkRuntime/Source/ArcoreFrameworkRuntime/Private/ArcoreFrameworkRuntime.cpp",
+      "sha256": "90bc5a46907c8ca297cbe679a7c05f60ec1af5a3e6783e81b59b819b7c5536a8",
+      "bytes": 99,
+      "role": "Unreal runtime plugin",
+      "summary": "",
+      "execution_environment": "Unreal build or runtime",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "Unreal/ArcoreFrameworkRuntime/Source/ArcoreFrameworkRuntime/Private/ArcoreRenderProfile.cpp",
+      "sha256": "615c0a782ec21f2febe6634af7b9267c0951c78d0d9753f9ce03cb53a1d1ce3f",
+      "bytes": 1508,
+      "role": "Unreal runtime plugin",
+      "summary": "",
+      "execution_environment": "Unreal build or runtime",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "Unreal/ArcoreFrameworkRuntime/Source/ArcoreFrameworkRuntime/Private/FrameworkModelReview.cpp",
+      "sha256": "e1be6b05cb79277a97fbe7ff23f6e665a41637a3ef85bcb4589befaa2ac202f3",
+      "bytes": 7136,
+      "role": "Unreal runtime plugin",
+      "summary": "",
+      "execution_environment": "Unreal build or runtime",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "Unreal/ArcoreFrameworkRuntime/Source/ArcoreFrameworkRuntime/Public/ArcoreAngularCapture.h",
+      "sha256": "2b4c94caf97b520f8f53efe327d17166a80cccdf2fa5b9398d1368d6dd028d6f",
+      "bytes": 879,
+      "role": "Unreal runtime plugin",
+      "summary": "",
+      "execution_environment": "Unreal build or runtime",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": [],
+      "operational_status": "measurement_helper",
+      "limitation": "Asynchronous GPU/thread observations; angle is associated with the previously submitted camera, not an exact GPU frame ID."
+    },
+    {
+      "source": "world-framework",
+      "path": "Unreal/ArcoreFrameworkRuntime/Source/ArcoreFrameworkRuntime/Public/ArcoreFrameTelemetry.h",
+      "sha256": "525fac6344df52254c33dfe62853145e064307141d295807de8b0ab660c4b3f9",
+      "bytes": 408,
+      "role": "Unreal runtime plugin",
+      "summary": "",
+      "execution_environment": "Unreal build or runtime",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "Unreal/ArcoreFrameworkRuntime/Source/ArcoreFrameworkRuntime/Public/ArcoreRenderProfile.h",
+      "sha256": "267940af5dac7bf26ac28faf0bddc8e05c3596c4202fd7bde75b4f1305db903c",
+      "bytes": 257,
+      "role": "Unreal runtime plugin",
+      "summary": "",
+      "execution_environment": "Unreal build or runtime",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "Unreal/ArcoreFrameworkRuntime/Source/ArcoreFrameworkRuntime/Public/FrameworkModelReview.h",
+      "sha256": "d01ee43e7aa854e6a4da2523cd8edda309ca5896bbd13f6fbe36b4f619af8ffa",
+      "bytes": 1022,
+      "role": "Unreal runtime plugin",
+      "summary": "",
+      "execution_environment": "Unreal build or runtime",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "docs/architecture.md",
+      "sha256": "934a00b49cc1642e5439b0d72b7bf0329128a2b7008434805628a7c36cddffad",
+      "bytes": 2387,
+      "role": "framework documentation and packaging",
+      "summary": "Architecture and boundaries",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "docs/incidents/README.md",
+      "sha256": "33216156552e35be2463159e9ae874f0501d4bf666cb8fe6ccdd91dca8c6b11a",
+      "bytes": 6165,
+      "role": "framework documentation and packaging",
+      "summary": "Issue and resolution register",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "docs/incidents/creek-persistence.md",
+      "sha256": "bc4ecb3a744698beb09baf2ebd113037bca143abd4f060200c2f76e1dd918633",
+      "bytes": 1826,
+      "role": "framework documentation and packaging",
+      "summary": "Creek carve lost after Landscape recomposition",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "docs/incidents/import-portability.md",
+      "sha256": "b93af83641e092c278ab267c96fb9a669f0ecdddd155c5b9ef1fd8f43e881825",
+      "bytes": 4993,
+      "role": "framework documentation and packaging",
+      "summary": "Root/debris batch: dependency loss and empty FBX",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "docs/incidents/nature-trail-performance.md",
+      "sha256": "222ac225b617ce81ac4bb89119d58db5e68a7af51ec00e487c85621daa1c7d4f",
+      "bytes": 6025,
+      "role": "framework documentation and packaging",
+      "summary": "Nature trail: severe GPU stalls",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "docs/incidents/palm-v001.md",
+      "sha256": "1016f5377f9ffa3607b52ffe8fb84596911058650ff9802b94b2e4bf08475c4d",
+      "bytes": 3103,
+      "role": "framework documentation and packaging",
+      "summary": "Palm v001: fragmented trunk",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "docs/incidents/parrot-v6.md",
+      "sha256": "fc5227e73d45d854e5670cb56997b6527254cbbf03850df1fedb3489073f8ad9",
+      "bytes": 2545,
+      "role": "framework documentation and packaging",
+      "summary": "Parrot V6: appearance and material portability",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "docs/optimizations/README.md",
+      "sha256": "422b6837f9a6f905e094d0eb6828337db7c89c8c170ab2f64e480c1db0a638dc",
+      "bytes": 4147,
+      "role": "framework documentation and packaging",
+      "summary": "Completed optimizations and reusable lessons",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "docs/workflows/asset-validation.md",
+      "sha256": "3355d95bce0c42ac66aeeb947314603abbd87f877be31635ddbf4ec564a94485",
+      "bytes": 1951,
+      "role": "framework documentation and packaging",
+      "summary": "Classified asset validation",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "docs/workflows/creek-terrain.md",
+      "sha256": "6677190330702069c59ce020c6c9232536c9167965e74f5dc96fc2956eb3ab0b",
+      "bytes": 1435,
+      "role": "framework documentation and packaging",
+      "summary": "Creek terrain workflow",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "docs/workflows/godot-import.md",
+      "sha256": "4a8a4c7d1b2fcd53c9b1d27b9b09c55c2ed4412ea25c2df110e38a38b802a486",
+      "bytes": 993,
+      "role": "framework documentation and packaging",
+      "summary": "Godot import workflow",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "docs/workflows/issue-resolution.md",
+      "sha256": "4f81c72a48f45aa369eea9860626e4f955e2473b8faa46de68f73ebde92f6c7d",
+      "bytes": 2389,
+      "role": "framework documentation and packaging",
+      "summary": "Issue diagnosis, repair and regression evidence",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "docs/workflows/model-generation.md",
+      "sha256": "079551456e09845dd5fbb78dc076d4f83399eea28ae89c15c522564364b2deda",
+      "bytes": 1237,
+      "role": "framework documentation and packaging",
+      "summary": "Model generation and repair",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "docs/workflows/model-review.md",
+      "sha256": "130d5dab3f9eab8e3234e49c80e43a104f1de1b294df95e876f8150ea6c900e6",
+      "bytes": 1334,
+      "role": "framework documentation and packaging",
+      "summary": "Model history and mechanics review",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "docs/workflows/modelforge-validation.md",
+      "sha256": "46aee5e32f07681d11d308d78dd2fb40439b79b9a08fc31ae2b56dc5842b6c78",
+      "bytes": 1360,
+      "role": "framework documentation and packaging",
+      "summary": "ModelForge validation workflow",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "docs/workflows/optimization-best-practices.md",
+      "sha256": "82b24aaaf9e36cc49ffb07c4db7629668afe611ce89091d601a4866e06e7f79e",
+      "bytes": 4104,
+      "role": "framework documentation and packaging",
+      "summary": "Optimization best practices and recurrence prevention",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "docs/workflows/optimization-records.md",
+      "sha256": "8440eed55f7cf4b66fea9803d2cf01534fd078727f939bf5b59904396c5dc8f5",
+      "bytes": 2004,
+      "role": "framework documentation and packaging",
+      "summary": "Recording completed optimizations",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "docs/workflows/performance.md",
+      "sha256": "582949ceeee820ecacce316343281a108e4904d92a93df814d4a1c170ec78ce0",
+      "bytes": 2354,
+      "role": "framework documentation and packaging",
+      "summary": "Performance diagnosis and gates",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "docs/workflows/prepared-static-import.md",
+      "sha256": "ed10a9fd1f5118f421233cf0e2983655ca4b64a6ce85f3dbd952028b5a0f30ce",
+      "bytes": 4063,
+      "role": "framework documentation and packaging",
+      "summary": "Prepared static PBR batch import",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "docs/workflows/source-acquisition.md",
+      "sha256": "149dc131c33524a26a0790a605853e872b1eac81e634ff26734c30ee0fc256d9",
+      "bytes": 903,
+      "role": "framework documentation and packaging",
+      "summary": "Source acquisition",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "docs/workflows/unreal-import.md",
+      "sha256": "a054cc1eb82b41610f622a7d570b228e5cce0ac72dfb22e7a1db08c45bb99d12",
+      "bytes": 1679,
+      "role": "framework documentation and packaging",
+      "summary": "Unreal import and persistence",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "pyproject.toml",
+      "sha256": "0ccb4c29a24f92ea605d1f7f3ff7b6dbc87cd5aa1e381e2408341e8518518ffd",
+      "bytes": 423,
+      "role": "framework documentation and packaging",
+      "summary": "",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "src/arcore_world_framework/__init__.py",
+      "sha256": "41362a5ea4931c546433d4c48290c5707bf02dbbea1c3aafa9f43d1225e47003",
+      "bytes": 23,
+      "role": "validation core and probes",
+      "summary": "",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "src/arcore_world_framework/adapters/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "role": "engine adapter",
+      "summary": "",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "src/arcore_world_framework/adapters/prepared_static_import.py",
+      "sha256": "82d8d64d66ba0e8e8b9acd9260be31525f1fd4e650449b56e9607921701cac3c",
+      "bytes": 13485,
+      "role": "engine adapter",
+      "summary": "Manifest-pinned static PBR batches on Epic's existing editor; no transport or script endpoint.",
+      "execution_environment": "Unreal editor Python",
+      "imports": [
+        "datetime",
+        "integrity",
+        "json",
+        "math",
+        "pathlib",
+        "re",
+        "unreal",
+        "uuid"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "src/arcore_world_framework/adapters/unreal_validation.py",
+      "sha256": "a47afc74af8c4a9f3fe3458d8905ec98be25dab6f7d747d0621eaea81cd679f2",
+      "bytes": 7678,
+      "role": "engine adapter",
+      "summary": "Typed, project-scoped read-only asset validation on Epic's native MCP.",
+      "execution_environment": "Unreal editor Python",
+      "imports": [
+        "collections",
+        "datetime",
+        "integrity",
+        "json",
+        "math",
+        "pathlib",
+        "sys",
+        "unreal",
+        "uuid"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "src/arcore_world_framework/assets/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "role": "procedural and portability helper",
+      "summary": "",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "src/arcore_world_framework/assets/blender_portability.py",
+      "sha256": "a502e6c5111d87f058f6005d5e181b4659a7a4dbdbc52af418d5940075074c54",
+      "bytes": 1420,
+      "role": "procedural and portability helper",
+      "summary": "Blender-only dependency repair for isolated editable copies; never edits donors.",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "pathlib"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "src/arcore_world_framework/geometry/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "role": "procedural and portability helper",
+      "summary": "",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "src/arcore_world_framework/geometry/blender_palm.py",
+      "sha256": "f5d11d5597427780ed5cccfa785774ddb19fda5176376c39cfb12e18f47fcc3f",
+      "bytes": 4730,
+      "role": "procedural and portability helper",
+      "summary": "Blender-only palm adaptation with a declared closed trunk topology contract.",
+      "execution_environment": "Blender Python",
+      "imports": [
+        "bmesh",
+        "bpy",
+        "math",
+        "mathutils",
+        "statistics"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "src/arcore_world_framework/integrity.py",
+      "sha256": "d8725857712f51c75198e9b3bf5de72164bdabac1ad2a2516f91aa5e205a01b5",
+      "bytes": 9241,
+      "role": "validation core and probes",
+      "summary": "Source preflight shared by the CLI and the project's fixed Unreal MCP tools.",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "argparse",
+        "base64",
+        "collections",
+        "datetime",
+        "hashlib",
+        "json",
+        "math",
+        "pathlib",
+        "struct",
+        "uuid"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "src/arcore_world_framework/profiles/engine_targets.v1.json",
+      "sha256": "0acb3d0f8abba54ae3b28d5e152897023b0c43f1759eb0073f8d1e3ca824ff26",
+      "bytes": 939,
+      "role": "versioned rules and profiles",
+      "summary": "",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "src/arcore_world_framework/profiles/quality_rules.v1.json",
+      "sha256": "110c106ef39c1beac37de8c7742e7d7e399eea424f5e06b14ef652463f151b1c",
+      "bytes": 6029,
+      "role": "versioned rules and profiles",
+      "summary": "",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "src/arcore_world_framework/profiles/render_profiles.v1.json",
+      "sha256": "2730feebda9bafab782fdb23550bdbb7b50d162b79bf0d03b1747d84012a685d",
+      "bytes": 1004,
+      "role": "versioned rules and profiles",
+      "summary": "",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "src/arcore_world_framework/terrain/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "role": "procedural and portability helper",
+      "summary": "",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "src/arcore_world_framework/terrain/creeks.py",
+      "sha256": "e093b923edf111db38f562baa4ee1a2dfe10c4c06223510ac12c3b787b9fb801",
+      "bytes": 3984,
+      "role": "procedural and portability helper",
+      "summary": "Reusable 2017-grid creek carve; explicit grid constants are the v1 supported contract.",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "math",
+        "numpy"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": [],
+      "operational_status": "project_coordinate_contract",
+      "limitation": "The current helper assumes the documented 2017-grid/8 km world; adapt and validate before use with other terrains."
+    },
+    {
+      "source": "world-framework",
+      "path": "src/arcore_world_framework/workflows/godot_import_probe.gd",
+      "sha256": "f6d59473a3dc132b758a90124c48bef18005ef6567f298d459eaa3dcdeb10759",
+      "bytes": 1848,
+      "role": "validation core and probes",
+      "summary": "",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "src/arcore_world_framework/workflows/modelforge_validation.py",
+      "sha256": "29fe60a02bc5741e2584363c566b4ad7b5de1fd4cf84e1459b7be11ef45f9cf4",
+      "bytes": 2786,
+      "role": "validation core and probes",
+      "summary": "",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "hashlib",
+        "json",
+        "pathlib"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "tests/test_integrity.py",
+      "sha256": "ead0ebaf5394d9035594d00b23daf0e8db44ce61d544f16866eec25bd908c1cd",
+      "bytes": 3166,
+      "role": "framework regression tests",
+      "summary": "",
+      "execution_environment": "Python unittest with framework src on PYTHONPATH",
+      "imports": [
+        "arcore_world_framework.integrity",
+        "json",
+        "pathlib",
+        "struct",
+        "tempfile",
+        "unittest"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [
+        "test_bad_index_is_critical",
+        "test_capped_tetrahedron_passes",
+        "test_classification_is_separate_from_outcome",
+        "test_disconnected_solids_fail_single_shell_contract",
+        "test_empty_scene_glb_is_critical_and_blocks_import",
+        "test_leaf_card_is_exempt_from_solid_rule",
+        "test_open_trunk_blocks_import"
+      ],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "world-framework",
+      "path": "tests/test_prepared_import.py",
+      "sha256": "d84624acb0be529868c3dce24e870a56674fdf5d8858662e866d517b6e03b15c",
+      "bytes": 4043,
+      "role": "framework regression tests",
+      "summary": "",
+      "execution_environment": "Python unittest with framework src on PYTHONPATH",
+      "imports": [
+        "arcore_world_framework.adapters.prepared_static_import",
+        "arcore_world_framework.integrity",
+        "copy",
+        "json",
+        "pathlib",
+        "struct",
+        "tempfile",
+        "test_integrity",
+        "unittest"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [
+        "test_declared_geometry_must_match_portable_export",
+        "test_dependency_outside_batch_is_rejected",
+        "test_destination_cannot_escape_review_namespace",
+        "test_known_bad_trunk_blocks_before_engine_import",
+        "test_portable_normal_map_cannot_be_silently_omitted",
+        "test_registered_source_batch_passes_preflight_without_unreal",
+        "test_shared_material_name_with_different_pixels_is_rejected",
+        "test_source_tampering_blocks_before_engine_import"
+      ],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "AGENTS.md",
+      "sha256": "bd35a39cc07f77ab6afedc5c79d2689a1568cc55f08dba24811324f9153508e1",
+      "bytes": 11113,
+      "role": "project configuration and documentation",
+      "summary": "ArcoreOpenWorld agent workflow",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "ArcoreOpenWorld.uproject",
+      "sha256": "eab84711b1a507cc6ec2f78f70c6fb3684ba2371bdb424570a6b9d5d99edfbbc",
+      "bytes": 1436,
+      "role": "project configuration and documentation",
+      "summary": "",
+      "execution_environment": "Unreal build or runtime",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Asset Sandbox.cmd",
+      "sha256": "c3a5854d17c83786a0a26e2891245e8056104d767e75bf91e01504aa23ab0844",
+      "bytes": 100,
+      "role": "project configuration and documentation",
+      "summary": "",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Assets/Foundation/v001/README.md",
+      "sha256": "71ff03a64a4b27504dd1cea56c4db66b6ae8a28e3282abdc5c8b271dc523e80e",
+      "bytes": 5616,
+      "role": "project configuration and documentation",
+      "summary": "Jungle and wildlife foundation / v001",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Assets/ImportBatches/NatureDebris_v001/README.md",
+      "sha256": "79acb9b95efb887c577d286130989817ad59528f29bf8eaa87d054380e428477",
+      "bytes": 5069,
+      "role": "project configuration and documentation",
+      "summary": "Nature debris import pilot / v001",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Assets/ImportBatches/NatureDebris_v001/batch_validation.json",
+      "sha256": "ce6be349cf2352f333306659ebf886d30a5c61a5af2636c8fb0419bc1b970689",
+      "bytes": 10779,
+      "role": "project evidence and fixture manifest",
+      "summary": "",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Assets/NatureWalk/v001/README.md",
+      "sha256": "d9f80e96b092ddbba5ac355170a45ce3f5ab40665c8e0a4728ede56680585503",
+      "bytes": 10756,
+      "role": "project configuration and documentation",
+      "summary": "Palm forest nature walk / v001",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Assets/Quality/latest_godot.json",
+      "sha256": "b4bd342ca0d4213502d7432a0b3e0f1998f0b5f1f603133c734dfa62110bd4e6",
+      "bytes": 124,
+      "role": "project evidence and fixture manifest",
+      "summary": "",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Assets/Quality/latest_modelforge.json",
+      "sha256": "19ddca564dd10cf2f1bacf30d7497ce1d49229b02b7db98a6bbb64be9242f0a8",
+      "bytes": 127,
+      "role": "project evidence and fixture manifest",
+      "summary": "",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Assets/Quality/latest_source.json",
+      "sha256": "a0163fa9cf4ec2197638cbd8375430fd40098789c26096f353e91f71d2e5b603",
+      "bytes": 118,
+      "role": "project evidence and fixture manifest",
+      "summary": "",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Assets/Quality/latest_unreal.json",
+      "sha256": "1148a92855d7eb21540b4a4da09c79bd63b4bb672ede0e033a3ca86ae46cf05f",
+      "bytes": 124,
+      "role": "project evidence and fixture manifest",
+      "summary": "",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Assets/Quality/performance_evidence_20261102.json",
+      "sha256": "b9014ac450bd42db806bdc6137f16683df88646c9d5e3fd9e08690be766ebd6b",
+      "bytes": 1739,
+      "role": "project evidence and fixture manifest",
+      "summary": "",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Assets/Quality/performance_evidence_20261102_g2g4.json",
+      "sha256": "8be317aee04749e08d4959cf5114e783f3ef5c8c62c119c15551022c15d9c345",
+      "bytes": 5016,
+      "role": "project evidence and fixture manifest",
+      "summary": "",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Assets/README.md",
+      "sha256": "bcf06d06d860b2c62d2ac7d9ecf5a0f3889690490ad8f2d789eeef3ef89723e0",
+      "bytes": 6096,
+      "role": "project configuration and documentation",
+      "summary": "World asset catalog and acquisition policy",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Assets/Review/README.md",
+      "sha256": "3ee1fe5c9762c4687a1cd95baddf1c0825dde05765e47f2e99dd92a545dc961a",
+      "bytes": 9177,
+      "role": "project configuration and documentation",
+      "summary": "Model testing and review framework",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Assets/Sandbox/README.md",
+      "sha256": "b8b3e1b562d8df2c76aa93bd7927da6916f39d8e2154ab5688c40a1f4b1cd8a3",
+      "bytes": 2778,
+      "role": "project configuration and documentation",
+      "summary": "The asset sandbox",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Assets/Sandbox/layout.ring.v001.json",
+      "sha256": "94a4f8d5218adb3c1824dbb4d7ed74505a319b651098545508dc69e85a4e0804",
+      "bytes": 1027,
+      "role": "project evidence and fixture manifest",
+      "summary": "",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Assets/Sandbox/layout.v001.json",
+      "sha256": "873f2377cf91044e8c6b2096402e88c2d1e3813aacd717f3f9de8c375f6dfb35",
+      "bytes": 762,
+      "role": "project evidence and fixture manifest",
+      "summary": "",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Assets/Sandbox/layout.v002.json",
+      "sha256": "ee4cea69815de5d149f0fda22fd7770f3e8b1c24ae524e0f705ae2c922783030",
+      "bytes": 1004,
+      "role": "project evidence and fixture manifest",
+      "summary": "",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "CLAUD-OPTIMIZATIONS.MD",
+      "sha256": "a3b9e4b9f08f023ef50f144e51cc48cc261dfabd2e491fa2e8258345c514844b",
+      "bytes": 20954,
+      "role": "project configuration and documentation",
+      "summary": "Nature Walk 200 FPS optimization checklist",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Config/ArcoreFramework.json",
+      "sha256": "8d1d201774bc28733663255a27dac587e9be6d4480ffcc5e59aea50909617292",
+      "bytes": 394,
+      "role": "project configuration and documentation",
+      "summary": "",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Config/DefaultEngine.ini",
+      "sha256": "6e4e80f0db53eb963b2fb9ea24b3f0800d045599d1cc3d357d111d4e8e9ede72",
+      "bytes": 1255,
+      "role": "project configuration and documentation",
+      "summary": "",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Config/DefaultGame.ini",
+      "sha256": "9c37586fddfad44260ecaefda8aa0da5ef57fbeddc5e5ac94f65446926891ec3",
+      "bytes": 298,
+      "role": "project configuration and documentation",
+      "summary": "",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Config/DefaultInput.ini",
+      "sha256": "61e3fb622f7ba0121c8036ac599acc7122bb3987a97b02b25ad13c56d5ce8e3a",
+      "bytes": 9574,
+      "role": "project configuration and documentation",
+      "summary": "",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Config/PreparedAssetBatches.json",
+      "sha256": "7714b8b8d1716f62ce3c0b08182d64bec5a53af3a2efb0377d796d7b0c62c036",
+      "bytes": 261,
+      "role": "project configuration and documentation",
+      "summary": "",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Jungle v1.cmd",
+      "sha256": "f4849f2baba50733536212c82e31678b7b563900bd9c5fc5a9b48501aee903ac",
+      "bytes": 103,
+      "role": "project configuration and documentation",
+      "summary": "",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Launch.cmd",
+      "sha256": "b01f39ec5f66501e6c6154664e25b7113202f5d7cd4f07f9a8ab481aaa7e8149",
+      "bytes": 226,
+      "role": "project configuration and documentation",
+      "summary": "",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Nature Walk.cmd",
+      "sha256": "fd2477ffad626670ee1e710cb5b6a371e78d585bf8bd18d7043f37d1a20c638d",
+      "bytes": 96,
+      "role": "project configuration and documentation",
+      "summary": "",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "OPTIMIZATION-LOG.md",
+      "sha256": "fc0f1c5796c4a711244a6f00356aa4b603722f55ad5b21f043dcb077bca0bb06",
+      "bytes": 3818,
+      "role": "project configuration and documentation",
+      "summary": "Completed optimization log",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Plugins/ArcoreEditorTools/ArcoreEditorTools.uplugin",
+      "sha256": "acad6deedfb7af761ad0daf8970f67270c4d7c0aecce601e4590ed5e18d54218",
+      "bytes": 383,
+      "role": "native editor extension and adapters",
+      "summary": "",
+      "execution_environment": "Unreal build or runtime",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Plugins/ArcoreEditorTools/Content/Python/arcore_world_tools.py",
+      "sha256": "07281f2e613f51d69c979fe2abf4634144c6283fec9e9a92f40048d287871146",
+      "bytes": 10000,
+      "role": "native editor extension and adapters",
+      "summary": "Small project toolset; uses Epic's transport and registration unchanged.",
+      "execution_environment": "Unreal editor Python",
+      "imports": [
+        "asset_quality",
+        "foundation_import",
+        "importlib",
+        "json",
+        "math",
+        "nature_wildlife",
+        "palm_forest",
+        "pathlib",
+        "prepared_asset_batches",
+        "review_creek_terrain",
+        "review_materials",
+        "review_stream_material",
+        "struct",
+        "toolset_registry",
+        "toolset_registry.registration",
+        "unreal"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": [
+        {
+          "name": "apply_review_creek_terrain",
+          "summary": "Apply only the prepared v002 creek deltas to the two existing maps, then synchronize review heights."
+        },
+        {
+          "name": "audit_jungle",
+          "summary": "Count generated jungle instances and verify their world-space placement."
+        },
+        {
+          "name": "audit_palm_forest",
+          "summary": "Audit generated palm forest placements against terrain, boundaries and trail."
+        },
+        {
+          "name": "audit_project_assets",
+          "summary": "Inventory every project asset and run classified Unreal compatibility/integrity checks without edits."
+        },
+        {
+          "name": "configure_palm_rendering",
+          "summary": "Set bounded per-family draw distances on the generated palm forest."
+        },
+        {
+          "name": "import_foundation_v001",
+          "summary": "Import the fixed, completed v001 asset manifest and add its bounded review-island fixture."
+        },
+        {
+          "name": "import_nature_wildlife",
+          "summary": "Import the eight pinned ShammyVerse rig families for the palm nature walk."
+        },
+        {
+          "name": "load_jungle_region",
+          "summary": "Load only World Partition actors intersecting the configured jungle work area."
+        },
+        {
+          "name": "load_palm_region",
+          "summary": "Load the fixed palm-forest extension of the adventure nature walk."
+        },
+        {
+          "name": "prepare_review_stream_material",
+          "summary": "Create the fixed lightweight opaque animated review-stream material."
+        },
+        {
+          "name": "process_prepared_asset_batch",
+          "summary": "Import or read-only validate a registered, hash-pinned static PBR batch. No overwrites or world edits."
+        },
+        {
+          "name": "repair_review_materials",
+          "summary": "Apply the current pinned portable material adapter to Pear Parrot review proxies."
+        },
+        {
+          "name": "save_world",
+          "summary": "Save dirty map and asset packages, including generated external actors."
+        },
+        {
+          "name": "verify_review_creek_terrain",
+          "summary": "Read back the saved creek vertices in both maps without editing terrain."
+        }
+      ]
+    },
+    {
+      "source": "open-world",
+      "path": "Plugins/ArcoreEditorTools/Content/Python/asset_quality.py",
+      "sha256": "5524e3b49103a6f500522abc42af8724014da5b68c37ac729832830e6f1f2f01",
+      "bytes": 1380,
+      "role": "native editor extension and adapters",
+      "summary": "Thin project adapter: context only; no validation implementation.",
+      "execution_environment": "Unreal editor Python",
+      "imports": [
+        "arcore_world_framework.adapters",
+        "framework_bootstrap",
+        "importlib",
+        "json",
+        "pathlib",
+        "sys",
+        "unreal"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Plugins/ArcoreEditorTools/Content/Python/foundation_import.py",
+      "sha256": "01686467c5dd877a3131d1749142a460ab5cbc188f63a4f3aaf9acf3abe2ab2e",
+      "bytes": 15828,
+      "role": "native editor extension and adapters",
+      "summary": "Fixed foundation-v001 import recipe, invoked on Epic's existing MCP server.",
+      "execution_environment": "Unreal editor Python",
+      "imports": [
+        "asset_integrity",
+        "hashlib",
+        "json",
+        "math",
+        "pathlib",
+        "random",
+        "sys",
+        "unreal"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Plugins/ArcoreEditorTools/Content/Python/init_unreal.py",
+      "sha256": "e5a519ad7a3b6f7de1044eea12c860cbd113e59b7b2798a01aec0f248d06e3cf",
+      "bytes": 70,
+      "role": "native editor extension and adapters",
+      "summary": "",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "arcore_world_tools"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Plugins/ArcoreEditorTools/Content/Python/nature_wildlife.py",
+      "sha256": "9ac5ab661667f61ea61c13cdd266ebb2b4d23c67fb7247b8585ade25eb58168b",
+      "bytes": 7744,
+      "role": "native editor extension and adapters",
+      "summary": "Import a fixed versioned wildlife package; no transport or arbitrary code inputs.",
+      "execution_environment": "Unreal editor Python",
+      "imports": [
+        "asset_integrity",
+        "hashlib",
+        "json",
+        "pathlib",
+        "re",
+        "struct",
+        "sys",
+        "unreal"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Plugins/ArcoreEditorTools/Content/Python/palm_forest.py",
+      "sha256": "e98311049dd511d72b771cdbfc19ca5e1b834a5c6142aceb1e0f7817f7d8ee79",
+      "bytes": 3603,
+      "role": "native editor extension and adapters",
+      "summary": "Fixed region loader and terrain/trail audit; no arbitrary paths or code inputs.",
+      "execution_environment": "Unreal editor Python",
+      "imports": [
+        "json",
+        "math",
+        "pathlib",
+        "struct",
+        "unreal"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Plugins/ArcoreEditorTools/Content/Python/palm_render_repair.py",
+      "sha256": "1f882df53af09d07596a5bb83f664915bf7cbda0977c0cd25ec6b6cc3f120b6b",
+      "bytes": 5441,
+      "role": "native editor extension and adapters",
+      "summary": "Fixed, read-only palm asset diagnostics for this project.",
+      "execution_environment": "Unreal editor Python",
+      "imports": [
+        "asset_integrity",
+        "json",
+        "pathlib",
+        "sys",
+        "unreal"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Plugins/ArcoreEditorTools/Content/Python/prepared_asset_batches.py",
+      "sha256": "78d5c76461a284e0a3957374f1d44ac1a066e60437880dab24593ad13cc89ff9",
+      "bytes": 724,
+      "role": "native editor extension and adapters",
+      "summary": "",
+      "execution_environment": "Unreal editor Python",
+      "imports": [
+        "arcore_world_framework.adapters",
+        "framework_bootstrap",
+        "importlib",
+        "json",
+        "pathlib",
+        "sys",
+        "unreal"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Plugins/ArcoreEditorTools/Content/Python/review_creek_terrain.py",
+      "sha256": "117fbeeca39f012402af76261174fc8c2460196aff1887819ec9dc53f2d272c6",
+      "bytes": 4866,
+      "role": "native editor extension and adapters",
+      "summary": "Fixed prepared terrain delta, explicit maps, source hashes and synchronized runtime data.",
+      "execution_environment": "Unreal editor Python",
+      "imports": [
+        "hashlib",
+        "json",
+        "math",
+        "pathlib",
+        "shutil",
+        "unreal"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Plugins/ArcoreEditorTools/Content/Python/review_materials.py",
+      "sha256": "54e3dc2841fe767240bae87818366a6ede440f239d34e135bb787880e3d4fe11",
+      "bytes": 7855,
+      "role": "native editor extension and adapters",
+      "summary": "Fixed portable review-material adapter on Epic's existing local MCP server.",
+      "execution_environment": "Unreal editor Python",
+      "imports": [
+        "hashlib",
+        "json",
+        "pathlib",
+        "re",
+        "unreal"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Plugins/ArcoreEditorTools/Content/Python/review_stream_material.py",
+      "sha256": "ae1e3d1411a7ba4c1ca07fd446c4d3893a163b0fafe5f3ea56b2c19d62e2a2a3",
+      "bytes": 5087,
+      "role": "native editor extension and adapters",
+      "summary": "Fixed project-only material; no scene or source asset edits.",
+      "execution_environment": "Unreal editor Python",
+      "imports": [
+        "unreal"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "README.md",
+      "sha256": "d35ccf1dfa03cfba0c404fb9a57e1a4f81d43cfa9750675d997886a4378f1dc4",
+      "bytes": 14047,
+      "role": "project configuration and documentation",
+      "summary": "ArcoreOpenWorld",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Review Island.cmd",
+      "sha256": "56381af1c792a685554000670cc319dc63b804653b20c9a0f0f6d022c3d74bf6",
+      "bytes": 99,
+      "role": "project configuration and documentation",
+      "summary": "",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Source/ArcoreOpenWorld.Target.cs",
+      "sha256": "769e044cda1e3f1539e2d1a78e9adbaaef758aaaa9c168f24f3b16e4e2a59748",
+      "bytes": 359,
+      "role": "project runtime and editor fixture",
+      "summary": "",
+      "execution_environment": "Unreal build or runtime",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Source/ArcoreOpenWorld/ArcoreModelReview.cpp",
+      "sha256": "55d1c938add9c4ddc2a87a4e1eddacbe451c27448233bfcf2280b6f109f232dc",
+      "bytes": 103,
+      "role": "project runtime and editor fixture",
+      "summary": "",
+      "execution_environment": "Unreal build or runtime",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Source/ArcoreOpenWorld/ArcoreModelReview.h",
+      "sha256": "f588e900200b11d171a59739231f57c745d831a1a6dc8292f559f5e6261808fc",
+      "bytes": 129,
+      "role": "project runtime and editor fixture",
+      "summary": "",
+      "execution_environment": "Unreal build or runtime",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Source/ArcoreOpenWorld/ArcoreModelReviewTests.cpp",
+      "sha256": "4be54b53c2024c6096479d9ff813adc0bbab861cf4209e59ace03dcc07438af6",
+      "bytes": 2928,
+      "role": "project automation tests",
+      "summary": "",
+      "execution_environment": "Unreal build or runtime",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [
+        "Arcore.Review.ModelVersionGatesAndJournal"
+      ],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Source/ArcoreOpenWorld/ArcoreNatureGuest.cpp",
+      "sha256": "aac21f272b054afa257be0e090fcefaf4abc73f135a4bb2515efa9d39dcef28e",
+      "bytes": 10747,
+      "role": "project runtime and editor fixture",
+      "summary": "",
+      "execution_environment": "Unreal build or runtime",
+      "imports": [],
+      "declared_arguments": [
+        "ArcoreNatureExpansionSmokeTest"
+      ],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Source/ArcoreOpenWorld/ArcoreNatureGuest.h",
+      "sha256": "bd5c91c1ddb52aab09d9eff00d72a1ceaf67a9a5525d75416bd74a84e710bc50",
+      "bytes": 632,
+      "role": "project runtime and editor fixture",
+      "summary": "",
+      "execution_environment": "Unreal build or runtime",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Source/ArcoreOpenWorld/ArcoreOpenWorld.Build.cs",
+      "sha256": "cd7696ef2a2d5182e7dc3cf916a1c1f2ae7f7c42589beaa34eac53489fe82eb6",
+      "bytes": 431,
+      "role": "project runtime and editor fixture",
+      "summary": "",
+      "execution_environment": "Unreal build or runtime",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Source/ArcoreOpenWorld/ArcoreOpenWorld.cpp",
+      "sha256": "2bc474b67ee0d34cce678b763e61646e8b2190977ef11b1ead0111805f866838",
+      "bytes": 126,
+      "role": "project runtime and editor fixture",
+      "summary": "",
+      "execution_environment": "Unreal build or runtime",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Source/ArcoreOpenWorld/ArcoreReview.cpp",
+      "sha256": "cfe3cb0d31624c73fb5fb65f77c08f4cfd5505a96e3388e635cfcd1d31b929c8",
+      "bytes": 39391,
+      "role": "project runtime and editor fixture",
+      "summary": "",
+      "execution_environment": "Unreal build or runtime",
+      "imports": [],
+      "declared_arguments": [
+        "ArcoreBalancedReview",
+        "ArcoreFoundationPreview",
+        "ArcoreFoundationSmokeTest",
+        "ArcoreGPUProfile",
+        "ArcoreModelReviewSmokeTest",
+        "ArcoreNatureExpansionSmokeTest",
+        "ArcoreOriginalReview",
+        "ArcorePalmWalk",
+        "ArcorePerfCapture",
+        "ArcoreRenderAB",
+        "ArcoreReviewSmokeTest"
+      ],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Source/ArcoreOpenWorld/ArcoreReview.h",
+      "sha256": "367d4ff6dd0a5516ae447dfd101e25c60f7911abed6c3c97839d0225dfd2ccd9",
+      "bytes": 4756,
+      "role": "project runtime and editor fixture",
+      "summary": "",
+      "execution_environment": "Unreal build or runtime",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Source/ArcoreOpenWorld/ArcoreReviewPlaque.h",
+      "sha256": "cb38c80324d5cfc56ae12e27df3783b42e8ea540c18f69a295104dda9dcd79dc",
+      "bytes": 1965,
+      "role": "project runtime and editor fixture",
+      "summary": "",
+      "execution_environment": "Unreal build or runtime",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Source/ArcoreOpenWorld/ArcoreReviewTests.cpp",
+      "sha256": "614db4b06f93752e27057b13b0058d353fe463ae17b65c061aad50d08eae9501",
+      "bytes": 9632,
+      "role": "project automation tests",
+      "summary": "",
+      "execution_environment": "Unreal build or runtime",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [
+        "Arcore.Review.CreekTerrainPublication",
+        "Arcore.Review.MapCoordinatesAndHeight",
+        "Arcore.Review.NatureRouteOnAuthoredTerrain",
+        "Arcore.Review.NotesPersistAcrossDiskSave",
+        "Arcore.Review.PedestalTerrainFootprint",
+        "Arcore.Review.WildlifeMaterialsPersistOnDisk"
+      ],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Source/ArcoreOpenWorld/ArcoreReviewTrail.cpp",
+      "sha256": "6f146ac41e458e5b7cf7aac9132c3a8095371319cf7e4ce97fe36c84d2a049d0",
+      "bytes": 9288,
+      "role": "project runtime and editor fixture",
+      "summary": "",
+      "execution_environment": "Unreal build or runtime",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Source/ArcoreOpenWorld/ArcoreReviewTrail.h",
+      "sha256": "091dbaa575e2d12db68e29ad626009d82951804309f1c2fabe3c29dcb7a6518f",
+      "bytes": 630,
+      "role": "project runtime and editor fixture",
+      "summary": "",
+      "execution_environment": "Unreal build or runtime",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Source/ArcoreOpenWorld/ArcoreSandbox.cpp",
+      "sha256": "c2b910ffb72ddec171f2fc7c5d618d7ece54dd38d4ad89d781a4d8af077cc302",
+      "bytes": 8710,
+      "role": "project runtime and editor fixture",
+      "summary": "",
+      "execution_environment": "Unreal build or runtime",
+      "imports": [],
+      "declared_arguments": [
+        "ArcoreSandboxSmoke",
+        "ArcoreSandboxSweep"
+      ],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Source/ArcoreOpenWorld/ArcoreSandbox.h",
+      "sha256": "7c27ee9f13a6a64313ba0c0b4c125603049e94d79427bb2b228461e53a66e8f8",
+      "bytes": 1185,
+      "role": "project runtime and editor fixture",
+      "summary": "",
+      "execution_environment": "Unreal build or runtime",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Source/ArcoreOpenWorld/ArcoreWildlifeBird.cpp",
+      "sha256": "fdc21a1e66f5cd2c81b893a3325219f3d9ef2cffcd0ecdfdc4c7c592612a2884",
+      "bytes": 4204,
+      "role": "project runtime and editor fixture",
+      "summary": "",
+      "execution_environment": "Unreal build or runtime",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Source/ArcoreOpenWorld/ArcoreWildlifeBird.h",
+      "sha256": "feed0d4272a550915d1304c380a20395fe09cf9defc36edfc6725b3ba67949ca",
+      "bytes": 963,
+      "role": "project runtime and editor fixture",
+      "summary": "",
+      "execution_environment": "Unreal build or runtime",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Source/ArcoreOpenWorld/SArcoreModelReview.cpp",
+      "sha256": "9dfe1085f11a0c2f4992c354e63d5f472ecd4e0d0c449bf2e3b5a62a5f45db39",
+      "bytes": 8765,
+      "role": "project runtime and editor fixture",
+      "summary": "",
+      "execution_environment": "Unreal build or runtime",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Source/ArcoreOpenWorld/SArcoreModelReview.h",
+      "sha256": "4f8d6e8795f234a763e79b31f721cfc430f61d8a0b293165d7e5852c77ab5117",
+      "bytes": 1006,
+      "role": "project runtime and editor fixture",
+      "summary": "",
+      "execution_environment": "Unreal build or runtime",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Source/ArcoreOpenWorld/SArcoreReviewMenu.cpp",
+      "sha256": "dc818bfa78a864d995bba3690c852041d69c62ec53f9f39577159e02a5a91cc9",
+      "bytes": 22636,
+      "role": "project runtime and editor fixture",
+      "summary": "",
+      "execution_environment": "Unreal build or runtime",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Source/ArcoreOpenWorld/SArcoreReviewMenu.h",
+      "sha256": "3b4afe9f0a72a1a3ee1ebd81d2ba8480372f843717e09a1361123bf26a09077c",
+      "bytes": 2372,
+      "role": "project runtime and editor fixture",
+      "summary": "",
+      "execution_environment": "Unreal build or runtime",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Source/ArcoreOpenWorldEditor.Target.cs",
+      "sha256": "85979da4c94162e979adcc8a5190228005ea4b30482c307f23c9bdcfc11d1049",
+      "bytes": 416,
+      "role": "project runtime and editor fixture",
+      "summary": "",
+      "execution_environment": "Unreal build or runtime",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Source/ArcoreWorldEditor/ArcoreWorldEditor.Build.cs",
+      "sha256": "898d08cb3c733007ae3ba96d9c4a500691e5ef3d9a34dd6e6b78c27cb5863275",
+      "bytes": 419,
+      "role": "project runtime and editor fixture",
+      "summary": "",
+      "execution_environment": "Unreal build or runtime",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Source/ArcoreWorldEditor/Private/ArcoreTerrainLibrary.cpp",
+      "sha256": "20ba3b5bd1a07fd5f03ba05432d20396b6bf4fe185d4c76ad597fc26c8291e99",
+      "bytes": 6805,
+      "role": "project runtime and editor fixture",
+      "summary": "",
+      "execution_environment": "Unreal build or runtime",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Source/ArcoreWorldEditor/Public/ArcoreTerrainLibrary.h",
+      "sha256": "c38de416ef34bc52fae62d59aa0bb2f4b521262c61ff459ec98a9ab7002fa431",
+      "bytes": 835,
+      "role": "project runtime and editor fixture",
+      "summary": "",
+      "execution_environment": "Unreal build or runtime",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Terrain/Creeks/README.md",
+      "sha256": "5ac4cc72641e6843ecd749bdb1cd5ebe0d6578214ff4098bfd83ae85784601bb",
+      "bytes": 5057,
+      "role": "project configuration and documentation",
+      "summary": "Reusable creek terrain routine",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/Build-World.ps1",
+      "sha256": "e34386a6265b0b246f7d8eacfb975baf4b454a197918811f2ed2a4ca5f85d255",
+      "bytes": 1323,
+      "role": "project procedural tool and launcher",
+      "summary": "",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [],
+      "declared_arguments": [
+        "EngineRoot",
+        "Seed"
+      ],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/Launch-AssetSandbox.ps1",
+      "sha256": "67fbfff4a9ed62c4a2e8f95a84af28b772cbd50da61b809f7d508d7f75b89811",
+      "bytes": 823,
+      "role": "project procedural tool and launcher",
+      "summary": "",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [],
+      "declared_arguments": [
+        "Map",
+        "Offscreen",
+        "Smoke",
+        "Sweep"
+      ],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/Launch-Game.ps1",
+      "sha256": "80ca60ae5eba64207ba40f77f8cd1db6bf25764a47fc5a03f7a5db23e341e3bc",
+      "bytes": 1949,
+      "role": "project procedural tool and launcher",
+      "summary": "",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [],
+      "declared_arguments": [
+        "DryRun",
+        "EngineRoot"
+      ],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/Launch-JungleFoundation.ps1",
+      "sha256": "1fdd2c5348eb22bf15059c40b2da5e9b8efed4d9b623d8f1351e01cf8eebbe5d",
+      "bytes": 410,
+      "role": "project procedural tool and launcher",
+      "summary": "",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/Launch-PalmWalk.ps1",
+      "sha256": "b07e59c3032ae191aa48b15e2d5624e626254f547f5380cfb5aed57201fd4de7",
+      "bytes": 381,
+      "role": "project procedural tool and launcher",
+      "summary": "",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/Launch-ReviewIsland.ps1",
+      "sha256": "ae01a8b29f2f075b2f27c31559496845ff33f3e59189a858d49de7b9ed76af3a",
+      "bytes": 392,
+      "role": "project procedural tool and launcher",
+      "summary": "",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/Start-Editor.ps1",
+      "sha256": "cbcb6b540057ac9cd6c62df5783c7c6fd006ffd0281df05a45d712f35930dfe1",
+      "bytes": 1304,
+      "role": "project procedural tool and launcher",
+      "summary": "",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [],
+      "declared_arguments": [
+        "EngineRoot",
+        "HeadlessTools",
+        "Visible"
+      ],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/acquire_foundation.py",
+      "sha256": "62652646ced3396bc8ca2ca81a67f7e21b55e876a659c26f202e5c03f7d5c7a5",
+      "bytes": 2182,
+      "role": "project procedural tool and launcher",
+      "summary": "Acquire explicit public source files for foundation v001; preserve every downloaded byte.",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "datetime",
+        "hashlib",
+        "json",
+        "pathlib",
+        "urllib.request"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/acquire_foundation_surfaces.py",
+      "sha256": "79c05f3eb7bf670f09654cb205c460407df3cc035547e82478a2c09205c222b6",
+      "bytes": 943,
+      "role": "project procedural tool and launcher",
+      "summary": "",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "acquire_foundation",
+        "json"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/acquire_foundation_textures.py",
+      "sha256": "a76107b6fa379a83f214d40e471dd0e1b4607138e93c9122e59ea297dd4800e3",
+      "bytes": 1542,
+      "role": "project procedural tool and launcher",
+      "summary": "Download exact texture dependencies discovered in the source Blender scenes.",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "acquire_foundation",
+        "json",
+        "pathlib",
+        "urllib.parse"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/analyze_review_performance.py",
+      "sha256": "124f3b053af25eabd1b93adcb6e1f7f1474e4f9df79705735d94b5759db3bb93",
+      "bytes": 1570,
+      "role": "project validation harness",
+      "summary": "Summarize actual one-second HUD samples; do not infer FPS from startup time.",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "json",
+        "pathlib",
+        "re",
+        "statistics"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": [],
+      "operational_status": "blocked_for_current_performance_acceptance",
+      "limitation": "Open issue M2: fixed historical log/windows and obsolete Balanced profile label; do not use as current benchmark acceptance."
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/asset_integrity.py",
+      "sha256": "12882cd48141633827d52101cd04e53f3050429ec4082f0b8e5ff281b8af9241",
+      "bytes": 1850,
+      "role": "project validation harness",
+      "summary": "Project adapter; reusable validation lives in ArcoreWorldFramework.",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "arcore_world_framework",
+        "argparse",
+        "datetime",
+        "framework_bootstrap",
+        "json",
+        "pathlib",
+        "uuid"
+      ],
+      "declared_arguments": [
+        "--all",
+        "--file"
+      ],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/audit_foundation.py",
+      "sha256": "ddb8a610d36913ee4603638e72d4d87978fb0c793cb8682ce3ef33b3f7715b53",
+      "bytes": 2818,
+      "role": "project validation harness",
+      "summary": "Audit immutable donors/exports plus the preserved bird rig and vertex weights.",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "hashlib",
+        "json",
+        "modelforge_mcp",
+        "pathlib"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/audit_review_proxy.py",
+      "sha256": "999273dccc004aa7c69142d797fb7906a291b9e28e98467f6374aad9dbea6473",
+      "bytes": 504,
+      "role": "project validation harness",
+      "summary": "",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "json",
+        "modelforge_mcp",
+        "pathlib"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/build_asset_sandbox.py",
+      "sha256": "754e80aea9ea768de842aa69e7b99f493036f276c7adffc27cfc2eea0fd7e219",
+      "bytes": 7082,
+      "role": "project procedural tool and launcher",
+      "summary": "Create an isolated sandbox map from an explicit manifest. Never overwrite a map.",
+      "execution_environment": "Unreal editor Python",
+      "imports": [
+        "hashlib",
+        "json",
+        "math",
+        "pathlib",
+        "re",
+        "unreal"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/build_debris_batch.py",
+      "sha256": "76c5acbec8784c0893c69afc36754a3b177078a5f727c2a98b5a447488e1bc6c",
+      "bytes": 2374,
+      "role": "project procedural tool and launcher",
+      "summary": "Builds the next five root/debris review candidates, then performs independent source preflight.",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "arcore_world_framework.adapters.prepared_static_import",
+        "asset_integrity",
+        "framework_bootstrap",
+        "json",
+        "modelforge_mcp",
+        "pathlib",
+        "sys"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/build_debris_batch_blender.py",
+      "sha256": "eebf9abcb6b20363b86a3e8b01c5dfb3f4e665f76a739482c96f3f208707d9bb",
+      "bytes": 5816,
+      "role": "project procedural tool and launcher",
+      "summary": "Runs in ModelForge's existing Blender bridge; prepares only the declared batch.",
+      "execution_environment": "Blender Python",
+      "imports": [
+        "arcore_world_framework.assets.blender_portability",
+        "bpy",
+        "hashlib",
+        "json",
+        "math",
+        "mathutils",
+        "pathlib",
+        "sys"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/build_foundation.py",
+      "sha256": "e38ca986979a4ade27443fbf3de3edb39ba38bbc97b3500ec02c29e5bb906f14",
+      "bytes": 3444,
+      "role": "project procedural tool and launcher",
+      "summary": "Build/review-catalog foundation v001 through the existing ModelForge Blender MCP bridge.",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "argparse",
+        "hashlib",
+        "json",
+        "modelforge_mcp",
+        "pathlib"
+      ],
+      "declared_arguments": [
+        "--only"
+      ],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/build_foundation_blender.py",
+      "sha256": "2645ce6b95111889d3575c5ccf4a7969a70b67708bc6c81ea6ea22d47dc0a952",
+      "bytes": 9962,
+      "role": "project procedural tool and launcher",
+      "summary": "Executed by ModelForge's Blender bridge; creates a new, explicit project derivative.",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "hashlib",
+        "json",
+        "palm_mesh_builder",
+        "pathlib",
+        "random",
+        "sys"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/build_jungle.py",
+      "sha256": "bfa914bbefef3a53bb7bae7bc35cfe8eabc120f3900ee1ea2a8b39b182173e68",
+      "bytes": 4622,
+      "role": "project procedural tool and launcher",
+      "summary": "Build the initial jungle graph through Epic's existing MCP server.",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "argparse",
+        "json",
+        "pathlib",
+        "unreal_mcp"
+      ],
+      "declared_arguments": [
+        "--regenerate"
+      ],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/build_palm_forest.py",
+      "sha256": "92313598260bfa310a45a163fd7135e6d93baa82a1a0325dbcf5bc054a9778f4",
+      "bytes": 3677,
+      "role": "project procedural tool and launcher",
+      "summary": "Reuse the authored jungle PCG graph with separate palm-forest instance overrides.",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "json",
+        "pathlib",
+        "unreal_mcp"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/build_palm_v002.py",
+      "sha256": "f8f085824bd541befc26b2620dcfe710816d33ded3a86b9b2e074052d5813363",
+      "bytes": 3268,
+      "role": "project procedural tool and launcher",
+      "summary": "Use ModelForge's Blender bridge; never modify the original donor or v001.",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "argparse",
+        "asset_integrity",
+        "hashlib",
+        "json",
+        "modelforge_mcp",
+        "pathlib"
+      ],
+      "declared_arguments": [
+        "--revision"
+      ],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/build_review_island.py",
+      "sha256": "eda8f3761580d5afa56f68d09d16f19baec7970d170212b37b4cc52280cf7a29",
+      "bytes": 4085,
+      "role": "project procedural tool and launcher",
+      "summary": "Unreal editor commandlet: create a separate review map, refusing overwrites.",
+      "execution_environment": "Unreal editor Python",
+      "imports": [
+        "json",
+        "pathlib",
+        "unreal"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/build_world.py",
+      "sha256": "46d8b45f7bde55033f4a459cad9bda6ea75ee07cead85422882b4318944e4151",
+      "bytes": 6583,
+      "role": "project procedural tool and launcher",
+      "summary": "Run with UnrealEditor-Cmd -run=pythonscript -script=<this file>.",
+      "execution_environment": "Unreal editor Python",
+      "imports": [
+        "json",
+        "pathlib",
+        "sys",
+        "unreal"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/catalog_nature_assets.py",
+      "sha256": "55dd313f834115dbc7e01613a9ae7b39d02eedc0c3907c3bc9307756b85a3dc6",
+      "bytes": 5418,
+      "role": "project procedural tool and launcher",
+      "summary": "Catalog existing ModelForge nature candidates, preserving source ownership and versions.",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "argparse",
+        "json",
+        "modelforge_mcp",
+        "pathlib",
+        "re"
+      ],
+      "declared_arguments": [
+        "--apply"
+      ],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/discover_pcg_mcp.py",
+      "sha256": "317c610f634b79501ed9a68ff06c24c85a3e656777ca64a4eaee78f86a2469b9",
+      "bytes": 1476,
+      "role": "project procedural tool and launcher",
+      "summary": "Read Epic's PCG skill and schemas over its existing MCP server.",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "json",
+        "pathlib",
+        "unreal_mcp"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": [],
+      "operational_status": "requires_discovery_prerequisites",
+      "limitation": "Also reads previously saved PCGToolset, SceneTools, EditorAppToolset and ProgrammaticToolset discovery JSON. Seed these via actual native tool discovery before running."
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/export_foundation_clips.py",
+      "sha256": "945f0d0db034cf45aed5c23f7a980b30f0bee08fc8316a2262b9f3c5b42b9d03",
+      "bytes": 1673,
+      "role": "project procedural tool and launcher",
+      "summary": "Export existing bird actions for Unreal, preserving the completed mesh/source files.",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "json",
+        "modelforge_mcp",
+        "pathlib"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/export_nature_wildlife.py",
+      "sha256": "aab092a8d12f3e33626ae375829a93ac813c76b9fbbb9b6586dba879a34fddda",
+      "bytes": 3585,
+      "role": "project procedural tool and launcher",
+      "summary": "Export the pinned ShammyVerse families through ModelForge, never changing donors.",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "argparse",
+        "hashlib",
+        "json",
+        "modelforge_mcp",
+        "pathlib"
+      ],
+      "declared_arguments": [
+        "--ue-compatible"
+      ],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/framework_bootstrap.py",
+      "sha256": "0adcade0daca5eb0c0f4b42ee646c247cd3f87aaa84fa811bdc3bfe78a163d01",
+      "bytes": 789,
+      "role": "project procedural tool and launcher",
+      "summary": "Resolve the separately versioned framework; no downloads or server launch.",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "arcore_world_framework",
+        "json",
+        "pathlib",
+        "sys"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/generate_terrain.py",
+      "sha256": "d5221f8ad9f7ce580fe2270dcf931521c293f4aa3ae58b69e34c99dc485b969f",
+      "bytes": 5950,
+      "role": "project procedural tool and launcher",
+      "summary": "Generate reproducible, Unreal-ready terrain. Requires numpy and Pillow.",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "PIL",
+        "argparse",
+        "json",
+        "numpy",
+        "pathlib"
+      ],
+      "declared_arguments": [
+        "--seed"
+      ],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/import_nature_batch.py",
+      "sha256": "959f143f883d54a10326dd47a48be865cf0ba89d62e9733d7237ebc95d2e126d",
+      "bytes": 3343,
+      "role": "project procedural tool and launcher",
+      "summary": "Bounded library-first import pilot; originals and evidence are immutable.",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "datetime",
+        "hashlib",
+        "json",
+        "modelforge_mcp",
+        "pathlib",
+        "sys",
+        "urllib.request"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/inspect_bird_rigs.py",
+      "sha256": "fb3d42e5fca3cb4f29abc0f62cc2743c2d96fc6e456f743a8b649792ec4a904f",
+      "bytes": 1752,
+      "role": "project validation harness",
+      "summary": "Read-only Blender bridge audit of existing bird rigs; does not save model versions.",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "json",
+        "modelforge_mcp",
+        "pathlib"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/inspect_design_evidence.py",
+      "sha256": "ea9def5d9ded1828a41797f7dd44b6be5d229ed581968e157ccbdf6d502dbfdf",
+      "bytes": 1409,
+      "role": "project validation harness",
+      "summary": "Read-only discovery of packed design references in first-version Blender scenes.",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "json",
+        "modelforge_mcp",
+        "pathlib"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/inspect_foundation.py",
+      "sha256": "c83b626569f099f0b807403bfdf484a3b37b1340dbe2299625022c45015d81db",
+      "bytes": 2541,
+      "role": "project validation harness",
+      "summary": "Inspect new ModelForge donors and required texture filenames; no donor edits.",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "json",
+        "modelforge_mcp",
+        "pathlib"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/install_creek_pcg_masks.py",
+      "sha256": "01c2fdf168112ad9aecc5121c876edf2e6cae02059356e709050cd5addd5bed6",
+      "bytes": 2326,
+      "role": "project procedural tool and launcher",
+      "summary": "Install immutable exclusion masks as instance overrides on the existing shared graph.",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "hashlib",
+        "json",
+        "pathlib",
+        "unreal_mcp"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/jungle_graph_program.py",
+      "sha256": "56bda707865fe4ce7b6a628a2decd119d8b418d5f6c73524deb6601157b47d70",
+      "bytes": 5244,
+      "role": "project procedural tool and launcher",
+      "summary": "Runs inside Epic's ProgrammaticToolset sandbox, not regular Python.",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "json"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/model_review.py",
+      "sha256": "61f93d403f1a56b3ed4f0260e1301af66a2798b8d20412ad571fc999021d7486",
+      "bytes": 12067,
+      "role": "project validation harness",
+      "summary": "Pinned ModelForge review suites. Never changes donor files or auto-approves a model.",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "argparse",
+        "asset_integrity",
+        "datetime",
+        "hashlib",
+        "json",
+        "modelforge_mcp",
+        "pathlib",
+        "shutil",
+        "unreal_mcp",
+        "uuid"
+      ],
+      "declared_arguments": [
+        "--import-meshes",
+        "--model-id",
+        "--resume",
+        "command"
+      ],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/modelforge_mcp.py",
+      "sha256": "9fd62697c73b476dfe1edde20d60fbb491c9bf0fdfb8654f766fba07f45f7eb8",
+      "bytes": 1823,
+      "role": "project procedural tool and launcher",
+      "summary": "Authenticated local client for ArcoreModelForge's existing MCP server.",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "json",
+        "pathlib",
+        "urllib.request"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/palm_mesh_builder.py",
+      "sha256": "c09699513e828a22bc9f46568ca3457917229c1ad7f68a8346dceecf4c8f561f",
+      "bytes": 127,
+      "role": "project procedural tool and launcher",
+      "summary": "",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "arcore_world_framework.geometry.blender_palm",
+        "framework_bootstrap"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/prepare_creek_masks.py",
+      "sha256": "e8df49a004a3e69f9fa4b3e6ffc88b09f284743effed94175057dd6c0076a629",
+      "bytes": 2232,
+      "role": "project procedural tool and launcher",
+      "summary": "Prepare immutable vegetation masks from any prepared creek revision.",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "PIL",
+        "argparse",
+        "hashlib",
+        "json",
+        "numpy",
+        "pathlib",
+        "prepare_review_creeks",
+        "re"
+      ],
+      "declared_arguments": [
+        "--revision"
+      ],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/prepare_jungle.py",
+      "sha256": "7a04967ae8a070d05bedba6dd764396d403a43c538955500f5057ab066ca28d5",
+      "bytes": 2238,
+      "role": "project procedural tool and launcher",
+      "summary": "Prepare slope-safe jungle density and a bounded 500m PCG test region.",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "PIL",
+        "generate_terrain",
+        "json",
+        "numpy",
+        "pathlib"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/prepare_palm_forest.py",
+      "sha256": "8d8260fd580840ed59a5589c5e02609a46067e304e7c6aaf479c7b308517d2e2",
+      "bytes": 2662,
+      "role": "project procedural tool and launcher",
+      "summary": "Prepare a 1.2 x 0.8 km palm habitat and the existing trail's eastward extension.",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "PIL",
+        "generate_terrain",
+        "hashlib",
+        "json",
+        "numpy",
+        "pathlib"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/prepare_review_assets.py",
+      "sha256": "4bdbd99294fcd298309ebc8425f28e2bc0420b8c9f654c18024bdaec95716189",
+      "bytes": 1075,
+      "role": "project procedural tool and launcher",
+      "summary": "Refresh the runtime height file and import the overview through the native MCP.",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "pathlib",
+        "shutil",
+        "unreal_mcp"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/prepare_review_creeks.py",
+      "sha256": "0b4a5c16f9f444317300db9949c3668df53d42ab0c05d9646200e49029012cb6",
+      "bytes": 2541,
+      "role": "project procedural tool and launcher",
+      "summary": "Versioned creek bed plan. Generic carve() accepts a heightfield and ordered route.",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "arcore_world_framework.terrain.creeks",
+        "argparse",
+        "framework_bootstrap",
+        "hashlib",
+        "json",
+        "math",
+        "numpy",
+        "pathlib",
+        "re"
+      ],
+      "declared_arguments": [
+        "--profile",
+        "--revision"
+      ],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/prepare_review_island.py",
+      "sha256": "b0c84a033e453bbe1502bc886772de0ba1cce830c6954049d37b54970c5254cd",
+      "bytes": 1731,
+      "role": "project procedural tool and launcher",
+      "summary": "New, isolated island terrain source. Never rewrites the adventure Landscape.",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "PIL",
+        "json",
+        "numpy",
+        "pathlib"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/prepare_review_materials.py",
+      "sha256": "417a772b9b48f6e50b028af4b528243b27bc212faa6a2d1e8adba9bfe49718ce",
+      "bytes": 2976,
+      "role": "project procedural tool and launcher",
+      "summary": "Extract portable glTF PBR inputs for explicit Unreal review-material conversion.",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "hashlib",
+        "json",
+        "pathlib",
+        "struct"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/prepare_shammy_review.py",
+      "sha256": "e60edbf5af590feee10f1d2319a4d34a5d4eebbfccb1df4e36ae541eb2766b31",
+      "bytes": 6997,
+      "role": "project procedural tool and launcher",
+      "summary": "Prepare a portable ShammyVerse history index and extract authentic packed reference images.",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "hashlib",
+        "json",
+        "modelforge_mcp",
+        "pathlib",
+        "re",
+        "shutil"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/preview_debris_batch.py",
+      "sha256": "b94ca5093af1b0d829486dbdc845574614ed0a3020659ac48816d93126ff1ad7",
+      "bytes": 4423,
+      "role": "project procedural tool and launcher",
+      "summary": "Isolated unsaved Unreal import fixture; never saves an authored level.",
+      "execution_environment": "Unreal editor Python",
+      "imports": [
+        "json",
+        "pathlib",
+        "prepared_asset_batches",
+        "sys",
+        "time",
+        "unreal"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/requirements.txt",
+      "sha256": "dee66a6fd7af314ef9bffcc1170d09684e468588fbe5d8668c6379b0b9e65839",
+      "bytes": 30,
+      "role": "project procedural tool and launcher",
+      "summary": "",
+      "execution_environment": "data or documentation",
+      "imports": [],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/review_capture_blender.py",
+      "sha256": "9b58cad750d24730fec5942a8b4d385289579b131f4178a73028c0ad135309ac",
+      "bytes": 5501,
+      "role": "project procedural tool and launcher",
+      "summary": "Executed only by ModelForge blender_run with pinned model/version and output params.",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "hashlib",
+        "json",
+        "pathlib"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/run_godot_asset_validation.py",
+      "sha256": "d0e85b599e61890c995c85e0c35d38ca58603b7880b000eaa5c0cb3f285bd09c",
+      "bytes": 1276,
+      "role": "project validation harness",
+      "summary": "Stage the shared probe into a temporary project, then run the selected native engine.",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "framework_bootstrap",
+        "json",
+        "pathlib",
+        "shutil",
+        "subprocess"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/sync_framework.py",
+      "sha256": "5a0b3c715b245cde420dab6dcdded0ecb4883e125abea3058c05d1155c17d396",
+      "bytes": 784,
+      "role": "project procedural tool and launcher",
+      "summary": "Stage reusable runtime data; implementation remains outside the project.",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "framework_bootstrap",
+        "hashlib",
+        "json",
+        "pathlib",
+        "shutil"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/sync_review_catalog.py",
+      "sha256": "a67eae109bb4a01d5c0a3b4894a8e2720479d5a2d4b21eb1121c89c386fec351",
+      "bytes": 2852,
+      "role": "project procedural tool and launcher",
+      "summary": "Append missing ShammyVerse history files to existing ModelForge families; additive tags only.",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "argparse",
+        "datetime",
+        "json",
+        "modelforge_mcp",
+        "pathlib"
+      ],
+      "declared_arguments": [
+        "--apply"
+      ],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/unreal_mcp.py",
+      "sha256": "63a9343ad342a60df2250311c181eba4a702771a2d42602993d337ef6553519e",
+      "bytes": 3550,
+      "role": "project procedural tool and launcher",
+      "summary": "Small stdlib HTTP client for Epic's built-in MCP server (not a bridge/server).",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "argparse",
+        "json",
+        "pathlib",
+        "urllib.request"
+      ],
+      "declared_arguments": [
+        "--output",
+        "--params-file",
+        "method"
+      ],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/validate_modelforge_assets.py",
+      "sha256": "a9619266cfb269b9ea95aaa3f5caad377451d9e32548a45293f6665d541729cf",
+      "bytes": 1155,
+      "role": "project validation harness",
+      "summary": "Project context for the framework's read-only ModelForge validation workflow.",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "framework_bootstrap",
+        "json",
+        "modelforge_mcp",
+        "pathlib"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": []
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/verify_foundation_qa.py",
+      "sha256": "c88c6a1c615eb170ec2142146a99f43394541d25bb40595e03a1887c4ca25f04",
+      "bytes": 1559,
+      "role": "project validation harness",
+      "summary": "Verify evidence from the actual offscreen game and Unreal automation runs.",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "hashlib",
+        "json",
+        "pathlib",
+        "re"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": [],
+      "operational_status": "historical_fixture_specific",
+      "limitation": "Expects FoundationQA.log, FoundationTests.log and exactly four historical automation results; writes qa_report.json."
+    },
+    {
+      "source": "open-world",
+      "path": "Tools/verify_nature_review.py",
+      "sha256": "a1eb78a7b8041ab9b15e6a9045cd143677c07294c8ace65849620192da194e2a",
+      "bytes": 6232,
+      "role": "project validation harness",
+      "summary": "Check the cross-engine review lane, wildlife scene and retained terrain evidence.",
+      "execution_environment": "inspect source prerequisites before execution",
+      "imports": [
+        "datetime",
+        "hashlib",
+        "json",
+        "pathlib",
+        "re",
+        "shutil",
+        "uuid"
+      ],
+      "declared_arguments": [],
+      "declared_tests": [],
+      "native_mcp_tools": [],
+      "operational_status": "fixture_specific",
+      "limitation": "Expects named existing logs, seven test successes, 32 guests and versioned manifests; writes a new evidence snapshot and advances qa_report.json."
+    }
+  ]
+}

@@ -14,6 +14,10 @@ Choose checks according to the change. Record the command, prerequisites, tool v
 | Rendering/performance | Engine render; representative scenes; changed quality tiers; affected contact checks | Matched captures and hardware-specific measurements |
 | Documentation | Correct source claims, links, paths, commands, and current/historical labels | Read-through and link/whitespace checks |
 
+## Unreal reference checks
+
+For Unreal work, use the separate [procedural and model validation runbook](UNREAL_VALIDATION.md), [suite registry](inventory/unreal-validation-suites.json) and [audit record](inventory/unreal-audit.json). They catalog ArcoreWorldFramework regressions, project source/native model audits, PCG and terrain fixtures, Unreal automation, rendered smokes, angular captures and historical evidence aggregation. Engine tests remain separate from inventory integrity, and the legacy performance analyzer is explicitly blocked for current acceptance.
+
 ## ShammyVerse reference commands
 
 These commands describe the existing Godot project, not a future engine adapter. Run from the ShammyVerse repository root with its local tools installed.

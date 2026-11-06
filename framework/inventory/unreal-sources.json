@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-02",
+  "dimension": "3d",
+  "workflow_context": "godot-to-unreal",
+  "engine": {"name": "Unreal Engine", "version": "5.8.4", "changelist": 58902052, "platform": "Windows Win64"},
+  "framework_version": "0.1.0",
+  "revision_note": "Neither source directory is a Git checkout at review time; use per-file hashes and source snapshot digests as the baseline.",
+  "entry_notes": {
+    "open-world:Tools/analyze_review_performance.py": {"operational_status": "blocked_for_current_performance_acceptance", "limitation": "Open issue M2: fixed historical log/windows and obsolete Balanced profile label; do not use as current benchmark acceptance."},
+    "open-world:Tools/verify_foundation_qa.py": {"operational_status": "historical_fixture_specific", "limitation": "Expects FoundationQA.log, FoundationTests.log and exactly four historical automation results; writes qa_report.json."},
+    "open-world:Tools/verify_nature_review.py": {"operational_status": "fixture_specific", "limitation": "Expects named existing logs, seven test successes, 32 guests and versioned manifests; writes a new evidence snapshot and advances qa_report.json."},
+    "open-world:Tools/discover_pcg_mcp.py": {"operational_status": "requires_discovery_prerequisites", "limitation": "Also reads previously saved PCGToolset, SceneTools, EditorAppToolset and ProgrammaticToolset discovery JSON. Seed these via actual native tool discovery before running."},
+    "world-framework:src/arcore_world_framework/terrain/creeks.py": {"operational_status": "project_coordinate_contract", "limitation": "The current helper assumes the documented 2017-grid/8 km world; adapt and validate before use with other terrains."},
+    "world-framework:Unreal/ArcoreFrameworkRuntime/Source/ArcoreFrameworkRuntime/Public/ArcoreAngularCapture.h": {"operational_status": "measurement_helper", "limitation": "Asynchronous GPU/thread observations; angle is associated with the previously submitted camera, not an exact GPU frame ID."}
+  },
+  "excluded_directories": [".git", "__pycache__", "Binaries", "Intermediate", "DerivedDataCache", "Saved", ".venv", "node_modules"],
+  "extensions": [".py", ".gd", ".cpp", ".h", ".cs", ".ps1", ".cmd", ".json", ".ini", ".uplugin", ".uproject", ".txt", ".md", ".toml"],
+  "sources": [
+    {
+      "id": "world-framework",
+      "root": "../ArcoreWorldFramework",
+      "ownership": "Reusable implementation maintained in ArcoreWorldFramework",
+      "trees": ["src", "Unreal", "tests", "docs"],
+      "root_files": ["README.md", "AGENTS.md", "pyproject.toml"],
+      "documentation_trees": []
+    },
+    {
+      "id": "open-world",
+      "root": "../ArcoreOpenWorld",
+      "ownership": "Consuming project adapters, procedural fixtures and validation harnesses",
+      "trees": ["Tools", "Source", "Plugins", "Config"],
+      "root_files": ["README.md", "AGENTS.md", "ArcoreOpenWorld.uproject", "CLAUD-OPTIMIZATIONS.MD", "OPTIMIZATION-LOG.md", "Launch.cmd", "Nature Walk.cmd", "Review Island.cmd", "Jungle v1.cmd", "Asset Sandbox.cmd"],
+      "documentation_trees": ["Assets", "Terrain"],
+      "evidence_files": [
+        "Assets/Quality/latest_source.json", "Assets/Quality/latest_godot.json", "Assets/Quality/latest_modelforge.json", "Assets/Quality/latest_unreal.json",
+        "Assets/Quality/performance_evidence_20261102.json", "Assets/Quality/performance_evidence_20261102_g2g4.json",
+        "Assets/ImportBatches/NatureDebris_v001/batch_validation.json",
+        "Assets/Sandbox/layout.v001.json", "Assets/Sandbox/layout.v002.json", "Assets/Sandbox/layout.ring.v001.json"
+      ]
+    }
+  ]
+}

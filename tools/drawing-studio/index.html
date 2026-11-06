@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A local drawing atelier: watch a reference become construction, graphite and paint, and make printable drawing lessons.">
+  <title>Drawing Atelier · Shape to story</title>
+  <link rel="stylesheet" href="studio.css">
+  <script type="module" src="app.mjs"></script>
+</head>
+<body>
+  <header class="masthead"><a class="brand" href="./"><span class="brand-icon">✎</span> Drawing Atelier</a><span class="edition">A little practice. A world of possibility.</span><span class="local-badge"><i></i> LOCAL WORKSPACE</span></header>
+  <main>
+    <section class="intro"><div><p class="eyebrow">THE ART OF SEEING</p><h1>Every drawing starts<br>with a <em>simple shape.</em></h1><p class="lede">Slow down the process. See the structure. Bring it to life.</p></div><div class="intro-actions"><label class="button" for="reference-file">＋ Open reference</label><input id="reference-file" type="file" accept="image/png,image/jpeg,image/webp" hidden><button id="sample" class="text-button">Return to spider study ↗</button></div></section>
+    <section class="workspace" aria-label="Drawing studio">
+      <div class="studio">
+        <div class="canvas-top"><div><span class="live-dot"></span><span id="study-name">Little woodland spider</span><span class="study-tag">GUIDED STUDY</span></div><button id="reference-toggle" class="text-button" aria-pressed="false">Compare reference</button></div>
+        <div class="paper-wrap"><canvas id="drawing" width="1280" height="698" aria-label="Animated drawing study"></canvas><img id="reference-overlay" alt="Original reference for comparison" hidden><div class="paper-label"><span id="medium-label">01 / Gesture & proportion</span><span id="paper-note">HB PENCIL · WARM PRESS PAPER</span></div><div id="loading" class="loading" role="status">Preparing pencil and paint strokes…</div></div>
+        <div class="transport"><button id="play" class="play-button" aria-label="Play drawing">▶</button><button id="restart" class="icon-button" aria-label="Restart drawing">↺</button><div class="scrubber"><label class="sr-only" for="timeline">Drawing progress</label><input id="timeline" type="range" min="0" max="1000" value="155"><div class="timeline-labels"><span id="elapsed">0:09</span><span id="phase-status">Gesture & proportion</span><span id="duration-label">1:00</span></div></div><label class="speed-label">Speed<select id="speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option><option value="4">4×</option></select></label></div>
+        <div class="options"><label><input id="guides-visible" type="checkbox" checked> Keep construction lines</label><label><input id="cursor-visible" type="checkbox" checked> Show drawing tip</label><label><input id="loop" type="checkbox"> Loop study</label><span class="keyboard-tip">SPACE to play · ← → to step</span></div>
+      </div>
+      <aside class="lesson-panel"><p class="eyebrow">YOUR DRAWING PATH</p><h2>From shape to character</h2><p class="panel-intro">Six small steps. One curious little friend.</p><nav id="stages" aria-label="Drawing stages"></nav><div class="teacher-note"><span>✦ ARTIST’S NOTE</span><p id="lesson-tip"></p></div></aside>
+    </section>
+    <section class="lower-grid">
+      <div class="guide-editor"><p class="eyebrow">MAKE IT YOUR OWN</p><h2>Build a better drawing lesson.</h2><p>Add shapes over a faint reference. They’ll draw first in your animation. Drag to make a shape; use Contour to trace a silhouette.</p><div class="tool-row" role="group" aria-label="Construction tools"><button data-tool="view" aria-pressed="true">↖ View</button><button data-tool="ellipse" aria-pressed="false">◯ Ellipse</button><button data-tool="line" aria-pressed="false">╱ Axis</button><button data-tool="contour" aria-pressed="false">⌁ Contour</button><button id="undo">↶ Undo</button><button id="reset-guides">Reset guides</button></div><p id="edit-hint" class="small-note">Reference stays on your device. Other images use automatic edge and tone studies; construction shapes are yours to place.</p></div>
+      <div class="export-panel"><p class="eyebrow">TAKE THE PRACTICE WITH YOU</p><h2>A study worth keeping.</h2><div class="export-row"><button id="export-sheet" class="button">↓ 6-step drawing sheet</button><button id="export-png">Save this frame</button></div><div class="export-row"><button id="save-lesson" class="text-button">Save editable lesson ↓</button><label class="text-button" for="lesson-file">Open lesson ↑</label><input id="lesson-file" type="file" accept=".json,application/json" hidden></div><p class="small-note">PNG sheet for printing · JSON lesson with reference & guides</p></div>
+    </section><div id="status" class="status" role="status" aria-live="polite">Ready to study. Press play, or choose a step.</div>
+  </main><footer><span>DRAWING ATELIER</span><span>Observe. Simplify. Practice. Repeat.</span><span>Reference-driven simulation · v0.1</span></footer>
+</body></html>

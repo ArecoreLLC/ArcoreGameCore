@@ -1,0 +1,13 @@
+{
+  "batch_id": "unclassified-001",
+  "status": "seeded",
+  "source": "OpenAI built-in image generation",
+  "layout": "four_panel_sheet",
+  "subjects": [
+    {"panel": "top_left", "raw_label": "wind turbine", "taxonomy_status": "unclassified"},
+    {"panel": "top_right", "raw_label": "studio video camera", "taxonomy_status": "unclassified"},
+    {"panel": "bottom_left", "raw_label": "ceramic table lamp", "taxonomy_status": "unclassified"},
+    {"panel": "bottom_right", "raw_label": "cluster of edible mushrooms", "taxonomy_status": "unclassified"}
+  ],
+  "notes": "Seed sheet for the 200-image unknown-subject evaluation set. Promote a subject only after profile and part review."
+}

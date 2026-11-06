@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "components": [
+    {
+      "id": "gamecore",
+      "root": ".",
+      "role": "Workflow hub and engine-neutral contracts",
+      "required_files": [
+        "workflows/index.json",
+        "project.godot"
+      ],
+      "runtime": "godot-legacy"
+    },
+    {
+      "id": "world-framework",
+      "root": "../ArcoreWorldFramework",
+      "role": "Reusable validation, geometry and engine adapters",
+      "required_files": [
+        "pyproject.toml",
+        "Unreal/ArcoreFrameworkRuntime/ArcoreFrameworkRuntime.uplugin"
+      ],
+      "runtime": "shared-and-adapters"
+    },
+    {
+      "id": "openworld",
+      "root": "../ArcoreOpenWorld",
+      "role": "Reference Unreal consumer; authored maps remain project-owned",
+      "required_files": [
+        "ArcoreOpenWorld.uproject",
+        "Tools/unreal_mcp.py"
+      ],
+      "runtime": "unreal"
+    },
+    {
+      "id": "model-forge",
+      "root": "../ArcoreModelForge",
+      "role": "Versioned model catalog and existing modeling MCP",
+      "required_files": [
+        "README.md",
+        "src-tauri/src/mcp.rs"
+      ],
+      "runtime": "asset-service"
+    },
+    {
+      "id": "sound-core",
+      "root": "../ArcoreSoundCore",
+      "role": "Sound catalog, provenance and existing audio MCP",
+      "required_files": [
+        "catalog/sounds.json",
+        "docs/agents.md"
+      ],
+      "runtime": "asset-service"
+    }
+  ]
+}

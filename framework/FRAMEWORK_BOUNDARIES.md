@@ -35,6 +35,8 @@ This is a documentation convention, not a generated project. Keep large binary s
 
 ## Candidates for later extraction
 
+The [Unreal integration inventory](UNREAL_INTEGRATION.md) records a subsequent extraction already implemented in the separate ArcoreWorldFramework package: source integrity, geometry/terrain helpers, optional engine validation adapters, versioned profiles and a content-free Unreal runtime plugin. ArcoreOpenWorld retains its project adapters, scenes, PCG graph context, asset catalog identities and evidence. Use that existing ownership boundary for Unreal work; the candidates below remain relevant to other runtime systems and do not imply those systems have been extracted.
+
 Start with the validation registry and asset metadata because they can support another project without copying game logic. Next evaluate fixture setup, contextual action descriptions, audio/caption data, and save transport.
 
 For each runtime candidate, write down its inputs, outputs, owned state, dependencies, and failure behavior. Keep game-owned rules outside the shared component. Acceptance requires a small demonstration in a second project and checks proving it no longer relies on ShammyVerse paths or state.

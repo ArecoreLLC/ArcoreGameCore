@@ -2,6 +2,8 @@
 
 **Status:** exploratory assisted workflow scaffold. This is a rebuild/validation plan, not a GDScript-to-C++ translator. Prove one small slice before committing to a full migration.
 
+For existing Unreal infrastructure, consult the [framework integration inventory](../../framework/UNREAL_INTEGRATION.md) and [procedural/model validation runbook](../../framework/UNREAL_VALIDATION.md). They catalog the separately maintained Unreal package and consuming-project tools; their existence does not establish this workflow's behavioral port acceptance.
+
 ## Inputs
 
 Use the [shared contract](../../shared/migration-contract.md), source project/revision, pinned Godot and Unreal versions, target platform, asset licenses/source files and a reason for migration. Select [2D](../../2d/README.md) or [3D](../../3d/README.md); the example covers 3D. Verify Unreal tooling and platform requirements separately before running builds.

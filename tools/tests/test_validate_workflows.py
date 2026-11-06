@@ -20,7 +20,7 @@ class ScaffoldValidationTests(unittest.TestCase):
         self.root = Path(self.temp.name)
         source = SCRIPT.parents[1]
         for name in ('2d', '3d', 'shared', 'workflows', 'tools', 'docs', 'porting', 'framework'):
-            shutil.copytree(source / name, self.root / name, ignore=shutil.ignore_patterns('__pycache__'))
+            shutil.copytree(source / name, self.root / name, ignore=shutil.ignore_patterns(*validator.GENERATED_DIRS))
         for name in ('README.md', 'AGENTS.md'):
             shutil.copy2(source / name, self.root / name)
 
@@ -31,6 +31,13 @@ class ScaffoldValidationTests(unittest.TestCase):
         path.write_text(json.dumps(data))
 
     def test_valid_scaffold(self):
+        self.assertEqual(validator.validate(self.root), [])
+
+    def test_generated_vision_runtime_docs_are_not_scaffold_source(self):
+        for name in ('.venv-vision', '.model-cache'):
+            generated = self.root / 'tools' / 'drawing-studio' / name
+            generated.mkdir(parents=True)
+            (generated / 'README.md').write_text('[Third party relative link](not-a-scaffold-file.md)')
         self.assertEqual(validator.validate(self.root), [])
 
     def test_missing_example(self):
@@ -59,7 +66,8 @@ class ScaffoldValidationTests(unittest.TestCase):
         self.assertTrue(any('broken local link' in e for e in validator.validate(self.root)))
 
     def test_missing_workflow(self):
-        self.mutate_index(lambda d: d['workflows'].pop())
+        # Drop a required workflow by id; the last entry may be an optional one.
+        self.mutate_index(lambda d: d.update(workflows=[w for w in d['workflows'] if w['id'] != 'phaser-to-godot']))
         self.assertTrue(any('missing required' in e for e in validator.validate(self.root)))
 
     def test_cli_failure_returns_json_and_nonzero(self):

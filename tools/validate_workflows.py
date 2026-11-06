@@ -1,12 +1,14 @@
 """Validate scaffold manifests and local Markdown links; never execute game code."""
 import argparse
 import json
+import os
 from pathlib import Path
 import re
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-REQUIRED_IDS = {'phaser-to-godot', 'godot-windows-to-android', 'godot-to-unreal'}
+REQUIRED_IDS = {'phaser-to-godot', 'godot-windows-to-android', 'godot-to-unreal', 'game-project-integration'}
+GENERATED_DIRS = {'__pycache__', '.venv-vision', '.model-cache'}
 
 
 def validate(root):
@@ -64,7 +66,11 @@ def validate(root):
         base = root / directory
         if not base.is_dir():
             errors.append(f'missing directory: {directory}')
-        docs.extend(base.rglob('*.md'))
+        # Optional local runtimes contain third-party docs and downloaded models.
+        # They are not scaffold source and should not enter link validation.
+        for current, directories, files in os.walk(base):
+            directories[:] = [d for d in directories if d not in GENERATED_DIRS]
+            docs.extend(Path(current) / name for name in files if name.endswith('.md'))
     for doc in docs:
         if not doc.is_file():
             errors.append(f'missing document: {doc.relative_to(root)}')

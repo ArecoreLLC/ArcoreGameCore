@@ -38,6 +38,46 @@
       "shared": [
         "shared/migration-contract.md"
       ]
+    },
+    {
+      "id": "game-project-integration",
+      "status": "scaffold",
+      "dimensions": [
+        "2d",
+        "3d"
+      ],
+      "guide": "workflows/game-project-integration/README.md",
+      "example": "workflows/game-project-integration/example.md",
+      "shared": [
+        "shared/migration-contract.md",
+        "shared/ecosystem.json"
+      ]
+    },
+    {
+      "id": "logo-sting-video",
+      "status": "scaffold",
+      "dimensions": [
+        "3d"
+      ],
+      "guide": "workflows/logo-sting-video/README.md",
+      "example": "workflows/logo-sting-video/example.md",
+      "shared": [
+        "shared/ecosystem.json"
+      ]
+    },
+    {
+      "id": "music-reconstruction",
+      "status": "exploratory",
+      "dimensions": [
+        "2d",
+        "3d"
+      ],
+      "guide": "workflows/music-reconstruction/README.md",
+      "example": "workflows/music-reconstruction/example.md",
+      "shared": [
+        "shared/migration-contract.md",
+        "shared/ecosystem.json"
+      ]
     }
   ]
 }

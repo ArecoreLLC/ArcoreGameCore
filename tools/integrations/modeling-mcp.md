@@ -2,9 +2,11 @@
 
 ## Referenced project
 
-**AssetForge** (formerly Model Vault) is the current working name of the user's local, unpublished project. It began as a 3D model catalog and now includes simpler modeling tools plus a Blender bridge for more complex modeling. Its repository has not been pushed, so no repository URL, package, local path or live connection is assumed here. The final repository name remains undecided.
+The initial plan called the model catalog **AssetForge** (formerly Model Vault). The reviewed Unreal consumer now calls its existing catalog/Blender integration **ModelForge**. It supplies editable source and versioned artifacts through the existing bridge; no hosted repository URL or package installation is assumed here.
 
-**Status:** integration design only. This scaffold does not ship an MCP client, invoke AssetForge or Blender, or claim compatibility has been tested.
+**Status in GameCore:** integration guidance and an external implementation inventory. This scaffold does not ship an MCP client or invoke ModelForge or Blender.
+
+**2026-11-02 inventory update:** the [Unreal integration guide](../../framework/UNREAL_INTEGRATION.md) catalogs the demonstrated external implementation: ArcoreOpenWorld's `Tools/modelforge_mcp.py`, `validate_modelforge_assets.py`, `model_review.py` and capture helpers, plus ArcoreWorldFramework's independent Blender validation and prepared-import adapters. Source hashes, native engine checks, retained failures and production-admission limits are recorded separately. GameCore links that implementation without installing a bridge or treating import results as blanket compatibility approval. The boundary below remains guidance for future generic integrations.
 
 ## Proposed tool boundary
 

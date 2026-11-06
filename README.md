@@ -7,6 +7,7 @@ AI-assisted game-development framework organized by dimension and migration use 
 - [Workflow catalog](workflows/README.md): Phaser → Godot, Godot Windows → Android, and exploratory Godot → Unreal.
 - [2D systems](2d/README.md), [3D systems](3d/README.md), and [shared contracts](shared/README.md).
 - [Agent guidance](AGENTS.md) and [scaffold validation tools](tools/README.md).
+- [Unreal framework integration and inventory](framework/UNREAL_INTEGRATION.md): ArcoreWorldFramework runtime/validation package and ArcoreOpenWorld procedural tools, model checks, native editor adapters and test suites.
 
 The new folders provide guides and illustrative work packets, not automatic converters or completed runtime modules. Existing Godot 4 / C# code below is preserved in place as the legacy foundation. Its historical docs and CLI are not proof of current build/export readiness. The configured Boot scene is absent; run-specific game validation is still required. No language migration is performed by this scaffold.
 
@@ -65,3 +66,7 @@ Point it at any game with `--manifest=<path>`.
 **Resource definitions** (`[GlobalClass]`, editable in Godot inspector)
 - `CharacterDefinition` `EnemyDefinition` `LevelDefinition`
 - `AbilityDefinition` `AchievementDefinition` `GameBalanceProfile`
+
+## Connect the Arcore ecosystem
+
+Use the [game project integration workflow](workflows/game-project-integration/README.md) to connect ModelForge, SoundCore, WorldFramework and an engine-specific game. Run `python tools/ecosystem.py --project <game>/Config/ArcoreProject.json` for read-only dependency checks. OpenWorld remains a reference consumer; existing Godot paths remain in place. This is dependency wiring, not a completed runtime integration.

@@ -1,0 +1,596 @@
+{
+  "schema_version": 1,
+  "captured_at_utc": "2026-11-05T12:59:30.438998+00:00",
+  "review_date": "2026-11-05",
+  "report": "GAME_STUDIOS_GAP_REVIEW_2026-11-05.md",
+  "report_sha256": "b451e94e4100a8a516b03f6a5f0439482265593dbe019a91c349c023d066113f",
+  "scope": "Selected source hashes; not a complete repository or binary snapshot. No credentials read.",
+  "repositories": [
+    {
+      "name": "ArcoreGameCore",
+      "root": "X:/Projects/ArcoreGameCore",
+      "head": "cdd5732ea9ad99755ec9ad11b55c1d38649ba3dc",
+      "git_status": "M 3d/README.md\n M README.md\n M framework/FRAMEWORK_BOUNDARIES.md\n M framework/README.md\n M framework/VALIDATION.md\n M framework/templates/kids/README.md\n M shared/README.md\n M tools/README.md\n M tools/integrations/modeling-mcp.md\n M tools/tests/test_validate_workflows.py\n M tools/validate_workflows.py\n M workflows/godot-to-unreal/README.md\n M workflows/index.json\n?? .codex-attachments/\n?? .env\n?? LogosStyles/\n?? framework/UNREAL_INTEGRATION.md\n?? framework/UNREAL_PROJECT_STARTER.md\n?? framework/UNREAL_VALIDATION.md\n?? framework/inventory/\n?? framework/templates/kids/ShammyVerse_Island_and_Character_Worksheet_Ages_7_8.docx\n?? shared/ecosystem.json\n?? shared/review-environments.json\n?? shared/subject-taxonomy/\n?? tools/drawing-studio/\n?? tools/ecosystem.py\n?? tools/inventory_unreal.py\n?? tools/subject_taxonomy.py\n?? tools/tests/test_inventory_unreal.py\n?? tools/tests/test_subject_taxonomy.py\n?? tools/validate_subject_taxonomy.py\n?? workflows/game-project-integration/",
+      "scope": "local working tree including uncommitted files; no remote sync"
+    },
+    {
+      "name": "ArcoreModelForge",
+      "root": "X:/Projects/ArcoreModelForge",
+      "head": "ae2d8f5c5007c86ed6ef8da6650742e649f84d6d",
+      "git_status": "",
+      "scope": "local working tree including uncommitted files; no remote sync"
+    },
+    {
+      "name": "ArcoreSonicAlchemist",
+      "root": "X:/Projects/ArcoreSonicAlchemist",
+      "head": "96c5b00da381ecca217286a42002a0185e6d05d6",
+      "git_status": "M CHECKLIST.md\n M REVIEW_CHECKLIST.md\n M crates/audio-core/src/analysis.rs\n M crates/audio-core/src/history.rs\n M crates/audio-core/src/lib.rs\n M crates/audio-core/src/live.rs\n M crates/audio-core/src/mastering.rs\n M crates/audio-core/src/musical.rs\n M crates/audio-core/src/project.rs\n M crates/audio-core/src/resample.rs\n M crates/audio-core/src/soundfont.rs\n M src-tauri/src/composer.rs\n M src-tauri/src/main.rs\n M src-tauri/src/mastering.rs\n M src-tauri/src/midi_input.rs\n M src-tauri/src/musical.rs\n M src-tauri/src/recording.rs\n M src-tauri/src/wireless.rs\n M src/Composer.tsx\n M src/DrumGridEditor.tsx\n M src/MasteringStudio.tsx\n M src/MidiDrumInput.tsx\n M src/MusicalWorkbench.tsx\n M src/VocalCoach.tsx\n M src/VocalRecorder.tsx\n M src/style.css\n?? .claude/\n?? crates/audio-core/src/cues.rs\n?? crates/audio-core/src/mastering_settings.rs\n?? crates/audio-core/src/slices.rs\n?? scripts/test-chord-editor-ui.mjs\n?? scripts/test-composer-ui.mjs\n?? scripts/test-drum-lane-ui.mjs\n?? scripts/test-mastering-settings-ui.mjs\n?? scripts/test-midi-input-ui.mjs\n?? scripts/test-note-preview-ui.mjs\n?? scripts/test-note-quantization.mjs\n?? scripts/test-note-quantizer-ui.mjs\n?? scripts/test-slices-ui.mjs\n?? scripts/test-take-measurements-ui.mjs\n?? scripts/test-vocal-cues-ui.mjs\n?? src-tauri/src/cues.rs\n?? src-tauri/src/slice_export.rs\n?? src/ChordEditor.tsx\n?? src/NotePreview.tsx\n?? src/NoteQuantizer.tsx\n?? src/SlicePads.tsx\n?? src/TakeMeasurements.tsx\n?? src/compositionDraft.ts\n?? src/quantizeNotes.ts\n?? src/vocalCues.ts",
+      "scope": "local working tree including uncommitted files; no remote sync"
+    },
+    {
+      "name": "ArcoreSoundCore",
+      "root": "X:/Projects/ArcoreSoundCore",
+      "head": "098a54158027a527ddf40e372ac2deedf18d7140",
+      "git_status": "",
+      "scope": "local working tree including uncommitted files; no remote sync"
+    },
+    {
+      "name": "ArcoreCAD",
+      "root": "X:/Projects/ArcoreCAD",
+      "head": "88efd8bbac2403514d62e70bc461f947581a3e77",
+      "git_status": "",
+      "scope": "local working tree including uncommitted files; no remote sync"
+    },
+    {
+      "name": "ArcoreOpenWorld",
+      "root": "X:/Projects/ArcoreOpenWorld",
+      "head": null,
+      "git_status": null,
+      "scope": "local working tree including uncommitted files; no remote sync"
+    },
+    {
+      "name": "ArcoreWorldFramework",
+      "root": "X:/Projects/ArcoreWorldFramework",
+      "head": null,
+      "git_status": null,
+      "scope": "local working tree including uncommitted files; no remote sync"
+    },
+    {
+      "name": "Repo-Library/jare20895/arcore-website",
+      "root": "X:/Projects/Repo-Library/jare20895/arcore-website",
+      "head": "f9d23c626027479198f65c86795bc39497dc50cb",
+      "git_status": "",
+      "scope": "local working tree including uncommitted files; no remote sync"
+    }
+  ],
+  "selected_sources": [
+    {
+      "document_link": "../../ArcoreCAD/README.md",
+      "path": "X:/Projects/ArcoreCAD/README.md",
+      "sha256": "20d21d75a0fb8404d79bdd040c5604a4e7d29427be99032472a5774e33828c1f",
+      "bytes": 38659
+    },
+    {
+      "document_link": "../../ArcoreCAD/python/arcorecad/engine.py",
+      "path": "X:/Projects/ArcoreCAD/python/arcorecad/engine.py",
+      "sha256": "e86c039c97cbb3cf4956ac08b2886c2853a7667e93bdc36e4ffc5f80c72dc6aa",
+      "bytes": 59745
+    },
+    {
+      "document_link": "../../ArcoreCAD/python/arcorecad/mcp_server.py",
+      "path": "X:/Projects/ArcoreCAD/python/arcorecad/mcp_server.py",
+      "sha256": "f885d789f2e5071859559cfc9c6e3b4ad14f6932ff0619f7580b7d8ad0c88311",
+      "bytes": 3205
+    },
+    {
+      "document_link": "../../ArcoreCAD/python/arcorecad/meshes.py",
+      "path": "X:/Projects/ArcoreCAD/python/arcorecad/meshes.py",
+      "sha256": "2bae9d6d6a61bf5df7462d7e45965ff43b37ded871ea8777630cf1946da6a2af",
+      "bytes": 10351
+    },
+    {
+      "document_link": "../../ArcoreModelForge/MODELING_MCP_ISSUES.md",
+      "path": "X:/Projects/ArcoreModelForge/MODELING_MCP_ISSUES.md",
+      "sha256": "bda0c0d5a1089fae8db32115b1b75bbb7777240b21e538befee652ab7aaed2a5",
+      "bytes": 19230
+    },
+    {
+      "document_link": "../../ArcoreModelForge/README.md",
+      "path": "X:/Projects/ArcoreModelForge/README.md",
+      "sha256": "3609144022b9a37fa862c6cbef0780643433d3414eca78b90ad38976486e90df",
+      "bytes": 39451
+    },
+    {
+      "document_link": "../../ArcoreModelForge/src-tauri/src/blender.rs",
+      "path": "X:/Projects/ArcoreModelForge/src-tauri/src/blender.rs",
+      "sha256": "0871a0a4350728819ce481acff227969297e0902bf242558522f266db849c380",
+      "bytes": 58351
+    },
+    {
+      "document_link": "../../ArcoreModelForge/src-tauri/src/mcp.rs",
+      "path": "X:/Projects/ArcoreModelForge/src-tauri/src/mcp.rs",
+      "sha256": "ba8cf76a9e0b35664ca22d29faeca7263b07991c82bb35da9bcbf56da9a73973",
+      "bytes": 81733
+    },
+    {
+      "document_link": "../../ArcoreModelForge/src-tauri/src/quality.rs",
+      "path": "X:/Projects/ArcoreModelForge/src-tauri/src/quality.rs",
+      "sha256": "a89dd04dd3c4325d8ae381a8c8dc513cc7d9499633b73eec5f041418a8719060",
+      "bytes": 69873
+    },
+    {
+      "document_link": "../../ArcoreModelForge/src/quality/modelChecks.ts",
+      "path": "X:/Projects/ArcoreModelForge/src/quality/modelChecks.ts",
+      "sha256": "a73270cb8413ed759e1fa45e81739786f8165632272a79bc0aaaee4676819deb",
+      "bytes": 8533
+    },
+    {
+      "document_link": "../../ArcoreOpenWorld/AGENTS.md",
+      "path": "X:/Projects/ArcoreOpenWorld/AGENTS.md",
+      "sha256": "af265a8a7244e21bec0bf5d9cd9e5d941272c53388914b3ad1833a976bbaf4e5",
+      "bytes": 12314
+    },
+    {
+      "document_link": "../../ArcoreOpenWorld/Assets/Review/README.md",
+      "path": "X:/Projects/ArcoreOpenWorld/Assets/Review/README.md",
+      "sha256": "3ee1fe5c9762c4687a1cd95baddf1c0825dde05765e47f2e99dd92a545dc961a",
+      "bytes": 9177
+    },
+    {
+      "document_link": "../../ArcoreOpenWorld/Assets/Sandbox/README.md",
+      "path": "X:/Projects/ArcoreOpenWorld/Assets/Sandbox/README.md",
+      "sha256": "b581b5f1a72b1fa1902a8beab47e5c7378cf217029fd212d17f694188da2da43",
+      "bytes": 9414
+    },
+    {
+      "document_link": "../../ArcoreOpenWorld/CLAUD-OPTIMIZATIONS.MD",
+      "path": "X:/Projects/ArcoreOpenWorld/CLAUD-OPTIMIZATIONS.MD",
+      "sha256": "a0ec6b37cb4bc5dceec885164e5bf0163fb5a19f07aaa1b4a1362166547c60a2",
+      "bytes": 23441
+    },
+    {
+      "document_link": "../../ArcoreOpenWorld/OPTIMIZATION-LOG.md",
+      "path": "X:/Projects/ArcoreOpenWorld/OPTIMIZATION-LOG.md",
+      "sha256": "6ae5c88cba11841cf2e306b1d6e8ddc66326a3959b2e6892538b05883141e027",
+      "bytes": 6112
+    },
+    {
+      "document_link": "../../ArcoreOpenWorld/Source/ArcoreOpenWorld/ArcoreSandbox.cpp",
+      "path": "X:/Projects/ArcoreOpenWorld/Source/ArcoreOpenWorld/ArcoreSandbox.cpp",
+      "sha256": "2f9c4e5d91d4473089d5cd8a4d03410b4ce6af2cd8a0a63dbff5f2b92561f491",
+      "bytes": 22602
+    },
+    {
+      "document_link": "../../ArcoreOpenWorld/Tools/analyze_review_performance.py",
+      "path": "X:/Projects/ArcoreOpenWorld/Tools/analyze_review_performance.py",
+      "sha256": "124f3b053af25eabd1b93adcb6e1f7f1474e4f9df79705735d94b5759db3bb93",
+      "bytes": 1570
+    },
+    {
+      "document_link": "../../ArcoreOpenWorld/Tools/analyze_sandbox_sweep.py",
+      "path": "X:/Projects/ArcoreOpenWorld/Tools/analyze_sandbox_sweep.py",
+      "sha256": "00ec0e19c7c06b284ef78dde482ffc6f3056fd297b0287c48c552ab6d6e5e778",
+      "bytes": 2872
+    },
+    {
+      "document_link": "../../ArcoreSonicAlchemist/CHECKLIST.md",
+      "path": "X:/Projects/ArcoreSonicAlchemist/CHECKLIST.md",
+      "sha256": "44b1238e910c3802a1ea4f98d9b592a0d0a994dfb8fda065f388c85d483f9a33",
+      "bytes": 133045
+    },
+    {
+      "document_link": "../../ArcoreSonicAlchemist/README.md",
+      "path": "X:/Projects/ArcoreSonicAlchemist/README.md",
+      "sha256": "fccdeb3ec02397b3c4ca16dd8ef69ba43c5d2067b0ec8ec10a2e5478315a506c",
+      "bytes": 19284
+    },
+    {
+      "document_link": "../../ArcoreSonicAlchemist/crates/audio-core/src/adaptive.rs",
+      "path": "X:/Projects/ArcoreSonicAlchemist/crates/audio-core/src/adaptive.rs",
+      "sha256": "cc820bdecd941089c42f61785b66e52d1919c949e38249074c02681a689e43de",
+      "bytes": 19051
+    },
+    {
+      "document_link": "../../ArcoreSonicAlchemist/docs/AI_AUDIO_QUALITY_WORKFLOW.md",
+      "path": "X:/Projects/ArcoreSonicAlchemist/docs/AI_AUDIO_QUALITY_WORKFLOW.md",
+      "sha256": "afef411b975d6c794b505cba1f8ba6a70f5900a16bcacbd431415157a80f24f6",
+      "bytes": 15158
+    },
+    {
+      "document_link": "../../ArcoreSonicAlchemist/docs/SOUNDCORE_FUNCTIONALITY.md",
+      "path": "X:/Projects/ArcoreSonicAlchemist/docs/SOUNDCORE_FUNCTIONALITY.md",
+      "sha256": "04b21361bf9a0d63af2d2db4797c429a64b5342d312a42cff7198b37674c8e46",
+      "bytes": 4272
+    },
+    {
+      "document_link": "../../ArcoreSonicAlchemist/engine/audio_repair_mcp.py",
+      "path": "X:/Projects/ArcoreSonicAlchemist/engine/audio_repair_mcp.py",
+      "sha256": "1cd0bfe2cfd3854d263b7a1af86271d3f174bb668065bd389b79409f51fd7aa9",
+      "bytes": 13926
+    },
+    {
+      "document_link": "../../ArcoreSonicAlchemist/src-tauri/src/adaptive.rs",
+      "path": "X:/Projects/ArcoreSonicAlchemist/src-tauri/src/adaptive.rs",
+      "sha256": "2f39ddc75930f71cacea499bb48c67942c33ca51f4a40d8b49cd6e083404d1be",
+      "bytes": 4251
+    },
+    {
+      "document_link": "../../ArcoreSonicAlchemist/src-tauri/src/asset_coach.rs",
+      "path": "X:/Projects/ArcoreSonicAlchemist/src-tauri/src/asset_coach.rs",
+      "sha256": "b26ba7b9bcddec61673f05532f4901e132bf1bc3326738691fdfcb83c67a7690",
+      "bytes": 28357
+    },
+    {
+      "document_link": "../../ArcoreSonicAlchemist/src-tauri/src/main.rs",
+      "path": "X:/Projects/ArcoreSonicAlchemist/src-tauri/src/main.rs",
+      "sha256": "6f7618aa94835147245ed316a9016a9b076ee73cdb6fcdaf597180e992c1a290",
+      "bytes": 35398
+    },
+    {
+      "document_link": "../../ArcoreSonicAlchemist/src-tauri/src/soundcore.rs",
+      "path": "X:/Projects/ArcoreSonicAlchemist/src-tauri/src/soundcore.rs",
+      "sha256": "522e05eab8ea5479024bd540f7e33c403428f89bd574ef8d6dcd7d1e0dda090e",
+      "bytes": 19149
+    },
+    {
+      "document_link": "../../ArcoreSoundCore/README.md",
+      "path": "X:/Projects/ArcoreSoundCore/README.md",
+      "sha256": "254398c2574c8fb570c482a01b78c67c73f48754cda8eb5d8faea13ff948e3af",
+      "bytes": 13134
+    },
+    {
+      "document_link": "../../ArcoreSoundCore/docs/agents.md",
+      "path": "X:/Projects/ArcoreSoundCore/docs/agents.md",
+      "sha256": "bb3b3362bd8cf76e90c55bdfbfa56c84eb09a3f59735e62aeab7b6cb6569fec3",
+      "bytes": 19917
+    },
+    {
+      "document_link": "../../ArcoreSoundCore/src-tauri/src/api.rs",
+      "path": "X:/Projects/ArcoreSoundCore/src-tauri/src/api.rs",
+      "sha256": "4e0d0a7973fb7b132518524203d52c26e7d03e4f33bed1add31efbbb313fb154",
+      "bytes": 25148
+    },
+    {
+      "document_link": "../../ArcoreSoundCore/src-tauri/src/asset_tests.rs",
+      "path": "X:/Projects/ArcoreSoundCore/src-tauri/src/asset_tests.rs",
+      "sha256": "bec347aad0c88e110642c1c8762fd36dae875b9fbfc6ab95e54f9094fc262cef",
+      "bytes": 14594
+    },
+    {
+      "document_link": "../../ArcoreSoundCore/src-tauri/src/assets.rs",
+      "path": "X:/Projects/ArcoreSoundCore/src-tauri/src/assets.rs",
+      "sha256": "89e76863444c430295cedae188982bd92d1e9a3a40eacfdd637d3c139cd37206",
+      "bytes": 25112
+    },
+    {
+      "document_link": "../../ArcoreSoundCore/src-tauri/src/editing.rs",
+      "path": "X:/Projects/ArcoreSoundCore/src-tauri/src/editing.rs",
+      "sha256": "151a99a77e5a31691876ae77bbe5c51ff82f22fafc3d95ee9208eedc760eef97",
+      "bytes": 24420
+    },
+    {
+      "document_link": "../../ArcoreSoundCore/src-tauri/src/workflows.rs",
+      "path": "X:/Projects/ArcoreSoundCore/src-tauri/src/workflows.rs",
+      "sha256": "bc36c231c29f7f3f062d333b2b32809052372d1696fb7a221799e631696d75ec",
+      "bytes": 14335
+    },
+    {
+      "document_link": "../../ArcoreWorldFramework/README.md",
+      "path": "X:/Projects/ArcoreWorldFramework/README.md",
+      "sha256": "86796e4cec9d6c7194c7e4a1e93b6b654fe9500a1b104e02c1cdf13f424f24b8",
+      "bytes": 4790
+    },
+    {
+      "document_link": "../../ArcoreWorldFramework/docs/workflows/optimization-best-practices.md",
+      "path": "X:/Projects/ArcoreWorldFramework/docs/workflows/optimization-best-practices.md",
+      "sha256": "82b24aaaf9e36cc49ffb07c4db7629668afe611ce89091d601a4866e06e7f79e",
+      "bytes": 4104
+    },
+    {
+      "document_link": "../../ArcoreWorldFramework/src/arcore_world_framework/adapters/prepared_static_import.py",
+      "path": "X:/Projects/ArcoreWorldFramework/src/arcore_world_framework/adapters/prepared_static_import.py",
+      "sha256": "82d8d64d66ba0e8e8b9acd9260be31525f1fd4e650449b56e9607921701cac3c",
+      "bytes": 13485
+    },
+    {
+      "document_link": "../../ArcoreWorldFramework/src/arcore_world_framework/integrity.py",
+      "path": "X:/Projects/ArcoreWorldFramework/src/arcore_world_framework/integrity.py",
+      "sha256": "d8725857712f51c75198e9b3bf5de72164bdabac1ad2a2516f91aa5e205a01b5",
+      "bytes": 9241
+    },
+    {
+      "document_link": "../../Repo-Library/jare20895/arcore-website/app/game-studios/page.tsx",
+      "path": "X:/Projects/Repo-Library/jare20895/arcore-website/app/game-studios/page.tsx",
+      "sha256": "a12293509d5d52f8da0ed7295ede6bd84fdc4bbf6feab9fd2a57fcad42624e6e",
+      "bytes": 7389
+    },
+    {
+      "document_link": "../../Repo-Library/jare20895/arcore-website/components/game-studios/PipelineDiagram.tsx",
+      "path": "X:/Projects/Repo-Library/jare20895/arcore-website/components/game-studios/PipelineDiagram.tsx",
+      "sha256": "91d909bfc873caee6399ac1992f9d5b14a89002bcafc1d411c16b7c9f00477f5",
+      "bytes": 4904
+    },
+    {
+      "document_link": "../../Repo-Library/jare20895/arcore-website/lib/game-studios.ts",
+      "path": "X:/Projects/Repo-Library/jare20895/arcore-website/lib/game-studios.ts",
+      "sha256": "1a5c328aca59642371609eae6671d1475ffbcd91a571f5225ea624afc34206d8",
+      "bytes": 1892
+    },
+    {
+      "document_link": "../3d/README.md",
+      "path": "X:/Projects/ArcoreGameCore/3d/README.md",
+      "sha256": "3c3a4028ead686b7878f5996b72316c10947a2e1b53a4b32bfa970d26d41ca58",
+      "bytes": 1676
+    },
+    {
+      "document_link": "../autoload/AudioManager.cs",
+      "path": "X:/Projects/ArcoreGameCore/autoload/AudioManager.cs",
+      "sha256": "275afeaedd29a5aea3256beeb7878b47dd0b57cfd052740ea4af24a3b577cd38",
+      "bytes": 2016
+    },
+    {
+      "document_link": "../framework/UNREAL_PROJECT_STARTER.md",
+      "path": "X:/Projects/ArcoreGameCore/framework/UNREAL_PROJECT_STARTER.md",
+      "sha256": "fbec22c00e2fe49316a212aec16d1b1d1232c5b84879f5978502a3379971ea89",
+      "bytes": 7770
+    },
+    {
+      "document_link": "../porting/cli/port-query.js",
+      "path": "X:/Projects/ArcoreGameCore/porting/cli/port-query.js",
+      "sha256": "670971c5c5e89c36bb52e7bf89dafb7f3aa307c0ad6ce565ffc33f8cf17255c7",
+      "bytes": 24239
+    },
+    {
+      "document_link": "../project.godot",
+      "path": "X:/Projects/ArcoreGameCore/project.godot",
+      "sha256": "9a98f96c826e907123e3fef07912d98e82c5951934d7b25b0b975ebe340ecbc0",
+      "bytes": 1904
+    },
+    {
+      "document_link": "../shared/ecosystem.json",
+      "path": "X:/Projects/ArcoreGameCore/shared/ecosystem.json",
+      "sha256": "5f5b68bd8fcf10d96215fd07db1a4093e4827777a908c855e37f8f3785f76a38",
+      "bytes": 1473
+    },
+    {
+      "document_link": "../shared/migration-contract.md",
+      "path": "X:/Projects/ArcoreGameCore/shared/migration-contract.md",
+      "sha256": "b47d783447595a2b60348fe03efd9b82ed142c7fbd4473945f90e23a881bafe4",
+      "bytes": 2419
+    },
+    {
+      "document_link": "../shared/review-environments.json",
+      "path": "X:/Projects/ArcoreGameCore/shared/review-environments.json",
+      "sha256": "dd1e6100ee8f84c406d0b00f4000e0a21b238c2faae77a28831d8a347dd8c086",
+      "bytes": 1221
+    },
+    {
+      "document_link": "../shared/subject-taxonomy/README.md",
+      "path": "X:/Projects/ArcoreGameCore/shared/subject-taxonomy/README.md",
+      "sha256": "13b7f144dc4e04105035cf7743191c99544bd109d2e91df3a917085a1e4cabb0",
+      "bytes": 3949
+    },
+    {
+      "document_link": "../tools/ecosystem.py",
+      "path": "X:/Projects/ArcoreGameCore/tools/ecosystem.py",
+      "sha256": "afd21484cdf733639e37a1c392723a7d637e8f5e56a7b18ec80bdbf7174b2055",
+      "bytes": 4112
+    },
+    {
+      "document_link": "../tools/subject_taxonomy.py",
+      "path": "X:/Projects/ArcoreGameCore/tools/subject_taxonomy.py",
+      "sha256": "d6ab08d485f65352f709eab1bfcaf6628ef7593bb5e8653d1670f0e19b73b335",
+      "bytes": 7251
+    },
+    {
+      "document_link": "../tools/validate_workflows.py",
+      "path": "X:/Projects/ArcoreGameCore/tools/validate_workflows.py",
+      "sha256": "f3e528aac4dd7c98cf36b866f6076fef76a434e94ef690cc472055d8f1147a42",
+      "bytes": 4383
+    },
+    {
+      "document_link": "../workflows/game-project-integration/README.md",
+      "path": "X:/Projects/ArcoreGameCore/workflows/game-project-integration/README.md",
+      "sha256": "c52f8e1b0ec43eb42bd0af3af9f405e1da14ed42e7614dd6c181d5594f666fe0",
+      "bytes": 5323
+    },
+    {
+      "document_link": "../workflows/game-project-integration/example.md",
+      "path": "X:/Projects/ArcoreGameCore/workflows/game-project-integration/example.md",
+      "sha256": "973ad50698b19e53fff808bc0eb85c74f6bd31474f420f6754f58b74e5361bb2",
+      "bytes": 1200
+    },
+    {
+      "document_link": "README.md",
+      "path": "X:/Projects/ArcoreGameCore/docs/README.md",
+      "sha256": "1035654ccbfbbd593b60344d52612636c1e34b916e91919a62a9cf9bc95c3b6d",
+      "bytes": 3955
+    }
+  ],
+  "verification": [
+    {
+      "check": "GameCore ecosystem checker",
+      "status": "passed",
+      "scope": "five components, file existence only"
+    },
+    {
+      "check": "GameCore workflow validator default Windows locale",
+      "status": "failed",
+      "reason": "cp1252 UnicodeDecodeError"
+    },
+    {
+      "check": "GameCore workflow validator UTF-8 mode",
+      "status": "passed"
+    },
+    {
+      "check": "GameCore taxonomy validator",
+      "status": "passed"
+    },
+    {
+      "check": "GameCore taxonomy tests",
+      "status": "passed",
+      "count": 9
+    },
+    {
+      "check": "GameCore inventory tests",
+      "status": "passed",
+      "count": 9,
+      "note": "authorized rerun after sandbox temp fixture failure"
+    },
+    {
+      "check": "WorldFramework tests",
+      "status": "passed",
+      "count": 34,
+      "note": "authorized rerun after sandbox temp fixture failure"
+    },
+    {
+      "check": "Native builds, live MCP pipeline, playtest, audio audition, new benchmarks",
+      "status": "not_run"
+    }
+  ],
+  "documentation_updates": [
+    {
+      "captured_at_utc": "2026-11-05T13:12:25.178268+00:00",
+      "scope": "Phase 5 reusable video workflows and 30 draft starter templates; source inspection, no media execution",
+      "previous_report_sha256": "190965e7a665aaab035baecc676203a2b26c1a9acb43e72ce5f1706fa49107ab",
+      "updated_report_sha256": "118b33b461faebe2144c5dd0e5290849b0fd09b92ade363c7e28c9ba758b97e4",
+      "template_library": {
+        "path": "GAME_STUDIOS_CREATIVE_WORKFLOW_TEMPLATES.md",
+        "sha256": "b76b1a9d1288ee39c66af7acfa9fd427e185e831a45f19eb0e00057b2fceb7db",
+        "status": "draft"
+      },
+      "additional_sources": [
+        {
+          "document_link": "../../ArcoreModelForge/design/arcore-logo/README.md",
+          "path": "X:/Projects/ArcoreModelForge/design/arcore-logo/README.md",
+          "sha256": "21cee20c76a3272b3d8338cf7b59fa55d39a11898ee25a746995db3a71a7348c",
+          "bytes": 5227
+        },
+        {
+          "document_link": "../../ArcoreModelForge/design/arcore-logo/v3-pro-15x/mp4-validation.json",
+          "path": "X:/Projects/ArcoreModelForge/design/arcore-logo/v3-pro-15x/mp4-validation.json",
+          "sha256": "dbfbc9bd620bca35f1c70efe326f6ce0f0a2fbf3fd4f89d5b92a9a0b7dc57f11",
+          "bytes": 488
+        },
+        {
+          "document_link": "../../ArcoreModelForge/design/arcore-logo/v3-pro-15x/soundtrack.py",
+          "path": "X:/Projects/ArcoreModelForge/design/arcore-logo/v3-pro-15x/soundtrack.py",
+          "sha256": "553f292c78119b630ead1f3d0dd4554675cdd720311a0769ffae26f8bf9efba3",
+          "bytes": 11671
+        },
+        {
+          "document_link": "../../ArcoreModelForge/design/arcore-logo/v3-pro-15x/finish_15x.py",
+          "path": "X:/Projects/ArcoreModelForge/design/arcore-logo/v3-pro-15x/finish_15x.py",
+          "sha256": "83cee5cdf3f1d17e3be98c85d24a6186f9fdec836d1a4edd1764c1ff3f22e2c9",
+          "bytes": 2245
+        },
+        {
+          "document_link": "../../ArcoreModelForge/design/arcore-logo/v3-pro-15x/render_15x.py",
+          "path": "X:/Projects/ArcoreModelForge/design/arcore-logo/v3-pro-15x/render_15x.py",
+          "sha256": "4deec5078ea385d5b307ee6a16515d7aef861aa0531acf35e2db60b41fb252d2",
+          "bytes": 989
+        },
+        {
+          "document_link": "../../ArcoreModelForge/design/arcore-logo/render_gpu.py",
+          "path": "X:/Projects/ArcoreModelForge/design/arcore-logo/render_gpu.py",
+          "sha256": "4a491477aa5729d02070bf6b45669f13ffbe3ecbcbb0ba63cb8075863f6422ff",
+          "bytes": 731
+        }
+      ],
+      "validation": {
+        "backlog_items": 28,
+        "templates": 30,
+        "checked_link_occurrences": 71,
+        "json_examples": "passed",
+        "markdown_fences": "passed",
+        "media_replay": "not_run"
+      },
+      "reference_identity": "V3 Pro 1.5x selected as local reference; exact user-intended video not confirmed"
+    },
+    {
+      "captured_at_utc": "2026-11-05T13:25:52.865226+00:00",
+      "scope": "Reconciled producing-agent logo-sting guide and production record; original guide left unchanged",
+      "previous_report_sha256": "118b33b461faebe2144c5dd0e5290849b0fd09b92ade363c7e28c9ba758b97e4",
+      "updated_report_sha256": "e4cf9da0d157ea6d0c6629d2fae3e754aa8e7fef10e7d8b864f3bb95b048d083",
+      "template_library": {
+        "path": "GAME_STUDIOS_CREATIVE_WORKFLOW_TEMPLATES.md",
+        "sha256": "bf8601828440e3562382f752a328c40d52143626de2dda1f2b33cf4e788d71fe"
+      },
+      "additional_sources": [
+        {
+          "path": "X:/Projects/ArcoreGameCore/workflows/logo-sting-video/README.md",
+          "sha256": "8d2cd896f1a4d0b17ddf38ba5d7964c5cab9bd832b3723221a678f7eee6cc904",
+          "bytes": 10102,
+          "scope": "authored workflow inspected"
+        },
+        {
+          "path": "X:/Projects/ArcoreGameCore/workflows/logo-sting-video/example.md",
+          "sha256": "2ecba4cb0a7e2d69ffbfe07ed485997e8740832159d19cbfff175a0781ac5e6d",
+          "bytes": 6294,
+          "scope": "authored workflow inspected"
+        },
+        {
+          "path": "X:/Projects/ArcoreGameCore/workflows/index.json",
+          "sha256": "8a22f60b0f7188b30c98d0df13155287caef69165599dbbcb648fa31bff38520",
+          "bytes": 1635,
+          "scope": "authored workflow inspected"
+        },
+        {
+          "path": "X:/Projects/ArcoreGameCore/workflows/README.md",
+          "sha256": "db0d7a706906ba16f2da2ea818502961c5dcd8f7ade7181dde817f794cfd4511",
+          "bytes": 1260,
+          "scope": "authored workflow inspected"
+        },
+        {
+          "path": "X:/Projects/ArcoreGameCore/LogosStyles/AreCore_Logo_V3_Pro_1.5x.mp4",
+          "sha256": "95b0ea17d590af2311e18e8da58005d469c194cd7124647502c44c8d7693d5d6",
+          "bytes": 4806520,
+          "scope": "file identity only; video not replayed"
+        }
+      ],
+      "reference_identity": "V3 Pro 1.5x identified by the newly supplied GameCore production record",
+      "historical_reported_checks": {
+        "frames_complete": "passed",
+        "mp4_validation": "passed",
+        "contact_sheet_reviewed": "passed",
+        "audio_auditioned": "not_run",
+        "end_card_copy_approved": "not_run"
+      },
+      "validation": {
+        "local_link_occurrences": 78,
+        "template_count": 30,
+        "backlog_count": 28,
+        "json_and_fences": "passed",
+        "media_replay": "not_run"
+      },
+      "source_preservation_gap": "ModelForge production scripts ignored by Git; newly supplied GameCore workflow untracked at inspection"
+    },
+    {
+      "captured_at_utc": "2026-11-05T13:35:33.999338+00:00",
+      "scope": "Tauri hub and low/no-AI wizard design; documentation only",
+      "previous_report_sha256": "e4cf9da0d157ea6d0c6629d2fae3e754aa8e7fef10e7d8b864f3bb95b048d083",
+      "updated_report_sha256": "b451e94e4100a8a516b03f6a5f0439482265593dbe019a91c349c023d066113f",
+      "documents": [
+        {
+          "path": "GAME_STUDIOS_CREATIVE_WORKFLOW_TEMPLATES.md",
+          "sha256": "a55bf083e879babfb7c3ea7d185ad84263cb59169936268b72f3cb251bd9cca9"
+        },
+        {
+          "path": "GAMECORE_HUB_AND_WIZARD_DESIGN.md",
+          "sha256": "fdb1b789a5757f570ed74e877074f0f7e16e18dfc024109e79fd34c1c4b1a860"
+        }
+      ],
+      "official_references": [
+        "https://v2.tauri.app/concept/architecture/",
+        "https://v2.tauri.app/develop/calling-rust/"
+      ],
+      "validation": {
+        "local_link_occurrences": 84,
+        "backlog_items": 35,
+        "starter_templates": 30,
+        "json_and_fences": "passed",
+        "hub_build_and_wizard_run": "not_run"
+      }
+    }
+  ]
+}

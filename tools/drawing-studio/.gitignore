@@ -1,0 +1,4 @@
+output/
+.gif-render-*/
+.venv-vision/
+.model-cache/

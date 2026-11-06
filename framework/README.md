@@ -2,7 +2,7 @@
 
 A reusable game-development foundation distilled from ShammyVerse: preserve editable sources, build small playable increments, review real output, and turn each iteration's findings into a better process.
 
-Status: initial process framework, 2026-10-30. This folder contains guidance and templates, not an executable game starter. ShammyVerse uses Godot and Blender; the requested framework name is retained. The first version is engine-independent. An Unreal Engine implementation and any Google ARCore integration are separate decisions, not existing capabilities.
+Status: process framework with an external Unreal implementation inventory, updated 2026-11-02. This folder contains guidance, inventories and templates, not an executable game starter. ShammyVerse uses Godot and Blender; the requested framework name is retained. The process layer is engine-independent. [Unreal integration](UNREAL_INTEGRATION.md) catalogs the separately maintained ArcoreWorldFramework implementation and ArcoreOpenWorld adapters and validation tools. Google ARCore integration remains outside this framework.
 
 ## Start here
 
@@ -13,6 +13,8 @@ Status: initial process framework, 2026-10-30. This folder contains guidance and
 5. Apply the [validation guide](VALIDATION.md) and choose the next item from the [improvement backlog](IMPROVEMENT_BACKLOG.md).
 
 Additional templates: [asset record](templates/ASSET_RECORD.md) and [decision record](templates/DECISION_RECORD.md).
+
+For Unreal work, start with the [integration and ownership guide](UNREAL_INTEGRATION.md), [procedural and model validation runbook](UNREAL_VALIDATION.md), [complete source inventory](inventory/UNREAL_FILES.md) and [validation suite registry](inventory/unreal-validation-suites.json). Framework implementation stays in ArcoreWorldFramework; project scenes, models, source pins and evidence stay in ArcoreOpenWorld. The inventory records hashes and known limitations rather than copying game code or certifying production readiness.
 
 For children designing games, use the [printable grade-level Word workbooks](templates/kids/README.md), with separate documents for initial design, new features, new level design, and character design at each grade. Kindergarten through grade 4 emphasize drawing, storytelling, and simple rules; grades 5 through 10 progress through branching choices, gameplay loops, state changes, and playtesting.
 
@@ -42,3 +44,6 @@ Use this foundation on one new playable slice before extracting a general runtim
 | Date | Revision | Change |
 |---|---|---|
 | 2026-10-30 | 0.1 | Initial ShammyVerse review, reusable process, extraction boundaries, validation guidance, backlog, and four templates. |
+| 2026-11-02 | inventory update | Cataloged external Unreal runtime, procedural tools, native editor adapters, model validation, profiles, tests and evidence boundaries; added deterministic inventory refresh and drift checks. |
+
+For another lightweight Windows Unreal game, use the [project starter helper](UNREAL_PROJECT_STARTER.md). It covers project duplication, C++/Blueprint/Rust boundaries, asset services, packaging and the existing ArcoreOpenWorld workflows.

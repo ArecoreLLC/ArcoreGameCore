@@ -1,6 +1,8 @@
 # 3D systems
 
-Home for reusable 3D controllers, cameras, interactions and starter scenes. This initial scaffold is a catalog; it adds no runtime implementation.
+Home for reusable 3D controllers, cameras, interactions and starter scenes. This folder is a catalog; runtime implementation remains engine-specific.
+
+The [Unreal framework inventory](../framework/UNREAL_INTEGRATION.md) now records ArcoreWorldFramework's existing runtime telemetry, profiles, terrain/geometry helpers and engine validation, together with ArcoreOpenWorld's procedural builders and fixtures. See its [complete file list](../framework/inventory/UNREAL_FILES.md) and [validation runbook](../framework/UNREAL_VALIDATION.md). These are linked external implementations, not engine-neutral controllers or a completed migration.
 
 | Candidate | Contract | Candidate validation |
 |---|---|---|

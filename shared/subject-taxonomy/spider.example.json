@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "taxonomy_version": "0.2.0",
+  "subject_id": "example.spider.study",
+  "profile": "profile.arachnid",
+  "source": {
+    "kind": "image",
+    "ownership": "user-supplied reference",
+    "revision": "sha256:dd0c66cae0225d5c5f68df3575107c769bff5e58dee94e4334c3c8f7f2e12be2"
+  },
+  "classification": {
+    "raw_label": "jumping spider",
+    "canonical_profile": "profile.arachnid",
+    "evidence": ["Florence-2 detailed caption", "object detection"],
+    "confidence_kind": "uncalibrated agreement",
+    "review_required": true
+  },
+  "observed_parts": [
+    {"part": "part.cephalothorax", "state": "visible", "raw_labels": ["head", "front body"], "review_required": true},
+    {"part": "part.abdomen", "state": "visible", "raw_labels": ["abdomen", "body"], "review_required": true},
+    {"part": "part.leg", "state": "partially_visible", "raw_labels": ["legs", "walking legs"], "instances_verified": null, "review_required": true},
+    {"part": "part.pedipalp", "state": "ambiguous", "raw_labels": ["short pedipalps", "mouth appendage"], "instances_verified": null, "review_required": true},
+    {"part": "part.eye", "state": "visible", "raw_labels": ["eyes"], "instances_verified": 8, "review_required": false}
+  ],
+  "adapter_notes": {
+    "drawing_2d": "Use overlapping ellipses for the two body masses and capsules for reviewed appendage segments.",
+    "blockout_3d": "Use ellipsoids for body masses and tapered capsule chains for appendages.",
+    "rigging": "Create walking-leg and palp chains only after instance identity is reviewed.",
+    "gameplay": "Body regions can seed collision or damage zones; do not infer gameplay behavior from taxonomy alone."
+  }
+}

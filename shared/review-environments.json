@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "provider": "openworld",
+  "modes": [
+    {
+      "id": "asset-sandbox",
+      "guide": "Assets/Sandbox/README.md",
+      "launcher": "Asset Sandbox.cmd",
+      "supports": [
+        "static scale/material comparison",
+        "adaptive footprint stalls",
+        "subject-local 360 capture"
+      ],
+      "does_not_prove": [
+        "collision",
+        "animation",
+        "RTS camera readability",
+        "shipping performance"
+      ]
+    },
+    {
+      "id": "model-history",
+      "guide": "Assets/Review/README.md",
+      "launcher": "Review Island.cmd",
+      "supports": [
+        "pinned source-version comparison",
+        "separate review evidence"
+      ],
+      "does_not_prove": [
+        "production approval",
+        "gameplay parity"
+      ]
+    },
+    {
+      "id": "nature-walk",
+      "guide": "Assets/NatureWalk/v001/README.md",
+      "launcher": "Nature Walk.cmd",
+      "supports": [
+        "terrain-following observation route",
+        "contextual asset observation"
+      ],
+      "does_not_prove": [
+        "collision-enabled walking",
+        "autonomous ecology",
+        "RTS navigation"
+      ]
+    }
+  ]
+}

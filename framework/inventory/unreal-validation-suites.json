@@ -1,0 +1,176 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-02",
+  "source_baseline": "unreal-inventory.json",
+  "status_meaning": "Results apply only to this GameCore integration audit. Historical project receipts do not become current passes.",
+  "suites": [
+    {
+      "id": "gamecore-source-inventory",
+      "cwd": "ArcoreGameCore",
+      "command": "python tools/inventory_unreal.py --check",
+      "prerequisites": ["Python 3.10+", "Both configured sibling source trees"],
+      "side_effects": "None; reads and parses source without importing it",
+      "expected_evidence": "Zero added, missing, changed or uncataloged files; matching generated document",
+      "status_this_audit": "passed"
+    },
+    {
+      "id": "gamecore-scaffold",
+      "cwd": "ArcoreGameCore",
+      "command": "python tools/validate_workflows.py",
+      "prerequisites": ["Python standard library"],
+      "side_effects": "None",
+      "expected_evidence": "JSON passed with no documentation or manifest errors",
+      "status_this_audit": "passed"
+    },
+    {
+      "id": "gamecore-regressions",
+      "cwd": "ArcoreGameCore",
+      "command": "python -m unittest discover -s tools/tests -v",
+      "prerequisites": ["Python 3.10+"],
+      "side_effects": "Disposable temporary fixtures and Python bytecode cache",
+      "expected_evidence": "Scaffold and source-inventory regression tests pass",
+      "status_this_audit": "passed"
+    },
+    {
+      "id": "framework-preflight-regressions",
+      "cwd": "ArcoreWorldFramework",
+      "command": "$env:PYTHONPATH = Join-Path (Get-Location) 'src'; python -m unittest discover -s tests -v",
+      "prerequisites": ["Python 3.10+", "Framework src on PYTHONPATH"],
+      "side_effects": "Disposable temporary geometry/dependency fixtures and bytecode cache",
+      "expected_evidence": "15 tests across test_integrity.py and test_prepared_import.py",
+      "status_this_audit": "passed"
+    },
+    {
+      "id": "all-source-glb-preflight",
+      "cwd": "ArcoreOpenWorld",
+      "command": "python Tools/asset_integrity.py --all",
+      "prerequisites": ["Pinned framework bootstrap", "Project GLBs"],
+      "side_effects": "Writes Assets/Quality/Runs/<run>/source_audit.json and latest_source.json",
+      "expected_evidence": "Per-file classified findings, role/history context, hashes and explicit retained failures",
+      "status_this_audit": "not_run"
+    },
+    {
+      "id": "modelforge-independent-validation",
+      "cwd": "ArcoreOpenWorld",
+      "command": "python Tools/validate_modelforge_assets.py",
+      "prerequisites": ["Source audit", "Existing ModelForge Blender bridge", "Pinned project bridge context"],
+      "side_effects": "Writes report and bridge receipt plus latest_modelforge pointer; donor save=false",
+      "expected_evidence": "Independent evaluated geometry, dependencies and requested engine-profile findings",
+      "status_this_audit": "not_run"
+    },
+    {
+      "id": "godot-native-probe",
+      "cwd": "ArcoreOpenWorld",
+      "command": "python Tools/run_godot_asset_validation.py",
+      "prerequisites": ["Source audit", "Configured native Godot executable", "Framework probe"],
+      "side_effects": "Stages Saved/AssetQuality/GodotProbe and writes native audit/latest_godot pointer",
+      "expected_evidence": "Actual GLTFDocument import; nonempty geometry gate; per-artifact results",
+      "status_this_audit": "not_run"
+    },
+    {
+      "id": "unreal-native-inventory",
+      "cwd": "ArcoreOpenWorld",
+      "native_tool": "arcore_world_tools.ArcoreWorldTools.audit_project_assets",
+      "prerequisites": ["One project tools editor", "Discovered native schema", "Framework optional Unreal adapter"],
+      "side_effects": "Read-only assets; writes audit evidence",
+      "expected_evidence": "Classified native checks with explicit active/historical and inventory-only coverage",
+      "status_this_audit": "not_run"
+    },
+    {
+      "id": "prepared-static-import-and-fresh-verify",
+      "cwd": "ArcoreOpenWorld",
+      "native_tool": "arcore_world_tools.ArcoreWorldTools.process_prepared_asset_batch",
+      "arguments": "Registered batch_id; verify_only=false to import, restart editor, verify_only=true to read back",
+      "prerequisites": ["Hash-registered prepared batch", "No preview package locks", "Actual GLB/FBX/PBR preflight", "Discovered native schema"],
+      "side_effects": "Imports/saves owned review assets and writes receipts; verify_only must not repair",
+      "expected_evidence": "Native counts, dimensions, LODs, UVs, saved materials, texture conventions and fresh-process persistence",
+      "status_this_audit": "not_run"
+    },
+    {
+      "id": "model-review-pin-integrity",
+      "cwd": "ArcoreOpenWorld",
+      "command": "python Tools/model_review.py validate",
+      "prerequisites": ["Current immutable review session manifest and artifacts"],
+      "side_effects": "None in validate mode; capture and publish modes have separate writes/imports",
+      "expected_evidence": "Valid unique version/file pins and matching artifact SHA-256",
+      "status_this_audit": "not_run"
+    },
+    {
+      "id": "pcg-generation-and-placement",
+      "cwd": "ArcoreOpenWorld",
+      "command": "python Tools/build_jungle.py --regenerate",
+      "related_sources": ["Tools/discover_pcg_mcp.py", "Tools/build_palm_forest.py", "Tools/prepare_jungle.py", "Tools/prepare_palm_forest.py", "Tools/install_creek_pcg_masks.py", "Plugins/ArcoreEditorTools/Content/Python/palm_forest.py"],
+      "prerequisites": ["One RHI-capable native editor", "Discovered schemas/skills", "Existing graph and versioned masks", "Serial calls"],
+      "side_effects": "Regenerates scene instances, writes reports and saves project packages",
+      "expected_evidence": "Nonzero population; zero placement-origin violations; retained creek exclusions; fresh runtime population proof",
+      "status_this_audit": "not_run"
+    },
+    {
+      "id": "creek-restart-persistence",
+      "cwd": "ArcoreOpenWorld",
+      "native_tool": "arcore_world_tools.ArcoreWorldTools.verify_review_creek_terrain",
+      "prerequisites": ["Intentionally prepared/applied named edit layer", "Editor restart", "Matching retained before/after source and runtime heights"],
+      "side_effects": "Verification reads saved terrain and writes a report; paired apply operation mutates terrain",
+      "expected_evidence": "Persistent named-layer readback and synchronized runtime data without replacing original terrain",
+      "status_this_audit": "not_run"
+    },
+    {
+      "id": "unreal-build-and-automation",
+      "cwd": "ArcoreOpenWorld",
+      "commands_reference": "framework/UNREAL_VALIDATION.md",
+      "sources": ["Source/ArcoreOpenWorld/ArcoreReviewTests.cpp", "Source/ArcoreOpenWorld/ArcoreModelReviewTests.cpp"],
+      "automation_filter": "Arcore.Review",
+      "prerequisites": ["Unreal 5.8.4", "Win64 C++ toolchain", "Project content and staged framework data"],
+      "side_effects": "Build products, automation/log reports and unique disposable save fixtures",
+      "expected_evidence": "Successful build plus seven independently reported automation tests; no real review-note overwrite",
+      "status_this_audit": "not_run"
+    },
+    {
+      "id": "rendered-game-smokes",
+      "cwd": "ArcoreOpenWorld",
+      "commands_reference": "framework/UNREAL_VALIDATION.md",
+      "flags": ["ArcoreReviewSmokeTest", "ArcoreFoundationSmokeTest", "ArcoreModelReviewSmokeTest", "ArcoreNatureExpansionSmokeTest", "ArcoreSandboxSmoke"],
+      "prerequisites": ["Matching map/fixture for each flag", "Successful current build", "One rendering process", "-game -DisablePython -RenderOffscreen"],
+      "side_effects": "Game processes, logs and screenshots; stop only owned test processes",
+      "expected_evidence": "Fixture-specific PASS markers, actual population/material/rig checks and matched captures",
+      "status_this_audit": "not_run"
+    },
+    {
+      "id": "sandbox-angular-capture",
+      "cwd": "ArcoreOpenWorld",
+      "flag": "ArcoreSandboxSweep",
+      "sources": ["Source/ArcoreOpenWorld/ArcoreSandbox.cpp", "Unreal/ArcoreFrameworkRuntime/Source/ArcoreFrameworkRuntime/Public/ArcoreAngularCapture.h"],
+      "prerequisites": ["Ring sandbox map with SandboxSweepCenter", "Built project", "Controlled rendering/profile and populated scene"],
+      "side_effects": "Writes Saved/SandboxCaptures CSV and metadata after one warmup/two measured laps",
+      "expected_evidence": "Complete angular samples and metadata; asynchronous timings do not claim exact GPU-frame/view attribution",
+      "status_this_audit": "not_run"
+    },
+    {
+      "id": "historical-foundation-evidence",
+      "cwd": "ArcoreOpenWorld",
+      "command": "python Tools/verify_foundation_qa.py",
+      "prerequisites": ["Exact FoundationQA.log/FoundationTests.log fixture", "Four historical test successes", "Animation manifest and screenshot"],
+      "side_effects": "Writes Assets/Foundation/v001/qa_report.json",
+      "expected_evidence": "Bounded historical fixture receipt, not current complete regression approval",
+      "status_this_audit": "not_run"
+    },
+    {
+      "id": "nature-evidence-aggregation",
+      "cwd": "ArcoreOpenWorld",
+      "command": "python Tools/verify_nature_review.py",
+      "prerequisites": ["Exact named rendered/test logs", "Seven automation successes", "32 guests", "Pinned wildlife/creek/population manifests and images"],
+      "side_effects": "Creates immutable QA run snapshot and advances Assets/NatureWalk/v001/qa_report.json",
+      "expected_evidence": "Hash-pinned scene, source, harness and image snapshot within its fixture scope",
+      "status_this_audit": "not_run"
+    },
+    {
+      "id": "legacy-performance-analyzer",
+      "cwd": "ArcoreOpenWorld",
+      "source": "Tools/analyze_review_performance.py",
+      "prerequisites": ["Resolve M2 and validate current profile labels, input log and station windows first"],
+      "side_effects": "Overwrites Saved/ReviewQA/nature_performance.json if executed",
+      "expected_evidence": "Historical one-second HUD summaries only until repaired; not a current acceptance runner",
+      "status_this_audit": "blocked"
+    }
+  ]
+}

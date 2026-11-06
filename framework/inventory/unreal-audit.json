@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-02",
+  "scope": "3D Unreal framework inventory and documentation integration; no engine, content, source package, or project adapter edits",
+  "gamecore_base_revision": "cdd5732ea9ad99755ec9ad11b55c1d38649ba3dc",
+  "gamecore_change_state": "uncommitted inventory/documentation/tool changes; existing worksheet changes preserved",
+  "platform": "Windows Win64",
+  "python": "3.12.14",
+  "python_executable": "C:/Users/jare1/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+  "engine": {
+    "name": "Unreal Engine",
+    "version": "5.8.4",
+    "changelist": 58902052,
+    "platform": "Windows Win64"
+  },
+  "framework_version": "0.1.0",
+  "external_sources": [
+    {
+      "id": "world-framework",
+      "root": "../ArcoreWorldFramework",
+      "ownership": "Reusable implementation maintained in ArcoreWorldFramework",
+      "files": 52,
+      "snapshot_sha256": "820f4b1a63454cde2451497530776f3c716e4df46904903ac9be6ff8310fba8c"
+    },
+    {
+      "id": "open-world",
+      "root": "../ArcoreOpenWorld",
+      "ownership": "Consuming project adapters, procedural fixtures and validation harnesses",
+      "files": 127,
+      "snapshot_sha256": "72bb6dc90b3d34e7d1e9f3d35200659e2449bd9ad5b3caa42a7eec880379977f"
+    }
+  ],
+  "source_revision_policy": "Neither source directory is a Git checkout at review time; use per-file hashes and source snapshot digests as the baseline.",
+  "files_cataloged": 179,
+  "implementation_policy": "Linked external implementation; no private game source, models, captures or credentials copied into GameCore",
+  "checks": [
+    {
+      "id": "framework-regressions",
+      "status": "passed",
+      "cwd": "X:/Projects/ArcoreWorldFramework",
+      "command": "$env:PYTHONPATH = 'X:/Projects/ArcoreWorldFramework/src'; & 'C:/Users/jare1/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' -X utf8 -m unittest discover -s tests -v",
+      "result": "15 tests passed; source integrity and prepared-import preflight only"
+    },
+    {
+      "id": "gamecore-regressions",
+      "status": "passed",
+      "cwd": "X:/Projects/ArcoreGameCore",
+      "command": "& 'C:/Users/jare1/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' -X utf8 -m unittest discover -s tools/tests -v",
+      "result": "19 tests passed (10 existing scaffold, 9 inventory)"
+    },
+    {
+      "id": "unreal-editor-build",
+      "status": "not_run",
+      "command": null,
+      "reproduction": "framework/UNREAL_VALIDATION.md",
+      "reason": "No Unreal implementation or consumer content changed; this is an inventory audit"
+    },
+    {
+      "id": "unreal-automation-and-rendered-fixtures",
+      "status": "not_run",
+      "command": null,
+      "reproduction": "framework/UNREAL_VALIDATION.md",
+      "reason": "Existing project reports are historical evidence; no fresh engine results claimed"
+    },
+    {
+      "id": "native-model-and-pcg-validation",
+      "status": "not_run",
+      "command": null,
+      "reproduction": "framework/inventory/unreal-validation-suites.json",
+      "reason": "No model imports, scene regeneration or evidence-pointer updates requested by this inventory pass"
+    },
+    {
+      "id": "legacy-performance-analyzer",
+      "status": "blocked",
+      "command": null,
+      "source": "open-world:Tools/analyze_review_performance.py",
+      "reason": "Open M2: stale input log/windows and profile-label handling; inventory includes the defect explicitly"
+    },
+    {
+      "id": "inventory-drift",
+      "status": "passed",
+      "cwd": "X:\\Projects\\ArcoreGameCore",
+      "command": "& 'C:/Users/jare1/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' -X utf8 tools/inventory_unreal.py --check",
+      "result": "179 source/receipt records match the reviewed snapshots; generated Markdown matches"
+    },
+    {
+      "id": "scaffold-validation",
+      "status": "passed",
+      "cwd": "X:\\Projects\\ArcoreGameCore",
+      "command": "& 'C:/Users/jare1/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' -X utf8 tools/validate_workflows.py",
+      "result": "passed; errors=[]"
+    },
+    {
+      "id": "documentation-and-suite-references",
+      "status": "passed",
+      "procedure": "Resolve every local link in integration, validation, generated inventory and touched framework guides; require unique suite IDs, allowed statuses, inventory-backed source references and existing command-reference documents",
+      "result": {
+        "status": "passed",
+        "local_links_checked": 218,
+        "registry_suites": 18,
+        "unreal_test_declarations": 7,
+        "framework_test_declarations": 15,
+        "native_mcp_operations": 14,
+        "errors": []
+      }
+    },
+    {
+      "id": "whitespace",
+      "status": "passed",
+      "cwd": "X:\\Projects\\ArcoreGameCore",
+      "command": "git diff --check",
+      "result": "No whitespace errors"
+    },
+    {
+      "id": "project-script-coverage",
+      "status": "passed",
+      "procedure": "Walk ArcoreOpenWorld for .py/.ps1/.gd/.cpp/.h/.cmd/.bat/.sh outside generated/cache and immutable Sessions/QA/Runs history; compare each path with the recorded inventory",
+      "result": "No nonhistorical scripts outside the declared inventory"
+    }
+  ],
+  "historical_evidence_policy": "Selected receipts are hash-pinned references only; prior successes do not establish current visual, physics, scene performance, shipping or migration acceptance",
+  "decision": "Inventory integration complete. Source inventory, documentation references, scaffold checks and Python regressions passed. Engine builds/playtests and production approval remain outside this audit."
+}
