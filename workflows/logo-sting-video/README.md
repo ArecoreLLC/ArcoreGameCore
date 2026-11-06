@@ -2,6 +2,8 @@
 
 Status: scaffold, built from one production (the AreCore V3 Pro 1.5x sting). This is a reusable playbook for a short branded video: an animated 3D logo, a frame-accurate score and sound effects, and a text end card, delivered as a validated MP4. It does not cover playing the video inside a game engine. That needs its own import and playback check (see [Delivery variants](#delivery-variants)).
 
+The [wizard template](wizard.json) is the source of truth for the hub wizard and ArcoreFlow nodes of this workflow; every stage is still `script_only`.
+
 Read [the worked example](example.md) for the real commands, timings and cue sheet. Read [the ecosystem registry](../../shared/ecosystem.json) for where each sibling repository lives.
 
 ## Ownership

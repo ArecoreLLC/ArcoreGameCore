@@ -103,7 +103,7 @@ Retain the template/binding/run separation already defined in the starter librar
 - Human review controls, artifact viewers and export choices; review decisions bind to exact artifact revisions.
 - Example fixture, expected outputs, failure recovery and a completed no-AI acceptance receipt before a no-AI badge is published.
 
-Illustrative fragment—not an executable schema or existing API:
+The contract is now defined in [the wizard schema](../shared/wizard/README.md), with the first template at [logo-sting-video/wizard.json](../workflows/logo-sting-video/wizard.json). The original illustrative fragment is kept below for history:
 
 ```json
 {

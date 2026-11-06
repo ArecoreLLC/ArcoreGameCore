@@ -4,10 +4,13 @@ Requires Python 3.9+; standard library only. Commands below use `python3`; on Wi
 
 ```sh
 python3 tools/validate_workflows.py
+python3 tools/validate_wizards.py
 python3 -m unittest discover -s tools/tests -v
 ```
 
 The validator checks required workflow IDs, statuses, dimensions, referenced files, repository-contained paths and local Markdown link targets in the new scaffold and root README. It emits a compact JSON result and exits nonzero on errors. It does not check external URLs, heading anchors, engine APIs, game behavior or export compatibility.
+
+`validate_wizards.py` checks every `wizard` template listed in the index against [the wizard schema](../shared/wizard/README.md) and its cross-reference rules.
 
 Tests cover a valid scaffold and invalid manifests/paths/links. No packages, engines or SDKs are installed by these commands. Historical documents remain outside link-validation scope except when linked from the scaffold.
 

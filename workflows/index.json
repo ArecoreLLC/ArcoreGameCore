@@ -61,6 +61,7 @@
       ],
       "guide": "workflows/logo-sting-video/README.md",
       "example": "workflows/logo-sting-video/example.md",
+      "wizard": "workflows/logo-sting-video/wizard.json",
       "shared": [
         "shared/ecosystem.json"
       ],

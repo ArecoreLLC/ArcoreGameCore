@@ -1,0 +1,193 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arecore.dev/schemas/gamecore/wizard-template/1.json",
+  "title": "GameCore wizard template",
+  "description": "Source of truth for a guided workflow. `stages` are the runnable units (and the source for ArcoreFlow node manifests); `wizard.steps` group fields and stages for the hub UI. Structural rules live here; cross-reference rules (unknown ids, cycles, badge honesty) are enforced by tools/validate_wizards.py.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "template_id", "template_version", "title", "workflow", "implementation_status", "assistance", "capabilities", "fields", "artifacts", "stages", "wizard", "acceptance"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "template_id": {"type": "string", "pattern": "^[a-z0-9]+(\\.[a-z0-9]+(-[a-z0-9]+)*)+$"},
+    "template_version": {"type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$"},
+    "title": {"type": "string", "minLength": 1},
+    "description": {"type": "string"},
+    "workflow": {"$ref": "#/$defs/slug", "description": "Workflow id in workflows/index.json."},
+    "implementation_status": {"enum": ["proposed", "partial", "implemented"]},
+    "assistance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ai_required", "offline_after_setup"],
+      "properties": {
+        "ai_required": {"type": "boolean"},
+        "offline_after_setup": {"type": "boolean"},
+        "optional_ai": {"type": "array", "items": {"type": "string"}, "description": "Where optional AI suggestions may appear; each must have a manual path."}
+      }
+    },
+    "capabilities": {
+      "type": "object",
+      "description": "Tools/hardware a stage may require, keyed by id.",
+      "additionalProperties": {"$ref": "#/$defs/capability"},
+      "propertyNames": {"$ref": "#/$defs/slug"}
+    },
+    "fields": {
+      "type": "object",
+      "additionalProperties": {"$ref": "#/$defs/field"},
+      "propertyNames": {"$ref": "#/$defs/snake"}
+    },
+    "presets": {
+      "type": "object",
+      "description": "Named sets of field values, keyed by preset id.",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["title", "values"],
+        "properties": {
+          "title": {"type": "string"},
+          "description": {"type": "string"},
+          "values": {"type": "object"}
+        }
+      }
+    },
+    "artifacts": {
+      "type": "object",
+      "description": "Outputs passed between stages; each has a media type used for ports.",
+      "additionalProperties": {"$ref": "#/$defs/artifact"},
+      "propertyNames": {"$ref": "#/$defs/snake"}
+    },
+    "stages": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/stage"}
+    },
+    "wizard": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["steps"],
+      "properties": {
+        "steps": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/step"}}
+      }
+    },
+    "acceptance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["no_ai_run", "clean_machine", "offline_run", "wizard_cli_parity"],
+      "properties": {
+        "no_ai_run": {"$ref": "#/$defs/check_state"},
+        "clean_machine": {"$ref": "#/$defs/check_state"},
+        "offline_run": {"$ref": "#/$defs/check_state"},
+        "wizard_cli_parity": {"$ref": "#/$defs/check_state"},
+        "evidence": {"type": "array", "items": {"type": "string"}, "description": "Paths or receipt ids backing any passed check."}
+      }
+    },
+    "sources": {"type": "array", "items": {"type": "string"}, "description": "Guides/records this template is derived from."}
+  },
+  "$defs": {
+    "slug": {"type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"},
+    "snake": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+    "check_state": {"enum": ["passed", "failed", "blocked", "not_run"]},
+    "media_type": {
+      "enum": ["blend_scene", "model_3d", "image", "image_sequence", "audio", "audio_stems", "midi", "cue_sheet", "video", "font", "report", "record", "folder"]
+    },
+    "capability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "kind"],
+      "properties": {
+        "title": {"type": "string"},
+        "kind": {"enum": ["tool", "python_package", "hardware", "provider", "font"]},
+        "version": {"type": "string", "description": "Minimum or recorded version."},
+        "probe": {"type": "string", "description": "Registered readiness check id; never a shell string."},
+        "notes": {"type": "string"}
+      }
+    },
+    "field": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "title"],
+      "properties": {
+        "type": {"enum": ["string", "text", "integer", "number", "boolean", "enum", "rational", "color", "asset_reference", "file", "folder", "cue_table", "preset"]},
+        "title": {"type": "string"},
+        "help": {"type": "string"},
+        "required": {"type": "boolean", "default": false},
+        "default": {},
+        "unit": {"type": "string"},
+        "minimum": {"type": "number"},
+        "maximum": {"type": "number"},
+        "max_length": {"type": "integer", "minimum": 1},
+        "values": {"type": "array", "minItems": 1, "items": {"type": ["string", "number"]}},
+        "provider": {"enum": ["modelforge", "soundcore", "sonicalchemist", "local"]},
+        "media_type": {"$ref": "#/$defs/media_type"},
+        "extensions": {"type": "array", "items": {"type": "string", "pattern": "^\\.[a-z0-9]+$"}},
+        "widget": {"enum": ["text", "textarea", "number", "slider", "select", "toggle", "color", "asset_picker", "file_picker", "folder_picker", "cue_table", "audio_audition", "camera_preset"]},
+        "advanced": {"type": "boolean", "default": false},
+        "visible_when": {"type": "object", "description": "Map of field id to required value."},
+        "implemented": {"type": "boolean", "description": "False when the runner cannot yet honour this field; the hub must show it as unavailable.", "default": false}
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "media_type"],
+      "properties": {
+        "title": {"type": "string"},
+        "media_type": {"$ref": "#/$defs/media_type"},
+        "path": {"type": "string", "description": "Path pattern relative to the output folder."},
+        "requires_human_review": {"type": "boolean", "default": false}
+      }
+    },
+    "stage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "flow_category", "adapter", "implementation", "inputs", "outputs"],
+      "properties": {
+        "id": {"$ref": "#/$defs/slug"},
+        "title": {"type": "string"},
+        "description": {"type": "string"},
+        "flow_category": {"enum": ["game", "music", "media"], "description": "ArcoreFlow palette category for the generated node."},
+        "adapter": {"type": "string", "pattern": "^[a-z0-9]+(\\.[a-z0-9-]+)+$", "description": "Registered runner adapter id."},
+        "implementation": {"enum": ["not_started", "script_only", "parameterized", "verified"], "description": "script_only = exists as a production script that needs code edits; parameterized = accepts the declared fields."},
+        "assistance": {"enum": ["none", "optional", "required"], "default": "none"},
+        "requires": {"type": "array", "items": {"$ref": "#/$defs/slug"}},
+        "inputs": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "fields": {"type": "array", "items": {"$ref": "#/$defs/snake"}},
+            "artifacts": {"type": "array", "items": {"$ref": "#/$defs/snake"}}
+          }
+        },
+        "outputs": {"type": "array", "items": {"$ref": "#/$defs/snake"}},
+        "checks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "title", "kind"],
+            "properties": {
+              "id": {"$ref": "#/$defs/snake"},
+              "title": {"type": "string"},
+              "kind": {"enum": ["automatic", "human"]}
+            }
+          }
+        },
+        "resumable": {"type": "boolean", "default": false},
+        "cancellable": {"type": "boolean", "default": false}
+      }
+    },
+    "step": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "fields", "stages"],
+      "properties": {
+        "id": {"$ref": "#/$defs/slug"},
+        "title": {"type": "string"},
+        "summary": {"type": "string"},
+        "fields": {"type": "array", "items": {"$ref": "#/$defs/snake"}},
+        "stages": {"type": "array", "items": {"$ref": "#/$defs/slug"}, "description": "Stages this step runs or previews."},
+        "preview": {"type": "string", "description": "Stage id used for a cheap preview, if any."},
+        "review": {"type": "boolean", "default": false, "description": "Step ends in a human review gate."}
+      }
+    }
+  }
+}

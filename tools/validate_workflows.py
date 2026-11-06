@@ -59,6 +59,8 @@ def validate(root):
         else:
             for path in shared:
                 local_file(path, f'{ident}.shared')
+        if 'wizard' in entry:
+            local_file(entry['wizard'], f'{ident}.wizard')
         specs = entry.get('specs', [])
         if not isinstance(specs, list):
             errors.append(f'{ident}: specs must be a path list')
