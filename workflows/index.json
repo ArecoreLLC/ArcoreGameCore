@@ -63,6 +63,10 @@
       "example": "workflows/logo-sting-video/example.md",
       "shared": [
         "shared/ecosystem.json"
+      ],
+      "specs": [
+        "docs/GAMECORE_HUB_AND_WIZARD_DESIGN.md",
+        "docs/GAME_STUDIOS_CREATIVE_WORKFLOW_TEMPLATES.md"
       ]
     },
     {

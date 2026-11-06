@@ -4,7 +4,8 @@ AI-assisted game-development framework organized by dimension and migration use 
 
 ## Start here: assisted workflows
 
-- [Workflow catalog](workflows/README.md): Phaser → Godot, Godot Windows → Android, and exploratory Godot → Unreal.
+- [Workflow catalog](workflows/README.md): Phaser → Godot, Godot Windows → Android, game project integration, logo sting / splash video, and exploratory Godot → Unreal and music reconstruction.
+- [GameCore hub and wizard design](docs/GAMECORE_HUB_AND_WIZARD_DESIGN.md): proposed Tauri desktop hub; the logo sting is the first wizard and must run without AI. Design only — no hub is built yet.
 - [2D systems](2d/README.md), [3D systems](3d/README.md), and [shared contracts](shared/README.md).
 - [Agent guidance](AGENTS.md) and [scaffold validation tools](tools/README.md).
 - [Unreal framework integration and inventory](framework/UNREAL_INTEGRATION.md): ArcoreWorldFramework runtime/validation package and ArcoreOpenWorld procedural tools, model checks, native editor adapters and test suites.
@@ -22,7 +23,9 @@ The new folders provide guides and illustrative work packets, not automatic conv
 | [porting/README.md](porting/README.md) | AI-assisted porting system — CLI usage and workflow |
 | [docs/EXPORT_SETUP.md](docs/EXPORT_SETUP.md) | Windows, Android, Web export setup and build guide |
 
-## Quick start — porting a game
+## Quick start — porting a game (legacy CLI)
+
+The porting CLI is part of the legacy Godot implementation (see [AGENTS.md](AGENTS.md)); prefer the workflow catalog above for new work.
 
 ```bash
 # See overall port progress

@@ -1,6 +1,6 @@
 # Scaffold tools
 
-Requires Python 3.9+; standard library only. From the repository root:
+Requires Python 3.9+; standard library only. Commands below use `python3`; on Windows use `python` (`python3` is usually a Store placeholder there). From the repository root:
 
 ```sh
 python3 tools/validate_workflows.py

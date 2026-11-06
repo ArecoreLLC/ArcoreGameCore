@@ -26,9 +26,9 @@ class ScaffoldValidationTests(unittest.TestCase):
 
     def mutate_index(self, change):
         path = self.root / 'workflows/index.json'
-        data = json.loads(path.read_text())
+        data = json.loads(path.read_text(encoding='utf-8'))
         change(data)
-        path.write_text(json.dumps(data))
+        path.write_text(json.dumps(data), encoding='utf-8')
 
     def test_valid_scaffold(self):
         self.assertEqual(validator.validate(self.root), [])
@@ -55,6 +55,14 @@ class ScaffoldValidationTests(unittest.TestCase):
     def test_invalid_status(self):
         self.mutate_index(lambda d: d['workflows'][0].update(status='verified'))
         self.assertTrue(any('invalid scaffold status' in e for e in validator.validate(self.root)))
+
+    def test_missing_spec(self):
+        self.mutate_index(lambda d: d['workflows'][0].update(specs=['docs/missing-spec.md']))
+        self.assertTrue(any('.specs: missing file' in e for e in validator.validate(self.root)))
+
+    def test_specs_must_be_list(self):
+        self.mutate_index(lambda d: d['workflows'][0].update(specs='docs/README.md'))
+        self.assertTrue(any('specs must be a path list' in e for e in validator.validate(self.root)))
 
     def test_bad_dimensions(self):
         self.mutate_index(lambda d: d['workflows'][0].update(dimensions=['4d']))

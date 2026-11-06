@@ -26,7 +26,7 @@ def validate(root):
             errors.append(f'{owner}: missing file: {value}')
 
     try:
-        index = json.loads((root / 'workflows/index.json').read_text())
+        index = json.loads((root / 'workflows/index.json').read_text(encoding='utf-8'))
     except (OSError, ValueError) as exc:
         return [f'workflows/index.json: {exc}']
     if not isinstance(index, dict) or index.get('schema_version') != 1:
@@ -59,6 +59,12 @@ def validate(root):
         else:
             for path in shared:
                 local_file(path, f'{ident}.shared')
+        specs = entry.get('specs', [])
+        if not isinstance(specs, list):
+            errors.append(f'{ident}: specs must be a path list')
+        else:
+            for path in specs:
+                local_file(path, f'{ident}.specs')
     if not REQUIRED_IDS <= seen:
         errors.append('missing required workflows: ' + ', '.join(sorted(REQUIRED_IDS - seen)))
     docs = [root / 'AGENTS.md', root / 'README.md']
@@ -75,7 +81,7 @@ def validate(root):
         if not doc.is_file():
             errors.append(f'missing document: {doc.relative_to(root)}')
             continue
-        for target in re.findall(r'\[[^\]]*\]\(([^\s)]+)\)', doc.read_text()):
+        for target in re.findall(r'\[[^\]]*\]\(([^\s)]+)\)', doc.read_text(encoding='utf-8')):
             if re.match(r'^[a-zA-Z][a-zA-Z0-9+.-]*:', target) or target.startswith('#'):
                 continue
             path = (doc.parent / target.split('#', 1)[0]).resolve()

@@ -156,8 +156,8 @@ Each template starts as a guided definition. Only promote the implemented subset
 
 1. **Foundation, alongside GC-01/03:** typed commands, versioned plans, adapter boundaries and durable receipts designed for UI and CLI parity from the start.
 2. **Hub shell:** Windows Tauri app, project/workflow browser, connections and saved wizard drafts. Do not run every specialized editor at startup.
-3. **Small execution pilot:** T02 turntable with existing/supplied model and optional supplied audio. Verify real progress, cancellation, restart and delivery.
-4. **Captured video pilot:** T01/T11 using the logo production's parameterized render, score and card adapters. Save presets; then run a distinct second subject.
+3. **First wizard — logo sting pilot (T01/T11):** parameterize the captured logo production's render, score and card adapters so the eight steps above run with no AI and no script edits. Verify real progress, cancellation, restart and delivery; save presets; then run a distinct second subject.
+4. **Second pilot:** T02 turntable with existing/supplied model and optional supplied audio, reusing the logo sting's render and delivery adapters.
 5. **Expansion:** T20 library handoff and T26 review submission; then T06 trailer and other templates as adapters become ready. Add optional AI suggestions only after the manual path works.
 
 Although rollout is recorded as Phase 6, the UI-independent runner and form contracts must be included in earlier phases. Do not postpone schema design until all 30 workflows have separate scripts.
