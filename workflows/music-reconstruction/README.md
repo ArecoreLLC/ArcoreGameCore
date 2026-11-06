@@ -171,9 +171,33 @@ within 50 ms):
   with no attack in their own stem, and merge same-pitch retriggers within 90 ms.
 - **Mono/legato SFZ instruments slide.** Overlapping notes on a mono bass glide instead
   of re-attacking; end each note just before the next when rendering such libraries.
-- **Measure compensation with the checks' own onset definition.** Timing a sample by a
-  fraction of its peak (for example 25%) over-compensates slow-rising samples by ~20 ms.
-  Use the same backtracked onset detector the timing checks use.
+- **Measure compensation with the checks' own onset definition, in context.** Use the
+  same backtracked onset detector the timing checks use, but calibrate each pitch inside a
+  short line (0.4 s notes, 40 ms gaps, neighbouring pitches), not on one note in silence.
+  Fingered-bass samples start with a faint click ~2 ms after note-on and swell in ~22 ms
+  later. In silence the detector finds the click, so compensation was ~2 ms; in a real line
+  the previous note masks the click and every note was heard ~22 ms late. This caused five
+  songs' bass failures in revision 6. Rendering a known line (the remix renderer, whose note
+  times are exact) is the quickest way to isolate this: compare its detected attacks with
+  the planned starts, and subtract a two-note render from the first note alone to rule out
+  voice interaction.
+
+### Wrong-timed hits on struck instruments (found by listening to the fifth pass)
+
+- **Transcribers turn blur into note-ons.** 42–57% of a marimba part's notes had no
+  attack within 50 ms in the source stem; timing checks missed it because offsets are
+  measured only on notes that match. Classify each sound once as percussive or sustained
+  (decay of more than 9 dB between 0.3 s and 1.3 s after the attack). Percussive sounds
+  only play notes that have a source attack within 35 ms; sustained sounds keep every
+  note, because a soft entry doesn't read as a wrong hit.
+- **Detect pitched attacks inside each lane's own range.** Broadband spectral flux barely
+  registers low plucks (a whole bass stem gave 53 attacks). Use bass 30–500 Hz,
+  guitar 80–5000 Hz, piano 30–8000 Hz and other 60–8000 Hz.
+- **Don't let timbre win on its own.** A candidate whose onset F1 is under half the best
+  candidate's is not eligible, however similar it sounds.
+- **Legato sources have few attacks.** For sustained sounds, the share of notes without a
+  source attack is recorded but not graded, since smooth bass lines change notes without
+  new attacks.
 
 ### Validation gate
 
@@ -228,6 +252,31 @@ not loudness mastering.
 Mix the reconstructed instruments with the cleaned original vocal. Apply a shared
 gain reduction so the instrumental and combined mix remain below -1 dBFS sample
 peak. Write 24-bit PCM WAV and measure the actual encoded/decoded deliverables.
+
+### Original remix mode (optional)
+
+Instead of reconstructing the backing, compose a new one around the unchanged vocal. The
+detected notes and instruments serve only as inspiration. The reference implementation is
+Alchemist `engine/remix.py` for theory, composition, fit checks and export, with
+ShammyVerse `remix_v1.py` for rendering and the timing gate. Lessons from the pilot:
+
+- **Fix the beat grid before composing.** Frame-based beat trackers report onset-envelope
+  peaks; one song's beats sat 48 ms after the drum hits, so every new part would land
+  late. Move each beat onto the nearest drum-stem attack within 80 ms, median-smooth the
+  shifts, and confirm the drum attacks then sit on the eighth-note grid (95% within 35 ms
+  in the pilot) and the vocal attacks well above chance (66% against 34%).
+- **Judge pitch on stable sung notes.** pYIN frames include glides and scoops between
+  notes; counting them made a quarter of the song look like clashes.
+- **Make composition vocal-aware.** Choose every bass, chord and arpeggio note against
+  what is sung at that moment. Leave out or swap tones a semitone away (a tritone, for the
+  bass), split held chords and bass around the melody, keep voicings below or above the
+  local vocal range, and play counter-melodies only in vocal rests. This took Captain
+  Poofy from 26% clashes and 39% range overlap to passing in pop, ballad and orchestral
+  styles.
+- **Gate the remix like a reconstruction, plus fit checks.** The fit checks are sung
+  chord-tone share, clashes, range overlap, counter-melody overlap and vocal on the grid.
+  Rendered attacks against planned starts use the same limits as the reconstruction.
+  Because remix note times are exact, sustained parts are graded too.
 
 ## 6. Make useful editable projects
 
