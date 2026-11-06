@@ -6,15 +6,17 @@ under mcp.servers itself. This tool keeps that registry honest:
   python tools/mcp_registry.py            # structure only (no network, no processes)
   python tools/mcp_registry.py --probe    # also connect to each server and compare its tools
 
-Probing performs MCP initialize + tools/list only; it never calls a tool. Bearer tokens and
-non-default URLs come from the environment variables named in each server's auth block
-(e.g. ARCORE_MCP_TOKEN_SOUND_CORE, ARCORE_MCP_URL_SOUND_CORE). Credential files are never read.
-Standard library only.
+Probing performs MCP initialize + tools/list only; it never calls a tool. A server's URL and
+bearer token come from the environment variables named in its auth block (e.g.
+ARCORE_MCP_URL_SOUND_CORE), else from the local file the app itself writes, named in its
+discovery block (e.g. SoundCore's service.json). Tokens stay in memory: they are never printed,
+logged or written. Standard library only. For a checklist page instead of a CLI, see mcp_setup.py.
 """
 import argparse
 import json
 import os
 from pathlib import Path
+import re
 import subprocess
 import sys
 import urllib.error
@@ -63,6 +65,12 @@ def check_registry(ecosystem):
             errors.append(f'mcp.servers.{sid}: bearer auth must name token_env (tokens never live in the registry)')
         if any(k in json.dumps(auth).lower() for k in ('"token":', '"secret"', '"password"')):
             errors.append(f'mcp.servers.{sid}: auth must reference environment variables, not contain credentials')
+        discovery = server.get('discovery')
+        if discovery is not None:
+            if not discovery.get('file') or not discovery.get('url') or not discovery.get('token_key'):
+                errors.append(f'mcp.servers.{sid}: discovery needs file, url and token_key')
+            elif not discovery['url'].startswith(('http://127.0.0.1', '{')):
+                errors.append(f'mcp.servers.{sid}: discovery url must be loopback')
         tools = server.get('tools', [])
         extra = [t for t in server.get('write_tools', []) if tools and t not in tools]
         if extra:
@@ -139,18 +147,67 @@ def probe_stdio(command, cwd, env, timeout=20.0):
                 pass
 
 
+def _expand(path, env):
+    path = re.sub(r'%(\w+)%', lambda m: env.get(m.group(1), m.group(0)), path)
+    return Path(os.path.expanduser(path))
+
+
+def discover(server, env=os.environ):
+    """Reads the URL and token the app wrote for local clients. Returns (url, token, problem)."""
+    discovery = server.get('discovery')
+    if not discovery:
+        return None, None, None
+    path = _expand(discovery['file'], env)
+    try:
+        data = json.loads(path.read_text(encoding='utf-8'))
+    except FileNotFoundError:
+        return None, None, f'{path.name} not found: open the app once so it writes its connection details'
+    except (OSError, ValueError) as exc:
+        return None, None, f'could not read {path.name}: {exc}'
+    if discovery.get('enabled_key') and not data.get(discovery['enabled_key']):
+        return None, None, discovery.get('disabled_hint', 'the app has its agent API turned off')
+    try:
+        url = discovery['url'].format(**{k: v for k, v in data.items() if isinstance(v, (str, int))})
+    except KeyError as exc:
+        return None, None, f'{path.name} has no {exc}'
+    token = data.get(discovery['token_key'])
+    if not isinstance(token, str) or not token:
+        return None, None, f'{path.name} has no {discovery["token_key"]}'
+    if not url.startswith('http://127.0.0.1'):
+        return None, None, f'{path.name} points at a non-loopback URL; refusing'
+    return url.rstrip('/'), token, None
+
+
+def resolve_http(server, env=os.environ):
+    """URL and token for an HTTP server: environment first, then the app's discovery file."""
+    auth = server.get('auth', {})
+    bearer = auth.get('type') == 'bearer'
+    url = env.get(auth.get('url_env', ''), '')
+    token = env.get(auth.get('token_env', ''), '') if bearer else None
+    source = 'environment'
+    if not url or (bearer and not token):
+        found_url, found_token, problem = discover(server, env)
+        if problem and not url and '{port}' in server['url']:
+            return None, None, None, problem
+        url, token = url or found_url, token or found_token
+        source = 'app' if found_url else source
+    url = url or server['url']
+    if '{port}' in url:
+        return None, None, None, f'set {auth.get("url_env")} ({server.get("connection", "")})'
+    if bearer and not token:
+        return None, None, None, f'set {auth.get("token_env")}'
+    return url, token, source, None
+
+
 def probe_server(server, components, env=os.environ):
     sid = server['id']
     auth = server.get('auth', {})
+    source = None
     try:
         if server['transport'] == 'streamable-http':
-            url = env.get(auth.get('url_env', ''), '') or server['url']
-            if '{port}' in url:
-                return {'id': sid, 'status': 'not_configured',
-                        'detail': f'set {auth.get("url_env")} to the server URL ({server.get("connection", "")})'}
-            token = env.get(auth.get('token_env', ''), '') if auth.get('type') == 'bearer' else None
-            if auth.get('type') == 'bearer' and not token:
-                return {'id': sid, 'status': 'not_configured', 'detail': f'set {auth["token_env"]}'}
+            url, token, source, problem = resolve_http(server, env)
+            if problem:
+                return {'id': sid, 'status': 'not_configured', 'detail': problem}
             info, tools = probe_http(url, token)
         else:
             root = (ROOT / components[server['component']]['root']).resolve()
@@ -171,7 +228,8 @@ def probe_server(server, components, env=os.environ):
         'server': info.get('serverInfo', {}),
         'protocol': info.get('protocolVersion'),
         'tools_found': len(names),
-        'missing_tools': missing
+        'missing_tools': missing,
+        **({'connection_from': source} if source else {})
     }
 
 
@@ -180,6 +238,8 @@ def main(argv=None):
     parser.add_argument('--root', type=Path, default=ROOT)
     parser.add_argument('--probe', action='store_true', help='connect to each server (initialize + tools/list only)')
     parser.add_argument('--server', action='append', help='limit probing to these server ids')
+    parser.add_argument('--selected', action='store_true',
+                        help='limit probing to the apps ticked in mcp_setup.py (.gamecore/mcp-selection.json)')
     parser.add_argument('--strict', action='store_true', help='treat not_running/not_configured as failures')
     args = parser.parse_args(argv)
     ecosystem = json.loads((args.root / 'shared/ecosystem.json').read_text(encoding='utf-8'))
@@ -189,7 +249,14 @@ def main(argv=None):
               'scope': 'registry structure' + (' and live tools/list' if args.probe else '')}
     if args.probe and not errors:
         components = {c['id']: c for c in ecosystem['components']}
-        servers = [s for s in ecosystem['mcp']['servers'] if not args.server or s['id'] in args.server]
+        wanted = set(args.server) if args.server else None
+        if args.selected:
+            try:
+                saved = json.loads((args.root / '.gamecore/mcp-selection.json').read_text(encoding='utf-8'))
+                wanted = (wanted or set()) | set(saved.get('selected', []))
+            except (OSError, ValueError):
+                pass  # nothing saved yet: probe every server
+        servers = [s for s in ecosystem['mcp']['servers'] if wanted is None or s['id'] in wanted]
         result['servers'] = [probe_server(s, components) for s in servers]
         bad = {'failed'} | ({'not_running', 'not_configured', 'not_installed'} if args.strict else set())
         if any(s['status'] in bad for s in result['servers']):

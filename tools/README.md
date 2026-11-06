@@ -10,7 +10,9 @@ python3 -m unittest discover -s tools/tests -v
 
 The validator checks required workflow IDs, statuses, dimensions, referenced files, repository-contained paths and local Markdown link targets in the new scaffold and root README. It emits a compact JSON result and exits nonzero on errors. It does not check external URLs, heading anchors, engine APIs, game behavior or export compatibility.
 
-`mcp_registry.py` checks the MCP registry in `shared/ecosystem.json`. `--probe` performs MCP initialize and tools/list against each downstream server; it never calls a tool, and it takes URLs and tokens only from the environment variables the registry names.
+`mcp_setup.py` opens a local checklist page of the apps the hub talks to (ModelForge, SoundCore, the Unreal editor, Flow). Tick the ones to use and it shows each one's live status. Connections are found automatically: the environment variables the registry names come first, then the file each app writes for local clients (ModelForge's `~/.modelvault/settings.json`, SoundCore's `service.json`). Tokens stay in the script's memory; the page sees status only, and the selection is saved as server ids in `.gamecore/mcp-selection.json` (gitignored).
+
+`mcp_registry.py` checks the MCP registry in `shared/ecosystem.json`. `--probe` performs MCP initialize and tools/list against each downstream server, using the same connection lookup, and never calls a tool. `--selected` probes only the apps ticked in the checklist.
 
 `validate_wizards.py` checks every `wizard` template listed in the index against [the wizard schema](../shared/wizard/README.md) and its cross-reference rules.
 

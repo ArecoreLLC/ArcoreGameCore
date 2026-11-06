@@ -119,10 +119,11 @@
     "servers": [
       {
         "id": "model-forge",
+        "label": "ArcoreModelForge",
         "component": "model-forge",
         "transport": "streamable-http",
         "url": "http://127.0.0.1:{port}/mcp",
-        "connection": "Port and agent token from ModelForge > Agent connections; the app must be open.",
+        "connection": "ModelForge must be open with its agent API on; port and token are read from ~/.modelvault/settings.json.",
         "auth": {
           "type": "bearer",
           "token_env": "ARCORE_MCP_TOKEN_MODEL_FORGE",
@@ -139,14 +140,22 @@
           "blender_run",
           "create_design_iteration",
           "check_model"
-        ]
+        ],
+        "discovery": {
+          "file": "~/.modelvault/settings.json",
+          "url": "http://127.0.0.1:{agentPort}/mcp",
+          "token_key": "agentToken",
+          "enabled_key": "agentEnabled",
+          "disabled_hint": "Turn on the agent API in ModelForge > Settings."
+        }
       },
       {
         "id": "sound-core",
+        "label": "Arcore SoundCore",
         "component": "sound-core",
         "transport": "streamable-http",
         "url": "http://127.0.0.1:{port}/mcp",
-        "connection": "Port and bearer token from SoundCore > Agent connections (saved in its connection.json); the app must be open.",
+        "connection": "SoundCore must be open; it writes its current URL and token to service.json in its app data folder.",
         "auth": {
           "type": "bearer",
           "token_env": "ARCORE_MCP_TOKEN_SOUND_CORE",
@@ -160,10 +169,16 @@
         ],
         "write_tools": [
           "collect_sounds"
-        ]
+        ],
+        "discovery": {
+          "file": "%APPDATA%/com.arcore.soundcore/service.json",
+          "url": "{url}/mcp",
+          "token_key": "token"
+        }
       },
       {
         "id": "unreal-editor",
+        "label": "Unreal Editor (OpenWorld)",
         "component": "openworld",
         "transport": "streamable-http",
         "url": "http://127.0.0.1:8000/mcp",
@@ -177,6 +192,7 @@
       },
       {
         "id": "arcore-flow",
+        "label": "ArcoreFlow",
         "component": "flow",
         "transport": "stdio",
         "command": [

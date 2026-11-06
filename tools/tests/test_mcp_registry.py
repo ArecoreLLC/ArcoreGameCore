@@ -139,5 +139,72 @@ class ProbeTests(unittest.TestCase):
             self.assertEqual([t['name'] for t in tools], ['list_nodes'])
 
 
+def model_forge():
+    return copy.deepcopy(next(s for s in ECOSYSTEM['mcp']['servers'] if s['id'] == 'model-forge'))
+
+
+class DiscoveryTests(unittest.TestCase):
+    """Connection details read from the file each app writes for local clients."""
+
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.dir = Path(self.temp.name)
+
+    def server(self, data, enabled_key=None):
+        (self.dir / 'service.json').write_text(json.dumps(data), encoding='utf-8')
+        server = sound_core()
+        server['discovery'] = {'file': '%FAKEDATA%/service.json', 'url': '{url}/mcp', 'token_key': 'token'}
+        if enabled_key:
+            server['discovery']['enabled_key'] = enabled_key
+        return server
+
+    def env(self, **extra):
+        return {'FAKEDATA': str(self.dir), **extra}
+
+    def test_probe_connects_from_app_file(self):
+        with FakeServer(token='app-token-123') as fake:
+            server = self.server({'url': fake.url[:-len('/mcp')], 'token': 'app-token-123'})
+            result = registry.probe_server(server, ProbeTests.components, self.env())
+            self.assertEqual(result['status'], 'passed', result)
+            self.assertEqual(result['connection_from'], 'app')
+            self.assertNotIn('app-token-123', json.dumps(result))
+
+    def test_environment_overrides_app_file(self):
+        with FakeServer(token='env-token') as fake:
+            server = self.server({'url': 'http://127.0.0.1:9', 'token': 'stale'})
+            env = self.env(ARCORE_MCP_URL_SOUND_CORE=fake.url, ARCORE_MCP_TOKEN_SOUND_CORE='env-token')
+            result = registry.probe_server(server, ProbeTests.components, env)
+            self.assertEqual(result['status'], 'passed', result)
+            self.assertEqual(result['connection_from'], 'environment')
+
+    def test_missing_file_is_not_configured(self):
+        server = sound_core()
+        server['discovery']['file'] = str(self.dir / 'absent.json')
+        result = registry.probe_server(server, ProbeTests.components, {})
+        self.assertEqual(result['status'], 'not_configured')
+        self.assertIn('open the app once', result['detail'])
+
+    def test_disabled_agent_api_reported(self):
+        server = self.server({'url': 'http://127.0.0.1:1', 'token': 'x', 'on': False}, enabled_key='on')
+        self.assertEqual(registry.discover(server, self.env())[2], 'the app has its agent API turned off')
+
+    def test_non_loopback_url_refused(self):
+        server = self.server({'url': 'http://evil.example', 'token': 'x'})
+        self.assertIn('non-loopback', registry.discover(server, self.env())[2])
+
+    def test_model_forge_port_template(self):
+        (self.dir / 'settings.json').write_text(json.dumps(
+            {'agentEnabled': True, 'agentPort': 7879, 'agentToken': 'abc'}), encoding='utf-8')
+        server = model_forge()
+        server['discovery']['file'] = '%FAKEDATA%/settings.json'
+        self.assertEqual(registry.discover(server, self.env()), ('http://127.0.0.1:7879/mcp', 'abc', None))
+
+    def test_registry_rejects_incomplete_discovery(self):
+        data = copy.deepcopy(ECOSYSTEM)
+        del data['mcp']['servers'][0]['discovery']['token_key']
+        self.assertTrue(any('discovery needs' in e for e in registry.check_registry(data)))
+
+
 if __name__ == '__main__':
     unittest.main()

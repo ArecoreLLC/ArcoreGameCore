@@ -30,3 +30,6 @@ __pycache__/
 .env.*
 !.env.example
 .codex-attachments/
+
+# Local GameCore hub state (app selection; never credentials)
+.gamecore/
