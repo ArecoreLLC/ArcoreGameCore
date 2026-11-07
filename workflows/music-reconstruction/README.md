@@ -337,6 +337,17 @@ Fixing timing by dropping notes can empty the mix. Measure coverage, not just ti
   of a part).
 - **Compare against the original song as well as the stem sum.** The stem sum already lost what
   separation dropped.
+- **Ride each rendered part's level against its stem.** Velocity scaling assumed loudness follows
+  velocity squared; sampled basses have a much narrower range, so quiet notes stayed too loud. Turn a
+  part down wherever it exceeds its stem by more than 6 dB, with the level constant from one heard
+  attack to the next and changes fading in on the attack itself. A gain ramp across an attack
+  reshapes it, and a rise placed at the MIDI note-on (earlier than the heard attack by the sample's
+  attack delay) is detected as an attack of its own.
+- **Close the timing loop after rendering.** A calibration that is cached per run gave the same bass
+  ~27 ms of compensation in one run and 3-26 ms in another. Measure the rendered attacks against the
+  heard notes per pitch, correct, re-render once, and re-measure anything computed from the old render.
+- **Grade nothing on a handful of matches.** A source-vs-render timing check built on one or two
+  matched attacks flipped from 0 to 30 ms with no change in the notes; record it below 10 pairs.
 - **A rough vocal split can still place the vocal.** Lead + backing sum to the original, so the lead
   can sit centred with the backing widened (a 12 ms inter-channel delay costs about 3 dB of backing
   in a mono sum) even when neither part is usable alone.
