@@ -271,6 +271,40 @@ Fixing timing by dropping notes can empty the mix. Measure coverage, not just ti
 - **Default the vocal well below the backing.** Listening asked for 30% lower than −3 dB
   (−6.1 dB). Set remix part levels against the vocal at unity, so the default changes the balance.
 
+### Missing drum beats (found by listening to the eighth pass)
+
+- **The double-hit guard went too far.** Detecting each attack once and adding a second drum only
+  on a very strong band rise (the revision 5 guard against stacked hits) dropped most kicks under a
+  hi-hat or snare. Only 26-39% of the source's kick hits were played in two songs, although 95% of
+  broadband attacks had some drum. Detect kick, snare and hat attacks in their own bands, merge
+  them with broadband attacks into shared hit times (30 ms), and play a drum where its own band
+  attacks.
+- **Grade each drum on recall and precision, not drums per attack.** Recall is the share of the
+  source's strong hits in that drum's band that are played; precision is the share of played hits
+  with an attack in that band (leakage). Real kick+hat hits make about two drums per hit legitimate.
+  In the pilot this took kick recall to 86-99% with precision of 84% or more.
+
+### Rough-sounding parts and missing toms (found by listening to the ninth pass)
+
+- **Measure the MIDI, not only the audio.** "Still a bit rough" turned out to be chord notes
+  starting 5-45 ms apart: the transcriber staggers the notes of one chord, and a struck or strummed
+  sound renders each as its own attack (a flam). 12-32% of guitar and "other" onsets were such
+  doubles in every pilot song. Grade doubles per part (lane plus bed): warn above 3%, fail above 8%.
+- **Align chord onsets after moving notes to their stem's attacks.** Note starts within 45 ms in one
+  part become one onset, the one sitting on an attack of the part's own stem, else the earliest. Then
+  merge same-pitch retriggers again, because alignment can bring two re-strikes closer together.
+- **Don't snap everything to the drums.** The original playing was itself loose against the drums
+  (most bass and guitar attacks near a drum hit were 8-45 ms off it). Moving notes with no attack of
+  their own onto drum hits also made them look like drum bleed. Record looseness against the drums
+  (render and source side by side) without grading it.
+- **Toms need their own detector.** A tom's low end fires the kick band and its overtones the snare
+  band, so per-band kick/snare/hat detection never produces a tom. Treat a hit as a tom when the
+  drum stem has a tonal 85-300 Hz peak, louder than 35-85 Hz, that starts at the hit and keeps
+  ringing, with little snare noise, and when the bass stem isn't louder at that pitch (bass bleed).
+  Pick the pad from the peak pitch. Keep the snare at a tom hit, and drop the kick only when the low
+  end is clearly the tom's: replacing both cut snare recall to 64-75% in two pilot songs. A
+  non-commercial drum transcriber is acceptable only as a rough local reference while tuning.
+
 ### Original remix mode (optional)
 
 Instead of reconstructing the backing, compose a new one around the unchanged vocal. The
