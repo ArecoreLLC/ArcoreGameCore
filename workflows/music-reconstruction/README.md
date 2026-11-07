@@ -305,6 +305,22 @@ Fixing timing by dropping notes can empty the mix. Measure coverage, not just ti
   end is clearly the tom's: replacing both cut snare recall to 64-75% in two pilot songs. A
   non-commercial drum transcriber is acceptable only as a rough local reference while tuning.
 
+### Phantom parts (found by listening to the tenth pass)
+
+- **Check for sound the original doesn't have, not only sound it lacks.** Problems heard "around one
+  minute" were a bass rendered through a section where the bass stem was silent (22 dB too loud) and
+  a near-empty guitar stem rendered as a full part. Coverage checks only catch missing sound. Grade
+  each part on the share of its audible time where it is more than 12 dB louder than its stem: in
+  the pilot this was 8-76% for bass before the fix.
+- **Gate notes on their stem's level and let velocity follow it.** Transcribers find notes in
+  separation residue. Drop a note when its stem is more than 24 dB below that stem's loud level, and
+  scale the rest by the stem's local level instead of one gain per song.
+- **Distortion isn't always the culprit.** Before changing attack detection for a distorted part,
+  check the stem's level and whether its attacks fall on the beat grid more than chance: a stem far
+  quieter than the others with attacks at chance is residue, not a part.
+- **The hybrid mix hides lane errors.** It swaps in the original drums and bass, so judge rendered
+  lanes on the fully rendered mix.
+
 ### Original remix mode (optional)
 
 Instead of reconstructing the backing, compose a new one around the unchanged vocal. The
