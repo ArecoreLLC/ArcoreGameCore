@@ -321,6 +321,26 @@ Fixing timing by dropping notes can empty the mix. Measure coverage, not just ti
 - **The hybrid mix hides lane errors.** It swaps in the original drums and bass, so judge rendered
   lanes on the fully rendered mix.
 
+### Song map from the full mix
+
+- **Measure the whole song before the stems.** A tempo map, feel, downbeats, sections, key and a
+  chord per bar come out better from the full mix (and the backing stems for chords) than from any
+  one stem. Use them as constraints and checks, never as a source of notes.
+- **Tempo is not constant.** One pilot song sped up from about 138 to 151 BPM; a fixed-tempo MIDI
+  export drifted by bars. Write the tempo map into MIDI and check every note reads back within 1 ms.
+- **Detect the feel before using a grid.** Drum attacks sat on straight 8ths 77-92% of the time in
+  most songs, but one song scored 35% on 8ths and 70% on triplets. Pick the subdivision whose grid
+  holds the most drum attacks beyond chance.
+- **Use a full-mix transcription as a vote, combined with other evidence.** It confirmed 63-88% of
+  stem notes against 21-53% by chance, but alone it did not separate good notes from residue. Drop
+  only notes with no evidence at all: no full-mix vote, not a chord tone, no own-stem attack (0-9%
+  of a part).
+- **Compare against the original song as well as the stem sum.** The stem sum already lost what
+  separation dropped.
+- **A rough vocal split can still place the vocal.** Lead + backing sum to the original, so the lead
+  can sit centred with the backing widened (a 12 ms inter-channel delay costs about 3 dB of backing
+  in a mono sum) even when neither part is usable alone.
+
 ### Original remix mode (optional)
 
 Instead of reconstructing the backing, compose a new one around the unchanged vocal. The
