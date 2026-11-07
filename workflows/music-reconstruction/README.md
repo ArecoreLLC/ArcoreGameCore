@@ -253,6 +253,24 @@ Mix the reconstructed instruments with the cleaned original vocal. Apply a share
 gain reduction so the instrumental and combined mix remain below -1 dBFS sample
 peak. Write 24-bit PCM WAV and measure the actual encoded/decoded deliverables.
 
+### Missing soundscape (found by listening to the seventh pass)
+
+Fixing timing by dropping notes can empty the mix. Measure coverage, not just timing.
+
+- **A support filter must not delete held parts.** The "other" stem carried 60-92% of the
+  500 Hz-6 kHz energy. Played on a struck sound that keeps only attacked notes, 54-80% of the
+  part disappeared. Render the dropped notes with a second, sustained sound (chosen by timbre
+  on those notes), and fit both layers' gains to the stem's band envelopes together.
+- **One detection per broadband attack misses quiet hi-hats.** In Captain Poofy, 371 attacks
+  covered about 500 beats, and the top end was 12 dB low 58-66% of the time. Detect hats in the
+  5-16 kHz band, keep 70 ms between hats, and count drums stacked per hit time rather than per
+  broadband attack.
+- **Gate coverage.** For each band, record the share of the original's active time where the
+  render is more than 12 dB quieter, and the band's level difference after matching overall
+  level. In revision 8 this took Captain Poofy's worst band from a 64% gap to 28%.
+- **Default the vocal well below the backing.** Listening asked for 30% lower than −3 dB
+  (−6.1 dB). Set remix part levels against the vocal at unity, so the default changes the balance.
+
 ### Original remix mode (optional)
 
 Instead of reconstructing the backing, compose a new one around the unchanged vocal. The
@@ -273,6 +291,13 @@ ShammyVerse `remix_v1.py` for rendering and the timing gate. Lessons from the pi
   local vocal range, and play counter-melodies only in vocal rests. This took Captain
   Poofy from 26% clashes and 39% range overlap to passing in pop, ballad and orchestral
   styles.
+- **Follow the song's harmony; be original in the arrangement.** Melody-only
+  re-harmonisation passed every fit check, yet listening found it poorly matched to the
+  vocals. It agreed with the original backing's chords on only 25-51% of sung bars and changed
+  chord about twice as often. Use the backing's bass-weighted chroma per bar as a strong prior
+  and keep its harmonic rhythm. Check the analysis key against the backing's pitch set: one
+  song detected as G major was C major. Gate agreement with the backing (60% warn, 40% fail
+  when following) and the chord-change ratio.
 - **Gate the remix like a reconstruction, plus fit checks.** The fit checks are sung
   chord-tone share, clashes, range overlap, counter-melody overlap and vocal on the grid.
   Rendered attacks against planned starts use the same limits as the reconstruction.
