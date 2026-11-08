@@ -214,6 +214,17 @@ Report recall, precision, F1 and median/90th-percentile offset per lane for ever
 revision, alongside the previous revision. Onset matching against separated stems is a
 consistent proxy, not ground truth, and does not replace listening.
 
+**Before fixing a timing fail, check it with a second, independent measure.** One guitar
+failed as "10 ms early" for two revisions while its render played its notes within 0.01 ms.
+The grade came from a broadband onset detector. On that separated guitar stem it found only
+34 attacks, placed 8.7 ms after the attacks in the guitar's own frequency range. Measured
+in the guitar's own range, the render was 0.0 ms from the stem over 87 pairs. A
+detector-free check agreed: the time each note's envelope reaches half its rise was 0.5 ms
+apart. Grade pitched timing with attacks in the lane's own range, the same family of
+detector that placed the notes, and keep the broadband figure as information. This changes
+the measurement, not the limits. Do not move notes to satisfy a detector that disagrees with
+two others.
+
 ## 5. Assign instruments and render
 
 Search SoundCore for suitable banks/sample packs and inspect returned license,
