@@ -4,6 +4,12 @@ Status: exploratory. This workflow produces auditionable reconstruction drafts;
 it does not establish faithful transcription, transparent vocal repair, or a
 production-ready game soundtrack. Applicable to 2D and 3D consumers.
 
+See the [2026-11-09 maintenance review](review-2026-11-09.md) for current
+validation limits, implementation gaps and prioritized improvements. Historical
+pilot results do not certify later revisions. A batch must return a failing exit
+status for validation failures as well as processing exceptions; an empty batch
+must not be reported as successful.
+
 Read the [worked example](example.md), [integration workflow](../game-project-integration/README.md),
 [shared contract](../../shared/migration-contract.md), and [sound catalog boundary](../../tools/integrations/sound-catalog.md).
 The consumer owns source music, intermediate files, MIDI, projects and acceptance

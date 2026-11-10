@@ -152,6 +152,11 @@ Record the difference from the prior mix and retain both versions for A/B review
 
 ## Extending quality beyond drums
 
+The inventory below describes the initial 2026-11-05 state. The later consumer
+pipeline includes an SFZ renderer and comparison harness; see the
+[current maintenance review](review-2026-11-09.md). Do not infer current support
+from the original download-only inventory or assume complete SFZ compatibility.
+
 Inventory installed formats before acquiring more samples. The current Alchemist
 evaluation libraries already include playable Salamander, YDP Grand and Upright
 KW SF2 pianos. Bass, guitar and orchestral SFZ libraries are downloaded but need
