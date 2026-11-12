@@ -1,0 +1,22 @@
+export type Capability = {id:string; state:string; evidence:string};
+export type Taxon = {id:string; label:string; family:string; description:string; level?:string; group?:string; parent_id?:string; acceptance?:string};
+export type Mechanic = {id:string; name:string; capability:string; state:string; rules:string; sources:string; reuse_boundary:string; verification:string};
+export type Provider = {provider:string; path:string; asset_id:string; version:string; description:string};
+export type Media = {id:string; project_id:string; kind:string; title:string; caption:string; alt_text:string; rights:string; credit:string; status:string; source_path:string; stored_path:string; sha256:string; created_at:string; approved_at:string|null; sort_order:number; width:number|null; height:number|null; duration_seconds:number|null; curation?:string; content_role?:string; review_notes?:string};
+export type Game = {
+ id:string; name:string; path:string; engine:string; dimension:string; kind:string; description:string; logic:string; reuse:string; assets:string; limitations:string;
+ capabilities:Capability[]; mechanics:Mechanic[]; provider_links:Provider[]; maturity:string;
+ marketing:{tagline:string; pitch:string; audience:string; release_status:string; website:string; credits:string; notes:string};
+ commands:string[]; review_date:string; build_status:string; playtest_status:string;
+ asset_counts:Record<string,number>; asset_file_count:number; source_file_count:number;
+ evidence_files:{path:string;sha256:string}[];
+ historical_checks:{id:string;status:string;command:string|null;artifact:string|null;record:string;freshness:string}[];
+ media_candidates:{path:string;name:string;kind:string}[];
+ subgames:{name:string;id:string;description:string;source:string;source_present:boolean;validation:string}[];
+ revision:{head:string|null;dirty:boolean;note:string};
+ classification?:Record<string,string>;
+ variants?:{path:string;relationship:string}[];
+ audit:{timestamp_utc:string;errors:string[];method:string};
+};
+export type FileRecord = {path:string;kind:string;bytes:number;sha256?:string;format?:string;rights?:string};
+export type Library = {projects:Game[];taxonomy:Taxon[];media?:Media[];storage:string;schema_version:number};

@@ -2,6 +2,10 @@
 
 Date: 2026-11-05. Status: proposed implementation design, not an implemented app. Extends [the Forge roadmap](GAME_STUDIOS_GAP_REVIEW_2026-11-05.md) and [30-template library](GAME_STUDIOS_CREATIVE_WORKFLOW_TEMPLATES.md).
 
+Update, 2026-11-11: [hub/](../hub/README.md) now implements the Tauri/SQLite studio catalog, mechanics/capability classification, asset references and marketing-media storage. The workflow runner, wizard execution and downstream provider adapters described below remain proposed.
+
+The hub also implements a 50-game roadmap with priorities, capability-specific prerequisites, donor code/asset references, per-target evidence and progress, optimistic edit versioning and SQLite history. Planned roadmap assignments remain separate from demonstrated catalog coverage. This does not implement the workflow runner described below.
+
 ## Product decision
 
 Build a dedicated **GameCore Tauri desktop hub** as the user-facing orchestration entry point. A person should be able to choose a supported workflow, select assets, adjust a few settings, preview, run, review and export without writing code, using a terminal or maintaining an AI conversation. AI may suggest inputs or explain problems, but must not be required for routine execution of a workflow advertised as no-AI.

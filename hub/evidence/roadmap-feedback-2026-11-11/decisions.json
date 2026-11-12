@@ -1,0 +1,658 @@
+{
+  "review": {
+    "source": "User-supplied external LLM review",
+    "source_sha256": "04e2b6cff48eebc91a8e2a938a59573cab18b5ea6e78dc2a9e54e310a7bcad85",
+    "accepted": [
+      "Remove unrelated prerequisite gates; require exact producer milestones by stage.",
+      "Narrow first slices; distinguish three co-op recovery scenarios.",
+      "Repurpose two redundant tracks while retaining fifty stable IDs.",
+      "Add three failure-case capabilities and second consumers for every target.",
+      "Retain all fifty creative briefs and four flagship visions as proposed direction.",
+      "Record engine boundaries, reproducible donor baselines and asset admission."
+    ],
+    "corrected": [
+      "Baseline contains 50 games, 143 definitions and 285 assignments, not 28/89/168. No evidence supports 54 missing export definitions.",
+      "Baseline has 42 single-consumer capabilities, not ten.",
+      "A complete immutable manifest is a valid baseline alternative to Git commits. No donor repositories were committed.",
+      "Reviewer claims about specific engine solver bugs are unverified risks, not catalog facts."
+    ],
+    "scope": "Catalog/roadmap planning update only. No game implementation or capability acceptance claimed."
+  },
+  "validation": {
+    "project_tracks": 50,
+    "original_gap_capabilities": 143,
+    "original_gaps_assigned": 143,
+    "unassigned_original_gaps": [],
+    "unique_target_capabilities": 146,
+    "target_assignments": 330,
+    "dependencies_follow_priority": true,
+    "coverage_is_planned_not_implemented": true,
+    "added_failure_case_capabilities": 3,
+    "single_consumer_capabilities": [],
+    "minimum_planned_consumers": 2
+  },
+  "consumers": {
+    "cap-adaptive-difficulty": [
+      "pocket-expedition",
+      "circuit-kitchen"
+    ],
+    "cap-aircraft-aerodynamics": [
+      "sky-post",
+      "beatwing-rally"
+    ],
+    "cap-answer-equivalence": [
+      "learning-garden",
+      "memory-orchard"
+    ],
+    "cap-anti-cheat-validation": [
+      "community-isles",
+      "tracksmith-trials"
+    ],
+    "cap-area-damage": [
+      "arena-relay",
+      "living-fortress"
+    ],
+    "cap-armor-penetration": [
+      "arena-relay",
+      "frontier-assembly"
+    ],
+    "cap-asset-version-comparison": [
+      "foundry-friends",
+      "salvage-submersible"
+    ],
+    "cap-audio-device-recovery": [
+      "echo-stage",
+      "beatwing-rally"
+    ],
+    "cap-audio-mixing-priorities": [
+      "echo-stage",
+      "beatwing-rally",
+      "starboard-signals"
+    ],
+    "cap-audio-occlusion": [
+      "lantern-heist",
+      "marshlight-rescue",
+      "shadow-couriers"
+    ],
+    "cap-authorable-lessons": [
+      "learning-garden",
+      "memory-orchard"
+    ],
+    "cap-automation-logic-circuits": [
+      "foundry-friends",
+      "windmill-village"
+    ],
+    "cap-biome-transitions": [
+      "living-wilds",
+      "rover-garden",
+      "wisp-shepherd"
+    ],
+    "cap-boat-propulsion": [
+      "storm-harbor",
+      "reef-keeper"
+    ],
+    "cap-boss-phase-transitions": [
+      "pocket-expedition",
+      "gravity-parcel"
+    ],
+    "cap-branching-dialogue": [
+      "paper-council",
+      "memory-orchard"
+    ],
+    "cap-camera-feedback": [
+      "canopy-courier",
+      "puppet-theater"
+    ],
+    "cap-camera-obstruction-recovery": [
+      "lantern-heist",
+      "clockwork-cartographer",
+      "prism-patrol"
+    ],
+    "cap-card-effect-stack": [
+      "garden-council",
+      "tiny-merchants"
+    ],
+    "cap-checkpoint-validation": [
+      "clockwork-courier",
+      "tracksmith-trials"
+    ],
+    "cap-cinematic-sequencing": [
+      "paper-council",
+      "puppet-theater"
+    ],
+    "cap-client-prediction-reconciliation": [
+      "arena-relay",
+      "shadow-couriers",
+      "tether-team"
+    ],
+    "cap-climbing-surfaces": [
+      "canopy-courier",
+      "clockwork-cartographer"
+    ],
+    "cap-cloth-simulation": [
+      "patchwork-parade",
+      "puppet-theater"
+    ],
+    "cap-cloud-save-conflict-resolution": [
+      "community-isles",
+      "memory-orchard"
+    ],
+    "cap-color-independent-signals": [
+      "garden-council",
+      "prism-patrol"
+    ],
+    "cap-combo-chains": [
+      "duelists-circuit",
+      "chrono-arena"
+    ],
+    "cap-conveyor-routing": [
+      "foundry-friends",
+      "windmill-village"
+    ],
+    "cap-cover-selection": [
+      "bastion-tactics",
+      "living-fortress"
+    ],
+    "cap-crafting-recipe-graph": [
+      "pocket-expedition",
+      "circuit-kitchen"
+    ],
+    "cap-crash-safe-world-snapshots": [
+      "pocket-town",
+      "railbound-salvage",
+      "floodgate-engineers"
+    ],
+    "cap-cross-platform-identity": [
+      "community-isles",
+      "tether-team"
+    ],
+    "cap-crowd-avoidance": [
+      "bastion-tactics",
+      "wisp-shepherd"
+    ],
+    "cap-day-night-cycle": [
+      "living-wilds",
+      "emberwatch"
+    ],
+    "cap-deck-construction": [
+      "garden-council",
+      "tiny-merchants"
+    ],
+    "cap-dedicated-server-lifecycle": [
+      "community-isles",
+      "shadow-couriers"
+    ],
+    "cap-deterministic-replay-verification": [
+      "duelists-circuit",
+      "chrono-arena"
+    ],
+    "cap-dialogue-voice-playback": [
+      "paper-council",
+      "puppet-theater"
+    ],
+    "cap-directional-blocking": [
+      "duelists-circuit",
+      "gravity-parcel"
+    ],
+    "cap-diving-and-oxygen": [
+      "orbital-salvage",
+      "reef-keeper"
+    ],
+    "cap-dynamic-path-replanning": [
+      "lantern-heist",
+      "prism-patrol"
+    ],
+    "cap-dynamic-shadow-lighting": [
+      "living-wilds",
+      "prism-patrol"
+    ],
+    "cap-editable-blueprints": [
+      "foundry-friends",
+      "railbound-salvage",
+      "siege-workshop",
+      "frontier-assembly"
+    ],
+    "cap-facial-performance": [
+      "paper-council",
+      "puppet-theater"
+    ],
+    "cap-faction-reputation": [
+      "paper-council",
+      "memory-orchard"
+    ],
+    "cap-factory-scheduling": [
+      "foundry-friends",
+      "railbound-salvage",
+      "circuit-kitchen"
+    ],
+    "cap-fighting-frame-data": [
+      "duelists-circuit",
+      "chrono-arena"
+    ],
+    "cap-flooding-and-compartments": [
+      "storm-harbor",
+      "reef-keeper",
+      "floodgate-engineers"
+    ],
+    "cap-flow-field-navigation": [
+      "bastion-tactics",
+      "emberwatch"
+    ],
+    "cap-fluid-displacement": [
+      "storm-harbor",
+      "floodgate-engineers"
+    ],
+    "cap-flying-navigation": [
+      "sky-post",
+      "wisp-shepherd"
+    ],
+    "cap-fog-of-war": [
+      "bastion-tactics",
+      "emberwatch"
+    ],
+    "cap-formation-movement": [
+      "bastion-tactics",
+      "living-fortress",
+      "frontier-assembly"
+    ],
+    "cap-frame-rate-resilience": [
+      "clockwork-courier",
+      "orbital-salvage",
+      "patchwork-parade"
+    ],
+    "cap-gamepad-focus-navigation": [
+      "lantern-heist",
+      "quiet-library"
+    ],
+    "cap-ghost-time-trials": [
+      "clockwork-courier",
+      "tracksmith-trials"
+    ],
+    "cap-gliding": [
+      "canopy-courier",
+      "wisp-shepherd"
+    ],
+    "cap-global-illumination": [
+      "living-wilds",
+      "salvage-submersible"
+    ],
+    "cap-group-tactics": [
+      "bastion-tactics",
+      "living-fortress"
+    ],
+    "cap-hand-tracking-interaction": [
+      "pocket-workshop-xr",
+      "sandcastle-stories"
+    ],
+    "cap-haptic-feedback": [
+      "echo-stage",
+      "beatwing-rally",
+      "starboard-signals"
+    ],
+    "cap-hierarchical-navigation": [
+      "bastion-tactics",
+      "wisp-shepherd"
+    ],
+    "cap-hint-scaffolding": [
+      "learning-garden",
+      "memory-orchard"
+    ],
+    "cap-hit-stop-and-hit-stun": [
+      "duelists-circuit",
+      "gravity-parcel"
+    ],
+    "cap-hitscan-weapons": [
+      "arena-relay",
+      "frontier-assembly"
+    ],
+    "cap-input-rebinding": [
+      "lantern-heist",
+      "quiet-library"
+    ],
+    "cap-inventory-capacity": [
+      "pocket-expedition",
+      "clockwork-cartographer",
+      "moonbase-freight",
+      "circuit-kitchen",
+      "frontier-assembly"
+    ],
+    "cap-inverse-kinematics": [
+      "canopy-courier",
+      "patchwork-parade"
+    ],
+    "cap-joint-constraints": [
+      "orbital-salvage",
+      "moonbase-freight",
+      "tether-team"
+    ],
+    "cap-lag-compensated-hits": [
+      "arena-relay",
+      "shadow-couriers"
+    ],
+    "cap-lap-and-sector-timing": [
+      "clockwork-courier",
+      "tracksmith-trials"
+    ],
+    "cap-leaderboards": [
+      "clockwork-courier",
+      "tracksmith-trials"
+    ],
+    "cap-ledge-climbing": [
+      "canopy-courier",
+      "clockwork-cartographer"
+    ],
+    "cap-live-events": [
+      "community-isles",
+      "tracksmith-trials"
+    ],
+    "cap-lobby-matchmaking": [
+      "community-isles",
+      "shadow-couriers"
+    ],
+    "cap-localization-pipeline": [
+      "garden-council",
+      "salvage-submersible"
+    ],
+    "cap-lock-on-targeting": [
+      "duelists-circuit",
+      "gravity-parcel"
+    ],
+    "cap-machine-faults-and-maintenance": [
+      "foundry-friends",
+      "reef-keeper",
+      "circuit-kitchen"
+    ],
+    "cap-material-specific-failure": [
+      "rescue-demolition",
+      "siege-workshop"
+    ],
+    "cap-material-state-transitions": [
+      "storm-harbor",
+      "reef-keeper"
+    ],
+    "cap-mixed-reality-anchors": [
+      "pocket-workshop-xr",
+      "sandcastle-stories"
+    ],
+    "cap-mod-sandboxing": [
+      "community-isles",
+      "tracksmith-trials"
+    ],
+    "cap-music-beat-synchronization": [
+      "echo-stage",
+      "beatwing-rally",
+      "starboard-signals"
+    ],
+    "cap-navigation-mesh-traversal": [
+      "lantern-heist",
+      "prism-patrol"
+    ],
+    "cap-new-game-plus": [
+      "paper-council",
+      "gravity-parcel"
+    ],
+    "cap-patrol-and-investigation": [
+      "lantern-heist",
+      "marshlight-rescue",
+      "shadow-couriers"
+    ],
+    "cap-performance-budgets": [
+      "clockwork-courier",
+      "emberwatch",
+      "frontier-assembly"
+    ],
+    "cap-persistent-destruction": [
+      "rescue-demolition",
+      "living-fortress"
+    ],
+    "cap-physics-grabbing": [
+      "orbital-salvage",
+      "moonbase-freight",
+      "tether-team"
+    ],
+    "cap-population-needs": [
+      "pocket-town",
+      "windmill-village",
+      "living-fortress"
+    ],
+    "cap-portal-puzzles": [
+      "clockwork-rooms",
+      "moonbase-freight"
+    ],
+    "cap-procedural-audio-synthesis": [
+      "echo-stage",
+      "starboard-signals"
+    ],
+    "cap-procedural-dungeon-connectivity": [
+      "pocket-expedition",
+      "clockwork-cartographer"
+    ],
+    "cap-procedural-locomotion": [
+      "patchwork-parade",
+      "wisp-shepherd"
+    ],
+    "cap-procedural-quest-composition": [
+      "paper-council",
+      "memory-orchard"
+    ],
+    "cap-ragdoll-blending": [
+      "duelists-circuit",
+      "chrono-arena"
+    ],
+    "cap-reconnect-recovery": [
+      "community-isles",
+      "shadow-couriers",
+      "tether-team",
+      "starboard-signals"
+    ],
+    "cap-reduced-motion-options": [
+      "pocket-workshop-xr",
+      "quiet-library"
+    ],
+    "cap-replay-recording": [
+      "clockwork-courier",
+      "moonbase-freight"
+    ],
+    "cap-rollback-simulation": [
+      "arena-relay",
+      "chrono-arena"
+    ],
+    "cap-room-scale-boundaries": [
+      "pocket-workshop-xr",
+      "sandcastle-stories"
+    ],
+    "cap-rope-simulation": [
+      "orbital-salvage",
+      "tether-team"
+    ],
+    "cap-rubber-band-competition": [
+      "clockwork-courier",
+      "tracksmith-trials"
+    ],
+    "cap-runtime-content-validation": [
+      "pocket-expedition",
+      "clockwork-cartographer",
+      "frontier-assembly"
+    ],
+    "cap-runtime-mesh-fracture": [
+      "rescue-demolition",
+      "siege-workshop"
+    ],
+    "cap-runtime-terrain-generation": [
+      "living-wilds",
+      "rover-garden"
+    ],
+    "cap-save-corruption-recovery": [
+      "pocket-expedition",
+      "paper-council",
+      "learning-garden"
+    ],
+    "cap-save-schema-migration": [
+      "pocket-expedition",
+      "frontier-assembly"
+    ],
+    "cap-screen-reader-semantics": [
+      "garden-council",
+      "tiny-merchants",
+      "quiet-library"
+    ],
+    "cap-selection-and-control-groups": [
+      "bastion-tactics",
+      "living-fortress"
+    ],
+    "cap-settlement-growth": [
+      "pocket-town",
+      "windmill-village"
+    ],
+    "cap-skeletal-animation-blending": [
+      "canopy-courier",
+      "puppet-theater"
+    ],
+    "cap-snapping-and-sockets": [
+      "foundry-friends",
+      "siege-workshop"
+    ],
+    "cap-soft-body-deformation": [
+      "patchwork-parade",
+      "sandcastle-stories"
+    ],
+    "cap-sokoban-pushing": [
+      "clockwork-rooms",
+      "quiet-library"
+    ],
+    "cap-spaced-repetition": [
+      "learning-garden",
+      "memory-orchard"
+    ],
+    "cap-spatial-audio": [
+      "lantern-heist",
+      "marshlight-rescue",
+      "starboard-signals"
+    ],
+    "cap-stamina-traversal": [
+      "canopy-courier",
+      "clockwork-cartographer"
+    ],
+    "cap-structural-load-solver": [
+      "rescue-demolition",
+      "siege-workshop",
+      "sandcastle-stories"
+    ],
+    "cap-structural-repair": [
+      "rescue-demolition",
+      "siege-workshop",
+      "floodgate-engineers",
+      "living-fortress"
+    ],
+    "cap-stunt-scoring": [
+      "sky-post",
+      "beatwing-rally"
+    ],
+    "cap-stylized-outline-rendering": [
+      "living-wilds",
+      "salvage-submersible"
+    ],
+    "cap-subtitle-customization": [
+      "paper-council",
+      "puppet-theater"
+    ],
+    "cap-surface-footsteps": [
+      "lantern-heist",
+      "marshlight-rescue"
+    ],
+    "cap-suspension-solver": [
+      "clockwork-courier",
+      "rover-garden"
+    ],
+    "cap-swinging-ropes": [
+      "canopy-courier",
+      "patchwork-parade"
+    ],
+    "cap-tactical-action-points": [
+      "garden-council",
+      "tiny-merchants"
+    ],
+    "cap-threat-and-aggro": [
+      "pocket-expedition",
+      "gravity-parcel"
+    ],
+    "cap-time-manipulation-puzzles": [
+      "clockwork-rooms",
+      "chrono-arena"
+    ],
+    "cap-tire-friction": [
+      "clockwork-courier",
+      "rover-garden"
+    ],
+    "cap-touch-gestures": [
+      "garden-council",
+      "quiet-library"
+    ],
+    "cap-track-generation": [
+      "clockwork-courier",
+      "tracksmith-trials"
+    ],
+    "cap-trading-and-price-discovery": [
+      "pocket-town",
+      "tiny-merchants"
+    ],
+    "cap-traffic-simulation": [
+      "pocket-town",
+      "railbound-salvage"
+    ],
+    "cap-utility-distribution": [
+      "pocket-town",
+      "railbound-salvage",
+      "windmill-village",
+      "floodgate-engineers"
+    ],
+    "cap-variable-jump-height": [
+      "canopy-courier",
+      "clockwork-cartographer"
+    ],
+    "cap-vehicle-damage-model": [
+      "sky-post",
+      "reef-keeper",
+      "moonbase-freight"
+    ],
+    "cap-vehicle-drivetrain": [
+      "clockwork-courier",
+      "rover-garden"
+    ],
+    "cap-voxel-excavation": [
+      "rescue-demolition",
+      "sandcastle-stories"
+    ],
+    "cap-wall-traversal": [
+      "canopy-courier",
+      "clockwork-cartographer"
+    ],
+    "cap-water-current-forces": [
+      "storm-harbor",
+      "marshlight-rescue",
+      "reef-keeper"
+    ],
+    "cap-water-surface-rendering": [
+      "storm-harbor",
+      "reef-keeper"
+    ],
+    "cap-weapon-heat-and-reload": [
+      "arena-relay",
+      "frontier-assembly"
+    ],
+    "cap-weather-rendering": [
+      "storm-harbor",
+      "marshlight-rescue",
+      "windmill-village",
+      "emberwatch"
+    ],
+    "cap-xr-comfort-locomotion": [
+      "pocket-workshop-xr",
+      "sandcastle-stories"
+    ],
+    "cap-zero-gravity-movement": [
+      "orbital-salvage",
+      "moonbase-freight"
+    ]
+  }
+}

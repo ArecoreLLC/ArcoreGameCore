@@ -2,6 +2,11 @@
 
 Status: scaffold for 2D or 3D consumers. GameCore is the workflow entry point; each engine owns its runtime. This workflow registers and checks dependencies. It does not convert a game or prove a playable build.
 
+For the implemented Unreal 5.8.4 Win64 pilot, use the [shared module registry and
+common runner](../../shared/module-registry.md) to install locked portable headers,
+build an Editor target, and run automation/gameplay smoke checks with fresh receipts.
+The broader asset/service integration procedure below remains separately validated.
+
 Read [the example](example.md), [the shared contract](../../shared/migration-contract.md), and [the ecosystem registry](../../shared/ecosystem.json). For Unreal asset validation use [the existing inventory](../../framework/UNREAL_INTEGRATION.md).
 
 ## Ownership
@@ -55,3 +60,11 @@ Choose a new consumer-owned batch/layout and map name. Pin model versions before
 Nature Walk is a terrain-following observation camera, not a collision-enabled player. For a strategy game, follow contextual review with top-down readability, selection bounds, navigation clearance, weapon occlusion and dense-army tests in the consuming game. Audio candidates require their own audition, mix and concurrency checks.
 
 The current native import/review adapters contain OpenWorld-specific batch IDs and paths. Registered entry points do not install a consumer adapter or launch unreviewed writes. Extract generic interfaces into WorldFramework only after a second consumer fixture proves them.
+
+## Consumer automation evidence
+
+`python tools/check_unreal_automation.py <ReportExportPath>/index.json --prefix Example.` checks the exported Unreal test records. It fails for absent/empty suites, pending tests, failures and nonzero errors. Select the consumer's suite prefix explicitly. Preserve the original report and build/source hashes; this checker does not launch Unreal, establish test coverage, verify screenshots or certify multiplayer. Haunt and Haul uses it for its first 3D interaction slice.
+
+Consumers may declare optional `runtime_plugins` (for example, [`ArcoreFrameworkRuntime`]) in ArcoreProject.json. For Unreal consumers the ecosystem checker verifies explicit enablement and a discoverable descriptor with a Runtime module in project Plugins or AdditionalPluginDirectories. This catches missing wiring; it does not compile, load, or prove cooked deployment. Engine-installed plugins are outside this bounded project/external-plugin check.
+
+For native runtime fixtures, `python tools/check_unreal_smoke.py <log> --marker "EXAMPLE_SMOKE PASS" --exit-code <code> --started-at <UTC Unix seconds recorded before launch>` rejects missing/stale logs, unsuccessful processes, runtime errors/ensures and absent or merely echoed success markers. Give each run a unique log filename. The checker emits the log SHA-256 for the evidence receipt; retain screenshots and build/source pins separately. A passing log is not visual validation or a coverage guarantee.

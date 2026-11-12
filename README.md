@@ -4,8 +4,11 @@ AI-assisted game-development framework organized by dimension and migration use 
 
 ## Start here: assisted workflows
 
+- [Shared module registry and common Unreal build/test runner](shared/module-registry.md): versioned portable headers, local dependency locks, fresh automation/smoke receipts, and Dungeon Dash Market / Critter Contraptions pilots.
+
 - [Workflow catalog](workflows/README.md): Phaser → Godot, Godot Windows → Android, game project integration, logo sting / splash video, and exploratory Godot → Unreal and music reconstruction.
-- [GameCore hub and wizard design](docs/GAMECORE_HUB_AND_WIZARD_DESIGN.md): proposed Tauri desktop hub; the logo sting is the first wizard and must run without AI. Design only — no hub is built yet.
+- [GameCore studio library](hub/README.md): implemented Tauri/SQLite game catalog, mechanic records, capability atlas, asset-provider references and curated marketing media. Open [Launch-GameCore.cmd](Launch-GameCore.cmd) after building.
+- [GameCore hub and wizard design](docs/GAMECORE_HUB_AND_WIZARD_DESIGN.md): proposed workflow orchestration and no-AI logo-sting wizard. The catalog app is implemented; the workflow runner remains design work.
 - [2D systems](2d/README.md), [3D systems](3d/README.md), and [shared contracts](shared/README.md).
 - [Agent guidance](AGENTS.md) and [scaffold validation tools](tools/README.md).
 - [Unreal framework integration and inventory](framework/UNREAL_INTEGRATION.md): ArcoreWorldFramework runtime/validation package and ArcoreOpenWorld procedural tools, model checks, native editor adapters and test suites.

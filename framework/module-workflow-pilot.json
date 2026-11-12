@@ -1,0 +1,227 @@
+{
+  "date": "2026-11-11",
+  "baseline": "be8748519106250dee0adc70d0aedbfa1a9d9983 plus existing working-tree changes",
+  "engine": "Unreal 5.8.4, changelist 58902052",
+  "platform": "Windows Win64 Editor Development",
+  "runs": [
+    {
+      "game": "Dungeon-Dash-Market",
+      "action": "build",
+      "status": "failed",
+      "seconds": 3.523,
+      "receipt": "X:\\Projects\\Games\\Dungeon-Dash-Market\\Saved\\GameCore\\20261111T214451Z-dd052b07-build\\receipt.json",
+      "sha256": "4e160cd8632339f6cabae217ecd565ffed8f4052c6bb2ffe051b17e3b1246346",
+      "command": [
+        "C:\\Program Files\\Epic Games\\UE_5.8\\Engine\\Binaries\\ThirdParty\\DotNet\\10.0\\win-x64\\dotnet.exe",
+        "C:\\Program Files\\Epic Games\\UE_5.8\\Engine\\Binaries\\DotNET\\UnrealBuildTool\\UnrealBuildTool.dll",
+        "DungeonDashMarketEditor",
+        "Win64",
+        "Development",
+        "-Project=X:\\Projects\\Games\\Dungeon-Dash-Market\\DungeonDashMarket.uproject",
+        "-WaitMutex",
+        "-NoHotReloadFromIDE",
+        "-Log=X:\\Projects\\Games\\Dungeon-Dash-Market\\Saved\\GameCore\\20261111T214451Z-dd052b07-build\\engine.log"
+      ],
+      "error": "Process failed with exit code 8",
+      "tests": []
+    },
+    {
+      "game": "Dungeon-Dash-Market",
+      "action": "build",
+      "status": "passed",
+      "seconds": 17.734,
+      "receipt": "X:\\Projects\\Games\\Dungeon-Dash-Market\\Saved\\GameCore\\20261111T214515Z-420238c5-build\\receipt.json",
+      "sha256": "790e9a3cbf024ff0dce10ffed143d525aa50bb2a12d7f11a8f741f628f1093ff",
+      "command": [
+        "C:\\Program Files\\Epic Games\\UE_5.8\\Engine\\Binaries\\ThirdParty\\DotNet\\10.0\\win-x64\\dotnet.exe",
+        "C:\\Program Files\\Epic Games\\UE_5.8\\Engine\\Binaries\\DotNET\\UnrealBuildTool\\UnrealBuildTool.dll",
+        "DungeonDashMarketEditor",
+        "Win64",
+        "Development",
+        "-Project=X:\\Projects\\Games\\Dungeon-Dash-Market\\DungeonDashMarket.uproject",
+        "-WaitMutex",
+        "-NoHotReloadFromIDE",
+        "-Log=X:\\Projects\\Games\\Dungeon-Dash-Market\\Saved\\GameCore\\20261111T214515Z-420238c5-build\\engine.log"
+      ],
+      "error": null,
+      "tests": []
+    },
+    {
+      "game": "Dungeon-Dash-Market",
+      "action": "automation",
+      "status": "passed",
+      "seconds": 51.798,
+      "receipt": "X:\\Projects\\Games\\Dungeon-Dash-Market\\Saved\\GameCore\\20261111T214631Z-8c6e1789-automation\\receipt.json",
+      "sha256": "de6efa5c2170a23f68099a08d03b19378dcd7d3049377b5d3b1ed615b85d3302",
+      "command": [
+        "C:\\Program Files\\Epic Games\\UE_5.8\\Engine\\Binaries\\Win64\\UnrealEditor-Cmd.exe",
+        "X:\\Projects\\Games\\Dungeon-Dash-Market\\DungeonDashMarket.uproject",
+        "-unattended",
+        "-nosound",
+        "-Multiprocess",
+        "-abslog=X:\\Projects\\Games\\Dungeon-Dash-Market\\Saved\\GameCore\\20261111T214631Z-8c6e1789-automation\\engine.log",
+        "-NullRHI",
+        "-ExecCmds=Automation RunTests DungeonDashMarket.Core.",
+        "-TestExit=Automation Test Queue Empty",
+        "-ReportExportPath=X:\\Projects\\Games\\Dungeon-Dash-Market\\Saved\\GameCore\\20261111T214631Z-8c6e1789-automation\\report"
+      ],
+      "error": null,
+      "tests": [
+        "DungeonDashMarket.Core.SaveRoundTrip",
+        "DungeonDashMarket.Core.StockTransactions"
+      ]
+    },
+    {
+      "game": "Dungeon-Dash-Market",
+      "action": "smoke",
+      "status": "passed",
+      "seconds": 25.481,
+      "receipt": "X:\\Projects\\Games\\Dungeon-Dash-Market\\Saved\\GameCore\\20261111T214722Z-a7f29cd0-smoke\\receipt.json",
+      "sha256": "f153b826f43c895562db810b2a8c7d8c8424fb7e19ee76a19018af824ee8ebfd",
+      "command": [
+        "C:\\Program Files\\Epic Games\\UE_5.8\\Engine\\Binaries\\Win64\\UnrealEditor-Cmd.exe",
+        "X:\\Projects\\Games\\Dungeon-Dash-Market\\DungeonDashMarket.uproject",
+        "/Game/Maps/Prototype",
+        "-game",
+        "-DDMSmokeTest",
+        "-unattended",
+        "-nosound",
+        "-Multiprocess",
+        "-abslog=X:\\Projects\\Games\\Dungeon-Dash-Market\\Saved\\GameCore\\20261111T214722Z-a7f29cd0-smoke\\engine.log",
+        "-NullRHI"
+      ],
+      "error": null,
+      "tests": []
+    },
+    {
+      "game": "Critter-Contraptions",
+      "action": "build",
+      "status": "passed",
+      "seconds": 13.585,
+      "receipt": "X:\\Projects\\Games\\Critter-Contraptions\\Saved\\GameCore\\20261111T214621Z-acf73db1-build\\receipt.json",
+      "sha256": "dab1395c8573e7b2d34a76dcfc71d350bc32157c3283dc7c8eae1c30a126f488",
+      "command": [
+        "C:\\Program Files\\Epic Games\\UE_5.8\\Engine\\Binaries\\ThirdParty\\DotNet\\10.0\\win-x64\\dotnet.exe",
+        "C:\\Program Files\\Epic Games\\UE_5.8\\Engine\\Binaries\\DotNET\\UnrealBuildTool\\UnrealBuildTool.dll",
+        "CritterContraptionsEditor",
+        "Win64",
+        "Development",
+        "-Project=X:\\Projects\\Games\\Critter-Contraptions\\CritterContraptions.uproject",
+        "-WaitMutex",
+        "-NoHotReloadFromIDE",
+        "-Log=X:\\Projects\\Games\\Critter-Contraptions\\Saved\\GameCore\\20261111T214621Z-acf73db1-build\\engine.log"
+      ],
+      "error": null,
+      "tests": []
+    },
+    {
+      "game": "Critter-Contraptions",
+      "action": "automation",
+      "status": "passed",
+      "seconds": 27.784,
+      "receipt": "X:\\Projects\\Games\\Critter-Contraptions\\Saved\\GameCore\\20261111T214713Z-6d0b9da3-automation\\receipt.json",
+      "sha256": "6afaf89ddb58075eadc8031fbc84149eac39ce8d1b5f8bfe28907495a833b33b",
+      "command": [
+        "C:\\Program Files\\Epic Games\\UE_5.8\\Engine\\Binaries\\Win64\\UnrealEditor-Cmd.exe",
+        "X:\\Projects\\Games\\Critter-Contraptions\\CritterContraptions.uproject",
+        "-unattended",
+        "-nosound",
+        "-Multiprocess",
+        "-abslog=X:\\Projects\\Games\\Critter-Contraptions\\Saved\\GameCore\\20261111T214713Z-6d0b9da3-automation\\engine.log",
+        "-NullRHI",
+        "-ExecCmds=Automation RunTests Critter.",
+        "-TestExit=Automation Test Queue Empty",
+        "-ReportExportPath=X:\\Projects\\Games\\Critter-Contraptions\\Saved\\GameCore\\20261111T214713Z-6d0b9da3-automation\\report"
+      ],
+      "error": null,
+      "tests": [
+        "Critter.GameCore.ProductionClock",
+        "Critter.Simulation.AutonomousTenItems"
+      ]
+    },
+    {
+      "game": "Critter-Contraptions",
+      "action": "smoke",
+      "status": "passed",
+      "seconds": 45.834,
+      "receipt": "X:\\Projects\\Games\\Critter-Contraptions\\Saved\\GameCore\\20261111T214741Z-28b00d84-smoke\\receipt.json",
+      "sha256": "5fe3ec5fa01002ff709811db068cf4bec333ac4c552fb5204489afceab8b1363",
+      "command": [
+        "C:\\Program Files\\Epic Games\\UE_5.8\\Engine\\Binaries\\Win64\\UnrealEditor-Cmd.exe",
+        "X:\\Projects\\Games\\Critter-Contraptions\\CritterContraptions.uproject",
+        "/Game/Maps/Prototype",
+        "-game",
+        "-CritterSmoke",
+        "-unattended",
+        "-nosound",
+        "-Multiprocess",
+        "-abslog=X:\\Projects\\Games\\Critter-Contraptions\\Saved\\GameCore\\20261111T214741Z-28b00d84-smoke\\engine.log",
+        "-NullRHI"
+      ],
+      "error": null,
+      "tests": []
+    }
+  ],
+  "limits": [
+    "No packaging, rendered review, physical controller or multiplayer checks in this milestone",
+    "Two pilots consume different rules; shared installation/build/test workflow proven",
+    "No gameplay behavior changes intended"
+  ],
+  "framework_checks": [
+    {
+      "name": "workflows",
+      "command": [
+        "C:\\Python314\\python.exe",
+        "tools/validate_workflows.py"
+      ],
+      "status": "passed",
+      "exit_code": 0,
+      "log": "X:\\Projects\\ArcoreGameCore\\.gamecore\\validation\\20261111T214835Z\\workflows.log",
+      "sha256": "25a4773d10c3d0deef1856e5cac3fb861dc278e123cad1e40b63d0ca084d3176"
+    },
+    {
+      "name": "wizards",
+      "command": [
+        "C:\\Python314\\python.exe",
+        "tools/validate_wizards.py"
+      ],
+      "status": "passed",
+      "exit_code": 0,
+      "log": "X:\\Projects\\ArcoreGameCore\\.gamecore\\validation\\20261111T214835Z\\wizards.log",
+      "sha256": "f1fabccb7c66cd9ea59c3b993cfe7cc3058442d9692d3f9cb64389bc823fbdfe"
+    },
+    {
+      "name": "mcp-registry",
+      "command": [
+        "C:\\Python314\\python.exe",
+        "tools/mcp_registry.py"
+      ],
+      "status": "passed",
+      "exit_code": 0,
+      "log": "X:\\Projects\\ArcoreGameCore\\.gamecore\\validation\\20261111T214835Z\\mcp-registry.log",
+      "sha256": "c2d369cc839fae5ca1eb819a6babae3c30c8374faa8d6b37c275d6bc7cb8d403"
+    },
+    {
+      "name": "python-tests",
+      "command": [
+        "C:\\Python314\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tools/tests",
+        "-v"
+      ],
+      "status": "passed",
+      "exit_code": 0,
+      "log": "X:\\Projects\\ArcoreGameCore\\.gamecore\\validation\\20261111T214835Z\\python-tests.log",
+      "sha256": "82bc54c76486037698dbe6f360ce0f3dd987fa0fd9cdebda878f58342d5aa9dd"
+    }
+  ],
+  "implementation_hashes": {
+    "tools\\gamecore.py": "bf293501deb7771135fc496b2dbb43283df3dffb3b2cac4cc17cc987a73316a3",
+    "tools\\gamecore_modules.py": "edd7e83240be8bb89b75a4d156786f3d36509a95a8e27659de703fc61c5dd4a2",
+    "tools\\tests\\test_gamecore.py": "e1348d68d78ec9ec9a091416229351575e3c3c251404ac2143fed10715cb1d44",
+    "shared\\modules.json": "7cf24947b17de416c9b46f97734fbdd7904e15b6c1ad0d537e7ab0b24dd8a3ed"
+  }
+}

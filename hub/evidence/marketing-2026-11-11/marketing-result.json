@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "checks": [
+    "44 managed assets; 19 cover images decoded; 12 screenshot/reshoot, 30 gameplay/scene and 31 trailer gaps",
+    "Native video decoded and played; editorial metadata survives review save",
+    "143 specific gaps; buoyancy does not cover flooding, currents or fluid displacement; no JS errors or horizontal overflow"
+  ],
+  "output": "X:\\Projects\\ArcoreGameCore\\hub\\test-results\\marketing-1794427582871",
+  "exe": "X:\\Projects\\ArcoreGameCore\\hub\\src-tauri\\target\\release\\gamecore-library.exe"
+}

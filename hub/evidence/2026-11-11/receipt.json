@@ -1,0 +1,151 @@
+{
+  "date": "2026-11-11",
+  "baseline_revision": "be8748519106250dee0adc70d0aedbfa1a9d9983",
+  "working_tree": "Uncommitted catalog implementation; pre-existing unrelated changes preserved",
+  "workflow": "game-project-integration",
+  "dimension": "3d starting context; catalog covers 2d/3d/VR",
+  "scope": "Local Tauri/SQLite catalog and marketing media; no game migration or gameplay changes",
+  "executable": {
+    "path": "hub/src-tauri/target/release/gamecore-hub.exe",
+    "sha256": "1b5c7e3e185497be666aac5a46efc6ab026e74c481c221e0eb6a885d3c3dc64a",
+    "bytes": 24300544
+  },
+  "source_files": [
+    {
+      "path": "hub/src/catalog.ts",
+      "sha256": "d67aa433ee6629d0b59d57c7cb0bccf4488b72bce9e78eef87858a9b4b99a3d9"
+    },
+    {
+      "path": "hub/src/main.tsx",
+      "sha256": "f85f4a75958ac45718bf69851e9aa4ec3b97669acb654f1527f3be3e10d5b66e"
+    },
+    {
+      "path": "hub/src/style.css",
+      "sha256": "089b1f10b55c01bf9e0571f63724b4d8a8ae40c6017f2ae14c37d7e0c2cbed55"
+    },
+    {
+      "path": "hub/src/types.ts",
+      "sha256": "2d7d1fd95786a9d248f085b6d6bffb16b1155cedbf9d3fa4ba3ff00dd9d46db3"
+    },
+    {
+      "path": "hub/src-tauri/src/main.rs",
+      "sha256": "b89a100d04bc5db4e31244bea7036f506f5c7e23873eeb3a17966964bc901fa9"
+    },
+    {
+      "path": "hub/src-tauri/src/store.rs",
+      "sha256": "01dfe60594e51942038fce67c32bc2fc98202e0a78625dcfcc837c7a63443934"
+    },
+    {
+      "path": "hub/scripts/audit_catalog.py",
+      "sha256": "59fa40a6808a25a031840da72658b650cf8c78e7dbb3bde1d3546e96419c6828"
+    },
+    {
+      "path": "hub/tests/catalog.test.ts",
+      "sha256": "f443b0cf4d856438a09a80731a93fbd3931be32d0285828d3c1146366ec7ce75"
+    },
+    {
+      "path": "hub/tests/native-smoke.mjs",
+      "sha256": "e9aa27ae7f6b7b8f976fbe6d29c5e3ade3886a36a4670e3e1e1865cafb898f2e"
+    },
+    {
+      "path": "hub/data/catalog.json",
+      "sha256": "a32fd02ad836ef273167c5096fe1a3685ed9c3660f926db89cecbbb25a4634cd"
+    },
+    {
+      "path": "hub/data/files.jsonl",
+      "sha256": "86c39c77d7cd3e0d79ac5fe1917d53fbce89f1695d54676fc41b981bab19deeb"
+    },
+    {
+      "path": "hub/data/taxonomy.json",
+      "sha256": "53880685cd8e1a0c8beb9c34d982c5e4b36615b82f4bb700a3e67709fd21f78e"
+    },
+    {
+      "path": "hub/package.json",
+      "sha256": "fcc2fcd186d6b0290947b5cca5b4997cca6e0cc537146a06994eb485ed69c538"
+    },
+    {
+      "path": "hub/package-lock.json",
+      "sha256": "b3b22c8fb50a27d4d45b4a1b7977c41df63fbae7d7c2ce27fcd834def287ddfc"
+    },
+    {
+      "path": "hub/src-tauri/Cargo.toml",
+      "sha256": "b216b4893b2a1fce04553832de1b2ef3378a9b0cfdc82bee8b4e659643b2cdb1"
+    },
+    {
+      "path": "hub/src-tauri/Cargo.lock",
+      "sha256": "b9a1c229499f71e0fe713d0631aba30b6aad14fb45dc0ab4f14f3f8dbd3596cc"
+    },
+    {
+      "path": "hub/src-tauri/tauri.conf.json",
+      "sha256": "55e34d74b03f60ce18373fc33549b8691f1e4245743777407168c5ad9bccfa54"
+    }
+  ],
+  "checks": [
+    {
+      "id": "frontend",
+      "status": "passed",
+      "command": "npm.cmd test",
+      "result": "5 tests passed"
+    },
+    {
+      "id": "backend",
+      "status": "passed",
+      "command": "cargo test --manifest-path hub/src-tauri/Cargo.toml",
+      "result": "4 tests passed"
+    },
+    {
+      "id": "release",
+      "status": "passed",
+      "command": "npm.cmd run tauri -- build --no-bundle",
+      "result": "Win64 optimized executable; frontend TypeScript/Vite build passed"
+    },
+    {
+      "id": "native-smoke",
+      "status": "passed",
+      "command": "GAMECORE_TEST_EXE=<release executable>; node tests/native-smoke.mjs",
+      "artifact": "result.json"
+    },
+    {
+      "id": "workflows",
+      "status": "passed",
+      "command": "python tools/validate_workflows.py"
+    },
+    {
+      "id": "wizards",
+      "status": "passed",
+      "command": "python tools/validate_wizards.py"
+    },
+    {
+      "id": "mcp-registry",
+      "status": "passed",
+      "command": "python tools/mcp_registry.py"
+    },
+    {
+      "id": "scaffold-tests",
+      "status": "passed",
+      "command": "python -m unittest discover -s tools/tests -v",
+      "result": "91 passed; one ResourceWarning in existing HTTP error cleanup"
+    },
+    {
+      "id": "dependency-audit",
+      "status": "passed",
+      "command": "npm.cmd audit --omit=dev",
+      "result": "0 vulnerabilities"
+    },
+    {
+      "id": "game-builds-and-playtests",
+      "status": "not_run",
+      "command": null
+    },
+    {
+      "id": "large-video-and-codec-matrix",
+      "status": "not_run",
+      "command": null
+    },
+    {
+      "id": "installer-signing-other-platforms",
+      "status": "not_run",
+      "command": null
+    }
+  ]
+}

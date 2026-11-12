@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "checks": [
+    "Existing 31 projects and 46 media retained; 50 roadmap tracks and all 143 gaps seeded",
+    "UI priority, owner, status and capability evidence saved; source and asset files pinned; evidence-free verification rejected",
+    "Cycles and stale writes rejected; roadmap progress leaves atlas unchanged; backup includes roadmap",
+    "Priority, evidence and references survive native restart without seed overwrite"
+  ],
+  "output": "X:\\Projects\\ArcoreGameCore\\hub\\test-results\\roadmap-1794432928990",
+  "exe": "X:\\Projects\\ArcoreGameCore\\hub\\src-tauri\\target\\release\\gamecore-library.exe"
+}

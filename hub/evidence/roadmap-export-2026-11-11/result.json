@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "checks": [
+    "All 50 games exported despite list filter",
+    "Self-contained capability and donor definitions plus larger-game review context",
+    "Copy handler payload and manual-selection fallback (system clipboard untouched)",
+    "Native UTF-8 JSON files round-trip and use unique filenames",
+    "Unsaved edits labeled and exported without saving to SQLite",
+    "No page errors"
+  ],
+  "output": "X:\\Projects\\ArcoreGameCore\\hub\\test-results\\roadmap-export-1794438942185"
+}

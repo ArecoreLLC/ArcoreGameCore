@@ -49,6 +49,11 @@ def inspect(root=ROOT, project=None):
         expected = '.uproject' if engine_id == 'unreal' else '.godot'
         if not name or not target.is_relative_to(base) or not target.is_file() or target.suffix != expected:
             errors.append('Engine project must exist inside consumer with the correct extension')
+        if engine_id == 'unreal' and target.is_file() and config.get('runtime_plugins'):
+            from unreal_runtime_plugins import inspect_runtime_plugins
+            runtime = inspect_runtime_plugins(target, config['runtime_plugins'])
+            checks.append({'id': 'runtime_plugins', **runtime})
+            errors.extend(runtime['errors'])
         checks.append({'id': 'consumer', 'project': config.get('project_id'), 'engine': engine_id})
     return {'status': 'failed' if errors else 'passed', 'scope': 'file-level integration only; live services and engine behavior not checked', 'checks': checks, 'errors': errors}
 
@@ -81,3 +86,4 @@ def main():
 
 if __name__ == '__main__':
     raise SystemExit(main())
+

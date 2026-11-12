@@ -1,0 +1,70 @@
+{
+  "baseline": "be8748519106250dee0adc70d0aedbfa1a9d9983",
+  "revision": "uncommitted working tree; exact files below",
+  "platform": "Windows 11 x64 / WebView2",
+  "workflow": "game-project-integration",
+  "dimension": "3d (catalog includes 2d and XR)",
+  "status": "passed",
+  "tests": {
+    "frontend": 7,
+    "rust": 4,
+    "importer": 1,
+    "scaffold": 91,
+    "native": "passed",
+    "populated_native": "passed"
+  },
+  "files": [
+    {
+      "path": "X:\\Projects\\ArcoreGameCore\\hub\\src\\main.tsx",
+      "sha256": "1418182672c14730523d004104954f9f721121a5e4517377ab4eda2b5da752da"
+    },
+    {
+      "path": "X:\\Projects\\ArcoreGameCore\\hub\\src\\catalog.ts",
+      "sha256": "a52e74d26a41d7d88cbb1944e673d13c783145e28fbce1b6d16db30f82f3441a"
+    },
+    {
+      "path": "X:\\Projects\\ArcoreGameCore\\hub\\src\\types.ts",
+      "sha256": "ddc1e182d87942970fd3d5259135c631100bfc08f5faf3d23a0bad44661a8751"
+    },
+    {
+      "path": "X:\\Projects\\ArcoreGameCore\\hub\\src\\style.css",
+      "sha256": "05143d9ba39de4bb3c7d98e62973140c87928514464bbe43f62ab2497efbd161"
+    },
+    {
+      "path": "X:\\Projects\\ArcoreGameCore\\hub\\src-tauri\\src\\store.rs",
+      "sha256": "5c9c504ae09cd8e92655dd7e6b09772174f3e48abc06e867a0cd27529b8cc5ca"
+    },
+    {
+      "path": "X:\\Projects\\ArcoreGameCore\\hub\\src-tauri\\src\\main.rs",
+      "sha256": "839624ffc91a63a9130b352117b66e20e35438a3e28da0015390db7336504bc8"
+    },
+    {
+      "path": "X:\\Projects\\ArcoreGameCore\\hub\\src-tauri\\Cargo.toml",
+      "sha256": "cc41aca250e2c08475f9bdb69077c6b8a473c5a21354d381916f129ef5426d34"
+    },
+    {
+      "path": "X:\\Projects\\ArcoreGameCore\\hub\\data\\catalog.json",
+      "sha256": "2ea54b9dacb6a9378e8ff35aacfa3471617b351291b9a97e2b0087c2e9456cc4"
+    },
+    {
+      "path": "X:\\Projects\\ArcoreGameCore\\hub\\data\\taxonomy.json",
+      "sha256": "83c29c7162ad55b0d660509319ec6ed1ccd7946c38397d30995b5d3c076a6726"
+    },
+    {
+      "path": "X:\\Projects\\ArcoreGameCore\\hub\\data\\marketing-selection.json",
+      "sha256": "0665dfa6aff5538f6f68f45b07b4765db4026c773de7aa558d1c37fd8807d761"
+    },
+    {
+      "path": "X:\\Projects\\ArcoreGameCore\\hub\\tools\\apply_catalog_update.py",
+      "sha256": "9f2085a4e7234c82b04826fff9d528ff5a27f167300afc02bb2c1130633f9238"
+    },
+    {
+      "path": "X:\\Projects\\ArcoreGameCore\\hub\\src-tauri\\target\\release\\gamecore-library.exe",
+      "sha256": "1a162de6c071f94a5f2d1d285ce6a9f8bb6b47df29cd12f3cbcba651ccbc46a2"
+    },
+    {
+      "path": "X:\\Projects\\ArcoreGameCore\\Launch-GameCore.cmd",
+      "sha256": "f89ec160d0b8c19e68e27c435f00c018edb9a2a588aa9584e47df34ee529f6c6"
+    }
+  ]
+}

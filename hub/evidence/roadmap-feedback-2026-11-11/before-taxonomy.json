@@ -1,0 +1,2801 @@
+[
+  {
+    "id": "action",
+    "label": "Action",
+    "family": "Gameplay",
+    "description": "Action; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "crafting",
+    "label": "Crafting",
+    "family": "Gameplay",
+    "description": "Crafting; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "progression",
+    "label": "Progression",
+    "family": "Gameplay",
+    "description": "Progression; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "construction",
+    "label": "Construction",
+    "family": "Gameplay",
+    "description": "Construction; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "destruction",
+    "label": "Structural destruction",
+    "family": "Gameplay",
+    "description": "Structural destruction; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "physics",
+    "label": "Physics",
+    "family": "Gameplay",
+    "description": "Physics; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "terrain",
+    "label": "Terrain",
+    "family": "Presentation",
+    "description": "Terrain; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "automation",
+    "label": "Creature automation and production",
+    "family": "Gameplay",
+    "description": "Creature automation and production; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "economy",
+    "label": "Economy",
+    "family": "Gameplay",
+    "description": "Economy; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "combat",
+    "label": "Combat timing and damage",
+    "family": "Gameplay",
+    "description": "Combat timing and damage; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "persistence",
+    "label": "Persistence",
+    "family": "Technology",
+    "description": "Persistence; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "puzzle",
+    "label": "Puzzle",
+    "family": "Gameplay",
+    "description": "Puzzle; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "audio",
+    "label": "Audio",
+    "family": "Presentation",
+    "description": "Audio; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "traversal",
+    "label": "Traversal",
+    "family": "Gameplay",
+    "description": "Traversal; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "buoyancy",
+    "label": "Buoyancy and load balance",
+    "family": "Gameplay",
+    "description": "Buoyancy and load balance; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "objectives",
+    "label": "Objectives",
+    "family": "Gameplay",
+    "description": "Objectives; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "animation",
+    "label": "Animation",
+    "family": "Presentation",
+    "description": "Animation; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "stealth",
+    "label": "Stealth",
+    "family": "Gameplay",
+    "description": "Stealth; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "networking",
+    "label": "Networking",
+    "family": "Technology",
+    "description": "Networking; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "lighting",
+    "label": "Light puzzles and rendering",
+    "family": "Presentation",
+    "description": "Light puzzles and rendering; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "squads",
+    "label": "Squad control",
+    "family": "Gameplay",
+    "description": "Squad control; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "tower-defense",
+    "label": "Tower Defense",
+    "family": "Gameplay",
+    "description": "Tower Defense; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "navigation",
+    "label": "Navigation",
+    "family": "Gameplay",
+    "description": "Navigation; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "platforming",
+    "label": "Platforming and obstacle racing",
+    "family": "Gameplay",
+    "description": "Platforming and obstacle racing; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "vehicles",
+    "label": "Vehicle assembly and driving",
+    "family": "Gameplay",
+    "description": "Vehicle assembly and driving; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "artillery",
+    "label": "Artillery",
+    "family": "Gameplay",
+    "description": "Artillery; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "rts",
+    "label": "Real-time strategy",
+    "family": "Gameplay",
+    "description": "Real-time strategy; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "procedural",
+    "label": "Procedural",
+    "family": "Presentation",
+    "description": "Procedural; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "world-streaming",
+    "label": "World Streaming",
+    "family": "Technology",
+    "description": "World Streaming; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "asset-review",
+    "label": "Asset Review",
+    "family": "Presentation",
+    "description": "Asset Review; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "power-grid",
+    "label": "Power Grid",
+    "family": "Gameplay",
+    "description": "Power Grid; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "accessibility",
+    "label": "Accessibility",
+    "family": "Interaction",
+    "description": "Accessibility; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "adventure",
+    "label": "Adventure",
+    "family": "Gameplay",
+    "description": "Adventure; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "quests",
+    "label": "Quests",
+    "family": "Gameplay",
+    "description": "Quests; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "authoring",
+    "label": "Authoring",
+    "family": "Interaction",
+    "description": "Authoring; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "turn-based",
+    "label": "Turn Based",
+    "family": "Gameplay",
+    "description": "Turn Based; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "collection",
+    "label": "Collection",
+    "family": "Gameplay",
+    "description": "Collection; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "education",
+    "label": "Education",
+    "family": "Interaction",
+    "description": "Education; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "rhythm",
+    "label": "Rhythm",
+    "family": "Gameplay",
+    "description": "Rhythm; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "memory",
+    "label": "Memory",
+    "family": "Gameplay",
+    "description": "Memory; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "vr",
+    "label": "Vr",
+    "family": "Interaction",
+    "description": "Vr; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "dialogue",
+    "label": "Dialogue",
+    "family": "Gameplay",
+    "description": "Dialogue; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "stealth-ai",
+    "label": "Stealth Ai",
+    "family": "Gameplay",
+    "description": "Stealth Ai; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "navmesh",
+    "label": "Navmesh",
+    "family": "Technology",
+    "description": "Navmesh; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "fluid",
+    "label": "Fluid",
+    "family": "Gameplay",
+    "description": "Fluid; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "soft-body",
+    "label": "Soft Body",
+    "family": "Gameplay",
+    "description": "Soft Body; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "procedural-dungeon",
+    "label": "Procedural Dungeon",
+    "family": "Gameplay",
+    "description": "Procedural Dungeon; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "rollback",
+    "label": "Rollback",
+    "family": "Technology",
+    "description": "Rollback; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "matchmaking",
+    "label": "Matchmaking",
+    "family": "Technology",
+    "description": "Matchmaking; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "modding",
+    "label": "Modding",
+    "family": "Technology",
+    "description": "Modding; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "touch",
+    "label": "Touch",
+    "family": "Interaction",
+    "description": "Touch; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "localization",
+    "label": "Localization",
+    "family": "Interaction",
+    "description": "Localization; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "replay",
+    "label": "Replay",
+    "family": "Technology",
+    "description": "Replay; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "racing",
+    "label": "Racing",
+    "family": "Gameplay",
+    "description": "Racing; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "deck-building",
+    "label": "Deck Building",
+    "family": "Gameplay",
+    "description": "Deck Building; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "fighting",
+    "label": "Fighting",
+    "family": "Gameplay",
+    "description": "Fighting; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "city-simulation",
+    "label": "City Simulation",
+    "family": "Gameplay",
+    "description": "City Simulation; record source, dependencies, reuse boundary and validation evidence.",
+    "level": "domain"
+  },
+  {
+    "id": "cap-ground-movement",
+    "label": "Ground movement",
+    "family": "Gameplay",
+    "group": "Ground locomotion",
+    "parent_id": "traversal",
+    "level": "capability",
+    "description": "Acceleration, braking and collision-aware walking or running.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-buffered-jumping",
+    "label": "Buffered jumping",
+    "family": "Gameplay",
+    "group": "Ground locomotion",
+    "parent_id": "traversal",
+    "level": "capability",
+    "description": "Coyote time and input buffering at ledges and landings.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-variable-jump-height",
+    "label": "Variable jump height",
+    "family": "Gameplay",
+    "group": "Ground locomotion",
+    "parent_id": "traversal",
+    "level": "capability",
+    "description": "Early release changes jump height without breaking collision.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-wall-traversal",
+    "label": "Wall traversal",
+    "family": "Gameplay",
+    "group": "Ground locomotion",
+    "parent_id": "traversal",
+    "level": "capability",
+    "description": "Wall jumps, slides or runs with attachment and exit rules.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-ledge-climbing",
+    "label": "Ledge climbing",
+    "family": "Gameplay",
+    "group": "Ground locomotion",
+    "parent_id": "traversal",
+    "level": "capability",
+    "description": "Detect, hang from and mantle valid ledges.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-moving-platform-support",
+    "label": "Moving platform support",
+    "family": "Gameplay",
+    "group": "Ground locomotion",
+    "parent_id": "traversal",
+    "level": "capability",
+    "description": "Preserve relative motion while standing on moving bases.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-grapple-traversal",
+    "label": "Grapple traversal",
+    "family": "Gameplay",
+    "group": "Ground locomotion",
+    "parent_id": "traversal",
+    "level": "capability",
+    "description": "Validate anchors and control attachment, travel and release.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-stamina-traversal",
+    "label": "Stamina traversal",
+    "family": "Gameplay",
+    "group": "Ground locomotion",
+    "parent_id": "traversal",
+    "level": "capability",
+    "description": "Resource costs gate movement and recovery.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-controlled-flight",
+    "label": "Controlled flight",
+    "family": "Gameplay",
+    "group": "Air and water movement",
+    "parent_id": "traversal",
+    "level": "capability",
+    "description": "Steering, ascent, descent and landing in a flight mode.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-gliding",
+    "label": "Gliding",
+    "family": "Gameplay",
+    "group": "Air and water movement",
+    "parent_id": "traversal",
+    "level": "capability",
+    "description": "Lift and descent constrain unpowered aerial travel.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-swimming",
+    "label": "Swimming",
+    "family": "Gameplay",
+    "group": "Air and water movement",
+    "parent_id": "traversal",
+    "level": "capability",
+    "description": "Water entry, surface motion and exit change locomotion.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-diving-and-oxygen",
+    "label": "Diving and oxygen",
+    "family": "Gameplay",
+    "group": "Air and water movement",
+    "parent_id": "traversal",
+    "level": "capability",
+    "description": "Underwater depth, breath and recovery rules.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-climbing-surfaces",
+    "label": "Climbing surfaces",
+    "family": "Gameplay",
+    "group": "Air and water movement",
+    "parent_id": "traversal",
+    "level": "capability",
+    "description": "Valid surfaces constrain climbing and detachment.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-swinging-ropes",
+    "label": "Swinging ropes",
+    "family": "Gameplay",
+    "group": "Air and water movement",
+    "parent_id": "traversal",
+    "level": "capability",
+    "description": "Pendulum motion and release transfer momentum.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-zero-gravity-movement",
+    "label": "Zero gravity movement",
+    "family": "Gameplay",
+    "group": "Air and water movement",
+    "parent_id": "traversal",
+    "level": "capability",
+    "description": "Free orientation and inertia without a ground plane.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-traversal-recovery",
+    "label": "Traversal recovery",
+    "family": "Gameplay",
+    "group": "Air and water movement",
+    "parent_id": "traversal",
+    "level": "capability",
+    "description": "Recover from falls without corrupting objective state.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-melee-hit-resolution",
+    "label": "Melee hit resolution",
+    "family": "Gameplay",
+    "group": "Combat resolution",
+    "parent_id": "combat",
+    "level": "capability",
+    "description": "Reach, target selection and damage resolve a melee strike.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-attack-telegraphs",
+    "label": "Attack telegraphs",
+    "family": "Gameplay",
+    "group": "Combat resolution",
+    "parent_id": "combat",
+    "level": "capability",
+    "description": "Wind-up cues precede a damaging attack.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-dodge-invulnerability",
+    "label": "Dodge invulnerability",
+    "family": "Gameplay",
+    "group": "Combat resolution",
+    "parent_id": "combat",
+    "level": "capability",
+    "description": "A bounded dodge window rejects otherwise valid hits.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-timed-parries",
+    "label": "Timed parries",
+    "family": "Gameplay",
+    "group": "Combat resolution",
+    "parent_id": "combat",
+    "level": "capability",
+    "description": "A timed defense interrupts or counters an attack.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-combo-chains",
+    "label": "Combo chains",
+    "family": "Gameplay",
+    "group": "Combat resolution",
+    "parent_id": "combat",
+    "level": "capability",
+    "description": "Ordered attacks branch with cancel and timing rules.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-hit-stop-and-hit-stun",
+    "label": "Hit stop and hit stun",
+    "family": "Gameplay",
+    "group": "Combat resolution",
+    "parent_id": "combat",
+    "level": "capability",
+    "description": "Impact pauses and recovery states change control.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-lock-on-targeting",
+    "label": "Lock-on targeting",
+    "family": "Gameplay",
+    "group": "Combat resolution",
+    "parent_id": "combat",
+    "level": "capability",
+    "description": "Acquire, maintain and switch a combat target.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-directional-blocking",
+    "label": "Directional blocking",
+    "family": "Gameplay",
+    "group": "Combat resolution",
+    "parent_id": "combat",
+    "level": "capability",
+    "description": "Facing and attack direction determine a block.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-projectile-ballistics",
+    "label": "Projectile ballistics",
+    "family": "Gameplay",
+    "group": "Weapons and damage",
+    "parent_id": "combat",
+    "level": "capability",
+    "description": "Gravity, drag and wind influence projectile flight.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-trajectory-prediction",
+    "label": "Trajectory prediction",
+    "family": "Gameplay",
+    "group": "Weapons and damage",
+    "parent_id": "combat",
+    "level": "capability",
+    "description": "Predicted paths share the runtime flight model.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-guided-interception",
+    "label": "Guided interception",
+    "family": "Gameplay",
+    "group": "Weapons and damage",
+    "parent_id": "combat",
+    "level": "capability",
+    "description": "Pursuit or intercept guidance obeys fuel and turn limits.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-hitscan-weapons",
+    "label": "Hitscan weapons",
+    "family": "Gameplay",
+    "group": "Weapons and damage",
+    "parent_id": "combat",
+    "level": "capability",
+    "description": "Instant traces resolve impacts and obstruction.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-area-damage",
+    "label": "Area damage",
+    "family": "Gameplay",
+    "group": "Weapons and damage",
+    "parent_id": "combat",
+    "level": "capability",
+    "description": "Radius and exposure determine multi-target damage.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-status-effect-combos",
+    "label": "Status effect combos",
+    "family": "Gameplay",
+    "group": "Weapons and damage",
+    "parent_id": "combat",
+    "level": "capability",
+    "description": "Timed effects alter subsequent damage or interaction.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-armor-penetration",
+    "label": "Armor penetration",
+    "family": "Gameplay",
+    "group": "Weapons and damage",
+    "parent_id": "combat",
+    "level": "capability",
+    "description": "Materials, angles or layers change damage penetration.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-weapon-heat-and-reload",
+    "label": "Weapon heat and reload",
+    "family": "Gameplay",
+    "group": "Weapons and damage",
+    "parent_id": "combat",
+    "level": "capability",
+    "description": "Resource and cooldown states constrain repeated fire.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-perception-and-occlusion",
+    "label": "Perception and occlusion",
+    "family": "Gameplay",
+    "group": "Enemy and encounter AI",
+    "parent_id": "stealth-ai",
+    "level": "capability",
+    "description": "Range and sight obstruction gate detection.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-disguise-detection",
+    "label": "Disguise detection",
+    "family": "Gameplay",
+    "group": "Enemy and encounter AI",
+    "parent_id": "stealth-ai",
+    "level": "capability",
+    "description": "Disguises and temporary reveals alter detection.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-patrol-and-investigation",
+    "label": "Patrol and investigation",
+    "family": "Gameplay",
+    "group": "Enemy and encounter AI",
+    "parent_id": "stealth-ai",
+    "level": "capability",
+    "description": "Agents patrol, investigate stimuli and resume duties.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-cover-selection",
+    "label": "Cover selection",
+    "family": "Gameplay",
+    "group": "Enemy and encounter AI",
+    "parent_id": "stealth-ai",
+    "level": "capability",
+    "description": "Agents evaluate and occupy protective positions.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-group-tactics",
+    "label": "Group tactics",
+    "family": "Gameplay",
+    "group": "Enemy and encounter AI",
+    "parent_id": "stealth-ai",
+    "level": "capability",
+    "description": "Agents coordinate flanks, focus fire or retreat.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-boss-phase-transitions",
+    "label": "Boss phase transitions",
+    "family": "Gameplay",
+    "group": "Enemy and encounter AI",
+    "parent_id": "stealth-ai",
+    "level": "capability",
+    "description": "Health or objectives change boss rules and attacks.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-encounter-wave-progression",
+    "label": "Encounter wave progression",
+    "family": "Gameplay",
+    "group": "Enemy and encounter AI",
+    "parent_id": "stealth-ai",
+    "level": "capability",
+    "description": "Clearing a wave grants rewards and advances difficulty.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-threat-and-aggro",
+    "label": "Threat and aggro",
+    "family": "Gameplay",
+    "group": "Enemy and encounter AI",
+    "parent_id": "stealth-ai",
+    "level": "capability",
+    "description": "Agents prioritize threats with explicit decay or transfer rules.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-role-specific-orders",
+    "label": "Role-specific orders",
+    "family": "Gameplay",
+    "group": "Squads and strategy",
+    "parent_id": "squads",
+    "level": "capability",
+    "description": "Different unit roles accept independent assignments.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-cooperative-hauling",
+    "label": "Cooperative hauling",
+    "family": "Gameplay",
+    "group": "Squads and strategy",
+    "parent_id": "squads",
+    "level": "capability",
+    "description": "Multiple nearby units jointly lift or carry an object.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-selection-and-control-groups",
+    "label": "Selection and control groups",
+    "family": "Gameplay",
+    "group": "Squads and strategy",
+    "parent_id": "squads",
+    "level": "capability",
+    "description": "Select, group and recall units consistently.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-formation-movement",
+    "label": "Formation movement",
+    "family": "Gameplay",
+    "group": "Squads and strategy",
+    "parent_id": "squads",
+    "level": "capability",
+    "description": "Units preserve or recover a formation while moving.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-unit-counter-roster",
+    "label": "Unit counter roster",
+    "family": "Gameplay",
+    "group": "Squads and strategy",
+    "parent_id": "squads",
+    "level": "capability",
+    "description": "Unit matchups and unlocks produce distinct counters.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-fog-of-war",
+    "label": "Fog of war",
+    "family": "Gameplay",
+    "group": "Squads and strategy",
+    "parent_id": "squads",
+    "level": "capability",
+    "description": "Visibility distinguishes unknown, remembered and currently seen space.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-merge-split-conservation",
+    "label": "Merge split conservation",
+    "family": "Gameplay",
+    "group": "Squads and strategy",
+    "parent_id": "squads",
+    "level": "capability",
+    "description": "Unit merges and splits preserve health and population constraints.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-mobile-bases",
+    "label": "Mobile bases",
+    "family": "Gameplay",
+    "group": "Squads and strategy",
+    "parent_id": "squads",
+    "level": "capability",
+    "description": "Packing and relocating a command structure preserves strategic state.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-grid-pathfinding",
+    "label": "Grid pathfinding",
+    "family": "Gameplay",
+    "group": "Pathfinding",
+    "parent_id": "navigation",
+    "level": "capability",
+    "description": "Search traversable cells with explicit cost and obstruction rules.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-route-safe-construction",
+    "label": "Route-safe construction",
+    "family": "Gameplay",
+    "group": "Pathfinding",
+    "parent_id": "navigation",
+    "level": "capability",
+    "description": "Placement preserves routes for entrances and active agents.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-dynamic-path-replanning",
+    "label": "Dynamic path replanning",
+    "family": "Gameplay",
+    "group": "Pathfinding",
+    "parent_id": "navigation",
+    "level": "capability",
+    "description": "Changed obstacles invalidate and recompute routes.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-navigation-mesh-traversal",
+    "label": "Navigation mesh traversal",
+    "family": "Gameplay",
+    "group": "Pathfinding",
+    "parent_id": "navigation",
+    "level": "capability",
+    "description": "Agents traverse navmesh links and disconnected regions.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-crowd-avoidance",
+    "label": "Crowd avoidance",
+    "family": "Gameplay",
+    "group": "Pathfinding",
+    "parent_id": "navigation",
+    "level": "capability",
+    "description": "Local steering prevents agent overlap and deadlock.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-flow-field-navigation",
+    "label": "Flow field navigation",
+    "family": "Gameplay",
+    "group": "Pathfinding",
+    "parent_id": "navigation",
+    "level": "capability",
+    "description": "Shared directional fields guide many agents to destinations.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-flying-navigation",
+    "label": "Flying navigation",
+    "family": "Gameplay",
+    "group": "Pathfinding",
+    "parent_id": "navigation",
+    "level": "capability",
+    "description": "Paths avoid obstacles through three-dimensional space.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-hierarchical-navigation",
+    "label": "Hierarchical navigation",
+    "family": "Gameplay",
+    "group": "Pathfinding",
+    "parent_id": "navigation",
+    "level": "capability",
+    "description": "Long routes combine coarse and fine searches.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-connected-grid-assembly",
+    "label": "Connected grid assembly",
+    "family": "Gameplay",
+    "group": "Construction and assembly",
+    "parent_id": "construction",
+    "level": "capability",
+    "description": "Parts must remain face or edge connected to a valid base.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-motion-envelope-placement",
+    "label": "Motion-envelope placement",
+    "family": "Gameplay",
+    "group": "Construction and assembly",
+    "parent_id": "construction",
+    "level": "capability",
+    "description": "Placement accounts for the full swept obstacle volume.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-construction-costs",
+    "label": "Construction costs",
+    "family": "Gameplay",
+    "group": "Construction and assembly",
+    "parent_id": "construction",
+    "level": "capability",
+    "description": "Resources and inventory gate valid build operations.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-assembly-save-validation",
+    "label": "Assembly save validation",
+    "family": "Gameplay",
+    "group": "Construction and assembly",
+    "parent_id": "construction",
+    "level": "capability",
+    "description": "Reject invalid saved assemblies before replacing live state.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-structural-load-solver",
+    "label": "Structural load solver",
+    "family": "Gameplay",
+    "group": "Construction and assembly",
+    "parent_id": "construction",
+    "level": "capability",
+    "description": "Loads and capacity determine stability and failure.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-snapping-and-sockets",
+    "label": "Snapping and sockets",
+    "family": "Gameplay",
+    "group": "Construction and assembly",
+    "parent_id": "construction",
+    "level": "capability",
+    "description": "Compatible connection points constrain part attachment.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-construction-staging",
+    "label": "Construction staging",
+    "family": "Gameplay",
+    "group": "Construction and assembly",
+    "parent_id": "construction",
+    "level": "capability",
+    "description": "Building progresses through timed or worker-driven stages.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-editable-blueprints",
+    "label": "Editable blueprints",
+    "family": "Gameplay",
+    "group": "Construction and assembly",
+    "parent_id": "construction",
+    "level": "capability",
+    "description": "Save, place and modify reusable construction plans.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-support-graph-collapse",
+    "label": "Support graph collapse",
+    "family": "Gameplay",
+    "group": "Destruction",
+    "parent_id": "destruction",
+    "level": "capability",
+    "description": "Loss of support detaches disconnected structural pieces.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-physics-debris-lifecycle",
+    "label": "Physics debris lifecycle",
+    "family": "Gameplay",
+    "group": "Destruction",
+    "parent_id": "destruction",
+    "level": "capability",
+    "description": "Bound debris and restore attachment, transforms and velocity on reset.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-damage-stage-presentation",
+    "label": "Damage-stage presentation",
+    "family": "Gameplay",
+    "group": "Destruction",
+    "parent_id": "destruction",
+    "level": "capability",
+    "description": "Cracks, fire and mesh changes communicate damage state.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-runtime-mesh-fracture",
+    "label": "Runtime mesh fracture",
+    "family": "Gameplay",
+    "group": "Destruction",
+    "parent_id": "destruction",
+    "level": "capability",
+    "description": "Generate new fragments and interior faces at impact time.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-voxel-excavation",
+    "label": "Voxel excavation",
+    "family": "Gameplay",
+    "group": "Destruction",
+    "parent_id": "destruction",
+    "level": "capability",
+    "description": "Remove terrain volume and update surfaces and collision.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-structural-repair",
+    "label": "Structural repair",
+    "family": "Gameplay",
+    "group": "Destruction",
+    "parent_id": "destruction",
+    "level": "capability",
+    "description": "Restore damaged connections and load-bearing capacity.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-material-specific-failure",
+    "label": "Material-specific failure",
+    "family": "Gameplay",
+    "group": "Destruction",
+    "parent_id": "destruction",
+    "level": "capability",
+    "description": "Material properties change fracture or deformation.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-persistent-destruction",
+    "label": "Persistent destruction",
+    "family": "Gameplay",
+    "group": "Destruction",
+    "parent_id": "destruction",
+    "level": "capability",
+    "description": "Save and restore destroyed world geometry consistently.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-rigid-body-collisions",
+    "label": "Rigid body collisions",
+    "family": "Gameplay",
+    "group": "Rigid body simulation",
+    "parent_id": "physics",
+    "level": "capability",
+    "description": "Simulated bodies exchange collision impulses.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-joint-constraints",
+    "label": "Joint constraints",
+    "family": "Gameplay",
+    "group": "Rigid body simulation",
+    "parent_id": "physics",
+    "level": "capability",
+    "description": "Hinges, sliders or fixed joints bound relative motion.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-ragdoll-blending",
+    "label": "Ragdoll blending",
+    "family": "Gameplay",
+    "group": "Rigid body simulation",
+    "parent_id": "physics",
+    "level": "capability",
+    "description": "Switch between animation and physical bodies without discontinuity.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-rope-simulation",
+    "label": "Rope simulation",
+    "family": "Gameplay",
+    "group": "Rigid body simulation",
+    "parent_id": "physics",
+    "level": "capability",
+    "description": "Segmented or constraint-based ropes react to forces and contact.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-cloth-simulation",
+    "label": "Cloth simulation",
+    "family": "Gameplay",
+    "group": "Rigid body simulation",
+    "parent_id": "physics",
+    "level": "capability",
+    "description": "Fabric deforms with attachments and collision.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-soft-body-deformation",
+    "label": "Soft body deformation",
+    "family": "Gameplay",
+    "group": "Rigid body simulation",
+    "parent_id": "physics",
+    "level": "capability",
+    "description": "Deformable volumes respond to contact and recover or fail.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-physics-grabbing",
+    "label": "Physics grabbing",
+    "family": "Gameplay",
+    "group": "Rigid body simulation",
+    "parent_id": "physics",
+    "level": "capability",
+    "description": "Manipulate bodies through constrained forces or handles.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-fixed-step-simulation",
+    "label": "Fixed-step simulation",
+    "family": "Gameplay",
+    "group": "Rigid body simulation",
+    "parent_id": "physics",
+    "level": "capability",
+    "description": "Advance bounded deterministic-sized steps under frame hitches.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-sampled-buoyant-lift",
+    "label": "Sampled buoyant lift",
+    "family": "Gameplay",
+    "group": "Water and buoyancy",
+    "parent_id": "buoyancy",
+    "level": "capability",
+    "description": "Distributed lift samples produce heave, roll and pitch.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-cargo-center-of-mass",
+    "label": "Cargo center of mass",
+    "family": "Gameplay",
+    "group": "Water and buoyancy",
+    "parent_id": "buoyancy",
+    "level": "capability",
+    "description": "Cargo mass and placement change stability.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-wave-response",
+    "label": "Wave response",
+    "family": "Gameplay",
+    "group": "Water and buoyancy",
+    "parent_id": "buoyancy",
+    "level": "capability",
+    "description": "Surface changes disturb a floating body's motion.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-flooding-and-compartments",
+    "label": "Flooding and compartments",
+    "family": "Gameplay",
+    "group": "Water and buoyancy",
+    "parent_id": "buoyancy",
+    "level": "capability",
+    "description": "Water ingress changes displacement and stability.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-water-current-forces",
+    "label": "Water current forces",
+    "family": "Gameplay",
+    "group": "Water and buoyancy",
+    "parent_id": "buoyancy",
+    "level": "capability",
+    "description": "Flow transfers force to bodies and swimmers.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-fluid-displacement",
+    "label": "Fluid displacement",
+    "family": "Gameplay",
+    "group": "Water and buoyancy",
+    "parent_id": "buoyancy",
+    "level": "capability",
+    "description": "Moving bodies change a simulated water surface or volume.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-capsize-failure",
+    "label": "Capsize failure",
+    "family": "Gameplay",
+    "group": "Water and buoyancy",
+    "parent_id": "buoyancy",
+    "level": "capability",
+    "description": "Sustained tilt or low freeboard triggers damage or loss.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-speed-gated-salvage",
+    "label": "Speed-gated salvage",
+    "family": "Gameplay",
+    "group": "Water and buoyancy",
+    "parent_id": "buoyancy",
+    "level": "capability",
+    "description": "Range and vessel speed constrain winching and delivery.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-arcade-driving",
+    "label": "Arcade driving",
+    "family": "Gameplay",
+    "group": "Vehicles",
+    "parent_id": "vehicles",
+    "level": "capability",
+    "description": "Direct steering and speed rules control a vehicle.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-suspension-solver",
+    "label": "Suspension solver",
+    "family": "Gameplay",
+    "group": "Vehicles",
+    "parent_id": "vehicles",
+    "level": "capability",
+    "description": "Wheel suspension reacts to terrain and load.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-tire-friction",
+    "label": "Tire friction",
+    "family": "Gameplay",
+    "group": "Vehicles",
+    "parent_id": "vehicles",
+    "level": "capability",
+    "description": "Slip, traction and braking determine contact forces.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-vehicle-drivetrain",
+    "label": "Vehicle drivetrain",
+    "family": "Gameplay",
+    "group": "Vehicles",
+    "parent_id": "vehicles",
+    "level": "capability",
+    "description": "Gears, torque and engine response drive motion.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-vehicle-part-effects",
+    "label": "Vehicle part effects",
+    "family": "Gameplay",
+    "group": "Vehicles",
+    "parent_id": "vehicles",
+    "level": "capability",
+    "description": "Assembled parts change speed, damage or collision bounds.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-vehicle-damage-model",
+    "label": "Vehicle damage model",
+    "family": "Gameplay",
+    "group": "Vehicles",
+    "parent_id": "vehicles",
+    "level": "capability",
+    "description": "Component failures change control and performance.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-boat-propulsion",
+    "label": "Boat propulsion",
+    "family": "Gameplay",
+    "group": "Vehicles",
+    "parent_id": "vehicles",
+    "level": "capability",
+    "description": "Thrust and rudder or differential steering drive a vessel.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-aircraft-aerodynamics",
+    "label": "Aircraft aerodynamics",
+    "family": "Gameplay",
+    "group": "Vehicles",
+    "parent_id": "vehicles",
+    "level": "capability",
+    "description": "Lift, drag, stall and control surfaces govern flight.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-obstacle-race-phases",
+    "label": "Obstacle race phases",
+    "family": "Gameplay",
+    "group": "Racing and competition",
+    "parent_id": "racing",
+    "level": "capability",
+    "description": "Draft, build, race and results use bounded phase rules.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-checkpoint-validation",
+    "label": "Checkpoint validation",
+    "family": "Gameplay",
+    "group": "Racing and competition",
+    "parent_id": "racing",
+    "level": "capability",
+    "description": "Valid ordered checkpoints gate race progress and recovery.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-race-ranking",
+    "label": "Race ranking",
+    "family": "Gameplay",
+    "group": "Racing and competition",
+    "parent_id": "racing",
+    "level": "capability",
+    "description": "Arrival order or timing determines scores and standings.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-ghost-time-trials",
+    "label": "Ghost time trials",
+    "family": "Gameplay",
+    "group": "Racing and competition",
+    "parent_id": "racing",
+    "level": "capability",
+    "description": "Replay a previous run alongside the current attempt.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-lap-and-sector-timing",
+    "label": "Lap and sector timing",
+    "family": "Gameplay",
+    "group": "Racing and competition",
+    "parent_id": "racing",
+    "level": "capability",
+    "description": "Record lap validity, splits and personal bests.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-rubber-band-competition",
+    "label": "Rubber-band competition",
+    "family": "Gameplay",
+    "group": "Racing and competition",
+    "parent_id": "racing",
+    "level": "capability",
+    "description": "Adjust opposition within explicit fairness bounds.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-track-generation",
+    "label": "Track generation",
+    "family": "Gameplay",
+    "group": "Racing and competition",
+    "parent_id": "racing",
+    "level": "capability",
+    "description": "Generate traversable courses with difficulty constraints.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-stunt-scoring",
+    "label": "Stunt scoring",
+    "family": "Gameplay",
+    "group": "Racing and competition",
+    "parent_id": "racing",
+    "level": "capability",
+    "description": "Recognize maneuvers and award chained scores.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-creature-job-assignment",
+    "label": "Creature job assignment",
+    "family": "Gameplay",
+    "group": "Automation and production",
+    "parent_id": "automation",
+    "level": "capability",
+    "description": "Befriended creatures accept and stop production jobs.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-fatigue-rest-hysteresis",
+    "label": "Fatigue rest hysteresis",
+    "family": "Gameplay",
+    "group": "Automation and production",
+    "parent_id": "automation",
+    "level": "capability",
+    "description": "Different stop and resume thresholds prevent work-state oscillation.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-input-gated-production",
+    "label": "Input-gated production",
+    "family": "Gameplay",
+    "group": "Automation and production",
+    "parent_id": "automation",
+    "level": "capability",
+    "description": "Consume required stock before producing an output.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-production-speed-modifiers",
+    "label": "Production speed modifiers",
+    "family": "Gameplay",
+    "group": "Automation and production",
+    "parent_id": "automation",
+    "level": "capability",
+    "description": "Workers or upgrades alter throughput without creating free inputs.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-conveyor-routing",
+    "label": "Conveyor routing",
+    "family": "Gameplay",
+    "group": "Automation and production",
+    "parent_id": "automation",
+    "level": "capability",
+    "description": "Items travel through connected belts, splitters and junctions.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-factory-scheduling",
+    "label": "Factory scheduling",
+    "family": "Gameplay",
+    "group": "Automation and production",
+    "parent_id": "automation",
+    "level": "capability",
+    "description": "Dependencies and capacity coordinate multi-step production.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-automation-logic-circuits",
+    "label": "Automation logic circuits",
+    "family": "Gameplay",
+    "group": "Automation and production",
+    "parent_id": "automation",
+    "level": "capability",
+    "description": "Signals and conditions control machines.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-machine-faults-and-maintenance",
+    "label": "Machine faults and maintenance",
+    "family": "Gameplay",
+    "group": "Automation and production",
+    "parent_id": "automation",
+    "level": "capability",
+    "description": "Wear or faults interrupt production until repaired.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-cargo-delivery-accounting",
+    "label": "Cargo delivery accounting",
+    "family": "Gameplay",
+    "group": "Economy and logistics",
+    "parent_id": "economy",
+    "level": "capability",
+    "description": "Credit resources only after delivery while preserving carried stock.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-finite-resource-buffers",
+    "label": "Finite resource buffers",
+    "family": "Gameplay",
+    "group": "Economy and logistics",
+    "parent_id": "economy",
+    "level": "capability",
+    "description": "Extraction and pickup consume bounded stocks.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-customer-patience-queues",
+    "label": "Customer patience queues",
+    "family": "Gameplay",
+    "group": "Economy and logistics",
+    "parent_id": "economy",
+    "level": "capability",
+    "description": "Stock and customer deadlines determine sales opportunities.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-mutation-recipes",
+    "label": "Mutation recipes",
+    "family": "Gameplay",
+    "group": "Economy and logistics",
+    "parent_id": "economy",
+    "level": "capability",
+    "description": "Consume ingredients to grant distinct persistent mutations.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-trading-and-price-discovery",
+    "label": "Trading and price discovery",
+    "family": "Gameplay",
+    "group": "Economy and logistics",
+    "parent_id": "economy",
+    "level": "capability",
+    "description": "Supply, demand or offers determine exchange prices.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-inventory-capacity",
+    "label": "Inventory capacity",
+    "family": "Gameplay",
+    "group": "Economy and logistics",
+    "parent_id": "economy",
+    "level": "capability",
+    "description": "Weight, slots or stacking constrain carried items.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-crafting-recipe-graph",
+    "label": "Crafting recipe graph",
+    "family": "Gameplay",
+    "group": "Economy and logistics",
+    "parent_id": "economy",
+    "level": "capability",
+    "description": "Multi-step ingredient dependencies constrain crafting.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-reward-ledger",
+    "label": "Reward ledger",
+    "family": "Gameplay",
+    "group": "Economy and logistics",
+    "parent_id": "economy",
+    "level": "capability",
+    "description": "Record grants and claims without double-crediting balances.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-independent-power-networks",
+    "label": "Independent power networks",
+    "family": "Gameplay",
+    "group": "Power and settlement",
+    "parent_id": "power-grid",
+    "level": "capability",
+    "description": "Connected components allocate independent supply budgets.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-power-priority-allocation",
+    "label": "Power-priority allocation",
+    "family": "Gameplay",
+    "group": "Power and settlement",
+    "parent_id": "power-grid",
+    "level": "capability",
+    "description": "Scarce power is allocated according to explicit priorities.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-power-gated-queues",
+    "label": "Power-gated queues",
+    "family": "Gameplay",
+    "group": "Power and settlement",
+    "parent_id": "power-grid",
+    "level": "capability",
+    "description": "Production pauses and resumes with power availability.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-powered-victory-objectives",
+    "label": "Powered victory objectives",
+    "family": "Gameplay",
+    "group": "Power and settlement",
+    "parent_id": "power-grid",
+    "level": "capability",
+    "description": "Continuous supply sustains objective progress with outage rules.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-utility-distribution",
+    "label": "Utility distribution",
+    "family": "Gameplay",
+    "group": "Power and settlement",
+    "parent_id": "power-grid",
+    "level": "capability",
+    "description": "Water, heat or sewage networks serve consumers with capacity limits.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-population-needs",
+    "label": "Population needs",
+    "family": "Gameplay",
+    "group": "Power and settlement",
+    "parent_id": "power-grid",
+    "level": "capability",
+    "description": "Residents react to shelter, food, jobs and services.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-traffic-simulation",
+    "label": "Traffic simulation",
+    "family": "Gameplay",
+    "group": "Power and settlement",
+    "parent_id": "power-grid",
+    "level": "capability",
+    "description": "Road capacity and routes determine congestion and delivery.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-settlement-growth",
+    "label": "Settlement growth",
+    "family": "Gameplay",
+    "group": "Power and settlement",
+    "parent_id": "power-grid",
+    "level": "capability",
+    "description": "Land use, desirability and policy change development.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-mirror-beam-reflection",
+    "label": "Mirror beam reflection",
+    "family": "Gameplay",
+    "group": "Puzzles",
+    "parent_id": "puzzle",
+    "level": "capability",
+    "description": "Bounded reflected rays activate valid receivers.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-signal-driven-geometry",
+    "label": "Signal-driven geometry",
+    "family": "Gameplay",
+    "group": "Puzzles",
+    "parent_id": "puzzle",
+    "level": "capability",
+    "description": "Receiver or switch state immediately changes traversable geometry.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-typed-resonance-puzzles",
+    "label": "Typed resonance puzzles",
+    "family": "Gameplay",
+    "group": "Puzzles",
+    "parent_id": "puzzle",
+    "level": "capability",
+    "description": "Pulse type, spacing, proximity and visibility gate resonators.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-sequence-memory",
+    "label": "Sequence memory",
+    "family": "Gameplay",
+    "group": "Puzzles",
+    "parent_id": "puzzle",
+    "level": "capability",
+    "description": "Reproduce a growing sequence with explicit error and completion rules.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-target-tracking-puzzle",
+    "label": "Target tracking puzzle",
+    "family": "Gameplay",
+    "group": "Puzzles",
+    "parent_id": "puzzle",
+    "level": "capability",
+    "description": "Track an object through swaps or occlusion.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-sokoban-pushing",
+    "label": "Sokoban pushing",
+    "family": "Gameplay",
+    "group": "Puzzles",
+    "parent_id": "puzzle",
+    "level": "capability",
+    "description": "Grid pushes respect occupancy and solvability constraints.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-portal-puzzles",
+    "label": "Portal puzzles",
+    "family": "Gameplay",
+    "group": "Puzzles",
+    "parent_id": "puzzle",
+    "level": "capability",
+    "description": "Linked portals transform position, orientation and momentum.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-time-manipulation-puzzles",
+    "label": "Time manipulation puzzles",
+    "family": "Gameplay",
+    "group": "Puzzles",
+    "parent_id": "puzzle",
+    "level": "capability",
+    "description": "Rewind, pause or clone temporal state under defined rules.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-ordered-quest-events",
+    "label": "Ordered quest events",
+    "family": "Gameplay",
+    "group": "Quests and progression",
+    "parent_id": "quests",
+    "level": "capability",
+    "description": "Only the current event kind and target advance a quest.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-idempotent-objectives",
+    "label": "Idempotent objectives",
+    "family": "Gameplay",
+    "group": "Quests and progression",
+    "parent_id": "quests",
+    "level": "capability",
+    "description": "Repeated events cannot duplicate objective progress.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-competing-victory-conditions",
+    "label": "Competing victory conditions",
+    "family": "Gameplay",
+    "group": "Quests and progression",
+    "parent_id": "quests",
+    "level": "capability",
+    "description": "Multiple independent objectives can end a match.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-persistent-upgrades",
+    "label": "Persistent upgrades",
+    "family": "Gameplay",
+    "group": "Quests and progression",
+    "parent_id": "quests",
+    "level": "capability",
+    "description": "Purchased improvements survive between sessions.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-branching-dialogue",
+    "label": "Branching dialogue",
+    "family": "Gameplay",
+    "group": "Quests and progression",
+    "parent_id": "quests",
+    "level": "capability",
+    "description": "Choices alter dialogue state and later consequences.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-faction-reputation",
+    "label": "Faction reputation",
+    "family": "Gameplay",
+    "group": "Quests and progression",
+    "parent_id": "quests",
+    "level": "capability",
+    "description": "Actions change faction standing and future responses.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-procedural-quest-composition",
+    "label": "Procedural quest composition",
+    "family": "Gameplay",
+    "group": "Quests and progression",
+    "parent_id": "quests",
+    "level": "capability",
+    "description": "Valid objective graphs are assembled from reusable parts.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-new-game-plus",
+    "label": "New game plus",
+    "family": "Gameplay",
+    "group": "Quests and progression",
+    "parent_id": "quests",
+    "level": "capability",
+    "description": "Restart progression with specified retained systems and scaling.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-turn-timer-lifecycle",
+    "label": "Turn timer lifecycle",
+    "family": "Gameplay",
+    "group": "Turns cards and rhythm",
+    "parent_id": "turn-based",
+    "level": "capability",
+    "description": "Start, stop and transition timers without stale callbacks.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-local-alternating-combat",
+    "label": "Local alternating combat",
+    "family": "Gameplay",
+    "group": "Turns cards and rhythm",
+    "parent_id": "turn-based",
+    "level": "capability",
+    "description": "Local players alternate actions through battle-state rules.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-deck-construction",
+    "label": "Deck construction",
+    "family": "Gameplay",
+    "group": "Turns cards and rhythm",
+    "parent_id": "turn-based",
+    "level": "capability",
+    "description": "Card selection obeys deck constraints and persistent collection rules.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-card-effect-stack",
+    "label": "Card effect stack",
+    "family": "Gameplay",
+    "group": "Turns cards and rhythm",
+    "parent_id": "turn-based",
+    "level": "capability",
+    "description": "Resolve ordered or interruptible effects consistently.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-tactical-action-points",
+    "label": "Tactical action points",
+    "family": "Gameplay",
+    "group": "Turns cards and rhythm",
+    "parent_id": "turn-based",
+    "level": "capability",
+    "description": "Turns consume movement and action budgets.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-rhythm-hit-windows",
+    "label": "Rhythm hit windows",
+    "family": "Gameplay",
+    "group": "Turns cards and rhythm",
+    "parent_id": "turn-based",
+    "level": "capability",
+    "description": "Input timing maps to graded hits and misses.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-rhythm-calibration",
+    "label": "Rhythm calibration",
+    "family": "Gameplay",
+    "group": "Turns cards and rhythm",
+    "parent_id": "turn-based",
+    "level": "capability",
+    "description": "Store and apply input or audio timing offsets.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-fighting-frame-data",
+    "label": "Fighting frame data",
+    "family": "Gameplay",
+    "group": "Turns cards and rhythm",
+    "parent_id": "turn-based",
+    "level": "capability",
+    "description": "Startup, active, recovery and cancel frames define exchanges.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-deterministic-problem-grading",
+    "label": "Deterministic problem grading",
+    "family": "Gameplay",
+    "group": "Education and adaptation",
+    "parent_id": "education",
+    "level": "capability",
+    "description": "Canonical problem answers feed pure grading rules.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-mastery-progression",
+    "label": "Mastery progression",
+    "family": "Gameplay",
+    "group": "Education and adaptation",
+    "parent_id": "education",
+    "level": "capability",
+    "description": "Attempts update learning progress independently of rewards.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-interactive-manipulatives",
+    "label": "Interactive manipulatives",
+    "family": "Gameplay",
+    "group": "Education and adaptation",
+    "parent_id": "education",
+    "level": "capability",
+    "description": "Directly manipulate visual quantities and representations.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-adaptive-difficulty",
+    "label": "Adaptive difficulty",
+    "family": "Gameplay",
+    "group": "Education and adaptation",
+    "parent_id": "education",
+    "level": "capability",
+    "description": "Performance changes challenge under measurable rules.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-spaced-repetition",
+    "label": "Spaced repetition",
+    "family": "Gameplay",
+    "group": "Education and adaptation",
+    "parent_id": "education",
+    "level": "capability",
+    "description": "Schedule reviews based on recall history.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-hint-scaffolding",
+    "label": "Hint scaffolding",
+    "family": "Gameplay",
+    "group": "Education and adaptation",
+    "parent_id": "education",
+    "level": "capability",
+    "description": "Incremental hints preserve learning and track assistance.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-answer-equivalence",
+    "label": "Answer equivalence",
+    "family": "Gameplay",
+    "group": "Education and adaptation",
+    "parent_id": "education",
+    "level": "capability",
+    "description": "Accept multiple mathematically equivalent answer forms.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-authorable-lessons",
+    "label": "Authorable lessons",
+    "family": "Gameplay",
+    "group": "Education and adaptation",
+    "parent_id": "education",
+    "level": "capability",
+    "description": "Validate editable lesson content before learner delivery.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-habitat-masked-scattering",
+    "label": "Habitat-masked scattering",
+    "family": "Presentation",
+    "group": "World generation",
+    "parent_id": "procedural",
+    "level": "capability",
+    "description": "Terrain and exclusion masks constrain procedural instances.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-terrain-height-sampling",
+    "label": "Terrain height sampling",
+    "family": "Presentation",
+    "group": "World generation",
+    "parent_id": "procedural",
+    "level": "capability",
+    "description": "Query terrain heights for placement or navigation.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-editable-terrain-states",
+    "label": "Editable terrain states",
+    "family": "Presentation",
+    "group": "World generation",
+    "parent_id": "procedural",
+    "level": "capability",
+    "description": "Change terrain state, geometry and collision together.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-seeded-encounter-generation",
+    "label": "Seeded encounter generation",
+    "family": "Presentation",
+    "group": "World generation",
+    "parent_id": "procedural",
+    "level": "capability",
+    "description": "A stored seed reproduces an encounter layout or sequence.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-procedural-dungeon-connectivity",
+    "label": "Procedural dungeon connectivity",
+    "family": "Presentation",
+    "group": "World generation",
+    "parent_id": "procedural",
+    "level": "capability",
+    "description": "Generated rooms retain a reachable entrance and goal.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-biome-transitions",
+    "label": "Biome transitions",
+    "family": "Presentation",
+    "group": "World generation",
+    "parent_id": "procedural",
+    "level": "capability",
+    "description": "Blend terrain, vegetation and climate at biome boundaries.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-world-partition-streaming",
+    "label": "World partition streaming",
+    "family": "Presentation",
+    "group": "World generation",
+    "parent_id": "procedural",
+    "level": "capability",
+    "description": "Stream world regions while preserving persistent references.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-runtime-terrain-generation",
+    "label": "Runtime terrain generation",
+    "family": "Presentation",
+    "group": "World generation",
+    "parent_id": "procedural",
+    "level": "capability",
+    "description": "Generate terrain geometry and collision during play.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-dynamic-shadow-lighting",
+    "label": "Dynamic shadow lighting",
+    "family": "Presentation",
+    "group": "Rendering and lighting",
+    "parent_id": "lighting",
+    "level": "capability",
+    "description": "Moving lights and objects produce coherent shadows.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-global-illumination",
+    "label": "Global illumination",
+    "family": "Presentation",
+    "group": "Rendering and lighting",
+    "parent_id": "lighting",
+    "level": "capability",
+    "description": "Indirect light responds to scene changes.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-day-night-cycle",
+    "label": "Day night cycle",
+    "family": "Presentation",
+    "group": "Rendering and lighting",
+    "parent_id": "lighting",
+    "level": "capability",
+    "description": "Time changes lighting, sky and related scene state.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-weather-rendering",
+    "label": "Weather rendering",
+    "family": "Presentation",
+    "group": "Rendering and lighting",
+    "parent_id": "lighting",
+    "level": "capability",
+    "description": "Rain, snow or fog respond to weather state.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-water-surface-rendering",
+    "label": "Water surface rendering",
+    "family": "Presentation",
+    "group": "Rendering and lighting",
+    "parent_id": "lighting",
+    "level": "capability",
+    "description": "Surface shading conveys depth, waves and reflection.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-destruction-visual-effects",
+    "label": "Destruction visual effects",
+    "family": "Presentation",
+    "group": "Rendering and lighting",
+    "parent_id": "lighting",
+    "level": "capability",
+    "description": "Bounded sparks, dust, smoke and fire communicate impacts.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-stylized-outline-rendering",
+    "label": "Stylized outline rendering",
+    "family": "Presentation",
+    "group": "Rendering and lighting",
+    "parent_id": "lighting",
+    "level": "capability",
+    "description": "Stable edge outlines support a deliberate visual style.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-material-state-transitions",
+    "label": "Material state transitions",
+    "family": "Presentation",
+    "group": "Rendering and lighting",
+    "parent_id": "lighting",
+    "level": "capability",
+    "description": "Wetness, damage or heat changes materials continuously.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-component-rig-animation",
+    "label": "Component rig animation",
+    "family": "Presentation",
+    "group": "Animation and cameras",
+    "parent_id": "animation",
+    "level": "capability",
+    "description": "Animate rigid limbs, wheels or turrets through component transforms.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-skeletal-animation-blending",
+    "label": "Skeletal animation blending",
+    "family": "Presentation",
+    "group": "Animation and cameras",
+    "parent_id": "animation",
+    "level": "capability",
+    "description": "Blend skeletal clips across locomotion and actions.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-inverse-kinematics",
+    "label": "Inverse kinematics",
+    "family": "Presentation",
+    "group": "Animation and cameras",
+    "parent_id": "animation",
+    "level": "capability",
+    "description": "Solve limbs or look targets against world constraints.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-procedural-locomotion",
+    "label": "Procedural locomotion",
+    "family": "Presentation",
+    "group": "Animation and cameras",
+    "parent_id": "animation",
+    "level": "capability",
+    "description": "Generate gait and foot placement from movement and terrain.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-facial-performance",
+    "label": "Facial performance",
+    "family": "Presentation",
+    "group": "Animation and cameras",
+    "parent_id": "animation",
+    "level": "capability",
+    "description": "Drive coherent facial poses, blinking and expression transitions.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-cinematic-sequencing",
+    "label": "Cinematic sequencing",
+    "family": "Presentation",
+    "group": "Animation and cameras",
+    "parent_id": "animation",
+    "level": "capability",
+    "description": "Coordinate camera, actors and events on a timeline.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-camera-obstruction-recovery",
+    "label": "Camera obstruction recovery",
+    "family": "Presentation",
+    "group": "Animation and cameras",
+    "parent_id": "animation",
+    "level": "capability",
+    "description": "Prevent occlusion while preserving readable framing.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-camera-feedback",
+    "label": "Camera feedback",
+    "family": "Presentation",
+    "group": "Animation and cameras",
+    "parent_id": "animation",
+    "level": "capability",
+    "description": "Shakes, zoom and lag communicate motion and impact.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-adaptive-music-stems",
+    "label": "Adaptive music stems",
+    "family": "Presentation",
+    "group": "Audio and music",
+    "parent_id": "audio",
+    "level": "capability",
+    "description": "Gameplay state selects and transitions music stems.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-spatial-audio",
+    "label": "Spatial audio",
+    "family": "Presentation",
+    "group": "Audio and music",
+    "parent_id": "audio",
+    "level": "capability",
+    "description": "Position and attenuation place sounds in the world.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-audio-occlusion",
+    "label": "Audio occlusion",
+    "family": "Presentation",
+    "group": "Audio and music",
+    "parent_id": "audio",
+    "level": "capability",
+    "description": "Geometry changes filtering or audibility.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-surface-footsteps",
+    "label": "Surface footsteps",
+    "family": "Presentation",
+    "group": "Audio and music",
+    "parent_id": "audio",
+    "level": "capability",
+    "description": "Contact material selects appropriately timed footstep cues.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-music-beat-synchronization",
+    "label": "Music beat synchronization",
+    "family": "Presentation",
+    "group": "Audio and music",
+    "parent_id": "audio",
+    "level": "capability",
+    "description": "Game events align with a shared musical clock.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-dialogue-voice-playback",
+    "label": "Dialogue voice playback",
+    "family": "Presentation",
+    "group": "Audio and music",
+    "parent_id": "audio",
+    "level": "capability",
+    "description": "Voice, subtitles and interruption share playback state.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-audio-mixing-priorities",
+    "label": "Audio mixing priorities",
+    "family": "Presentation",
+    "group": "Audio and music",
+    "parent_id": "audio",
+    "level": "capability",
+    "description": "Limit competing cues and duck important channels.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-procedural-audio-synthesis",
+    "label": "Procedural audio synthesis",
+    "family": "Presentation",
+    "group": "Audio and music",
+    "parent_id": "audio",
+    "level": "capability",
+    "description": "Generate audio from gameplay parameters at runtime.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-icon-first-commands",
+    "label": "Icon-first commands",
+    "family": "Interaction",
+    "group": "Controls and accessibility",
+    "parent_id": "accessibility",
+    "level": "capability",
+    "description": "Shapes and symbols expose actions without mandatory reading.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-input-rebinding",
+    "label": "Input rebinding",
+    "family": "Interaction",
+    "group": "Controls and accessibility",
+    "parent_id": "accessibility",
+    "level": "capability",
+    "description": "Remap inputs with conflict and device handling.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-touch-gestures",
+    "label": "Touch gestures",
+    "family": "Interaction",
+    "group": "Controls and accessibility",
+    "parent_id": "accessibility",
+    "level": "capability",
+    "description": "Touch zones and gestures drive gameplay without mouse assumptions.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-gamepad-focus-navigation",
+    "label": "Gamepad focus navigation",
+    "family": "Interaction",
+    "group": "Controls and accessibility",
+    "parent_id": "accessibility",
+    "level": "capability",
+    "description": "Controller focus reaches and activates all essential UI.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-color-independent-signals",
+    "label": "Color-independent signals",
+    "family": "Interaction",
+    "group": "Controls and accessibility",
+    "parent_id": "accessibility",
+    "level": "capability",
+    "description": "Shape, pattern or text duplicates color-only information.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-screen-reader-semantics",
+    "label": "Screen reader semantics",
+    "family": "Interaction",
+    "group": "Controls and accessibility",
+    "parent_id": "accessibility",
+    "level": "capability",
+    "description": "Menus and gameplay state expose accessible announcements.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-reduced-motion-options",
+    "label": "Reduced motion options",
+    "family": "Interaction",
+    "group": "Controls and accessibility",
+    "parent_id": "accessibility",
+    "level": "capability",
+    "description": "Limit camera motion, flashing and animation on request.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-subtitle-customization",
+    "label": "Subtitle customization",
+    "family": "Interaction",
+    "group": "Controls and accessibility",
+    "parent_id": "accessibility",
+    "level": "capability",
+    "description": "Size, speaker labels and contrast can be configured.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-observer-station-transitions",
+    "label": "Observer station transitions",
+    "family": "Interaction",
+    "group": "XR and embodiment",
+    "parent_id": "vr",
+    "level": "capability",
+    "description": "Fade and translate viewing stations without rotating tracked head.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-controller-ray-ui",
+    "label": "Controller ray UI",
+    "family": "Interaction",
+    "group": "XR and embodiment",
+    "parent_id": "vr",
+    "level": "capability",
+    "description": "Tracked controller rays interact with interface targets.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-journal-control-pause",
+    "label": "Journal control pause",
+    "family": "Interaction",
+    "group": "XR and embodiment",
+    "parent_id": "vr",
+    "level": "capability",
+    "description": "Opening a journal prevents conflicting hero control.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-hand-tracking-interaction",
+    "label": "Hand tracking interaction",
+    "family": "Interaction",
+    "group": "XR and embodiment",
+    "parent_id": "vr",
+    "level": "capability",
+    "description": "Recognize and stabilize hand-driven selection and manipulation.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-room-scale-boundaries",
+    "label": "Room scale boundaries",
+    "family": "Interaction",
+    "group": "XR and embodiment",
+    "parent_id": "vr",
+    "level": "capability",
+    "description": "Respect physical play-space limits and recentering.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-xr-comfort-locomotion",
+    "label": "XR comfort locomotion",
+    "family": "Interaction",
+    "group": "XR and embodiment",
+    "parent_id": "vr",
+    "level": "capability",
+    "description": "Comfort options manage artificial motion and turns.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-haptic-feedback",
+    "label": "Haptic feedback",
+    "family": "Interaction",
+    "group": "XR and embodiment",
+    "parent_id": "vr",
+    "level": "capability",
+    "description": "Events map to device-aware tactile feedback.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-mixed-reality-anchors",
+    "label": "Mixed reality anchors",
+    "family": "Interaction",
+    "group": "XR and embodiment",
+    "parent_id": "vr",
+    "level": "capability",
+    "description": "Persist content relative to tracked real-world surfaces.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-atomic-profile-commits",
+    "label": "Atomic profile commits",
+    "family": "Technology",
+    "group": "Persistence and recovery",
+    "parent_id": "persistence",
+    "level": "capability",
+    "description": "Failed writes cannot grant purchases or rewards.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-versioned-save-recovery",
+    "label": "Versioned save recovery",
+    "family": "Technology",
+    "group": "Persistence and recovery",
+    "parent_id": "persistence",
+    "level": "capability",
+    "description": "Restore compatible state and fall back to a backup on failure.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-content-hash-save-isolation",
+    "label": "Content-hash save isolation",
+    "family": "Technology",
+    "group": "Persistence and recovery",
+    "parent_id": "persistence",
+    "level": "capability",
+    "description": "Reject saves from incompatible content versions or event sequences.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-safe-activity-autosave",
+    "label": "Safe activity autosave",
+    "family": "Technology",
+    "group": "Persistence and recovery",
+    "parent_id": "persistence",
+    "level": "capability",
+    "description": "Restore timers and activities into safe playable states.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-checkpoint-persistence",
+    "label": "Checkpoint persistence",
+    "family": "Technology",
+    "group": "Persistence and recovery",
+    "parent_id": "persistence",
+    "level": "capability",
+    "description": "Falls preserve accepted progress while full restart clears it.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-cloud-save-conflict-resolution",
+    "label": "Cloud save conflict resolution",
+    "family": "Technology",
+    "group": "Persistence and recovery",
+    "parent_id": "persistence",
+    "level": "capability",
+    "description": "Detect and resolve divergent remote and local progress.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-save-schema-migration",
+    "label": "Save schema migration",
+    "family": "Technology",
+    "group": "Persistence and recovery",
+    "parent_id": "persistence",
+    "level": "capability",
+    "description": "Upgrade older saves with explicit compatibility tests.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-crash-safe-world-snapshots",
+    "label": "Crash-safe world snapshots",
+    "family": "Technology",
+    "group": "Persistence and recovery",
+    "parent_id": "persistence",
+    "level": "capability",
+    "description": "Recover large world state without partial entity graphs.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-host-authoritative-combat",
+    "label": "Host-authoritative combat",
+    "family": "Technology",
+    "group": "Multiplayer",
+    "parent_id": "networking",
+    "level": "capability",
+    "description": "Host decides damage, purchases and turn outcomes.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-authoritative-object-interaction",
+    "label": "Authoritative object interaction",
+    "family": "Technology",
+    "group": "Multiplayer",
+    "parent_id": "networking",
+    "level": "capability",
+    "description": "Server validates pickup, disguise and capture decisions.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-replicated-race-state",
+    "label": "Replicated race state",
+    "family": "Technology",
+    "group": "Multiplayer",
+    "parent_id": "networking",
+    "level": "capability",
+    "description": "Server owns phase clocks, inventory and race scores.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-shared-cooperative-objectives",
+    "label": "Shared cooperative objectives",
+    "family": "Technology",
+    "group": "Multiplayer",
+    "parent_id": "networking",
+    "level": "capability",
+    "description": "Separate players contribute to one authoritative objective.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-late-join-admission",
+    "label": "Late join admission",
+    "family": "Technology",
+    "group": "Multiplayer",
+    "parent_id": "networking",
+    "level": "capability",
+    "description": "Joining during a round uses an explicit safe admission phase.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-client-prediction-reconciliation",
+    "label": "Client prediction reconciliation",
+    "family": "Technology",
+    "group": "Multiplayer",
+    "parent_id": "networking",
+    "level": "capability",
+    "description": "Predict input locally and reconcile server corrections.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-rollback-simulation",
+    "label": "Rollback simulation",
+    "family": "Technology",
+    "group": "Multiplayer",
+    "parent_id": "networking",
+    "level": "capability",
+    "description": "Restore and resimulate historical state for late inputs.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-lag-compensated-hits",
+    "label": "Lag-compensated hits",
+    "family": "Technology",
+    "group": "Multiplayer",
+    "parent_id": "networking",
+    "level": "capability",
+    "description": "Validate hits against a bounded historical world state.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-lobby-matchmaking",
+    "label": "Lobby matchmaking",
+    "family": "Technology",
+    "group": "Online services",
+    "parent_id": "matchmaking",
+    "level": "capability",
+    "description": "Form suitable sessions and handle failed joins.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-dedicated-server-lifecycle",
+    "label": "Dedicated server lifecycle",
+    "family": "Technology",
+    "group": "Online services",
+    "parent_id": "matchmaking",
+    "level": "capability",
+    "description": "Allocate, monitor and retire match servers.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-reconnect-recovery",
+    "label": "Reconnect recovery",
+    "family": "Technology",
+    "group": "Online services",
+    "parent_id": "matchmaking",
+    "level": "capability",
+    "description": "Restore a disconnected player without duplicated state.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-cross-platform-identity",
+    "label": "Cross-platform identity",
+    "family": "Technology",
+    "group": "Online services",
+    "parent_id": "matchmaking",
+    "level": "capability",
+    "description": "Map platform identities and permissions to one player.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-anti-cheat-validation",
+    "label": "Anti-cheat validation",
+    "family": "Technology",
+    "group": "Online services",
+    "parent_id": "matchmaking",
+    "level": "capability",
+    "description": "Reject impossible or unauthorized gameplay requests.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-session-reward-api",
+    "label": "Session reward API",
+    "family": "Technology",
+    "group": "Online services",
+    "parent_id": "matchmaking",
+    "level": "capability",
+    "description": "Start and finish sessions with validated reward grants.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-leaderboards",
+    "label": "Leaderboards",
+    "family": "Technology",
+    "group": "Online services",
+    "parent_id": "matchmaking",
+    "level": "capability",
+    "description": "Submit and rank validated scores with season boundaries.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-live-events",
+    "label": "Live events",
+    "family": "Technology",
+    "group": "Online services",
+    "parent_id": "matchmaking",
+    "level": "capability",
+    "description": "Activate versioned time-bounded content consistently.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-asset-version-comparison",
+    "label": "Asset version comparison",
+    "family": "Technology",
+    "group": "Tooling and reuse",
+    "parent_id": "authoring",
+    "level": "capability",
+    "description": "Compare pinned asset versions with review context.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-terrain-aware-review-camera",
+    "label": "Terrain-aware review camera",
+    "family": "Technology",
+    "group": "Tooling and reuse",
+    "parent_id": "authoring",
+    "level": "capability",
+    "description": "Navigate to sampled terrain heights and retain review settings.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-runtime-content-validation",
+    "label": "Runtime content validation",
+    "family": "Technology",
+    "group": "Tooling and reuse",
+    "parent_id": "authoring",
+    "level": "capability",
+    "description": "Reject invalid authored content before gameplay consumption.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-replay-recording",
+    "label": "Replay recording",
+    "family": "Technology",
+    "group": "Tooling and reuse",
+    "parent_id": "authoring",
+    "level": "capability",
+    "description": "Record sufficient state or input for repeatable playback.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-mod-sandboxing",
+    "label": "Mod sandboxing",
+    "family": "Technology",
+    "group": "Tooling and reuse",
+    "parent_id": "authoring",
+    "level": "capability",
+    "description": "Load extensions under bounded compatibility and permission rules.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-localization-pipeline",
+    "label": "Localization pipeline",
+    "family": "Technology",
+    "group": "Tooling and reuse",
+    "parent_id": "authoring",
+    "level": "capability",
+    "description": "Extract, translate and validate text, layouts and locale formats.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-performance-budgets",
+    "label": "Performance budgets",
+    "family": "Technology",
+    "group": "Tooling and reuse",
+    "parent_id": "authoring",
+    "level": "capability",
+    "description": "Measure CPU, GPU and memory against per-platform budgets.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  },
+  {
+    "id": "cap-deterministic-replay-verification",
+    "label": "Deterministic replay verification",
+    "family": "Technology",
+    "group": "Tooling and reuse",
+    "parent_id": "authoring",
+    "level": "capability",
+    "description": "Compare replay state hashes across runs and builds.",
+    "acceptance": "Demonstrate this behavior and its failure/recovery cases in a runnable build; record revision, platform, dependencies, source boundary and test evidence. A second consumer is required for reused status."
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "checks": [
+    "31 projects seeded into native SQLite",
+    "Native UI search and layout",
+    "Project editing through native UI",
+    "SQLite source-file search",
+    "Native managed-media preview, dimensions, approval and press-kit export",
+    "Native SQLite/media backup",
+    "Capability gap view; no JavaScript page errors",
+    "Edits and media review survive native process restart"
+  ],
+  "exe": "X:\\Projects\\ArcoreGameCore\\hub\\src-tauri\\target\\release\\gamecore-library.exe",
+  "output": "X:\\Projects\\ArcoreGameCore\\hub\\test-results\\native-1794427582872"
+}

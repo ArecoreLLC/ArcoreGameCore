@@ -1,0 +1,32 @@
+{
+  "status": "passed",
+  "workflow": "game-project-integration",
+  "dimension": "3d; catalog includes 2d/XR",
+  "scope": "Roadmap review JSON export; no game runtime changes",
+  "platform": "Windows x64 / WebView2",
+  "frontend_tests": 11,
+  "rust_tests": 8,
+  "native_export": "passed",
+  "files": [
+    {
+      "path": "X:\\Projects\\ArcoreGameCore\\hub\\src\\roadmapExport.ts",
+      "sha256": "440299a344e2645eb098dcc1fb8240da0e419d6394be75927ff01279ab0c3486"
+    },
+    {
+      "path": "X:\\Projects\\ArcoreGameCore\\hub\\src\\RoadmapView.tsx",
+      "sha256": "1d9193f9818a06c2d62be09981508298ce14844e1e81cf95474d37f5627bfd29"
+    },
+    {
+      "path": "X:\\Projects\\ArcoreGameCore\\hub\\src-tauri\\src\\main.rs",
+      "sha256": "49954a5ba7f2b046a3aae1af33fcf03c111cc9cd2409bffef2e4cd335489b14c"
+    },
+    {
+      "path": "X:\\Projects\\ArcoreGameCore\\hub\\src-tauri\\target-json-export\\release\\gamecore-library.exe",
+      "sha256": "02fed6fd5fbb9136b3e20a3353ba351c9d7f4214b425be6d6f9cec13c9740716"
+    },
+    {
+      "path": "X:\\Projects\\ArcoreGameCore\\Launch-GameCore.cmd",
+      "sha256": "e05eb09f18c72fb511b893249560e26ec902f2537270ff35eeeeb68ceb986f16"
+    }
+  ]
+}

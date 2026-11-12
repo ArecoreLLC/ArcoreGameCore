@@ -21,8 +21,12 @@ class ScaffoldValidationTests(unittest.TestCase):
         source = SCRIPT.parents[1]
         for name in ('2d', '3d', 'shared', 'workflows', 'tools', 'docs', 'porting', 'framework'):
             shutil.copytree(source / name, self.root / name, ignore=shutil.ignore_patterns(*validator.GENERATED_DIRS))
-        for name in ('README.md', 'AGENTS.md'):
+        for name in ('README.md', 'AGENTS.md', 'Launch-GameCore.cmd'):
             shutil.copy2(source / name, self.root / name)
+        # Root README links to the desktop hub. Keep the link target in the
+        # scaffold fixture without copying dependencies, builds or user media.
+        (self.root / 'hub').mkdir()
+        shutil.copy2(source / 'hub/README.md', self.root / 'hub/README.md')
 
     def mutate_index(self, change):
         path = self.root / 'workflows/index.json'

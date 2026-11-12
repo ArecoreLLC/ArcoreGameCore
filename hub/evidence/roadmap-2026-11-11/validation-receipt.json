@@ -1,0 +1,50 @@
+{
+  "baseline_revision": "be8748519106250dee0adc70d0aedbfa1a9d9983",
+  "revision": "uncommitted working tree; exact hashes below",
+  "workflow": "game-project-integration",
+  "dimension": "3d; roadmap also covers 2d and XR",
+  "platform": "Windows 11 x64 / WebView2",
+  "validation": {
+    "frontend_tests": 10,
+    "rust_tests": 8,
+    "scaffold_tests": 91,
+    "native_roadmap": "passed",
+    "native_catalog": "passed",
+    "live_projects_taxonomy_media_preserved": true,
+    "sqlite_integrity": "ok"
+  },
+  "files": [
+    {
+      "path": "X:\\Projects\\ArcoreGameCore\\hub\\src\\RoadmapView.tsx",
+      "sha256": "4355aa7dd8fe5c4ea10d042e0c70d457c12ac22edd5be3fe75a3d63c389b27a7"
+    },
+    {
+      "path": "X:\\Projects\\ArcoreGameCore\\hub\\src\\roadmap.ts",
+      "sha256": "f08bf78941fa9fe4226f415f10e1d4841174f52cc7406c07089de366eb2516eb"
+    },
+    {
+      "path": "X:\\Projects\\ArcoreGameCore\\hub\\src\\roadmap.css",
+      "sha256": "be4f0dbe9f797c5270f3b9896fd6286ce1c8488fca39e6bdd1ebaafccb5dc641"
+    },
+    {
+      "path": "X:\\Projects\\ArcoreGameCore\\hub\\src\\main.tsx",
+      "sha256": "49ad4444db2ddc75b46a7db991477c61f3f2f20b88063068fe1ac7ac9d1f9e05"
+    },
+    {
+      "path": "X:\\Projects\\ArcoreGameCore\\hub\\src-tauri\\src\\roadmap.rs",
+      "sha256": "5ed31c7e827a81a52437eaee24f2edbdc1d48ce1341fe17822b2a0fe3a8437ba"
+    },
+    {
+      "path": "X:\\Projects\\ArcoreGameCore\\hub\\src-tauri\\src\\main.rs",
+      "sha256": "1d1732d28654ad8778c6edd71ed8435b8be3f695b190c2dd440b3a069f72a8cb"
+    },
+    {
+      "path": "X:\\Projects\\ArcoreGameCore\\hub\\data\\capability-roadmap.json",
+      "sha256": "fcd01f0b483b6bcbdb536397a6cc1216f04b3039f8855f790fbfd2cb0fd913f4"
+    },
+    {
+      "path": "X:\\Projects\\ArcoreGameCore\\hub\\src-tauri\\target\\release\\gamecore-library.exe",
+      "sha256": "0e553d8ecf745600e3edb93331b82dd349e681661b38e097af1557fe0882533b"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "revision": "review-2026-11-11-v1",
+  "base_git_revision": "be8748519106250dee0adc70d0aedbfa1a9d9983",
+  "working_tree": "Uncommitted catalog/app changes; hashes identify tested files.",
+  "platform": "Windows x64 native Tauri/WebView2",
+  "node": "24.11.0",
+  "rust": "1.99.1",
+  "checks": [
+    {
+      "command": "npm test",
+      "cwd": "hub",
+      "status": "passed",
+      "result": "12 tests"
+    },
+    {
+      "command": "cargo test --manifest-path src-tauri/Cargo.toml",
+      "cwd": "hub",
+      "status": "passed",
+      "result": "9 tests including upgrade/idempotence/retired-evidence preservation"
+    },
+    {
+      "command": "npm run tauri -- build --no-bundle",
+      "cwd": "hub",
+      "status": "passed",
+      "result": "Release executable; Vite reports a non-blocking bundle-size warning"
+    },
+    {
+      "command": "node tests/roadmap-smoke.mjs",
+      "cwd": "hub",
+      "status": "passed",
+      "result": "Native save/reopen, stage selector, references, evidence gates, cycle/conflict rejection; isolated copy of live library"
+    },
+    {
+      "command": "node tests/roadmap-export-smoke.mjs",
+      "cwd": "hub",
+      "status": "passed",
+      "result": "50 games, 146 definitions, 330 assignments, no missing definitions or single-consumer targets, creative briefs, native export roundtrip"
+    },
+    {
+      "command": null,
+      "status": "not_run",
+      "result": "Game runtime builds/playtests and cross-engine parity; this change updates planning/catalog only."
+    }
+  ],
+  "sha256": {
+    "hub/src/RoadmapView.tsx": "579f73b97bb4e191108b7843fc898f49037aad3e29e2916123228146d38e1cd5",
+    "hub/src/roadmap.ts": "6cbbd6e3ac616d3deb92ae72d4cb755924537e454bd2ff76665c26ce8f797faa",
+    "hub/src/roadmapExport.ts": "6501053ac8ef0e7fe850fdba1505dd3e2160a9550a552b8948bbe408949b2b2c",
+    "hub/src-tauri/src/roadmap.rs": "457b332366e091404845696c1cca88cae19c266793a5e88a8d86d1467c89a891",
+    "hub/data/capability-roadmap.json": "2c228690731a84598ddf8eb5ef88240593327afaa38853c732046770ad693e9b",
+    "hub/data/taxonomy.json": "1397e05654b481d3366f4bc1e98fe6429890fe3fd80f1b5d74d4ab2ccd80a781",
+    "hub/tools/incorporate_roadmap_feedback.py": "cc1c9e904243bd951611e33ccc4097bbf55b53e14f833c59dfb26ddbd874383a",
+    "hub/src-tauri/target-json-export/release/gamecore-library.exe": "aaf564347139b27d0fae126da1155514fabe6019c12a6de2dfbb2a27516e0340"
+  }
+}

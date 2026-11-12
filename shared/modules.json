@@ -1,0 +1,325 @@
+{
+  "schema_version": 1,
+  "modules": [
+    {
+      "id": "attachment-grid",
+      "version": "0.2.0",
+      "description": "Connected attachment validation",
+      "language": "cpp",
+      "kind": "header-only",
+      "maturity": "pilot",
+      "source": "shared/cpp/AttachmentGrid.h",
+      "sha256": "01ab5775897a3f7a7d35f3179579de8727a29f74825abb873e6122ea98118146",
+      "documentation": "shared/cpp/AttachmentGrid.md",
+      "dependencies": [],
+      "tests": [
+        "shared/cpp/tests/AttachmentGridRemovalTests.cpp"
+      ],
+      "known_consumers": [
+        "Snap-Rally",
+        "Flotsam-Citadel"
+      ],
+      "validation_note": "Test source references only; not a fresh test result. Consumer tests remain game-owned."
+    },
+    {
+      "id": "buoyancy",
+      "version": "0.1.0",
+      "description": "Mass properties and capped buoyant force",
+      "language": "cpp",
+      "kind": "header-only",
+      "maturity": "pilot",
+      "source": "shared/cpp/Buoyancy.h",
+      "sha256": "ddf895db844f58d96d87c18b95e8d1a32fb7492d02cbc7fc9f2fe3555668177b",
+      "documentation": "shared/cpp/Buoyancy.md",
+      "dependencies": [],
+      "tests": [
+        "shared/cpp/tests/BuoyancyTests.cpp"
+      ],
+      "known_consumers": [
+        "Flotsam-Citadel"
+      ],
+      "validation_note": "Test source references only; not a fresh test result. Consumer tests remain game-owned."
+    },
+    {
+      "id": "combat-window",
+      "version": "0.1.0",
+      "description": "Active and recovery timing",
+      "language": "cpp",
+      "kind": "header-only",
+      "maturity": "pilot",
+      "source": "shared/cpp/CombatWindow.h",
+      "sha256": "94ebeee340527dc1bc2595d1f1677a3de1d7e0e5bfb066cf3ad238186fbb9d09",
+      "documentation": "shared/cpp/CombatWindow.md",
+      "dependencies": [],
+      "tests": [
+        "shared/cpp/tests/CombatWindowTest.cpp"
+      ],
+      "known_consumers": [
+        "Scrapshift-Arena"
+      ],
+      "validation_note": "Test source references only; not a fresh test result. Consumer tests remain game-owned."
+    },
+    {
+      "id": "cooperative-task",
+      "version": "0.1.0",
+      "description": "Shared work accumulation",
+      "language": "cpp",
+      "kind": "header-only",
+      "maturity": "pilot",
+      "source": "shared/cpp/CooperativeTask.h",
+      "sha256": "dec7dda3ac62074da4cc63fa5733afea32f76cf585675e31943e85e55b063008",
+      "documentation": "shared/cpp/CooperativeTask.md",
+      "dependencies": [],
+      "tests": [
+        "shared/cpp/tests/cooperative_task_test.cpp"
+      ],
+      "known_consumers": [
+        "Pebblekin-Command"
+      ],
+      "validation_note": "Test source references only; not a fresh test result. Consumer tests remain game-owned."
+    },
+    {
+      "id": "grid-route",
+      "version": "0.2.0",
+      "description": "Bounded grid route finding",
+      "language": "cpp",
+      "kind": "header-only",
+      "maturity": "pilot",
+      "source": "shared/cpp/GridRoute.h",
+      "sha256": "70129955ad575dc69bc260bd5a03914d7708f6a78f42d4ac31c7d7fc6fb9f0d3",
+      "documentation": "shared/cpp/GridRoute.md",
+      "dependencies": [],
+      "tests": [
+        "shared/cpp/tests/GridRouteTests.cpp"
+      ],
+      "known_consumers": [
+        "Pocket-Fort-Patrol"
+      ],
+      "validation_note": "Test source references only; not a fresh test result. Consumer tests remain game-owned."
+    },
+    {
+      "id": "interaction-rules",
+      "version": "0.2.0",
+      "description": "Finite range, cooldown and nearest eligible interaction selection",
+      "language": "cpp",
+      "kind": "header-only",
+      "maturity": "pilot",
+      "source": "shared/cpp/InteractionRules.h",
+      "sha256": "0655c7d21a40c73e975421ed2ae0a51c074a1d70b163587125470e41abf8bb0d",
+      "documentation": "shared/cpp/InteractionRules.md",
+      "dependencies": [],
+      "tests": [
+        "shared/cpp/tests/InteractionRulesTests.cpp"
+      ],
+      "known_consumers": [
+        "Haunt-and-Haul"
+      ],
+      "validation_note": "Test source references only; not a fresh test result. Consumer tests remain game-owned."
+    },
+    {
+      "id": "light-reflection",
+      "version": "0.1.0",
+      "description": "Specular reflection math",
+      "language": "cpp",
+      "kind": "header-only",
+      "maturity": "pilot",
+      "source": "shared/cpp/LightReflection.h",
+      "sha256": "a6c477a2efae377a7739fc39543741d76b500b49e8fb46ad6eb0750f54d249a0",
+      "documentation": "shared/cpp/LightReflection.md",
+      "dependencies": [],
+      "tests": [],
+      "known_consumers": [
+        "Lumen-Weaver"
+      ],
+      "validation_note": "Test source references only; not a fresh test result. Consumer tests remain game-owned."
+    },
+    {
+      "id": "objective-latch",
+      "version": "0.1.0",
+      "description": "Idempotent objective collection",
+      "language": "cpp",
+      "kind": "header-only",
+      "maturity": "pilot",
+      "source": "shared/cpp/ObjectiveLatch.h",
+      "sha256": "9267c99a0dbb3aec4fef8318cae2ac32b454b90e6e57c8e7c196844e1f471ef2",
+      "documentation": "shared/cpp/ObjectiveLatch.md",
+      "dependencies": [],
+      "tests": [
+        "shared/cpp/tests/ObjectiveLatchTests.cpp"
+      ],
+      "known_consumers": [
+        "Gully-Giants"
+      ],
+      "validation_note": "Test source references only; not a fresh test result. Consumer tests remain game-owned."
+    },
+    {
+      "id": "production-clock",
+      "version": "0.2.0",
+      "description": "Bounded recipe production clock",
+      "language": "cpp",
+      "kind": "header-only",
+      "maturity": "pilot",
+      "source": "shared/cpp/ProductionClock.h",
+      "sha256": "63d6c44f1f1244fc4e628f3b26ee6d2b01ddc29bf1b612780f7bff0ee35e3bc2",
+      "documentation": "shared/cpp/ProductionClock.md",
+      "dependencies": [],
+      "tests": [
+        "shared/cpp/tests/ProductionClockTests.cpp"
+      ],
+      "known_consumers": [
+        "Critter-Contraptions"
+      ],
+      "validation_note": "Test source references only; not a fresh test result. Consumer tests remain game-owned."
+    },
+    {
+      "id": "resonance-rule",
+      "version": "0.2.0",
+      "description": "Tone and pulse progression",
+      "language": "cpp",
+      "kind": "header-only",
+      "maturity": "pilot",
+      "source": "shared/cpp/ResonanceRule.h",
+      "sha256": "8be1bc318ba87728cf3ccc927f1f4fb71ad65d963a7ae7270137668100b640ca",
+      "documentation": "shared/cpp/ResonanceRule.md",
+      "dependencies": [],
+      "tests": [
+        "shared/cpp/tests/ResonanceRuleTests.cpp"
+      ],
+      "known_consumers": [
+        "Echo-Forge"
+      ],
+      "validation_note": "Test source references only; not a fresh test result. Consumer tests remain game-owned."
+    },
+    {
+      "id": "stock-ledger",
+      "version": "0.2.0",
+      "description": "Bounded inventory, atomic transfers and sales",
+      "language": "cpp",
+      "kind": "header-only",
+      "maturity": "pilot",
+      "source": "shared/cpp/StockLedger.h",
+      "sha256": "caa40b6e631ef05ebc38b544ee19e671d9aae906ecde4f04a5fb318c4e317082",
+      "documentation": "shared/cpp/README.md",
+      "dependencies": [],
+      "tests": [
+        "shared/cpp/tests/StockLedgerTests.cpp"
+      ],
+      "known_consumers": [
+        "Dungeon-Dash-Market"
+      ],
+      "validation_note": "Test source references only; not a fresh test result. Consumer tests remain game-owned."
+    },
+    {
+      "id": "support-graph",
+      "version": "0.1.0",
+      "description": "Structural connectivity",
+      "language": "cpp",
+      "kind": "header-only",
+      "maturity": "pilot",
+      "source": "shared/cpp/SupportGraph.h",
+      "sha256": "3c4ebaba00996bd3fda714a657fab301e8922af7fe3c957070abd3d98b0796c7",
+      "documentation": "shared/cpp/SupportGraph.md",
+      "dependencies": [],
+      "tests": [
+        "shared/cpp/tests/SupportGraphTests.cpp"
+      ],
+      "known_consumers": [
+        "Box-Fort-Brigade"
+      ],
+      "validation_note": "Test source references only; not a fresh test result. Consumer tests remain game-owned."
+    },
+    {
+      "id": "wheel-contact",
+      "version": "0.1.0",
+      "description": "Unilateral suspension and combined tire friction forces in SI units",
+      "language": "cpp",
+      "kind": "header-only",
+      "maturity": "pilot",
+      "source": "shared/cpp/WheelContact.h",
+      "sha256": "495815092162cc304559fdd94dca6917bdc471e5064237c2fff8f910a8f5f4fa",
+      "documentation": "shared/cpp/WheelContact.md",
+      "dependencies": [],
+      "tests": [
+        "shared/cpp/tests/WheelContactTests.cpp"
+      ],
+      "known_consumers": [
+        "Snap-Rally"
+      ],
+      "validation_note": "See consuming game evidence; no second-engine parity claim."
+    },
+    {
+      "id": "exposure-meter",
+      "version": "0.1.0",
+      "description": "Bounded detection accumulation and recovery",
+      "language": "cpp",
+      "kind": "header-only",
+      "maturity": "pilot",
+      "source": "shared/cpp/ExposureMeter.h",
+      "sha256": "8e9a2e5fc6a2b05525cb7bd31164dba253f09dda4a888ba8e3efcae6455c7caa",
+      "documentation": "shared/cpp/ExposureMeter.md",
+      "dependencies": [],
+      "tests": [],
+      "known_consumers": [
+        "Lumen-Weaver"
+      ],
+      "validation_note": "Consumer-owned Unreal tests; see Lumen-Weaver validation evidence. No cross-engine parity claim."
+    },
+    {
+      "id": "rechargeable-reserve",
+      "version": "0.1.0",
+      "description": "Bounded finite resource spending and saturation-safe recharge",
+      "language": "cpp",
+      "kind": "header-only",
+      "maturity": "pilot",
+      "source": "shared/cpp/RechargeableReserve.h",
+      "sha256": "324bffc6dc1745218421c737b3ab3e6b915d84d5eace9fc75b0c6cc266ee3b74",
+      "documentation": "shared/cpp/RechargeableReserve.md",
+      "dependencies": [],
+      "tests": [
+        "shared/cpp/tests/RechargeableReserveTests.cpp"
+      ],
+      "known_consumers": [
+        "Gully-Giants"
+      ],
+      "validation_note": "Consumer owns ability behavior and timing; see its validation evidence."
+    },
+    {
+      "id": "timed-stacks",
+      "version": "0.1.0",
+      "description": "Refreshable capped status stacks with monotonic expiry and consumption",
+      "language": "cpp",
+      "kind": "header-only",
+      "maturity": "pilot",
+      "source": "shared/cpp/TimedStacks.h",
+      "sha256": "03db3058664c5b05a6ad2bb4788bd4efe8cf9d5dbace79ef5cd1a3e318df9da7",
+      "documentation": "shared/cpp/TimedStacks.md",
+      "dependencies": [],
+      "tests": [
+        "shared/cpp/tests/TimedStacksTest.cpp"
+      ],
+      "known_consumers": [
+        "Scrapshift-Arena"
+      ],
+      "validation_note": "Execution evidence is consumer-owned; no cross-engine parity claim."
+    },
+    {
+      "id": "planar-move-order",
+      "version": "0.1.0",
+      "description": "Unit-owned planar orders with collision-observed arrival and resumable blocked state",
+      "language": "cpp",
+      "kind": "header-only",
+      "maturity": "pilot",
+      "source": "shared/cpp/PlanarMoveOrder.h",
+      "sha256": "22399c42466363ebf7b58f0bdfb103019e353a23ed0e5bea1e5cc8efb5ef3551",
+      "documentation": "shared/cpp/PlanarMoveOrder.md",
+      "dependencies": [],
+      "tests": [
+        "shared/cpp/tests/PlanarMoveOrderTests.cpp"
+      ],
+      "known_consumers": [
+        "Box-Fort-Brigade"
+      ],
+      "validation_note": "Portable tests and consumer possession/collision tests; execution evidence is consumer-owned."
+    }
+  ]
+}

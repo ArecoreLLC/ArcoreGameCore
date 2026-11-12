@@ -1,0 +1,26 @@
+[package]
+name = "gamecore-hub"
+version = "0.1.0"
+description = "GameCore game catalog and marketing library"
+edition = "2021"
+default-run = "gamecore-library"
+
+[[bin]]
+name = "gamecore-library"
+path = "src/main.rs"
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["protocol-asset"] }
+tauri-plugin-dialog = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+rusqlite = { version = "0.32", features = ["bundled", "backup"] }
+sha2 = "0.10"
+uuid = { version = "1", features = ["v4"] }
+chrono = "0.4"
+
+[dev-dependencies]
+tempfile = "3"
