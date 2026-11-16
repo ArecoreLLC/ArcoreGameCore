@@ -11,3 +11,10 @@ Start with [workflows/index.json](workflows/index.json). Select one workflow and
 - Agents register only the GameCore hub MCP; the hub calls ModelForge, SoundCore, Unreal and Flow through the registry in `shared/ecosystem.json` → `mcp`. Don't wire workflows to downstream MCP servers directly, and don't add credentials to the registry or templates.
 - Run `python tools/validate_workflows.py`, `python tools/validate_wizards.py`, `python tools/mcp_registry.py` and `python -m unittest discover -s tools/tests -v` for scaffold changes (use `python3` where `python` is not Python 3; on Windows `python3` is usually a Store placeholder). These check documentation/manifest integrity, not game behavior.
 - Do not mark a port complete from a checklist alone. Report the exact build/playtest commands, revision and platform, separating passed, failed, blocked and not-run checks.
+
+
+<!-- BEGIN REPOSITORY ATTRIBUTION POLICY -->
+## Commit and pull request attribution
+
+Follow the repository-root `AI_ATTRIBUTION.md` for every commit and pull request. Do not add AI co-author trailers, generated-by footers, agent signatures, promotional links, or session links to commit messages or pull request titles/descriptions. Keep genuine human credits and required legal/license notices. Use the existing authorized Git identity; never invent human authorship. Check the final message and PR text before submission.
+<!-- END REPOSITORY ATTRIBUTION POLICY -->
