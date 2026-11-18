@@ -53,6 +53,16 @@ older installed copies continue to build from their lockfiles. Restore a matchin
 historical framework revision to reinstall an older release. Removed selections
 are not automatically deleted from the game.
 
+Adding modules with `sync --update` can retain historical installed releases when
+the entire previous dependency set stays selected at the same versions and paths.
+Their installed hashes are checked before any write; those bytes are kept rather
+than copied from the current registry. This does not reinstall a missing release,
+move its header, accept local edits, or infer historical dependency changes.
+New modules still undergo current-registry hash/dependency admission. Clockwork
+Courier exercises this path when adopting timing, input and presentation modules
+while retaining its original attachment and objective rules. Regression tests in
+`tools/tests/test_gamecore.py` cover explicit update, preservation and rejection.
+
 `check` validates installed bytes and selected versions without consulting canonical
 framework headers. Normal builds never automatically sync. Both pilots also check
 installed hashes inside their native Unreal Build.cs rules, so direct UBT builds
@@ -110,3 +120,23 @@ two games. Asset sourcing, generic gameplay components, packaging, controller
 hardware tests and multiplayer remain separate milestones. Pilot execution evidence
 is recorded in `framework/MODULE_WORKFLOW_PILOT.md`.
 
+
+## Acceptance scenarios and build provenance
+
+A consumer may declare `smoke.required_markers` as ordered log-message prefixes.
+Every required stage must occur before final success; echoed command-line arguments,
+partial strings, missing stages and runtime errors cannot satisfy acceptance.
+`smoke_scenarios` holds named overrides for flag/pass/fail/required markers only.
+Use `smoke --scenario navigation` (or `test --scenario navigation`) to select one;
+the default smoke declaration is unchanged and the receipt records the scenario.
+
+Build receipts now hash project Editor DLLs and module descriptors. Automation and
+smoke require a successful build receipt matching current source/config/content and
+binary hashes, and reject binaries changed during a test. Run GameCore `build`
+after adopting this runner, even if an older/native build already exists. The old
+warning that tests could unknowingly consume stale binaries is superseded by this gate.
+
+Consumers may keep a pinned copy of the runner under `Tools/GameCore/tools` for a
+self-contained checkout. Its Python sources are included in build input snapshots;
+Python caches are excluded. Canonical module installation still requires the full
+GameCore registry; an offline build/test bundle does not implicitly carry that registry.

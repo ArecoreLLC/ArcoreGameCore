@@ -2,3 +2,75 @@
 
 .facet{border-bottom:1px solid var(--line);padding:10px 0}.facet small{text-transform:capitalize;color:#8c98ad;font-size:10px}.facet p{font-size:12px;margin:5px 0 0}
 .cover-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.card-art:has(.cover-image) .art-label{background:#111c;color:white;padding:4px 8px;border-radius:5px}.capture-status{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}.capture-status .pill{font-size:10px;white-space:normal}.media-caption{flex-wrap:wrap}.media-caption small{width:100%;color:var(--muted)}.atlas-card details{font-size:12px;margin:10px 0;color:#64716c}.atlas-card summary{cursor:pointer}.atlas-card .pill{white-space:normal}
+
+.screenshot-dropzone{border:2px dashed var(--border,#465066);border-radius:12px;padding:24px;display:flex;align-items:center;gap:14px;margin-bottom:20px}.screenshot-dropzone span{color:var(--muted,#a5aec0)}.screenshot-dropzone.dragging{border-color:#65d6b3;background:#65d6b320}
+
+/* ---- Usability pass (2026-11-18): nav, headers, sticky tabs, links, cards ---- */
+.nav:focus:not(:focus-visible){outline:none}
+.nav .count.attention{background:#5a3f1c;color:#ffd7a0}
+.crumb{background:none;border:0;padding:0;color:#8d97aa;font-size:12px;font-weight:400}
+.crumb:hover{background:none;color:#d4c3ff;text-decoration:underline}
+a.button{display:inline-flex;align-items:center;gap:6px;color:#e6e9f0;text-decoration:none;border:1px solid #323948;background:#1b212e;border-radius:8px;padding:8px 12px;font-size:12px;font-weight:550}
+a.button:hover{background:#2a3142;border-color:#646079}
+a.button:focus-visible{outline:2px solid #c2b0ff;outline-offset:3px}
+.page-heading.compact{margin:0 0 20px}
+.page-heading.compact h1{font-size:26px;margin:0 0 6px;letter-spacing:-.5px}
+.stats{padding:14px 0;margin-bottom:20px}
+.stats strong{font-size:22px}
+.stats span{margin-top:4px}
+details.about{border:1px solid var(--line);border-radius:10px;background:#141923;padding:12px 16px;margin-bottom:20px;font-size:12px;color:#9ba6ba}
+details.about summary{cursor:pointer;color:#c4c9d3}
+details.about p{line-height:1.7}
+.detail-tabs{position:sticky;top:0;z-index:5;background:#0d1017;padding-top:14px}
+.card-art{height:104px}
+.card-status{display:flex;flex-wrap:wrap;gap:8px;margin:-8px 0 14px;font-size:10px;color:#8995a9}
+.card-status span{display:inline-flex;align-items:center;gap:5px}
+.card-status .attention{color:#ffd7a0}
+.classification select{min-width:0}
+.stem-table .classification{flex-wrap:wrap}
+.media-grid.compact{grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px;margin:0}
+.media-grid.compact img,.media-grid.compact .video-placeholder{height:120px}
+.games-heading{margin:8px 0 16px}
+.prewrap{white-space:pre-wrap}
+
+/* ---- Approvals inbox ---- */
+.chip-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.chip{border-radius:999px;padding:7px 14px;font-size:12px}
+.chip span{font-size:10px;background:#2a3142;border-radius:999px;padding:1px 7px}
+.chip.selected{background:#282238;border-color:#5b4a7a;color:#d4c3ff}
+.chip.selected span{background:#413453}
+.pill.accent{background:#282238;border-color:#4d3f66;color:#d4c3ff}
+.approvals-layout{display:grid;grid-template-columns:minmax(300px,400px) minmax(0,1fr);gap:20px;align-items:start}
+.approval-list{border:1px solid var(--line);border-radius:11px;background:var(--panel);max-height:calc(100vh - 150px);overflow:auto;position:sticky;top:16px}
+.approval-list-head{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--panel);z-index:1;font-size:11px}
+.approval-row{display:flex;align-items:center;gap:10px;padding:11px 14px;border-bottom:1px solid #222836;cursor:pointer;font-size:12px}
+.approval-row:hover{background:#1b212e}
+.approval-row.selected{background:#221d31;box-shadow:inset 3px 0 0 #b7a0ff}
+.approval-row .check-spacer{width:13px;flex-shrink:0}
+.approval-kind-icon{color:#a797cb;flex-shrink:0}
+.approval-row-body{min-width:0;flex:1;display:flex;flex-direction:column;gap:3px}
+.approval-row-body strong{font-weight:550;color:#e1e6f0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.approval-row-body span{color:#8995a9;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.approval-row-meta{display:flex;align-items:center;gap:6px;color:#e0b46e;flex-shrink:0}
+.approval-detail h2{margin:0 0 4px}
+.approval-detail .section-heading{margin-bottom:14px}
+.approval-media{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px}
+.take-list{display:flex;flex-direction:column;gap:8px;margin:12px 0}
+.take-row{display:grid;grid-template-columns:70px 1fr auto;grid-template-areas:"t tags link" "t meta link";gap:4px 12px;align-items:center;border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+.take-row>strong{grid-area:t}.take-row>.tag-list{grid-area:tags}.take-row>small{grid-area:meta}.take-row>a{grid-area:link}
+.decision-box{border-top:1px solid var(--line);margin-top:18px;padding-top:18px}
+.decision-actions{margin-bottom:8px}
+.callout{border:1px solid #4a4256;background:#1c1926;border-radius:8px;padding:10px 14px;margin-bottom:14px;font-size:12px}
+.callout.warm{border-color:#6b5230;background:#2a2116;color:#f0d3a6}
+.callout ul{margin:6px 0 0;padding-left:18px}
+.callout p{margin:4px 0 0}
+button.danger{color:#e4b3bb}
+button.danger:hover{background:#341f29;border-color:#774954}
+.link-button{background:none;border:0;color:#d4c3ff;padding:2px 6px;margin-left:auto}
+.undo-bar{margin:0 0 16px}
+.undo-bar .link-button+button{margin-left:0}
+.approval-history{border-top:1px solid var(--line);margin-top:18px;padding-top:12px}
+.approval-history>div{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0;font-size:11px;color:#8995a9}
+.approval-history p{flex-basis:100%;margin:2px 0 0;color:#c4c9d3}
+.confirm-list{max-height:260px;overflow:auto;font-size:12px;line-height:1.8;padding-left:18px}
+@media(max-width:1200px){.approvals-layout{grid-template-columns:minmax(260px,320px) minmax(0,1fr)}.approval-media{grid-template-columns:1fr}}

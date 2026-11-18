@@ -1,0 +1,512 @@
+{
+  "schema_version": 2,
+  "suno_standard_options": [
+    "Lead Vocal",
+    "Drums",
+    "Bass",
+    "Backing Vocals",
+    "Piano",
+    "Electric Guitar",
+    "Percussion",
+    "Strings",
+    "Synth",
+    "Acoustic Guitar",
+    "Other",
+    "Synth Pad",
+    "Synth Bass",
+    "Guitar",
+    "Brass",
+    "Organ",
+    "Lead Guitar",
+    "Synth Keys",
+    "Rhythm Electric Guitar",
+    "Electric Piano",
+    "Upright Bass",
+    "Keyboards"
+  ],
+  "suno_beta_options": [
+    "Kick",
+    "Snare",
+    "Risers",
+    "Synth Strings",
+    "Synth Lead",
+    "Woodwinds",
+    "Rhythm Acoustic Guitar",
+    "Flute",
+    "Harp",
+    "Tambourine",
+    "Trumpet",
+    "Arpeggiator",
+    "Accordion",
+    "Fiddle",
+    "Slide Guitar",
+    "Vocoder",
+    "Violin",
+    "Synth Brass",
+    "Mandolin",
+    "Choir",
+    "Banjo",
+    "Bells",
+    "Clarinet",
+    "Tenor Saxophone",
+    "Trombone",
+    "Shaker",
+    "French Horn",
+    "Glockenspiel",
+    "Cello",
+    "Timpani",
+    "Harmonica",
+    "Marimba",
+    "Vibraphone",
+    "Saxophone",
+    "Orchestra",
+    "Cymbals",
+    "Clap",
+    "Oboe",
+    "Celesta",
+    "Congas",
+    "Drone",
+    "Alto Saxophone",
+    "Double Bass",
+    "Ukulele",
+    "Harpsichord",
+    "Baritone Saxophone",
+    "Xylophone",
+    "Tuba",
+    "Bass Guitar",
+    "Whistle",
+    "808",
+    "Bongos",
+    "Bassoon",
+    "Cowbell",
+    "Viola",
+    "Sitar",
+    "Steel Drums",
+    "Piccolo",
+    "Theremin",
+    "Bagpipes",
+    "Hi-Hat",
+    "Music Box",
+    "Melodica",
+    "Tabla",
+    "Koto",
+    "Djembe",
+    "Taiko",
+    "Didgeridoo"
+  ],
+  "suno_stem_categories": [
+    "Lead Vocal",
+    "Drums",
+    "Bass",
+    "Backing Vocals",
+    "Piano",
+    "Electric Guitar",
+    "Percussion",
+    "Strings",
+    "Synth",
+    "Acoustic Guitar",
+    "Other",
+    "Synth Pad",
+    "Synth Bass",
+    "Guitar",
+    "Brass",
+    "Organ",
+    "Lead Guitar",
+    "Synth Keys",
+    "Rhythm Electric Guitar",
+    "Electric Piano",
+    "Upright Bass",
+    "Keyboards",
+    "Kick",
+    "Snare",
+    "Risers",
+    "Synth Strings",
+    "Synth Lead",
+    "Woodwinds",
+    "Rhythm Acoustic Guitar",
+    "Flute",
+    "Harp",
+    "Tambourine",
+    "Trumpet",
+    "Arpeggiator",
+    "Accordion",
+    "Fiddle",
+    "Slide Guitar",
+    "Vocoder",
+    "Violin",
+    "Synth Brass",
+    "Mandolin",
+    "Choir",
+    "Banjo",
+    "Bells",
+    "Clarinet",
+    "Tenor Saxophone",
+    "Trombone",
+    "Shaker",
+    "French Horn",
+    "Glockenspiel",
+    "Cello",
+    "Timpani",
+    "Harmonica",
+    "Marimba",
+    "Vibraphone",
+    "Saxophone",
+    "Orchestra",
+    "Cymbals",
+    "Clap",
+    "Oboe",
+    "Celesta",
+    "Congas",
+    "Drone",
+    "Alto Saxophone",
+    "Double Bass",
+    "Ukulele",
+    "Harpsichord",
+    "Baritone Saxophone",
+    "Xylophone",
+    "Tuba",
+    "Bass Guitar",
+    "Whistle",
+    "808",
+    "Bongos",
+    "Bassoon",
+    "Cowbell",
+    "Viola",
+    "Sitar",
+    "Steel Drums",
+    "Piccolo",
+    "Theremin",
+    "Bagpipes",
+    "Hi-Hat",
+    "Music Box",
+    "Melodica",
+    "Tabla",
+    "Koto",
+    "Djembe",
+    "Taiko",
+    "Didgeridoo"
+  ],
+  "stem_note": "Restricted to Suno's exact 22 Standard and 68 Beta Advanced Split instrument options. Use Synth Pad explicitly (not generic Synth) when extracting pads, and separate Rhythm Electric Guitar from Lead Guitar to avoid electric guitar bleed.",
+  "states": ["explore", "tension", "combat", "boss", "resolve"],
+  "sections": [
+    {"tag": "[Intro]", "state": "explore", "hint": "sparse ambient layer, quiet pulse"},
+    {"tag": "[Verse 1 - Exploration Layer]", "state": "explore", "hint": "low intensity, dry mix, clean articulation"},
+    {"tag": "[Pre-Chorus - Tension Build]", "state": "tension", "hint": "rhythmic syncopation, building momentum"},
+    {"tag": "[Chorus - Combat Layer]", "state": "combat", "hint": "full arrangement, heavy percussion, high energy"},
+    {"tag": "[Bridge - Danger / Boss State]", "state": "boss", "hint": "staccato stabs, aggressive lead"},
+    {"tag": "[Outro]", "state": "resolve", "hint": "resolution back to ambient loop tail"}
+  ],
+  "archetypes": {
+    "cyberpunk": {
+      "genre": "Cyberpunk industrial dark synthwave",
+      "mood": "tense and dystopian",
+      "bpm": 128,
+      "instruments": [
+        {"name": "Synth Bass", "stem": "Synth Bass", "tier": "standard", "core": true},
+        {"name": "Arpeggiator", "stem": "Arpeggiator", "tier": "beta", "core": true},
+        {"name": "Synth Lead", "stem": "Synth Lead", "tier": "beta", "core": true},
+        {"name": "Drums", "stem": "Drums", "tier": "standard", "core": true},
+        {"name": "Synth Pad", "stem": "Synth Pad", "tier": "standard", "core": false},
+        {"name": "Percussion", "stem": "Percussion", "tier": "standard", "core": false}
+      ],
+      "section_cues": {
+        "[Verse 1 - Exploration Layer]": "clean Synth Bass, spaced-out Arpeggiator, subtle Synth Pad",
+        "[Pre-Chorus - Tension Build]": "Risers sweep rising, crisp Hi-Hat entering",
+        "[Chorus - Combat Layer]": "punchy Kick and Drums, driving Synth Bass, aggressive Synth Lead",
+        "[Bridge - Danger / Boss State]": "rhythmic Percussion, heavy 808 and Synth Bass drop"
+      }
+    },
+    "dark-fantasy": {
+      "genre": "Dark fantasy orchestral cinematic score",
+      "mood": "ominous and heroic",
+      "bpm": 115,
+      "instruments": [
+        {"name": "Strings", "stem": "Strings", "tier": "standard", "core": true},
+        {"name": "Brass", "stem": "Brass", "tier": "standard", "core": true},
+        {"name": "Taiko", "stem": "Taiko", "tier": "beta", "core": true},
+        {"name": "Timpani", "stem": "Timpani", "tier": "beta", "core": true},
+        {"name": "Cello", "stem": "Cello", "tier": "beta", "core": false},
+        {"name": "Choir", "stem": "Choir", "tier": "beta", "core": false}
+      ],
+      "section_cues": {
+        "[Verse 1 - Exploration Layer]": "pizzicato Cello, low Drone, sparse Woodwinds",
+        "[Pre-Chorus - Tension Build]": "legato Strings swells, creeping Snare rolls",
+        "[Chorus - Combat Layer]": "full Brass blasting, heavy Taiko, driving Strings",
+        "[Bridge - Danger / Boss State]": "furious Brass ostinato, relentless Timpani, Choir accents"
+      }
+    },
+    "cozy": {
+      "genre": "Cozy whimsical acoustic indie game music",
+      "mood": "peaceful and nostalgic",
+      "bpm": 92,
+      "instruments": [
+        {"name": "Acoustic Guitar", "stem": "Acoustic Guitar", "tier": "standard", "core": true},
+        {"name": "Marimba", "stem": "Marimba", "tier": "beta", "core": true},
+        {"name": "Upright Bass", "stem": "Upright Bass", "tier": "standard", "core": true},
+        {"name": "Drums", "stem": "Drums", "tier": "standard", "core": true},
+        {"name": "Glockenspiel", "stem": "Glockenspiel", "tier": "beta", "core": false},
+        {"name": "Flute", "stem": "Flute", "tier": "beta", "core": false}
+      ],
+      "section_cues": {
+        "[Verse 1 - Exploration Layer]": "fingerpicked Acoustic Guitar, gentle Marimba melody",
+        "[Pre-Chorus - Tension Build]": "soft Glockenspiel top-line, warm Upright Bass pulse",
+        "[Chorus - Combat Layer]": "full cozy rhythm section, bouncing Upright Bass, upbeat brush Drums",
+        "[Bridge - Danger / Boss State]": "slightly melancholic shift, minor chord Acoustic Guitar, solo Flute"
+      }
+    },
+    "arcade": {
+      "genre": "Energetic chiptune-meets-modern arcade electronic",
+      "mood": "playful and urgent",
+      "bpm": 140,
+      "instruments": [
+        {"name": "Synth Lead", "stem": "Synth Lead", "tier": "beta", "core": true},
+        {"name": "Synth Bass", "stem": "Synth Bass", "tier": "standard", "core": true},
+        {"name": "Drums", "stem": "Drums", "tier": "standard", "core": true},
+        {"name": "Arpeggiator", "stem": "Arpeggiator", "tier": "beta", "core": true},
+        {"name": "Synth Keys", "stem": "Synth Keys", "tier": "standard", "core": false}
+      ],
+      "section_cues": {
+        "[Verse 1 - Exploration Layer]": "light Synth Bass and Arpeggiator, relaxed Drums",
+        "[Pre-Chorus - Tension Build]": "rising Synth Lead, Snare build",
+        "[Chorus - Combat Layer]": "full Drums, driving Synth Bass, bright Synth Lead",
+        "[Bridge - Danger / Boss State]": "fast minor Arpeggiator, urgent Kick pattern"
+      }
+    },
+    "horror": {
+      "genre": "Dark ambient horror score",
+      "mood": "dread and unease",
+      "bpm": 80,
+      "instruments": [
+        {"name": "Strings", "stem": "Strings", "tier": "standard", "core": true},
+        {"name": "Drone", "stem": "Drone", "tier": "beta", "core": true},
+        {"name": "Piano", "stem": "Piano", "tier": "standard", "core": true},
+        {"name": "Percussion", "stem": "Percussion", "tier": "standard", "core": true},
+        {"name": "Cello", "stem": "Cello", "tier": "beta", "core": false}
+      ],
+      "section_cues": {
+        "[Verse 1 - Exploration Layer]": "sparse detuned Piano, low Drone, silence between notes",
+        "[Pre-Chorus - Tension Build]": "tremolo Strings rising, heartbeat Bass pulse",
+        "[Chorus - Combat Layer]": "violent Strings stabs, pounding Percussion, low Cello",
+        "[Bridge - Danger / Boss State]": "dissonant Piano cluster hits, relentless metallic Percussion"
+      }
+    },
+    "action-rock": {
+      "genre": "Driving instrumental rock action score",
+      "mood": "aggressive and adrenaline-fueled",
+      "bpm": 150,
+      "instruments": [
+        {"name": "Rhythm Electric Guitar", "stem": "Rhythm Electric Guitar", "tier": "standard", "core": true},
+        {"name": "Lead Guitar", "stem": "Lead Guitar", "tier": "standard", "core": true},
+        {"name": "Bass Guitar", "stem": "Bass Guitar", "tier": "beta", "core": true},
+        {"name": "Drums", "stem": "Drums", "tier": "standard", "core": true},
+        {"name": "Synth Pad", "stem": "Synth Pad", "tier": "standard", "core": false}
+      ],
+      "section_cues": {
+        "[Verse 1 - Exploration Layer]": "clean Rhythm Electric Guitar, Synth Pad, light Hi-Hat",
+        "[Pre-Chorus - Tension Build]": "palm-muted Rhythm Electric Guitar riff, Snare roll",
+        "[Chorus - Combat Layer]": "full Rhythm Electric Guitar, heavy Drums, driving Bass Guitar",
+        "[Bridge - Danger / Boss State]": "double-time Drums, harmonized Lead Guitar stabs"
+      }
+    },
+    "medieval-siege": {
+      "parent_archetype": "dark-fantasy",
+      "genre": "Medieval castle siege orchestral and folk-warfare score",
+      "mood": "martial, ancient and thunderous",
+      "bpm": 118,
+      "instruments": [
+        {"name": "Strings", "stem": "Strings", "tier": "standard", "core": true},
+        {"name": "Brass", "stem": "Brass", "tier": "standard", "core": true},
+        {"name": "Snare", "stem": "Snare", "tier": "beta", "core": true},
+        {"name": "Timpani", "stem": "Timpani", "tier": "beta", "core": true},
+        {"name": "Harpsichord", "stem": "Harpsichord", "tier": "beta", "core": false},
+        {"name": "Bagpipes", "stem": "Bagpipes", "tier": "beta", "core": false}
+      ],
+      "section_cues": {
+        "[Verse 1 - Exploration Layer]": "low Strings ostinato, Harpsichord motif, distant Snare march",
+        "[Pre-Chorus - Tension Build]": "rising Brass horn calls, tightening Snare cadence",
+        "[Chorus - Combat Layer]": "full Brass fanfare, pounding Timpani, driving Strings",
+        "[Bridge - Danger / Boss State]": "fierce Bagpipes lead, relentless Timpani and Snare volley"
+      }
+    },
+    "modern-tactics": {
+      "parent_archetype": "action-rock",
+      "genre": "Modern military tactical hybrid electronic-orchestral score",
+      "mood": "precise, urgent and high-stakes",
+      "bpm": 132,
+      "instruments": [
+        {"name": "Electric Guitar", "stem": "Electric Guitar", "tier": "standard", "core": true},
+        {"name": "Synth Bass", "stem": "Synth Bass", "tier": "standard", "core": true},
+        {"name": "Drums", "stem": "Drums", "tier": "standard", "core": true},
+        {"name": "Brass", "stem": "Brass", "tier": "standard", "core": true},
+        {"name": "Synth Pad", "stem": "Synth Pad", "tier": "standard", "core": false},
+        {"name": "Percussion", "stem": "Percussion", "tier": "standard", "core": false}
+      ],
+      "section_cues": {
+        "[Verse 1 - Exploration Layer]": "pulsing Synth Bass, muted Synth Pad, crisp tactical Percussion",
+        "[Pre-Chorus - Tension Build]": "palm-muted Electric Guitar chugs, building Brass swells",
+        "[Chorus - Combat Layer]": "heavy Drums, driving Synth Bass, soaring Brass and Electric Guitar",
+        "[Bridge - Danger / Boss State]": "staccato artillery Percussion hits, aggressive Brass and Guitar stabs"
+      }
+    },
+    "nautical-folk": {
+      "parent_archetype": "cozy",
+      "genre": "Breezy coastal harbor and acoustic sea-shanty folk score",
+      "mood": "buoyant, salty and adventurous",
+      "bpm": 102,
+      "instruments": [
+        {"name": "Acoustic Guitar", "stem": "Acoustic Guitar", "tier": "standard", "core": true},
+        {"name": "Accordion", "stem": "Accordion", "tier": "beta", "core": true},
+        {"name": "Fiddle", "stem": "Fiddle", "tier": "beta", "core": true},
+        {"name": "Upright Bass", "stem": "Upright Bass", "tier": "standard", "core": true},
+        {"name": "Drums", "stem": "Drums", "tier": "standard", "core": false},
+        {"name": "Flute", "stem": "Flute", "tier": "beta", "core": false}
+      ],
+      "section_cues": {
+        "[Verse 1 - Exploration Layer]": "strummed Acoustic Guitar, warm Accordion chords, Upright Bass",
+        "[Pre-Chorus - Tension Build]": "lilting Flute counter-melody, brisk brush Drums",
+        "[Chorus - Combat Layer]": "lively Fiddle lead, full Accordion, bouncing Upright Bass and Drums",
+        "[Bridge - Danger / Boss State]": "minor-key Fiddle reel, driving Acoustic Guitar rhythm"
+      }
+    },
+    "lofi-workshop": {
+      "parent_archetype": "cozy",
+      "genre": "Warm lo-fi Rhodes and tactile tabletop craft beats",
+      "mood": "relaxed, focused and playful",
+      "bpm": 86,
+      "instruments": [
+        {"name": "Electric Piano", "stem": "Electric Piano", "tier": "standard", "core": true},
+        {"name": "Upright Bass", "stem": "Upright Bass", "tier": "standard", "core": true},
+        {"name": "Drums", "stem": "Drums", "tier": "standard", "core": true},
+        {"name": "Vibraphone", "stem": "Vibraphone", "tier": "beta", "core": true},
+        {"name": "Acoustic Guitar", "stem": "Acoustic Guitar", "tier": "standard", "core": false},
+        {"name": "Shaker", "stem": "Shaker", "tier": "beta", "core": false}
+      ],
+      "section_cues": {
+        "[Verse 1 - Exploration Layer]": "warm Electric Piano chords, soft Shaker groove, Upright Bass",
+        "[Pre-Chorus - Tension Build]": "sparkling Vibraphone arpeggios, gentle fingerpicked Acoustic Guitar",
+        "[Chorus - Combat Layer]": "crisp lo-fi Drums, walking Upright Bass, bright Electric Piano hook",
+        "[Bridge - Danger / Boss State]": "syncopated Vibraphone solo, tighter Drum groove"
+      }
+    },
+    "neon-synthfunk": {
+      "parent_archetype": "cyberpunk",
+      "genre": "Groovy retro-futuristic synth-funk and neon bassline score",
+      "mood": "slick, kinetic and stylish",
+      "bpm": 118,
+      "instruments": [
+        {"name": "Synth Bass", "stem": "Synth Bass", "tier": "standard", "core": true},
+        {"name": "Electric Guitar", "stem": "Electric Guitar", "tier": "standard", "core": true},
+        {"name": "Synth Keys", "stem": "Synth Keys", "tier": "standard", "core": true},
+        {"name": "Drums", "stem": "Drums", "tier": "standard", "core": true},
+        {"name": "Vocoder", "stem": "Vocoder", "tier": "beta", "core": false},
+        {"name": "Clap", "stem": "Clap", "tier": "beta", "core": false}
+      ],
+      "section_cues": {
+        "[Verse 1 - Exploration Layer]": "slap Synth Bass pocket, clean funk Electric Guitar, light Clap",
+        "[Pre-Chorus - Tension Build]": "lush Synth Keys chords, rising rhythmic groove",
+        "[Chorus - Combat Layer]": "punchy four-on-the-floor Drums, bright Synth Keys lead, funky Guitar",
+        "[Bridge - Danger / Boss State]": "wordless Vocoder stabs, heavy Synth Bass octave riff"
+      }
+    },
+    "mech-industrial": {
+      "parent_archetype": "cyberpunk",
+      "genre": "Heavy mechanical industrial breakbeat and modular synth score",
+      "mood": "gritty, relentless and mechanical",
+      "bpm": 136,
+      "instruments": [
+        {"name": "Synth Bass", "stem": "Synth Bass", "tier": "standard", "core": true},
+        {"name": "Percussion", "stem": "Percussion", "tier": "standard", "core": true},
+        {"name": "Drums", "stem": "Drums", "tier": "standard", "core": true},
+        {"name": "Synth Lead", "stem": "Synth Lead", "tier": "beta", "core": true},
+        {"name": "808", "stem": "808", "tier": "beta", "core": false},
+        {"name": "Risers", "stem": "Risers", "tier": "beta", "core": false}
+      ],
+      "section_cues": {
+        "[Verse 1 - Exploration Layer]": "metallic Percussion clangs, sub 808 pulse, sparse Synth Bass",
+        "[Pre-Chorus - Tension Build]": "modular Risers sweep, accelerating breakbeat Drums",
+        "[Chorus - Combat Layer]": "crunchy industrial Drums, distorted Synth Bass, piercing Synth Lead",
+        "[Bridge - Danger / Boss State]": "relentless anvil Percussion, heavy 808 drop"
+      }
+    },
+    "retro-chiptune-rock": {
+      "parent_archetype": "arcade",
+      "genre": "High-octane 16-bit chiptune and electric guitar arcade fusion",
+      "mood": "hyper-energetic, heroic and retro",
+      "bpm": 148,
+      "instruments": [
+        {"name": "Synth Lead", "stem": "Synth Lead", "tier": "beta", "core": true},
+        {"name": "Lead Guitar", "stem": "Lead Guitar", "tier": "standard", "core": true},
+        {"name": "Bass Guitar", "stem": "Bass Guitar", "tier": "beta", "core": true},
+        {"name": "Drums", "stem": "Drums", "tier": "standard", "core": true},
+        {"name": "Arpeggiator", "stem": "Arpeggiator", "tier": "beta", "core": false},
+        {"name": "Synth Keys", "stem": "Synth Keys", "tier": "standard", "core": false}
+      ],
+      "section_cues": {
+        "[Verse 1 - Exploration Layer]": "fast 16-bit Arpeggiator, tight Bass Guitar, crisp arcade Drums",
+        "[Pre-Chorus - Tension Build]": "ascending Synth Keys, palm-muted Guitar buildup",
+        "[Chorus - Combat Layer]": "dueling Synth Lead and Lead Guitar melody, full-throttle Drums",
+        "[Bridge - Danger / Boss State]": "shredding Lead Guitar solo over rapid chiptune Arpeggiator"
+      }
+    },
+    "storybook-orchestral": {
+      "parent_archetype": "cozy",
+      "genre": "Whimsical storybook chamber ensemble score",
+      "mood": "enchanting, curious and heartwarming",
+      "bpm": 96,
+      "instruments": [
+        {"name": "Piano", "stem": "Piano", "tier": "standard", "core": true},
+        {"name": "Clarinet", "stem": "Clarinet", "tier": "beta", "core": true},
+        {"name": "Cello", "stem": "Cello", "tier": "beta", "core": true},
+        {"name": "Harp", "stem": "Harp", "tier": "beta", "core": true},
+        {"name": "Glockenspiel", "stem": "Glockenspiel", "tier": "beta", "core": false},
+        {"name": "Percussion", "stem": "Percussion", "tier": "standard", "core": false}
+      ],
+      "section_cues": {
+        "[Verse 1 - Exploration Layer]": "delicate Harp arpeggios, warm Piano, pizzicato Cello",
+        "[Pre-Chorus - Tension Build]": "playful Clarinet phrase, twinkling Glockenspiel",
+        "[Chorus - Combat Layer]": "sweeping Cello melody, expressive Piano, light chamber Percussion",
+        "[Bridge - Danger / Boss State]": "mysterious Clarinet and low Cello interplay"
+      }
+    },
+    "noir-mystery": {
+      "parent_archetype": "horror",
+      "genre": "Moody nocturnal jazz-noir and suspense heist score",
+      "mood": "sleek, shadowy and intriguing",
+      "bpm": 88,
+      "instruments": [
+        {"name": "Upright Bass", "stem": "Upright Bass", "tier": "standard", "core": true},
+        {"name": "Piano", "stem": "Piano", "tier": "standard", "core": true},
+        {"name": "Tenor Saxophone", "stem": "Tenor Saxophone", "tier": "beta", "core": true},
+        {"name": "Drums", "stem": "Drums", "tier": "standard", "core": true},
+        {"name": "Strings", "stem": "Strings", "tier": "standard", "core": false},
+        {"name": "Vibraphone", "stem": "Vibraphone", "tier": "beta", "core": false}
+      ],
+      "section_cues": {
+        "[Verse 1 - Exploration Layer]": "sneaky Upright Bass walk, sparse minor Piano chords, brush Drums",
+        "[Pre-Chorus - Tension Build]": "moody Vibraphone shimmer, muted Strings tension",
+        "[Chorus - Combat Layer]": "smoky Tenor Saxophone lead, tight snare Drums, driving Upright Bass",
+        "[Bridge - Danger / Boss State]": "urgent Piano ostinato, dramatic Strings stabs"
+      }
+    },
+    "cosmic-ambient": {
+      "parent_archetype": "dark-fantasy",
+      "genre": "Ethereal sci-fi orbital ambient and crystalline synth score",
+      "mood": "vast, wondrous and weightless",
+      "bpm": 104,
+      "instruments": [
+        {"name": "Synth Pad", "stem": "Synth Pad", "tier": "standard", "core": true},
+        {"name": "Arpeggiator", "stem": "Arpeggiator", "tier": "beta", "core": true},
+        {"name": "Piano", "stem": "Piano", "tier": "standard", "core": true},
+        {"name": "Strings", "stem": "Strings", "tier": "standard", "core": true},
+        {"name": "Synth Bass", "stem": "Synth Bass", "tier": "standard", "core": false},
+        {"name": "Bells", "stem": "Bells", "tier": "beta", "core": false}
+      ],
+      "section_cues": {
+        "[Verse 1 - Exploration Layer]": "evolving Synth Pad, resonant Piano notes, soft Bells",
+        "[Pre-Chorus - Tension Build]": "shimmering Arpeggiator pulse, deep Synth Bass swell",
+        "[Chorus - Combat Layer]": "soaring Strings over sequenced Arpeggiator and Synth Bass",
+        "[Bridge - Danger / Boss State]": "urgent crystalline Bells, dramatic Synth Pad swells"
+      }
+    }
+  }
+}

@@ -131,6 +131,16 @@ def sync(project, manifest, update=False, root=ROOT):
     for key, item in chosen.items():
         module = catalog[key]
         if module["version"] != item["version"]:
+            # Adding a module must not force unrelated, already admitted releases
+            # to upgrade. Retain only an intact historical dependency set in place;
+            # do not reconstruct missing old releases from today's registry.
+            prior = next((e for e in old["modules"] if e["id"] == key), None) if old else None
+            unchanged_baseline = old and all(
+                e["id"] in chosen and all(chosen[e["id"]][k] == e[k] for k in ("version", "destination"))
+                for e in old["modules"])
+            if prior and unchanged_baseline:
+                entries.append(dict(prior))
+                continue
             raise ValueError(f"Unavailable version for {key}: {item['version']}")
         if not set(module["dependencies"]).issubset(chosen):
             raise ValueError(f"Explicit dependency selections required for {key}")

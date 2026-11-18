@@ -47,6 +47,14 @@ class CourseContractTests(unittest.TestCase):
         self.data['pieces'][0]['travel'] = [2000, 0]
         with self.assertRaises(ValueError): course.validate(self.data)
 
+    def test_header_preserves_extent_and_travel_separately(self):
+        self.data['pieces'].append({'id': 'static', 'half_extent': [20, 30], 'travel': [0, 0]})
+        course.validate(self.data)
+        result = course.header(self.data, 'b' * 64)
+        self.assertIn('HalfExtents[PieceCount][2] = {\n    {50.000000000f, 50.000000000f},\n    {20.000000000f, 30.000000000f},', result)
+        self.assertIn('Travel[PieceCount][2] = {\n    {150.000000000f, 0.000000000f},\n    {0.000000000f, 0.000000000f},', result)
+        self.assertIn('Envelopes[PieceCount][2] = {\n    {200.000000000f, 50.000000000f},', result)
+
     def test_header_is_deterministic_and_handles_no_zones(self):
         self.data['protected_zones'] = []
         course.validate(self.data)

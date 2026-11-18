@@ -4,19 +4,31 @@
 int main()
 {
     GameCore::CooperativeTask work(12,3);
+    assert(work.RemainingWork()==12 && work.SecondsRemaining(3)==4);
+    assert(std::isinf(work.SecondsRemaining(2)));
+    assert(std::isinf(work.SecondsRemaining(3,0)));
+    assert(std::isinf(work.SecondsRemaining(3,-1)));
+    assert(std::isinf(work.SecondsRemaining(3,std::numeric_limits<double>::quiet_NaN())));
+    assert(std::isinf(work.SecondsRemaining(3,std::numeric_limits<double>::infinity())));
+    assert(work.SecondsRemaining(6,2)==1 && work.Fraction()==0);
     assert(work.RequiredWorkers()==3 && work.MissingWorkers(1)==2);
     assert(work.MissingWorkers(std::numeric_limits<unsigned>::max())==0);
     assert(!work.CanWork(2) && work.CanWork(3));
     assert(!work.Advance(100,2) && work.Fraction()==0);
     assert(!work.Advance(1,3) && work.Fraction()==.25);
+    assert(work.RemainingWork()==9 && work.SecondsRemaining(3)==3);
     assert(!work.Advance(-1,3));
     assert(!work.Advance(std::numeric_limits<double>::quiet_NaN(),3));
     assert(!work.Advance(1,3,std::numeric_limits<double>::infinity()));
     assert(work.Fraction()==.25);
     assert(work.Advance(3,3) && work.Complete());
+    assert(work.SecondsRemaining(0,0)==0 && work.RemainingWork()==0);
     assert(!work.Advance(3,3) && work.Fraction()==1);
     assert(!work.CanWork(3) && work.MissingWorkers(1)==2);
     work.Reset(); assert(work.CanWork(3)); assert(work.Fraction()==0);
+    assert(work.SecondsRemaining(3)==4);
+    GameCore::CooperativeTask large(std::numeric_limits<double>::max(),1);
+    assert(large.SecondsRemaining(2,std::numeric_limits<double>::max())==.5);
     assert(work.Advance(std::numeric_limits<double>::max(),3));
     GameCore::CooperativeTask invalid(0,0);
     assert(invalid.Advance(1,1));

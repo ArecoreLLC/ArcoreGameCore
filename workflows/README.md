@@ -10,6 +10,7 @@ Choose a use case, then the [2D](../2d/README.md) or [3D](../3d/README.md) catal
 | Godot Windows â†’ Android | [Guide](godot-windows-to-android/README.md) | [Touch exploration room](godot-windows-to-android/example.md) | Scaffold |
 | Godot â†’ Unreal | [Guide](godot-to-unreal/README.md) | [Switch-and-door room](godot-to-unreal/example.md) | Exploratory scaffold |
 | Logo sting / splash video | [Guide](logo-sting-video/README.md) | [AreCore V3 Pro at 1.5x](logo-sting-video/example.md) | Scaffold |
+| Hair, fur and card textures | [Guide](hair-fur-textures/README.md) | [Short fur, 16 shells](hair-fur-textures/example.md) | Exploratory |
 | Recorded music â†’ vocals + MIDI instruments | [Guide](music-reconstruction/README.md) | [Recorded game theme](music-reconstruction/example.md) | Exploratory |
 
 The machine-readable [index](index.json) lists the minimal entry files; an optional `specs` list points to product/design documents such as the [GameCore hub and wizard design](../docs/GAMECORE_HUB_AND_WIZARD_DESIGN.md), whose first no-AI wizard is the logo sting. All guides use the [shared migration contract](../shared/migration-contract.md). Prefer the first two workflows for initial validation; the Unreal workflow needs a separately validated pilot before expansion.

@@ -1,0 +1,544 @@
+{
+  "schema_version": 1,
+  "game_id": "rescue-demolition",
+  "name": "Rescue Demolition",
+  "scope": "roadmap",
+  "status": "in_progress",
+  "exclusion_reason": "",
+  "recommended_archetype": "modern-tactics",
+  "recommended_setting": "unstable shed demolition rescue",
+  "recommendation_reason": "Bracing an unstable shed and clearing blocked entrances under pressure fits punchy rock.",
+  "archetype": "modern-tactics",
+  "setting": "unstable shed demolition rescue",
+  "sonic_alchemist_project": "",
+  "soundcore_project": "",
+  "modelforge_project": "",
+  "tracks": [
+    {
+      "track_id": "rescue-demolition-A",
+      "title": "Rescue Demolition - main theme",
+      "status": "generated",
+      "vocals": "none",
+      "bpm": 132,
+      "style_prompt": "Modern military tactical hybrid electronic-orchestral score, clean mix, dry studio recording, minimalist frequency separation, precise, urgent and high-stakes, unstable shed demolition rescue atmosphere, Electric Guitar, Synth Bass, Drums, Brass, Synth Pad, Percussion, 132 BPM, strict quantize, steady 4/4 rhythm, memorable repeating melodic motif, instrumental",
+      "lyrics": "[Instrumental]\n[Tempo: 132 BPM, strict quantize, steady rhythm]\n\n[Intro]\n[Bass stem only: clean pulsing Synth Bass, dry low-end, minimal]\n[Verse 1 - Exploration Layer]\n[Add percussion stem: pulsing Synth Bass, muted Synth Pad, crisp tactical Percussion]\n[Pre-Chorus - Tension Build]\n[Add melody stem: palm-muted Electric Guitar chugs, building Brass swells]\n[Chorus - Combat Layer]\n[Add combat layer: heavy Drums, driving Synth Bass, soaring Brass and Electric Guitar]\n[Bridge - Danger / Boss State]\n[Maximum intensity: staccato artillery Percussion hits, aggressive Brass and Guitar stabs]\n[Outro]\n[Strip back: bass pulse and distant drum fade out]",
+      "instruments": [
+        {
+          "name": "Electric Guitar",
+          "stem": "Electric Guitar",
+          "keep": true
+        },
+        {
+          "name": "Synth Bass",
+          "stem": "Synth Bass",
+          "keep": true
+        },
+        {
+          "name": "Drums",
+          "stem": "Drums",
+          "keep": true
+        },
+        {
+          "name": "Brass",
+          "stem": "Brass",
+          "keep": true
+        },
+        {
+          "name": "Synth Pad",
+          "stem": "Synth Pad",
+          "keep": false
+        },
+        {
+          "name": "Percussion",
+          "stem": "Percussion",
+          "keep": false
+        }
+      ],
+      "stems_requested": [
+        "Brass",
+        "Drums",
+        "Electric Guitar",
+        "Synth Bass"
+      ],
+      "states": [
+        {
+          "state": "explore",
+          "section": "[Intro]"
+        },
+        {
+          "state": "explore",
+          "section": "[Verse 1 - Exploration Layer]"
+        },
+        {
+          "state": "tension",
+          "section": "[Pre-Chorus - Tension Build]"
+        },
+        {
+          "state": "combat",
+          "section": "[Chorus - Combat Layer]"
+        },
+        {
+          "state": "boss",
+          "section": "[Bridge - Danger / Boss State]"
+        },
+        {
+          "state": "resolve",
+          "section": "[Outro]"
+        }
+      ],
+      "suno": {
+        "url": "https://suno.com/song/e52b45e6-7538-4642-8c28-6c0a63db3f2d",
+        "clip_id": "e52b45e6-7538-4642-8c28-6c0a63db3f2d",
+        "stem_group_id": null,
+        "model": "v6 (MCP audio-create + audio-analysis)",
+        "generated_at": "2026-11-18T18:47:18Z",
+        "recommended_take": 2,
+        "in_game_status": "not_integrated",
+        "in_game_loop_s": null,
+        "in_game_stems": [],
+        "engine_asset_path": "",
+        "analysis": {
+          "bpm_detected": 132,
+          "key_detected": "E minor",
+          "time_signature": 4,
+          "bars_detected": 76,
+          "recommended_loop_start_bar": 16,
+          "recommended_loop_start_s": 27.293,
+          "recommended_loop_end_s": 85.475,
+          "sections": [
+            {
+              "start_s": 0,
+              "end_s": 14.08,
+              "label": "A"
+            },
+            {
+              "start_s": 14.08,
+              "end_s": 27.56,
+              "label": "B"
+            },
+            {
+              "start_s": 27.56,
+              "end_s": 42.16,
+              "label": "B"
+            },
+            {
+              "start_s": 42.16,
+              "end_s": 58.08,
+              "label": "C"
+            },
+            {
+              "start_s": 58.08,
+              "end_s": 64.32,
+              "label": "A"
+            },
+            {
+              "start_s": 64.32,
+              "end_s": 78.36,
+              "label": "D"
+            },
+            {
+              "start_s": 78.36,
+              "end_s": 86.84,
+              "label": "A"
+            },
+            {
+              "start_s": 86.84,
+              "end_s": 101.6,
+              "label": "D"
+            },
+            {
+              "start_s": 101.6,
+              "end_s": 112.88,
+              "label": "D"
+            },
+            {
+              "start_s": 112.88,
+              "end_s": 134.2,
+              "label": "D"
+            },
+            {
+              "start_s": 134.2,
+              "end_s": 139.72,
+              "label": "E"
+            }
+          ],
+          "labels": {
+            "content:music": 0.958,
+            "arrangement:instrumental": 0.918,
+            "genre:electronic": 0.878,
+            "genre:techno": 0.695,
+            "genre:trance": 0.681,
+            "instrument:keyboard_family": 0.655,
+            "instrument:bowed_string_family": 0.638
+          },
+          "terms": [
+            "instrumental",
+            "no voice",
+            "violin",
+            "synthesizer",
+            "techno",
+            "trance"
+          ]
+        },
+        "candidates": [
+          {
+            "take": 1,
+            "clip_id": "2929b831-63ce-480a-b6c1-c37a5c41af62",
+            "url": "https://suno.com/song/2929b831-63ce-480a-b6c1-c37a5c41af62",
+            "liked": false,
+            "duration_s": 139.64,
+            "bpm_detected": 132,
+            "key_detected": "D minor",
+            "time_signature": 4,
+            "bars_detected": 77,
+            "sections_count": 13,
+            "sections": [
+              {
+                "start_s": 0,
+                "end_s": 16.36,
+                "label": "A"
+              },
+              {
+                "start_s": 16.36,
+                "end_s": 30.88,
+                "label": "A"
+              },
+              {
+                "start_s": 30.88,
+                "end_s": 52.72,
+                "label": "B"
+              },
+              {
+                "start_s": 52.72,
+                "end_s": 63.68,
+                "label": "B"
+              },
+              {
+                "start_s": 63.68,
+                "end_s": 78.32,
+                "label": "B"
+              },
+              {
+                "start_s": 78.32,
+                "end_s": 81.8,
+                "label": "C"
+              },
+              {
+                "start_s": 81.8,
+                "end_s": 92.8,
+                "label": "D"
+              },
+              {
+                "start_s": 92.8,
+                "end_s": 103.76,
+                "label": "D"
+              },
+              {
+                "start_s": 103.76,
+                "end_s": 106.8,
+                "label": "C"
+              },
+              {
+                "start_s": 106.8,
+                "end_s": 114.52,
+                "label": "D"
+              },
+              {
+                "start_s": 114.52,
+                "end_s": 127.36,
+                "label": "D"
+              },
+              {
+                "start_s": 127.36,
+                "end_s": 136.08,
+                "label": "C"
+              },
+              {
+                "start_s": 136.08,
+                "end_s": 139.64,
+                "label": "A"
+              }
+            ],
+            "labels": {
+              "content:music": 0.86,
+              "instrument:bowed_string_family": 0.761,
+              "instrument:cello": 0.624,
+              "instrument:violin": 0.62
+            },
+            "terms": [
+              "song",
+              "male vocals",
+              "violin",
+              "cello"
+            ],
+            "recommended_loop_start_bar": 16,
+            "recommended_loop_start_s": 27.325,
+            "recommended_loop_end_s": 85.506,
+            "quality_score": 16.4,
+            "listen_rating": null,
+            "listen_notes": "",
+            "used_in_game": false
+          },
+          {
+            "take": 2,
+            "clip_id": "e52b45e6-7538-4642-8c28-6c0a63db3f2d",
+            "url": "https://suno.com/song/e52b45e6-7538-4642-8c28-6c0a63db3f2d",
+            "liked": false,
+            "duration_s": 139.72,
+            "bpm_detected": 132,
+            "key_detected": "E minor",
+            "time_signature": 4,
+            "bars_detected": 76,
+            "sections_count": 11,
+            "sections": [
+              {
+                "start_s": 0,
+                "end_s": 14.08,
+                "label": "A"
+              },
+              {
+                "start_s": 14.08,
+                "end_s": 27.56,
+                "label": "B"
+              },
+              {
+                "start_s": 27.56,
+                "end_s": 42.16,
+                "label": "B"
+              },
+              {
+                "start_s": 42.16,
+                "end_s": 58.08,
+                "label": "C"
+              },
+              {
+                "start_s": 58.08,
+                "end_s": 64.32,
+                "label": "A"
+              },
+              {
+                "start_s": 64.32,
+                "end_s": 78.36,
+                "label": "D"
+              },
+              {
+                "start_s": 78.36,
+                "end_s": 86.84,
+                "label": "A"
+              },
+              {
+                "start_s": 86.84,
+                "end_s": 101.6,
+                "label": "D"
+              },
+              {
+                "start_s": 101.6,
+                "end_s": 112.88,
+                "label": "D"
+              },
+              {
+                "start_s": 112.88,
+                "end_s": 134.2,
+                "label": "D"
+              },
+              {
+                "start_s": 134.2,
+                "end_s": 139.72,
+                "label": "E"
+              }
+            ],
+            "labels": {
+              "content:music": 0.958,
+              "arrangement:instrumental": 0.918,
+              "genre:electronic": 0.878,
+              "genre:techno": 0.695,
+              "genre:trance": 0.681,
+              "instrument:keyboard_family": 0.655,
+              "instrument:bowed_string_family": 0.638
+            },
+            "terms": [
+              "instrumental",
+              "no voice",
+              "violin",
+              "synthesizer",
+              "techno",
+              "trance"
+            ],
+            "recommended_loop_start_bar": 16,
+            "recommended_loop_start_s": 27.293,
+            "recommended_loop_end_s": 85.475,
+            "quality_score": 20.18,
+            "listen_rating": null,
+            "listen_notes": "",
+            "used_in_game": false
+          }
+        ]
+      },
+      "files": [],
+      "notes": "Generated 2 takes via Suno MCP (v6) & analyzed via 0-credit audio-analysis:\n- Take 1 (2929b831-63ce-480a-b6c1-c37a5c41af62): https://suno.com/song/2929b831-63ce-480a-b6c1-c37a5c41af62 \u2014 139.64s, detected 132 BPM, D minor, 77 bars, 13 sections, loop bars 16..48 (27.325s\u201385.506s), score=16.4\n- Take 2 (e52b45e6-7538-4642-8c28-6c0a63db3f2d): https://suno.com/song/e52b45e6-7538-4642-8c28-6c0a63db3f2d \u2014 139.72s, detected 132 BPM, E minor, 76 bars, 11 sections, loop bars 16..48 (27.293s\u201385.475s), score=20.18\nSelected for stem split: Take 2 (e52b45e6-7538-4642-8c28-6c0a63db3f2d)."
+    },
+    {
+      "track_id": "rescue-demolition-B",
+      "title": "Rescue Demolition - alternate region (mech-industrial)",
+      "status": "prompt_ready",
+      "vocals": "none",
+      "bpm": 136,
+      "style_prompt": "Heavy mechanical industrial breakbeat and modular synth score, clean mix, dry studio recording, minimalist frequency separation, gritty, relentless and mechanical, unstable shed demolition rescue atmosphere, Synth Bass, Percussion, Drums, Synth Lead, 808, Risers, 136 BPM, strict quantize, steady 4/4 rhythm, different key, blended sub-archetype palette, new motif, instrumental",
+      "lyrics": "[Instrumental]\n[Tempo: 136 BPM, strict quantize, steady rhythm]\n\n[Intro - Bass Stem Only]\n[Deep pulsing Synth Bass, clean low-end drone, minimal]\n\n[Part 1 - Add Percussion Stem]\n[metallic Percussion clangs, sub 808 pulse, sparse Synth Bass, steady 4/4 rhythm]\n\n[Part 2 - Add Melody Stem]\n[modular Risers sweep, accelerating breakbeat Drums, high frequency separation, dry studio]\n\n[Part 3 - Add Combat & Climax Layer]\n[crunchy industrial Drums, distorted Synth Bass, piercing Synth Lead; relentless anvil Percussion, heavy 808 drop]\n\n[Outro - Strip Back]\n[Sub-bass pulse and distant percussion fade out]",
+      "instruments": [
+        {
+          "name": "Synth Bass",
+          "stem": "Synth Bass",
+          "keep": true
+        },
+        {
+          "name": "Percussion",
+          "stem": "Percussion",
+          "keep": true
+        },
+        {
+          "name": "Drums",
+          "stem": "Drums",
+          "keep": true
+        },
+        {
+          "name": "Synth Lead",
+          "stem": "Synth Lead",
+          "keep": true
+        },
+        {
+          "name": "808",
+          "stem": "808",
+          "keep": false
+        },
+        {
+          "name": "Risers",
+          "stem": "Risers",
+          "keep": false
+        }
+      ],
+      "stems_requested": [
+        "Drums",
+        "Percussion",
+        "Synth Bass",
+        "Synth Lead"
+      ],
+      "states": [
+        {
+          "state": "explore",
+          "section": "[Intro]"
+        },
+        {
+          "state": "explore",
+          "section": "[Verse 1 - Exploration Layer]"
+        },
+        {
+          "state": "tension",
+          "section": "[Pre-Chorus - Tension Build]"
+        },
+        {
+          "state": "combat",
+          "section": "[Chorus - Combat Layer]"
+        },
+        {
+          "state": "boss",
+          "section": "[Bridge - Danger / Boss State]"
+        },
+        {
+          "state": "resolve",
+          "section": "[Outro]"
+        }
+      ],
+      "suno": {
+        "url": "",
+        "clip_id": "",
+        "model": "",
+        "generated_at": ""
+      },
+      "files": [],
+      "notes": "Clean Stem-Builder variation (modern-tactics, parent: action-rock)."
+    },
+    {
+      "track_id": "rescue-demolition-C",
+      "title": "Rescue Demolition - late-game variation (medieval-siege + noir-mystery)",
+      "status": "prompt_ready",
+      "vocals": "none",
+      "bpm": 118,
+      "style_prompt": "Medieval castle siege orchestral and folk-warfare score blended with Moody nocturnal jazz-noir and suspense heist score, clean mix, dry studio recording, minimalist frequency separation, martial, ancient and thunderous, unstable shed demolition rescue atmosphere, Strings, Brass, Snare, Timpani, Harpsichord, Bagpipes, Upright Bass, 118 BPM, strict quantize, steady 4/4 rhythm, darker harmony, hybrid escalation palette, motif reprised, instrumental",
+      "lyrics": "[Instrumental]\n[Tempo: 118 BPM, strict quantize, steady rhythm]\n\n[Intro - Bass Stem Only]\n[Deep pulsing Strings, clean low-end drone, minimal]\n\n[Part 1 - Add Percussion Stem]\n[low Strings ostinato, Harpsichord motif, distant Snare march, steady 4/4 rhythm]\n\n[Part 2 - Add Melody Stem]\n[rising Brass horn calls, tightening Snare cadence, high frequency separation, dry studio]\n\n[Part 3 - Add Combat & Climax Layer]\n[full Brass fanfare, pounding Timpani, driving Strings; fierce Bagpipes lead, relentless Timpani and Snare volley]\n\n[Outro - Strip Back]\n[Sub-bass pulse and distant percussion fade out]",
+      "instruments": [
+        {
+          "name": "Strings",
+          "stem": "Strings",
+          "keep": true
+        },
+        {
+          "name": "Brass",
+          "stem": "Brass",
+          "keep": true
+        },
+        {
+          "name": "Snare",
+          "stem": "Snare",
+          "keep": true
+        },
+        {
+          "name": "Timpani",
+          "stem": "Timpani",
+          "keep": true
+        },
+        {
+          "name": "Harpsichord",
+          "stem": "Harpsichord",
+          "keep": false
+        },
+        {
+          "name": "Bagpipes",
+          "stem": "Bagpipes",
+          "keep": false
+        }
+      ],
+      "stems_requested": [
+        "Brass",
+        "Snare",
+        "Strings",
+        "Timpani"
+      ],
+      "states": [
+        {
+          "state": "explore",
+          "section": "[Intro]"
+        },
+        {
+          "state": "explore",
+          "section": "[Verse 1 - Exploration Layer]"
+        },
+        {
+          "state": "tension",
+          "section": "[Pre-Chorus - Tension Build]"
+        },
+        {
+          "state": "combat",
+          "section": "[Chorus - Combat Layer]"
+        },
+        {
+          "state": "boss",
+          "section": "[Bridge - Danger / Boss State]"
+        },
+        {
+          "state": "resolve",
+          "section": "[Outro]"
+        }
+      ],
+      "suno": {
+        "url": "",
+        "clip_id": "",
+        "model": "",
+        "generated_at": ""
+      },
+      "files": [],
+      "notes": "Clean Stem-Builder variation (modern-tactics, parent: action-rock)."
+    }
+  ],
+  "updated_at": "2026-11-18T18:58:33Z"
+}

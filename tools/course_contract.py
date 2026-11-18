@@ -90,7 +90,12 @@ def header(data, source_hash):
     lines += ['};', f'inline constexpr int PieceCount = {len(data["pieces"])};',
               'inline constexpr float Envelopes[PieceCount][2] = {']
     lines += ['    {' + values(envelope(p)) + '},' for p in data['pieces']]
-    return '\n'.join(lines + ['};', '}',''])
+    lines += ['};']
+    for name, key in (('HalfExtents', 'half_extent'), ('Travel', 'travel')):
+        lines += [f'inline constexpr float {name}[PieceCount][2] = {{']
+        lines += ['    {' + values(p[key]) + '},' for p in data['pieces']]
+        lines += ['};']
+    return '\n'.join(lines + ['}', ''])
 
 
 def main():

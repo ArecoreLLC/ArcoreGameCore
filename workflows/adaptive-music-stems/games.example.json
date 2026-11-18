@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "note": "Copy to games.json (gitignored if it holds private titles) and list every game. Placeholders only here.",
+  "tracks_per_game": 3,
+  "exclude": ["shammyverse"],
+  "games": [
+    {"id": "example-hacker-run", "title": "Example Hacker Run", "archetype": "cyberpunk", "setting": "neon grid", "has_music": false},
+    {"id": "example-dungeon", "title": "Example Dungeon", "archetype": "dark-fantasy", "setting": "crypt", "has_music": false},
+    {"id": "example-town", "title": "Example Town Builder", "archetype": "cozy", "setting": "village", "has_music": false},
+    {"id": "example-existing", "title": "Already Scored Game", "archetype": "arcade", "has_music": true}
+  ]
+}

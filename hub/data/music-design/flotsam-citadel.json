@@ -1,0 +1,598 @@
+{
+  "schema_version": 1,
+  "game_id": "flotsam-citadel",
+  "name": "Flotsam Citadel",
+  "status": "in_progress",
+  "exclusion_reason": "",
+  "archetype": "action-rock",
+  "setting": "storm-tossed salvage raft",
+  "tracks": [
+    {
+      "track_id": "flotsam-citadel-A",
+      "title": "Flotsam Citadel - main theme",
+      "status": "stems_split",
+      "vocals": "none",
+      "bpm": 150,
+      "style_prompt": "Driving instrumental rock action score, aggressive and adrenaline-fueled, storm-tossed salvage raft atmosphere, Rhythm Electric Guitar, Lead Guitar, Bass Guitar, Drums, Synth Pad, 150 BPM, memorable repeating melodic motif, instrumental, no vocals, dynamic game soundtrack score, seamless looping structure",
+      "lyrics": "[Intro]\n(sparse ambient layer, quiet pulse)\n[Verse 1 - Exploration Layer]\n(clean Rhythm Electric Guitar, Synth Pad, light Hi-Hat)\n[Pre-Chorus - Tension Build]\n(palm-muted Rhythm Electric Guitar riff, Snare roll)\n[Chorus - Combat Layer]\n(full Rhythm Electric Guitar, heavy Drums, driving Bass Guitar)\n[Bridge - Danger / Boss State]\n(double-time Drums, harmonized Lead Guitar stabs)\n[Outro]\n(resolution back to ambient loop tail)",
+      "instruments": [
+        {
+          "name": "Rhythm Electric Guitar",
+          "stem": "Rhythm Electric Guitar",
+          "keep": true
+        },
+        {
+          "name": "Lead Guitar",
+          "stem": "Lead Guitar",
+          "keep": true
+        },
+        {
+          "name": "Bass Guitar",
+          "stem": "Bass Guitar",
+          "keep": true
+        },
+        {
+          "name": "Drums",
+          "stem": "Drums",
+          "keep": true
+        },
+        {
+          "name": "Synth Pad",
+          "stem": "Synth Pad",
+          "keep": false
+        }
+      ],
+      "stems_requested": [
+        "Bass Guitar",
+        "Drums",
+        "Lead Guitar",
+        "Rhythm Electric Guitar"
+      ],
+      "states": [
+        {
+          "state": "explore",
+          "section": "[Intro]"
+        },
+        {
+          "state": "explore",
+          "section": "[Verse 1 - Exploration Layer]"
+        },
+        {
+          "state": "tension",
+          "section": "[Pre-Chorus - Tension Build]"
+        },
+        {
+          "state": "combat",
+          "section": "[Chorus - Combat Layer]"
+        },
+        {
+          "state": "boss",
+          "section": "[Bridge - Danger / Boss State]"
+        },
+        {
+          "state": "resolve",
+          "section": "[Outro]"
+        }
+      ],
+      "suno": {
+        "url": "https://suno.com/song/12212844-ebb0-44d0-8f97-c0b2198a030d",
+        "clip_id": "12212844-ebb0-44d0-8f97-c0b2198a030d",
+        "stem_group_id": "stemgrp_cd60e263-8d81-45a4-b5f6-2b8f02f22a8b",
+        "model": "v6 (MCP audio-create + audio-analysis + audio-stems-create mode=twelve)",
+        "generated_at": "2026-11-18T13:56:15Z",
+        "recommended_take": 2,
+        "analysis": {
+          "bpm_detected": 149.4,
+          "key_detected": "D major",
+          "time_signature": 4,
+          "bars_detected": 77,
+          "recommended_loop_start_bar": 16,
+          "recommended_loop_start_s": 24.267,
+          "recommended_loop_end_s": 75.771,
+          "sections": [
+            {
+              "start_s": 0,
+              "end_s": 0.08,
+              "label": "A"
+            },
+            {
+              "start_s": 0.08,
+              "end_s": 12.48,
+              "label": "A"
+            },
+            {
+              "start_s": 12.48,
+              "end_s": 31.68,
+              "label": "B"
+            },
+            {
+              "start_s": 31.68,
+              "end_s": 45.16,
+              "label": "B"
+            },
+            {
+              "start_s": 45.16,
+              "end_s": 51.68,
+              "label": "C"
+            },
+            {
+              "start_s": 51.68,
+              "end_s": 59.48,
+              "label": "C"
+            },
+            {
+              "start_s": 59.48,
+              "end_s": 70.92,
+              "label": "D"
+            },
+            {
+              "start_s": 70.92,
+              "end_s": 83.76,
+              "label": "E"
+            },
+            {
+              "start_s": 83.76,
+              "end_s": 99.12,
+              "label": "E"
+            },
+            {
+              "start_s": 99.12,
+              "end_s": 112.12,
+              "label": "D"
+            },
+            {
+              "start_s": 112.12,
+              "end_s": 120.32,
+              "label": "C"
+            },
+            {
+              "start_s": 120.32,
+              "end_s": 122.36,
+              "label": "C"
+            }
+          ],
+          "labels": {
+            "content:music": 0.892,
+            "genre:metal": 0.77
+          },
+          "terms": [
+            "song",
+            "male and female vocals",
+            "plucked string",
+            "metal"
+          ]
+        },
+        "candidates": [
+          {
+            "take": 1,
+            "clip_id": "4bb7bfe3-00f6-4dee-a46b-6333734a67bd",
+            "url": "https://suno.com/song/4bb7bfe3-00f6-4dee-a46b-6333734a67bd",
+            "liked": false,
+            "duration_s": 152,
+            "bpm_detected": 149.7,
+            "key_detected": "B minor",
+            "time_signature": 4,
+            "bars_detected": 95,
+            "sections_count": 10,
+            "sections": [
+              {
+                "start_s": 0,
+                "end_s": 7.2,
+                "label": "A"
+              },
+              {
+                "start_s": 7.2,
+                "end_s": 17.84,
+                "label": "B"
+              },
+              {
+                "start_s": 17.84,
+                "end_s": 43.96,
+                "label": "B"
+              },
+              {
+                "start_s": 43.96,
+                "end_s": 57.84,
+                "label": "C"
+              },
+              {
+                "start_s": 57.84,
+                "end_s": 72.4,
+                "label": "B"
+              },
+              {
+                "start_s": 72.4,
+                "end_s": 89.24,
+                "label": "D"
+              },
+              {
+                "start_s": 89.24,
+                "end_s": 119.04,
+                "label": "E"
+              },
+              {
+                "start_s": 119.04,
+                "end_s": 127.96,
+                "label": "A"
+              },
+              {
+                "start_s": 127.96,
+                "end_s": 149.28,
+                "label": "D"
+              },
+              {
+                "start_s": 149.28,
+                "end_s": 152,
+                "label": "A"
+              }
+            ],
+            "labels": {
+              "content:music": 0.886,
+              "genre:rock": 0.832,
+              "content:human_voice": 0.743,
+              "vocal:singing": 0.723
+            },
+            "terms": [
+              "song",
+              "male and female vocals",
+              "guitar",
+              "rock"
+            ],
+            "recommended_loop_start_bar": 20,
+            "recommended_loop_start_s": 30.699,
+            "recommended_loop_end_s": 82.004,
+            "quality_score": 15.755
+          },
+          {
+            "take": 2,
+            "clip_id": "12212844-ebb0-44d0-8f97-c0b2198a030d",
+            "url": "https://suno.com/song/12212844-ebb0-44d0-8f97-c0b2198a030d",
+            "liked": false,
+            "duration_s": 122.36,
+            "bpm_detected": 149.4,
+            "key_detected": "D major",
+            "time_signature": 4,
+            "bars_detected": 77,
+            "sections_count": 12,
+            "sections": [
+              {
+                "start_s": 0,
+                "end_s": 0.08,
+                "label": "A"
+              },
+              {
+                "start_s": 0.08,
+                "end_s": 12.48,
+                "label": "A"
+              },
+              {
+                "start_s": 12.48,
+                "end_s": 31.68,
+                "label": "B"
+              },
+              {
+                "start_s": 31.68,
+                "end_s": 45.16,
+                "label": "B"
+              },
+              {
+                "start_s": 45.16,
+                "end_s": 51.68,
+                "label": "C"
+              },
+              {
+                "start_s": 51.68,
+                "end_s": 59.48,
+                "label": "C"
+              },
+              {
+                "start_s": 59.48,
+                "end_s": 70.92,
+                "label": "D"
+              },
+              {
+                "start_s": 70.92,
+                "end_s": 83.76,
+                "label": "E"
+              },
+              {
+                "start_s": 83.76,
+                "end_s": 99.12,
+                "label": "E"
+              },
+              {
+                "start_s": 99.12,
+                "end_s": 112.12,
+                "label": "D"
+              },
+              {
+                "start_s": 112.12,
+                "end_s": 120.32,
+                "label": "C"
+              },
+              {
+                "start_s": 120.32,
+                "end_s": 122.36,
+                "label": "C"
+              }
+            ],
+            "labels": {
+              "content:music": 0.892,
+              "genre:metal": 0.77
+            },
+            "terms": [
+              "song",
+              "male and female vocals",
+              "plucked string",
+              "metal"
+            ],
+            "recommended_loop_start_bar": 16,
+            "recommended_loop_start_s": 24.267,
+            "recommended_loop_end_s": 75.771,
+            "quality_score": 16.11,
+            "midi_files": [
+              {
+                "stem": "bass",
+                "audio_id": "0f81ace1-43ae-432e-8018-8c52044424d2",
+                "path": "X:/Projects/GameMusic/Flotsam-Citadel/midi/flotsam-citadel-take1-bass.mid",
+                "tracks": 2,
+                "notes_count": 899
+              },
+              {
+                "stem": "guitar",
+                "audio_id": "30578ce4-8494-49c2-9cc2-2db97e285606",
+                "path": "X:/Projects/GameMusic/Flotsam-Citadel/midi/flotsam-citadel-take1-guitar.mid",
+                "tracks": 1,
+                "notes_count": 1644
+              },
+              {
+                "stem": "woodwinds",
+                "audio_id": "3858bfce-8699-4626-a04e-3d7d92c60776",
+                "path": "X:/Projects/GameMusic/Flotsam-Citadel/midi/flotsam-citadel-take1-woodwinds.mid",
+                "tracks": 1,
+                "notes_count": 5
+              },
+              {
+                "stem": "keyboard",
+                "audio_id": "3db10ea2-4e85-4e3a-a303-46c4b2fec12e",
+                "path": "X:/Projects/GameMusic/Flotsam-Citadel/midi/flotsam-citadel-take1-keyboard.mid",
+                "tracks": 4,
+                "notes_count": 400
+              },
+              {
+                "stem": "drums",
+                "audio_id": "79c774f4-87f9-4408-8de4-99f460300765",
+                "path": "X:/Projects/GameMusic/Flotsam-Citadel/midi/flotsam-citadel-take1-drums.mid",
+                "tracks": 2,
+                "notes_count": 1428
+              },
+              {
+                "stem": "brass",
+                "audio_id": "88fe2dda-dbf5-42bd-8934-b4b96ca2be24",
+                "path": "X:/Projects/GameMusic/Flotsam-Citadel/midi/flotsam-citadel-take1-brass.mid",
+                "tracks": 2,
+                "notes_count": 8
+              },
+              {
+                "stem": "synth",
+                "audio_id": "e4478b09-8816-4403-86e4-50bfeea2009f",
+                "path": "X:/Projects/GameMusic/Flotsam-Citadel/midi/flotsam-citadel-take1-synth.mid",
+                "tracks": 2,
+                "notes_count": 3334
+              },
+              {
+                "stem": "percussion",
+                "audio_id": "f8001f4b-40ee-480b-bad1-bd46ff32deff",
+                "path": "X:/Projects/GameMusic/Flotsam-Citadel/midi/flotsam-citadel-take1-percussion.mid",
+                "tracks": 1,
+                "notes_count": 2
+              }
+            ]
+          }
+        ]
+      },
+      "files": [
+        {
+          "path": "X:/Projects/GameMusic/Flotsam-Citadel/midi/flotsam-citadel-take1-guitar.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Flotsam-Citadel/midi/flotsam-citadel-take1-bass.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Flotsam-Citadel/midi/flotsam-citadel-take1-woodwinds.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Flotsam-Citadel/midi/flotsam-citadel-take1-keyboard.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Flotsam-Citadel/midi/flotsam-citadel-take1-drums.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Flotsam-Citadel/midi/flotsam-citadel-take1-brass.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Flotsam-Citadel/midi/flotsam-citadel-take1-synth.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Flotsam-Citadel/midi/flotsam-citadel-take1-percussion.mid",
+          "kind": "midi"
+        }
+      ],
+      "notes": "Generated 2 takes via Suno MCP (v6) & analyzed via 0-credit audio-analysis:\n- Take 1 (4bb7bfe3-00f6-4dee-a46b-6333734a67bd): https://suno.com/song/4bb7bfe3-00f6-4dee-a46b-6333734a67bd — 152s, detected 149.7 BPM, B minor, 95 bars, 10 sections, loop bars 20..52 (30.699s–82.004s), score=15.755\n- Take 2 (12212844-ebb0-44d0-8f97-c0b2198a030d): https://suno.com/song/12212844-ebb0-44d0-8f97-c0b2198a030d — 122.36s, detected 149.4 BPM, D major, 77 bars, 12 sections, loop bars 16..48 (24.267s–75.771s), score=16.11\nSelected for stem split: Take 2 (12212844-ebb0-44d0-8f97-c0b2198a030d) | 12-stem Auto Split group: stemgrp_cd60e263-8d81-45a4-b5f6-2b8f02f22a8b (complete)."
+    },
+    {
+      "track_id": "flotsam-citadel-B",
+      "title": "Flotsam Citadel - alternate region (modern-tactics)",
+      "status": "prompt_ready",
+      "vocals": "none",
+      "bpm": 132,
+      "style_prompt": "Modern military tactical hybrid electronic-orchestral score, clean mix, dry studio recording, minimalist frequency separation, precise, urgent and high-stakes, storm-tossed salvage raft atmosphere, Electric Guitar, Synth Bass, Drums, Brass, Synth Pad, Percussion, 132 BPM, strict quantize, steady 4/4 rhythm, different key, blended sub-archetype palette, new motif, instrumental",
+      "lyrics": "[Instrumental]\n[Tempo: 132 BPM, strict quantize, steady rhythm]\n\n[Intro - Bass Stem Only]\n[Deep pulsing Synth Bass, clean low-end drone, minimal]\n\n[Part 1 - Add Percussion Stem]\n[pulsing Synth Bass, muted Synth Pad, crisp tactical Percussion, steady 4/4 rhythm]\n\n[Part 2 - Add Melody Stem]\n[palm-muted Electric Guitar chugs, building Brass swells, high frequency separation, dry studio]\n\n[Part 3 - Add Combat & Climax Layer]\n[heavy Drums, driving Synth Bass, soaring Brass and Electric Guitar; staccato artillery Percussion hits, aggressive Brass and Guitar stabs]\n\n[Outro - Strip Back]\n[Sub-bass pulse and distant percussion fade out]",
+      "instruments": [
+        {
+          "name": "Electric Guitar",
+          "stem": "Electric Guitar",
+          "keep": true
+        },
+        {
+          "name": "Synth Bass",
+          "stem": "Synth Bass",
+          "keep": true
+        },
+        {
+          "name": "Drums",
+          "stem": "Drums",
+          "keep": true
+        },
+        {
+          "name": "Brass",
+          "stem": "Brass",
+          "keep": true
+        },
+        {
+          "name": "Synth Pad",
+          "stem": "Synth Pad",
+          "keep": false
+        },
+        {
+          "name": "Percussion",
+          "stem": "Percussion",
+          "keep": false
+        }
+      ],
+      "stems_requested": [
+        "Brass",
+        "Drums",
+        "Electric Guitar",
+        "Synth Bass"
+      ],
+      "states": [
+        {
+          "state": "explore",
+          "section": "[Intro]"
+        },
+        {
+          "state": "explore",
+          "section": "[Verse 1 - Exploration Layer]"
+        },
+        {
+          "state": "tension",
+          "section": "[Pre-Chorus - Tension Build]"
+        },
+        {
+          "state": "combat",
+          "section": "[Chorus - Combat Layer]"
+        },
+        {
+          "state": "boss",
+          "section": "[Bridge - Danger / Boss State]"
+        },
+        {
+          "state": "resolve",
+          "section": "[Outro]"
+        }
+      ],
+      "suno": {
+        "url": "",
+        "clip_id": "",
+        "model": "",
+        "generated_at": ""
+      },
+      "files": [],
+      "notes": ""
+    },
+    {
+      "track_id": "flotsam-citadel-C",
+      "title": "Flotsam Citadel - late-game variation (mech-industrial + retro-chiptune-rock)",
+      "status": "prompt_ready",
+      "vocals": "none",
+      "bpm": 136,
+      "style_prompt": "Heavy mechanical industrial breakbeat and modular synth score blended with High-octane 16-bit chiptune and electric guitar arcade fusion, clean mix, dry studio recording, minimalist frequency separation, gritty, relentless and mechanical, storm-tossed salvage raft atmosphere, Synth Bass, Percussion, Drums, Synth Lead, 808, Risers, Lead Guitar, 136 BPM, strict quantize, steady 4/4 rhythm, darker harmony, hybrid escalation palette, motif reprised, instrumental",
+      "lyrics": "[Instrumental]\n[Tempo: 136 BPM, strict quantize, steady rhythm]\n\n[Intro - Bass Stem Only]\n[Deep pulsing Synth Bass, clean low-end drone, minimal]\n\n[Part 1 - Add Percussion Stem]\n[metallic Percussion clangs, sub 808 pulse, sparse Synth Bass, steady 4/4 rhythm]\n\n[Part 2 - Add Melody Stem]\n[modular Risers sweep, accelerating breakbeat Drums, high frequency separation, dry studio]\n\n[Part 3 - Add Combat & Climax Layer]\n[crunchy industrial Drums, distorted Synth Bass, piercing Synth Lead; relentless anvil Percussion, heavy 808 drop]\n\n[Outro - Strip Back]\n[Sub-bass pulse and distant percussion fade out]",
+      "instruments": [
+        {
+          "name": "Synth Bass",
+          "stem": "Synth Bass",
+          "keep": true
+        },
+        {
+          "name": "Percussion",
+          "stem": "Percussion",
+          "keep": true
+        },
+        {
+          "name": "Drums",
+          "stem": "Drums",
+          "keep": true
+        },
+        {
+          "name": "Synth Lead",
+          "stem": "Synth Lead",
+          "keep": true
+        },
+        {
+          "name": "808",
+          "stem": "808",
+          "keep": false
+        },
+        {
+          "name": "Risers",
+          "stem": "Risers",
+          "keep": false
+        }
+      ],
+      "stems_requested": [
+        "Drums",
+        "Percussion",
+        "Synth Bass",
+        "Synth Lead"
+      ],
+      "states": [
+        {
+          "state": "explore",
+          "section": "[Intro]"
+        },
+        {
+          "state": "explore",
+          "section": "[Verse 1 - Exploration Layer]"
+        },
+        {
+          "state": "tension",
+          "section": "[Pre-Chorus - Tension Build]"
+        },
+        {
+          "state": "combat",
+          "section": "[Chorus - Combat Layer]"
+        },
+        {
+          "state": "boss",
+          "section": "[Bridge - Danger / Boss State]"
+        },
+        {
+          "state": "resolve",
+          "section": "[Outro]"
+        }
+      ],
+      "suno": {
+        "url": "",
+        "clip_id": "",
+        "model": "",
+        "generated_at": ""
+      },
+      "files": [],
+      "notes": ""
+    }
+  ],
+  "updated_at": "2026-11-18T21:43:37Z",
+  "scope": "catalog",
+  "recommended_archetype": "action-rock",
+  "recommended_setting": "storm-tossed salvage raft",
+  "recommendation_reason": "Assembling a raft to survive a forty-second storm benefits from driving rock urgency."
+}

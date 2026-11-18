@@ -15,3 +15,9 @@ Compile `tests/RechargeableReserveTests.cpp` with a C++14 compiler, assertions e
 Consumer automation also covers real descent, exhaustion, landing refill,
 checkpoints and restart. Evidence belongs in the consuming project's
 `Docs/GLIDER_VALIDATION.md` and hashed automation receipt.
+
+Version 0.2.0 adds `SpendFor(seconds, rate)` and `RefillFor(seconds, rate)` for
+continuous abilities. Both reject nonfinite/nonpositive arguments and avoid
+overflow in rate-times-duration. SpendFor returns the supplied interval fraction,
+including partial final frames. Existing amount APIs are unchanged. Snap Rally
+uses this for boost; it owns recharge eligibility and exhaustion lockout.

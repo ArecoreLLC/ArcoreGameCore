@@ -29,3 +29,5 @@ Standalone regression: compile `tests/GridRouteTests.cpp` as C++17 with assertio
 enabled. It exhausts 512 occupancy masks and 81 endpoint pairs per mask, comparing
 routes with independently relaxed distances (41,472 queries), plus invalid-input
 and row-wrap checks. The consumer also runs this header in Unreal automation.
+
+Version 0.3.0 adds `TraceGridRoute(width, height, field, start, goal)`. It traces the deterministic descending field to the requested zero-distance goal, including both endpoints. Invalid, unreachable, inconsistent or wrong-goal paths return empty, never partial routes. Work is bounded by cell count; callers must rebuild fields after occupancy changes. Pocket Fort Patrol uses this for build previews and shared-field placement validation. Exhaustive 3x3 tests compare trace lengths against independently relaxed distances.

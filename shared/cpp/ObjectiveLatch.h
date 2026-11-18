@@ -21,6 +21,8 @@ public:
     {
         return index < Count && (Bits & (std::uint64_t(1) << index)) != 0;
     }
+    unsigned ActivatedCount() const { return Activated; }
+    unsigned TotalCount() const { return Count; }
     unsigned Remaining() const { return Count - Activated; }
     bool IsComplete() const { return Count > 0 && Activated == Count; }
     void Reset() { Bits = 0; Activated = 0; }

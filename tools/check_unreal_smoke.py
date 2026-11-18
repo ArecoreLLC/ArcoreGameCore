@@ -6,8 +6,22 @@ import math
 from pathlib import Path
 import re
 
-ERROR = re.compile(r'\b(?:Error|Fatal):|Fatal error:|Assertion failed:|Ensure condition failed:|(?:\b|_)SMOKE FAIL\b', re.I)
+ERROR = re.compile(r'\b(?:Error|Fatal):|Fatal error:|Assertion failed:|Ensure condition failed:|(?:\b|_)SMOKE[ _]FAIL\b', re.I)
 PREFIX = re.compile(r'^(?:\[[^\]]+\]\[\s*\d+\])?\s*(?:[A-Za-z0-9_]+:\s*(?:(?:Display|Log):\s*)?)?')
+
+def validate_stages(text, required, final_marker):
+    """Require each stage as a real log message, in order, before final success."""
+    if not isinstance(required, list) or any(not isinstance(s, str) or not s.strip() or '\n' in s or '\r' in s for s in required):
+        raise ValueError('Required smoke markers must be a list of nonempty single-line strings')
+    if len(set(required)) != len(required) or final_marker in required:
+        raise ValueError('Required smoke markers must be unique and exclude final success')
+    messages=[PREFIX.sub('', line, count=1) for line in text.splitlines()]
+    cursor=0
+    for marker in [*required, final_marker]:
+        found=next((i for i in range(cursor,len(messages)) if messages[i]==marker or messages[i].startswith(marker+' ')),None)
+        if found is None: raise ValueError(f'Missing or out-of-order smoke stage: {marker}')
+        cursor=found+1
+    return required
 
 def validate(log, marker, exit_code, started_at):
     if not math.isfinite(started_at) or started_at < 0:

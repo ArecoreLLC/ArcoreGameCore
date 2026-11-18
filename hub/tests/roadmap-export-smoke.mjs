@@ -9,7 +9,7 @@ const app=spawn(exe,[],{windowsHide:true,stdio:'ignore',env:{...process.env,GAME
 try{
  for(let i=0;i<150;i++){try{browser=await chromium.connectOverCDP('http://127.0.0.1:9451');break}catch{await new Promise(r=>setTimeout(r,400))}}
  assert.ok(browser);const page=browser.contexts()[0].pages()[0];const errors=[];page.on('pageerror',e=>errors.push(e.message));
- await page.getByRole('heading',{name:'Small worlds. Big potential.'}).waitFor({timeout:45000});
+ await page.getByRole('heading',{name:'Game library',exact:true}).waitFor({timeout:45000});
  const invoke=(command,args={})=>page.evaluate(({command,args})=>window.__TAURI_INTERNALS__.invoke(command,args),{command,args});
  await page.getByRole('button',{name:'Game roadmap',exact:true}).click();await page.waitForFunction(()=>document.querySelectorAll('.roadmap-card').length===50);
  await page.getByLabel('Search roadmap').fill('Lantern Heist');await page.getByRole('button',{name:'Export JSON',exact:true}).click();

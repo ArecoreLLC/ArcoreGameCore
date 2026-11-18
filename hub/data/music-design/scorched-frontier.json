@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "game_id": "scorched-frontier",
+  "name": "Scorched Frontier",
+  "status": "excluded",
+  "exclusion_reason": "Already has adaptive calm/tension stems in Media/Audio/Sonic-v004.",
+  "archetype": null,
+  "setting": "",
+  "tracks": [],
+  "updated_at": "2026-11-17T14:16:59Z",
+  "scope": "catalog",
+  "recommended_archetype": "cyberpunk",
+  "recommended_setting": "alloy & fuel logistics warzone",
+  "recommendation_reason": "Three-faction alloy/fuel logistics RTS fits tense dystopian bass synth and sequenced arpeggiators."
+}

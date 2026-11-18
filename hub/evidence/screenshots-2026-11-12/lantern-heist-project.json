@@ -1,0 +1,49 @@
+{
+  "id": "lantern-heist",
+  "name": "Lantern Heist",
+  "path": "X:\\Projects\\Games\\Lantern-Heist",
+  "engine": "Unreal 5.8.4 / C++",
+  "dimension": "3d",
+  "kind": "game",
+  "maturity": "prototype",
+  "description": "Steal the Vault relic and return to the Rotunda exit while a Custodian patrols and investigates decoys.",
+  "logic": "Operate the lantern and prisms to change routes; vault gaps and evade the Custodian.",
+  "reuse": "Standalone descendant of Haunt and Haul; retains donor module names.",
+  "assets": "Engine primitive museum scene and lantern lighting.",
+  "limitations": "Editor development prototype. No fresh gameplay acceptance performed during screenshot import.",
+  "capabilities": [],
+  "mechanics": [],
+  "provider_links": [],
+  "marketing": {
+    "tagline": "",
+    "pitch": "",
+    "audience": "",
+    "release_status": "Prototype",
+    "website": "",
+    "credits": "",
+    "notes": ""
+  },
+  "commands": [
+    "./Scripts/Play-Lantern.ps1"
+  ],
+  "review_date": "2026-11-12",
+  "build_status": "not_run",
+  "playtest_status": "not_run",
+  "asset_counts": {},
+  "asset_file_count": 0,
+  "source_file_count": 0,
+  "evidence_files": [],
+  "historical_checks": [],
+  "media_candidates": [],
+  "subgames": [],
+  "revision": {
+    "head": null,
+    "dirty": false,
+    "note": "Revision not audited in this media import."
+  },
+  "audit": {
+    "timestamp_utc": "2026-11-12T22:27:45.224019+00:00",
+    "errors": [],
+    "method": "README and screenshot inspection; file index not audited."
+  }
+}

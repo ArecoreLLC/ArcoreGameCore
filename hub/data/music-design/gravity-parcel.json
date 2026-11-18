@@ -1,0 +1,498 @@
+{
+  "schema_version": 1,
+  "game_id": "gravity-parcel",
+  "name": "Relic Rematch",
+  "scope": "roadmap",
+  "status": "in_progress",
+  "exclusion_reason": "",
+  "recommended_archetype": "dark-fantasy",
+  "recommended_setting": "two-phase relic guardian arena",
+  "recommendation_reason": "Rematching a two-phase relic guardian fits epic boss-state brass ostinato and timpani.",
+  "archetype": "dark-fantasy",
+  "setting": "two-phase relic guardian arena",
+  "sonic_alchemist_project": "",
+  "soundcore_project": "",
+  "modelforge_project": "",
+  "tracks": [
+    {
+      "track_id": "gravity-parcel-A",
+      "title": "Relic Rematch - main theme",
+      "status": "generated",
+      "vocals": "none",
+      "bpm": 115,
+      "style_prompt": "Dark fantasy orchestral cinematic score, ominous and heroic, two-phase relic guardian arena atmosphere, Strings, Brass, Taiko, Timpani, Cello, Choir, 115 BPM, memorable repeating melodic motif, instrumental, no vocals, dynamic game soundtrack score, seamless looping structure",
+      "lyrics": "[Intro]\n(sparse ambient layer, quiet pulse)\n[Verse 1 - Exploration Layer]\n(pizzicato Cello, low Drone, sparse Woodwinds)\n[Pre-Chorus - Tension Build]\n(legato Strings swells, creeping Snare rolls)\n[Chorus - Combat Layer]\n(full Brass blasting, heavy Taiko, driving Strings)\n[Bridge - Danger / Boss State]\n(furious Brass ostinato, relentless Timpani, Choir accents)\n[Outro]\n(resolution back to ambient loop tail)",
+      "instruments": [
+        {
+          "name": "Strings",
+          "stem": "Strings",
+          "keep": true
+        },
+        {
+          "name": "Brass",
+          "stem": "Brass",
+          "keep": true
+        },
+        {
+          "name": "Taiko",
+          "stem": "Taiko",
+          "keep": true
+        },
+        {
+          "name": "Timpani",
+          "stem": "Timpani",
+          "keep": true
+        },
+        {
+          "name": "Cello",
+          "stem": "Cello",
+          "keep": false
+        },
+        {
+          "name": "Choir",
+          "stem": "Choir",
+          "keep": false
+        }
+      ],
+      "stems_requested": [
+        "Brass",
+        "Strings",
+        "Taiko",
+        "Timpani"
+      ],
+      "states": [
+        {
+          "state": "explore",
+          "section": "[Intro]"
+        },
+        {
+          "state": "explore",
+          "section": "[Verse 1 - Exploration Layer]"
+        },
+        {
+          "state": "tension",
+          "section": "[Pre-Chorus - Tension Build]"
+        },
+        {
+          "state": "combat",
+          "section": "[Chorus - Combat Layer]"
+        },
+        {
+          "state": "boss",
+          "section": "[Bridge - Danger / Boss State]"
+        },
+        {
+          "state": "resolve",
+          "section": "[Outro]"
+        }
+      ],
+      "suno": {
+        "url": "https://suno.com/song/59c50c76-f53d-44ad-8865-5419a6599125",
+        "clip_id": "59c50c76-f53d-44ad-8865-5419a6599125",
+        "stem_group_id": "",
+        "model": "v6 (MCP audio-create + audio-analysis)",
+        "generated_at": "2026-11-18T15:34:04Z",
+        "recommended_take": 2,
+        "analysis": {
+          "bpm_detected": 117.1,
+          "key_detected": "E minor",
+          "time_signature": 4,
+          "bars_detected": 66,
+          "recommended_loop_start_bar": 14,
+          "recommended_loop_start_s": 27.271,
+          "recommended_loop_end_s": 93.012,
+          "sections": [
+            {
+              "start_s": 0,
+              "end_s": 17.48,
+              "label": "A"
+            },
+            {
+              "start_s": 17.48,
+              "end_s": 24.08,
+              "label": "B"
+            },
+            {
+              "start_s": 24.08,
+              "end_s": 51.92,
+              "label": "C"
+            },
+            {
+              "start_s": 51.92,
+              "end_s": 73.16,
+              "label": "D"
+            },
+            {
+              "start_s": 73.16,
+              "end_s": 88.92,
+              "label": "B"
+            },
+            {
+              "start_s": 88.92,
+              "end_s": 105.52,
+              "label": "C"
+            },
+            {
+              "start_s": 105.52,
+              "end_s": 111.12,
+              "label": "A"
+            },
+            {
+              "start_s": 111.12,
+              "end_s": 132.68,
+              "label": "E"
+            },
+            {
+              "start_s": 132.68,
+              "end_s": 139.6,
+              "label": "A"
+            }
+          ],
+          "labels": {
+            "arrangement:instrumental": 0.97,
+            "content:music": 0.962,
+            "instrument:percussion_family": 0.676,
+            "instrument:keyboard_family": 0.658,
+            "instrument:bowed_string_family": 0.63,
+            "use:cinematic": 0.614,
+            "instrument:timpani": 0.589,
+            "texture:orchestral": 0.573
+          },
+          "terms": [
+            "instrumental",
+            "no voice",
+            "timpani",
+            "cinematic",
+            "epic",
+            "orchestral"
+          ]
+        },
+        "candidates": [
+          {
+            "take": 1,
+            "clip_id": "a6dfed3e-a5da-4222-85e5-e6d8fce40d1a",
+            "url": "https://suno.com/song/a6dfed3e-a5da-4222-85e5-e6d8fce40d1a",
+            "liked": false,
+            "duration_s": 139.36,
+            "bpm_detected": 116.5,
+            "key_detected": "C minor",
+            "time_signature": 4,
+            "bars_detected": 66,
+            "sections_count": 9,
+            "sections": [
+              {
+                "start_s": 0,
+                "end_s": 8,
+                "label": "A"
+              },
+              {
+                "start_s": 8,
+                "end_s": 21.04,
+                "label": "A"
+              },
+              {
+                "start_s": 21.04,
+                "end_s": 53,
+                "label": "A"
+              },
+              {
+                "start_s": 53,
+                "end_s": 71.76,
+                "label": "A"
+              },
+              {
+                "start_s": 71.76,
+                "end_s": 76.92,
+                "label": "A"
+              },
+              {
+                "start_s": 76.92,
+                "end_s": 97.44,
+                "label": "B"
+              },
+              {
+                "start_s": 97.44,
+                "end_s": 115.76,
+                "label": "B"
+              },
+              {
+                "start_s": 115.76,
+                "end_s": 135.32,
+                "label": "B"
+              },
+              {
+                "start_s": 135.32,
+                "end_s": 139.36,
+                "label": "A"
+              }
+            ],
+            "labels": {
+              "content:music": 0.95,
+              "arrangement:instrumental": 0.95,
+              "instrument:percussion_family": 0.677,
+              "instrument:timpani": 0.599,
+              "texture:orchestral": 0.571
+            },
+            "terms": [
+              "instrumental",
+              "no voice",
+              "timpani",
+              "french horn",
+              "orchestral"
+            ],
+            "recommended_loop_start_bar": 14,
+            "recommended_loop_start_s": 27.324,
+            "recommended_loop_end_s": 93.329,
+            "quality_score": 19.875
+          },
+          {
+            "take": 2,
+            "clip_id": "59c50c76-f53d-44ad-8865-5419a6599125",
+            "url": "https://suno.com/song/59c50c76-f53d-44ad-8865-5419a6599125",
+            "liked": false,
+            "duration_s": 139.6,
+            "bpm_detected": 117.1,
+            "key_detected": "E minor",
+            "time_signature": 4,
+            "bars_detected": 66,
+            "sections_count": 9,
+            "sections": [
+              {
+                "start_s": 0,
+                "end_s": 17.48,
+                "label": "A"
+              },
+              {
+                "start_s": 17.48,
+                "end_s": 24.08,
+                "label": "B"
+              },
+              {
+                "start_s": 24.08,
+                "end_s": 51.92,
+                "label": "C"
+              },
+              {
+                "start_s": 51.92,
+                "end_s": 73.16,
+                "label": "D"
+              },
+              {
+                "start_s": 73.16,
+                "end_s": 88.92,
+                "label": "B"
+              },
+              {
+                "start_s": 88.92,
+                "end_s": 105.52,
+                "label": "C"
+              },
+              {
+                "start_s": 105.52,
+                "end_s": 111.12,
+                "label": "A"
+              },
+              {
+                "start_s": 111.12,
+                "end_s": 132.68,
+                "label": "E"
+              },
+              {
+                "start_s": 132.68,
+                "end_s": 139.6,
+                "label": "A"
+              }
+            ],
+            "labels": {
+              "arrangement:instrumental": 0.97,
+              "content:music": 0.962,
+              "instrument:percussion_family": 0.676,
+              "instrument:keyboard_family": 0.658,
+              "instrument:bowed_string_family": 0.63,
+              "use:cinematic": 0.614,
+              "instrument:timpani": 0.589,
+              "texture:orchestral": 0.573
+            },
+            "terms": [
+              "instrumental",
+              "no voice",
+              "timpani",
+              "cinematic",
+              "epic",
+              "orchestral"
+            ],
+            "recommended_loop_start_bar": 14,
+            "recommended_loop_start_s": 27.271,
+            "recommended_loop_end_s": 93.012,
+            "quality_score": 19.985
+          }
+        ]
+      },
+      "files": [],
+      "notes": "Generated 2 takes via Suno MCP (v6) & analyzed via 0-credit audio-analysis:\n- Take 1 (a6dfed3e-a5da-4222-85e5-e6d8fce40d1a): https://suno.com/song/a6dfed3e-a5da-4222-85e5-e6d8fce40d1a \u2014 139.36s, detected 116.5 BPM, C minor, 66 bars, 9 sections, loop bars 14..46 (27.324s\u201393.329s), score=19.875\n- Take 2 (59c50c76-f53d-44ad-8865-5419a6599125): https://suno.com/song/59c50c76-f53d-44ad-8865-5419a6599125 \u2014 139.6s, detected 117.1 BPM, E minor, 66 bars, 9 sections, loop bars 14..46 (27.271s\u201393.012s), score=19.985\nSelected for stem split: Take 2 (59c50c76-f53d-44ad-8865-5419a6599125)."
+    },
+    {
+      "track_id": "gravity-parcel-B",
+      "title": "Relic Rematch - alternate region (medieval-siege)",
+      "status": "prompt_ready",
+      "vocals": "none",
+      "bpm": 118,
+      "style_prompt": "Medieval castle siege orchestral and folk-warfare score, clean mix, dry studio recording, minimalist frequency separation, martial, ancient and thunderous, two-phase relic guardian arena atmosphere, Strings, Brass, Snare, Timpani, Harpsichord, Bagpipes, 118 BPM, strict quantize, steady 4/4 rhythm, different key, blended sub-archetype palette, new motif, instrumental",
+      "lyrics": "[Instrumental]\n[Tempo: 118 BPM, strict quantize, steady rhythm]\n\n[Intro - Bass Stem Only]\n[Deep pulsing Strings, clean low-end drone, minimal]\n\n[Part 1 - Add Percussion Stem]\n[low Strings ostinato, Harpsichord motif, distant Snare march, steady 4/4 rhythm]\n\n[Part 2 - Add Melody Stem]\n[rising Brass horn calls, tightening Snare cadence, high frequency separation, dry studio]\n\n[Part 3 - Add Combat & Climax Layer]\n[full Brass fanfare, pounding Timpani, driving Strings; fierce Bagpipes lead, relentless Timpani and Snare volley]\n\n[Outro - Strip Back]\n[Sub-bass pulse and distant percussion fade out]",
+      "instruments": [
+        {
+          "name": "Strings",
+          "stem": "Strings",
+          "keep": true
+        },
+        {
+          "name": "Brass",
+          "stem": "Brass",
+          "keep": true
+        },
+        {
+          "name": "Snare",
+          "stem": "Snare",
+          "keep": true
+        },
+        {
+          "name": "Timpani",
+          "stem": "Timpani",
+          "keep": true
+        },
+        {
+          "name": "Harpsichord",
+          "stem": "Harpsichord",
+          "keep": false
+        },
+        {
+          "name": "Bagpipes",
+          "stem": "Bagpipes",
+          "keep": false
+        }
+      ],
+      "stems_requested": [
+        "Brass",
+        "Snare",
+        "Strings",
+        "Timpani"
+      ],
+      "states": [
+        {
+          "state": "explore",
+          "section": "[Intro]"
+        },
+        {
+          "state": "explore",
+          "section": "[Verse 1 - Exploration Layer]"
+        },
+        {
+          "state": "tension",
+          "section": "[Pre-Chorus - Tension Build]"
+        },
+        {
+          "state": "combat",
+          "section": "[Chorus - Combat Layer]"
+        },
+        {
+          "state": "boss",
+          "section": "[Bridge - Danger / Boss State]"
+        },
+        {
+          "state": "resolve",
+          "section": "[Outro]"
+        }
+      ],
+      "suno": {
+        "url": "",
+        "clip_id": "",
+        "model": "",
+        "generated_at": ""
+      },
+      "files": [],
+      "notes": ""
+    },
+    {
+      "track_id": "gravity-parcel-C",
+      "title": "Relic Rematch - late-game variation (cosmic-ambient + mech-industrial)",
+      "status": "prompt_ready",
+      "vocals": "none",
+      "bpm": 104,
+      "style_prompt": "Ethereal sci-fi orbital ambient and crystalline synth score blended with Heavy mechanical industrial breakbeat and modular synth score, clean mix, dry studio recording, minimalist frequency separation, vast, wondrous and weightless, two-phase relic guardian arena atmosphere, Synth Pad, Arpeggiator, Piano, Strings, Synth Bass, Bells, Percussion, 104 BPM, strict quantize, steady 4/4 rhythm, darker harmony, hybrid escalation palette, motif reprised, instrumental",
+      "lyrics": "[Instrumental]\n[Tempo: 104 BPM, strict quantize, steady rhythm]\n\n[Intro - Bass Stem Only]\n[Deep pulsing Synth Bass, clean low-end drone, minimal]\n\n[Part 1 - Add Percussion Stem]\n[evolving Synth Pad, resonant Piano notes, soft Bells, steady 4/4 rhythm]\n\n[Part 2 - Add Melody Stem]\n[shimmering Arpeggiator pulse, deep Synth Bass swell, high frequency separation, dry studio]\n\n[Part 3 - Add Combat & Climax Layer]\n[soaring Strings over sequenced Arpeggiator and Synth Bass; urgent crystalline Bells, dramatic Synth Pad swells]\n\n[Outro - Strip Back]\n[Sub-bass pulse and distant percussion fade out]",
+      "instruments": [
+        {
+          "name": "Synth Pad",
+          "stem": "Synth Pad",
+          "keep": true
+        },
+        {
+          "name": "Arpeggiator",
+          "stem": "Arpeggiator",
+          "keep": true
+        },
+        {
+          "name": "Piano",
+          "stem": "Piano",
+          "keep": true
+        },
+        {
+          "name": "Strings",
+          "stem": "Strings",
+          "keep": true
+        },
+        {
+          "name": "Synth Bass",
+          "stem": "Synth Bass",
+          "keep": false
+        },
+        {
+          "name": "Bells",
+          "stem": "Bells",
+          "keep": false
+        }
+      ],
+      "stems_requested": [
+        "Arpeggiator",
+        "Piano",
+        "Strings",
+        "Synth Pad"
+      ],
+      "states": [
+        {
+          "state": "explore",
+          "section": "[Intro]"
+        },
+        {
+          "state": "explore",
+          "section": "[Verse 1 - Exploration Layer]"
+        },
+        {
+          "state": "tension",
+          "section": "[Pre-Chorus - Tension Build]"
+        },
+        {
+          "state": "combat",
+          "section": "[Chorus - Combat Layer]"
+        },
+        {
+          "state": "boss",
+          "section": "[Bridge - Danger / Boss State]"
+        },
+        {
+          "state": "resolve",
+          "section": "[Outro]"
+        }
+      ],
+      "suno": {
+        "url": "",
+        "clip_id": "",
+        "model": "",
+        "generated_at": ""
+      },
+      "files": [],
+      "notes": ""
+    }
+  ],
+  "updated_at": "2026-11-18T15:36:13Z"
+}

@@ -39,7 +39,15 @@
         "README.md",
         "src-tauri/src/mcp.rs"
       ],
-      "runtime": "asset-service"
+      "runtime": "asset-service",
+      "versioned_modules": [
+        {
+          "id": "hairlab",
+          "manifest": "texture-lab/hairlab.json",
+          "check": "python texture-lab/hairlab_version.py",
+          "pin": "workflows/hair-fur-textures/pin.json"
+        }
+      ]
     },
     {
       "id": "sound-core",
@@ -65,10 +73,15 @@
   "mcp": {
     "hub": {
       "id": "gamecore-hub",
-      "status": "planned",
+      "status": "media-implemented-wizards-planned",
+      "command": ["hub/src-tauri/target/release/gamecore-library.exe", "--mcp"],
+      "implemented_tools": ["list_projects", "list_media", "import_media"],
       "role": "The only MCP server agents register. It exposes wizard-level tools and calls the servers below itself, with typed arguments and no LLM in the loop.",
       "transport": "stdio",
       "tools": [
+        {"name": "list_projects", "writes": false, "purpose": "List local catalog projects; implemented"},
+        {"name": "list_media", "writes": false, "purpose": "Read media and import-time Git iteration tags; implemented"},
+        {"name": "import_media", "writes": true, "purpose": "Import local media as draft with automatic screenshot iteration tags; implemented"},
         {
           "name": "list_wizards",
           "writes": false,

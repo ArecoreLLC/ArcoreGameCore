@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "game_id": "shammyverse",
+  "name": "ShammyVerse",
+  "status": "excluded",
+  "exclusion_reason": "Already has 10 full island songs and Sonic Alchemist reconstructions.",
+  "archetype": null,
+  "setting": "",
+  "tracks": [],
+  "updated_at": "2026-11-17T14:16:59Z",
+  "scope": "catalog",
+  "recommended_archetype": "cozy",
+  "recommended_setting": "soft cartoon island & sailing",
+  "recommendation_reason": "Already scored: 10 original island songs and reconstructions in Assets/Music and Sonic Alchemist."
+}

@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "owner": "ArcoreModelForge/texture-lab",
+  "manifest": "texture-lab/hairlab.json",
+  "manifest_url": "https://github.com/ArecoreLLC/ArcoreModelForge/blob/main/texture-lab/hairlab.json",
+  "check": "python texture-lab/hairlab_version.py",
+  "pinned_version": "0.3.0",
+  "pinned_on": "2026-11-12",
+  "note": "Update pinned_version after reviewing the HairLab changelog and re-running its checks. The Unreal generator path is blocked at this version."
+}

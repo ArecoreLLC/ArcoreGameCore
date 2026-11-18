@@ -15,7 +15,7 @@ class SmokeEvidenceTests(unittest.TestCase):
     def test_valid_marker(self):
         self.assertEqual(validate(self.log, 'EXAMPLE_SMOKE PASS', 0, 0)['status'], 'passed')
     def test_marker_does_not_hide_runtime_error(self):
-        for error in ('LogTemp: Error: bad actor', 'Fatal error: crash', 'Ensure condition failed: state', 'EXAMPLE_SMOKE FAIL'):
+        for error in ('LogTemp: Error: bad actor', 'Fatal error: crash', 'Ensure condition failed: state', 'EXAMPLE_SMOKE FAIL', 'LogTemp: Display: FOREST_SMOKE_FAIL: blocked route', 'LogTemp: Display: EXAMPLE_SMOKE_FAIL'):
             with self.subTest(error=error):
                 self.log.write_text('LogTemp: Display: EXAMPLE_SMOKE PASS\n' + error)
                 with self.assertRaises(ValueError): validate(self.log, 'EXAMPLE_SMOKE PASS', 0, 0)

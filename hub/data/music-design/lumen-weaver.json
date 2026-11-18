@@ -1,0 +1,595 @@
+{
+  "schema_version": 1,
+  "game_id": "lumen-weaver",
+  "name": "Lumen-Weaver",
+  "status": "in_progress",
+  "exclusion_reason": "",
+  "archetype": "dark-fantasy",
+  "setting": "amber cathedral mirror chamber",
+  "tracks": [
+    {
+      "track_id": "lumen-weaver-A",
+      "title": "Lumen-Weaver - main theme",
+      "status": "stems_split",
+      "vocals": "none",
+      "bpm": 115,
+      "style_prompt": "Dark fantasy orchestral cinematic score, ominous and heroic, amber cathedral mirror chamber atmosphere, Strings, Brass, Taiko, Timpani, Cello, Choir, 115 BPM, memorable repeating melodic motif, instrumental, no vocals, dynamic game soundtrack score, seamless looping structure",
+      "lyrics": "[Intro]\n(sparse ambient layer, quiet pulse)\n[Verse 1 - Exploration Layer]\n(pizzicato Cello, low Drone, sparse Woodwinds)\n[Pre-Chorus - Tension Build]\n(legato Strings swells, creeping Snare rolls)\n[Chorus - Combat Layer]\n(full Brass blasting, heavy Taiko, driving Strings)\n[Bridge - Danger / Boss State]\n(furious Brass ostinato, relentless Timpani, Choir accents)\n[Outro]\n(resolution back to ambient loop tail)",
+      "instruments": [
+        {
+          "name": "Strings",
+          "stem": "Strings",
+          "keep": true
+        },
+        {
+          "name": "Brass",
+          "stem": "Brass",
+          "keep": true
+        },
+        {
+          "name": "Taiko",
+          "stem": "Taiko",
+          "keep": true
+        },
+        {
+          "name": "Timpani",
+          "stem": "Timpani",
+          "keep": true
+        },
+        {
+          "name": "Cello",
+          "stem": "Cello",
+          "keep": false
+        },
+        {
+          "name": "Choir",
+          "stem": "Choir",
+          "keep": false
+        }
+      ],
+      "stems_requested": [
+        "Brass",
+        "Strings",
+        "Taiko",
+        "Timpani"
+      ],
+      "states": [
+        {
+          "state": "explore",
+          "section": "[Intro]"
+        },
+        {
+          "state": "explore",
+          "section": "[Verse 1 - Exploration Layer]"
+        },
+        {
+          "state": "tension",
+          "section": "[Pre-Chorus - Tension Build]"
+        },
+        {
+          "state": "combat",
+          "section": "[Chorus - Combat Layer]"
+        },
+        {
+          "state": "boss",
+          "section": "[Bridge - Danger / Boss State]"
+        },
+        {
+          "state": "resolve",
+          "section": "[Outro]"
+        }
+      ],
+      "suno": {
+        "url": "https://suno.com/song/d5a5952f-9456-44bf-80bc-c1cc7cef81a7",
+        "clip_id": "d5a5952f-9456-44bf-80bc-c1cc7cef81a7",
+        "stem_group_id": "stemgrp_b3d67717-ddd8-43a5-8467-7a353555b2fd",
+        "model": "v6 (MCP audio-create + audio-analysis + audio-stems-create mode=twelve)",
+        "generated_at": "2026-11-18T13:56:21Z",
+        "recommended_take": 2,
+        "analysis": {
+          "bpm_detected": 115.4,
+          "key_detected": "C minor",
+          "time_signature": 4,
+          "bars_detected": 63,
+          "recommended_loop_start_bar": 13,
+          "recommended_loop_start_s": 25.25,
+          "recommended_loop_end_s": 91.777,
+          "sections": [
+            {
+              "start_s": 0,
+              "end_s": 7.64,
+              "label": "A"
+            },
+            {
+              "start_s": 7.64,
+              "end_s": 37.72,
+              "label": "A"
+            },
+            {
+              "start_s": 37.72,
+              "end_s": 54.36,
+              "label": "A"
+            },
+            {
+              "start_s": 54.36,
+              "end_s": 76.6,
+              "label": "B"
+            },
+            {
+              "start_s": 76.6,
+              "end_s": 94.24,
+              "label": "B"
+            },
+            {
+              "start_s": 94.24,
+              "end_s": 101.36,
+              "label": "A"
+            },
+            {
+              "start_s": 101.36,
+              "end_s": 111.88,
+              "label": "B"
+            },
+            {
+              "start_s": 111.88,
+              "end_s": 118.24,
+              "label": "A"
+            },
+            {
+              "start_s": 118.24,
+              "end_s": 127.68,
+              "label": "B"
+            },
+            {
+              "start_s": 127.68,
+              "end_s": 132.4,
+              "label": "A"
+            }
+          ],
+          "labels": {
+            "arrangement:instrumental": 0.964,
+            "content:music": 0.955,
+            "instrument:percussion_family": 0.66,
+            "instrument:timpani": 0.583,
+            "texture:orchestral": 0.577
+          },
+          "terms": [
+            "instrumental",
+            "no voice",
+            "timpani",
+            "cinematic",
+            "epic",
+            "orchestral"
+          ]
+        },
+        "candidates": [
+          {
+            "take": 1,
+            "clip_id": "f3cf9939-9600-4d2c-9568-bf831e83fe88",
+            "url": "https://suno.com/song/f3cf9939-9600-4d2c-9568-bf831e83fe88",
+            "liked": false,
+            "duration_s": 134.92,
+            "bpm_detected": 116.7,
+            "key_detected": "E minor",
+            "time_signature": 4,
+            "bars_detected": 65,
+            "sections_count": 8,
+            "sections": [
+              {
+                "start_s": 0,
+                "end_s": 7.96,
+                "label": "A"
+              },
+              {
+                "start_s": 7.96,
+                "end_s": 24.08,
+                "label": "A"
+              },
+              {
+                "start_s": 24.08,
+                "end_s": 32.8,
+                "label": "A"
+              },
+              {
+                "start_s": 32.8,
+                "end_s": 45.68,
+                "label": "B"
+              },
+              {
+                "start_s": 45.68,
+                "end_s": 77.24,
+                "label": "B"
+              },
+              {
+                "start_s": 77.24,
+                "end_s": 98.56,
+                "label": "C"
+              },
+              {
+                "start_s": 98.56,
+                "end_s": 123.08,
+                "label": "C"
+              },
+              {
+                "start_s": 123.08,
+                "end_s": 134.92,
+                "label": "A"
+              }
+            ],
+            "labels": {
+              "arrangement:instrumental": 0.951,
+              "content:music": 0.949,
+              "texture:orchestral": 0.572,
+              "instrument:timpani": 0.557
+            },
+            "terms": [
+              "instrumental",
+              "no voice",
+              "timpani",
+              "strings section",
+              "orchestral"
+            ],
+            "recommended_loop_start_bar": 14,
+            "recommended_loop_start_s": 27.16,
+            "recommended_loop_end_s": 92.393,
+            "quality_score": 19.655
+          },
+          {
+            "take": 2,
+            "clip_id": "d5a5952f-9456-44bf-80bc-c1cc7cef81a7",
+            "url": "https://suno.com/song/d5a5952f-9456-44bf-80bc-c1cc7cef81a7",
+            "liked": false,
+            "duration_s": 132.4,
+            "bpm_detected": 115.4,
+            "key_detected": "C minor",
+            "time_signature": 4,
+            "bars_detected": 63,
+            "sections_count": 10,
+            "sections": [
+              {
+                "start_s": 0,
+                "end_s": 7.64,
+                "label": "A"
+              },
+              {
+                "start_s": 7.64,
+                "end_s": 37.72,
+                "label": "A"
+              },
+              {
+                "start_s": 37.72,
+                "end_s": 54.36,
+                "label": "A"
+              },
+              {
+                "start_s": 54.36,
+                "end_s": 76.6,
+                "label": "B"
+              },
+              {
+                "start_s": 76.6,
+                "end_s": 94.24,
+                "label": "B"
+              },
+              {
+                "start_s": 94.24,
+                "end_s": 101.36,
+                "label": "A"
+              },
+              {
+                "start_s": 101.36,
+                "end_s": 111.88,
+                "label": "B"
+              },
+              {
+                "start_s": 111.88,
+                "end_s": 118.24,
+                "label": "A"
+              },
+              {
+                "start_s": 118.24,
+                "end_s": 127.68,
+                "label": "B"
+              },
+              {
+                "start_s": 127.68,
+                "end_s": 132.4,
+                "label": "A"
+              }
+            ],
+            "labels": {
+              "arrangement:instrumental": 0.964,
+              "content:music": 0.955,
+              "instrument:percussion_family": 0.66,
+              "instrument:timpani": 0.583,
+              "texture:orchestral": 0.577
+            },
+            "terms": [
+              "instrumental",
+              "no voice",
+              "timpani",
+              "cinematic",
+              "epic",
+              "orchestral"
+            ],
+            "recommended_loop_start_bar": 13,
+            "recommended_loop_start_s": 25.25,
+            "recommended_loop_end_s": 91.777,
+            "quality_score": 20.38,
+            "midi_files": [
+              {
+                "stem": "synth",
+                "audio_id": "1f84382e-720d-4597-9d22-07d751e8d7b3",
+                "path": "X:/Projects/GameMusic/Lumen-Weaver/midi/lumen-weaver-take1-synth.mid",
+                "tracks": 3,
+                "notes_count": 1915
+              },
+              {
+                "stem": "brass",
+                "audio_id": "2c24cd3f-923a-4366-85cd-cc649e7cdb75",
+                "path": "X:/Projects/GameMusic/Lumen-Weaver/midi/lumen-weaver-take1-brass.mid",
+                "tracks": 2,
+                "notes_count": 2180
+              },
+              {
+                "stem": "percussion",
+                "audio_id": "576d231e-c61a-48b5-b1d9-42f871a729af",
+                "path": "X:/Projects/GameMusic/Lumen-Weaver/midi/lumen-weaver-take1-percussion.mid",
+                "tracks": 5,
+                "notes_count": 283
+              },
+              {
+                "stem": "drums",
+                "audio_id": "57ab781a-9565-4e6a-a145-bb3de7fa30f1",
+                "path": "X:/Projects/GameMusic/Lumen-Weaver/midi/lumen-weaver-take1-drums.mid",
+                "tracks": 3,
+                "notes_count": 201
+              },
+              {
+                "stem": "woodwinds",
+                "audio_id": "800c3940-b388-4cc4-8bfc-3c725d4cac10",
+                "path": "X:/Projects/GameMusic/Lumen-Weaver/midi/lumen-weaver-take1-woodwinds.mid",
+                "tracks": 9,
+                "notes_count": 1670
+              },
+              {
+                "stem": "bass",
+                "audio_id": "93d41f02-a750-480d-9050-d397a322d03d",
+                "path": "X:/Projects/GameMusic/Lumen-Weaver/midi/lumen-weaver-take1-bass.mid",
+                "tracks": 6,
+                "notes_count": 164
+              },
+              {
+                "stem": "guitar",
+                "audio_id": "ba843237-db81-48bf-94f2-c4a70f64e5d6",
+                "path": "X:/Projects/GameMusic/Lumen-Weaver/midi/lumen-weaver-take1-guitar.mid",
+                "tracks": 1,
+                "notes_count": 346
+              },
+              {
+                "stem": "strings",
+                "audio_id": "c28bc17e-f54c-489f-aa77-7deaf2f51823",
+                "path": "X:/Projects/GameMusic/Lumen-Weaver/midi/lumen-weaver-take1-strings.mid",
+                "tracks": 1,
+                "notes_count": 2448
+              },
+              {
+                "stem": "keyboard",
+                "audio_id": "c7fd5aba-be13-4ebe-bd0c-c795096d6d6f",
+                "path": "X:/Projects/GameMusic/Lumen-Weaver/midi/lumen-weaver-take1-keyboard.mid",
+                "tracks": 4,
+                "notes_count": 303
+              }
+            ]
+          }
+        ]
+      },
+      "files": [
+        {
+          "path": "X:/Projects/GameMusic/Lumen-Weaver/midi/lumen-weaver-take1-synth.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Lumen-Weaver/midi/lumen-weaver-take1-brass.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Lumen-Weaver/midi/lumen-weaver-take1-percussion.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Lumen-Weaver/midi/lumen-weaver-take1-drums.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Lumen-Weaver/midi/lumen-weaver-take1-woodwinds.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Lumen-Weaver/midi/lumen-weaver-take1-bass.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Lumen-Weaver/midi/lumen-weaver-take1-guitar.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Lumen-Weaver/midi/lumen-weaver-take1-strings.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Lumen-Weaver/midi/lumen-weaver-take1-keyboard.mid",
+          "kind": "midi"
+        }
+      ],
+      "notes": "Generated 2 takes via Suno MCP (v6) & analyzed via 0-credit audio-analysis:\n- Take 1 (f3cf9939-9600-4d2c-9568-bf831e83fe88): https://suno.com/song/f3cf9939-9600-4d2c-9568-bf831e83fe88 — 134.92s, detected 116.7 BPM, E minor, 65 bars, 8 sections, loop bars 14..46 (27.16s–92.393s), score=19.655\n- Take 2 (d5a5952f-9456-44bf-80bc-c1cc7cef81a7): https://suno.com/song/d5a5952f-9456-44bf-80bc-c1cc7cef81a7 — 132.4s, detected 115.4 BPM, C minor, 63 bars, 10 sections, loop bars 13..45 (25.25s–91.777s), score=20.38\nSelected for stem split: Take 2 (d5a5952f-9456-44bf-80bc-c1cc7cef81a7) | 12-stem Auto Split group: stemgrp_b3d67717-ddd8-43a5-8467-7a353555b2fd (complete)."
+    },
+    {
+      "track_id": "lumen-weaver-B",
+      "title": "Lumen-Weaver - alternate region (medieval-siege)",
+      "status": "prompt_ready",
+      "vocals": "none",
+      "bpm": 118,
+      "style_prompt": "Medieval castle siege orchestral and folk-warfare score, clean mix, dry studio recording, minimalist frequency separation, martial, ancient and thunderous, amber cathedral mirror chamber atmosphere, Strings, Brass, Snare, Timpani, Harpsichord, Bagpipes, 118 BPM, strict quantize, steady 4/4 rhythm, different key, blended sub-archetype palette, new motif, instrumental",
+      "lyrics": "[Instrumental]\n[Tempo: 118 BPM, strict quantize, steady rhythm]\n\n[Intro - Bass Stem Only]\n[Deep pulsing Strings, clean low-end drone, minimal]\n\n[Part 1 - Add Percussion Stem]\n[low Strings ostinato, Harpsichord motif, distant Snare march, steady 4/4 rhythm]\n\n[Part 2 - Add Melody Stem]\n[rising Brass horn calls, tightening Snare cadence, high frequency separation, dry studio]\n\n[Part 3 - Add Combat & Climax Layer]\n[full Brass fanfare, pounding Timpani, driving Strings; fierce Bagpipes lead, relentless Timpani and Snare volley]\n\n[Outro - Strip Back]\n[Sub-bass pulse and distant percussion fade out]",
+      "instruments": [
+        {
+          "name": "Strings",
+          "stem": "Strings",
+          "keep": true
+        },
+        {
+          "name": "Brass",
+          "stem": "Brass",
+          "keep": true
+        },
+        {
+          "name": "Snare",
+          "stem": "Snare",
+          "keep": true
+        },
+        {
+          "name": "Timpani",
+          "stem": "Timpani",
+          "keep": true
+        },
+        {
+          "name": "Harpsichord",
+          "stem": "Harpsichord",
+          "keep": false
+        },
+        {
+          "name": "Bagpipes",
+          "stem": "Bagpipes",
+          "keep": false
+        }
+      ],
+      "stems_requested": [
+        "Brass",
+        "Snare",
+        "Strings",
+        "Timpani"
+      ],
+      "states": [
+        {
+          "state": "explore",
+          "section": "[Intro]"
+        },
+        {
+          "state": "explore",
+          "section": "[Verse 1 - Exploration Layer]"
+        },
+        {
+          "state": "tension",
+          "section": "[Pre-Chorus - Tension Build]"
+        },
+        {
+          "state": "combat",
+          "section": "[Chorus - Combat Layer]"
+        },
+        {
+          "state": "boss",
+          "section": "[Bridge - Danger / Boss State]"
+        },
+        {
+          "state": "resolve",
+          "section": "[Outro]"
+        }
+      ],
+      "suno": {
+        "url": "",
+        "clip_id": "",
+        "model": "",
+        "generated_at": ""
+      },
+      "files": [],
+      "notes": ""
+    },
+    {
+      "track_id": "lumen-weaver-C",
+      "title": "Lumen-Weaver - late-game variation (cosmic-ambient + mech-industrial)",
+      "status": "prompt_ready",
+      "vocals": "none",
+      "bpm": 104,
+      "style_prompt": "Ethereal sci-fi orbital ambient and crystalline synth score blended with Heavy mechanical industrial breakbeat and modular synth score, clean mix, dry studio recording, minimalist frequency separation, vast, wondrous and weightless, amber cathedral mirror chamber atmosphere, Synth Pad, Arpeggiator, Piano, Strings, Synth Bass, Bells, Percussion, 104 BPM, strict quantize, steady 4/4 rhythm, darker harmony, hybrid escalation palette, motif reprised, instrumental",
+      "lyrics": "[Instrumental]\n[Tempo: 104 BPM, strict quantize, steady rhythm]\n\n[Intro - Bass Stem Only]\n[Deep pulsing Synth Bass, clean low-end drone, minimal]\n\n[Part 1 - Add Percussion Stem]\n[evolving Synth Pad, resonant Piano notes, soft Bells, steady 4/4 rhythm]\n\n[Part 2 - Add Melody Stem]\n[shimmering Arpeggiator pulse, deep Synth Bass swell, high frequency separation, dry studio]\n\n[Part 3 - Add Combat & Climax Layer]\n[soaring Strings over sequenced Arpeggiator and Synth Bass; urgent crystalline Bells, dramatic Synth Pad swells]\n\n[Outro - Strip Back]\n[Sub-bass pulse and distant percussion fade out]",
+      "instruments": [
+        {
+          "name": "Synth Pad",
+          "stem": "Synth Pad",
+          "keep": true
+        },
+        {
+          "name": "Arpeggiator",
+          "stem": "Arpeggiator",
+          "keep": true
+        },
+        {
+          "name": "Piano",
+          "stem": "Piano",
+          "keep": true
+        },
+        {
+          "name": "Strings",
+          "stem": "Strings",
+          "keep": true
+        },
+        {
+          "name": "Synth Bass",
+          "stem": "Synth Bass",
+          "keep": false
+        },
+        {
+          "name": "Bells",
+          "stem": "Bells",
+          "keep": false
+        }
+      ],
+      "stems_requested": [
+        "Arpeggiator",
+        "Piano",
+        "Strings",
+        "Synth Pad"
+      ],
+      "states": [
+        {
+          "state": "explore",
+          "section": "[Intro]"
+        },
+        {
+          "state": "explore",
+          "section": "[Verse 1 - Exploration Layer]"
+        },
+        {
+          "state": "tension",
+          "section": "[Pre-Chorus - Tension Build]"
+        },
+        {
+          "state": "combat",
+          "section": "[Chorus - Combat Layer]"
+        },
+        {
+          "state": "boss",
+          "section": "[Bridge - Danger / Boss State]"
+        },
+        {
+          "state": "resolve",
+          "section": "[Outro]"
+        }
+      ],
+      "suno": {
+        "url": "",
+        "clip_id": "",
+        "model": "",
+        "generated_at": ""
+      },
+      "files": [],
+      "notes": ""
+    }
+  ],
+  "updated_at": "2026-11-18T21:43:37Z",
+  "scope": "catalog",
+  "recommended_archetype": "dark-fantasy",
+  "recommended_setting": "amber cathedral mirror chamber",
+  "recommendation_reason": "Redirecting amber light beams through sacred chambers suits mystical strings and resonant drones."
+}

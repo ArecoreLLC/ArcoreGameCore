@@ -1,5 +1,17 @@
 # Portable buoyancy primitives
 
+Version 0.2.0 adds `TryEquilibriumDepth(mass, stiffness, maximumForce, depth,
+gravity=9.81)`. It solves weight / stiffness for a level, still-water assembly
+using summed spring stiffness and force caps. Zero mass is valid; the force cap
+is inclusive. Invalid/nonfinite inputs, arithmetic overflow and loads beyond
+the cap return false without changing the output. Stiffness, cap and gravity
+must be positive. Existing mass and force APIs are unchanged.
+
+This is a static load estimate, not a stability predictor: unequal sample
+immersion, moments, waves and dynamic damping are excluded. A consumer can
+subtract depth from its deck-to-sample distance to display signed clearance;
+negative clearance means a submerged deck even if force capacity is sufficient.
+
 `Buoyancy.h` supplies mass/planar center-of-mass aggregation and a unilateral,
 capped immersion spring/damper in SI units. Invalid inputs are rejected. It has
 no engine dependencies and does not advance time or sample an ocean. Consumers

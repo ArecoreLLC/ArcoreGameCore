@@ -1,0 +1,612 @@
+{
+  "schema_version": 1,
+  "game_id": "gully-giants",
+  "name": "Gully Giants",
+  "status": "in_progress",
+  "exclusion_reason": "",
+  "archetype": "dark-fantasy",
+  "setting": "mossy garden colossus climb",
+  "tracks": [
+    {
+      "track_id": "gully-giants-A",
+      "title": "Gully Giants - main theme",
+      "status": "stems_split",
+      "vocals": "none",
+      "bpm": 115,
+      "style_prompt": "Dark fantasy orchestral cinematic score, ominous and heroic, mossy garden colossus climb atmosphere, Strings, Brass, Taiko, Timpani, Cello, Choir, 115 BPM, memorable repeating melodic motif, instrumental, no vocals, dynamic game soundtrack score, seamless looping structure",
+      "lyrics": "[Intro]\n(sparse ambient layer, quiet pulse)\n[Verse 1 - Exploration Layer]\n(pizzicato Cello, low Drone, sparse Woodwinds)\n[Pre-Chorus - Tension Build]\n(legato Strings swells, creeping Snare rolls)\n[Chorus - Combat Layer]\n(full Brass blasting, heavy Taiko, driving Strings)\n[Bridge - Danger / Boss State]\n(furious Brass ostinato, relentless Timpani, Choir accents)\n[Outro]\n(resolution back to ambient loop tail)",
+      "instruments": [
+        {
+          "name": "Strings",
+          "stem": "Strings",
+          "keep": true
+        },
+        {
+          "name": "Brass",
+          "stem": "Brass",
+          "keep": true
+        },
+        {
+          "name": "Taiko",
+          "stem": "Taiko",
+          "keep": true
+        },
+        {
+          "name": "Timpani",
+          "stem": "Timpani",
+          "keep": true
+        },
+        {
+          "name": "Cello",
+          "stem": "Cello",
+          "keep": false
+        },
+        {
+          "name": "Choir",
+          "stem": "Choir",
+          "keep": false
+        }
+      ],
+      "stems_requested": [
+        "Brass",
+        "Strings",
+        "Taiko",
+        "Timpani"
+      ],
+      "states": [
+        {
+          "state": "explore",
+          "section": "[Intro]"
+        },
+        {
+          "state": "explore",
+          "section": "[Verse 1 - Exploration Layer]"
+        },
+        {
+          "state": "tension",
+          "section": "[Pre-Chorus - Tension Build]"
+        },
+        {
+          "state": "combat",
+          "section": "[Chorus - Combat Layer]"
+        },
+        {
+          "state": "boss",
+          "section": "[Bridge - Danger / Boss State]"
+        },
+        {
+          "state": "resolve",
+          "section": "[Outro]"
+        }
+      ],
+      "suno": {
+        "url": "https://suno.com/song/e4d20385-a706-47f7-9614-7f4a670095f5",
+        "clip_id": "e4d20385-a706-47f7-9614-7f4a670095f5",
+        "stem_group_id": "stemgrp_37a5e19e-813a-46e1-9396-cb1ed05f7f58",
+        "model": "v6 (MCP audio-create + audio-analysis + audio-stems-create mode=twelve)",
+        "generated_at": "2026-11-18T13:56:17Z",
+        "recommended_take": 1,
+        "analysis": {
+          "bpm_detected": 115.7,
+          "key_detected": "G minor",
+          "time_signature": 4,
+          "bars_detected": 79,
+          "recommended_loop_start_bar": 16,
+          "recommended_loop_start_s": 31.603,
+          "recommended_loop_end_s": 97.798,
+          "sections": [
+            {
+              "start_s": 0,
+              "end_s": 10.88,
+              "label": "A"
+            },
+            {
+              "start_s": 10.88,
+              "end_s": 50.28,
+              "label": "A"
+            },
+            {
+              "start_s": 50.28,
+              "end_s": 71.44,
+              "label": "B"
+            },
+            {
+              "start_s": 71.44,
+              "end_s": 87.44,
+              "label": "B"
+            },
+            {
+              "start_s": 87.44,
+              "end_s": 104,
+              "label": "B"
+            },
+            {
+              "start_s": 104,
+              "end_s": 108.52,
+              "label": "B"
+            },
+            {
+              "start_s": 108.52,
+              "end_s": 115.56,
+              "label": "A"
+            },
+            {
+              "start_s": 115.56,
+              "end_s": 133.24,
+              "label": "B"
+            },
+            {
+              "start_s": 133.24,
+              "end_s": 140.84,
+              "label": "A"
+            },
+            {
+              "start_s": 140.84,
+              "end_s": 164.32,
+              "label": "B"
+            }
+          ],
+          "labels": {
+            "arrangement:instrumental": 0.969,
+            "content:music": 0.956,
+            "instrument:percussion_family": 0.661,
+            "instrument:timpani": 0.587,
+            "texture:orchestral": 0.559
+          },
+          "terms": [
+            "instrumental",
+            "no voice",
+            "timpani",
+            "piano",
+            "cinematic",
+            "orchestral"
+          ]
+        },
+        "candidates": [
+          {
+            "take": 1,
+            "clip_id": "e4d20385-a706-47f7-9614-7f4a670095f5",
+            "url": "https://suno.com/song/e4d20385-a706-47f7-9614-7f4a670095f5",
+            "liked": false,
+            "duration_s": 164.32,
+            "bpm_detected": 115.7,
+            "key_detected": "G minor",
+            "time_signature": 4,
+            "bars_detected": 79,
+            "sections_count": 10,
+            "sections": [
+              {
+                "start_s": 0,
+                "end_s": 10.88,
+                "label": "A"
+              },
+              {
+                "start_s": 10.88,
+                "end_s": 50.28,
+                "label": "A"
+              },
+              {
+                "start_s": 50.28,
+                "end_s": 71.44,
+                "label": "B"
+              },
+              {
+                "start_s": 71.44,
+                "end_s": 87.44,
+                "label": "B"
+              },
+              {
+                "start_s": 87.44,
+                "end_s": 104,
+                "label": "B"
+              },
+              {
+                "start_s": 104,
+                "end_s": 108.52,
+                "label": "B"
+              },
+              {
+                "start_s": 108.52,
+                "end_s": 115.56,
+                "label": "A"
+              },
+              {
+                "start_s": 115.56,
+                "end_s": 133.24,
+                "label": "B"
+              },
+              {
+                "start_s": 133.24,
+                "end_s": 140.84,
+                "label": "A"
+              },
+              {
+                "start_s": 140.84,
+                "end_s": 164.32,
+                "label": "B"
+              }
+            ],
+            "labels": {
+              "arrangement:instrumental": 0.969,
+              "content:music": 0.956,
+              "instrument:percussion_family": 0.661,
+              "instrument:timpani": 0.587,
+              "texture:orchestral": 0.559
+            },
+            "terms": [
+              "instrumental",
+              "no voice",
+              "timpani",
+              "piano",
+              "cinematic",
+              "orchestral"
+            ],
+            "recommended_loop_start_bar": 16,
+            "recommended_loop_start_s": 31.603,
+            "recommended_loop_end_s": 97.798,
+            "quality_score": 20.385,
+            "midi_files": [
+              {
+                "stem": "percussion",
+                "audio_id": "283a9475-d20c-4665-a3ae-a24f87d8592a",
+                "path": "X:/Projects/GameMusic/Gully-Giants/midi/gully-giants-take1-percussion.mid",
+                "tracks": 11,
+                "notes_count": 868
+              },
+              {
+                "stem": "strings",
+                "audio_id": "2af0c1f5-a34b-4db5-953c-7ef35ccea97b",
+                "path": "X:/Projects/GameMusic/Gully-Giants/midi/gully-giants-take1-strings.mid",
+                "tracks": 3,
+                "notes_count": 4048
+              },
+              {
+                "stem": "synth",
+                "audio_id": "4464e28e-d08b-4194-8e72-0502dd76ce7c",
+                "path": "X:/Projects/GameMusic/Gully-Giants/midi/gully-giants-take1-synth.mid",
+                "tracks": 10,
+                "notes_count": 1492
+              },
+              {
+                "stem": "brass",
+                "audio_id": "51b7dfe5-b686-4a49-a033-9460dcff4233",
+                "path": "X:/Projects/GameMusic/Gully-Giants/midi/gully-giants-take1-brass.mid",
+                "tracks": 9,
+                "notes_count": 2164
+              },
+              {
+                "stem": "guitar",
+                "audio_id": "813cfd5e-9a26-4a26-b4f5-8c9959ccc7c6",
+                "path": "X:/Projects/GameMusic/Gully-Giants/midi/gully-giants-take1-guitar.mid",
+                "tracks": 2,
+                "notes_count": 136
+              },
+              {
+                "stem": "keyboard",
+                "audio_id": "8a518df1-f251-4d3c-9ca0-e37be9e67386",
+                "path": "X:/Projects/GameMusic/Gully-Giants/midi/gully-giants-take1-keyboard.mid",
+                "tracks": 9,
+                "notes_count": 561
+              },
+              {
+                "stem": "bass",
+                "audio_id": "e46ff4f1-01de-4c7f-8745-7b575b0ba8ca",
+                "path": "X:/Projects/GameMusic/Gully-Giants/midi/gully-giants-take1-bass.mid",
+                "tracks": 5,
+                "notes_count": 181
+              },
+              {
+                "stem": "woodwinds",
+                "audio_id": "efd10060-f905-49d8-9cbb-e04db29144eb",
+                "path": "X:/Projects/GameMusic/Gully-Giants/midi/gully-giants-take1-woodwinds.mid",
+                "tracks": 4,
+                "notes_count": 434
+              },
+              {
+                "stem": "drums",
+                "audio_id": "f61a25aa-21ae-4af1-b838-b823e273516b",
+                "path": "X:/Projects/GameMusic/Gully-Giants/midi/gully-giants-take1-drums.mid",
+                "tracks": 5,
+                "notes_count": 487
+              }
+            ]
+          },
+          {
+            "take": 2,
+            "clip_id": "9b9bde78-547f-4a73-b249-9ce9aba4d26d",
+            "url": "https://suno.com/song/9b9bde78-547f-4a73-b249-9ce9aba4d26d",
+            "liked": false,
+            "duration_s": 151.4,
+            "bpm_detected": 117.3,
+            "key_detected": "C minor",
+            "time_signature": 4,
+            "bars_detected": 81,
+            "sections_count": 11,
+            "sections": [
+              {
+                "start_s": 0,
+                "end_s": 7.88,
+                "label": "A"
+              },
+              {
+                "start_s": 7.88,
+                "end_s": 16.2,
+                "label": "A"
+              },
+              {
+                "start_s": 16.2,
+                "end_s": 33.76,
+                "label": "A"
+              },
+              {
+                "start_s": 33.76,
+                "end_s": 52.28,
+                "label": "B"
+              },
+              {
+                "start_s": 52.28,
+                "end_s": 61.44,
+                "label": "C"
+              },
+              {
+                "start_s": 61.44,
+                "end_s": 76.8,
+                "label": "D"
+              },
+              {
+                "start_s": 76.8,
+                "end_s": 99.16,
+                "label": "E"
+              },
+              {
+                "start_s": 99.16,
+                "end_s": 121.56,
+                "label": "D"
+              },
+              {
+                "start_s": 121.56,
+                "end_s": 131.32,
+                "label": "E"
+              },
+              {
+                "start_s": 131.32,
+                "end_s": 148.8,
+                "label": "E"
+              },
+              {
+                "start_s": 148.8,
+                "end_s": 151.4,
+                "label": "A"
+              }
+            ],
+            "labels": {
+              "arrangement:instrumental": 0.961,
+              "content:music": 0.96,
+              "instrument:percussion_family": 0.711,
+              "instrument:timpani": 0.597,
+              "texture:orchestral": 0.571
+            },
+            "terms": [
+              "instrumental",
+              "no voice",
+              "timpani",
+              "cinematic",
+              "epic",
+              "orchestral"
+            ],
+            "recommended_loop_start_bar": 17,
+            "recommended_loop_start_s": 25.536,
+            "recommended_loop_end_s": 84.962,
+            "quality_score": 20.265
+          }
+        ]
+      },
+      "files": [
+        {
+          "path": "X:/Projects/GameMusic/Gully-Giants/midi/gully-giants-take1-bass.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Gully-Giants/midi/gully-giants-take1-drums.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Gully-Giants/midi/gully-giants-take1-percussion.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Gully-Giants/midi/gully-giants-take1-strings.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Gully-Giants/midi/gully-giants-take1-synth.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Gully-Giants/midi/gully-giants-take1-brass.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Gully-Giants/midi/gully-giants-take1-guitar.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Gully-Giants/midi/gully-giants-take1-keyboard.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Gully-Giants/midi/gully-giants-take1-woodwinds.mid",
+          "kind": "midi"
+        }
+      ],
+      "notes": "Generated 2 takes via Suno MCP (v6) & analyzed via 0-credit audio-analysis:\n- Take 1 (e4d20385-a706-47f7-9614-7f4a670095f5): https://suno.com/song/e4d20385-a706-47f7-9614-7f4a670095f5 — 164.32s, detected 115.7 BPM, G minor, 79 bars, 10 sections, loop bars 16..48 (31.603s–97.798s), score=20.385\n- Take 2 (9b9bde78-547f-4a73-b249-9ce9aba4d26d): https://suno.com/song/9b9bde78-547f-4a73-b249-9ce9aba4d26d — 151.4s, detected 117.3 BPM, C minor, 81 bars, 11 sections, loop bars 17..49 (25.536s–84.962s), score=20.265\nSelected for stem split: Take 1 (e4d20385-a706-47f7-9614-7f4a670095f5) | 12-stem Auto Split group: stemgrp_37a5e19e-813a-46e1-9396-cb1ed05f7f58 (complete)."
+    },
+    {
+      "track_id": "gully-giants-B",
+      "title": "Gully Giants - alternate region (medieval-siege)",
+      "status": "prompt_ready",
+      "vocals": "none",
+      "bpm": 118,
+      "style_prompt": "Medieval castle siege orchestral and folk-warfare score, clean mix, dry studio recording, minimalist frequency separation, martial, ancient and thunderous, mossy garden colossus climb atmosphere, Strings, Brass, Snare, Timpani, Harpsichord, Bagpipes, 118 BPM, strict quantize, steady 4/4 rhythm, different key, blended sub-archetype palette, new motif, instrumental",
+      "lyrics": "[Instrumental]\n[Tempo: 118 BPM, strict quantize, steady rhythm]\n\n[Intro - Bass Stem Only]\n[Deep pulsing Strings, clean low-end drone, minimal]\n\n[Part 1 - Add Percussion Stem]\n[low Strings ostinato, Harpsichord motif, distant Snare march, steady 4/4 rhythm]\n\n[Part 2 - Add Melody Stem]\n[rising Brass horn calls, tightening Snare cadence, high frequency separation, dry studio]\n\n[Part 3 - Add Combat & Climax Layer]\n[full Brass fanfare, pounding Timpani, driving Strings; fierce Bagpipes lead, relentless Timpani and Snare volley]\n\n[Outro - Strip Back]\n[Sub-bass pulse and distant percussion fade out]",
+      "instruments": [
+        {
+          "name": "Strings",
+          "stem": "Strings",
+          "keep": true
+        },
+        {
+          "name": "Brass",
+          "stem": "Brass",
+          "keep": true
+        },
+        {
+          "name": "Snare",
+          "stem": "Snare",
+          "keep": true
+        },
+        {
+          "name": "Timpani",
+          "stem": "Timpani",
+          "keep": true
+        },
+        {
+          "name": "Harpsichord",
+          "stem": "Harpsichord",
+          "keep": false
+        },
+        {
+          "name": "Bagpipes",
+          "stem": "Bagpipes",
+          "keep": false
+        }
+      ],
+      "stems_requested": [
+        "Brass",
+        "Snare",
+        "Strings",
+        "Timpani"
+      ],
+      "states": [
+        {
+          "state": "explore",
+          "section": "[Intro]"
+        },
+        {
+          "state": "explore",
+          "section": "[Verse 1 - Exploration Layer]"
+        },
+        {
+          "state": "tension",
+          "section": "[Pre-Chorus - Tension Build]"
+        },
+        {
+          "state": "combat",
+          "section": "[Chorus - Combat Layer]"
+        },
+        {
+          "state": "boss",
+          "section": "[Bridge - Danger / Boss State]"
+        },
+        {
+          "state": "resolve",
+          "section": "[Outro]"
+        }
+      ],
+      "suno": {
+        "url": "",
+        "clip_id": "",
+        "model": "",
+        "generated_at": ""
+      },
+      "files": [],
+      "notes": ""
+    },
+    {
+      "track_id": "gully-giants-C",
+      "title": "Gully Giants - late-game variation (cosmic-ambient + mech-industrial)",
+      "status": "prompt_ready",
+      "vocals": "none",
+      "bpm": 104,
+      "style_prompt": "Ethereal sci-fi orbital ambient and crystalline synth score blended with Heavy mechanical industrial breakbeat and modular synth score, clean mix, dry studio recording, minimalist frequency separation, vast, wondrous and weightless, mossy garden colossus climb atmosphere, Synth Pad, Arpeggiator, Piano, Strings, Synth Bass, Bells, Percussion, 104 BPM, strict quantize, steady 4/4 rhythm, darker harmony, hybrid escalation palette, motif reprised, instrumental",
+      "lyrics": "[Instrumental]\n[Tempo: 104 BPM, strict quantize, steady rhythm]\n\n[Intro - Bass Stem Only]\n[Deep pulsing Synth Bass, clean low-end drone, minimal]\n\n[Part 1 - Add Percussion Stem]\n[evolving Synth Pad, resonant Piano notes, soft Bells, steady 4/4 rhythm]\n\n[Part 2 - Add Melody Stem]\n[shimmering Arpeggiator pulse, deep Synth Bass swell, high frequency separation, dry studio]\n\n[Part 3 - Add Combat & Climax Layer]\n[soaring Strings over sequenced Arpeggiator and Synth Bass; urgent crystalline Bells, dramatic Synth Pad swells]\n\n[Outro - Strip Back]\n[Sub-bass pulse and distant percussion fade out]",
+      "instruments": [
+        {
+          "name": "Synth Pad",
+          "stem": "Synth Pad",
+          "keep": true
+        },
+        {
+          "name": "Arpeggiator",
+          "stem": "Arpeggiator",
+          "keep": true
+        },
+        {
+          "name": "Piano",
+          "stem": "Piano",
+          "keep": true
+        },
+        {
+          "name": "Strings",
+          "stem": "Strings",
+          "keep": true
+        },
+        {
+          "name": "Synth Bass",
+          "stem": "Synth Bass",
+          "keep": false
+        },
+        {
+          "name": "Bells",
+          "stem": "Bells",
+          "keep": false
+        }
+      ],
+      "stems_requested": [
+        "Arpeggiator",
+        "Piano",
+        "Strings",
+        "Synth Pad"
+      ],
+      "states": [
+        {
+          "state": "explore",
+          "section": "[Intro]"
+        },
+        {
+          "state": "explore",
+          "section": "[Verse 1 - Exploration Layer]"
+        },
+        {
+          "state": "tension",
+          "section": "[Pre-Chorus - Tension Build]"
+        },
+        {
+          "state": "combat",
+          "section": "[Chorus - Combat Layer]"
+        },
+        {
+          "state": "boss",
+          "section": "[Bridge - Danger / Boss State]"
+        },
+        {
+          "state": "resolve",
+          "section": "[Outro]"
+        }
+      ],
+      "suno": {
+        "url": "",
+        "clip_id": "",
+        "model": "",
+        "generated_at": ""
+      },
+      "files": [],
+      "notes": ""
+    }
+  ],
+  "updated_at": "2026-11-18T21:43:37Z",
+  "scope": "catalog",
+  "recommended_archetype": "dark-fantasy",
+  "recommended_setting": "mossy garden colossus climb",
+  "recommendation_reason": "Grappling up a towering garden golem to release armor pins fits heroic orchestral brass and taiko."
+}

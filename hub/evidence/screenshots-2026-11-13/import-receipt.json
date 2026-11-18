@@ -1,0 +1,19 @@
+{
+  "backup": "C:\\Users\\jare1\\AppData\\Roaming\\com.arcore.gamecore\\backups\\before-catalog-v2-20261113-063735-109118",
+  "added_media": 32,
+  "added_capability_links": 0,
+  "media_total": 100,
+  "taxonomy_total": 300,
+  "integrity": "ok",
+  "timestamp": "2026-11-13T11:37:35.109101+00:00",
+  "pre_project_backup": "C:\\Users\\jare1\\AppData\\Roaming\\com.arcore.gamecore\\backups\\before-catalog-v2-20261113-063734-642593",
+  "existing_records_preserved": true,
+  "selected_count": 32,
+  "games_updated": 17,
+  "no_new_capture": [
+    "Chroma-Turf"
+  ],
+  "excluded": {
+    "candidate_20": "Partial start framing; retained full museum view instead."
+  }
+}

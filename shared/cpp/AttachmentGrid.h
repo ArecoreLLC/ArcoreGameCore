@@ -27,6 +27,14 @@ inline bool ValidAttachmentGrid(const std::vector<GridCell>& cells, int radius =
     }
     return queue.size() == cells.size();
 }
+// Addition preview for an existing assembly. Seeding an empty grid is consumer-owned.
+// Validate both graphs so an addition cannot silently repair an invalid original.
+inline bool CanAddAttachmentCell(const std::vector<GridCell>& cells, GridCell added, int radius = 16) {
+    if (!ValidAttachmentGrid(cells, radius) || cells.size() >= 256) return false;
+    auto expanded = cells;
+    expanded.push_back(added);
+    return ValidAttachmentGrid(expanded, radius);
+}
 // Transaction preview: original and remaining assemblies must both be valid.
 // Root ownership and refunds belong to the consumer. Never mutates the input.
 inline bool CanRemoveAttachmentCell(const std::vector<GridCell>& cells, GridCell removed, int radius = 16) {

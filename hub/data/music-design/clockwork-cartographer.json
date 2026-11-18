@@ -1,0 +1,560 @@
+{
+  "schema_version": 1,
+  "game_id": "clockwork-cartographer",
+  "name": "Clockwork Cartographer",
+  "scope": "roadmap",
+  "status": "in_progress",
+  "exclusion_reason": "",
+  "recommended_archetype": "dark-fantasy",
+  "recommended_setting": "ancient surveyed ruin",
+  "recommendation_reason": "Mapping a ruin with limited survey tools fits exploratory pizzicato cello and woodwinds.",
+  "archetype": "dark-fantasy",
+  "setting": "ancient surveyed ruin",
+  "sonic_alchemist_project": "",
+  "soundcore_project": "",
+  "modelforge_project": "",
+  "tracks": [
+    {
+      "track_id": "clockwork-cartographer-A",
+      "title": "Clockwork Cartographer - main theme",
+      "status": "generated",
+      "vocals": "none",
+      "bpm": 115,
+      "style_prompt": "Dark fantasy orchestral cinematic score, ominous and heroic, ancient surveyed ruin atmosphere, Strings, Brass, Taiko, Timpani, Cello, Choir, 115 BPM, memorable repeating melodic motif, instrumental, no vocals, dynamic game soundtrack score, seamless looping structure",
+      "lyrics": "[Intro]\n(sparse ambient layer, quiet pulse)\n[Verse 1 - Exploration Layer]\n(pizzicato Cello, low Drone, sparse Woodwinds)\n[Pre-Chorus - Tension Build]\n(legato Strings swells, creeping Snare rolls)\n[Chorus - Combat Layer]\n(full Brass blasting, heavy Taiko, driving Strings)\n[Bridge - Danger / Boss State]\n(furious Brass ostinato, relentless Timpani, Choir accents)\n[Outro]\n(resolution back to ambient loop tail)",
+      "instruments": [
+        {
+          "name": "Strings",
+          "stem": "Strings",
+          "keep": true
+        },
+        {
+          "name": "Brass",
+          "stem": "Brass",
+          "keep": true
+        },
+        {
+          "name": "Taiko",
+          "stem": "Taiko",
+          "keep": true
+        },
+        {
+          "name": "Timpani",
+          "stem": "Timpani",
+          "keep": true
+        },
+        {
+          "name": "Cello",
+          "stem": "Cello",
+          "keep": false
+        },
+        {
+          "name": "Choir",
+          "stem": "Choir",
+          "keep": false
+        }
+      ],
+      "stems_requested": [
+        "Brass",
+        "Strings",
+        "Taiko",
+        "Timpani"
+      ],
+      "states": [
+        {
+          "state": "explore",
+          "section": "[Intro]"
+        },
+        {
+          "state": "explore",
+          "section": "[Verse 1 - Exploration Layer]"
+        },
+        {
+          "state": "tension",
+          "section": "[Pre-Chorus - Tension Build]"
+        },
+        {
+          "state": "combat",
+          "section": "[Chorus - Combat Layer]"
+        },
+        {
+          "state": "boss",
+          "section": "[Bridge - Danger / Boss State]"
+        },
+        {
+          "state": "resolve",
+          "section": "[Outro]"
+        }
+      ],
+      "suno": {
+        "url": "https://suno.com/song/3a8099da-2a93-469c-9522-50aa5e090fd3",
+        "clip_id": "3a8099da-2a93-469c-9522-50aa5e090fd3",
+        "stem_group_id": "",
+        "model": "v6 (MCP audio-create + audio-analysis)",
+        "generated_at": "2026-11-18T15:31:40Z",
+        "recommended_take": 1,
+        "analysis": {
+          "bpm_detected": 114,
+          "key_detected": "G minor",
+          "time_signature": 4,
+          "bars_detected": 66,
+          "recommended_loop_start_bar": 14,
+          "recommended_loop_start_s": 27.787,
+          "recommended_loop_end_s": 95.159,
+          "sections": [
+            {
+              "start_s": 0,
+              "end_s": 12.52,
+              "label": "A"
+            },
+            {
+              "start_s": 12.52,
+              "end_s": 27.76,
+              "label": "A"
+            },
+            {
+              "start_s": 27.76,
+              "end_s": 37.24,
+              "label": "B"
+            },
+            {
+              "start_s": 37.24,
+              "end_s": 43.32,
+              "label": "A"
+            },
+            {
+              "start_s": 43.32,
+              "end_s": 53.24,
+              "label": "B"
+            },
+            {
+              "start_s": 53.24,
+              "end_s": 63.64,
+              "label": "A"
+            },
+            {
+              "start_s": 63.64,
+              "end_s": 72.8,
+              "label": "B"
+            },
+            {
+              "start_s": 72.8,
+              "end_s": 80.96,
+              "label": "A"
+            },
+            {
+              "start_s": 80.96,
+              "end_s": 89.36,
+              "label": "B"
+            },
+            {
+              "start_s": 89.36,
+              "end_s": 101.4,
+              "label": "A"
+            },
+            {
+              "start_s": 101.4,
+              "end_s": 119.28,
+              "label": "B"
+            },
+            {
+              "start_s": 119.28,
+              "end_s": 127.28,
+              "label": "A"
+            },
+            {
+              "start_s": 127.28,
+              "end_s": 136.12,
+              "label": "A"
+            },
+            {
+              "start_s": 136.12,
+              "end_s": 139.32,
+              "label": "A"
+            }
+          ],
+          "labels": {
+            "arrangement:instrumental": 0.964,
+            "content:music": 0.961,
+            "instrument:percussion_family": 0.662,
+            "instrument:bowed_string_family": 0.639,
+            "instrument:timpani": 0.587,
+            "texture:orchestral": 0.541
+          },
+          "terms": [
+            "instrumental",
+            "no voice",
+            "timpani",
+            "cinematic",
+            "orchestral"
+          ]
+        },
+        "candidates": [
+          {
+            "take": 1,
+            "clip_id": "3a8099da-2a93-469c-9522-50aa5e090fd3",
+            "url": "https://suno.com/song/3a8099da-2a93-469c-9522-50aa5e090fd3",
+            "liked": false,
+            "duration_s": 139.32,
+            "bpm_detected": 114,
+            "key_detected": "G minor",
+            "time_signature": 4,
+            "bars_detected": 66,
+            "sections_count": 14,
+            "sections": [
+              {
+                "start_s": 0,
+                "end_s": 12.52,
+                "label": "A"
+              },
+              {
+                "start_s": 12.52,
+                "end_s": 27.76,
+                "label": "A"
+              },
+              {
+                "start_s": 27.76,
+                "end_s": 37.24,
+                "label": "B"
+              },
+              {
+                "start_s": 37.24,
+                "end_s": 43.32,
+                "label": "A"
+              },
+              {
+                "start_s": 43.32,
+                "end_s": 53.24,
+                "label": "B"
+              },
+              {
+                "start_s": 53.24,
+                "end_s": 63.64,
+                "label": "A"
+              },
+              {
+                "start_s": 63.64,
+                "end_s": 72.8,
+                "label": "B"
+              },
+              {
+                "start_s": 72.8,
+                "end_s": 80.96,
+                "label": "A"
+              },
+              {
+                "start_s": 80.96,
+                "end_s": 89.36,
+                "label": "B"
+              },
+              {
+                "start_s": 89.36,
+                "end_s": 101.4,
+                "label": "A"
+              },
+              {
+                "start_s": 101.4,
+                "end_s": 119.28,
+                "label": "B"
+              },
+              {
+                "start_s": 119.28,
+                "end_s": 127.28,
+                "label": "A"
+              },
+              {
+                "start_s": 127.28,
+                "end_s": 136.12,
+                "label": "A"
+              },
+              {
+                "start_s": 136.12,
+                "end_s": 139.32,
+                "label": "A"
+              }
+            ],
+            "labels": {
+              "arrangement:instrumental": 0.964,
+              "content:music": 0.961,
+              "instrument:percussion_family": 0.662,
+              "instrument:bowed_string_family": 0.639,
+              "instrument:timpani": 0.587,
+              "texture:orchestral": 0.541
+            },
+            "terms": [
+              "instrumental",
+              "no voice",
+              "timpani",
+              "cinematic",
+              "orchestral"
+            ],
+            "recommended_loop_start_bar": 14,
+            "recommended_loop_start_s": 27.787,
+            "recommended_loop_end_s": 95.159,
+            "quality_score": 21.09
+          },
+          {
+            "take": 2,
+            "clip_id": "6991328d-c3db-40ee-8a9b-187b5663e5ef",
+            "url": "https://suno.com/song/6991328d-c3db-40ee-8a9b-187b5663e5ef",
+            "liked": false,
+            "duration_s": 139.04,
+            "bpm_detected": 116.1,
+            "key_detected": "F minor",
+            "time_signature": 4,
+            "bars_detected": 67,
+            "sections_count": 12,
+            "sections": [
+              {
+                "start_s": 0,
+                "end_s": 16.64,
+                "label": "A"
+              },
+              {
+                "start_s": 16.64,
+                "end_s": 31.44,
+                "label": "B"
+              },
+              {
+                "start_s": 31.44,
+                "end_s": 41.52,
+                "label": "C"
+              },
+              {
+                "start_s": 41.52,
+                "end_s": 50.64,
+                "label": "D"
+              },
+              {
+                "start_s": 50.64,
+                "end_s": 57.6,
+                "label": "D"
+              },
+              {
+                "start_s": 57.6,
+                "end_s": 66.44,
+                "label": "C"
+              },
+              {
+                "start_s": 66.44,
+                "end_s": 84.04,
+                "label": "D"
+              },
+              {
+                "start_s": 84.04,
+                "end_s": 108.64,
+                "label": "E"
+              },
+              {
+                "start_s": 108.64,
+                "end_s": 116.08,
+                "label": "A"
+              },
+              {
+                "start_s": 116.08,
+                "end_s": 124.76,
+                "label": "A"
+              },
+              {
+                "start_s": 124.76,
+                "end_s": 135.68,
+                "label": "E"
+              },
+              {
+                "start_s": 135.68,
+                "end_s": 139.04,
+                "label": "A"
+              }
+            ],
+            "labels": {
+              "arrangement:instrumental": 0.981,
+              "content:music": 0.965,
+              "instrument:timpani": 0.589,
+              "instrument:strings_section": 0.577,
+              "texture:orchestral": 0.568
+            },
+            "terms": [
+              "instrumental",
+              "no voice",
+              "timpani",
+              "strings section",
+              "harp",
+              "cinematic",
+              "ambient",
+              "orchestral"
+            ],
+            "recommended_loop_start_bar": 14,
+            "recommended_loop_start_s": 27.327,
+            "recommended_loop_end_s": 93.538,
+            "quality_score": 20.845
+          }
+        ]
+      },
+      "files": [],
+      "notes": "Generated 2 takes via Suno MCP (v6) & analyzed via 0-credit audio-analysis:\n- Take 1 (3a8099da-2a93-469c-9522-50aa5e090fd3): https://suno.com/song/3a8099da-2a93-469c-9522-50aa5e090fd3 \u2014 139.32s, detected 114 BPM, G minor, 66 bars, 14 sections, loop bars 14..46 (27.787s\u201395.159s), score=21.09\n- Take 2 (6991328d-c3db-40ee-8a9b-187b5663e5ef): https://suno.com/song/6991328d-c3db-40ee-8a9b-187b5663e5ef \u2014 139.04s, detected 116.1 BPM, F minor, 67 bars, 12 sections, loop bars 14..46 (27.327s\u201393.538s), score=20.845\nSelected for stem split: Take 1 (3a8099da-2a93-469c-9522-50aa5e090fd3)."
+    },
+    {
+      "track_id": "clockwork-cartographer-B",
+      "title": "Clockwork Cartographer - alternate region (medieval-siege)",
+      "status": "prompt_ready",
+      "vocals": "none",
+      "bpm": 118,
+      "style_prompt": "Medieval castle siege orchestral and folk-warfare score, clean mix, dry studio recording, minimalist frequency separation, martial, ancient and thunderous, ancient surveyed ruin atmosphere, Strings, Brass, Snare, Timpani, Harpsichord, Bagpipes, 118 BPM, strict quantize, steady 4/4 rhythm, different key, blended sub-archetype palette, new motif, instrumental",
+      "lyrics": "[Instrumental]\n[Tempo: 118 BPM, strict quantize, steady rhythm]\n\n[Intro - Bass Stem Only]\n[Deep pulsing Strings, clean low-end drone, minimal]\n\n[Part 1 - Add Percussion Stem]\n[low Strings ostinato, Harpsichord motif, distant Snare march, steady 4/4 rhythm]\n\n[Part 2 - Add Melody Stem]\n[rising Brass horn calls, tightening Snare cadence, high frequency separation, dry studio]\n\n[Part 3 - Add Combat & Climax Layer]\n[full Brass fanfare, pounding Timpani, driving Strings; fierce Bagpipes lead, relentless Timpani and Snare volley]\n\n[Outro - Strip Back]\n[Sub-bass pulse and distant percussion fade out]",
+      "instruments": [
+        {
+          "name": "Strings",
+          "stem": "Strings",
+          "keep": true
+        },
+        {
+          "name": "Brass",
+          "stem": "Brass",
+          "keep": true
+        },
+        {
+          "name": "Snare",
+          "stem": "Snare",
+          "keep": true
+        },
+        {
+          "name": "Timpani",
+          "stem": "Timpani",
+          "keep": true
+        },
+        {
+          "name": "Harpsichord",
+          "stem": "Harpsichord",
+          "keep": false
+        },
+        {
+          "name": "Bagpipes",
+          "stem": "Bagpipes",
+          "keep": false
+        }
+      ],
+      "stems_requested": [
+        "Brass",
+        "Snare",
+        "Strings",
+        "Timpani"
+      ],
+      "states": [
+        {
+          "state": "explore",
+          "section": "[Intro]"
+        },
+        {
+          "state": "explore",
+          "section": "[Verse 1 - Exploration Layer]"
+        },
+        {
+          "state": "tension",
+          "section": "[Pre-Chorus - Tension Build]"
+        },
+        {
+          "state": "combat",
+          "section": "[Chorus - Combat Layer]"
+        },
+        {
+          "state": "boss",
+          "section": "[Bridge - Danger / Boss State]"
+        },
+        {
+          "state": "resolve",
+          "section": "[Outro]"
+        }
+      ],
+      "suno": {
+        "url": "",
+        "clip_id": "",
+        "model": "",
+        "generated_at": ""
+      },
+      "files": [],
+      "notes": ""
+    },
+    {
+      "track_id": "clockwork-cartographer-C",
+      "title": "Clockwork Cartographer - late-game variation (cosmic-ambient + mech-industrial)",
+      "status": "prompt_ready",
+      "vocals": "none",
+      "bpm": 104,
+      "style_prompt": "Ethereal sci-fi orbital ambient and crystalline synth score blended with Heavy mechanical industrial breakbeat and modular synth score, clean mix, dry studio recording, minimalist frequency separation, vast, wondrous and weightless, ancient surveyed ruin atmosphere, Synth Pad, Arpeggiator, Piano, Strings, Synth Bass, Bells, Percussion, 104 BPM, strict quantize, steady 4/4 rhythm, darker harmony, hybrid escalation palette, motif reprised, instrumental",
+      "lyrics": "[Instrumental]\n[Tempo: 104 BPM, strict quantize, steady rhythm]\n\n[Intro - Bass Stem Only]\n[Deep pulsing Synth Bass, clean low-end drone, minimal]\n\n[Part 1 - Add Percussion Stem]\n[evolving Synth Pad, resonant Piano notes, soft Bells, steady 4/4 rhythm]\n\n[Part 2 - Add Melody Stem]\n[shimmering Arpeggiator pulse, deep Synth Bass swell, high frequency separation, dry studio]\n\n[Part 3 - Add Combat & Climax Layer]\n[soaring Strings over sequenced Arpeggiator and Synth Bass; urgent crystalline Bells, dramatic Synth Pad swells]\n\n[Outro - Strip Back]\n[Sub-bass pulse and distant percussion fade out]",
+      "instruments": [
+        {
+          "name": "Synth Pad",
+          "stem": "Synth Pad",
+          "keep": true
+        },
+        {
+          "name": "Arpeggiator",
+          "stem": "Arpeggiator",
+          "keep": true
+        },
+        {
+          "name": "Piano",
+          "stem": "Piano",
+          "keep": true
+        },
+        {
+          "name": "Strings",
+          "stem": "Strings",
+          "keep": true
+        },
+        {
+          "name": "Synth Bass",
+          "stem": "Synth Bass",
+          "keep": false
+        },
+        {
+          "name": "Bells",
+          "stem": "Bells",
+          "keep": false
+        }
+      ],
+      "stems_requested": [
+        "Arpeggiator",
+        "Piano",
+        "Strings",
+        "Synth Pad"
+      ],
+      "states": [
+        {
+          "state": "explore",
+          "section": "[Intro]"
+        },
+        {
+          "state": "explore",
+          "section": "[Verse 1 - Exploration Layer]"
+        },
+        {
+          "state": "tension",
+          "section": "[Pre-Chorus - Tension Build]"
+        },
+        {
+          "state": "combat",
+          "section": "[Chorus - Combat Layer]"
+        },
+        {
+          "state": "boss",
+          "section": "[Bridge - Danger / Boss State]"
+        },
+        {
+          "state": "resolve",
+          "section": "[Outro]"
+        }
+      ],
+      "suno": {
+        "url": "",
+        "clip_id": "",
+        "model": "",
+        "generated_at": ""
+      },
+      "files": [],
+      "notes": ""
+    }
+  ],
+  "updated_at": "2026-11-18T15:36:13Z"
+}

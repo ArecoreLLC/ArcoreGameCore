@@ -1,0 +1,280 @@
+{
+  "schema_version": 1,
+  "game_id": "snap-rally",
+  "name": "Snap Rally",
+  "status": "in_progress",
+  "exclusion_reason": "",
+  "archetype": "action-rock",
+  "setting": "modular vehicle bowling track",
+  "tracks": [
+    {
+      "track_id": "snap-rally-A",
+      "title": "Snap Rally - main theme",
+      "status": "stems_split",
+      "vocals": "none",
+      "bpm": 150,
+      "style_prompt": "Driving instrumental rock action score, aggressive and adrenaline-fueled, modular vehicle bowling track atmosphere, Rhythm Electric Guitar, Lead Guitar, Bass Guitar, Drums, Synth Pad, 150 BPM, memorable repeating melodic motif, instrumental, no vocals, dynamic game soundtrack score, seamless looping structure",
+      "lyrics": "[Intro]\n(sparse ambient layer, quiet pulse)\n[Verse 1 - Exploration Layer]\n(clean Rhythm Electric Guitar, Synth Pad, light Hi-Hat)\n[Pre-Chorus - Tension Build]\n(palm-muted Rhythm Electric Guitar riff, Snare roll)\n[Chorus - Combat Layer]\n(full Rhythm Electric Guitar, heavy Drums, driving Bass Guitar)\n[Bridge - Danger / Boss State]\n(double-time Drums, harmonized Lead Guitar stabs)\n[Outro]\n(resolution back to ambient loop tail)",
+      "instruments": [
+        {
+          "name": "Guitar",
+          "stem": "Guitar",
+          "keep": true
+        },
+        {
+          "name": "Synth",
+          "stem": "Synth",
+          "keep": true
+        },
+        {
+          "name": "Bass",
+          "stem": "Bass",
+          "keep": true
+        },
+        {
+          "name": "Drums",
+          "stem": "Drums",
+          "keep": true
+        }
+      ],
+      "stems_requested": [
+        "Bass",
+        "Drums",
+        "Guitar",
+        "Synth"
+      ],
+      "states": [
+        {
+          "state": "explore",
+          "section": "[Intro]"
+        },
+        {
+          "state": "explore",
+          "section": "[Verse 1 - Exploration Layer]"
+        },
+        {
+          "state": "tension",
+          "section": "[Pre-Chorus - Tension Build]"
+        },
+        {
+          "state": "combat",
+          "section": "[Chorus - Combat Layer]"
+        },
+        {
+          "state": "boss",
+          "section": "[Bridge - Danger / Boss State]"
+        },
+        {
+          "state": "resolve",
+          "section": "[Outro]"
+        }
+      ],
+      "suno": {
+        "url": "X:/Projects/GameMusic/Snap-Rally/Main Theme",
+        "clip_id": "snap-rally-main-theme",
+        "model": "Suno Premier Stem Split (32-bit float 48kHz)",
+        "generated_at": "2026-11-18T02:43:50Z",
+        "in_game_status": "wired_in_engine",
+        "in_game_loop_s": 51.2,
+        "in_game_stems": [
+          "Guitar",
+          "Synth",
+          "Bass",
+          "Drums"
+        ],
+        "engine_asset_path": "/Game/Audio/Music"
+      },
+      "files": [
+        {
+          "path": "Media/Audio/Sonic-v001/Export/layer-01.wav",
+          "kind": "Guitar (SW_Music_Guitar_v001)",
+          "sha256": "1daeae7c334504f1d9a1b20daf081386e1a1047c98cc2a073354461aa2a4dc76"
+        },
+        {
+          "path": "Media/Audio/Sonic-v001/Export/layer-02.wav",
+          "kind": "Synth (SW_Music_Synth_v001)",
+          "sha256": "cab7735edf25eb4bb912ec2c60a77e1b44c9a479fd09c3ee8e75da1cff332489"
+        },
+        {
+          "path": "Media/Audio/Sonic-v001/Export/layer-03.wav",
+          "kind": "Bass (SW_Music_Bass_v001)",
+          "sha256": "2e954aad752f8b57464d9ef6a2929fb99f4df85513f81b1f9ce5bc99eb16a1f7"
+        },
+        {
+          "path": "Media/Audio/Sonic-v001/Export/layer-04.wav",
+          "kind": "Drums (SW_Music_Drums_v001)",
+          "sha256": "4cc8f53a1fbb80b1b6a307be460a112c0baa6163f5263cce5095a5b98725a06c"
+        }
+      ],
+      "notes": "Exported 32-bar loop (bars 54-86, 86.40s-137.60s, 51.20s, 2457600 frames @ 48kHz 24-bit) via SonicAlchemist export-adaptive.exe with 0.85s fade-in/fade-out clip envelopes (seam_step <= 0.000005). Integrated into /Game/Audio/Music/SW_Music_*_v001 with 4 states (Explore, Tension, Combat, Boss)."
+    },
+    {
+      "track_id": "snap-rally-B",
+      "title": "Snap Rally - alternate region (modern-tactics)",
+      "status": "prompt_ready",
+      "vocals": "none",
+      "bpm": 132,
+      "style_prompt": "Modern military tactical hybrid electronic-orchestral score, clean mix, dry studio recording, minimalist frequency separation, precise, urgent and high-stakes, modular vehicle bowling track atmosphere, Electric Guitar, Synth Bass, Drums, Brass, Synth Pad, Percussion, 132 BPM, strict quantize, steady 4/4 rhythm, different key, blended sub-archetype palette, new motif, instrumental",
+      "lyrics": "[Instrumental]\n[Tempo: 132 BPM, strict quantize, steady rhythm]\n\n[Intro - Bass Stem Only]\n[Deep pulsing Synth Bass, clean low-end drone, minimal]\n\n[Part 1 - Add Percussion Stem]\n[pulsing Synth Bass, muted Synth Pad, crisp tactical Percussion, steady 4/4 rhythm]\n\n[Part 2 - Add Melody Stem]\n[palm-muted Electric Guitar chugs, building Brass swells, high frequency separation, dry studio]\n\n[Part 3 - Add Combat & Climax Layer]\n[heavy Drums, driving Synth Bass, soaring Brass and Electric Guitar; staccato artillery Percussion hits, aggressive Brass and Guitar stabs]\n\n[Outro - Strip Back]\n[Sub-bass pulse and distant percussion fade out]",
+      "instruments": [
+        {
+          "name": "Electric Guitar",
+          "stem": "Electric Guitar",
+          "keep": true
+        },
+        {
+          "name": "Synth Bass",
+          "stem": "Synth Bass",
+          "keep": true
+        },
+        {
+          "name": "Drums",
+          "stem": "Drums",
+          "keep": true
+        },
+        {
+          "name": "Brass",
+          "stem": "Brass",
+          "keep": true
+        },
+        {
+          "name": "Synth Pad",
+          "stem": "Synth Pad",
+          "keep": false
+        },
+        {
+          "name": "Percussion",
+          "stem": "Percussion",
+          "keep": false
+        }
+      ],
+      "stems_requested": [
+        "Brass",
+        "Drums",
+        "Electric Guitar",
+        "Synth Bass"
+      ],
+      "states": [
+        {
+          "state": "explore",
+          "section": "[Intro]"
+        },
+        {
+          "state": "explore",
+          "section": "[Verse 1 - Exploration Layer]"
+        },
+        {
+          "state": "tension",
+          "section": "[Pre-Chorus - Tension Build]"
+        },
+        {
+          "state": "combat",
+          "section": "[Chorus - Combat Layer]"
+        },
+        {
+          "state": "boss",
+          "section": "[Bridge - Danger / Boss State]"
+        },
+        {
+          "state": "resolve",
+          "section": "[Outro]"
+        }
+      ],
+      "suno": {
+        "url": "",
+        "clip_id": "",
+        "model": "",
+        "generated_at": ""
+      },
+      "files": [],
+      "notes": ""
+    },
+    {
+      "track_id": "snap-rally-C",
+      "title": "Snap Rally - late-game variation (mech-industrial + retro-chiptune-rock)",
+      "status": "prompt_ready",
+      "vocals": "none",
+      "bpm": 136,
+      "style_prompt": "Heavy mechanical industrial breakbeat and modular synth score blended with High-octane 16-bit chiptune and electric guitar arcade fusion, clean mix, dry studio recording, minimalist frequency separation, gritty, relentless and mechanical, modular vehicle bowling track atmosphere, Synth Bass, Percussion, Drums, Synth Lead, 808, Risers, Lead Guitar, 136 BPM, strict quantize, steady 4/4 rhythm, darker harmony, hybrid escalation palette, motif reprised, instrumental",
+      "lyrics": "[Instrumental]\n[Tempo: 136 BPM, strict quantize, steady rhythm]\n\n[Intro - Bass Stem Only]\n[Deep pulsing Synth Bass, clean low-end drone, minimal]\n\n[Part 1 - Add Percussion Stem]\n[metallic Percussion clangs, sub 808 pulse, sparse Synth Bass, steady 4/4 rhythm]\n\n[Part 2 - Add Melody Stem]\n[modular Risers sweep, accelerating breakbeat Drums, high frequency separation, dry studio]\n\n[Part 3 - Add Combat & Climax Layer]\n[crunchy industrial Drums, distorted Synth Bass, piercing Synth Lead; relentless anvil Percussion, heavy 808 drop]\n\n[Outro - Strip Back]\n[Sub-bass pulse and distant percussion fade out]",
+      "instruments": [
+        {
+          "name": "Synth Bass",
+          "stem": "Synth Bass",
+          "keep": true
+        },
+        {
+          "name": "Percussion",
+          "stem": "Percussion",
+          "keep": true
+        },
+        {
+          "name": "Drums",
+          "stem": "Drums",
+          "keep": true
+        },
+        {
+          "name": "Synth Lead",
+          "stem": "Synth Lead",
+          "keep": true
+        },
+        {
+          "name": "808",
+          "stem": "808",
+          "keep": false
+        },
+        {
+          "name": "Risers",
+          "stem": "Risers",
+          "keep": false
+        }
+      ],
+      "stems_requested": [
+        "Drums",
+        "Percussion",
+        "Synth Bass",
+        "Synth Lead"
+      ],
+      "states": [
+        {
+          "state": "explore",
+          "section": "[Intro]"
+        },
+        {
+          "state": "explore",
+          "section": "[Verse 1 - Exploration Layer]"
+        },
+        {
+          "state": "tension",
+          "section": "[Pre-Chorus - Tension Build]"
+        },
+        {
+          "state": "combat",
+          "section": "[Chorus - Combat Layer]"
+        },
+        {
+          "state": "boss",
+          "section": "[Bridge - Danger / Boss State]"
+        },
+        {
+          "state": "resolve",
+          "section": "[Outro]"
+        }
+      ],
+      "suno": {
+        "url": "",
+        "clip_id": "",
+        "model": "",
+        "generated_at": ""
+      },
+      "files": [],
+      "notes": ""
+    }
+  ],
+  "updated_at": "2026-11-18T17:00:03Z",
+  "scope": "catalog",
+  "recommended_archetype": "action-rock",
+  "recommended_setting": "modular vehicle bowling track",
+  "recommendation_reason": "Building vehicles to smash physical pins suits punchy, adrenaline-fueled rock riffs.",
+  "sonic_alchemist_project": "snap-rally-adaptive"
+}

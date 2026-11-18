@@ -1,0 +1,623 @@
+{
+  "schema_version": 1,
+  "game_id": "bubble-wishes-poofy-s-story-studio",
+  "name": "Bubble Wishes / Poofy's Story Studio",
+  "status": "in_progress",
+  "exclusion_reason": "",
+  "archetype": "cozy",
+  "setting": "storybook island & narration studio",
+  "tracks": [
+    {
+      "track_id": "bubble-wishes-poofy-s-story-studio-A",
+      "title": "Bubble Wishes / Poofy's Story Studio - main theme",
+      "status": "stems_split",
+      "vocals": "none",
+      "bpm": 92,
+      "style_prompt": "Cozy whimsical acoustic indie game music, peaceful and nostalgic, storybook island & narration studio atmosphere, Acoustic Guitar, Marimba, Upright Bass, Drums, Glockenspiel, Flute, 92 BPM, memorable repeating melodic motif, instrumental, no vocals, dynamic game soundtrack score, seamless looping structure",
+      "lyrics": "[Intro]\n(sparse ambient layer, quiet pulse)\n[Verse 1 - Exploration Layer]\n(fingerpicked Acoustic Guitar, gentle Marimba melody)\n[Pre-Chorus - Tension Build]\n(soft Glockenspiel top-line, warm Upright Bass pulse)\n[Chorus - Combat Layer]\n(full cozy rhythm section, bouncing Upright Bass, upbeat brush Drums)\n[Bridge - Danger / Boss State]\n(slightly melancholic shift, minor chord Acoustic Guitar, solo Flute)\n[Outro]\n(resolution back to ambient loop tail)",
+      "instruments": [
+        {
+          "name": "Acoustic Guitar",
+          "stem": "Acoustic Guitar",
+          "keep": true
+        },
+        {
+          "name": "Marimba",
+          "stem": "Marimba",
+          "keep": true
+        },
+        {
+          "name": "Upright Bass",
+          "stem": "Upright Bass",
+          "keep": true
+        },
+        {
+          "name": "Drums",
+          "stem": "Drums",
+          "keep": true
+        },
+        {
+          "name": "Glockenspiel",
+          "stem": "Glockenspiel",
+          "keep": false
+        },
+        {
+          "name": "Flute",
+          "stem": "Flute",
+          "keep": false
+        }
+      ],
+      "stems_requested": [
+        "Acoustic Guitar",
+        "Drums",
+        "Marimba",
+        "Upright Bass"
+      ],
+      "states": [
+        {
+          "state": "explore",
+          "section": "[Intro]"
+        },
+        {
+          "state": "explore",
+          "section": "[Verse 1 - Exploration Layer]"
+        },
+        {
+          "state": "tension",
+          "section": "[Pre-Chorus - Tension Build]"
+        },
+        {
+          "state": "combat",
+          "section": "[Chorus - Combat Layer]"
+        },
+        {
+          "state": "boss",
+          "section": "[Bridge - Danger / Boss State]"
+        },
+        {
+          "state": "resolve",
+          "section": "[Outro]"
+        }
+      ],
+      "suno": {
+        "url": "https://suno.com/song/5e48798f-2284-4b01-baf4-5dbf91bdebc4",
+        "clip_id": "5e48798f-2284-4b01-baf4-5dbf91bdebc4",
+        "stem_group_id": "stemgrp_cb558f8f-26ec-4065-a1a5-df4e4d6e9f20",
+        "model": "v6 (MCP audio-create + audio-analysis + audio-stems-create mode=twelve)",
+        "generated_at": "2026-11-18T13:10:37Z",
+        "recommended_take": 1,
+        "analysis": {
+          "bpm_detected": 124.5,
+          "key_detected": "D major",
+          "time_signature": 4,
+          "bars_detected": 79,
+          "recommended_loop_start_bar": 16,
+          "recommended_loop_start_s": 29.135,
+          "recommended_loop_end_s": 90.351,
+          "sections": [
+            {
+              "start_s": 0,
+              "end_s": 7.36,
+              "label": "A"
+            },
+            {
+              "start_s": 7.36,
+              "end_s": 22.24,
+              "label": "B"
+            },
+            {
+              "start_s": 22.24,
+              "end_s": 35.12,
+              "label": "B"
+            },
+            {
+              "start_s": 35.12,
+              "end_s": 44.2,
+              "label": "B"
+            },
+            {
+              "start_s": 44.2,
+              "end_s": 80.88,
+              "label": "B"
+            },
+            {
+              "start_s": 80.88,
+              "end_s": 92.12,
+              "label": "A"
+            },
+            {
+              "start_s": 92.12,
+              "end_s": 123.16,
+              "label": "B"
+            },
+            {
+              "start_s": 123.16,
+              "end_s": 133.84,
+              "label": "A"
+            },
+            {
+              "start_s": 133.84,
+              "end_s": 141.68,
+              "label": "A"
+            },
+            {
+              "start_s": 141.68,
+              "end_s": 150.88,
+              "label": "A"
+            },
+            {
+              "start_s": 150.88,
+              "end_s": 157.24,
+              "label": "A"
+            }
+          ],
+          "labels": {
+            "arrangement:instrumental": 0.954,
+            "content:music": 0.95,
+            "instrument:plucked_string_family": 0.686,
+            "instrument:percussion_family": 0.672
+          },
+          "terms": [
+            "instrumental",
+            "no voice",
+            "guitar",
+            "jazz"
+          ]
+        },
+        "candidates": [
+          {
+            "take": 1,
+            "clip_id": "5e48798f-2284-4b01-baf4-5dbf91bdebc4",
+            "url": "https://suno.com/song/5e48798f-2284-4b01-baf4-5dbf91bdebc4",
+            "liked": true,
+            "duration_s": 157.24,
+            "bpm_detected": 124.5,
+            "key_detected": "D major",
+            "time_signature": 4,
+            "bars_detected": 79,
+            "sections_count": 11,
+            "sections": [
+              {
+                "start_s": 0,
+                "end_s": 7.36,
+                "label": "A"
+              },
+              {
+                "start_s": 7.36,
+                "end_s": 22.24,
+                "label": "B"
+              },
+              {
+                "start_s": 22.24,
+                "end_s": 35.12,
+                "label": "B"
+              },
+              {
+                "start_s": 35.12,
+                "end_s": 44.2,
+                "label": "B"
+              },
+              {
+                "start_s": 44.2,
+                "end_s": 80.88,
+                "label": "B"
+              },
+              {
+                "start_s": 80.88,
+                "end_s": 92.12,
+                "label": "A"
+              },
+              {
+                "start_s": 92.12,
+                "end_s": 123.16,
+                "label": "B"
+              },
+              {
+                "start_s": 123.16,
+                "end_s": 133.84,
+                "label": "A"
+              },
+              {
+                "start_s": 133.84,
+                "end_s": 141.68,
+                "label": "A"
+              },
+              {
+                "start_s": 141.68,
+                "end_s": 150.88,
+                "label": "A"
+              },
+              {
+                "start_s": 150.88,
+                "end_s": 157.24,
+                "label": "A"
+              }
+            ],
+            "labels": {
+              "arrangement:instrumental": 0.954,
+              "content:music": 0.95,
+              "instrument:plucked_string_family": 0.686,
+              "instrument:percussion_family": 0.672
+            },
+            "terms": [
+              "instrumental",
+              "no voice",
+              "guitar",
+              "jazz"
+            ],
+            "recommended_loop_start_bar": 16,
+            "recommended_loop_start_s": 29.135,
+            "recommended_loop_end_s": 90.351,
+            "quality_score": 19.078,
+            "midi_files": [
+              {
+                "stem": "guitar",
+                "audio_id": "0301a025-8af9-4b1d-b6b5-832f35d002f5",
+                "path": "X:/Projects/GameMusic/Bubble-Wishes/midi/bubble-wishes-poofy-s-story-studio-take1-guitar.mid",
+                "tracks": 7,
+                "notes_count": 2053
+              },
+              {
+                "stem": "keyboard",
+                "audio_id": "10aa4a02-8dd3-4088-a20b-7eabdb002eb1",
+                "path": "X:/Projects/GameMusic/Bubble-Wishes/midi/bubble-wishes-poofy-s-story-studio-take1-keyboard.mid",
+                "tracks": 2,
+                "notes_count": 1413
+              },
+              {
+                "stem": "woodwinds",
+                "audio_id": "1acf39fb-4d28-449a-9c96-e4a0c2557aea",
+                "path": "X:/Projects/GameMusic/Bubble-Wishes/midi/bubble-wishes-poofy-s-story-studio-take1-woodwinds.mid",
+                "tracks": 9,
+                "notes_count": 817
+              },
+              {
+                "stem": "drums",
+                "audio_id": "3e0c1740-fa46-4c27-b935-78a256ef399e",
+                "path": "X:/Projects/GameMusic/Bubble-Wishes/midi/bubble-wishes-poofy-s-story-studio-take1-drums.mid",
+                "tracks": 5,
+                "notes_count": 911
+              },
+              {
+                "stem": "bass",
+                "audio_id": "5cf7c63e-f854-4950-b5dc-5627ca4f00a5",
+                "path": "X:/Projects/GameMusic/Bubble-Wishes/midi/bubble-wishes-poofy-s-story-studio-take1-bass.mid",
+                "tracks": 6,
+                "notes_count": 388
+              },
+              {
+                "stem": "percussion",
+                "audio_id": "5ed255f6-f141-40d5-b495-06df417b2f98",
+                "path": "X:/Projects/GameMusic/Bubble-Wishes/midi/bubble-wishes-poofy-s-story-studio-take1-percussion.mid",
+                "tracks": 7,
+                "notes_count": 1749
+              },
+              {
+                "stem": "strings",
+                "audio_id": "945acd08-7fbc-457d-921f-28d1d67d548f",
+                "path": "X:/Projects/GameMusic/Bubble-Wishes/midi/bubble-wishes-poofy-s-story-studio-take1-strings.mid",
+                "tracks": 8,
+                "notes_count": 855
+              },
+              {
+                "stem": "synth",
+                "audio_id": "e64e5fa7-f2c1-4d57-97e3-2e576427d25c",
+                "path": "X:/Projects/GameMusic/Bubble-Wishes/midi/bubble-wishes-poofy-s-story-studio-take1-synth.mid",
+                "tracks": 10,
+                "notes_count": 1534
+              },
+              {
+                "stem": "brass",
+                "audio_id": "f195b103-2c3b-4884-9c30-17f4e1536e92",
+                "path": "X:/Projects/GameMusic/Bubble-Wishes/midi/bubble-wishes-poofy-s-story-studio-take1-brass.mid",
+                "tracks": 1,
+                "notes_count": 8
+              }
+            ]
+          },
+          {
+            "take": 2,
+            "clip_id": "c54e2be2-242b-4993-9ddf-267c4423f9d4",
+            "url": "https://suno.com/song/c54e2be2-242b-4993-9ddf-267c4423f9d4",
+            "liked": false,
+            "duration_s": 172.8,
+            "bpm_detected": 123.6,
+            "key_detected": "G major",
+            "time_signature": 4,
+            "bars_detected": 85,
+            "sections_count": 13,
+            "sections": [
+              {
+                "start_s": 0,
+                "end_s": 16.16,
+                "label": "A"
+              },
+              {
+                "start_s": 16.16,
+                "end_s": 32.92,
+                "label": "A"
+              },
+              {
+                "start_s": 32.92,
+                "end_s": 39.56,
+                "label": "B"
+              },
+              {
+                "start_s": 39.56,
+                "end_s": 47.2,
+                "label": "B"
+              },
+              {
+                "start_s": 47.2,
+                "end_s": 53.48,
+                "label": "B"
+              },
+              {
+                "start_s": 53.48,
+                "end_s": 74,
+                "label": "B"
+              },
+              {
+                "start_s": 74,
+                "end_s": 84.6,
+                "label": "B"
+              },
+              {
+                "start_s": 84.6,
+                "end_s": 102.32,
+                "label": "B"
+              },
+              {
+                "start_s": 102.32,
+                "end_s": 120.72,
+                "label": "C"
+              },
+              {
+                "start_s": 120.72,
+                "end_s": 128.6,
+                "label": "B"
+              },
+              {
+                "start_s": 128.6,
+                "end_s": 144.68,
+                "label": "B"
+              },
+              {
+                "start_s": 144.68,
+                "end_s": 163.12,
+                "label": "C"
+              },
+              {
+                "start_s": 163.12,
+                "end_s": 172.8,
+                "label": "C"
+              }
+            ],
+            "labels": {
+              "arrangement:instrumental": 0.961,
+              "content:music": 0.949,
+              "instrument:plucked_string_family": 0.678,
+              "instrument:woodwind_family": 0.644
+            },
+            "terms": [
+              "instrumental",
+              "no voice",
+              "woodwind",
+              "plucked string"
+            ],
+            "recommended_loop_start_bar": 18,
+            "recommended_loop_start_s": 34.32,
+            "recommended_loop_end_s": 96.248,
+            "quality_score": 14.48
+          }
+        ]
+      },
+      "files": [
+        {
+          "path": "X:/Projects/GameMusic/Bubble-Wishes/midi/bubble-wishes-poofy-s-story-studio-take1-guitar.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Bubble-Wishes/midi/bubble-wishes-poofy-s-story-studio-take1-keyboard.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Bubble-Wishes/midi/bubble-wishes-poofy-s-story-studio-take1-woodwinds.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Bubble-Wishes/midi/bubble-wishes-poofy-s-story-studio-take1-drums.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Bubble-Wishes/midi/bubble-wishes-poofy-s-story-studio-take1-bass.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Bubble-Wishes/midi/bubble-wishes-poofy-s-story-studio-take1-percussion.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Bubble-Wishes/midi/bubble-wishes-poofy-s-story-studio-take1-strings.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Bubble-Wishes/midi/bubble-wishes-poofy-s-story-studio-take1-synth.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Bubble-Wishes/midi/bubble-wishes-poofy-s-story-studio-take1-brass.mid",
+          "kind": "midi"
+        }
+      ],
+      "notes": "Generated 2 takes via Suno MCP (v6) & analyzed via 0-credit audio-analysis:\n- Take 1 (5e48798f-2284-4b01-baf4-5dbf91bdebc4, Liked): https://suno.com/song/5e48798f-2284-4b01-baf4-5dbf91bdebc4 — 157.24s, detected 124.5 BPM, D major, 79 bars, 11 sections, loop bars 16..48 (29.135s–90.351s), score=19.078\n- Take 2 (c54e2be2-242b-4993-9ddf-267c4423f9d4): https://suno.com/song/c54e2be2-242b-4993-9ddf-267c4423f9d4 — 172.8s, detected 123.6 BPM, G major, 85 bars, 13 sections, loop bars 18..50 (34.32s–96.248s), score=14.48\nSelected for stem split: Take 1 (5e48798f-2284-4b01-baf4-5dbf91bdebc4) | 12-stem Auto Split group: stemgrp_cb558f8f-26ec-4065-a1a5-df4e4d6e9f20 (complete)."
+    },
+    {
+      "track_id": "bubble-wishes-poofy-s-story-studio-B",
+      "title": "Bubble Wishes / Poofy's Story Studio - alternate region (nautical-folk)",
+      "status": "prompt_ready",
+      "vocals": "none",
+      "bpm": 102,
+      "style_prompt": "Breezy coastal harbor and acoustic sea-shanty folk score, clean mix, dry studio recording, minimalist frequency separation, buoyant, salty and adventurous, storybook island & narration studio atmosphere, Acoustic Guitar, Accordion, Fiddle, Upright Bass, Drums, Flute, 102 BPM, strict quantize, steady 4/4 rhythm, different key, blended sub-archetype palette, new motif, instrumental",
+      "lyrics": "[Instrumental]\n[Tempo: 102 BPM, strict quantize, steady rhythm]\n\n[Intro - Bass Stem Only]\n[Deep pulsing Upright Bass, clean low-end drone, minimal]\n\n[Part 1 - Add Percussion Stem]\n[strummed Acoustic Guitar, warm Accordion chords, Upright Bass, steady 4/4 rhythm]\n\n[Part 2 - Add Melody Stem]\n[lilting Flute counter-melody, brisk brush Drums, high frequency separation, dry studio]\n\n[Part 3 - Add Combat & Climax Layer]\n[lively Fiddle lead, full Accordion, bouncing Upright Bass and Drums; minor-key Fiddle reel, driving Acoustic Guitar rhythm]\n\n[Outro - Strip Back]\n[Sub-bass pulse and distant percussion fade out]",
+      "instruments": [
+        {
+          "name": "Acoustic Guitar",
+          "stem": "Acoustic Guitar",
+          "keep": true
+        },
+        {
+          "name": "Accordion",
+          "stem": "Accordion",
+          "keep": true
+        },
+        {
+          "name": "Fiddle",
+          "stem": "Fiddle",
+          "keep": true
+        },
+        {
+          "name": "Upright Bass",
+          "stem": "Upright Bass",
+          "keep": true
+        },
+        {
+          "name": "Drums",
+          "stem": "Drums",
+          "keep": false
+        },
+        {
+          "name": "Flute",
+          "stem": "Flute",
+          "keep": false
+        }
+      ],
+      "stems_requested": [
+        "Accordion",
+        "Acoustic Guitar",
+        "Fiddle",
+        "Upright Bass"
+      ],
+      "states": [
+        {
+          "state": "explore",
+          "section": "[Intro]"
+        },
+        {
+          "state": "explore",
+          "section": "[Verse 1 - Exploration Layer]"
+        },
+        {
+          "state": "tension",
+          "section": "[Pre-Chorus - Tension Build]"
+        },
+        {
+          "state": "combat",
+          "section": "[Chorus - Combat Layer]"
+        },
+        {
+          "state": "boss",
+          "section": "[Bridge - Danger / Boss State]"
+        },
+        {
+          "state": "resolve",
+          "section": "[Outro]"
+        }
+      ],
+      "suno": {
+        "url": "",
+        "clip_id": "",
+        "model": "",
+        "generated_at": ""
+      },
+      "files": [],
+      "notes": ""
+    },
+    {
+      "track_id": "bubble-wishes-poofy-s-story-studio-C",
+      "title": "Bubble Wishes / Poofy's Story Studio - late-game variation (storybook-orchestral + cosmic-ambient)",
+      "status": "prompt_ready",
+      "vocals": "none",
+      "bpm": 96,
+      "style_prompt": "Whimsical storybook chamber ensemble score blended with Ethereal sci-fi orbital ambient and crystalline synth score, clean mix, dry studio recording, minimalist frequency separation, enchanting, curious and heartwarming, storybook island & narration studio atmosphere, Piano, Clarinet, Cello, Harp, Glockenspiel, Percussion, Synth Pad, 96 BPM, strict quantize, steady 4/4 rhythm, darker harmony, hybrid escalation palette, motif reprised, instrumental",
+      "lyrics": "[Instrumental]\n[Tempo: 96 BPM, strict quantize, steady rhythm]\n\n[Intro - Bass Stem Only]\n[Deep pulsing Piano, clean low-end drone, minimal]\n\n[Part 1 - Add Percussion Stem]\n[delicate Harp arpeggios, warm Piano, pizzicato Cello, steady 4/4 rhythm]\n\n[Part 2 - Add Melody Stem]\n[playful Clarinet phrase, twinkling Glockenspiel, high frequency separation, dry studio]\n\n[Part 3 - Add Combat & Climax Layer]\n[sweeping Cello melody, expressive Piano, light chamber Percussion; mysterious Clarinet and low Cello interplay]\n\n[Outro - Strip Back]\n[Sub-bass pulse and distant percussion fade out]",
+      "instruments": [
+        {
+          "name": "Piano",
+          "stem": "Piano",
+          "keep": true
+        },
+        {
+          "name": "Clarinet",
+          "stem": "Clarinet",
+          "keep": true
+        },
+        {
+          "name": "Cello",
+          "stem": "Cello",
+          "keep": true
+        },
+        {
+          "name": "Harp",
+          "stem": "Harp",
+          "keep": true
+        },
+        {
+          "name": "Glockenspiel",
+          "stem": "Glockenspiel",
+          "keep": false
+        },
+        {
+          "name": "Percussion",
+          "stem": "Percussion",
+          "keep": false
+        }
+      ],
+      "stems_requested": [
+        "Cello",
+        "Clarinet",
+        "Harp",
+        "Piano"
+      ],
+      "states": [
+        {
+          "state": "explore",
+          "section": "[Intro]"
+        },
+        {
+          "state": "explore",
+          "section": "[Verse 1 - Exploration Layer]"
+        },
+        {
+          "state": "tension",
+          "section": "[Pre-Chorus - Tension Build]"
+        },
+        {
+          "state": "combat",
+          "section": "[Chorus - Combat Layer]"
+        },
+        {
+          "state": "boss",
+          "section": "[Bridge - Danger / Boss State]"
+        },
+        {
+          "state": "resolve",
+          "section": "[Outro]"
+        }
+      ],
+      "suno": {
+        "url": "",
+        "clip_id": "",
+        "model": "",
+        "generated_at": ""
+      },
+      "files": [],
+      "notes": ""
+    }
+  ],
+  "updated_at": "2026-11-18T21:43:37Z",
+  "scope": "catalog",
+  "recommended_archetype": "cozy",
+  "recommended_setting": "storybook island & narration studio",
+  "recommendation_reason": "Gentle story-driven island quests and narration fit soft acoustic fingerpicking and marimba."
+}

@@ -5,6 +5,16 @@
 int main()
 {
     using ArcoreGameCore::FindGridRoute;
+    using ArcoreGameCore::TraceGridRoute;
+    assert(TraceGridRoute(3,1,{2,1,0},0,2).size()==3);
+    assert(TraceGridRoute(3,1,{2,-1,0},0,2).empty());
+    assert(TraceGridRoute(3,1,{0,1,0},1,0).empty()); // deterministic step reaches wrong zero
+    assert(TraceGridRoute(3,1,{0,1,0},1,2).empty()==false);
+    assert(TraceGridRoute(3,1,{99,1,0},0,2).empty());
+    assert(TraceGridRoute(3,1,{2,1,0},-1,2).empty());
+    assert(TraceGridRoute(3,1,{2,1,0},0,3).empty());
+    assert(TraceGridRoute(3,1,{2,1,0},0,1).empty());
+    assert(TraceGridRoute(0,1,{},0,0).empty());
     assert(FindGridRoute(0,3,{},0,1).empty());
     assert(FindGridRoute(3,3,{0},0,1).empty());
     std::vector<unsigned char> Cells(9,0);
@@ -28,6 +38,15 @@ int main()
             {
                 auto Route=FindGridRoute(3,3,Cells,Start,Goal);
                 auto Field=ArcoreGameCore::BuildGridDistanceField(3,3,Cells,Goal);
+                auto Traced=ArcoreGameCore::TraceGridRoute(3,3,Field,Start,Goal);
+                assert(Traced.size()==Route.size());
+                if (!Traced.empty()) {
+                    assert(Traced.front()==Start && Traced.back()==Goal);
+                    for (std::size_t I=1; I<Traced.size(); ++I) {
+                        assert(!Cells[Traced[I]]);
+                        assert(std::abs(Traced[I]%3-Traced[I-1]%3)+std::abs(Traced[I]/3-Traced[I-1]/3)==1);
+                    }
+                }
                 if (Cells[Goal]) assert(Field.empty());
                 else
                 {

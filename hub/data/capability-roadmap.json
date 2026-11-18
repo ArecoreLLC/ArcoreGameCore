@@ -87,7 +87,7 @@
   ],
   "portfolio_gates": {
     "before_build": "Pin source revision, actual engine version, target platform, asset versions and donor dependencies; do not assume existing candidates are verified. A complete source/dependency/binary-asset manifest may substitute for a commit. A single inspected-file hash is insufficient.",
-    "per_slice": "Record exact build/test commands, revision, platform, passed/failed/blocked/not_run and evidence. Capture one readable hero screenshot, a 30–60 second mechanic clip and a short trailer when ready.",
+    "per_slice": "Record exact build/test commands, revision, platform, passed/failed/blocked/not_run and evidence. Capture one readable hero screenshot, a 30\u201360 second mechanic clip and a short trailer when ready.",
     "reuse": "Move reusable rules only after a second independent consumer validates the interface. Keep authored content and engine adapters separate.",
     "cross_engine": "Use behavior contracts and tests across engines; do not copy Unreal runtime code into Godot or assume an incomplete port works.",
     "assets": "Use the GameCore hub registry to locate ModelForge model/rig/material versions, SoundCore cues and SonicAlchemist music/stems. Pin identity, rights and compatibility; sound candidates need audition.",
@@ -227,7 +227,13 @@
       "feedback_revision": "review-2026-11-11-v1",
       "review_changes": [
         "Added explicit producer milestones, stage-scoped prerequisites and donor admission requirements."
-      ]
+      ],
+      "genre": "action",
+      "sub_genre": "stealth",
+      "perspective": "Third-Person",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     },
     {
       "id": "clockwork-courier",
@@ -342,7 +348,7 @@
         "Replay format",
         "Performance harness"
       ],
-      "acceptance": "Slopes, braking, wheel contact and cargo reset first. Later: shortcut rejection, ghost drift, reproducible input/state hashes and connected generated tracks. Visual ghosts do not prove deterministic physics; use a deterministic model or retain the verification gap. Snap-Rally is an arcade reference, not a suspension implementation. Record transform/input ghosts; measure drift over 100 rough-terrain playbacks against declared tolerances. Deterministic combat hashes belong to Duelist’s Circuit and Chrono Arena. Compare a 60 Hz baseline with injected 20 FPS hitches using bounded substeps and a catch-up limit. Declare numeric position/contact tolerances and hardware before testing; report drift and overload behavior.",
+      "acceptance": "Slopes, braking, wheel contact and cargo reset first. Later: shortcut rejection, ghost drift, reproducible input/state hashes and connected generated tracks. Visual ghosts do not prove deterministic physics; use a deterministic model or retain the verification gap. Snap-Rally is an arcade reference, not a suspension implementation. Record transform/input ghosts; measure drift over 100 rough-terrain playbacks against declared tolerances. Deterministic combat hashes belong to Duelist\u2019s Circuit and Chrono Arena. Compare a 60 Hz baseline with injected 20 FPS hitches using bounded substeps and a catch-up limit. Declare numeric position/contact tolerances and hardware before testing; report drift and overload behavior.",
       "acceptance_status": "not_run",
       "implementation_approach": {
         "mode": "bounded scenario or branch in existing donor",
@@ -350,16 +356,22 @@
         "boundary": "Preserve the original playable game. Extract a standalone project only if its runtime/content boundary benefits reuse; do not create a general framework first."
       },
       "technical_risk": "high",
-      "creative_direction": "Before each run on a rugged canyon circuit, you snap together a chassis, wheel size, suspension springs, and cargo rack (Snap-Rally donor). Your cargo—a crate of unstable alchemical vials—shifts weight dynamically in the rack. Braking too hard on a downhill hairpin or bottoming out your suspension shatters vials, reducing your payout and lightening the load.",
+      "creative_direction": "Before each run on a rugged canyon circuit, you snap together a chassis, wheel size, suspension springs, and cargo rack (Snap-Rally donor). Your cargo\u2014a crate of unstable alchemical vials\u2014shifts weight dynamically in the rack. Braking too hard on a downhill hairpin or bottoming out your suspension shatters vials, reducing your payout and lightening the load.",
       "visual_direction": "Tactile Kitbash Off-Road. Sun-baked terracotta canyon with visible tire ruts, kicking pebble particles, and exaggerated spring compression/extension visuals (springs glow orange as they approach max load). Ghost trial vehicles render as translucent blueprint wireframes with trailing ribbon splines showing braking zones.",
       "creative_scope": "Proposed creative direction. Only named first-slice targets gate the initial playable; additional interactions and polish need later scope approval.",
       "review_changes": [
-        "Snap-Rally is an arcade reference, not a suspension implementation. Record transform/input ghosts; measure drift over 100 rough-terrain playbacks against declared tolerances. Deterministic combat hashes belong to Duelist’s Circuit and Chrono Arena."
+        "Snap-Rally is an arcade reference, not a suspension implementation. Record transform/input ghosts; measure drift over 100 rough-terrain playbacks against declared tolerances. Deterministic combat hashes belong to Duelist\u2019s Circuit and Chrono Arena."
       ],
       "dependency_requirements": {},
       "dependency_stages": {},
       "dependency_contracts": {},
-      "feedback_revision": "review-2026-11-11-v1"
+      "feedback_revision": "review-2026-11-11-v1",
+      "genre": "simulation",
+      "sub_genre": "vehicle-physics-sim",
+      "perspective": "Third-Person",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     },
     {
       "id": "pocket-expedition",
@@ -494,7 +506,13 @@
       "dependency_requirements": {},
       "dependency_stages": {},
       "dependency_contracts": {},
-      "feedback_revision": "review-2026-11-11-v1"
+      "feedback_revision": "review-2026-11-11-v1",
+      "genre": "rpg",
+      "sub_genre": "roguelike",
+      "perspective": "Third-Person",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     },
     {
       "id": "garden-council",
@@ -592,7 +610,7 @@
         "boundary": "Preserve the original playable game. Extract a standalone project only if its runtime/content boundary benefits reuse; do not create a general framework first."
       },
       "technical_risk": "medium",
-      "creative_direction": "Three specialist gardeners (Lifter, Pruner, Water-Bearer) navigate a flooded 8x8 conservatory grid to rescue trapped sproutlings before frost sets in. Each turn, you play from a 12-card deck (cap-deck-construction) where cards stack reactions (cap-card-effect-stack)—e.g., playing Divert Stream pushes a floating log, which triggers a queued Vine Grapple to pull two gardeners across at the cost of 1 Action Point.",
+      "creative_direction": "Three specialist gardeners (Lifter, Pruner, Water-Bearer) navigate a flooded 8x8 conservatory grid to rescue trapped sproutlings before frost sets in. Each turn, you play from a 12-card deck (cap-deck-construction) where cards stack reactions (cap-card-effect-stack)\u2014e.g., playing Divert Stream pushes a floating log, which triggers a queued Vine Grapple to pull two gardeners across at the cost of 1 Action Point.",
       "visual_direction": "Botanical Woodblock & Stained Glass. Crisp 2D vector-art tiles with distinct silhouette patterns on every hazard and buff (cap-color-independent-signals). Playing cards feature embossed botanical illustrations that animate into paper-cut pop-ups when resolving on the stack.",
       "creative_scope": "Proposed creative direction. Only named first-slice targets gate the initial playable; additional interactions and polish need later scope approval.",
       "dependency_requirements": {},
@@ -601,7 +619,13 @@
       "feedback_revision": "review-2026-11-11-v1",
       "review_changes": [
         "Added explicit producer milestones, stage-scoped prerequisites and donor admission requirements."
-      ]
+      ],
+      "genre": "tbs",
+      "sub_genre": "deckbuilder",
+      "perspective": "Top-Down",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Low-Poly"
     },
     {
       "id": "foundry-friends",
@@ -730,7 +754,13 @@
       "feedback_revision": "review-2026-11-11-v1",
       "review_changes": [
         "Added explicit producer milestones, stage-scoped prerequisites and donor admission requirements."
-      ]
+      ],
+      "genre": "simulation",
+      "sub_genre": "automation-factory",
+      "perspective": "Top-Down",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     },
     {
       "id": "storm-harbor",
@@ -837,7 +867,13 @@
       "feedback_revision": "review-2026-11-11-v1",
       "review_changes": [
         "Added explicit producer milestones, stage-scoped prerequisites and donor admission requirements."
-      ]
+      ],
+      "genre": "simulation",
+      "sub_genre": "vehicle-physics-sim",
+      "perspective": "Third-Person",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     },
     {
       "id": "canopy-courier",
@@ -969,7 +1005,13 @@
       "feedback_revision": "review-2026-11-11-v1",
       "review_changes": [
         "Added explicit producer milestones, stage-scoped prerequisites and donor admission requirements."
-      ]
+      ],
+      "genre": "platformer",
+      "sub_genre": "3d-collectathon",
+      "perspective": "Third-Person",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Low-Poly"
     },
     {
       "id": "bastion-tactics",
@@ -1139,7 +1181,13 @@
       "feedback_revision": "review-2026-11-11-v1",
       "review_changes": [
         "Added explicit producer milestones, stage-scoped prerequisites and donor admission requirements."
-      ]
+      ],
+      "genre": "rts",
+      "sub_genre": "rtt",
+      "perspective": "Top-Down",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     },
     {
       "id": "duelists-circuit",
@@ -1246,7 +1294,13 @@
       "feedback_revision": "review-2026-11-11-v1",
       "review_changes": [
         "Added explicit producer milestones, stage-scoped prerequisites and donor admission requirements."
-      ]
+      ],
+      "genre": "action",
+      "sub_genre": "soulslike",
+      "perspective": "Third-Person",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     },
     {
       "id": "pocket-town",
@@ -1430,7 +1484,13 @@
       "feedback_revision": "review-2026-11-11-v1",
       "review_changes": [
         "Added explicit producer milestones, stage-scoped prerequisites and donor admission requirements."
-      ]
+      ],
+      "genre": "simulation",
+      "sub_genre": "city-builder",
+      "perspective": "Third-Person",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     },
     {
       "id": "paper-council",
@@ -1597,7 +1657,13 @@
       "feedback_revision": "review-2026-11-11-v1",
       "review_changes": [
         "Added explicit producer milestones, stage-scoped prerequisites and donor admission requirements."
-      ]
+      ],
+      "genre": "adventure",
+      "sub_genre": "point-and-click",
+      "perspective": "Third-Person",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Low-Poly"
     },
     {
       "id": "echo-stage",
@@ -1736,7 +1802,13 @@
       "feedback_revision": "review-2026-11-11-v1",
       "review_changes": [
         "Added explicit producer milestones, stage-scoped prerequisites and donor admission requirements."
-      ]
+      ],
+      "genre": "puzzle",
+      "sub_genre": "match3-rhythm",
+      "perspective": "Third-Person",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Low-Poly"
     },
     {
       "id": "living-wilds",
@@ -1814,7 +1886,13 @@
       "feedback_revision": "review-2026-11-11-v1",
       "review_changes": [
         "Added explicit producer milestones, stage-scoped prerequisites and donor admission requirements."
-      ]
+      ],
+      "genre": "adventure",
+      "sub_genre": "survival-craft",
+      "perspective": "Third-Person",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     },
     {
       "id": "rescue-demolition",
@@ -1930,7 +2008,13 @@
       "feedback_revision": "review-2026-11-11-v1",
       "review_changes": [
         "Added explicit producer milestones, stage-scoped prerequisites and donor admission requirements."
-      ]
+      ],
+      "genre": "puzzle",
+      "sub_genre": "physics-contraption",
+      "perspective": "Third-Person",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     },
     {
       "id": "orbital-salvage",
@@ -2042,7 +2126,13 @@
       "feedback_revision": "review-2026-11-11-v1",
       "review_changes": [
         "Added explicit producer milestones, stage-scoped prerequisites and donor admission requirements."
-      ]
+      ],
+      "genre": "simulation",
+      "sub_genre": "vehicle-physics-sim",
+      "perspective": "Third-Person",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     },
     {
       "id": "sky-post",
@@ -2166,7 +2256,13 @@
       "feedback_revision": "review-2026-11-11-v1",
       "review_changes": [
         "Added explicit producer milestones, stage-scoped prerequisites and donor admission requirements."
-      ]
+      ],
+      "genre": "simulation",
+      "sub_genre": "vehicle-physics-sim",
+      "perspective": "Third-Person",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     },
     {
       "id": "learning-garden",
@@ -2292,7 +2388,13 @@
       "feedback_revision": "review-2026-11-11-v1",
       "review_changes": [
         "Added explicit producer milestones, stage-scoped prerequisites and donor admission requirements."
-      ]
+      ],
+      "genre": "puzzle",
+      "sub_genre": "match3-rhythm",
+      "perspective": "Third-Person",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Low-Poly"
     },
     {
       "id": "clockwork-rooms",
@@ -2386,7 +2488,7 @@
       },
       "technical_risk": "high",
       "creative_direction": "Spatial-Temporal Escape Chambers. Push heavy brass capacitor blocks onto floor switches (cap-sokoban-pushing), shove them through orientation-flipping portals (cap-portal-puzzles), and hit a pocket-watch rewind (cap-time-manipulation-puzzles) so your past state holds a gate open while the block remains charged.",
-      "visual_direction": "Intricate guilloché clockwork interiors with golden ghostly rewind trails.",
+      "visual_direction": "Intricate guilloch\u00e9 clockwork interiors with golden ghostly rewind trails.",
       "creative_scope": "Proposed creative direction. Only named first-slice targets gate the initial playable; additional interactions and polish need later scope approval.",
       "review_changes": [
         "First playable: discrete Sokoban plus bounded rewind. Continuous portal transforms/momentum are a separate later test room."
@@ -2394,7 +2496,13 @@
       "dependency_requirements": {},
       "dependency_stages": {},
       "dependency_contracts": {},
-      "feedback_revision": "review-2026-11-11-v1"
+      "feedback_revision": "review-2026-11-11-v1",
+      "genre": "puzzle",
+      "sub_genre": "sokoban-grid",
+      "perspective": "Top-Down",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     },
     {
       "id": "patchwork-parade",
@@ -2521,7 +2629,13 @@
           "adapter": "Pin subsystem boundary and engine/plugin versions; run consumer integration fixtures."
         }
       },
-      "feedback_revision": "review-2026-11-11-v1"
+      "feedback_revision": "review-2026-11-11-v1",
+      "genre": "platformer",
+      "sub_genre": "3d-collectathon",
+      "perspective": "Third-Person",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Low-Poly"
     },
     {
       "id": "pocket-workshop-xr",
@@ -2644,7 +2758,13 @@
       "feedback_revision": "review-2026-11-11-v1",
       "review_changes": [
         "Added explicit producer milestones, stage-scoped prerequisites and donor admission requirements."
-      ]
+      ],
+      "genre": "puzzle",
+      "sub_genre": "physics-contraption",
+      "perspective": "Third-Person",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Low-Poly"
     },
     {
       "id": "arena-relay",
@@ -2781,7 +2901,13 @@
       "dependency_requirements": {},
       "dependency_stages": {},
       "dependency_contracts": {},
-      "feedback_revision": "review-2026-11-11-v1"
+      "feedback_revision": "review-2026-11-11-v1",
+      "genre": "action",
+      "sub_genre": "tps",
+      "perspective": "Third-Person",
+      "networking": "Client-Server",
+      "scale_density": "Small Arena",
+      "art_pipeline": "Stylized PBR"
     },
     {
       "id": "community-isles",
@@ -2910,7 +3036,7 @@
         "boundary": "Preserve the original playable game. Extract a standalone project only if its runtime/content boundary benefits reuse; do not create a general framework first."
       },
       "technical_risk": "very high",
-      "creative_direction": "2-Player Co-op Monument Builder. Two players matchmake into a shared island (cap-lobby-matchmaking) run on a managed dedicated server (cap-dedicated-server-lifecycle) to haul stones and raise a lighthouse. Pulling the ethernet cable mid-carry tests seamless reconnect recovery (cap-reconnect-recovery) without duplicating or deleting the stone, backed by cloud-save merge UI and a sandboxed Lua/JSON decoration mod loader (cap-mod-sandboxing).Waves 5 & 6: Second-Consumer Synthesis & Genre-Mashed Vignettes (Priorities 23–50)Waves 5 and 6 shine as tight, high-concept arcade vignettes that prove system reuse across unexpected genre pairings:Game ID & TitleRuntimeExpanded Gameplay & Visual Hook",
+      "creative_direction": "2-Player Co-op Monument Builder. Two players matchmake into a shared island (cap-lobby-matchmaking) run on a managed dedicated server (cap-dedicated-server-lifecycle) to haul stones and raise a lighthouse. Pulling the ethernet cable mid-carry tests seamless reconnect recovery (cap-reconnect-recovery) without duplicating or deleting the stone, backed by cloud-save merge UI and a sandboxed Lua/JSON decoration mod loader (cap-mod-sandboxing).Waves 5 & 6: Second-Consumer Synthesis & Genre-Mashed Vignettes (Priorities 23\u201350)Waves 5 and 6 shine as tight, high-concept arcade vignettes that prove system reuse across unexpected genre pairings:Game ID & TitleRuntimeExpanded Gameplay & Visual Hook",
       "visual_direction": "Use the scenario brief as visual inspiration; establish readability, accessibility and a distinct palette in the first art review.",
       "creative_scope": "Proposed creative direction. Only named first-slice targets gate the initial playable; additional interactions and polish need later scope approval.",
       "dependency_requirements": {},
@@ -2919,7 +3045,13 @@
       "feedback_revision": "review-2026-11-11-v1",
       "review_changes": [
         "Added explicit producer milestones, stage-scoped prerequisites and donor admission requirements."
-      ]
+      ],
+      "genre": "simulation",
+      "sub_genre": "city-builder",
+      "perspective": "Third-Person",
+      "networking": "Client-Server",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     },
     {
       "id": "marshlight-rescue",
@@ -3048,7 +3180,13 @@
       "feedback_revision": "review-2026-11-11-v1",
       "review_changes": [
         "Added explicit producer milestones, stage-scoped prerequisites and donor admission requirements."
-      ]
+      ],
+      "genre": "action",
+      "sub_genre": "stealth",
+      "perspective": "Third-Person",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     },
     {
       "id": "clockwork-cartographer",
@@ -3226,7 +3364,13 @@
       "feedback_revision": "review-2026-11-11-v1",
       "review_changes": [
         "Added explicit producer milestones, stage-scoped prerequisites and donor admission requirements."
-      ]
+      ],
+      "genre": "adventure",
+      "sub_genre": "walking-sim",
+      "perspective": "Third-Person",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Low-Poly"
     },
     {
       "id": "railbound-salvage",
@@ -3382,7 +3526,13 @@
       "feedback_revision": "review-2026-11-11-v1",
       "review_changes": [
         "Added explicit producer milestones, stage-scoped prerequisites and donor admission requirements."
-      ]
+      ],
+      "genre": "simulation",
+      "sub_genre": "automation-factory",
+      "perspective": "Top-Down",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     },
     {
       "id": "reef-keeper",
@@ -3549,7 +3699,13 @@
           "adapter": "Pin subsystem boundary and engine/plugin versions; run consumer integration fixtures."
         }
       },
-      "feedback_revision": "review-2026-11-11-v1"
+      "feedback_revision": "review-2026-11-11-v1",
+      "genre": "simulation",
+      "sub_genre": "colony-sim",
+      "perspective": "Top-Down",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     },
     {
       "id": "siege-workshop",
@@ -3678,7 +3834,13 @@
       "feedback_revision": "review-2026-11-11-v1",
       "review_changes": [
         "Added explicit producer milestones, stage-scoped prerequisites and donor admission requirements."
-      ]
+      ],
+      "genre": "rts",
+      "sub_genre": "rtt",
+      "perspective": "Top-Down",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     },
     {
       "id": "moonbase-freight",
@@ -3842,7 +4004,13 @@
           "adapter": "Pin subsystem boundary and engine/plugin versions; run consumer integration fixtures."
         }
       },
-      "feedback_revision": "review-2026-11-11-v1"
+      "feedback_revision": "review-2026-11-11-v1",
+      "genre": "simulation",
+      "sub_genre": "vehicle-physics-sim",
+      "perspective": "Third-Person",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     },
     {
       "id": "windmill-village",
@@ -3997,7 +4165,13 @@
       "feedback_revision": "review-2026-11-11-v1",
       "review_changes": [
         "Added explicit producer milestones, stage-scoped prerequisites and donor admission requirements."
-      ]
+      ],
+      "genre": "simulation",
+      "sub_genre": "colony-sim",
+      "perspective": "Top-Down",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     },
     {
       "id": "shadow-couriers",
@@ -4141,7 +4315,13 @@
           "adapter": "Pin subsystem boundary and engine/plugin versions; run consumer integration fixtures."
         }
       },
-      "feedback_revision": "review-2026-11-11-v1"
+      "feedback_revision": "review-2026-11-11-v1",
+      "genre": "action",
+      "sub_genre": "stealth",
+      "perspective": "Third-Person",
+      "networking": "Client-Server",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     },
     {
       "id": "circuit-kitchen",
@@ -4273,7 +4453,13 @@
       "feedback_revision": "review-2026-11-11-v1",
       "review_changes": [
         "Added explicit producer milestones, stage-scoped prerequisites and donor admission requirements."
-      ]
+      ],
+      "genre": "simulation",
+      "sub_genre": "colony-sim",
+      "perspective": "Top-Down",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     },
     {
       "id": "prism-patrol",
@@ -4419,7 +4605,13 @@
       "feedback_revision": "review-2026-11-11-v1",
       "review_changes": [
         "Added explicit producer milestones, stage-scoped prerequisites and donor admission requirements."
-      ]
+      ],
+      "genre": "puzzle",
+      "sub_genre": "sokoban-grid",
+      "perspective": "Top-Down",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     },
     {
       "id": "gravity-parcel",
@@ -4609,7 +4801,13 @@
       "feedback_revision": "review-2026-11-11-v1",
       "review_changes": [
         "Added explicit producer milestones, stage-scoped prerequisites and donor admission requirements."
-      ]
+      ],
+      "genre": "action",
+      "sub_genre": "hack-and-slash",
+      "perspective": "Third-Person",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     },
     {
       "id": "memory-orchard",
@@ -4766,7 +4964,13 @@
           "adapter": "Consumer-owned runtime adapter; validate equivalent fixtures in both engines. No runtime-source compatibility implied."
         }
       },
-      "feedback_revision": "review-2026-11-11-v1"
+      "feedback_revision": "review-2026-11-11-v1",
+      "genre": "puzzle",
+      "sub_genre": "match3-rhythm",
+      "perspective": "Third-Person",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Low-Poly"
     },
     {
       "id": "puppet-theater",
@@ -4912,7 +5116,13 @@
       "feedback_revision": "review-2026-11-11-v1",
       "review_changes": [
         "Added explicit producer milestones, stage-scoped prerequisites and donor admission requirements."
-      ]
+      ],
+      "genre": "adventure",
+      "sub_genre": "point-and-click",
+      "perspective": "Third-Person",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Low-Poly"
     },
     {
       "id": "beatwing-rally",
@@ -5049,7 +5259,13 @@
       "feedback_revision": "review-2026-11-11-v1",
       "review_changes": [
         "Added explicit producer milestones, stage-scoped prerequisites and donor admission requirements."
-      ]
+      ],
+      "genre": "puzzle",
+      "sub_genre": "match3-rhythm",
+      "perspective": "Third-Person",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     },
     {
       "id": "tether-team",
@@ -5192,7 +5408,13 @@
           "adapter": "Pin subsystem boundary and engine/plugin versions; run consumer integration fixtures."
         }
       },
-      "feedback_revision": "review-2026-11-11-v1"
+      "feedback_revision": "review-2026-11-11-v1",
+      "genre": "simulation",
+      "sub_genre": "vehicle-physics-sim",
+      "perspective": "Third-Person",
+      "networking": "Client-Server",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     },
     {
       "id": "emberwatch",
@@ -5356,7 +5578,13 @@
       "feedback_revision": "review-2026-11-11-v1",
       "review_changes": [
         "Added explicit producer milestones, stage-scoped prerequisites and donor admission requirements."
-      ]
+      ],
+      "genre": "rts",
+      "sub_genre": "survival-td",
+      "perspective": "Top-Down",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     },
     {
       "id": "tiny-merchants",
@@ -5475,7 +5703,13 @@
       "feedback_revision": "review-2026-11-11-v1",
       "review_changes": [
         "Added explicit producer milestones, stage-scoped prerequisites and donor admission requirements."
-      ]
+      ],
+      "genre": "tbs",
+      "sub_genre": "deckbuilder",
+      "perspective": "Top-Down",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Low-Poly"
     },
     {
       "id": "floodgate-engineers",
@@ -5629,7 +5863,13 @@
       "feedback_revision": "review-2026-11-11-v1",
       "review_changes": [
         "Added explicit producer milestones, stage-scoped prerequisites and donor admission requirements."
-      ]
+      ],
+      "genre": "simulation",
+      "sub_genre": "city-builder",
+      "perspective": "Third-Person",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     },
     {
       "id": "rover-garden",
@@ -5749,7 +5989,13 @@
       "feedback_revision": "review-2026-11-11-v1",
       "review_changes": [
         "Added explicit producer milestones, stage-scoped prerequisites and donor admission requirements."
-      ]
+      ],
+      "genre": "simulation",
+      "sub_genre": "vehicle-physics-sim",
+      "perspective": "Third-Person",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     },
     {
       "id": "chrono-arena",
@@ -5823,7 +6069,7 @@
         "boundary": "Preserve original games. Share contracts and data across engines; engine runtime code requires an explicit adapter."
       },
       "technical_risk": "high",
-      "creative_direction": "Time-Rewind Samurai Duel: Fight a lethal sparring automaton where frame-data mistakes are fatal—but you can scrub combat time backward 3 seconds (cap-time-manipulation-puzzles) to parry the strike you just ate (cap-deterministic-replay-verification).",
+      "creative_direction": "Time-Rewind Samurai Duel: Fight a lethal sparring automaton where frame-data mistakes are fatal\u2014but you can scrub combat time backward 3 seconds (cap-time-manipulation-puzzles) to parry the strike you just ate (cap-deterministic-replay-verification).",
       "visual_direction": "Use the scenario brief as visual inspiration; establish readability, accessibility and a distinct palette in the first art review.",
       "creative_scope": "Proposed creative direction. Only named first-slice targets gate the initial playable; additional interactions and polish need later scope approval.",
       "review_changes": [
@@ -5874,7 +6120,13 @@
           "adapter": "Pin subsystem boundary and engine/plugin versions; run consumer integration fixtures."
         }
       },
-      "feedback_revision": "review-2026-11-11-v1"
+      "feedback_revision": "review-2026-11-11-v1",
+      "genre": "action",
+      "sub_genre": "soulslike",
+      "perspective": "Third-Person",
+      "networking": "Single-Player",
+      "scale_density": "Small Arena",
+      "art_pipeline": "Stylized PBR"
     },
     {
       "id": "quiet-library",
@@ -6035,7 +6287,13 @@
       "feedback_revision": "review-2026-11-11-v1",
       "review_changes": [
         "Added explicit producer milestones, stage-scoped prerequisites and donor admission requirements."
-      ]
+      ],
+      "genre": "puzzle",
+      "sub_genre": "sokoban-grid",
+      "perspective": "Top-Down",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Low-Poly"
     },
     {
       "id": "salvage-submersible",
@@ -6211,7 +6469,13 @@
       "feedback_revision": "review-2026-11-11-v1",
       "review_changes": [
         "Added explicit producer milestones, stage-scoped prerequisites and donor admission requirements."
-      ]
+      ],
+      "genre": "adventure",
+      "sub_genre": "walking-sim",
+      "perspective": "Third-Person",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     },
     {
       "id": "living-fortress",
@@ -6382,7 +6646,13 @@
       "feedback_revision": "review-2026-11-11-v1",
       "review_changes": [
         "Added explicit producer milestones, stage-scoped prerequisites and donor admission requirements."
-      ]
+      ],
+      "genre": "rts",
+      "sub_genre": "rtt",
+      "perspective": "Top-Down",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     },
     {
       "id": "tracksmith-trials",
@@ -6526,7 +6796,13 @@
           "adapter": "Pin subsystem boundary and engine/plugin versions; run consumer integration fixtures."
         }
       },
-      "feedback_revision": "review-2026-11-11-v1"
+      "feedback_revision": "review-2026-11-11-v1",
+      "genre": "simulation",
+      "sub_genre": "vehicle-physics-sim",
+      "perspective": "Third-Person",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     },
     {
       "id": "wisp-shepherd",
@@ -6685,7 +6961,13 @@
           "adapter": "Consumer-owned runtime adapter; validate equivalent fixtures in both engines. No runtime-source compatibility implied."
         }
       },
-      "feedback_revision": "review-2026-11-11-v1"
+      "feedback_revision": "review-2026-11-11-v1",
+      "genre": "rts",
+      "sub_genre": "classic-rts",
+      "perspective": "Top-Down",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     },
     {
       "id": "sandcastle-stories",
@@ -6837,7 +7119,13 @@
           "adapter": "Pin subsystem boundary and engine/plugin versions; run consumer integration fixtures."
         }
       },
-      "feedback_revision": "review-2026-11-11-v1"
+      "feedback_revision": "review-2026-11-11-v1",
+      "genre": "simulation",
+      "sub_genre": "city-builder",
+      "perspective": "Third-Person",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Low-Poly"
     },
     {
       "id": "starboard-signals",
@@ -6984,7 +7272,13 @@
           "adapter": "Pin subsystem boundary and engine/plugin versions; run consumer integration fixtures."
         }
       },
-      "feedback_revision": "review-2026-11-11-v1"
+      "feedback_revision": "review-2026-11-11-v1",
+      "genre": "puzzle",
+      "sub_genre": "match3-rhythm",
+      "perspective": "Third-Person",
+      "networking": "Client-Server",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     },
     {
       "id": "frontier-assembly",
@@ -7186,7 +7480,13 @@
           "adapter": "Pin subsystem boundary and engine/plugin versions; run consumer integration fixtures."
         }
       },
-      "feedback_revision": "review-2026-11-11-v1"
+      "feedback_revision": "review-2026-11-11-v1",
+      "genre": "rts",
+      "sub_genre": "rtt",
+      "perspective": "Top-Down",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     }
   ],
   "validation": {
@@ -7218,7 +7518,7 @@
       "first_combined_slice": "One expedition route with one vehicle, one salvage objective and one repairable shelter. Add aircraft or space only as separate later products.",
       "reuse_test": "Use the same inventory/recipe contract for vehicle repairs and shelter repairs, then verify both consumers.",
       "creative_direction": "MudRunner meets Subnautica land-salvage. You custom-build an overland expedition rig (clockwork-courier), drive out from a ramshackle shelter across shifting procedural biomes (living-wilds) and flooded river crossings (storm-harbor), delve into ruins (pocket-expedition), and haul heavy structural salvage back to shore up your base against storms (rescue-demolition).",
-      "visual_direction": "Gritty-yet-stylized overland adventure—mud accumulating on tires, warm amber headlights cutting through twilight rain, and physical cargo strapped to roof racks."
+      "visual_direction": "Gritty-yet-stylized overland adventure\u2014mud accumulating on tires, warm amber headlights cutting through twilight rain, and physical cargo strapped to roof racks."
     },
     {
       "id": "verdant-foundry",

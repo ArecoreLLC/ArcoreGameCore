@@ -1,0 +1,55 @@
+{
+  "id": "clockwork-courier",
+  "name": "Clockwork Courier",
+  "path": "X:/Projects/Games/Clockwork-Courier",
+  "engine": "Unreal 5.8.4 / C++",
+  "dimension": "3d",
+  "kind": "game",
+  "maturity": "prototype",
+  "description": "Carry a fragile clockwork parcel over a terracotta ridge and stop at the depot.",
+  "logic": "Drive the fixed buggy, protect cargo from sudden velocity changes, and stop in the depot for 1.5 seconds to deliver.",
+  "reuse": "Standalone Snap Rally descendant retaining donor module names; locally pinned portable GameCore headers.",
+  "assets": "Starter buggy, attached parcel and short terracotta ridge route.",
+  "limitations": "Development prototype; cargo uses an attached impact-damage model. Packaging, controller hardware and replay not validated in this media refresh.",
+  "capabilities": [],
+  "mechanics": [],
+  "provider_links": [],
+  "marketing": {
+    "tagline": "",
+    "pitch": "",
+    "audience": "",
+    "release_status": "Prototype",
+    "website": "",
+    "credits": "",
+    "notes": ""
+  },
+  "commands": [
+    "./Scripts/Play.ps1"
+  ],
+  "review_date": "2026-11-13",
+  "build_status": "not_run",
+  "playtest_status": "not_run",
+  "asset_counts": {},
+  "asset_file_count": 0,
+  "source_file_count": 0,
+  "evidence_files": [],
+  "historical_checks": [],
+  "media_candidates": [
+    {
+      "path": "X:\\Projects\\Games\\Clockwork-Courier\\Docs\\ClockworkCourier\\FIRST_PLAYABLE.png",
+      "name": "First playable",
+      "kind": "screenshot"
+    }
+  ],
+  "subgames": [],
+  "revision": {
+    "head": null,
+    "dirty": false,
+    "note": "Revision not audited in this media import."
+  },
+  "audit": {
+    "timestamp_utc": "2026-11-13T11:37:35.101464+00:00",
+    "errors": [],
+    "method": "README and screenshot inspection; no fresh build or playtest."
+  }
+}

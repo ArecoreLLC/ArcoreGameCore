@@ -97,6 +97,13 @@ impl Store {
                     p["updated_at"] = json!(timestamp);
                     tx.execute("UPDATE roadmap SET data=?1,version=?2 WHERE id=?3",
                         params![p.to_string(), version, text(&p, "id")?]).map_err(|e| e.to_string())?;
+                } else if old["sub_genre"].is_null() {
+                    let mut merged = old.clone();
+                    for field in ["genre", "sub_genre", "perspective", "networking", "scale_density", "art_pipeline"] {
+                        if !p[field].is_null() { merged[field] = p[field].clone(); }
+                    }
+                    tx.execute("UPDATE roadmap SET data=?1 WHERE id=?2",
+                        params![merged.to_string(), text(&p, "id")?]).map_err(|e| e.to_string())?;
                 }
                 continue;
             }

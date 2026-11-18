@@ -71,6 +71,33 @@
       ]
     },
     {
+      "id": "hair-fur-textures",
+      "status": "exploratory",
+      "dimensions": [
+        "3d"
+      ],
+      "guide": "workflows/hair-fur-textures/README.md",
+      "example": "workflows/hair-fur-textures/example.md",
+      "shared": [
+        "shared/migration-contract.md",
+        "shared/ecosystem.json"
+      ]
+    },
+    {
+      "id": "adaptive-music-stems",
+      "status": "scaffold",
+      "dimensions": [
+        "2d",
+        "3d"
+      ],
+      "guide": "workflows/adaptive-music-stems/README.md",
+      "example": "workflows/adaptive-music-stems/example.md",
+      "shared": [
+        "shared/migration-contract.md",
+        "shared/ecosystem.json"
+      ]
+    },
+    {
       "id": "music-reconstruction",
       "status": "exploratory",
       "dimensions": [

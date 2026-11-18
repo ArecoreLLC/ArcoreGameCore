@@ -1,5 +1,12 @@
 # Objective latch
 
+Version 0.2.0 adds `ActivatedCount()` and `TotalCount()` for progress displays.
+Both return zero for invalid/empty collections; reset preserves the configured
+total and clears the activated count. Existing activation semantics are unchanged.
+Snap Rally also consumes this module: physical knockdowns activate stable pin
+indices once per round, so pins bouncing upright cannot remove earned points.
+The game owns knockdown thresholds, presentation and round outcomes.
+
 `ObjectiveLatch.h` supplies an engine-neutral collection of up to 64 uniquely
 indexed objectives. `Activate(index)` returns true only for the first valid
 activation. Invalid indices and duplicate events leave progress unchanged.

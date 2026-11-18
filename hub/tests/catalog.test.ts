@@ -50,3 +50,11 @@ describe('catalog discovery and filtering',()=>{
   expect(mediaReadiness([{...base,kind:'screenshot',status:'retired'}]).needsScreenshot).toBe(true);
  });
 });
+
+it('uses an explicit draft thumbnail without implying marketing clearance',()=>{
+ const draft={id:'chosen',kind:'screenshot',status:'draft',curation:'unreviewed',is_thumbnail:true,sort_order:9} as Media;
+ const selected={...draft,id:'automatic',curation:'selected',is_thumbnail:false,sort_order:0};
+ expect(mediaReadiness([selected,draft]).cover?.id).toBe('chosen');
+ expect(mediaReadiness([draft]).needsScreenshot).toBe(true);
+ expect(mediaReadiness([selected,{...draft,status:'retired'}]).cover?.id).toBe('automatic');
+});

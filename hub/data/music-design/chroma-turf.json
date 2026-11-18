@@ -1,0 +1,280 @@
+{
+  "schema_version": 1,
+  "game_id": "chroma-turf",
+  "name": "Chroma-Turf",
+  "status": "in_progress",
+  "exclusion_reason": "",
+  "archetype": "arcade",
+  "setting": "elemental paint arena",
+  "tracks": [
+    {
+      "track_id": "chroma-turf-A",
+      "title": "Chroma-Turf - main theme",
+      "status": "stems_split",
+      "vocals": "none",
+      "bpm": 140,
+      "style_prompt": "Energetic chiptune-meets-modern arcade electronic, playful and urgent, elemental paint arena atmosphere, Synth Lead, Synth Bass, Drums, Arpeggiator, Synth Keys, 140 BPM, memorable repeating melodic motif, instrumental, no vocals, dynamic game soundtrack score, seamless looping structure",
+      "lyrics": "[Intro]\n(sparse ambient layer, quiet pulse)\n[Verse 1 - Exploration Layer]\n(light Synth Bass and Arpeggiator, relaxed Drums)\n[Pre-Chorus - Tension Build]\n(rising Synth Lead, Snare build)\n[Chorus - Combat Layer]\n(full Drums, driving Synth Bass, bright Synth Lead)\n[Bridge - Danger / Boss State]\n(fast minor Arpeggiator, urgent Kick pattern)\n[Outro]\n(resolution back to ambient loop tail)",
+      "instruments": [
+        {
+          "name": "Keyboards",
+          "stem": "Keyboards",
+          "keep": true
+        },
+        {
+          "name": "Synth",
+          "stem": "Synth",
+          "keep": true
+        },
+        {
+          "name": "Bass",
+          "stem": "Bass",
+          "keep": true
+        },
+        {
+          "name": "Drums",
+          "stem": "Drums",
+          "keep": true
+        }
+      ],
+      "stems_requested": [
+        "Bass",
+        "Drums",
+        "Keyboards",
+        "Synth"
+      ],
+      "states": [
+        {
+          "state": "explore",
+          "section": "[Intro]"
+        },
+        {
+          "state": "explore",
+          "section": "[Verse 1 - Exploration Layer]"
+        },
+        {
+          "state": "tension",
+          "section": "[Pre-Chorus - Tension Build]"
+        },
+        {
+          "state": "combat",
+          "section": "[Chorus - Combat Layer]"
+        },
+        {
+          "state": "boss",
+          "section": "[Bridge - Danger / Boss State]"
+        },
+        {
+          "state": "resolve",
+          "section": "[Outro]"
+        }
+      ],
+      "suno": {
+        "url": "X:/Projects/GameMusic/Chroma-Turf/Main Theme",
+        "clip_id": "chroma-turf-main-theme",
+        "model": "Suno Premier Stem Split (32-bit float 48kHz)",
+        "generated_at": "2026-11-18T02:43:49Z",
+        "in_game_status": "wired_in_engine",
+        "in_game_loop_s": 54.86,
+        "in_game_stems": [
+          "Keyboards",
+          "Synth",
+          "Bass",
+          "Drums"
+        ],
+        "engine_asset_path": "/Game/Audio/Music"
+      },
+      "files": [
+        {
+          "path": "Media/Audio/Sonic-v001/Export/layer-01.wav",
+          "kind": "Keyboards (SW_Music_Keyboards_v001)",
+          "sha256": "62494398304adba29a3e391b2224a256a56b4fb5493477897f779dc6d9d98343"
+        },
+        {
+          "path": "Media/Audio/Sonic-v001/Export/layer-02.wav",
+          "kind": "Synth (SW_Music_Synth_v001)",
+          "sha256": "21d4648c5c436a0dc92e86281ae6b2118d966ddbc673e700f819f4312633ada1"
+        },
+        {
+          "path": "Media/Audio/Sonic-v001/Export/layer-03.wav",
+          "kind": "Bass (SW_Music_Bass_v001)",
+          "sha256": "3b67e52f7c91b8b100a21f008a5d4cf90aa79aea458a8770ad21e121405c9b12"
+        },
+        {
+          "path": "Media/Audio/Sonic-v001/Export/layer-04.wav",
+          "kind": "Drums (SW_Music_Drums_v001)",
+          "sha256": "60d53c9a62c5de12ee701570ba55933b58957bf1fad8d82e418662e7d8c7bce0"
+        }
+      ],
+      "notes": "Exported 32-bar loop (bars 32-64, 54.86s-109.71s, 54.86s, 2633143 frames @ 48kHz 24-bit) via SonicAlchemist export-adaptive.exe with 0.85s fade-in/fade-out clip envelopes (seam_step <= 0.000001). Integrated into /Game/Audio/Music/SW_Music_*_v001 with 4 states (Explore, Tension, Combat, Boss)."
+    },
+    {
+      "track_id": "chroma-turf-B",
+      "title": "Chroma-Turf - alternate region (retro-chiptune-rock)",
+      "status": "prompt_ready",
+      "vocals": "none",
+      "bpm": 148,
+      "style_prompt": "High-octane 16-bit chiptune and electric guitar arcade fusion, clean mix, dry studio recording, minimalist frequency separation, hyper-energetic, heroic and retro, elemental paint arena atmosphere, Synth Lead, Lead Guitar, Bass Guitar, Drums, Arpeggiator, Synth Keys, 148 BPM, strict quantize, steady 4/4 rhythm, different key, blended sub-archetype palette, new motif, instrumental",
+      "lyrics": "[Instrumental]\n[Tempo: 148 BPM, strict quantize, steady rhythm]\n\n[Intro - Bass Stem Only]\n[Deep pulsing Bass Guitar, clean low-end drone, minimal]\n\n[Part 1 - Add Percussion Stem]\n[fast 16-bit Arpeggiator, tight Bass Guitar, crisp arcade Drums, steady 4/4 rhythm]\n\n[Part 2 - Add Melody Stem]\n[ascending Synth Keys, palm-muted Guitar buildup, high frequency separation, dry studio]\n\n[Part 3 - Add Combat & Climax Layer]\n[dueling Synth Lead and Lead Guitar melody, full-throttle Drums; shredding Lead Guitar solo over rapid chiptune Arpeggiator]\n\n[Outro - Strip Back]\n[Sub-bass pulse and distant percussion fade out]",
+      "instruments": [
+        {
+          "name": "Synth Lead",
+          "stem": "Synth Lead",
+          "keep": true
+        },
+        {
+          "name": "Lead Guitar",
+          "stem": "Lead Guitar",
+          "keep": true
+        },
+        {
+          "name": "Bass Guitar",
+          "stem": "Bass Guitar",
+          "keep": true
+        },
+        {
+          "name": "Drums",
+          "stem": "Drums",
+          "keep": true
+        },
+        {
+          "name": "Arpeggiator",
+          "stem": "Arpeggiator",
+          "keep": false
+        },
+        {
+          "name": "Synth Keys",
+          "stem": "Synth Keys",
+          "keep": false
+        }
+      ],
+      "stems_requested": [
+        "Bass Guitar",
+        "Drums",
+        "Lead Guitar",
+        "Synth Lead"
+      ],
+      "states": [
+        {
+          "state": "explore",
+          "section": "[Intro]"
+        },
+        {
+          "state": "explore",
+          "section": "[Verse 1 - Exploration Layer]"
+        },
+        {
+          "state": "tension",
+          "section": "[Pre-Chorus - Tension Build]"
+        },
+        {
+          "state": "combat",
+          "section": "[Chorus - Combat Layer]"
+        },
+        {
+          "state": "boss",
+          "section": "[Bridge - Danger / Boss State]"
+        },
+        {
+          "state": "resolve",
+          "section": "[Outro]"
+        }
+      ],
+      "suno": {
+        "url": "",
+        "clip_id": "",
+        "model": "",
+        "generated_at": ""
+      },
+      "files": [],
+      "notes": ""
+    },
+    {
+      "track_id": "chroma-turf-C",
+      "title": "Chroma-Turf - late-game variation (neon-synthfunk + mech-industrial)",
+      "status": "prompt_ready",
+      "vocals": "none",
+      "bpm": 118,
+      "style_prompt": "Groovy retro-futuristic synth-funk and neon bassline score blended with Heavy mechanical industrial breakbeat and modular synth score, clean mix, dry studio recording, minimalist frequency separation, slick, kinetic and stylish, elemental paint arena atmosphere, Synth Bass, Electric Guitar, Synth Keys, Drums, Vocoder, Clap, Percussion, 118 BPM, strict quantize, steady 4/4 rhythm, darker harmony, hybrid escalation palette, motif reprised, instrumental",
+      "lyrics": "[Instrumental]\n[Tempo: 118 BPM, strict quantize, steady rhythm]\n\n[Intro - Bass Stem Only]\n[Deep pulsing Synth Bass, clean low-end drone, minimal]\n\n[Part 1 - Add Percussion Stem]\n[slap Synth Bass pocket, clean funk Electric Guitar, light Clap, steady 4/4 rhythm]\n\n[Part 2 - Add Melody Stem]\n[lush Synth Keys chords, rising rhythmic groove, high frequency separation, dry studio]\n\n[Part 3 - Add Combat & Climax Layer]\n[punchy four-on-the-floor Drums, bright Synth Keys lead, funky Guitar; wordless Vocoder stabs, heavy Synth Bass octave riff]\n\n[Outro - Strip Back]\n[Sub-bass pulse and distant percussion fade out]",
+      "instruments": [
+        {
+          "name": "Synth Bass",
+          "stem": "Synth Bass",
+          "keep": true
+        },
+        {
+          "name": "Electric Guitar",
+          "stem": "Electric Guitar",
+          "keep": true
+        },
+        {
+          "name": "Synth Keys",
+          "stem": "Synth Keys",
+          "keep": true
+        },
+        {
+          "name": "Drums",
+          "stem": "Drums",
+          "keep": true
+        },
+        {
+          "name": "Vocoder",
+          "stem": "Vocoder",
+          "keep": false
+        },
+        {
+          "name": "Clap",
+          "stem": "Clap",
+          "keep": false
+        }
+      ],
+      "stems_requested": [
+        "Drums",
+        "Electric Guitar",
+        "Synth Bass",
+        "Synth Keys"
+      ],
+      "states": [
+        {
+          "state": "explore",
+          "section": "[Intro]"
+        },
+        {
+          "state": "explore",
+          "section": "[Verse 1 - Exploration Layer]"
+        },
+        {
+          "state": "tension",
+          "section": "[Pre-Chorus - Tension Build]"
+        },
+        {
+          "state": "combat",
+          "section": "[Chorus - Combat Layer]"
+        },
+        {
+          "state": "boss",
+          "section": "[Bridge - Danger / Boss State]"
+        },
+        {
+          "state": "resolve",
+          "section": "[Outro]"
+        }
+      ],
+      "suno": {
+        "url": "",
+        "clip_id": "",
+        "model": "",
+        "generated_at": ""
+      },
+      "files": [],
+      "notes": ""
+    }
+  ],
+  "updated_at": "2026-11-18T17:00:03Z",
+  "scope": "catalog",
+  "recommended_archetype": "arcade",
+  "recommended_setting": "elemental paint arena",
+  "recommendation_reason": "Vibrant elemental painting mechanics pair naturally with playful synth-arcade pulse.",
+  "sonic_alchemist_project": "chroma-turf-adaptive"
+}

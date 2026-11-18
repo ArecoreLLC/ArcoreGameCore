@@ -7,6 +7,23 @@ checker = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(checker)
 
 class UnrealEvidenceTests(unittest.TestCase):
+    def test_required_coverage(self):
+        report = {'tests': [{'fullTestPath': 'Example.Play', 'state': 'Success'}]}
+        self.assertEqual(checker.validate(report, 'Example.', ['Example.Play'])['count'], 1)
+        for required in (['Example.Missing'], ['Other.Play']):
+            with self.assertRaisesRegex(ValueError, 'Missing required tests'):
+                checker.validate(report, 'Example.', required)
+
+    def test_duplicate_paths(self):
+        test = {'fullTestPath': 'Example.Play', 'state': 'Success'}
+        with self.assertRaisesRegex(ValueError, 'Duplicate'):
+            checker.validate({'tests': [test, test]}, 'Example.')
+
+    def test_invalid_root(self):
+        for report in (None, [], 'invalid'):
+            with self.assertRaises(ValueError):
+                checker.validate(report, 'Example.')
+
     def test_success(self):
         self.assertEqual(checker.validate({'tests': [{'fullTestPath': 'Example.Play', 'state': 'Success', 'errors': 0}]}, 'Example.')['count'], 1)
 

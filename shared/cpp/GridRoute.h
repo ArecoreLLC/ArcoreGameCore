@@ -42,6 +42,27 @@ inline int NextGridStep(int Width, int Height, const std::vector<int>& Distance,
     return -1;
 }
 
+// Trace a field built for Goal, including endpoints. Reject partial paths,
+// wrong goals and malformed fields; work is bounded by the number of cells.
+inline std::vector<int> TraceGridRoute(int Width, int Height,
+    const std::vector<int>& Distance, int Start, int Goal)
+{
+    if (NextGridStep(Width, Height, Distance, Start) < 0 ||
+        Goal < 0 || Goal >= static_cast<int>(Distance.size()) || Distance[Goal] != 0 ||
+        Distance[Start] >= static_cast<int>(Distance.size())) return {};
+    std::vector<int> Route;
+    int Cell = Start;
+    for (std::size_t I = 0; I < Distance.size(); ++I)
+    {
+        Route.push_back(Cell);
+        if (Cell == Goal) return Route;
+        const int Next = NextGridStep(Width, Height, Distance, Cell);
+        if (Next < 0 || Next == Cell) return {};
+        Cell = Next;
+    }
+    return {};
+}
+
 // Four-neighbour shortest route including endpoints; empty for invalid/unreachable.
 inline std::vector<int> FindGridRoute(int Width, int Height,
     const std::vector<unsigned char>& Blocked, int Start, int Goal)

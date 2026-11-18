@@ -1,5 +1,10 @@
 # 3D systems
 
+## Unreal game feel
+
+[GameFeel](unreal/GameFeel.md) catalogs reusable buffered input and feedback envelopes
+in the Unreal runtime provider. Consumers own action eligibility, tuning and presentation.
+
 Home for reusable 3D controllers, cameras, interactions and starter scenes. This folder is a catalog; runtime implementation remains engine-specific.
 
 The [Unreal framework inventory](../framework/UNREAL_INTEGRATION.md) now records ArcoreWorldFramework's existing runtime telemetry, profiles, terrain/geometry helpers and engine validation, together with ArcoreOpenWorld's procedural builders and fixtures. See its [complete file list](../framework/inventory/UNREAL_FILES.md) and [validation runbook](../framework/UNREAL_VALIDATION.md). These are linked external implementations, not engine-neutral controllers or a completed migration.
@@ -11,7 +16,7 @@ The [Unreal framework inventory](../framework/UNREAL_INTEGRATION.md) now records
 | Interaction | Actor/target ID and range | Enter/exit range; one-shot activation |
 | Combat timing | [CombatWindow](../shared/cpp/CombatWindow.md): engine-neutral active/recovery windows | Standalone C++ boundary tests and consumer-owned Unreal smoke tests; no cross-engine parity claim |
 
-Use [Windows → Android](../workflows/godot-windows-to-android/README.md) for platform adaptation, or [Godot → Unreal](../workflows/godot-to-unreal/README.md) for an assisted engine migration. Both use the [shared migration contract](../shared/migration-contract.md).
+Use [Windows â†’ Android](../workflows/godot-windows-to-android/README.md) for platform adaptation, or [Godot â†’ Unreal](../workflows/godot-to-unreal/README.md) for an assisted engine migration. Both use the [shared migration contract](../shared/migration-contract.md).
 
 Future runtime code belongs in engine-specific subdirectories. Keep story, characters and level-specific logic in the consuming game. Use a small measured vertical slice before extracting a general module.
 
@@ -28,3 +33,18 @@ Asset creation can later use the planned [AssetForge / Blender MCP integration](
 ## Stealth exposure
 
 [ExposureMeter](../shared/cpp/ExposureMeter.md) provides bounded elapsed-time detection and recovery. Consumers own visibility, cover, exposure zones, terminal outcomes and reset. Lumen-Weaver is the initial Unreal consumer; cross-engine parity is unverified.
+
+## Unreal beam presentation
+
+[BeamMesh](unreal/BeamMesh.md) is a versioned Unreal-only adapter for pooled,
+noncolliding cylinder segments. Lumen-Weaver validates alignment, visibility,
+obstruction and reset in engine automation. Materials and gameplay remain
+consumer-owned; packaged deployment and a second consumer remain unverified.
+
+## Unreal interaction targeting
+
+[InteractionTrace](unreal/InteractionTrace.md) shares a first-blocking-surface
+query between consumer prompts and actions. Supports a wider preview range and
+an inclusive action reach, with finite-input validation and optional ignored actor.
+Lumen-Weaver owns native focus and occlusion tests; gameplay eligibility stays
+consumer-owned. No network authority or cross-engine behavior is implied.

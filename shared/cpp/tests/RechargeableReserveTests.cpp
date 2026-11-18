@@ -24,4 +24,15 @@ int main()
     for(int i=0;i<60;++i) a.Spend(1.0/60);
     for(int i=0;i<120;++i) b.Spend(1.0/120);
     assert(std::abs(a.Remaining()-b.Remaining()) < 1e-12);
+    RechargeableReserve timed(3);
+    assert(timed.SpendFor(2, 1) == 1);
+    assert(timed.SpendFor(2, 1) == .5 && timed.Empty());
+    timed.RefillFor(2, .5); assert(timed.Remaining() == 1);
+    timed.SpendFor(-1, 1); timed.RefillFor(1, -1);
+    timed.SpendFor(1, std::numeric_limits<double>::infinity());
+    assert(timed.Remaining() == 1);
+    timed.RefillFor(std::numeric_limits<double>::max(), 2);
+    assert(timed.Remaining() == 3);
+    assert(timed.SpendFor(std::numeric_limits<double>::max(), 2) > 0);
+    assert(timed.Empty());
 }

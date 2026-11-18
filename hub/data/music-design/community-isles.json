@@ -1,0 +1,511 @@
+{
+  "schema_version": 1,
+  "game_id": "community-isles",
+  "name": "Community Isles",
+  "scope": "roadmap",
+  "status": "in_progress",
+  "exclusion_reason": "",
+  "recommended_archetype": "cozy",
+  "recommended_setting": "cooperative island monument",
+  "recommendation_reason": "Two players building a shared island monument fits warm, welcoming island acoustics.",
+  "archetype": "cozy",
+  "setting": "cooperative island monument",
+  "sonic_alchemist_project": "",
+  "soundcore_project": "",
+  "modelforge_project": "",
+  "tracks": [
+    {
+      "track_id": "community-isles-A",
+      "title": "Community Isles - main theme",
+      "status": "generated",
+      "vocals": "none",
+      "bpm": 92,
+      "style_prompt": "Cozy whimsical acoustic indie game music, peaceful and nostalgic, cooperative island monument atmosphere, Acoustic Guitar, Marimba, Upright Bass, Drums, Glockenspiel, Flute, 92 BPM, memorable repeating melodic motif, instrumental, no vocals, dynamic game soundtrack score, seamless looping structure",
+      "lyrics": "[Intro]\n(sparse ambient layer, quiet pulse)\n[Verse 1 - Exploration Layer]\n(fingerpicked Acoustic Guitar, gentle Marimba melody)\n[Pre-Chorus - Tension Build]\n(soft Glockenspiel top-line, warm Upright Bass pulse)\n[Chorus - Combat Layer]\n(full cozy rhythm section, bouncing Upright Bass, upbeat brush Drums)\n[Bridge - Danger / Boss State]\n(slightly melancholic shift, minor chord Acoustic Guitar, solo Flute)\n[Outro]\n(resolution back to ambient loop tail)",
+      "instruments": [
+        {
+          "name": "Acoustic Guitar",
+          "stem": "Acoustic Guitar",
+          "keep": true
+        },
+        {
+          "name": "Marimba",
+          "stem": "Marimba",
+          "keep": true
+        },
+        {
+          "name": "Upright Bass",
+          "stem": "Upright Bass",
+          "keep": true
+        },
+        {
+          "name": "Drums",
+          "stem": "Drums",
+          "keep": true
+        },
+        {
+          "name": "Glockenspiel",
+          "stem": "Glockenspiel",
+          "keep": false
+        },
+        {
+          "name": "Flute",
+          "stem": "Flute",
+          "keep": false
+        }
+      ],
+      "stems_requested": [
+        "Acoustic Guitar",
+        "Drums",
+        "Marimba",
+        "Upright Bass"
+      ],
+      "states": [
+        {
+          "state": "explore",
+          "section": "[Intro]"
+        },
+        {
+          "state": "explore",
+          "section": "[Verse 1 - Exploration Layer]"
+        },
+        {
+          "state": "tension",
+          "section": "[Pre-Chorus - Tension Build]"
+        },
+        {
+          "state": "combat",
+          "section": "[Chorus - Combat Layer]"
+        },
+        {
+          "state": "boss",
+          "section": "[Bridge - Danger / Boss State]"
+        },
+        {
+          "state": "resolve",
+          "section": "[Outro]"
+        }
+      ],
+      "suno": {
+        "url": "https://suno.com/song/bec143e5-59d3-4ae6-bbcd-7250f106a6df",
+        "clip_id": "bec143e5-59d3-4ae6-bbcd-7250f106a6df",
+        "stem_group_id": "",
+        "model": "v6 (MCP audio-create + audio-analysis)",
+        "generated_at": "2026-11-18T15:32:30Z",
+        "recommended_take": 1,
+        "analysis": {
+          "bpm_detected": 125,
+          "key_detected": "G major",
+          "time_signature": 4,
+          "bars_detected": 73,
+          "recommended_loop_start_bar": 15,
+          "recommended_loop_start_s": 28.18,
+          "recommended_loop_end_s": 89.62,
+          "sections": [
+            {
+              "start_s": 0,
+              "end_s": 8.96,
+              "label": "A"
+            },
+            {
+              "start_s": 8.96,
+              "end_s": 17.16,
+              "label": "A"
+            },
+            {
+              "start_s": 17.16,
+              "end_s": 23.84,
+              "label": "A"
+            },
+            {
+              "start_s": 23.84,
+              "end_s": 31.96,
+              "label": "B"
+            },
+            {
+              "start_s": 31.96,
+              "end_s": 51.24,
+              "label": "B"
+            },
+            {
+              "start_s": 51.24,
+              "end_s": 69.44,
+              "label": "B"
+            },
+            {
+              "start_s": 69.44,
+              "end_s": 86.28,
+              "label": "B"
+            },
+            {
+              "start_s": 86.28,
+              "end_s": 92.96,
+              "label": "A"
+            },
+            {
+              "start_s": 92.96,
+              "end_s": 103.32,
+              "label": "B"
+            },
+            {
+              "start_s": 103.32,
+              "end_s": 118.68,
+              "label": "A"
+            },
+            {
+              "start_s": 118.68,
+              "end_s": 132.16,
+              "label": "B"
+            },
+            {
+              "start_s": 132.16,
+              "end_s": 140,
+              "label": "A"
+            }
+          ],
+          "labels": {
+            "arrangement:instrumental": 0.958,
+            "content:music": 0.945,
+            "instrument:keyboard_family": 0.652,
+            "instrument:woodwind_family": 0.634
+          },
+          "terms": [
+            "instrumental",
+            "no voice",
+            "piano"
+          ]
+        },
+        "candidates": [
+          {
+            "take": 1,
+            "clip_id": "bec143e5-59d3-4ae6-bbcd-7250f106a6df",
+            "url": "https://suno.com/song/bec143e5-59d3-4ae6-bbcd-7250f106a6df",
+            "liked": false,
+            "duration_s": 140,
+            "bpm_detected": 125,
+            "key_detected": "G major",
+            "time_signature": 4,
+            "bars_detected": 73,
+            "sections_count": 12,
+            "sections": [
+              {
+                "start_s": 0,
+                "end_s": 8.96,
+                "label": "A"
+              },
+              {
+                "start_s": 8.96,
+                "end_s": 17.16,
+                "label": "A"
+              },
+              {
+                "start_s": 17.16,
+                "end_s": 23.84,
+                "label": "A"
+              },
+              {
+                "start_s": 23.84,
+                "end_s": 31.96,
+                "label": "B"
+              },
+              {
+                "start_s": 31.96,
+                "end_s": 51.24,
+                "label": "B"
+              },
+              {
+                "start_s": 51.24,
+                "end_s": 69.44,
+                "label": "B"
+              },
+              {
+                "start_s": 69.44,
+                "end_s": 86.28,
+                "label": "B"
+              },
+              {
+                "start_s": 86.28,
+                "end_s": 92.96,
+                "label": "A"
+              },
+              {
+                "start_s": 92.96,
+                "end_s": 103.32,
+                "label": "B"
+              },
+              {
+                "start_s": 103.32,
+                "end_s": 118.68,
+                "label": "A"
+              },
+              {
+                "start_s": 118.68,
+                "end_s": 132.16,
+                "label": "B"
+              },
+              {
+                "start_s": 132.16,
+                "end_s": 140,
+                "label": "A"
+              }
+            ],
+            "labels": {
+              "arrangement:instrumental": 0.958,
+              "content:music": 0.945,
+              "instrument:keyboard_family": 0.652,
+              "instrument:woodwind_family": 0.634
+            },
+            "terms": [
+              "instrumental",
+              "no voice",
+              "piano"
+            ],
+            "recommended_loop_start_bar": 15,
+            "recommended_loop_start_s": 28.18,
+            "recommended_loop_end_s": 89.62,
+            "quality_score": 16.355
+          },
+          {
+            "take": 2,
+            "clip_id": "205d427e-841f-40ba-b26c-912f7409a363",
+            "url": "https://suno.com/song/205d427e-841f-40ba-b26c-912f7409a363",
+            "liked": false,
+            "duration_s": 139.56,
+            "bpm_detected": 124.1,
+            "key_detected": "G major",
+            "time_signature": 4,
+            "bars_detected": 73,
+            "sections_count": 9,
+            "sections": [
+              {
+                "start_s": 0,
+                "end_s": 18.96,
+                "label": "A"
+              },
+              {
+                "start_s": 18.96,
+                "end_s": 33.96,
+                "label": "B"
+              },
+              {
+                "start_s": 33.96,
+                "end_s": 49.64,
+                "label": "B"
+              },
+              {
+                "start_s": 49.64,
+                "end_s": 75.48,
+                "label": "B"
+              },
+              {
+                "start_s": 75.48,
+                "end_s": 82.72,
+                "label": "B"
+              },
+              {
+                "start_s": 82.72,
+                "end_s": 95.92,
+                "label": "A"
+              },
+              {
+                "start_s": 95.92,
+                "end_s": 123.16,
+                "label": "B"
+              },
+              {
+                "start_s": 123.16,
+                "end_s": 133.6,
+                "label": "B"
+              },
+              {
+                "start_s": 133.6,
+                "end_s": 139.56,
+                "label": "A"
+              }
+            ],
+            "labels": {
+              "content:music": 0.947,
+              "arrangement:instrumental": 0.892,
+              "instrument:woodwind_family": 0.74,
+              "instrument:flute": 0.654
+            },
+            "terms": [
+              "instrumental",
+              "no voice",
+              "flute"
+            ],
+            "recommended_loop_start_bar": 15,
+            "recommended_loop_start_s": 28.375,
+            "recommended_loop_end_s": 90.18,
+            "quality_score": 15.027
+          }
+        ]
+      },
+      "files": [],
+      "notes": "Generated 2 takes via Suno MCP (v6) & analyzed via 0-credit audio-analysis:\n- Take 1 (bec143e5-59d3-4ae6-bbcd-7250f106a6df): https://suno.com/song/bec143e5-59d3-4ae6-bbcd-7250f106a6df \u2014 140s, detected 125 BPM, G major, 73 bars, 12 sections, loop bars 15..47 (28.18s\u201389.62s), score=16.355\n- Take 2 (205d427e-841f-40ba-b26c-912f7409a363): https://suno.com/song/205d427e-841f-40ba-b26c-912f7409a363 \u2014 139.56s, detected 124.1 BPM, G major, 73 bars, 9 sections, loop bars 15..47 (28.375s\u201390.18s), score=15.027\nSelected for stem split: Take 1 (bec143e5-59d3-4ae6-bbcd-7250f106a6df)."
+    },
+    {
+      "track_id": "community-isles-B",
+      "title": "Community Isles - alternate region (nautical-folk)",
+      "status": "prompt_ready",
+      "vocals": "none",
+      "bpm": 102,
+      "style_prompt": "Breezy coastal harbor and acoustic sea-shanty folk score, clean mix, dry studio recording, minimalist frequency separation, buoyant, salty and adventurous, cooperative island monument atmosphere, Acoustic Guitar, Accordion, Fiddle, Upright Bass, Drums, Flute, 102 BPM, strict quantize, steady 4/4 rhythm, different key, blended sub-archetype palette, new motif, instrumental",
+      "lyrics": "[Instrumental]\n[Tempo: 102 BPM, strict quantize, steady rhythm]\n\n[Intro - Bass Stem Only]\n[Deep pulsing Upright Bass, clean low-end drone, minimal]\n\n[Part 1 - Add Percussion Stem]\n[strummed Acoustic Guitar, warm Accordion chords, Upright Bass, steady 4/4 rhythm]\n\n[Part 2 - Add Melody Stem]\n[lilting Flute counter-melody, brisk brush Drums, high frequency separation, dry studio]\n\n[Part 3 - Add Combat & Climax Layer]\n[lively Fiddle lead, full Accordion, bouncing Upright Bass and Drums; minor-key Fiddle reel, driving Acoustic Guitar rhythm]\n\n[Outro - Strip Back]\n[Sub-bass pulse and distant percussion fade out]",
+      "instruments": [
+        {
+          "name": "Acoustic Guitar",
+          "stem": "Acoustic Guitar",
+          "keep": true
+        },
+        {
+          "name": "Accordion",
+          "stem": "Accordion",
+          "keep": true
+        },
+        {
+          "name": "Fiddle",
+          "stem": "Fiddle",
+          "keep": true
+        },
+        {
+          "name": "Upright Bass",
+          "stem": "Upright Bass",
+          "keep": true
+        },
+        {
+          "name": "Drums",
+          "stem": "Drums",
+          "keep": false
+        },
+        {
+          "name": "Flute",
+          "stem": "Flute",
+          "keep": false
+        }
+      ],
+      "stems_requested": [
+        "Accordion",
+        "Acoustic Guitar",
+        "Fiddle",
+        "Upright Bass"
+      ],
+      "states": [
+        {
+          "state": "explore",
+          "section": "[Intro]"
+        },
+        {
+          "state": "explore",
+          "section": "[Verse 1 - Exploration Layer]"
+        },
+        {
+          "state": "tension",
+          "section": "[Pre-Chorus - Tension Build]"
+        },
+        {
+          "state": "combat",
+          "section": "[Chorus - Combat Layer]"
+        },
+        {
+          "state": "boss",
+          "section": "[Bridge - Danger / Boss State]"
+        },
+        {
+          "state": "resolve",
+          "section": "[Outro]"
+        }
+      ],
+      "suno": {
+        "url": "",
+        "clip_id": "",
+        "model": "",
+        "generated_at": ""
+      },
+      "files": [],
+      "notes": ""
+    },
+    {
+      "track_id": "community-isles-C",
+      "title": "Community Isles - late-game variation (storybook-orchestral + cosmic-ambient)",
+      "status": "prompt_ready",
+      "vocals": "none",
+      "bpm": 96,
+      "style_prompt": "Whimsical storybook chamber ensemble score blended with Ethereal sci-fi orbital ambient and crystalline synth score, clean mix, dry studio recording, minimalist frequency separation, enchanting, curious and heartwarming, cooperative island monument atmosphere, Piano, Clarinet, Cello, Harp, Glockenspiel, Percussion, Synth Pad, 96 BPM, strict quantize, steady 4/4 rhythm, darker harmony, hybrid escalation palette, motif reprised, instrumental",
+      "lyrics": "[Instrumental]\n[Tempo: 96 BPM, strict quantize, steady rhythm]\n\n[Intro - Bass Stem Only]\n[Deep pulsing Piano, clean low-end drone, minimal]\n\n[Part 1 - Add Percussion Stem]\n[delicate Harp arpeggios, warm Piano, pizzicato Cello, steady 4/4 rhythm]\n\n[Part 2 - Add Melody Stem]\n[playful Clarinet phrase, twinkling Glockenspiel, high frequency separation, dry studio]\n\n[Part 3 - Add Combat & Climax Layer]\n[sweeping Cello melody, expressive Piano, light chamber Percussion; mysterious Clarinet and low Cello interplay]\n\n[Outro - Strip Back]\n[Sub-bass pulse and distant percussion fade out]",
+      "instruments": [
+        {
+          "name": "Piano",
+          "stem": "Piano",
+          "keep": true
+        },
+        {
+          "name": "Clarinet",
+          "stem": "Clarinet",
+          "keep": true
+        },
+        {
+          "name": "Cello",
+          "stem": "Cello",
+          "keep": true
+        },
+        {
+          "name": "Harp",
+          "stem": "Harp",
+          "keep": true
+        },
+        {
+          "name": "Glockenspiel",
+          "stem": "Glockenspiel",
+          "keep": false
+        },
+        {
+          "name": "Percussion",
+          "stem": "Percussion",
+          "keep": false
+        }
+      ],
+      "stems_requested": [
+        "Cello",
+        "Clarinet",
+        "Harp",
+        "Piano"
+      ],
+      "states": [
+        {
+          "state": "explore",
+          "section": "[Intro]"
+        },
+        {
+          "state": "explore",
+          "section": "[Verse 1 - Exploration Layer]"
+        },
+        {
+          "state": "tension",
+          "section": "[Pre-Chorus - Tension Build]"
+        },
+        {
+          "state": "combat",
+          "section": "[Chorus - Combat Layer]"
+        },
+        {
+          "state": "boss",
+          "section": "[Bridge - Danger / Boss State]"
+        },
+        {
+          "state": "resolve",
+          "section": "[Outro]"
+        }
+      ],
+      "suno": {
+        "url": "",
+        "clip_id": "",
+        "model": "",
+        "generated_at": ""
+      },
+      "files": [],
+      "notes": ""
+    }
+  ],
+  "updated_at": "2026-11-18T15:36:13Z"
+}

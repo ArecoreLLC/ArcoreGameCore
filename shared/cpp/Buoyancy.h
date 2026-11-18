@@ -3,6 +3,21 @@
 
 namespace GameCore
 {
+// Level, still-water equilibrium for summed immersion springs. This does not
+// predict tilt, waves or transient stability. False leaves the output unchanged.
+inline bool TryEquilibriumDepth(double mass, double stiffness, double maximumForce,
+    double& depth, double gravity = 9.81)
+{
+    if (!std::isfinite(mass) || !std::isfinite(stiffness) || !std::isfinite(maximumForce) ||
+        !std::isfinite(gravity) || mass < 0 || stiffness <= 0 || maximumForce <= 0 || gravity <= 0)
+        return false;
+    const double weight = mass * gravity;
+    const double result = weight / stiffness;
+    if (!std::isfinite(weight) || !std::isfinite(result) || weight > maximumForce) return false;
+    depth = result;
+    return true;
+}
+
 // SI units. Engine adapters own transforms, water sampling and integration.
 struct MassProperties
 {

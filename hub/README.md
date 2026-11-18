@@ -40,13 +40,27 @@ Descriptions identify current rules, source entry points, reuse boundaries, asse
 5. Evidence retains revision, source document paths, historical checks, and documented commands. Run future checks in the consuming game's own environment.
 6. Edit a record or add a new project. Adding a record does not create/alter a game folder. The capability atlas highlights existing donors and uncovered areas; see [classification guidance](TAXONOMY.md).
 
+## Approvals
+
+**Approvals** collects every decision that waits on a person in one queue, with a pending count in the sidebar. It replaces the former Music review page.
+
+| Type | Waiting when | Approve | Request changes | Reject |
+|---|---|---|---|---|
+| Music direction | music record is `recommended` | status `approved` (`in_progress` is kept) and prompt templates applied | note logged, stays queued | status `unassigned` (recommendation cleared) |
+| Music take | track is `generated` or `stems_split` | track `approved` (requires a Suno URL) | note logged, stays queued | track `rejected` |
+| Media | media is `draft` | `approved` (requires title, caption, rights and image alt text) | back to `draft`, note appended to review notes | `retired`; original file kept |
+
+Each source keeps owning its state; the inbox only translates a decision into that source's fields and then appends an entry to the SQLite `approval_history` table (kind, subject, item, decision, note, UTC time). A decision is logged only after its save succeeds. Undo (shown after each decision) and **Reopen for review** restore the previous record and log a `reopened` entry; history is never edited. Bulk approval asks for confirmation, lists every item, skips items with missing requirements and can be undone. Use `j`/`k` or the arrow keys to move through the queue. The browser preview shows the queue read-only.
+
+Roadmap evidence acceptance and workflow `wizard.json` checks of kind `human` are not in the inbox yet.
+
 ## Game roadmap
 
-The **Game roadmap** view contains 50 proposed game tracks in six waves, with 330 game–capability assignments covering all 143 original capability gaps plus 3 failure-case capabilities. Additional tracks demonstrate second consumers and integrated gameplay; an assignment is not implementation evidence. The source plan is [capability-roadmap.json](data/capability-roadmap.json).
+The **Game roadmap** view contains 50 proposed game tracks in six waves, with 330 gameâ€“capability assignments covering all 143 original capability gaps plus 3 failure-case capabilities. Additional tracks demonstrate second consumers and integrated gameplay; an assignment is not implementation evidence. The source plan is [capability-roadmap.json](data/capability-roadmap.json).
 
 Choose **Export JSON** on the roadmap or a game detail to preview a review package, then **Copy JSON** or **Save JSON file**. It exports all games regardless of filters, reads the current saved roadmap, and includes any current unsaved game draft with an explicit marker. The package includes capability definitions, donor code/asset descriptions and provider references, priorities, milestone dependencies, progress/evidence, larger-game combinations and questions for another LLM. Shared descriptions are normalized; empty progress fields are omitted. Notes and local reference paths are included, but source/media file contents are not. Export is a snapshot, not a round-trip import feature. If clipboard access is unavailable, the text is selected for manual copying. Native file export chooses a folder and writes a uniquely named UTF-8 JSON file without overwriting earlier exports.
 
-The current launcher prefers the JSON-export release in `src-tauri/target-json-export/release/`, built separately to leave an already-running app undisturbed. To rebuild that release, set `$env:CARGO_TARGET_DIR='X:\Projects\ArcoreGameCore\hub\src-tauri\target-json-export'` before `npm run tauri -- build --no-bundle` from `hub/`.
+The launcher prefers the current release in `src-tauri/target/release/`, with the earlier JSON-export release as a fallback. Rebuild with `npm run tauri -- build --no-bundle` from `hub/`.
 
 Open a track to edit priority (lower numbers first), owner, status and notes. Prerequisites reference specific capability milestones; select the required targets rather than waiting for every stretch goal of a predecessor. Dependency and downstream links navigate between tracks. Cycles are rejected; an unmet prerequisite is visible but does not prevent independent work.
 
@@ -59,6 +73,22 @@ SQLite adds `roadmap` and `roadmap_history` tables without replacing projects, t
 Roadmap checks: `npm test`, `cargo test --manifest-path src-tauri/Cargo.toml`, and `node tests/roadmap-smoke.mjs` from `hub/`. The native roadmap test snapshots the current library into an isolated directory, edits only that copy, and tests reference pinning, evidence gates, dependencies, backup and restart persistence. It reserves port 9449 for its bounded lifetime.
 
 ## Marketing media
+
+New screenshots automatically receive a UTC date, short Git revision and clean/modified label in the gallery and review dialog. The full revision is retained in library metadata. Git is read from the selected game's source folder, including untracked files; no commit or release number is required. Missing repositories/Git and repositories without commits are labeled explicitly. Older library items remain `Iteration unknown`.
+
+These are **checkout observations at import**, including clipboard paste and drag/drop, not verified capture-time or build metadata. An old image or an old running build may differ from the current checkout. Unsaved editor changes cannot be detected, and a modified tag cannot reconstruct uncommitted files. Review edits preserve the original observation. Original image bytes and content-hashed filenames stay unchanged; tags are library metadata, not a watermark. Public press kits retain their existing curated fields.
+
+### Media MCP
+
+The same executable serves the GameCore hub's local media tools over newline-delimited stdio:
+
+```text
+hub/src-tauri/target/release/gamecore-library.exe --mcp
+```
+
+Register this command with argument `--mcp` as `gamecore-hub` in an MCP client (use an absolute executable path). It shares the desktop library under `%APPDATA%/com.arcore.gamecore`; `GAMECORE_DATA_DIR` selects an isolated library for tests. No additional downstream MCP is required. The implemented tools are `list_projects`, `list_media(project_id)` and `import_media(project_id, path, kind)`; kind is screenshot, video or trailer. Import returns a draft media record with the same immutable `iteration` metadata as the UI. The broader wizard tools in the registry remain planned and are not advertised by this endpoint. Client registration is separate from building the endpoint.
+
+Run `python tests/media-mcp-smoke.py` from `hub/` after a release build to test the actual stdio process with a temporary library.
 
 Each game has separate marketing copy and a media collection. Import PNG/JPEG/WebP screenshots or MP4/WebM/MOV videos/trailers. Imports stream into content-hashed managed storage; originals are preserved. Display order, captions, alt text, rights notes, credits and review state are editable. Image/video dimensions and video duration are captured when the native preview decodes them and the review is saved.
 
@@ -135,3 +165,15 @@ The review revision retains 50 stable track IDs and assigns each of 146 capabili
 Prerequisites now name producer capabilities and distinguish first-slice gates from later milestones. The readiness filter uses first-slice gates. Cross-engine donors identify behavior contracts and consumer-owned adapters. JSON exports include review decisions, creative briefs, stages, provenance requirements, archived target progress and an ID inventory to check completeness.
 
 On startup the native app applies the revision transactionally to existing SQLite libraries. Ownership, notes, priority and matching target progress survive; removed target progress and prior dependencies are archived, and each original row is retained in roadmap history. Plan dependencies are replaced with the reviewed graph. Completed tracks with new unaccepted targets reopen as active. Versions advance to reject stale writes; repeated startup is idempotent. Project records, marketing records and media files are untouched. Back up an existing library before upgrading. The supplied review and editorial decisions are preserved in `evidence/roadmap-feedback-2026-11-11/`.
+
+### Add a project's reviewed screenshots
+
+`python hub/tools/apply_catalog_update.py --library <existing-library> --selections <selection.json>` imports only that supplied media selection. It does not reseed the taxonomy or change project/editorial fields. Use the same record schema as `hub/data/marketing-selection.json`; source hashes are checked, copies are content-addressed, and an online SQLite/media backup precedes mutation. Repeat imports preserve edited titles and avoid duplicate media. Added records remain drafts. The default mode without `--selections` retains the broader catalog update behavior.
+
+### Paste screenshots
+
+Open a game’s **Media** tab and press **Ctrl+V**, or choose **Paste screenshot**, after copying an image (for example with Windows Snipping Tool). The screenshot is saved as a managed PNG draft and opens for review. Text-field paste remains unchanged. Clipboard images are limited to 32 MiB and 40 megapixels; if clipboard access is unavailable, use Ctrl+V or Import media.
+
+### Drop screenshots and choose a thumbnail
+
+In a game’s **Media** tab, drag one or more PNG, JPEG or WebP files from Explorer onto the window. A single import opens for review; multiple imports appear in the gallery as drafts. Click any screenshot, then **Set as thumbnail**. The gallery marks the current game thumbnail, and the library card uses it immediately. Thumbnail selection is independent of publication approval; retiring that image restores automatic cover selection.

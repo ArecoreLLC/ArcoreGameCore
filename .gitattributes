@@ -2,3 +2,11 @@
 # Portable module digests require stable checkout bytes.
 shared/cpp/RechargeableReserve.h text eol=lf
 shared/cpp/TimedStacks.h text eol=lf
+
+shared/cpp/DeadlineCountdown.h text eol=lf
+
+# Preserve the reviewed jump-grace module digest.
+shared/cpp/JumpGrace.h -text
+
+# Preserve the reviewed Unreal visual-tint module digest.
+3d/unreal/VisualTint.h -text

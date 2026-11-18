@@ -14,12 +14,15 @@ for (raw,) in b.execute('SELECT data FROM media'):
 a.close();b.close()`,source,copy]);
 const exe=process.env.GAMECORE_TEST_EXE||path.join(root,'src-tauri','target-json-export','release','gamecore-library.exe');let app,browser;
 const checks=[];
-async function start(){app=spawn(exe,[],{windowsHide:true,stdio:'ignore',env:{...process.env,GAMECORE_DATA_DIR:copy,WEBVIEW2_USER_DATA_FOLDER:path.join(output,'webview'),WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS:'--remote-debugging-port=9449'}});for(let i=0;i<100;i++){try{browser=await chromium.connectOverCDP('http://127.0.0.1:9449');break}catch{await new Promise(r=>setTimeout(r,400))}}assert.ok(browser);const page=browser.contexts()[0].pages()[0];await page.getByRole('heading',{name:'Small worlds. Big potential.'}).waitFor({timeout:45000});return page;}
+async function start(){app=spawn(exe,[],{windowsHide:true,stdio:'ignore',env:{...process.env,GAMECORE_DATA_DIR:copy,WEBVIEW2_USER_DATA_FOLDER:path.join(output,'webview'),WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS:'--remote-debugging-port=9449'}});for(let i=0;i<100;i++){try{browser=await chromium.connectOverCDP('http://127.0.0.1:9449');break}catch{await new Promise(r=>setTimeout(r,400))}}assert.ok(browser);const page=browser.contexts()[0].pages()[0];await page.getByRole('heading',{name:'Game library',exact:true}).waitFor({timeout:45000});return page;}
 function stop(){if(app?.pid)execFileSync('taskkill',['/PID',String(app.pid),'/T','/F'],{windowsHide:true,stdio:'ignore'});app=null;}
 try{
  let page=await start();const errors=[];page.on('pageerror',e=>errors.push(e.message));
  const invoke=(command,args={})=>page.evaluate(({command,args})=>window.__TAURI_INTERNALS__.invoke(command,args),{command,args});
  const before=await invoke('library');assert.ok(before.projects.length>=31);assert.ok(before.media.length>=44);
+ // The copy mirrors the live library, where this target may already carry real evidence.
+ // Reset it (in the isolated copy only) so the evidence gate and pin counts start from a known state.
+ {const rows0=await invoke('roadmap');const l=rows0.find(g=>g.id==='lantern-heist');l.target_progress[l.capability_ids[0]]={state:'planned',notes:'',revision:'',platform:'',procedure:'',evidence:'',second_consumer:'',reuse_links:[]};if(l.status==='completed')l.status='active';l.depends_on=[];l.dependency_requirements={};l.dependency_stages={};await invoke('save_roadmap',{project:l});}
  await page.getByRole('button',{name:'Game roadmap',exact:true}).click();
  await page.getByRole('heading',{name:'Game roadmap',exact:true}).waitFor();
  await page.waitForFunction(()=>document.querySelectorAll('.roadmap-card').length===50);
@@ -67,7 +70,7 @@ try{
  const backup=await invoke('backup_library',{directory:output});
  const count=execFileSync('python',['-c','import sqlite3,sys; c=sqlite3.connect(sys.argv[1]);print(c.execute("SELECT COUNT(*) FROM roadmap").fetchone()[0]);c.close()',path.join(backup,'catalog.sqlite3')],{encoding:'utf8'});assert.equal(Number(count.trim()),50);
  checks.push('Cycles and stale writes rejected; roadmap progress leaves atlas unchanged; backup includes roadmap');
- await browser.close();browser=null;stop();await new Promise(r=>setTimeout(r,700));page=await start();
+ await browser.close();browser=null;stop();await new Promise(r=>setTimeout(r,2000));page=await start();
  rows=await invoke('roadmap');lantern=rows.find(g=>g.id==='lantern-heist');assert.equal(lantern.owner,'QA owner');assert.equal(lantern.target_progress[cap].reuse_links.length,2);
  checks.push('Priority, evidence and references survive native restart without seed overwrite');
  await fs.writeFile(path.join(output,'result.json'),JSON.stringify({status:'passed',checks,output,exe},null,2));console.log(JSON.stringify({status:'passed',checks,output},null,2));

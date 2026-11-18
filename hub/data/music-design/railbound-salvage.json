@@ -1,0 +1,550 @@
+{
+  "schema_version": 1,
+  "game_id": "railbound-salvage",
+  "name": "Railbound Salvage",
+  "scope": "roadmap",
+  "status": "in_progress",
+  "exclusion_reason": "",
+  "recommended_archetype": "mech-industrial",
+  "recommended_setting": "industrial salvage rail yard",
+  "recommendation_reason": "Dispatching salvage trains to rebuild a machine fits industrial percussion and bass synth.",
+  "archetype": "mech-industrial",
+  "setting": "industrial salvage rail yard",
+  "sonic_alchemist_project": "",
+  "soundcore_project": "",
+  "modelforge_project": "",
+  "tracks": [
+    {
+      "track_id": "railbound-salvage-A",
+      "title": "Railbound Salvage - main theme",
+      "status": "generated",
+      "vocals": "none",
+      "bpm": 136,
+      "style_prompt": "Heavy mechanical industrial breakbeat and modular synth score, clean mix, dry studio recording, minimalist frequency separation, gritty, relentless and mechanical, industrial salvage rail yard atmosphere, Synth Bass, Percussion, Drums, Synth Lead, 808, Risers, 136 BPM, strict quantize, steady 4/4 rhythm, memorable repeating melodic motif, instrumental",
+      "lyrics": "[Instrumental]\n[Tempo: 136 BPM, strict quantize, steady rhythm]\n\n[Intro]\n[Bass stem only: clean pulsing Synth Bass, dry low-end, minimal]\n[Verse 1 - Exploration Layer]\n[Add percussion stem: metallic Percussion clangs, sub 808 pulse, sparse Synth Bass]\n[Pre-Chorus - Tension Build]\n[Add melody stem: modular Risers sweep, accelerating breakbeat Drums]\n[Chorus - Combat Layer]\n[Add combat layer: crunchy industrial Drums, distorted Synth Bass, piercing Synth Lead]\n[Bridge - Danger / Boss State]\n[Maximum intensity: relentless anvil Percussion, heavy 808 drop]\n[Outro]\n[Strip back: bass pulse and distant drum fade out]",
+      "instruments": [
+        {
+          "name": "Synth Bass",
+          "stem": "Synth Bass",
+          "keep": true
+        },
+        {
+          "name": "Percussion",
+          "stem": "Percussion",
+          "keep": true
+        },
+        {
+          "name": "Drums",
+          "stem": "Drums",
+          "keep": true
+        },
+        {
+          "name": "Synth Lead",
+          "stem": "Synth Lead",
+          "keep": true
+        },
+        {
+          "name": "808",
+          "stem": "808",
+          "keep": false
+        },
+        {
+          "name": "Risers",
+          "stem": "Risers",
+          "keep": false
+        }
+      ],
+      "stems_requested": [
+        "Drums",
+        "Percussion",
+        "Synth Bass",
+        "Synth Lead"
+      ],
+      "states": [
+        {
+          "state": "explore",
+          "section": "[Intro]"
+        },
+        {
+          "state": "explore",
+          "section": "[Verse 1 - Exploration Layer]"
+        },
+        {
+          "state": "tension",
+          "section": "[Pre-Chorus - Tension Build]"
+        },
+        {
+          "state": "combat",
+          "section": "[Chorus - Combat Layer]"
+        },
+        {
+          "state": "boss",
+          "section": "[Bridge - Danger / Boss State]"
+        },
+        {
+          "state": "resolve",
+          "section": "[Outro]"
+        }
+      ],
+      "suno": {
+        "url": "https://suno.com/song/e4792cc6-1f10-4030-ab8b-d9b56cf61278",
+        "clip_id": "e4792cc6-1f10-4030-ab8b-d9b56cf61278",
+        "stem_group_id": null,
+        "model": "v6 (MCP audio-create + audio-analysis)",
+        "generated_at": "2026-11-18T18:47:14Z",
+        "recommended_take": 2,
+        "in_game_status": "not_integrated",
+        "in_game_loop_s": null,
+        "in_game_stems": [],
+        "engine_asset_path": "",
+        "analysis": {
+          "bpm_detected": 136.2,
+          "key_detected": "G minor",
+          "time_signature": 4,
+          "bars_detected": 79,
+          "recommended_loop_start_bar": 16,
+          "recommended_loop_start_s": 26.884,
+          "recommended_loop_end_s": 83.312,
+          "sections": [
+            {
+              "start_s": 0,
+              "end_s": 7.2,
+              "label": "A"
+            },
+            {
+              "start_s": 7.2,
+              "end_s": 16.28,
+              "label": "A"
+            },
+            {
+              "start_s": 16.28,
+              "end_s": 28.2,
+              "label": "A"
+            },
+            {
+              "start_s": 28.2,
+              "end_s": 42.28,
+              "label": "B"
+            },
+            {
+              "start_s": 42.28,
+              "end_s": 63.92,
+              "label": "B"
+            },
+            {
+              "start_s": 63.92,
+              "end_s": 70.92,
+              "label": "A"
+            },
+            {
+              "start_s": 70.92,
+              "end_s": 92.08,
+              "label": "B"
+            },
+            {
+              "start_s": 92.08,
+              "end_s": 97.8,
+              "label": "A"
+            },
+            {
+              "start_s": 97.8,
+              "end_s": 113.24,
+              "label": "B"
+            },
+            {
+              "start_s": 113.24,
+              "end_s": 127.36,
+              "label": "B"
+            },
+            {
+              "start_s": 127.36,
+              "end_s": 134.36,
+              "label": "A"
+            },
+            {
+              "start_s": 134.36,
+              "end_s": 139.6,
+              "label": "A"
+            }
+          ],
+          "labels": {
+            "content:human_voice": 0.93,
+            "vocal:singing": 0.915,
+            "genre:electronic": 0.845,
+            "content:music": 0.822,
+            "vocal:lead": 0.728,
+            "genre:techno": 0.637,
+            "instrument:bass_instrument": 0.626
+          },
+          "terms": [
+            "song",
+            "male vocals",
+            "bass instrument",
+            "synthesizer",
+            "techno"
+          ]
+        },
+        "candidates": [
+          {
+            "take": 1,
+            "clip_id": "6faf505a-a047-4338-aa9e-168920a6c1a4",
+            "url": "https://suno.com/song/6faf505a-a047-4338-aa9e-168920a6c1a4",
+            "liked": false,
+            "duration_s": 139.2,
+            "bpm_detected": 136.5,
+            "key_detected": "D minor",
+            "time_signature": 4,
+            "bars_detected": 79,
+            "sections_count": 12,
+            "sections": [
+              {
+                "start_s": 0,
+                "end_s": 12.56,
+                "label": "A"
+              },
+              {
+                "start_s": 12.56,
+                "end_s": 21.56,
+                "label": "A"
+              },
+              {
+                "start_s": 21.56,
+                "end_s": 28.2,
+                "label": "B"
+              },
+              {
+                "start_s": 28.2,
+                "end_s": 38.72,
+                "label": "C"
+              },
+              {
+                "start_s": 38.72,
+                "end_s": 52.88,
+                "label": "C"
+              },
+              {
+                "start_s": 52.88,
+                "end_s": 71,
+                "label": "A"
+              },
+              {
+                "start_s": 71,
+                "end_s": 99.08,
+                "label": "B"
+              },
+              {
+                "start_s": 99.08,
+                "end_s": 106.12,
+                "label": "A"
+              },
+              {
+                "start_s": 106.12,
+                "end_s": 120.56,
+                "label": "B"
+              },
+              {
+                "start_s": 120.56,
+                "end_s": 127.16,
+                "label": "A"
+              },
+              {
+                "start_s": 127.16,
+                "end_s": 134.2,
+                "label": "A"
+              },
+              {
+                "start_s": 134.2,
+                "end_s": 139.2,
+                "label": "A"
+              }
+            ],
+            "labels": {
+              "content:human_voice": 0.93,
+              "vocal:singing": 0.915,
+              "genre:electronic": 0.878,
+              "content:music": 0.821,
+              "genre:techno": 0.662,
+              "instrument:bass_instrument": 0.625
+            },
+            "terms": [
+              "song",
+              "male vocals",
+              "bass instrument",
+              "techno",
+              "trance"
+            ],
+            "recommended_loop_start_bar": 16,
+            "recommended_loop_start_s": 26.887,
+            "recommended_loop_end_s": 83.282,
+            "quality_score": 16.125,
+            "listen_rating": null,
+            "listen_notes": "",
+            "used_in_game": false
+          },
+          {
+            "take": 2,
+            "clip_id": "e4792cc6-1f10-4030-ab8b-d9b56cf61278",
+            "url": "https://suno.com/song/e4792cc6-1f10-4030-ab8b-d9b56cf61278",
+            "liked": false,
+            "duration_s": 139.6,
+            "bpm_detected": 136.2,
+            "key_detected": "G minor",
+            "time_signature": 4,
+            "bars_detected": 79,
+            "sections_count": 12,
+            "sections": [
+              {
+                "start_s": 0,
+                "end_s": 7.2,
+                "label": "A"
+              },
+              {
+                "start_s": 7.2,
+                "end_s": 16.28,
+                "label": "A"
+              },
+              {
+                "start_s": 16.28,
+                "end_s": 28.2,
+                "label": "A"
+              },
+              {
+                "start_s": 28.2,
+                "end_s": 42.28,
+                "label": "B"
+              },
+              {
+                "start_s": 42.28,
+                "end_s": 63.92,
+                "label": "B"
+              },
+              {
+                "start_s": 63.92,
+                "end_s": 70.92,
+                "label": "A"
+              },
+              {
+                "start_s": 70.92,
+                "end_s": 92.08,
+                "label": "B"
+              },
+              {
+                "start_s": 92.08,
+                "end_s": 97.8,
+                "label": "A"
+              },
+              {
+                "start_s": 97.8,
+                "end_s": 113.24,
+                "label": "B"
+              },
+              {
+                "start_s": 113.24,
+                "end_s": 127.36,
+                "label": "B"
+              },
+              {
+                "start_s": 127.36,
+                "end_s": 134.36,
+                "label": "A"
+              },
+              {
+                "start_s": 134.36,
+                "end_s": 139.6,
+                "label": "A"
+              }
+            ],
+            "labels": {
+              "content:human_voice": 0.93,
+              "vocal:singing": 0.915,
+              "genre:electronic": 0.845,
+              "content:music": 0.822,
+              "vocal:lead": 0.728,
+              "genre:techno": 0.637,
+              "instrument:bass_instrument": 0.626
+            },
+            "terms": [
+              "song",
+              "male vocals",
+              "bass instrument",
+              "synthesizer",
+              "techno"
+            ],
+            "recommended_loop_start_bar": 16,
+            "recommended_loop_start_s": 26.884,
+            "recommended_loop_end_s": 83.312,
+            "quality_score": 16.17,
+            "listen_rating": null,
+            "listen_notes": "",
+            "used_in_game": false
+          }
+        ]
+      },
+      "files": [],
+      "notes": "Generated 2 takes via Suno MCP (v6) & analyzed via 0-credit audio-analysis:\n- Take 1 (6faf505a-a047-4338-aa9e-168920a6c1a4): https://suno.com/song/6faf505a-a047-4338-aa9e-168920a6c1a4 \u2014 139.2s, detected 136.5 BPM, D minor, 79 bars, 12 sections, loop bars 16..48 (26.887s\u201383.282s), score=16.125\n- Take 2 (e4792cc6-1f10-4030-ab8b-d9b56cf61278): https://suno.com/song/e4792cc6-1f10-4030-ab8b-d9b56cf61278 \u2014 139.6s, detected 136.2 BPM, G minor, 79 bars, 12 sections, loop bars 16..48 (26.884s\u201383.312s), score=16.17\nSelected for stem split: Take 2 (e4792cc6-1f10-4030-ab8b-d9b56cf61278)."
+    },
+    {
+      "track_id": "railbound-salvage-B",
+      "title": "Railbound Salvage - alternate region (neon-synthfunk)",
+      "status": "prompt_ready",
+      "vocals": "none",
+      "bpm": 118,
+      "style_prompt": "Groovy retro-futuristic synth-funk and neon bassline score, clean mix, dry studio recording, minimalist frequency separation, slick, kinetic and stylish, industrial salvage rail yard atmosphere, Synth Bass, Electric Guitar, Synth Keys, Drums, Vocoder, Clap, 118 BPM, strict quantize, steady 4/4 rhythm, different key, blended sub-archetype palette, new motif, instrumental",
+      "lyrics": "[Instrumental]\n[Tempo: 118 BPM, strict quantize, steady rhythm]\n\n[Intro - Bass Stem Only]\n[Deep pulsing Synth Bass, clean low-end drone, minimal]\n\n[Part 1 - Add Percussion Stem]\n[slap Synth Bass pocket, clean funk Electric Guitar, light Clap, steady 4/4 rhythm]\n\n[Part 2 - Add Melody Stem]\n[lush Synth Keys chords, rising rhythmic groove, high frequency separation, dry studio]\n\n[Part 3 - Add Combat & Climax Layer]\n[punchy four-on-the-floor Drums, bright Synth Keys lead, funky Guitar; wordless Vocoder stabs, heavy Synth Bass octave riff]\n\n[Outro - Strip Back]\n[Sub-bass pulse and distant percussion fade out]",
+      "instruments": [
+        {
+          "name": "Synth Bass",
+          "stem": "Synth Bass",
+          "keep": true
+        },
+        {
+          "name": "Electric Guitar",
+          "stem": "Electric Guitar",
+          "keep": true
+        },
+        {
+          "name": "Synth Keys",
+          "stem": "Synth Keys",
+          "keep": true
+        },
+        {
+          "name": "Drums",
+          "stem": "Drums",
+          "keep": true
+        },
+        {
+          "name": "Vocoder",
+          "stem": "Vocoder",
+          "keep": false
+        },
+        {
+          "name": "Clap",
+          "stem": "Clap",
+          "keep": false
+        }
+      ],
+      "stems_requested": [
+        "Drums",
+        "Electric Guitar",
+        "Synth Bass",
+        "Synth Keys"
+      ],
+      "states": [
+        {
+          "state": "explore",
+          "section": "[Intro]"
+        },
+        {
+          "state": "explore",
+          "section": "[Verse 1 - Exploration Layer]"
+        },
+        {
+          "state": "tension",
+          "section": "[Pre-Chorus - Tension Build]"
+        },
+        {
+          "state": "combat",
+          "section": "[Chorus - Combat Layer]"
+        },
+        {
+          "state": "boss",
+          "section": "[Bridge - Danger / Boss State]"
+        },
+        {
+          "state": "resolve",
+          "section": "[Outro]"
+        }
+      ],
+      "suno": {
+        "url": "",
+        "clip_id": "",
+        "model": "",
+        "generated_at": ""
+      },
+      "files": [],
+      "notes": "Clean Stem-Builder variation (mech-industrial, parent: cyberpunk)."
+    },
+    {
+      "track_id": "railbound-salvage-C",
+      "title": "Railbound Salvage - late-game variation (modern-tactics + horror)",
+      "status": "prompt_ready",
+      "vocals": "none",
+      "bpm": 132,
+      "style_prompt": "Modern military tactical hybrid electronic-orchestral score blended with Dark ambient horror score, clean mix, dry studio recording, minimalist frequency separation, precise, urgent and high-stakes, industrial salvage rail yard atmosphere, Electric Guitar, Synth Bass, Drums, Brass, Synth Pad, Percussion, Strings, 132 BPM, strict quantize, steady 4/4 rhythm, darker harmony, hybrid escalation palette, motif reprised, instrumental",
+      "lyrics": "[Instrumental]\n[Tempo: 132 BPM, strict quantize, steady rhythm]\n\n[Intro - Bass Stem Only]\n[Deep pulsing Synth Bass, clean low-end drone, minimal]\n\n[Part 1 - Add Percussion Stem]\n[pulsing Synth Bass, muted Synth Pad, crisp tactical Percussion, steady 4/4 rhythm]\n\n[Part 2 - Add Melody Stem]\n[palm-muted Electric Guitar chugs, building Brass swells, high frequency separation, dry studio]\n\n[Part 3 - Add Combat & Climax Layer]\n[heavy Drums, driving Synth Bass, soaring Brass and Electric Guitar; staccato artillery Percussion hits, aggressive Brass and Guitar stabs]\n\n[Outro - Strip Back]\n[Sub-bass pulse and distant percussion fade out]",
+      "instruments": [
+        {
+          "name": "Electric Guitar",
+          "stem": "Electric Guitar",
+          "keep": true
+        },
+        {
+          "name": "Synth Bass",
+          "stem": "Synth Bass",
+          "keep": true
+        },
+        {
+          "name": "Drums",
+          "stem": "Drums",
+          "keep": true
+        },
+        {
+          "name": "Brass",
+          "stem": "Brass",
+          "keep": true
+        },
+        {
+          "name": "Synth Pad",
+          "stem": "Synth Pad",
+          "keep": false
+        },
+        {
+          "name": "Percussion",
+          "stem": "Percussion",
+          "keep": false
+        }
+      ],
+      "stems_requested": [
+        "Brass",
+        "Drums",
+        "Electric Guitar",
+        "Synth Bass"
+      ],
+      "states": [
+        {
+          "state": "explore",
+          "section": "[Intro]"
+        },
+        {
+          "state": "explore",
+          "section": "[Verse 1 - Exploration Layer]"
+        },
+        {
+          "state": "tension",
+          "section": "[Pre-Chorus - Tension Build]"
+        },
+        {
+          "state": "combat",
+          "section": "[Chorus - Combat Layer]"
+        },
+        {
+          "state": "boss",
+          "section": "[Bridge - Danger / Boss State]"
+        },
+        {
+          "state": "resolve",
+          "section": "[Outro]"
+        }
+      ],
+      "suno": {
+        "url": "",
+        "clip_id": "",
+        "model": "",
+        "generated_at": ""
+      },
+      "files": [],
+      "notes": "Clean Stem-Builder variation (mech-industrial, parent: cyberpunk)."
+    }
+  ],
+  "updated_at": "2026-11-18T18:58:33Z"
+}

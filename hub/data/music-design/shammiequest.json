@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "game_id": "shammiequest",
+  "name": "ShammieQuest",
+  "status": "excluded",
+  "exclusion_reason": "Already has 4 theme/stage MP3 tracks in public/assets/mp3.",
+  "archetype": null,
+  "setting": "",
+  "tracks": [],
+  "updated_at": "2026-11-17T14:16:59Z",
+  "scope": "catalog",
+  "recommended_archetype": "cozy",
+  "recommended_setting": "candy-world learning adventure",
+  "recommendation_reason": "Already has 4 theme/stage MP3 tracks in public/assets/mp3."
+}

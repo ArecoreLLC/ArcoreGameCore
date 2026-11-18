@@ -1,0 +1,538 @@
+{
+  "schema_version": 1,
+  "game_id": "learning-garden",
+  "name": "Learning Garden",
+  "scope": "roadmap",
+  "status": "in_progress",
+  "exclusion_reason": "",
+  "recommended_archetype": "cozy",
+  "recommended_setting": "quantity-puzzle garden",
+  "recommendation_reason": "Growing a garden through quantity puzzles fits calm, encouraging marimba and guitar.",
+  "archetype": "cozy",
+  "setting": "quantity-puzzle garden",
+  "sonic_alchemist_project": "",
+  "soundcore_project": "",
+  "modelforge_project": "",
+  "tracks": [
+    {
+      "track_id": "learning-garden-A",
+      "title": "Learning Garden - main theme",
+      "status": "generated",
+      "vocals": "none",
+      "bpm": 92,
+      "style_prompt": "Cozy whimsical acoustic indie game music, peaceful and nostalgic, quantity-puzzle garden atmosphere, Acoustic Guitar, Marimba, Upright Bass, Drums, Glockenspiel, Flute, 92 BPM, memorable repeating melodic motif, instrumental, no vocals, dynamic game soundtrack score, seamless looping structure",
+      "lyrics": "[Intro]\n(sparse ambient layer, quiet pulse)\n[Verse 1 - Exploration Layer]\n(fingerpicked Acoustic Guitar, gentle Marimba melody)\n[Pre-Chorus - Tension Build]\n(soft Glockenspiel top-line, warm Upright Bass pulse)\n[Chorus - Combat Layer]\n(full cozy rhythm section, bouncing Upright Bass, upbeat brush Drums)\n[Bridge - Danger / Boss State]\n(slightly melancholic shift, minor chord Acoustic Guitar, solo Flute)\n[Outro]\n(resolution back to ambient loop tail)",
+      "instruments": [
+        {
+          "name": "Acoustic Guitar",
+          "stem": "Acoustic Guitar",
+          "keep": true
+        },
+        {
+          "name": "Marimba",
+          "stem": "Marimba",
+          "keep": true
+        },
+        {
+          "name": "Upright Bass",
+          "stem": "Upright Bass",
+          "keep": true
+        },
+        {
+          "name": "Drums",
+          "stem": "Drums",
+          "keep": true
+        },
+        {
+          "name": "Glockenspiel",
+          "stem": "Glockenspiel",
+          "keep": false
+        },
+        {
+          "name": "Flute",
+          "stem": "Flute",
+          "keep": false
+        }
+      ],
+      "stems_requested": [
+        "Acoustic Guitar",
+        "Drums",
+        "Marimba",
+        "Upright Bass"
+      ],
+      "states": [
+        {
+          "state": "explore",
+          "section": "[Intro]"
+        },
+        {
+          "state": "explore",
+          "section": "[Verse 1 - Exploration Layer]"
+        },
+        {
+          "state": "tension",
+          "section": "[Pre-Chorus - Tension Build]"
+        },
+        {
+          "state": "combat",
+          "section": "[Chorus - Combat Layer]"
+        },
+        {
+          "state": "boss",
+          "section": "[Bridge - Danger / Boss State]"
+        },
+        {
+          "state": "resolve",
+          "section": "[Outro]"
+        }
+      ],
+      "suno": {
+        "url": "https://suno.com/song/09ede94b-94f1-4d98-afb7-9e3e82e6441e",
+        "clip_id": "09ede94b-94f1-4d98-afb7-9e3e82e6441e",
+        "stem_group_id": "",
+        "model": "v6 (MCP audio-create + audio-analysis)",
+        "generated_at": "2026-11-18T15:34:54Z",
+        "recommended_take": 1,
+        "analysis": {
+          "bpm_detected": 185.4,
+          "key_detected": "G major",
+          "time_signature": 3,
+          "bars_detected": 146,
+          "recommended_loop_start_bar": 30,
+          "recommended_loop_start_s": 28.011,
+          "recommended_loop_end_s": 58.818,
+          "sections": [
+            {
+              "start_s": 0,
+              "end_s": 7.76,
+              "label": "A"
+            },
+            {
+              "start_s": 7.76,
+              "end_s": 19.08,
+              "label": "B"
+            },
+            {
+              "start_s": 19.08,
+              "end_s": 31,
+              "label": "B"
+            },
+            {
+              "start_s": 31,
+              "end_s": 40.48,
+              "label": "A"
+            },
+            {
+              "start_s": 40.48,
+              "end_s": 52.24,
+              "label": "B"
+            },
+            {
+              "start_s": 52.24,
+              "end_s": 67.68,
+              "label": "B"
+            },
+            {
+              "start_s": 67.68,
+              "end_s": 77.12,
+              "label": "A"
+            },
+            {
+              "start_s": 77.12,
+              "end_s": 88.12,
+              "label": "B"
+            },
+            {
+              "start_s": 88.12,
+              "end_s": 94.64,
+              "label": "A"
+            },
+            {
+              "start_s": 94.64,
+              "end_s": 108.28,
+              "label": "A"
+            },
+            {
+              "start_s": 108.28,
+              "end_s": 119.16,
+              "label": "B"
+            },
+            {
+              "start_s": 119.16,
+              "end_s": 132.2,
+              "label": "B"
+            },
+            {
+              "start_s": 132.2,
+              "end_s": 139.96,
+              "label": "A"
+            }
+          ],
+          "labels": {
+            "arrangement:instrumental": 0.967,
+            "content:music": 0.962,
+            "genre:jazz": 0.775,
+            "instrument:piano": 0.676,
+            "instrument:keyboard_family": 0.669
+          },
+          "terms": [
+            "instrumental",
+            "no voice",
+            "piano",
+            "jazz"
+          ]
+        },
+        "candidates": [
+          {
+            "take": 1,
+            "clip_id": "09ede94b-94f1-4d98-afb7-9e3e82e6441e",
+            "url": "https://suno.com/song/09ede94b-94f1-4d98-afb7-9e3e82e6441e",
+            "liked": false,
+            "duration_s": 139.96,
+            "bpm_detected": 185.4,
+            "key_detected": "G major",
+            "time_signature": 3,
+            "bars_detected": 146,
+            "sections_count": 13,
+            "sections": [
+              {
+                "start_s": 0,
+                "end_s": 7.76,
+                "label": "A"
+              },
+              {
+                "start_s": 7.76,
+                "end_s": 19.08,
+                "label": "B"
+              },
+              {
+                "start_s": 19.08,
+                "end_s": 31,
+                "label": "B"
+              },
+              {
+                "start_s": 31,
+                "end_s": 40.48,
+                "label": "A"
+              },
+              {
+                "start_s": 40.48,
+                "end_s": 52.24,
+                "label": "B"
+              },
+              {
+                "start_s": 52.24,
+                "end_s": 67.68,
+                "label": "B"
+              },
+              {
+                "start_s": 67.68,
+                "end_s": 77.12,
+                "label": "A"
+              },
+              {
+                "start_s": 77.12,
+                "end_s": 88.12,
+                "label": "B"
+              },
+              {
+                "start_s": 88.12,
+                "end_s": 94.64,
+                "label": "A"
+              },
+              {
+                "start_s": 94.64,
+                "end_s": 108.28,
+                "label": "A"
+              },
+              {
+                "start_s": 108.28,
+                "end_s": 119.16,
+                "label": "B"
+              },
+              {
+                "start_s": 119.16,
+                "end_s": 132.2,
+                "label": "B"
+              },
+              {
+                "start_s": 132.2,
+                "end_s": 139.96,
+                "label": "A"
+              }
+            ],
+            "labels": {
+              "arrangement:instrumental": 0.967,
+              "content:music": 0.962,
+              "genre:jazz": 0.775,
+              "instrument:piano": 0.676,
+              "instrument:keyboard_family": 0.669
+            },
+            "terms": [
+              "instrumental",
+              "no voice",
+              "piano",
+              "jazz"
+            ],
+            "recommended_loop_start_bar": 30,
+            "recommended_loop_start_s": 28.011,
+            "recommended_loop_end_s": 58.818,
+            "quality_score": 20.965
+          },
+          {
+            "take": 2,
+            "clip_id": "e33c9380-c24d-4cb4-a2a0-58e4fdca9a25",
+            "url": "https://suno.com/song/e33c9380-c24d-4cb4-a2a0-58e4fdca9a25",
+            "liked": false,
+            "duration_s": 137.96,
+            "bpm_detected": 93,
+            "key_detected": "G major",
+            "time_signature": 4,
+            "bars_detected": 66,
+            "sections_count": 11,
+            "sections": [
+              {
+                "start_s": 0,
+                "end_s": 10.44,
+                "label": "A"
+              },
+              {
+                "start_s": 10.44,
+                "end_s": 30.76,
+                "label": "B"
+              },
+              {
+                "start_s": 30.76,
+                "end_s": 51.08,
+                "label": "B"
+              },
+              {
+                "start_s": 51.08,
+                "end_s": 67,
+                "label": "B"
+              },
+              {
+                "start_s": 67,
+                "end_s": 82.48,
+                "label": "B"
+              },
+              {
+                "start_s": 82.48,
+                "end_s": 87.32,
+                "label": "B"
+              },
+              {
+                "start_s": 87.32,
+                "end_s": 103.2,
+                "label": "A"
+              },
+              {
+                "start_s": 103.2,
+                "end_s": 113.36,
+                "label": "A"
+              },
+              {
+                "start_s": 113.36,
+                "end_s": 118.72,
+                "label": "B"
+              },
+              {
+                "start_s": 118.72,
+                "end_s": 133.92,
+                "label": "A"
+              },
+              {
+                "start_s": 133.92,
+                "end_s": 137.96,
+                "label": "A"
+              }
+            ],
+            "labels": {
+              "content:music": 0.953,
+              "arrangement:instrumental": 0.935,
+              "genre:jazz": 0.726,
+              "instrument:percussion_family": 0.723,
+              "instrument:plucked_string_family": 0.663
+            },
+            "terms": [
+              "song",
+              "female vocals",
+              "percussion",
+              "plucked string",
+              "jazz"
+            ],
+            "recommended_loop_start_bar": 14,
+            "recommended_loop_start_s": 25.784,
+            "recommended_loop_end_s": 84.904,
+            "quality_score": 20.2
+          }
+        ]
+      },
+      "files": [],
+      "notes": "Generated 2 takes via Suno MCP (v6) & analyzed via 0-credit audio-analysis:\n- Take 1 (09ede94b-94f1-4d98-afb7-9e3e82e6441e): https://suno.com/song/09ede94b-94f1-4d98-afb7-9e3e82e6441e \u2014 139.96s, detected 185.4 BPM, G major, 146 bars, 13 sections, loop bars 30..62 (28.011s\u201358.818s), score=20.965\n- Take 2 (e33c9380-c24d-4cb4-a2a0-58e4fdca9a25): https://suno.com/song/e33c9380-c24d-4cb4-a2a0-58e4fdca9a25 \u2014 137.96s, detected 93 BPM, G major, 66 bars, 11 sections, loop bars 14..46 (25.784s\u201384.904s), score=20.2\nSelected for stem split: Take 1 (09ede94b-94f1-4d98-afb7-9e3e82e6441e)."
+    },
+    {
+      "track_id": "learning-garden-B",
+      "title": "Learning Garden - alternate region (nautical-folk)",
+      "status": "prompt_ready",
+      "vocals": "none",
+      "bpm": 102,
+      "style_prompt": "Breezy coastal harbor and acoustic sea-shanty folk score, clean mix, dry studio recording, minimalist frequency separation, buoyant, salty and adventurous, quantity-puzzle garden atmosphere, Acoustic Guitar, Accordion, Fiddle, Upright Bass, Drums, Flute, 102 BPM, strict quantize, steady 4/4 rhythm, different key, blended sub-archetype palette, new motif, instrumental",
+      "lyrics": "[Instrumental]\n[Tempo: 102 BPM, strict quantize, steady rhythm]\n\n[Intro - Bass Stem Only]\n[Deep pulsing Upright Bass, clean low-end drone, minimal]\n\n[Part 1 - Add Percussion Stem]\n[strummed Acoustic Guitar, warm Accordion chords, Upright Bass, steady 4/4 rhythm]\n\n[Part 2 - Add Melody Stem]\n[lilting Flute counter-melody, brisk brush Drums, high frequency separation, dry studio]\n\n[Part 3 - Add Combat & Climax Layer]\n[lively Fiddle lead, full Accordion, bouncing Upright Bass and Drums; minor-key Fiddle reel, driving Acoustic Guitar rhythm]\n\n[Outro - Strip Back]\n[Sub-bass pulse and distant percussion fade out]",
+      "instruments": [
+        {
+          "name": "Acoustic Guitar",
+          "stem": "Acoustic Guitar",
+          "keep": true
+        },
+        {
+          "name": "Accordion",
+          "stem": "Accordion",
+          "keep": true
+        },
+        {
+          "name": "Fiddle",
+          "stem": "Fiddle",
+          "keep": true
+        },
+        {
+          "name": "Upright Bass",
+          "stem": "Upright Bass",
+          "keep": true
+        },
+        {
+          "name": "Drums",
+          "stem": "Drums",
+          "keep": false
+        },
+        {
+          "name": "Flute",
+          "stem": "Flute",
+          "keep": false
+        }
+      ],
+      "stems_requested": [
+        "Accordion",
+        "Acoustic Guitar",
+        "Fiddle",
+        "Upright Bass"
+      ],
+      "states": [
+        {
+          "state": "explore",
+          "section": "[Intro]"
+        },
+        {
+          "state": "explore",
+          "section": "[Verse 1 - Exploration Layer]"
+        },
+        {
+          "state": "tension",
+          "section": "[Pre-Chorus - Tension Build]"
+        },
+        {
+          "state": "combat",
+          "section": "[Chorus - Combat Layer]"
+        },
+        {
+          "state": "boss",
+          "section": "[Bridge - Danger / Boss State]"
+        },
+        {
+          "state": "resolve",
+          "section": "[Outro]"
+        }
+      ],
+      "suno": {
+        "url": "",
+        "clip_id": "",
+        "model": "",
+        "generated_at": ""
+      },
+      "files": [],
+      "notes": ""
+    },
+    {
+      "track_id": "learning-garden-C",
+      "title": "Learning Garden - late-game variation (storybook-orchestral + cosmic-ambient)",
+      "status": "prompt_ready",
+      "vocals": "none",
+      "bpm": 96,
+      "style_prompt": "Whimsical storybook chamber ensemble score blended with Ethereal sci-fi orbital ambient and crystalline synth score, clean mix, dry studio recording, minimalist frequency separation, enchanting, curious and heartwarming, quantity-puzzle garden atmosphere, Piano, Clarinet, Cello, Harp, Glockenspiel, Percussion, Synth Pad, 96 BPM, strict quantize, steady 4/4 rhythm, darker harmony, hybrid escalation palette, motif reprised, instrumental",
+      "lyrics": "[Instrumental]\n[Tempo: 96 BPM, strict quantize, steady rhythm]\n\n[Intro - Bass Stem Only]\n[Deep pulsing Piano, clean low-end drone, minimal]\n\n[Part 1 - Add Percussion Stem]\n[delicate Harp arpeggios, warm Piano, pizzicato Cello, steady 4/4 rhythm]\n\n[Part 2 - Add Melody Stem]\n[playful Clarinet phrase, twinkling Glockenspiel, high frequency separation, dry studio]\n\n[Part 3 - Add Combat & Climax Layer]\n[sweeping Cello melody, expressive Piano, light chamber Percussion; mysterious Clarinet and low Cello interplay]\n\n[Outro - Strip Back]\n[Sub-bass pulse and distant percussion fade out]",
+      "instruments": [
+        {
+          "name": "Piano",
+          "stem": "Piano",
+          "keep": true
+        },
+        {
+          "name": "Clarinet",
+          "stem": "Clarinet",
+          "keep": true
+        },
+        {
+          "name": "Cello",
+          "stem": "Cello",
+          "keep": true
+        },
+        {
+          "name": "Harp",
+          "stem": "Harp",
+          "keep": true
+        },
+        {
+          "name": "Glockenspiel",
+          "stem": "Glockenspiel",
+          "keep": false
+        },
+        {
+          "name": "Percussion",
+          "stem": "Percussion",
+          "keep": false
+        }
+      ],
+      "stems_requested": [
+        "Cello",
+        "Clarinet",
+        "Harp",
+        "Piano"
+      ],
+      "states": [
+        {
+          "state": "explore",
+          "section": "[Intro]"
+        },
+        {
+          "state": "explore",
+          "section": "[Verse 1 - Exploration Layer]"
+        },
+        {
+          "state": "tension",
+          "section": "[Pre-Chorus - Tension Build]"
+        },
+        {
+          "state": "combat",
+          "section": "[Chorus - Combat Layer]"
+        },
+        {
+          "state": "boss",
+          "section": "[Bridge - Danger / Boss State]"
+        },
+        {
+          "state": "resolve",
+          "section": "[Outro]"
+        }
+      ],
+      "suno": {
+        "url": "",
+        "clip_id": "",
+        "model": "",
+        "generated_at": ""
+      },
+      "files": [],
+      "notes": ""
+    }
+  ],
+  "updated_at": "2026-11-18T16:43:15Z"
+}

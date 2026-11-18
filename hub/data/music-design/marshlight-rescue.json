@@ -1,0 +1,514 @@
+{
+  "schema_version": 1,
+  "game_id": "marshlight-rescue",
+  "name": "Marshlight Rescue",
+  "scope": "roadmap",
+  "status": "in_progress",
+  "exclusion_reason": "",
+  "recommended_archetype": "horror",
+  "recommended_setting": "foggy marsh & patrolling creature",
+  "recommendation_reason": "Rescuing a traveler by boat while avoiding a marsh creature fits dread drones and sparse piano.",
+  "archetype": "horror",
+  "setting": "foggy marsh & patrolling creature",
+  "sonic_alchemist_project": "",
+  "soundcore_project": "",
+  "modelforge_project": "",
+  "tracks": [
+    {
+      "track_id": "marshlight-rescue-A",
+      "title": "Marshlight Rescue - main theme",
+      "status": "generated",
+      "vocals": "none",
+      "bpm": 80,
+      "style_prompt": "Dark ambient horror score, dread and unease, foggy marsh & patrolling creature atmosphere, Strings, Drone, Piano, Percussion, Cello, 80 BPM, memorable repeating melodic motif, instrumental, no vocals, dynamic game soundtrack score, seamless looping structure",
+      "lyrics": "[Intro]\n(sparse ambient layer, quiet pulse)\n[Verse 1 - Exploration Layer]\n(sparse detuned Piano, low Drone, silence between notes)\n[Pre-Chorus - Tension Build]\n(tremolo Strings rising, heartbeat Bass pulse)\n[Chorus - Combat Layer]\n(violent Strings stabs, pounding Percussion, low Cello)\n[Bridge - Danger / Boss State]\n(dissonant Piano cluster hits, relentless metallic Percussion)\n[Outro]\n(resolution back to ambient loop tail)",
+      "instruments": [
+        {
+          "name": "Strings",
+          "stem": "Strings",
+          "keep": true
+        },
+        {
+          "name": "Drone",
+          "stem": "Drone",
+          "keep": true
+        },
+        {
+          "name": "Piano",
+          "stem": "Piano",
+          "keep": true
+        },
+        {
+          "name": "Percussion",
+          "stem": "Percussion",
+          "keep": true
+        },
+        {
+          "name": "Cello",
+          "stem": "Cello",
+          "keep": false
+        }
+      ],
+      "stems_requested": [
+        "Drone",
+        "Percussion",
+        "Piano",
+        "Strings"
+      ],
+      "states": [
+        {
+          "state": "explore",
+          "section": "[Intro]"
+        },
+        {
+          "state": "explore",
+          "section": "[Verse 1 - Exploration Layer]"
+        },
+        {
+          "state": "tension",
+          "section": "[Pre-Chorus - Tension Build]"
+        },
+        {
+          "state": "combat",
+          "section": "[Chorus - Combat Layer]"
+        },
+        {
+          "state": "boss",
+          "section": "[Bridge - Danger / Boss State]"
+        },
+        {
+          "state": "resolve",
+          "section": "[Outro]"
+        }
+      ],
+      "suno": {
+        "url": "https://suno.com/song/f9201bdd-0af8-4615-a653-534dc5c4722e",
+        "clip_id": "f9201bdd-0af8-4615-a653-534dc5c4722e",
+        "stem_group_id": "",
+        "model": "v6 (MCP audio-create + audio-analysis)",
+        "generated_at": "2026-11-18T16:39:38Z",
+        "recommended_take": 1,
+        "analysis": {
+          "bpm_detected": 79,
+          "key_detected": "C minor",
+          "time_signature": 4,
+          "bars_detected": 44,
+          "recommended_loop_start_bar": 9,
+          "recommended_loop_start_s": 21.211,
+          "recommended_loop_end_s": 118.068,
+          "sections": [
+            {
+              "start_s": 0,
+              "end_s": 6.2,
+              "label": "A"
+            },
+            {
+              "start_s": 6.2,
+              "end_s": 17.52,
+              "label": "A"
+            },
+            {
+              "start_s": 17.52,
+              "end_s": 27.24,
+              "label": "A"
+            },
+            {
+              "start_s": 27.24,
+              "end_s": 41.52,
+              "label": "B"
+            },
+            {
+              "start_s": 41.52,
+              "end_s": 53.52,
+              "label": "B"
+            },
+            {
+              "start_s": 53.52,
+              "end_s": 65.76,
+              "label": "B"
+            },
+            {
+              "start_s": 65.76,
+              "end_s": 78.56,
+              "label": "B"
+            },
+            {
+              "start_s": 78.56,
+              "end_s": 99.2,
+              "label": "C"
+            },
+            {
+              "start_s": 99.2,
+              "end_s": 106,
+              "label": "A"
+            },
+            {
+              "start_s": 106,
+              "end_s": 127.84,
+              "label": "D"
+            },
+            {
+              "start_s": 127.84,
+              "end_s": 139.96,
+              "label": "C"
+            }
+          ],
+          "labels": {
+            "arrangement:instrumental": 0.969,
+            "content:music": 0.941,
+            "instrument:keyboard_family": 0.789,
+            "instrument:piano": 0.771,
+            "genre:ambient": 0.606
+          },
+          "terms": [
+            "instrumental",
+            "no voice",
+            "piano",
+            "ambient"
+          ]
+        },
+        "candidates": [
+          {
+            "take": 1,
+            "clip_id": "f9201bdd-0af8-4615-a653-534dc5c4722e",
+            "url": "https://suno.com/song/f9201bdd-0af8-4615-a653-534dc5c4722e",
+            "liked": false,
+            "duration_s": 139.96,
+            "bpm_detected": 79,
+            "key_detected": "C minor",
+            "time_signature": 4,
+            "bars_detected": 44,
+            "sections_count": 11,
+            "sections": [
+              {
+                "start_s": 0,
+                "end_s": 6.2,
+                "label": "A"
+              },
+              {
+                "start_s": 6.2,
+                "end_s": 17.52,
+                "label": "A"
+              },
+              {
+                "start_s": 17.52,
+                "end_s": 27.24,
+                "label": "A"
+              },
+              {
+                "start_s": 27.24,
+                "end_s": 41.52,
+                "label": "B"
+              },
+              {
+                "start_s": 41.52,
+                "end_s": 53.52,
+                "label": "B"
+              },
+              {
+                "start_s": 53.52,
+                "end_s": 65.76,
+                "label": "B"
+              },
+              {
+                "start_s": 65.76,
+                "end_s": 78.56,
+                "label": "B"
+              },
+              {
+                "start_s": 78.56,
+                "end_s": 99.2,
+                "label": "C"
+              },
+              {
+                "start_s": 99.2,
+                "end_s": 106,
+                "label": "A"
+              },
+              {
+                "start_s": 106,
+                "end_s": 127.84,
+                "label": "D"
+              },
+              {
+                "start_s": 127.84,
+                "end_s": 139.96,
+                "label": "C"
+              }
+            ],
+            "labels": {
+              "arrangement:instrumental": 0.969,
+              "content:music": 0.941,
+              "instrument:keyboard_family": 0.789,
+              "instrument:piano": 0.771,
+              "genre:ambient": 0.606
+            },
+            "terms": [
+              "instrumental",
+              "no voice",
+              "piano",
+              "ambient"
+            ],
+            "recommended_loop_start_bar": 9,
+            "recommended_loop_start_s": 21.211,
+            "recommended_loop_end_s": 118.068,
+            "quality_score": 20.14
+          },
+          {
+            "take": 2,
+            "clip_id": "82010b9b-c811-41d9-9d25-f0a248221385",
+            "url": "https://suno.com/song/82010b9b-c811-41d9-9d25-f0a248221385",
+            "liked": false,
+            "duration_s": 139.44,
+            "bpm_detected": 77.1,
+            "key_detected": "C minor",
+            "time_signature": 4,
+            "bars_detected": 44,
+            "sections_count": 11,
+            "sections": [
+              {
+                "start_s": 0,
+                "end_s": 11.72,
+                "label": "A"
+              },
+              {
+                "start_s": 11.72,
+                "end_s": 17.44,
+                "label": "A"
+              },
+              {
+                "start_s": 17.44,
+                "end_s": 36.12,
+                "label": "A"
+              },
+              {
+                "start_s": 36.12,
+                "end_s": 48.2,
+                "label": "A"
+              },
+              {
+                "start_s": 48.2,
+                "end_s": 72.44,
+                "label": "B"
+              },
+              {
+                "start_s": 72.44,
+                "end_s": 96.88,
+                "label": "B"
+              },
+              {
+                "start_s": 96.88,
+                "end_s": 102.28,
+                "label": "A"
+              },
+              {
+                "start_s": 102.28,
+                "end_s": 115.48,
+                "label": "C"
+              },
+              {
+                "start_s": 115.48,
+                "end_s": 122,
+                "label": "D"
+              },
+              {
+                "start_s": 122,
+                "end_s": 128.96,
+                "label": "D"
+              },
+              {
+                "start_s": 128.96,
+                "end_s": 139.44,
+                "label": "D"
+              }
+            ],
+            "labels": {
+              "arrangement:instrumental": 0.971,
+              "content:music": 0.942,
+              "instrument:keyboard_family": 0.834,
+              "instrument:piano": 0.799,
+              "genre:ambient": 0.72,
+              "genre:techno": 0.508
+            },
+            "terms": [
+              "instrumental",
+              "no voice",
+              "piano",
+              "ambient",
+              "techno"
+            ],
+            "recommended_loop_start_bar": 9,
+            "recommended_loop_start_s": 18.13,
+            "recommended_loop_end_s": 115.566,
+            "quality_score": 19.875
+          }
+        ]
+      },
+      "files": [],
+      "notes": "Generated 2 takes via Suno MCP (v6) & analyzed via 0-credit audio-analysis:\n- Take 1 (f9201bdd-0af8-4615-a653-534dc5c4722e): https://suno.com/song/f9201bdd-0af8-4615-a653-534dc5c4722e \u2014 139.96s, detected 79 BPM, C minor, 44 bars, 11 sections, loop bars 9..41 (21.211s\u2013118.068s), score=20.14\n- Take 2 (82010b9b-c811-41d9-9d25-f0a248221385): https://suno.com/song/82010b9b-c811-41d9-9d25-f0a248221385 \u2014 139.44s, detected 77.1 BPM, C minor, 44 bars, 11 sections, loop bars 9..41 (18.13s\u2013115.566s), score=19.875\nSelected for stem split: Take 1 (f9201bdd-0af8-4615-a653-534dc5c4722e)."
+    },
+    {
+      "track_id": "marshlight-rescue-B",
+      "title": "Marshlight Rescue - alternate region (noir-mystery)",
+      "status": "prompt_ready",
+      "vocals": "none",
+      "bpm": 88,
+      "style_prompt": "Moody nocturnal jazz-noir and suspense heist score, clean mix, dry studio recording, minimalist frequency separation, sleek, shadowy and intriguing, foggy marsh & patrolling creature atmosphere, Upright Bass, Piano, Tenor Saxophone, Drums, Strings, Vibraphone, 88 BPM, strict quantize, steady 4/4 rhythm, different key, blended sub-archetype palette, new motif, instrumental",
+      "lyrics": "[Instrumental]\n[Tempo: 88 BPM, strict quantize, steady rhythm]\n\n[Intro - Bass Stem Only]\n[Deep pulsing Upright Bass, clean low-end drone, minimal]\n\n[Part 1 - Add Percussion Stem]\n[sneaky Upright Bass walk, sparse minor Piano chords, brush Drums, steady 4/4 rhythm]\n\n[Part 2 - Add Melody Stem]\n[moody Vibraphone shimmer, muted Strings tension, high frequency separation, dry studio]\n\n[Part 3 - Add Combat & Climax Layer]\n[smoky Tenor Saxophone lead, tight snare Drums, driving Upright Bass; urgent Piano ostinato, dramatic Strings stabs]\n\n[Outro - Strip Back]\n[Sub-bass pulse and distant percussion fade out]",
+      "instruments": [
+        {
+          "name": "Upright Bass",
+          "stem": "Upright Bass",
+          "keep": true
+        },
+        {
+          "name": "Piano",
+          "stem": "Piano",
+          "keep": true
+        },
+        {
+          "name": "Tenor Saxophone",
+          "stem": "Tenor Saxophone",
+          "keep": true
+        },
+        {
+          "name": "Drums",
+          "stem": "Drums",
+          "keep": true
+        },
+        {
+          "name": "Strings",
+          "stem": "Strings",
+          "keep": false
+        },
+        {
+          "name": "Vibraphone",
+          "stem": "Vibraphone",
+          "keep": false
+        }
+      ],
+      "stems_requested": [
+        "Drums",
+        "Piano",
+        "Tenor Saxophone",
+        "Upright Bass"
+      ],
+      "states": [
+        {
+          "state": "explore",
+          "section": "[Intro]"
+        },
+        {
+          "state": "explore",
+          "section": "[Verse 1 - Exploration Layer]"
+        },
+        {
+          "state": "tension",
+          "section": "[Pre-Chorus - Tension Build]"
+        },
+        {
+          "state": "combat",
+          "section": "[Chorus - Combat Layer]"
+        },
+        {
+          "state": "boss",
+          "section": "[Bridge - Danger / Boss State]"
+        },
+        {
+          "state": "resolve",
+          "section": "[Outro]"
+        }
+      ],
+      "suno": {
+        "url": "",
+        "clip_id": "",
+        "model": "",
+        "generated_at": ""
+      },
+      "files": [],
+      "notes": ""
+    },
+    {
+      "track_id": "marshlight-rescue-C",
+      "title": "Marshlight Rescue - late-game variation (cosmic-ambient + mech-industrial)",
+      "status": "prompt_ready",
+      "vocals": "none",
+      "bpm": 104,
+      "style_prompt": "Ethereal sci-fi orbital ambient and crystalline synth score blended with Heavy mechanical industrial breakbeat and modular synth score, clean mix, dry studio recording, minimalist frequency separation, vast, wondrous and weightless, foggy marsh & patrolling creature atmosphere, Synth Pad, Arpeggiator, Piano, Strings, Synth Bass, Bells, Percussion, 104 BPM, strict quantize, steady 4/4 rhythm, darker harmony, hybrid escalation palette, motif reprised, instrumental",
+      "lyrics": "[Instrumental]\n[Tempo: 104 BPM, strict quantize, steady rhythm]\n\n[Intro - Bass Stem Only]\n[Deep pulsing Synth Bass, clean low-end drone, minimal]\n\n[Part 1 - Add Percussion Stem]\n[evolving Synth Pad, resonant Piano notes, soft Bells, steady 4/4 rhythm]\n\n[Part 2 - Add Melody Stem]\n[shimmering Arpeggiator pulse, deep Synth Bass swell, high frequency separation, dry studio]\n\n[Part 3 - Add Combat & Climax Layer]\n[soaring Strings over sequenced Arpeggiator and Synth Bass; urgent crystalline Bells, dramatic Synth Pad swells]\n\n[Outro - Strip Back]\n[Sub-bass pulse and distant percussion fade out]",
+      "instruments": [
+        {
+          "name": "Synth Pad",
+          "stem": "Synth Pad",
+          "keep": true
+        },
+        {
+          "name": "Arpeggiator",
+          "stem": "Arpeggiator",
+          "keep": true
+        },
+        {
+          "name": "Piano",
+          "stem": "Piano",
+          "keep": true
+        },
+        {
+          "name": "Strings",
+          "stem": "Strings",
+          "keep": true
+        },
+        {
+          "name": "Synth Bass",
+          "stem": "Synth Bass",
+          "keep": false
+        },
+        {
+          "name": "Bells",
+          "stem": "Bells",
+          "keep": false
+        }
+      ],
+      "stems_requested": [
+        "Arpeggiator",
+        "Piano",
+        "Strings",
+        "Synth Pad"
+      ],
+      "states": [
+        {
+          "state": "explore",
+          "section": "[Intro]"
+        },
+        {
+          "state": "explore",
+          "section": "[Verse 1 - Exploration Layer]"
+        },
+        {
+          "state": "tension",
+          "section": "[Pre-Chorus - Tension Build]"
+        },
+        {
+          "state": "combat",
+          "section": "[Chorus - Combat Layer]"
+        },
+        {
+          "state": "boss",
+          "section": "[Bridge - Danger / Boss State]"
+        },
+        {
+          "state": "resolve",
+          "section": "[Outro]"
+        }
+      ],
+      "suno": {
+        "url": "",
+        "clip_id": "",
+        "model": "",
+        "generated_at": ""
+      },
+      "files": [],
+      "notes": ""
+    }
+  ],
+  "updated_at": "2026-11-18T16:43:15Z"
+}

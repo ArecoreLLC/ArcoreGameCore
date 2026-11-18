@@ -1,0 +1,508 @@
+{
+  "schema_version": 1,
+  "game_id": "floodgate-engineers",
+  "name": "Floodgate Engineers",
+  "scope": "roadmap",
+  "status": "in_progress",
+  "exclusion_reason": "",
+  "recommended_archetype": "action-rock",
+  "recommended_setting": "rising-water floodgate district",
+  "recommendation_reason": "Adjusting floodgates and repairing a failed pump under pressure fits driving rock rhythm.",
+  "archetype": "action-rock",
+  "setting": "rising-water floodgate district",
+  "sonic_alchemist_project": "",
+  "soundcore_project": "",
+  "modelforge_project": "",
+  "tracks": [
+    {
+      "track_id": "floodgate-engineers-A",
+      "title": "Floodgate Engineers - main theme",
+      "status": "generated",
+      "vocals": "none",
+      "bpm": 150,
+      "style_prompt": "Driving instrumental rock action score, aggressive and adrenaline-fueled, rising-water floodgate district atmosphere, Rhythm Electric Guitar, Lead Guitar, Bass Guitar, Drums, Synth Pad, 150 BPM, memorable repeating melodic motif, instrumental, no vocals, dynamic game soundtrack score, seamless looping structure",
+      "lyrics": "[Intro]\n(sparse ambient layer, quiet pulse)\n[Verse 1 - Exploration Layer]\n(clean Rhythm Electric Guitar, Synth Pad, light Hi-Hat)\n[Pre-Chorus - Tension Build]\n(palm-muted Rhythm Electric Guitar riff, Snare roll)\n[Chorus - Combat Layer]\n(full Rhythm Electric Guitar, heavy Drums, driving Bass Guitar)\n[Bridge - Danger / Boss State]\n(double-time Drums, harmonized Lead Guitar stabs)\n[Outro]\n(resolution back to ambient loop tail)",
+      "instruments": [
+        {
+          "name": "Rhythm Electric Guitar",
+          "stem": "Rhythm Electric Guitar",
+          "keep": true
+        },
+        {
+          "name": "Lead Guitar",
+          "stem": "Lead Guitar",
+          "keep": true
+        },
+        {
+          "name": "Bass Guitar",
+          "stem": "Bass Guitar",
+          "keep": true
+        },
+        {
+          "name": "Drums",
+          "stem": "Drums",
+          "keep": true
+        },
+        {
+          "name": "Synth Pad",
+          "stem": "Synth Pad",
+          "keep": false
+        }
+      ],
+      "stems_requested": [
+        "Bass Guitar",
+        "Drums",
+        "Lead Guitar",
+        "Rhythm Electric Guitar"
+      ],
+      "states": [
+        {
+          "state": "explore",
+          "section": "[Intro]"
+        },
+        {
+          "state": "explore",
+          "section": "[Verse 1 - Exploration Layer]"
+        },
+        {
+          "state": "tension",
+          "section": "[Pre-Chorus - Tension Build]"
+        },
+        {
+          "state": "combat",
+          "section": "[Chorus - Combat Layer]"
+        },
+        {
+          "state": "boss",
+          "section": "[Bridge - Danger / Boss State]"
+        },
+        {
+          "state": "resolve",
+          "section": "[Outro]"
+        }
+      ],
+      "suno": {
+        "url": "https://suno.com/song/5b1dfb47-a35e-463e-9a64-3bb0c5d6c13a",
+        "clip_id": "5b1dfb47-a35e-463e-9a64-3bb0c5d6c13a",
+        "stem_group_id": "",
+        "model": "v6 (MCP audio-create + audio-analysis)",
+        "generated_at": "2026-11-18T15:33:15Z",
+        "recommended_take": 2,
+        "analysis": {
+          "bpm_detected": 150,
+          "key_detected": "E minor",
+          "time_signature": 4,
+          "bars_detected": 86,
+          "recommended_loop_start_bar": 18,
+          "recommended_loop_start_s": 27.326,
+          "recommended_loop_end_s": 78.526,
+          "sections": [
+            {
+              "start_s": 0,
+              "end_s": 7.48,
+              "label": "A"
+            },
+            {
+              "start_s": 7.48,
+              "end_s": 14.48,
+              "label": "B"
+            },
+            {
+              "start_s": 14.48,
+              "end_s": 39.72,
+              "label": "A"
+            },
+            {
+              "start_s": 39.72,
+              "end_s": 59.36,
+              "label": "B"
+            },
+            {
+              "start_s": 59.36,
+              "end_s": 64.08,
+              "label": "C"
+            },
+            {
+              "start_s": 64.08,
+              "end_s": 78.6,
+              "label": "B"
+            },
+            {
+              "start_s": 78.6,
+              "end_s": 91.6,
+              "label": "A"
+            },
+            {
+              "start_s": 91.6,
+              "end_s": 96.92,
+              "label": "A"
+            },
+            {
+              "start_s": 96.92,
+              "end_s": 131.8,
+              "label": "C"
+            },
+            {
+              "start_s": 131.8,
+              "end_s": 139.2,
+              "label": "D"
+            }
+          ],
+          "labels": {
+            "content:music": 0.861,
+            "genre:rock": 0.838,
+            "content:human_voice": 0.823,
+            "vocal:singing": 0.808,
+            "genre:metal": 0.8,
+            "instrument:plucked_string_family": 0.695,
+            "instrument:guitar": 0.674
+          },
+          "terms": [
+            "song",
+            "male and female vocals",
+            "guitar",
+            "metal",
+            "rock"
+          ]
+        },
+        "candidates": [
+          {
+            "take": 1,
+            "clip_id": "8fbb585b-33e7-4d9f-b5ed-cdda498364f2",
+            "url": "https://suno.com/song/8fbb585b-33e7-4d9f-b5ed-cdda498364f2",
+            "liked": false,
+            "duration_s": 139.88,
+            "bpm_detected": 148.5,
+            "key_detected": "B minor",
+            "time_signature": 4,
+            "bars_detected": 87,
+            "sections_count": 10,
+            "sections": [
+              {
+                "start_s": 0,
+                "end_s": 12.8,
+                "label": "A"
+              },
+              {
+                "start_s": 12.8,
+                "end_s": 44.04,
+                "label": "B"
+              },
+              {
+                "start_s": 44.04,
+                "end_s": 56.2,
+                "label": "A"
+              },
+              {
+                "start_s": 56.2,
+                "end_s": 66.68,
+                "label": "B"
+              },
+              {
+                "start_s": 66.68,
+                "end_s": 82.84,
+                "label": "B"
+              },
+              {
+                "start_s": 82.84,
+                "end_s": 89.28,
+                "label": "C"
+              },
+              {
+                "start_s": 89.28,
+                "end_s": 102.2,
+                "label": "C"
+              },
+              {
+                "start_s": 102.2,
+                "end_s": 114.68,
+                "label": "C"
+              },
+              {
+                "start_s": 114.68,
+                "end_s": 134.24,
+                "label": "C"
+              },
+              {
+                "start_s": 134.24,
+                "end_s": 139.88,
+                "label": "A"
+              }
+            ],
+            "labels": {
+              "content:human_voice": 0.868,
+              "vocal:singing": 0.852,
+              "content:music": 0.842,
+              "genre:rock": 0.837,
+              "genre:metal": 0.781,
+              "genre:pop": 0.712,
+              "instrument:plucked_string_family": 0.677,
+              "instrument:guitar": 0.65
+            },
+            "terms": [
+              "song",
+              "male vocals",
+              "guitar",
+              "metal",
+              "pop",
+              "rock"
+            ],
+            "recommended_loop_start_bar": 18,
+            "recommended_loop_start_s": 27.655,
+            "recommended_loop_end_s": 79.541,
+            "quality_score": 15.575
+          },
+          {
+            "take": 2,
+            "clip_id": "5b1dfb47-a35e-463e-9a64-3bb0c5d6c13a",
+            "url": "https://suno.com/song/5b1dfb47-a35e-463e-9a64-3bb0c5d6c13a",
+            "liked": false,
+            "duration_s": 139.2,
+            "bpm_detected": 150,
+            "key_detected": "E minor",
+            "time_signature": 4,
+            "bars_detected": 86,
+            "sections_count": 10,
+            "sections": [
+              {
+                "start_s": 0,
+                "end_s": 7.48,
+                "label": "A"
+              },
+              {
+                "start_s": 7.48,
+                "end_s": 14.48,
+                "label": "B"
+              },
+              {
+                "start_s": 14.48,
+                "end_s": 39.72,
+                "label": "A"
+              },
+              {
+                "start_s": 39.72,
+                "end_s": 59.36,
+                "label": "B"
+              },
+              {
+                "start_s": 59.36,
+                "end_s": 64.08,
+                "label": "C"
+              },
+              {
+                "start_s": 64.08,
+                "end_s": 78.6,
+                "label": "B"
+              },
+              {
+                "start_s": 78.6,
+                "end_s": 91.6,
+                "label": "A"
+              },
+              {
+                "start_s": 91.6,
+                "end_s": 96.92,
+                "label": "A"
+              },
+              {
+                "start_s": 96.92,
+                "end_s": 131.8,
+                "label": "C"
+              },
+              {
+                "start_s": 131.8,
+                "end_s": 139.2,
+                "label": "D"
+              }
+            ],
+            "labels": {
+              "content:music": 0.861,
+              "genre:rock": 0.838,
+              "content:human_voice": 0.823,
+              "vocal:singing": 0.808,
+              "genre:metal": 0.8,
+              "instrument:plucked_string_family": 0.695,
+              "instrument:guitar": 0.674
+            },
+            "terms": [
+              "song",
+              "male and female vocals",
+              "guitar",
+              "metal",
+              "rock"
+            ],
+            "recommended_loop_start_bar": 18,
+            "recommended_loop_start_s": 27.326,
+            "recommended_loop_end_s": 78.526,
+            "quality_score": 15.8
+          }
+        ]
+      },
+      "files": [],
+      "notes": "Generated 2 takes via Suno MCP (v6) & analyzed via 0-credit audio-analysis:\n- Take 1 (8fbb585b-33e7-4d9f-b5ed-cdda498364f2): https://suno.com/song/8fbb585b-33e7-4d9f-b5ed-cdda498364f2 \u2014 139.88s, detected 148.5 BPM, B minor, 87 bars, 10 sections, loop bars 18..50 (27.655s\u201379.541s), score=15.575\n- Take 2 (5b1dfb47-a35e-463e-9a64-3bb0c5d6c13a): https://suno.com/song/5b1dfb47-a35e-463e-9a64-3bb0c5d6c13a \u2014 139.2s, detected 150 BPM, E minor, 86 bars, 10 sections, loop bars 18..50 (27.326s\u201378.526s), score=15.8\nSelected for stem split: Take 2 (5b1dfb47-a35e-463e-9a64-3bb0c5d6c13a)."
+    },
+    {
+      "track_id": "floodgate-engineers-B",
+      "title": "Floodgate Engineers - alternate region (modern-tactics)",
+      "status": "prompt_ready",
+      "vocals": "none",
+      "bpm": 132,
+      "style_prompt": "Modern military tactical hybrid electronic-orchestral score, clean mix, dry studio recording, minimalist frequency separation, precise, urgent and high-stakes, rising-water floodgate district atmosphere, Electric Guitar, Synth Bass, Drums, Brass, Synth Pad, Percussion, 132 BPM, strict quantize, steady 4/4 rhythm, different key, blended sub-archetype palette, new motif, instrumental",
+      "lyrics": "[Instrumental]\n[Tempo: 132 BPM, strict quantize, steady rhythm]\n\n[Intro - Bass Stem Only]\n[Deep pulsing Synth Bass, clean low-end drone, minimal]\n\n[Part 1 - Add Percussion Stem]\n[pulsing Synth Bass, muted Synth Pad, crisp tactical Percussion, steady 4/4 rhythm]\n\n[Part 2 - Add Melody Stem]\n[palm-muted Electric Guitar chugs, building Brass swells, high frequency separation, dry studio]\n\n[Part 3 - Add Combat & Climax Layer]\n[heavy Drums, driving Synth Bass, soaring Brass and Electric Guitar; staccato artillery Percussion hits, aggressive Brass and Guitar stabs]\n\n[Outro - Strip Back]\n[Sub-bass pulse and distant percussion fade out]",
+      "instruments": [
+        {
+          "name": "Electric Guitar",
+          "stem": "Electric Guitar",
+          "keep": true
+        },
+        {
+          "name": "Synth Bass",
+          "stem": "Synth Bass",
+          "keep": true
+        },
+        {
+          "name": "Drums",
+          "stem": "Drums",
+          "keep": true
+        },
+        {
+          "name": "Brass",
+          "stem": "Brass",
+          "keep": true
+        },
+        {
+          "name": "Synth Pad",
+          "stem": "Synth Pad",
+          "keep": false
+        },
+        {
+          "name": "Percussion",
+          "stem": "Percussion",
+          "keep": false
+        }
+      ],
+      "stems_requested": [
+        "Brass",
+        "Drums",
+        "Electric Guitar",
+        "Synth Bass"
+      ],
+      "states": [
+        {
+          "state": "explore",
+          "section": "[Intro]"
+        },
+        {
+          "state": "explore",
+          "section": "[Verse 1 - Exploration Layer]"
+        },
+        {
+          "state": "tension",
+          "section": "[Pre-Chorus - Tension Build]"
+        },
+        {
+          "state": "combat",
+          "section": "[Chorus - Combat Layer]"
+        },
+        {
+          "state": "boss",
+          "section": "[Bridge - Danger / Boss State]"
+        },
+        {
+          "state": "resolve",
+          "section": "[Outro]"
+        }
+      ],
+      "suno": {
+        "url": "",
+        "clip_id": "",
+        "model": "",
+        "generated_at": ""
+      },
+      "files": [],
+      "notes": ""
+    },
+    {
+      "track_id": "floodgate-engineers-C",
+      "title": "Floodgate Engineers - late-game variation (mech-industrial + retro-chiptune-rock)",
+      "status": "prompt_ready",
+      "vocals": "none",
+      "bpm": 136,
+      "style_prompt": "Heavy mechanical industrial breakbeat and modular synth score blended with High-octane 16-bit chiptune and electric guitar arcade fusion, clean mix, dry studio recording, minimalist frequency separation, gritty, relentless and mechanical, rising-water floodgate district atmosphere, Synth Bass, Percussion, Drums, Synth Lead, 808, Risers, Lead Guitar, 136 BPM, strict quantize, steady 4/4 rhythm, darker harmony, hybrid escalation palette, motif reprised, instrumental",
+      "lyrics": "[Instrumental]\n[Tempo: 136 BPM, strict quantize, steady rhythm]\n\n[Intro - Bass Stem Only]\n[Deep pulsing Synth Bass, clean low-end drone, minimal]\n\n[Part 1 - Add Percussion Stem]\n[metallic Percussion clangs, sub 808 pulse, sparse Synth Bass, steady 4/4 rhythm]\n\n[Part 2 - Add Melody Stem]\n[modular Risers sweep, accelerating breakbeat Drums, high frequency separation, dry studio]\n\n[Part 3 - Add Combat & Climax Layer]\n[crunchy industrial Drums, distorted Synth Bass, piercing Synth Lead; relentless anvil Percussion, heavy 808 drop]\n\n[Outro - Strip Back]\n[Sub-bass pulse and distant percussion fade out]",
+      "instruments": [
+        {
+          "name": "Synth Bass",
+          "stem": "Synth Bass",
+          "keep": true
+        },
+        {
+          "name": "Percussion",
+          "stem": "Percussion",
+          "keep": true
+        },
+        {
+          "name": "Drums",
+          "stem": "Drums",
+          "keep": true
+        },
+        {
+          "name": "Synth Lead",
+          "stem": "Synth Lead",
+          "keep": true
+        },
+        {
+          "name": "808",
+          "stem": "808",
+          "keep": false
+        },
+        {
+          "name": "Risers",
+          "stem": "Risers",
+          "keep": false
+        }
+      ],
+      "stems_requested": [
+        "Drums",
+        "Percussion",
+        "Synth Bass",
+        "Synth Lead"
+      ],
+      "states": [
+        {
+          "state": "explore",
+          "section": "[Intro]"
+        },
+        {
+          "state": "explore",
+          "section": "[Verse 1 - Exploration Layer]"
+        },
+        {
+          "state": "tension",
+          "section": "[Pre-Chorus - Tension Build]"
+        },
+        {
+          "state": "combat",
+          "section": "[Chorus - Combat Layer]"
+        },
+        {
+          "state": "boss",
+          "section": "[Bridge - Danger / Boss State]"
+        },
+        {
+          "state": "resolve",
+          "section": "[Outro]"
+        }
+      ],
+      "suno": {
+        "url": "",
+        "clip_id": "",
+        "model": "",
+        "generated_at": ""
+      },
+      "files": [],
+      "notes": ""
+    }
+  ],
+  "updated_at": "2026-11-18T15:36:13Z"
+}

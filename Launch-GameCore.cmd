@@ -1,7 +1,7 @@
 @echo off
 setlocal
-set "GAMECORE_EXE=%~dp0hub\src-tauri\target-json-export\release\gamecore-library.exe"
-if not exist "%GAMECORE_EXE%" set "GAMECORE_EXE=%~dp0hub\src-tauri\target\release\gamecore-library.exe"
+set "GAMECORE_EXE=%~dp0hub\src-tauri\target\release\gamecore-library.exe"
+if not exist "%GAMECORE_EXE%" set "GAMECORE_EXE=%~dp0hub\src-tauri\target-json-export\release\gamecore-library.exe"
 if not exist "%GAMECORE_EXE%" set "GAMECORE_EXE=%~dp0hub\src-tauri\target\debug\gamecore-library.exe"
 if not exist "%GAMECORE_EXE%" set "GAMECORE_EXE=%~dp0hub\src-tauri\target\release\gamecore-hub.exe"
 if not exist "%GAMECORE_EXE%" (

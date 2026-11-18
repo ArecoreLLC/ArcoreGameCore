@@ -1,0 +1,30 @@
+{
+  "backup": "C:\\Users\\jare1\\AppData\\Roaming\\com.arcore.gamecore\\backups\\before-catalog-v2-20261112-172745-275760",
+  "added_media": 13,
+  "added_capability_links": 0,
+  "media_total": 65,
+  "taxonomy_total": 300,
+  "integrity": "ok",
+  "timestamp": "2026-11-12T22:27:45.275739+00:00",
+  "pre_project_backup": "C:\\Users\\jare1\\AppData\\Roaming\\com.arcore.gamecore\\backups\\before-catalog-v2-20261112-172744-662721",
+  "coverage": {
+    "Beast-Bistro-Express": 2,
+    "Box-Fort-Brigade": 1,
+    "Critter-Contraptions": 2,
+    "Dungeon-Dash-Market": 5,
+    "Echo-Forge": 6,
+    "Flotsam-Citadel": 2,
+    "Gully-Giants": 2,
+    "Haunt-and-Haul": 1,
+    "Lantern-Heist": 1,
+    "Lumen-Weaver": 1,
+    "Pebblekin-Command": 2,
+    "Pocket-Fort-Patrol": 2,
+    "Scrapshift-Arena": 2,
+    "Skybound-Sabotage": 1,
+    "Snap-Rally": 2,
+    "Tugboat-Tumble": 1,
+    "Chroma-Turf": 1
+  },
+  "existing_projects_preserved": true
+}

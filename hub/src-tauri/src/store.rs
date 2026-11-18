@@ -22,6 +22,8 @@ fn now() -> String {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Media {
+    #[serde(default)]
+    pub iteration: Option<crate::iteration::Iteration>,
     pub id: String,
     pub project_id: String,
     pub kind: String,
@@ -49,6 +51,8 @@ pub struct Media {
     pub content_role: String,
     #[serde(default)]
     pub review_notes: String,
+    #[serde(default)]
+    pub is_thumbnail: bool,
 }
 
 impl Store {
@@ -83,6 +87,81 @@ impl Store {
             })
             .map_err(err)?;
         if seeded > 0 {
+            let music_synced: i64 = self
+                .conn
+                .query_row(
+                    "SELECT COUNT(*) FROM meta WHERE key='seed-music-catalog-v3'",
+                    [],
+                    |r| r.get(0),
+                )
+                .map_err(err)?;
+            if music_synced == 0 {
+                let games: Vec<Value> = serde_json::from_str(projects).map_err(err)?;
+                let tx = self.conn.transaction().map_err(err)?;
+                for game in games {
+                    if let Some(id) = game["id"].as_str() {
+                        if let Ok(existing_str) = tx.query_row(
+                            "SELECT data FROM projects WHERE id=?1",
+                            [id],
+                            |r| r.get::<_, String>(0),
+                        ) {
+                            if let Ok(mut existing) = serde_json::from_str::<Value>(&existing_str) {
+                                existing["assets"] = game["assets"].clone();
+                                existing["provider_links"] = game["provider_links"].clone();
+                                tx.execute(
+                                    "UPDATE projects SET data=?1, updated_at=?2 WHERE id=?3",
+                                    params![existing.to_string(), now(), id],
+                                )
+                                .map_err(err)?;
+                            }
+                        }
+                    }
+                }
+                tx.execute("INSERT OR REPLACE INTO meta VALUES('seed-music-catalog-v3',?1)", [now()])
+                    .map_err(err)?;
+                tx.commit().map_err(err)?;
+            }
+            let genre_synced: i64 = self
+                .conn
+                .query_row(
+                    "SELECT COUNT(*) FROM meta WHERE key='seed-genre-taxonomy-v1'",
+                    [],
+                    |r| r.get(0),
+                )
+                .map_err(err)?;
+            if genre_synced == 0 {
+                let games: Vec<Value> = serde_json::from_str(projects).map_err(err)?;
+                let tx = self.conn.transaction().map_err(err)?;
+                for game in games {
+                    if let Some(id) = game["id"].as_str() {
+                        if let Ok(existing_str) = tx.query_row(
+                            "SELECT data FROM projects WHERE id=?1",
+                            [id],
+                            |r| r.get::<_, String>(0),
+                        ) {
+                            if let Ok(mut existing) = serde_json::from_str::<Value>(&existing_str) {
+                                if let Some(cl) = game["classification"].as_object() {
+                                    let mut cur = existing["classification"].as_object().cloned().unwrap_or_default();
+                                    for k in ["genre", "sub_genre", "perspective", "networking", "scale_density", "art_pipeline"] {
+                                        if let Some(v) = cl.get(k) {
+                                            cur.insert(k.to_string(), v.clone());
+                                        }
+                                    }
+                                    existing["classification"] = Value::Object(cur);
+                                }
+                                tx.execute(
+                                    "UPDATE projects SET data=?1, updated_at=?2 WHERE id=?3",
+                                    params![existing.to_string(), now(), id],
+                                )
+                                .map_err(err)?;
+                            }
+                        }
+                    }
+                }
+                tx.execute("INSERT OR REPLACE INTO meta VALUES('seed-genre-taxonomy-v1',?1)", [now()])
+                    .map_err(err)?;
+                tx.commit().map_err(err)?;
+            }
             return Ok(());
         }
         let games: Vec<Value> = serde_json::from_str(projects).map_err(err)?;
@@ -260,12 +339,13 @@ impl Store {
             .unwrap_or("")
             .to_lowercase();
         let allowed = match kind {
-            "screenshot" => vec!["png", "jpg", "jpeg", "webp"],
+            "screenshot" | "logo" | "icon" | "marketing" => vec!["png", "jpg", "jpeg", "webp", "svg", "ico"],
             "video" | "trailer" => vec!["mp4", "webm", "mov"],
+            "music" | "sfx" => vec!["wav", "ogg", "mp3", "flac", "m4a"],
             _ => return Err("Unknown media type".into()),
         };
         if !allowed.contains(&ext.as_str()) {
-            return Err("Choose a supported image or video format.".into());
+            return Err("Choose a supported image, video or audio format.".into());
         }
         let metadata = fs::metadata(&src).map_err(err)?;
         if !metadata.is_file() || metadata.len() == 0 || metadata.len() > 8 * 1024 * 1024 * 1024 {
@@ -302,17 +382,77 @@ impl Store {
         } else {
             fs::rename(&staging, &dest).map_err(err)?;
         }
+        self.register_media(
+            project_id,
+            kind,
+            id,
+            src.file_name().unwrap().to_string_lossy().into(),
+            src.to_string_lossy().into(),
+            dest,
+            hash,
+        )
+    }
+    pub fn import_clipboard_image(&self, project_id: &str, bytes: &[u8]) -> Result<Media> {
+        self.project(project_id)?;
+        if bytes.len() > 32 * 1024 * 1024 || !bytes.starts_with(b"\x89PNG\r\n\x1a\n") {
+            return Err("Paste a PNG screenshot smaller than 32 MiB.".into());
+        }
+        let hash = format!("{:x}", Sha256::digest(bytes));
+        let dest = self.root.join("media").join(format!("{hash}.png"));
+        if !dest.exists() {
+            let staging = self
+                .root
+                .join("media")
+                .join(format!("{}.part", uuid::Uuid::new_v4()));
+            let result = (|| -> Result<()> {
+                let mut file = fs::File::create(&staging).map_err(err)?;
+                file.write_all(bytes).map_err(err)?;
+                file.sync_all().map_err(err)?;
+                fs::rename(&staging, &dest).map_err(err)?;
+                Ok(())
+            })();
+            if result.is_err() {
+                let _ = fs::remove_file(&staging);
+            }
+            result?;
+        }
+        self.register_media(
+            project_id,
+            "screenshot",
+            uuid::Uuid::new_v4().to_string(),
+            format!(
+                "Clipboard screenshot {}",
+                chrono::Local::now().format("%Y-%m-%d %H:%M:%S")
+            ),
+            "clipboard".into(),
+            dest,
+            hash,
+        )
+    }
+    fn register_media(
+        &self,
+        project_id: &str,
+        kind: &str,
+        id: String,
+        title: String,
+        source_path: String,
+        dest: PathBuf,
+        hash: String,
+    ) -> Result<Media> {
         let media = Media {
+            iteration: if kind == "screenshot" {
+                Some(crate::iteration::observe(self.project(project_id)?["path"].as_str()))
+            } else { None },
             id,
             project_id: project_id.into(),
             kind: kind.into(),
-            title: src.file_name().unwrap().to_string_lossy().into(),
+            title,
             caption: String::new(),
             alt_text: String::new(),
             rights: String::new(),
             credit: String::new(),
             status: "draft".into(),
-            source_path: src.to_string_lossy().into(),
+            source_path,
             stored_path: dest.to_string_lossy().into(),
             sha256: hash,
             created_at: now(),
@@ -324,6 +464,7 @@ impl Store {
             curation: "unreviewed".into(),
             content_role: String::new(),
             review_notes: String::new(),
+            is_thumbnail: false,
         };
         self.conn
             .execute(
@@ -337,6 +478,19 @@ impl Store {
             .map_err(err)?;
         Ok(media)
     }
+    pub fn set_thumbnail(&self, project_id: &str, media_id: &str) -> Result<()> {
+        let tx = self.conn.unchecked_transaction().map_err(err)?;
+        let mut items = self.media(project_id)?;
+        if !items.iter().any(|m| m.id == media_id && m.kind == "screenshot" && m.status != "retired") {
+            return Err("Choose an active screenshot from this game.".into());
+        }
+        for m in &mut items {
+            m.is_thumbnail = m.id == media_id;
+            tx.execute("UPDATE media SET data=?1 WHERE id=?2",
+                params![serde_json::to_string(m).map_err(err)?, m.id]).map_err(err)?;
+        }
+        tx.commit().map_err(err)
+    }
     pub fn update_media(&self, edited: Media) -> Result<Media> {
         let raw: String = self
             .conn
@@ -348,17 +502,32 @@ impl Store {
         if !["draft", "approved", "retired"].contains(&edited.status.as_str()) {
             return Err("Unknown review status".into());
         }
-        if !["screenshot", "video", "trailer"].contains(&edited.kind.as_str()) {
+        let img_kinds = ["screenshot", "logo", "icon", "marketing"];
+        let vid_kinds = ["video", "trailer"];
+        let aud_kinds = ["music", "sfx"];
+        if !img_kinds.contains(&edited.kind.as_str())
+            && !vid_kinds.contains(&edited.kind.as_str())
+            && !aud_kinds.contains(&edited.kind.as_str())
+        {
             return Err("Unknown media kind".into());
         }
-        if (original.kind == "screenshot") != (edited.kind == "screenshot") {
-            return Err("An image cannot be reclassified as video.".into());
+        let fam = |k: &str| {
+            if img_kinds.contains(&k) {
+                "img"
+            } else if vid_kinds.contains(&k) {
+                "vid"
+            } else {
+                "aud"
+            }
+        };
+        if fam(&original.kind) != fam(&edited.kind) {
+            return Err("An image, video or audio item cannot be reclassified across media families.".into());
         }
         if edited.status == "approved"
             && (edited.title.trim().is_empty()
                 || edited.caption.trim().is_empty()
                 || edited.rights.trim().is_empty()
-                || (edited.kind == "screenshot" && edited.alt_text.trim().is_empty()))
+                || (img_kinds.contains(&edited.kind.as_str()) && edited.alt_text.trim().is_empty()))
         {
             return Err("Approval needs a title, caption, rights note, and image alt text.".into());
         }
@@ -386,6 +555,7 @@ impl Store {
             None
         };
         original.status = edited.status;
+        if original.status == "retired" { original.is_thumbnail = false; }
         self.conn
             .execute(
                 "UPDATE media SET data=?1 WHERE id=?2",
@@ -513,6 +683,49 @@ impl Store {
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn screenshot_iteration_is_persistent_and_shared_with_mcp() {
+        let (d, s) = fixture();
+        let repo = d.path().join("game");
+        fs::create_dir(&repo).unwrap();
+        let git = |args: &[&str]| {
+            assert!(std::process::Command::new("git").arg("-C").arg(&repo)
+                .args(args).output().unwrap().status.success());
+        };
+        git(&["init"]);
+        let mut project = s.project("test").unwrap();
+        project["path"] = json!(repo);
+        s.save_project(project).unwrap();
+        let png = b"\x89PNG\r\n\x1a\nfixture";
+        let first = s.import_clipboard_image("test", png).unwrap();
+        assert_eq!(first.iteration.as_ref().unwrap().status, "no-commit");
+        fs::write(repo.join("game.txt"), "first").unwrap();
+        git(&["add", "game.txt"]);
+        git(&["-c", "user.name=Fixture", "-c", "user.email=fixture@example.invalid", "commit", "-m", "Initial"]);
+        let clean = s.import_clipboard_image("test", png).unwrap();
+        assert_eq!(clean.iteration.as_ref().unwrap().modified, Some(false));
+        fs::write(repo.join("new.txt"), "untracked").unwrap();
+        let image = d.path().join("old-image.png");
+        fs::write(&image, png).unwrap();
+        let response = crate::mcp::respond(&s, json!({"id":1,"method":"tools/call","params":{"name":"import_media","arguments":{"project_id":"test","path":image,"kind":"screenshot"}}})).unwrap();
+        assert_eq!(response["result"]["isError"], false);
+        let mut imported: Media = serde_json::from_str(response["result"]["content"][0]["text"].as_str().unwrap()).unwrap();
+        let tag = imported.iteration.clone().unwrap();
+        assert_eq!(tag.modified, Some(true));
+        assert_eq!(tag.basis, "import");
+        assert_eq!(tag.revision.as_ref().unwrap().len(), 40);
+        imported.iteration = None;
+        let saved = s.update_media(imported).unwrap();
+        assert_eq!(saved.iteration.unwrap().revision, tag.revision);
+        drop(s);
+        let s = Store::open(d.path().join("library")).unwrap();
+        let response = crate::mcp::respond(&s, json!({"id":2,"method":"tools/call","params":{"name":"list_media","arguments":{"project_id":"test"}}})).unwrap();
+        assert!(response.to_string().contains(&tag.revision.unwrap()));
+        let mut legacy = serde_json::to_value(clean).unwrap();
+        legacy.as_object_mut().unwrap().remove("iteration");
+        assert!(serde_json::from_value::<Media>(legacy).unwrap().iteration.is_none());
+        assert_eq!(crate::iteration::observe(Some(d.path().to_str().unwrap())).status, "unavailable");
+    }
     fn fixture() -> (tempfile::TempDir, Store) {
         let d = tempfile::tempdir().unwrap();
         let mut s = Store::open(d.path().join("library")).unwrap();
@@ -560,6 +773,29 @@ mod tests {
         let restored = Store::open(PathBuf::from(backup)).unwrap();
         restored.rebase_media().unwrap();
         assert!(Path::new(&restored.media("test").unwrap()[0].stored_path).exists());
+    }
+    #[test]
+    fn thumbnail_choice_is_exclusive_persistent_and_not_approval() {
+        let (d, s) = fixture();
+        let src = d.path().join("thumb.png");
+        fs::write(&src, b"fixture").unwrap();
+        let first = s.import_media("test", src.to_str().unwrap(), "screenshot").unwrap();
+        let second = s.import_media("test", src.to_str().unwrap(), "screenshot").unwrap();
+        s.set_thumbnail("test", &first.id).unwrap();
+        s.set_thumbnail("test", &second.id).unwrap();
+        assert!(s.set_thumbnail("other", &second.id).is_err());
+        // Saving a review opened before thumbnail selection must preserve the selection.
+        s.update_media(second.clone()).unwrap();
+        drop(s);
+        let s = Store::open(d.path().join("library")).unwrap();
+        let items = s.media("test").unwrap();
+        assert_eq!(items.iter().filter(|m| m.is_thumbnail).count(), 1);
+        assert!(items.iter().find(|m| m.id == second.id).unwrap().is_thumbnail);
+        assert!(items.iter().all(|m| m.status == "draft"));
+        let mut retired = second; retired.status = "retired".into();
+        s.update_media(retired.clone()).unwrap();
+        assert!(s.set_thumbnail("test", &retired.id).is_err());
+        assert!(s.media("test").unwrap().iter().all(|m| !m.is_thumbnail));
     }
     #[test]
     fn foreign_project_and_bad_media_rejected() {

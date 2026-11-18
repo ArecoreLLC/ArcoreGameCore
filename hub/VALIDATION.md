@@ -116,3 +116,34 @@ The native test uses a fresh isolated library, original app-icon fixture and own
 No checks remain blocked. Non-failing diagnostics: Vite reports a frontend chunk above 500 KB (including the bundled read-only seed); an existing Python HTTP cleanup test emits a ResourceWarning. `git diff --check` also found a pre-existing trailing blank line in `tools/ecosystem.py`, which this task did not modify.
 
 The local release executable is `hub/src-tauri/target/release/gamecore-hub.exe` (24,300,544 bytes at validation); its SHA-256 is recorded in the receipt. No installer or executable is committed to source control.
+
+## Clipboard screenshots — November 12, 2026
+
+Windows desktop build: `npm.cmd run build`, `npm.cmd test` (12 passed), `cargo test --manifest-path hub/src-tauri/Cargo.toml` (9 passed), and release `npm.cmd run tauri -- build --no-bundle` passed. The release is in `target-json-export/release`, selected by the existing launcher. `node tests/clipboard-smoke.mjs` passed in an isolated library: button import, image paste event, PNG dimensions, draft status, text-field non-interception, empty clipboard errors, invalid payload/project rejection and managed storage. Test clipboard providers/events were injected; the user’s system clipboard was untouched. Physical Windows snip/Ctrl+V was not manually tested. Evidence: `test-results/clipboard-1794523240385/result.json`. No game runtime or workflow scaffolds changed.
+
+## Screenshot drop and thumbnail — November 12, 2026
+
+Windows checks passed: frontend build; 13 Vitest tests; 10 Rust tests; Tauri release build; `node tests/clipboard-smoke.mjs`. Native tests use an isolated library and injected Tauri drag events (physical Explorer dragging not manually tested). Multi-file import, highlight, unsupported-file feedback, clipboard regression, explicit draft thumbnail and gallery badge passed. Rust tests cover exclusive selection, restart persistence, stale review preservation and retirement. Evidence: `test-results/clipboard-1794533910688/result.json` and `media.png`. The existing launcher now selects `target/release/gamecore-library.exe`; open older windows were left running.
+
+
+## Screenshot iteration tags and media MCP — 2026-11-13
+
+Workflow: `game-project-integration`, dimension: `3d` (hub metadata is engine-neutral).
+Baseline: `2f1e893c90cab085d034c61e92301168ab04e2ae` plus the existing dirty working tree; changes remain uncommitted. Platform: Windows x64, Rust 1.99.1, Node 24.11.0, Python 3.14.0, hub 0.1.0. No engine migration or game behavior changes.
+
+Before: screenshots retained import date/hash but no per-image Git observation; the hub MCP was planned only. Scope: optional immutable screenshot iteration metadata, gallery/review labels, shared stdio media import/list tools and registry documentation. Acceptance: observe the selected game's checkout on paste/import/drop; preserve originals, legacy records and stored observations through edits/restart; distinguish clean, modified, no-commit and unavailable states; expose the same metadata through MCP.
+
+Passed commands (repository root unless noted):
+
+- `cargo test --manifest-path hub/src-tauri/Cargo.toml`: 11 tests, including temporary Git repository, clean/untracked states, unborn repository, persistence, protected metadata and MCP import/list.
+- `npm.cmd test` from `hub/`: 15 tests across 4 files, including legacy and import-time labels.
+- `npm.cmd run build` from `hub/`: TypeScript and Vite passed; existing large-chunk advisory remains.
+- `npm.cmd run tauri -- build --no-bundle` from `hub/`: release executable built at `hub/src-tauri/target/release/gamecore-library.exe`.
+- `python tests/media-mcp-smoke.py` from `hub/`: real stdio initialize/discovery, import/list, error handling, draft status and byte preservation passed. Initial test cleanup failed because Python's SQLite context manager did not close the connection; fixed explicit close and rerun passed.
+- `node tests/clipboard-smoke.mjs` from `hub/`: isolated native WebView2 paste/drop/thumbnail checks plus gallery iteration and review explanation visibility passed. Evidence: `hub/test-results/clipboard-1794578127624/result.json` and `media.png`; screenshot visually inspected.
+- `python tools/validate_workflows.py`: passed.
+- `python tools/validate_wizards.py`: passed.
+- `python tools/mcp_registry.py`: passed (structure only).
+- `python -m unittest discover -s tools/tests -v`: 127 tests passed.
+
+Failed: no unresolved checks. Blocked: none. Not run: real game capture/playtest, downstream MCP probes and client registration. Import-time observations do not establish screenshot capture/build provenance; old screenshots remain unknown, and public press-kit fields are unchanged. Broader wizard MCP execution remains planned. Tests used isolated libraries and did not modify the user's library or game sources.

@@ -79,6 +79,34 @@ class ModuleTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'Unmanaged'):
             self.install()
 
+    def test_add_module_retains_intact_historical_baseline(self):
+        original = self.install()['modules'][0]
+        self.entry['version'] = '0.2.0'
+        (self.root / 'rule.h').write_text('// newer release')
+        self.entry['sha256'] = modules.digest(self.root / 'rule.h')
+        extra = dict(self.entry, id='extra')
+        modules.write_json(self.root / 'shared/modules.json', dict(schema_version=1, modules=[self.entry, extra]))
+        self.manifest['modules'].append(dict(id='extra', version='0.2.0', destination='Source/Extra.h'))
+        with self.assertRaisesRegex(ValueError, 'explicit'):
+            self.install()
+        self.assertFalse((self.project / 'Source/Extra.h').exists())
+        result = self.install(True)
+        self.assertEqual(result['modules'][0], original)
+        self.assertEqual((self.project / 'Source/Rule.h').read_text(), '// original\n')
+        modules.check_lock(self.project, self.manifest)
+        (self.project / 'Source/Rule.h').write_text('// local edit')
+        with self.assertRaisesRegex(ValueError, 'Modified installed'):
+            self.install(True)
+
+    def test_historical_release_cannot_be_moved_or_reconstructed(self):
+        self.install()
+        self.entry['version'] = '0.2.0'
+        self.save_registry()
+        self.manifest['modules'][0]['destination'] = 'Source/Moved.h'
+        with self.assertRaisesRegex(ValueError, 'Unavailable version'):
+            self.install(True)
+        self.assertFalse((self.project / 'Source/Moved.h').exists())
+
     def test_same_version_cannot_change_bytes(self):
         self.install()
         (self.root / 'rule.h').write_text('// changed without release')

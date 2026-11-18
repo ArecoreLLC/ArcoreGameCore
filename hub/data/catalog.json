@@ -9,7 +9,7 @@
     "description": "Drive a food truck, hunt a coconut crab, prepare its ingredients and cook mutations before a stronger hunt.",
     "logic": "One harvest per defeated boss yields three portions. Preparing consumes raw stock; cooking consumes prepared stock, rejects duplicate mutations and heals 25 health. Damage, speed and defense mutations use distinct bits and persist for the expedition. The next hunt raises boss health by 40.",
     "reuse": "BistroRun.h: deterministic combat/ingredient/mutation rules; BistroPawn.cpp: vehicle/on-foot interaction; BeastBistroExpressGameMode.cpp: station proximity and cooking timer.",
-    "assets": "Primitive island, truck, telegraph ring and kitchen stations generated at runtime. Reuse construction code rather than assuming exportable authored models.",
+    "assets": "Primitive island, truck, telegraph ring and kitchen stations generated at runtime. Reuse construction code rather than assuming exportable authored models. Adaptive music integrated (Beast Bistro Express Main Theme, Sonic-v001, 150 BPM, 32-bar 51.20s loop, 0.85s fade-in/out): 4 bar-quantized stems \u2014 Guitar (SW_Music_Guitar_v001), Synth (SW_Music_Synth_v001), Bass (SW_Music_Bass_v001), Drums (SW_Music_Drums_v001). States: Explore (Driving food truck: Guitar -2 dB + Synth -5 dB) -> Tension (On foot prepping/cooking at stove: +Bass) -> Combat (Hunting Coconut Crab in clearing, 6s hold: +Drums) -> Boss (Claw Slam / Shell Burst windup or Mutation Hunt 2+).",
     "limitations": "Solo; arcade vehicle; no moving interior, save, co-op or production art/audio. Sibling WorldFramework runtime plugin is a development dependency.",
     "capabilities": [
       {
@@ -248,9 +248,9 @@
       {
         "provider": "ArcoreSonicAlchemist",
         "path": "X:/Projects/ArcoreSonicAlchemist",
-        "asset_id": "",
-        "version": "",
-        "description": "No completed soundtrack is documented for this prototype. SonicAlchemist can own future score/stems; no project ID or version is linked yet."
+        "asset_id": "beast-bistro-express-adaptive",
+        "version": "Sonic-v001 (4 stems, 48kHz 24-bit)",
+        "description": "Adaptive music integrated (Beast Bistro Express Main Theme, Sonic-v001, 150 BPM, 32-bar 51.20s loop, 0.85s fade-in/out): 4 bar-quantized stems \u2014 Guitar (SW_Music_Guitar_v001), Synth (SW_Music_Synth_v001), Bass (SW_Music_Bass_v001), Drums (SW_Music_Drums_v001). States: Explore (Driving food truck: Guitar -2 dB + Synth -5 dB) -> Tension (On foot prepping/cooking at stove: +Bass) -> Combat (Hunting Coconut Crab in clearing, 6s hold: +Drums) -> Boss (Claw Slam / Shell Burst windup or Mutation Hunt 2+)."
       }
     ],
     "asset_file_count": 2,
@@ -258,14 +258,18 @@
     "variants": [],
     "classification": {
       "genre": "action",
-      "perspective": "See game description and controller source",
+      "perspective": "First-Person",
       "visual_style": "Primitive / graybox",
       "simulation": "See named mechanics for analytic, discrete or physics-engine boundaries",
       "player_mode": "Local / single-player or collection",
       "platforms": "Windows",
       "audience": "Not formally classified",
       "input": "See project README; hardware acceptance separate",
-      "session_length": "Not measured"
+      "session_length": "Not measured",
+      "sub_genre": "fps",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     }
   },
   {
@@ -278,7 +282,7 @@
     "description": "Shoot the structural connections of a miniature fort to bring down its crown.",
     "logic": "Five linked pieces receive 25 damage per click. The bridge survives while either ground support remains. Disconnected intact upper pieces become bounded physics debris; reset restores attachment, transforms, health and velocity.",
     "reuse": "FortSupport.cpp: targeting and graph-to-actor synchronization; shared SupportGraph.h: connectivity and failure propagation.",
-    "assets": "Engine primitive fort; Chaos debris is a visual/physical integration example, not an authored siege asset pack.",
+    "assets": "Engine primitive fort; Chaos debris is a visual/physical integration example, not an authored siege asset pack. Adaptive music integrated (Box-Fort Brigade Main Theme, Sonic-v001, 140 BPM, 32-bar 54.86s loop, 0.85s fade-in/out): 4 bar-quantized stems \u2014 Keyboards (SW_Music_Keyboards_v001), Synth (SW_Music_Synth_v001), Bass (SW_Music_Bass_v001), Drums (SW_Music_Drums_v001). States: Explore (Commander planning: Keyboards + Synth) -> Tension (Squad moving or Hero possessed: +Bass) -> Combat (Hero firing at fort or breach unlocked, 6s hold: +Drums) -> Boss (Capturing objective core).",
     "limitations": "Only support-siege slice. No construction economy, hero possession, armies or multiplayer; engine Entry map still needs a shipping map.",
     "capabilities": [
       {
@@ -391,24 +395,28 @@
       {
         "provider": "ArcoreSonicAlchemist",
         "path": "X:/Projects/ArcoreSonicAlchemist",
-        "asset_id": "",
-        "version": "",
-        "description": "No completed soundtrack is documented for this prototype. SonicAlchemist can own future score/stems; no project ID or version is linked yet."
+        "asset_id": "box-fort-brigade-adaptive",
+        "version": "Sonic-v001 (4 stems, 48kHz 24-bit)",
+        "description": "Adaptive music integrated (Box-Fort Brigade Main Theme, Sonic-v001, 140 BPM, 32-bar 54.86s loop, 0.85s fade-in/out): 4 bar-quantized stems \u2014 Keyboards (SW_Music_Keyboards_v001), Synth (SW_Music_Synth_v001), Bass (SW_Music_Bass_v001), Drums (SW_Music_Drums_v001). States: Explore (Commander planning: Keyboards + Synth) -> Tension (Squad moving or Hero possessed: +Bass) -> Combat (Hero firing at fort or breach unlocked, 6s hold: +Drums) -> Boss (Capturing objective core)."
       }
     ],
     "asset_file_count": 0,
     "source_file_count": 18,
     "variants": [],
     "classification": {
-      "genre": "construction",
-      "perspective": "See game description and controller source",
+      "genre": "simulation",
+      "perspective": "Third-Person",
       "visual_style": "Primitive / graybox",
       "simulation": "See named mechanics for analytic, discrete or physics-engine boundaries",
       "player_mode": "Local / single-player or collection",
       "platforms": "Windows",
       "audience": "Not formally classified",
       "input": "See project README; hardware acceptance separate",
-      "session_length": "Not measured"
+      "session_length": "Not measured",
+      "sub_genre": "city-builder",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     }
   },
   {
@@ -421,7 +429,7 @@
     "description": "A terrain-state experiment for a future elemental painting game.",
     "logic": "E cycles one tile through four integer states; mesh height and status text change. R restores state and collision. Grass food, magma slowing and ice speed are labels/concepts, not implemented movement or resource effects.",
     "reuse": "TerrainTile.cpp: bounded state cycling and reset; PrototypeGameMode.cpp: minimal runtime test arena.",
-    "assets": "Single engine cube mechanic proxy. No authored paint shaders or transferable terrain system yet.",
+    "assets": "Single engine cube mechanic proxy. No authored paint shaders or transferable terrain system yet. Adaptive music integrated (Chroma-Turf Main Theme, Sonic-v001, 140 BPM, 32-bar 54.86s loop, 0.85s fade-in/out): 4 bar-quantized stems \u2014 Keyboards (SW_Music_Keyboards_v001), Synth (SW_Music_Synth_v001), Bass (SW_Music_Bass_v001), Drums (SW_Music_Drums_v001). States: Explore (Neutral tile: Keyboards + Synth) -> Tension (Grass/food tile: +Bass) -> Combat (Magma/slow tile: +Drums) -> Boss (Ice/speed tile: full 140 BPM arcade mix).",
     "limitations": "Mechanic scaffold; no complete loop, harvesting, player effects or multiplayer. Manual play remains pending in source evidence.",
     "capabilities": [
       {
@@ -505,24 +513,28 @@
       {
         "provider": "ArcoreSonicAlchemist",
         "path": "X:/Projects/ArcoreSonicAlchemist",
-        "asset_id": "",
-        "version": "",
-        "description": "No completed soundtrack is documented for this prototype. SonicAlchemist can own future score/stems; no project ID or version is linked yet."
+        "asset_id": "chroma-turf-adaptive",
+        "version": "Sonic-v001 (4 stems, 48kHz 24-bit)",
+        "description": "Adaptive music integrated (Chroma-Turf Main Theme, Sonic-v001, 140 BPM, 32-bar 54.86s loop, 0.85s fade-in/out): 4 bar-quantized stems \u2014 Keyboards (SW_Music_Keyboards_v001), Synth (SW_Music_Synth_v001), Bass (SW_Music_Bass_v001), Drums (SW_Music_Drums_v001). States: Explore (Neutral tile: Keyboards + Synth) -> Tension (Grass/food tile: +Bass) -> Combat (Magma/slow tile: +Drums) -> Boss (Ice/speed tile: full 140 BPM arcade mix)."
       }
     ],
     "asset_file_count": 0,
     "source_file_count": 10,
     "variants": [],
     "classification": {
-      "genre": "terrain",
-      "perspective": "See game description and controller source",
+      "genre": "adventure",
+      "perspective": "Third-Person",
       "visual_style": "Primitive / graybox",
       "simulation": "See named mechanics for analytic, discrete or physics-engine boundaries",
       "player_mode": "Local / single-player or collection",
       "platforms": "Windows",
       "audience": "Not formally classified",
       "input": "See project README; hardware acceptance separate",
-      "session_length": "Not measured"
+      "session_length": "Not measured",
+      "sub_genre": "survival-craft",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     }
   },
   {
@@ -535,7 +547,7 @@
     "description": "Befriend creatures and assign them to a tiny parcel-production line.",
     "logic": "Spend one berry to befriend each creature; subsequent interaction toggles work. Ember powers a four-second boiler, Pebble adds ore on a three-second clock, Hop multiplies production speed by 1.5. Energy drains while working, triggers rest at 20 and resumes at 90. Fixed 0.05-second steps cap hitch catch-up to 0.25 seconds. Ten parcels wins.",
     "reuse": "CritterSimulation.h: rendering-independent work/resources/fatigue; shared ProductionClock.h: gated recipe time.",
-    "assets": "Primitive clearing with overhead camera and readable creature/resource proxies.",
+    "assets": "Primitive clearing with overhead camera and readable creature/resource proxies. Adaptive music generated & split via Suno MCP (Critter Contraptions - main theme, clip a4e91dfa-70cb-4963-aed7-56468104f9dc, 128.88s, detected 91.2 BPM C major, stem group stemgrp_27fd5387-f39f-4d47-8aa4-bfe637d69658): 12 Auto Split stems ready in Suno library (drums, bass, guitar, keyboard, percussion, strings, synth, woodwinds, brass, fx, vocals, backing_vocals).",
     "limitations": "No machine placement, breeding, exploration, save/load or authored creature animation. No offline catch-up.",
     "capabilities": [
       {
@@ -762,24 +774,28 @@
       {
         "provider": "ArcoreSonicAlchemist",
         "path": "X:/Projects/ArcoreSonicAlchemist",
-        "asset_id": "",
-        "version": "",
-        "description": "No completed soundtrack is documented for this prototype. SonicAlchemist can own future score/stems; no project ID or version is linked yet."
+        "asset_id": "critter-contraptions-adaptive",
+        "version": "Sonic-v001 (4 stems, 48kHz 24-bit)",
+        "description": "Adaptive music generated & split via Suno MCP (Critter Contraptions - main theme, clip a4e91dfa-70cb-4963-aed7-56468104f9dc, 128.88s, detected 91.2 BPM C major, stem group stemgrp_27fd5387-f39f-4d47-8aa4-bfe637d69658): 12 Auto Split stems ready in Suno library (drums, bass, guitar, keyboard, percussion, strings, synth, woodwinds, brass, fx, vocals, backing_vocals)."
       }
     ],
     "asset_file_count": 2,
     "source_file_count": 17,
     "variants": [],
     "classification": {
-      "genre": "automation",
-      "perspective": "See game description and controller source",
+      "genre": "simulation",
+      "perspective": "Top-Down",
       "visual_style": "Primitive / graybox",
       "simulation": "See named mechanics for analytic, discrete or physics-engine boundaries",
       "player_mode": "Local / single-player or collection",
       "platforms": "Windows",
       "audience": "Not formally classified",
       "input": "See project README; hardware acceptance separate",
-      "session_length": "Not measured"
+      "session_length": "Not measured",
+      "sub_genre": "automation-factory",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     }
   },
   {
@@ -792,7 +808,7 @@
     "description": "Fight slimes for shop stock, run a timed retail shift and invest earnings in health upgrades.",
     "logic": "Two hits defeat a slime. Bag items transfer to matching shelves; customers have 12/24-second patience within a 75-second shift. Tonic/Crystal/Ember sell for 8/12/16 coins. Atomic persistence prevents failed writes from granting sales/upgrades. Coins and apron upgrades persist; unsold stock expires.",
     "reuse": "DungeonDashMarketGameMode.cpp: hunt/shop/result transitions; MarketSave.h: profile; shared StockLedger.h: bounded inventory, transfers and safe sales.",
-    "assets": "Generated dungeon/shop and labeled primitives; reusable room/HUD recipe rather than final item models.",
+    "assets": "Generated dungeon/shop and labeled primitives; reusable room/HUD recipe rather than final item models. Adaptive music generated & split via Suno MCP (Dungeon Dash Market - main theme, clip e72a4697-1218-4736-b469-c99f839d1fc6, 177.48s, 115 BPM dark-fantasy orchestral, stem group stemgrp_a2bd6c44-e2c4-49ca-b9a9-c571dd2c3d04): 12 Auto Split stems ready in Suno library (strings, brass, drums, percussion, bass, woodwinds, keyboard, synth, guitar, fx, vocals, backing_vocals).",
     "limitations": "Single-player; no variable pricing, throwing, thieves or co-op. Source rebuild requires GameCore header path; runtime does not.",
     "capabilities": [
       {
@@ -1011,24 +1027,28 @@
       {
         "provider": "ArcoreSonicAlchemist",
         "path": "X:/Projects/ArcoreSonicAlchemist",
-        "asset_id": "",
-        "version": "",
-        "description": "No completed soundtrack is documented for this prototype. SonicAlchemist can own future score/stems; no project ID or version is linked yet."
+        "asset_id": "dungeon-dash-market-adaptive",
+        "version": "Sonic-v001 (4 stems, 48kHz 24-bit)",
+        "description": "Adaptive music generated & split via Suno MCP (Dungeon Dash Market - main theme, clip e72a4697-1218-4736-b469-c99f839d1fc6, 177.48s, 115 BPM dark-fantasy orchestral, stem group stemgrp_a2bd6c44-e2c4-49ca-b9a9-c571dd2c3d04): 12 Auto Split stems ready in Suno library (strings, brass, drums, percussion, bass, woodwinds, keyboard, synth, guitar, fx, vocals, backing_vocals)."
       }
     ],
     "asset_file_count": 1,
     "source_file_count": 17,
     "variants": [],
     "classification": {
-      "genre": "combat",
-      "perspective": "See game description and controller source",
+      "genre": "rpg",
+      "perspective": "Third-Person",
       "visual_style": "Primitive / graybox",
       "simulation": "See named mechanics for analytic, discrete or physics-engine boundaries",
       "player_mode": "Local / single-player or collection",
       "platforms": "Windows",
       "audience": "Not formally classified",
       "input": "See project README; hardware acceptance separate",
-      "session_length": "Not measured"
+      "session_length": "Not measured",
+      "sub_genre": "roguelike",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     }
   },
   {
@@ -1038,11 +1058,11 @@
     "engine": "Unreal 5.8.4 / C++",
     "dimension": "3d",
     "kind": "game",
-    "description": "Restore a World-Organ by matching resonators in a small acoustic dungeon.",
-    "logic": "Three correctly typed pulses activate each resonator; pulses need a 0.5-second gap, proximity and line of sight. Bass opens gate/checkpoint, Treble raises bridge, Echo completes organ. Falls preserve checkpoint progress; restart clears it.",
+    "description": "Restore the World-Organ through typed resonance puzzles, cross a raised bridge and enter the revealed exit.",
+    "logic": "Three matching pulses, a 0.45-second cooldown, proximity and clear line of sight activate each resonator. Bass opens the gate, Treble raises the bridge and Echo reveals an exit that must be entered. Two checkpoints are earned by physically reaching the chambers; restart clears the run.",
     "reuse": "ResonanceTarget.cpp and shared ResonanceRule.h: typed/cooldown-gated progress; PrototypeGameMode.cpp: ordered stages and checkpoint.",
-    "assets": "Primitive dungeon, original generated sine cues and text alternatives. Future echo-reveal visuals and MetaSounds are not present.",
-    "limitations": "No authored art, save files or multiplayer; runtime Entry-map scene requires packaging work.",
+    "assets": "Game-owned host map and parameterized stone/brass materials, tone-colored emissive resonators and rails, readable unlit labels, original layered stereo cues and ambience. Three inspected 1600x900 in-engine catalog screenshots. Adaptive music generated & analyzed via Suno MCP (Echo-Forge - main theme, Recommended Take 1: clip 4026cb1c-0099-4c78-840d-3aa227cd6630, detected 115.8 BPM, D minor, 89 bars, 32-bar loop window 35.372s\u2013101.556s): target stems Brass, Strings, Taiko, Timpani.",
+    "limitations": "Early visual polish using engine primitives. No packaged build, MetaSounds, saved progress, multiplayer or final art. Subjective audio audition and hardware-input acceptance remain separate.",
     "capabilities": [
       {
         "id": "puzzle",
@@ -1087,8 +1107,8 @@
       "notes": ""
     },
     "review_date": "2026-11-11",
-    "build_status": "not_run",
-    "playtest_status": "not_run",
+    "build_status": "passed",
+    "playtest_status": "automated headless and rendered traversal passed; human input playthrough not run",
     "evidence_files": [
       {
         "path": "Docs/VALIDATION.md",
@@ -1097,7 +1117,23 @@
     ],
     "historical_checks": [],
     "asset_counts": {},
-    "media_candidates": [],
+    "media_candidates": [
+      {
+        "path": "X:\\Projects\\Games\\Echo-Forge\\Docs\\Media\\01-crystal-chamber.png",
+        "name": "Crystal chamber",
+        "kind": "screenshot"
+      },
+      {
+        "path": "X:\\Projects\\Games\\Echo-Forge\\Docs\\Media\\02-resonance-bridge.png",
+        "name": "The raised resonance bridge",
+        "kind": "screenshot"
+      },
+      {
+        "path": "X:\\Projects\\Games\\Echo-Forge\\Docs\\Media\\03-world-organ.png",
+        "name": "The revealed exit",
+        "kind": "screenshot"
+      }
+    ],
     "revision": {
       "head": null,
       "dirty": false,
@@ -1155,8 +1191,8 @@
         "provider": "ArcoreSonicAlchemist",
         "path": "X:/Projects/ArcoreSonicAlchemist",
         "asset_id": "",
-        "version": "",
-        "description": "No finished score is documented; any atmospheric organ/music composition is future work."
+        "version": "suno-v6-analyzed",
+        "description": "Adaptive music generated & analyzed via Suno MCP (Echo-Forge - main theme, Recommended Take 1: clip 4026cb1c-0099-4c78-840d-3aa227cd6630, detected 115.8 BPM, D minor, 89 bars, 32-bar loop window 35.372s\u2013101.556s): target stems Brass, Strings, Taiko, Timpani."
       }
     ],
     "asset_file_count": 0,
@@ -1164,14 +1200,18 @@
     "variants": [],
     "classification": {
       "genre": "puzzle",
-      "perspective": "See game description and controller source",
+      "perspective": "First-Person",
       "visual_style": "Primitive / graybox",
       "simulation": "See named mechanics for analytic, discrete or physics-engine boundaries",
       "player_mode": "Local / single-player or collection",
       "platforms": "Windows",
       "audience": "Not formally classified",
       "input": "See project README; hardware acceptance separate",
-      "session_length": "Not measured"
+      "session_length": "Not measured",
+      "sub_genre": "fp-env-puzzle",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     }
   },
   {
@@ -1184,7 +1224,7 @@
     "description": "Salvage timber, assemble a cargo raft and survive a forty-second storm.",
     "logic": "Nine slots require adjacent decks; cargo/barrels occupy existing decks. At least two cargo crates enable launch, which locks building. Mass/center of mass and four spring-damper lift samples drive heave, roll and pitch at 120 Hz. Low freeboard/extreme tilt damages hull; surviving the deadline wins.",
     "reuse": "RaftSimulation.h: inventory, grid and fixed-step voyage; shared Buoyancy.h: mass and bounded immersion force; RaftBalance.cpp: presentation.",
-    "assets": "Primitive raft, cargo and analytic ocean lattice. Simulation is reduced-axis analytic dynamics, not full Chaos water.",
+    "assets": "Primitive raft, cargo and analytic ocean lattice. Simulation is reduced-axis analytic dynamics, not full Chaos water. Adaptive music generated & analyzed via Suno MCP (Flotsam Citadel - main theme, Recommended Take 2: clip 12212844-ebb0-44d0-8f97-c0b2198a030d, detected 149.4 BPM, D major, 77 bars, 32-bar loop window 24.267s\u201375.771s): target stems Bass Guitar, Drums, Lead Guitar, Rhythm Electric Guitar.",
     "limitations": "No steering, cannon combat, free construction, sound or networking.",
     "capabilities": [
       {
@@ -1342,23 +1382,27 @@
         "provider": "ArcoreSonicAlchemist",
         "path": "X:/Projects/ArcoreSonicAlchemist",
         "asset_id": "",
-        "version": "",
-        "description": "No completed soundtrack is documented for this prototype. SonicAlchemist can own future score/stems; no project ID or version is linked yet."
+        "version": "suno-v6-analyzed",
+        "description": "Adaptive music generated & analyzed via Suno MCP (Flotsam Citadel - main theme, Recommended Take 2: clip 12212844-ebb0-44d0-8f97-c0b2198a030d, detected 149.4 BPM, D major, 77 bars, 32-bar loop window 24.267s\u201375.771s): target stems Bass Guitar, Drums, Lead Guitar, Rhythm Electric Guitar."
       }
     ],
     "asset_file_count": 0,
     "source_file_count": 18,
     "variants": [],
     "classification": {
-      "genre": "construction",
-      "perspective": "See game description and controller source",
+      "genre": "simulation",
+      "perspective": "Third-Person",
       "visual_style": "Primitive / graybox",
       "simulation": "See named mechanics for analytic, discrete or physics-engine boundaries",
       "player_mode": "Local / single-player or collection",
       "platforms": "Windows",
       "audience": "Not formally classified",
       "input": "See project README; hardware acceptance separate",
-      "session_length": "Not measured"
+      "session_length": "Not measured",
+      "sub_genre": "city-builder",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     }
   },
   {
@@ -1371,7 +1415,7 @@
     "description": "A tiny ranger grapples up a moving garden golem and releases three armor pins.",
     "logic": "Aim/range/visibility gate hooks. Grapple moves outward, upward then inward; moving-base support keeps the ranger on ledges. Three unique pin events unlock the core. Falls preserve progress; full restart clears it.",
     "reuse": "RangerCharacter.cpp: traversal and hook targeting; TitanPin.cpp: release; shared ObjectiveLatch.h: idempotent bounded objectives.",
-    "assets": "Built-in primitive golem; translating body and controlled non-colliding armor fall. Not an articulated creature rig.",
+    "assets": "Built-in primitive golem; translating body and controlled non-colliding armor fall. Not an articulated creature rig. Adaptive music generated & analyzed via Suno MCP (Gully Giants - main theme, Recommended Take 1: clip e4d20385-a706-47f7-9614-7f4a670095f5, detected 115.7 BPM, G minor, 79 bars, 32-bar loop window 31.603s\u201397.798s): target stems Brass, Strings, Taiko, Timpani.",
     "limitations": "No glider, stamina, audio, gamepad mapping or multiplayer; traversal tuning and authored garden remain.",
     "capabilities": [
       {
@@ -1519,23 +1563,27 @@
         "provider": "ArcoreSonicAlchemist",
         "path": "X:/Projects/ArcoreSonicAlchemist",
         "asset_id": "",
-        "version": "",
-        "description": "No completed soundtrack is documented for this prototype. SonicAlchemist can own future score/stems; no project ID or version is linked yet."
+        "version": "suno-v6-analyzed",
+        "description": "Adaptive music generated & analyzed via Suno MCP (Gully Giants - main theme, Recommended Take 1: clip e4d20385-a706-47f7-9614-7f4a670095f5, detected 115.7 BPM, G minor, 79 bars, 32-bar loop window 31.603s\u201397.798s): target stems Brass, Strings, Taiko, Timpani."
       }
     ],
     "asset_file_count": 1,
     "source_file_count": 18,
     "variants": [],
     "classification": {
-      "genre": "traversal",
-      "perspective": "See game description and controller source",
+      "genre": "platformer",
+      "perspective": "Third-Person",
       "visual_style": "Primitive / graybox",
       "simulation": "See named mechanics for analytic, discrete or physics-engine boundaries",
       "player_mode": "Local / single-player or collection",
       "platforms": "Windows",
       "audience": "Not formally classified",
       "input": "See project README; hardware acceptance separate",
-      "session_length": "Not measured"
+      "session_length": "Not measured",
+      "sub_genre": "3d-collectathon",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     }
   },
   {
@@ -1548,7 +1596,7 @@
     "description": "Ghosts disguise as museum props, steal treasure and escape while guards scan and capture.",
     "logic": "Server-side round interactions prioritize dropping/picking treasure and disguise. Disguise range 180 cm, guard scan 650 cm, capture 220 cm. Scan reveal lasts four seconds with six-second recharge. Sight-blocking exhibits matter; three-minute round ends on first capture or escape.",
     "reuse": "HauntPrototype.cpp/.h: replicated roles, disguise, treasure, scan and round state; native interaction tests and GameCore predicates.",
-    "assets": "Primitive museum props and character movement disguises; no simulated prop momentum.",
+    "assets": "Primitive museum props and character movement disguises; no simulated prop momentum. Adaptive music generated & analyzed via Suno MCP (Haunt and Haul - main theme, Recommended Take 2: clip 24a6876d-bd4b-481f-8009-d16d149b01c4, detected 79.5 BPM, C minor, 47 bars, 32-bar loop window 28.605s\u2013124.613s): target stems Drone, Percussion, Piano, Strings.",
     "limitations": "Two-player slice, not full party-team rules. No matchmaking, final audio/art, progression saves or packaged validation.",
     "capabilities": [
       {
@@ -1786,23 +1834,27 @@
         "provider": "ArcoreSonicAlchemist",
         "path": "X:/Projects/ArcoreSonicAlchemist",
         "asset_id": "",
-        "version": "",
-        "description": "No completed soundtrack is documented for this prototype. SonicAlchemist can own future score/stems; no project ID or version is linked yet."
+        "version": "suno-v6-analyzed",
+        "description": "Adaptive music generated & analyzed via Suno MCP (Haunt and Haul - main theme, Recommended Take 2: clip 24a6876d-bd4b-481f-8009-d16d149b01c4, detected 79.5 BPM, C minor, 47 bars, 32-bar loop window 28.605s\u2013124.613s): target stems Drone, Percussion, Piano, Strings."
       }
     ],
     "asset_file_count": 2,
     "source_file_count": 15,
     "variants": [],
     "classification": {
-      "genre": "stealth",
-      "perspective": "See game description and controller source",
+      "genre": "action",
+      "perspective": "Third-Person",
       "visual_style": "Primitive / graybox",
       "simulation": "See named mechanics for analytic, discrete or physics-engine boundaries",
       "player_mode": "Network-capable prototype; see limits",
       "platforms": "Windows",
       "audience": "Not formally classified",
       "input": "See project README; hardware acceptance separate",
-      "session_length": "Not measured"
+      "session_length": "Not measured",
+      "sub_genre": "stealth",
+      "networking": "Client-Server",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     }
   },
   {
@@ -1815,7 +1867,7 @@
     "description": "Redirect an amber beam through two mirrors to make a bridge safe and reach Sanctuary.",
     "logic": "Q/E rotate mirrors in 15-degree increments within four metres. Bounded visibility traces reflect on broad faces, stopping after eight bounces or 40 metres. Receiver state immediately enables/disables bridge collision. Chasm falls reset the chamber.",
     "reuse": "PrototypeGameMode.cpp: EvaluateLight and chamber lifecycle; LightMirror.cpp/LightReceiver.cpp: world adapters; shared LightReflection.h: normalized reflection math.",
-    "assets": "Primitive cathedral chamber and debug beam. Good light-path demonstration, not a shipped optical renderer.",
+    "assets": "Primitive cathedral chamber and debug beam. Good light-path demonstration, not a shipped optical renderer. Adaptive music generated & analyzed via Suno MCP (Lumen-Weaver - main theme, Recommended Take 2: clip d5a5952f-9456-44bf-80bc-c1cc7cef81a7, detected 115.4 BPM, C minor, 63 bars, 32-bar loop window 25.25s\u201391.777s): target stems Brass, Strings, Taiko, Timpani.",
     "limitations": "No jump, enemy, final sprite, audio, saves or authored map. Shipping beam needs production rendering.",
     "capabilities": [
       {
@@ -1929,8 +1981,8 @@
         "provider": "ArcoreSonicAlchemist",
         "path": "X:/Projects/ArcoreSonicAlchemist",
         "asset_id": "",
-        "version": "",
-        "description": "No completed soundtrack is documented for this prototype. SonicAlchemist can own future score/stems; no project ID or version is linked yet."
+        "version": "suno-v6-analyzed",
+        "description": "Adaptive music generated & analyzed via Suno MCP (Lumen-Weaver - main theme, Recommended Take 2: clip d5a5952f-9456-44bf-80bc-c1cc7cef81a7, detected 115.4 BPM, C minor, 63 bars, 32-bar loop window 25.25s\u201391.777s): target stems Brass, Strings, Taiko, Timpani."
       }
     ],
     "asset_file_count": 0,
@@ -1938,14 +1990,18 @@
     "variants": [],
     "classification": {
       "genre": "puzzle",
-      "perspective": "See game description and controller source",
+      "perspective": "First-Person",
       "visual_style": "Primitive / graybox",
       "simulation": "See named mechanics for analytic, discrete or physics-engine boundaries",
       "player_mode": "Local / single-player or collection",
       "platforms": "Windows",
       "audience": "Not formally classified",
       "input": "See project README; hardware acceptance separate",
-      "session_length": "Not measured"
+      "session_length": "Not measured",
+      "sub_genre": "fp-env-puzzle",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     }
   },
   {
@@ -1958,7 +2014,7 @@
     "description": "Split pebble knights, archers and healers between bridge repair and a monster, then carry a sunseed home.",
     "logic": "Role selection drives independent assignments and recall. Bridge and monster must be resolved before delivery. Three nearby haulers are needed to lift; fewer than three survivors loses. Four-minute daylight bounds the expedition.",
     "reuse": "PebblekinCommandGameMode.cpp: roles/orders/combat/routing; shared CooperativeTask.h: work accumulation and shared lifting.",
-    "assets": "Primitive garden and role-coded shapes; fixed camera and corridor routing.",
+    "assets": "Primitive garden and role-coded shapes; fixed camera and corridor routing. Adaptive music generated & analyzed via Suno MCP (Pebblekin Command - main theme, Recommended Take 1: clip 3fab3bf4-33a8-457e-810b-59e0c3e766bd, detected 116.6 BPM, G minor, 72 bars, 32-bar loop window 29.524s\u201395.357s): target stems Brass, Strings, Taiko, Timpani.",
     "limitations": "No navigation mesh/avoidance, sculpting, multiplayer, audio or persistence. 50-unit fixture is not a performance certification.",
     "capabilities": [
       {
@@ -2212,23 +2268,27 @@
         "provider": "ArcoreSonicAlchemist",
         "path": "X:/Projects/ArcoreSonicAlchemist",
         "asset_id": "",
-        "version": "",
-        "description": "No completed soundtrack is documented for this prototype. SonicAlchemist can own future score/stems; no project ID or version is linked yet."
+        "version": "suno-v6-analyzed",
+        "description": "Adaptive music generated & analyzed via Suno MCP (Pebblekin Command - main theme, Recommended Take 1: clip 3fab3bf4-33a8-457e-810b-59e0c3e766bd, detected 116.6 BPM, G minor, 72 bars, 32-bar loop window 29.524s\u201395.357s): target stems Brass, Strings, Taiko, Timpani."
       }
     ],
     "asset_file_count": 1,
     "source_file_count": 14,
     "variants": [],
     "classification": {
-      "genre": "squads",
-      "perspective": "See game description and controller source",
+      "genre": "rts",
+      "perspective": "Top-Down",
       "visual_style": "Primitive / graybox",
       "simulation": "See named mechanics for analytic, discrete or physics-engine boundaries",
       "player_mode": "Local / single-player or collection",
       "platforms": "Windows",
       "audience": "Not formally classified",
       "input": "See project README; hardware acceptance separate",
-      "session_length": "Not measured"
+      "session_length": "Not measured",
+      "sub_genre": "rtt",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     }
   },
   {
@@ -2241,7 +2301,7 @@
     "description": "Gather bottle caps, build a funnel and combine traps to protect a cardboard fort.",
     "logic": "Blocking placement must preserve routes from entrance and every live enemy. Springs prime/slow targets for four seconds; electric tracks deal triple damage to primed enemies. Day supplies/repairs alternate with waves; breaches cost fort health.",
     "reuse": "PocketFortPatrolGameMode.cpp: placement, economy, wave state and combo effects; portable routing header and PatrolTests.cpp.",
-    "assets": "Primitive bedroom defense, grid pieces and enemy proxies. Route-preserving building is the key reusable mechanic.",
+    "assets": "Primitive bedroom defense, grid pieces and enemy proxies. Route-preserving building is the key reusable mechanic. Adaptive music generated & analyzed via Suno MCP (Pocket Fort Patrol - main theme, Recommended Take 1: clip 38fd1b7b-eebe-4896-b8b8-e88f63083d6c, detected 143.1 BPM, E minor, 36 bars, 32-bar loop window 5.024s\u201358.692s): target stems Arpeggiator, Drums, Synth Bass, Synth Lead.",
     "limitations": "No networking, saves, production art/audio or packaged validation. Controller bindings need hardware checks.",
     "capabilities": [
       {
@@ -2474,23 +2534,27 @@
         "provider": "ArcoreSonicAlchemist",
         "path": "X:/Projects/ArcoreSonicAlchemist",
         "asset_id": "",
-        "version": "",
-        "description": "No completed soundtrack is documented for this prototype. SonicAlchemist can own future score/stems; no project ID or version is linked yet."
+        "version": "suno-v6-analyzed",
+        "description": "Adaptive music generated & analyzed via Suno MCP (Pocket Fort Patrol - main theme, Recommended Take 1: clip 38fd1b7b-eebe-4896-b8b8-e88f63083d6c, detected 143.1 BPM, E minor, 36 bars, 32-bar loop window 5.024s\u201358.692s): target stems Arpeggiator, Drums, Synth Bass, Synth Lead."
       }
     ],
     "asset_file_count": 2,
     "source_file_count": 15,
     "variants": [],
     "classification": {
-      "genre": "tower-defense",
-      "perspective": "See game description and controller source",
+      "genre": "rts",
+      "perspective": "Top-Down",
       "visual_style": "Primitive / graybox",
       "simulation": "See named mechanics for analytic, discrete or physics-engine boundaries",
       "player_mode": "Local / single-player or collection",
       "platforms": "Windows",
       "audience": "Not formally classified",
       "input": "See project README; hardware acceptance separate",
-      "session_length": "Not measured"
+      "session_length": "Not measured",
+      "sub_genre": "survival-td",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     }
   },
   {
@@ -2503,7 +2567,7 @@
     "description": "Fight arena waves, collect robot parts and rebuild your loadout after defeat.",
     "logic": "Attack telegraphs, dodge invulnerability and parry windows govern damage. Saw/arc arms alter reach and power; wheel/spring bodies alter motion and dodge. Clear a wave then choose repair/max hull or damage before advancing. Repeatable encounter seed.",
     "reuse": "ScrapshiftArenaGameMode.cpp: bots, loot, wave/reward lifecycle; shared CombatWindow.h: active/recovery timing.",
-    "assets": "Primitive modular bots with debug telegraphs and attack effects. Useful combat readability reference.",
+    "assets": "Primitive modular bots with debug telegraphs and attack effects. Useful combat readability reference. Adaptive music generated & analyzed via Suno MCP (Scrapshift Arena - main theme, Recommended Take 2: clip 1dfcc5ce-8271-4be0-9635-99ab33a5b7f8, detected 130.7 BPM, D minor, 82 bars, 32-bar loop window 29.918s\u201388.746s): target stems Arpeggiator, Drums, Synth Bass, Synth Lead.",
     "limitations": "No saves, network, final art/audio. Debug drawing requires replacement for shipping.",
     "capabilities": [
       {
@@ -2754,23 +2818,27 @@
         "provider": "ArcoreSonicAlchemist",
         "path": "X:/Projects/ArcoreSonicAlchemist",
         "asset_id": "",
-        "version": "",
-        "description": "No completed soundtrack is documented for this prototype. SonicAlchemist can own future score/stems; no project ID or version is linked yet."
+        "version": "suno-v6-analyzed",
+        "description": "Adaptive music generated & analyzed via Suno MCP (Scrapshift Arena - main theme, Recommended Take 2: clip 1dfcc5ce-8271-4be0-9635-99ab33a5b7f8, detected 130.7 BPM, D minor, 82 bars, 32-bar loop window 29.918s\u201388.746s): target stems Arpeggiator, Drums, Synth Bass, Synth Lead."
       }
     ],
     "asset_file_count": 3,
     "source_file_count": 15,
     "variants": [],
     "classification": {
-      "genre": "combat",
-      "perspective": "See game description and controller source",
+      "genre": "action",
+      "perspective": "Third-Person",
       "visual_style": "Primitive / graybox",
       "simulation": "See named mechanics for analytic, discrete or physics-engine boundaries",
       "player_mode": "Local / single-player or collection",
       "platforms": "Windows",
       "audience": "Not formally classified",
       "input": "See project README; hardware acceptance separate",
-      "session_length": "Not measured"
+      "session_length": "Not measured",
+      "sub_genre": "hack-and-slash",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     }
   },
   {
@@ -2783,7 +2851,7 @@
     "description": "Draft obstacles from a shared crate, place them, race the course and score across rounds.",
     "logic": "Server owns inventory, placement and phase clocks: draft 20s/build 30s/race 75s/results 8s. 200 cm grid placements validate full moving envelopes and protected checkpoints. Finish awards descending points; pieces persist three rounds. Joiners wait for next draft.",
     "reuse": "SkyboundSabotageGameMode.cpp: replication/phase changes; Config/Course.json and generated SkyCourseContract.h: placement geometry.",
-    "assets": "Primitive floating course, moving shuttle, bounce cap, wrecking ball and ice patch.",
+    "assets": "Primitive floating course, moving shuttle, bounce cap, wrecking ball and ice patch. Adaptive music generated & analyzed via Suno MCP (Skybound Sabotage - main theme, Recommended Take 1: clip f65d4a19-a1f8-4a4e-90e6-e6f3a0d2fbbd, detected 142.1 BPM, E minor, 83 bars, 32-bar loop window 27.215s\u201381.501s): target stems Arpeggiator, Drums, Synth Bass, Synth Lead.",
     "limitations": "Two-client smoke is documented; eight participants is a target. No adverse-latency certification, matchmaking, arbitrary-height placement or shipping build.",
     "capabilities": [
       {
@@ -2828,7 +2896,7 @@
       {
         "id": "cap-motion-envelope-placement",
         "state": "implemented",
-        "evidence": "Catalog source audit: Motion-envelope placement. SkyboundSabotageGameMode.cpp: replication/phase changes; Config/Course.json and generated SkyCourseContract.h: placement geometry. | Scope: Snapped placement checks an obstacle’s full motion envelope and protects checkpoints, not just its current mesh footprint. | Fresh runtime verification: not_run.",
+        "evidence": "Catalog source audit: Motion-envelope placement. SkyboundSabotageGameMode.cpp: replication/phase changes; Config/Course.json and generated SkyCourseContract.h: placement geometry. | Scope: Snapped placement checks an obstacle\u00e2\u20ac\u2122s full motion envelope and protects checkpoints, not just its current mesh footprint. | Fresh runtime verification: not_run.",
         "mechanic_id": "skybound-sabotage-1",
         "assessment": "source-candidate",
         "taxonomy_version": 2
@@ -3023,7 +3091,7 @@
         "name": "Motion-envelope placement",
         "capability": "construction",
         "state": "implemented",
-        "rules": "Snapped placement checks an obstacle’s full motion envelope and protects checkpoints, not just its current mesh footprint.",
+        "rules": "Snapped placement checks an obstacle\u00e2\u20ac\u2122s full motion envelope and protects checkpoints, not just its current mesh footprint.",
         "sources": "SkyboundSabotageGameMode.cpp: replication/phase changes; Config/Course.json and generated SkyCourseContract.h: placement geometry.",
         "reuse_boundary": "Two-client smoke is documented; eight participants is a target. No adverse-latency certification, matchmaking, arbitrary-height placement or shipping build.",
         "verification": "Source/README inspection; fresh runtime acceptance not_run."
@@ -3058,23 +3126,27 @@
         "provider": "ArcoreSonicAlchemist",
         "path": "X:/Projects/ArcoreSonicAlchemist",
         "asset_id": "",
-        "version": "",
-        "description": "No completed soundtrack is documented for this prototype. SonicAlchemist can own future score/stems; no project ID or version is linked yet."
+        "version": "suno-v6-analyzed",
+        "description": "Adaptive music generated & analyzed via Suno MCP (Skybound Sabotage - main theme, Recommended Take 1: clip f65d4a19-a1f8-4a4e-90e6-e6f3a0d2fbbd, detected 142.1 BPM, E minor, 83 bars, 32-bar loop window 27.215s\u201381.501s): target stems Arpeggiator, Drums, Synth Bass, Synth Lead."
       }
     ],
     "asset_file_count": 8,
     "source_file_count": 15,
     "variants": [],
     "classification": {
-      "genre": "construction",
-      "perspective": "See game description and controller source",
+      "genre": "simulation",
+      "perspective": "Third-Person",
       "visual_style": "Primitive / graybox",
       "simulation": "See named mechanics for analytic, discrete or physics-engine boundaries",
       "player_mode": "Network-capable prototype; see limits",
       "platforms": "Windows",
       "audience": "Not formally classified",
       "input": "See project README; hardware acceptance separate",
-      "session_length": "Not measured"
+      "session_length": "Not measured",
+      "sub_genre": "city-builder",
+      "networking": "Client-Server",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     }
   },
   {
@@ -3087,7 +3159,7 @@
     "description": "Build a connected vehicle, save its blueprint and bowl over ten physical pins.",
     "logic": "Attachments stay face-connected on a 5x5 grid around a fixed chassis. Four wheels required to drive; boosters alter speed and bumpers collision extent. Thirty-second drive challenge; invalid saves preserve current build.",
     "reuse": "SnapVehicle.cpp: placement, arcade movement and serialization; shared AttachmentGrid.h: graph connectivity.",
-    "assets": "Primitive assembled vehicle and simulated pins. Arcade drive, not suspension/constraint vehicle simulation.",
+    "assets": "Primitive assembled vehicle and simulated pins. Arcade drive, not suspension/constraint vehicle simulation. Adaptive music integrated (Snap Rally Main Theme, Sonic-v001, 150 BPM, 32-bar 51.20s loop, 0.85s fade-in/out): 4 bar-quantized stems \u2014 Guitar (SW_Music_Guitar_v001), Synth (SW_Music_Synth_v001), Bass (SW_Music_Bass_v001), Drums (SW_Music_Drums_v001). States: Explore (Vehicle assembly in garage: Guitar + Synth) -> Tension (Driving proving lane: +Bass) -> Combat (Boosting / high speed >=450 cm/s, 6s hold: +Drums) -> Boss (Pin deck impact or final 8s countdown).",
     "limitations": "No multiplayer, advanced tire/suspension physics, final art/audio or packaged validation. Rebuild needs GameCore header source.",
     "capabilities": [
       {
@@ -3329,24 +3401,28 @@
       {
         "provider": "ArcoreSonicAlchemist",
         "path": "X:/Projects/ArcoreSonicAlchemist",
-        "asset_id": "",
-        "version": "",
-        "description": "No completed soundtrack is documented for this prototype. SonicAlchemist can own future score/stems; no project ID or version is linked yet."
+        "asset_id": "snap-rally-adaptive",
+        "version": "Sonic-v001 (4 stems, 48kHz 24-bit)",
+        "description": "Adaptive music integrated (Snap Rally Main Theme, Sonic-v001, 150 BPM, 32-bar 51.20s loop, 0.85s fade-in/out): 4 bar-quantized stems \u2014 Guitar (SW_Music_Guitar_v001), Synth (SW_Music_Synth_v001), Bass (SW_Music_Bass_v001), Drums (SW_Music_Drums_v001). States: Explore (Vehicle assembly in garage: Guitar + Synth) -> Tension (Driving proving lane: +Bass) -> Combat (Boosting / high speed >=450 cm/s, 6s hold: +Drums) -> Boss (Pin deck impact or final 8s countdown)."
       }
     ],
     "asset_file_count": 2,
     "source_file_count": 14,
     "variants": [],
     "classification": {
-      "genre": "construction",
-      "perspective": "See game description and controller source",
+      "genre": "simulation",
+      "perspective": "Third-Person",
       "visual_style": "Primitive / graybox",
       "simulation": "See named mechanics for analytic, discrete or physics-engine boundaries",
       "player_mode": "Local / single-player or collection",
       "platforms": "Windows",
       "audience": "Not formally classified",
       "input": "See project README; hardware acceptance separate",
-      "session_length": "Not measured"
+      "session_length": "Not measured",
+      "sub_genre": "vehicle-physics-sim",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     }
   },
   {
@@ -3359,7 +3435,7 @@
     "description": "Winch salvage aboard a tug, manage its balance and return to harbor for stabilizer upgrades.",
     "logic": "Winch within 7.5m below 3m/s; deliver in harbor below 1.6m/s. Cargo masses and shifting crab tanks affect roll. Outer swells increase danger; sustained roll or four-minute deadline loses. Two 100-credit stabilizer upgrades.",
     "reuse": "TugboatPrototype.cpp: cargo, delivery, upgrades and analytic boat motion; TugboatTests.cpp: rule/loop fixtures.",
-    "assets": "Primitive harbor/tug, analytic bob/roll, animated winch. No simulated rope.",
+    "assets": "Primitive harbor/tug, analytic bob/roll, animated winch. No simulated rope. Adaptive music generated & analyzed via Suno MCP (Tugboat Tumble - main theme, Recommended Take 2: clip 561e2784-c1c1-4bd4-a929-cf23cfa761e2, detected 187.5 BPM, G major, 104 bars, 32-bar loop window 26.076s\u201367.036s): target stems Acoustic Guitar, Drums, Marimba, Upright Bass.",
     "limitations": "Solo; no crew walking, network, save persistence or audio. Full manual contract playthrough was not run in recorded validation.",
     "capabilities": [
       {
@@ -3544,23 +3620,27 @@
         "provider": "ArcoreSonicAlchemist",
         "path": "X:/Projects/ArcoreSonicAlchemist",
         "asset_id": "",
-        "version": "",
-        "description": "No completed soundtrack is documented for this prototype. SonicAlchemist can own future score/stems; no project ID or version is linked yet."
+        "version": "suno-v6-analyzed",
+        "description": "Adaptive music generated & analyzed via Suno MCP (Tugboat Tumble - main theme, Recommended Take 2: clip 561e2784-c1c1-4bd4-a929-cf23cfa761e2, detected 187.5 BPM, G major, 104 bars, 32-bar loop window 26.076s\u201367.036s): target stems Acoustic Guitar, Drums, Marimba, Upright Bass."
       }
     ],
     "asset_file_count": 3,
     "source_file_count": 16,
     "variants": [],
     "classification": {
-      "genre": "vehicles",
-      "perspective": "See game description and controller source",
+      "genre": "simulation",
+      "perspective": "Third-Person",
       "visual_style": "Primitive / graybox",
       "simulation": "See named mechanics for analytic, discrete or physics-engine boundaries",
       "player_mode": "Local / single-player or collection",
       "platforms": "Windows",
       "audience": "Not formally classified",
       "input": "See project README; hardware acceptance separate",
-      "session_length": "Not measured"
+      "session_length": "Not measured",
+      "sub_genre": "vehicle-physics-sim",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     }
   },
   {
@@ -3573,7 +3653,7 @@
     "description": "Two teams command tower formations and exchange wind-affected artillery across varied terrain.",
     "logic": "Shared prediction/flight integrator models radial gravity, altitude drag/wind and simplified Coriolis. Towers have roles, abilities, credits, shields and status effects. Timed turns or arcade fire; pursuit/lead/proportional-navigation defenses. Host decides damage, purchases and turns.",
     "reuse": "TABallistics.h and TALongRange.cpp: trajectory; TARules.cpp: combat; TANetwork.cpp: authority; TADebris.cpp/TATerrain.cpp: visual destruction and terrain.",
-    "assets": "Procedural castles, cannon assemblies, masonry debris, smoke/fire and landscape construction. Models often exist as component recipes rather than source meshes.",
+    "assets": "Procedural castles, cannon assemblies, masonry debris, smoke/fire and landscape construction. Models often exist as component recipes rather than source meshes. Adaptive music integrated (Wind-Swept Artillery, Sonic-v001, 115 BPM, 32-bar 66.78s loop, 0.85s fade-in/out): 4 bar-quantized stems \u2014 Strings (SW_Music_Strings_v001), Percussion (SW_Music_Percussion_v001), Drums (SW_Music_Drums_v001), Brass (SW_Music_Brass_v001). States: Explore (Setup screen: Strings -5 dB) -> Tension (Aiming turn: +Percussion, +Drums) -> Combat (Firing/projectiles in flight, 8s hold: +Brass 0 dB) -> Boss (Nuclear/Kamikaze/Sudden Death/Critical HP: full orchestral boost).",
     "limitations": "Model is a game approximation. Four-player LAN is documented; online services and broad hardware acceptance need separate evidence. Local package presence does not equal a fresh test.",
     "capabilities": [
       {
@@ -3744,24 +3824,28 @@
       {
         "provider": "ArcoreSonicAlchemist",
         "path": "X:/Projects/ArcoreSonicAlchemist",
-        "asset_id": "",
-        "version": "",
-        "description": "No specific SonicAlchemist production ID has been linked."
+        "asset_id": "3d-tower-assault-adaptive",
+        "version": "Sonic-v001 (4 stems, 48kHz 24-bit)",
+        "description": "Adaptive music integrated (Wind-Swept Artillery, Sonic-v001, 115 BPM, 32-bar 66.78s loop, 0.85s fade-in/out): 4 bar-quantized stems \u2014 Strings (SW_Music_Strings_v001), Percussion (SW_Music_Percussion_v001), Drums (SW_Music_Drums_v001), Brass (SW_Music_Brass_v001). States: Explore (Setup screen: Strings -5 dB) -> Tension (Aiming turn: +Percussion, +Drums) -> Combat (Firing/projectiles in flight, 8s hold: +Brass 0 dB) -> Boss (Nuclear/Kamikaze/Sudden Death/Critical HP: full orchestral boost)."
       }
     ],
     "asset_file_count": 32,
     "source_file_count": 88,
     "variants": [],
     "classification": {
-      "genre": "artillery",
-      "perspective": "See game description and controller source",
+      "genre": "rts",
+      "perspective": "Top-Down",
       "visual_style": "See asset overview",
       "simulation": "See named mechanics for analytic, discrete or physics-engine boundaries",
       "player_mode": "Network-capable prototype; see limits",
       "platforms": "Windows",
       "audience": "Not formally classified",
       "input": "See project README; hardware acceptance separate",
-      "session_length": "Not measured"
+      "session_length": "Not measured",
+      "sub_genre": "survival-td",
+      "networking": "Client-Server",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     }
   },
   {
@@ -3774,7 +3858,7 @@
     "description": "Grow a woodland village through four Ages, train a counter-based army and contest relics.",
     "logic": "Workers gather/carry/deliver Food/Timber/Ore. Authority owns fixed-step queues, construction, A* paths, AI and objectives. Win by rival Hall destruction, holding three relics or defending Festival. Versioned solo saves restore in-flight orders and recover from backup.",
     "reuse": "ForestSimulation.cpp: economic/strategic kernel; ForestPersistence.cpp: saves; ForestMatch.h: replication; ForestArt.cpp/ForestAnimation.cpp: presentation.",
-    "assets": "Project-original primitive-built cottages, pines, troops and procedural animation; generated feedback chimes.",
+    "assets": "Project-original primitive-built cottages, pines, troops and procedural animation; generated feedback chimes. Adaptive music integrated (Forest Loop, Sonic-v001, 92 BPM, 32-bar 83.48s loop, 0.85s fade-in/out): 4 bar-quantized stems \u2014 Keyboards (SW_Music_Keyboards_v001), Synth (SW_Music_Synth_v001), Bass (SW_Music_Bass_v001), Drums (SW_Music_Drums_v001). States: Explore (Age I gathering: Keyboards -2 dB + Synth -5 dB) -> Tension (Age II+, troops trained, or relic held: +Bass -1 dB) -> Combat (Active skirmish, 8s hold: +Drums -1 dB) -> Boss (Briar Golem, Harvest Festival, Relic countdown, or Hall <65% HP).",
     "limitations": "Trusted private networking replicates hidden entity data. No reconnect, matchmaking or broad child usability evidence. Extract simulation independently from Slate/UI/art.",
     "capabilities": [
       {
@@ -3989,24 +4073,28 @@
       {
         "provider": "ArcoreSonicAlchemist",
         "path": "X:/Projects/ArcoreSonicAlchemist",
-        "asset_id": "",
-        "version": "",
-        "description": "Authored production music remains future work."
+        "asset_id": "acorn-anvil-adaptive",
+        "version": "Sonic-v001 (4 stems, 48kHz 24-bit)",
+        "description": "Adaptive music integrated (Forest Loop, Sonic-v001, 92 BPM, 32-bar 83.48s loop, 0.85s fade-in/out): 4 bar-quantized stems \u2014 Keyboards (SW_Music_Keyboards_v001), Synth (SW_Music_Synth_v001), Bass (SW_Music_Bass_v001), Drums (SW_Music_Drums_v001). States: Explore (Age I gathering: Keyboards -2 dB + Synth -5 dB) -> Tension (Age II+, troops trained, or relic held: +Bass -1 dB) -> Combat (Active skirmish, 8s hold: +Drums -1 dB) -> Boss (Briar Golem, Harvest Festival, Relic countdown, or Hall <65% HP)."
       }
     ],
     "asset_file_count": 32,
     "source_file_count": 25,
     "variants": [],
     "classification": {
-      "genre": "rts",
-      "perspective": "See game description and controller source",
+      "genre": "simulation",
+      "perspective": "Top-Down",
       "visual_style": "See asset overview",
       "simulation": "See named mechanics for analytic, discrete or physics-engine boundaries",
       "player_mode": "Network-capable prototype; see limits",
       "platforms": "Windows",
       "audience": "Not formally classified",
       "input": "See project README; hardware acceptance separate",
-      "session_length": "Not measured"
+      "session_length": "Not measured",
+      "sub_genre": "automation-factory",
+      "networking": "Client-Server",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     }
   },
   {
@@ -4019,7 +4107,7 @@
     "description": "Explore and review an 8km landscape with islands, mountains and a jungle PCG test region.",
     "logic": "World Partition landscape and habitat masks drive terrain/vegetation. Review camera teleports above sampled height, offers notes and saved settings. Nature Walk is an observation route rather than collision-enabled character gameplay.",
     "reuse": "ArcoreReview sources and SArcoreReviewMenu: map/navigation/notes; Tools/generate_terrain.py and PCG tools: world generation; Assets/Catalog: provenance.",
-    "assets": "Heightfields, biome masks, PCG graphs and Epic PCG sample meshes; asset review/history facilities. License and donor identity must travel with any selected model.",
+    "assets": "Heightfields, biome masks, PCG graphs and Epic PCG sample meshes; asset review/history facilities. License and donor identity must travel with any selected model. Adaptive music generated & analyzed via Suno MCP (Arcore OpenWorld - main theme, Recommended Take 2: clip 457df124-25f8-4650-bf28-6900e274e44c, detected 118.3 BPM, G minor, 87 bars, 32-bar loop window 35.256s\u2013100.374s): target stems Brass, Strings, Taiko, Timpani.",
     "limitations": "Environment/reference consumer; walking adventure, swimming and final wildlife are future work. OpenWorld-specific adapters are not generic SDKs.",
     "capabilities": [
       {
@@ -4382,23 +4470,27 @@
         "provider": "ArcoreSonicAlchemist",
         "path": "X:/Projects/ArcoreSonicAlchemist",
         "asset_id": "",
-        "version": "",
-        "description": "No accepted in-game score is established by this terrain/reference consumer."
+        "version": "suno-v6-analyzed",
+        "description": "Adaptive music generated & analyzed via Suno MCP (Arcore OpenWorld - main theme, Recommended Take 2: clip 457df124-25f8-4650-bf28-6900e274e44c, detected 118.3 BPM, G minor, 87 bars, 32-bar loop window 35.256s\u2013100.374s): target stems Brass, Strings, Taiko, Timpani."
       }
     ],
     "asset_file_count": 8184,
     "source_file_count": 3632,
     "variants": [],
     "classification": {
-      "genre": "terrain",
-      "perspective": "See game description and controller source",
+      "genre": "adventure",
+      "perspective": "Third-Person",
       "visual_style": "See asset overview",
       "simulation": "See named mechanics for analytic, discrete or physics-engine boundaries",
       "player_mode": "Local / single-player or collection",
       "platforms": "Windows",
       "audience": "Not formally classified",
       "input": "See project README; hardware acceptance separate",
-      "session_length": "Not measured"
+      "session_length": "Not measured",
+      "sub_genre": "survival-craft",
+      "networking": "Single-Player",
+      "scale_density": "Open World",
+      "art_pipeline": "Stylized PBR"
     }
   },
   {
@@ -4411,7 +4503,7 @@
     "description": "Command Foundry or Swarm-Net armies in a salvage-powered industrial skirmish with a closing storm.",
     "logic": "Finite wrecks feed cargo/depot logistics. Connected power components allocate independent budgets with defense priority. Queues pause on outages. Units merge/split without healing, capture relics/rail terminal, dispatch EMP and relocate command cores before the storm.",
     "reuse": "SCSystems.cpp: economy/power; SCTactics.cpp/SCObjectives.cpp: combat and objectives; SCNavigation.h: footprint routing; SCDamage.cpp: damage visuals.",
-    "assets": "Model assemblies, Guardian rig/clips, damage masks, static wreck LODs and media/license records under Assets/Docs. Consult exact version manifests.",
+    "assets": "Model assemblies, Guardian rig/clips, damage masks, static wreck LODs and media/license records under Assets/Docs. Consult exact version manifests. Adaptive music generated & analyzed via Suno MCP (Salvage & Circuit - main theme, Recommended Take 2: clip f8e12428-d050-438d-bf32-7e56df390496, detected 130.9 BPM, D minor, 103 bars, 32-bar loop window 37.117s\u201395.988s): target stems Arpeggiator, Drums, Synth Bass, Synth Lead.",
     "limitations": "Local skirmish, not full original design. External WorldFramework plugin needed to rebuild. No general-purpose crowd or full Chaos destruction guarantee.",
     "capabilities": [
       {
@@ -4868,8 +4960,8 @@
         "provider": "ArcoreSonicAlchemist",
         "path": "X:/Projects/ArcoreSonicAlchemist",
         "asset_id": "",
-        "version": "",
-        "description": "A finished reusable score is not established by the evidence reviewed here."
+        "version": "suno-v6-analyzed",
+        "description": "Adaptive music generated & analyzed via Suno MCP (Salvage & Circuit - main theme, Recommended Take 2: clip f8e12428-d050-438d-bf32-7e56df390496, detected 130.9 BPM, D minor, 103 bars, 32-bar loop window 37.117s\u201395.988s): target stems Arpeggiator, Drums, Synth Bass, Synth Lead."
       }
     ],
     "asset_file_count": 511,
@@ -4877,14 +4969,18 @@
     "variants": [],
     "classification": {
       "genre": "rts",
-      "perspective": "See game description and controller source",
+      "perspective": "Top-Down",
       "visual_style": "See asset overview",
       "simulation": "See named mechanics for analytic, discrete or physics-engine boundaries",
       "player_mode": "Local / single-player or collection",
       "platforms": "Windows",
       "audience": "Not formally classified",
       "input": "See project README; hardware acceptance separate",
-      "session_length": "Not measured"
+      "session_length": "Not measured",
+      "sub_genre": "classic-rts",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     }
   },
   {
@@ -4897,7 +4993,7 @@
     "description": "An icon-led toy-box RTS with sand trucks, small squads and a shared castle-building goal.",
     "logic": "Automatic trucks deliver sand; workshop unlocks squads. Role counters, temporary naps, Golden Bucket and monument deliveries create gentle strategy. Separate LAN co-op gives each player a kingdom contributing to eighteen layers.",
     "reuse": "ToyPlayground.cpp: solo economy/match; ToyCoop.cpp: network co-op; ToyNavigation.h: reserved pads/arrival positions; ToyCoopHUD.cpp: icon UI.",
-    "assets": "Primitive toy kingdom and role/team icons; licensed prototype cues with provenance in Media.",
+    "assets": "Primitive toy kingdom and role/team icons; licensed prototype cues with provenance in Media. Adaptive music integrated (Sandbox Kingdoms Main Theme, Sonic-v001, 92 BPM, 32-bar 83.48s loop, 0.85s fade-in/out): 4 bar-quantized stems \u2014 Guitar (SW_Music_Guitar_v001), Woodwinds (SW_Music_Woodwinds_v001), Bass (SW_Music_Bass_v001), Drums (SW_Music_Drums_v001). States: Explore (Free Play / Cardboard Era 0: Guitar -2 dB + Woodwinds -5 dB) -> Tension (Wood/Plastic Era or active sand delivery: +Bass) -> Combat (Toy squad skirmish or Golden Bucket carrier, 6s hold: +Drums) -> Boss (Sprinkler active, >=9 castle layers, or final 90s).",
     "limitations": "Early README paragraphs predate later co-op/navigation additions. Real two-computer/child usability and minimum hardware tests remain open.",
     "capabilities": [
       {
@@ -5144,9 +5240,9 @@
       {
         "provider": "ArcoreSonicAlchemist",
         "path": "X:/Projects/ArcoreSonicAlchemist",
-        "asset_id": "",
-        "version": "",
-        "description": "No production soundtrack is established by this catalog; future music should support gentle solo/co-op pacing."
+        "asset_id": "sandbox-kingdoms-adaptive",
+        "version": "Sonic-v001 (4 stems, 48kHz 24-bit)",
+        "description": "Adaptive music integrated (Sandbox Kingdoms Main Theme, Sonic-v001, 92 BPM, 32-bar 83.48s loop, 0.85s fade-in/out): 4 bar-quantized stems \u2014 Guitar (SW_Music_Guitar_v001), Woodwinds (SW_Music_Woodwinds_v001), Bass (SW_Music_Bass_v001), Drums (SW_Music_Drums_v001). States: Explore (Free Play / Cardboard Era 0: Guitar -2 dB + Woodwinds -5 dB) -> Tension (Wood/Plastic Era or active sand delivery: +Bass) -> Combat (Toy squad skirmish or Golden Bucket carrier, 6s hold: +Drums) -> Boss (Sprinkler active, >=9 castle layers, or final 90s)."
       }
     ],
     "asset_file_count": 14,
@@ -5154,14 +5250,18 @@
     "variants": [],
     "classification": {
       "genre": "rts",
-      "perspective": "See game description and controller source",
+      "perspective": "Top-Down",
       "visual_style": "See asset overview",
       "simulation": "See named mechanics for analytic, discrete or physics-engine boundaries",
       "player_mode": "Network-capable prototype; see limits",
       "platforms": "Windows",
       "audience": "Not formally classified",
       "input": "See project README; hardware acceptance separate",
-      "session_length": "Not measured"
+      "session_length": "Not measured",
+      "sub_genre": "classic-rts",
+      "networking": "Client-Server",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     }
   },
   {
@@ -5174,7 +5274,7 @@
     "description": "A logistics RTS with three factions, finite alloy/fuel supply and local or LAN competition.",
     "logic": "Engineers capture and construct; trucks deliver from finite buffers. Queued production, power priority, technology, tactical orders and faction abilities shape combat. Destroy command centers or sustain powered transmission objectives for evacuation.",
     "reuse": "SFSimulation.cpp/SFSystems.cpp: fixed-step logistics/AI; SFCommands.cpp: commands; SFController.cpp/SFMenu.cpp: session/UI; SFPresentation.cpp: models/animation.",
-    "assets": "21 project-original ModelForge roster/scenery models documented; six native rig assets animate components. Versioned adaptive music data and stems in Media.",
+    "assets": "21 project-original ModelForge roster/scenery models documented; six native rig assets animate components. Versioned adaptive music data and stems in Media. Existing score utilized: Already has adaptive calm/tension stems in Media/Audio/Sonic-v004.",
     "limitations": "Component articulation is not skinned skeletal animation. Internet NAT, hosting, human balance and hardware coverage remain open.",
     "capabilities": [
       {
@@ -5510,8 +5610,8 @@
         "provider": "ArcoreSonicAlchemist",
         "path": "X:/Projects/ArcoreSonicAlchemist",
         "asset_id": "",
-        "version": "",
-        "description": "SonicAlchemist adaptive exports feed a versioned native music data asset and two preserved stems; see Docs/Animation-and-Sonic-v004.md."
+        "version": "existing-score",
+        "description": "Existing score utilized: Already has adaptive calm/tension stems in Media/Audio/Sonic-v004."
       }
     ],
     "asset_file_count": 335,
@@ -5519,14 +5619,18 @@
     "variants": [],
     "classification": {
       "genre": "rts",
-      "perspective": "See game description and controller source",
+      "perspective": "Top-Down",
       "visual_style": "See asset overview",
       "simulation": "See named mechanics for analytic, discrete or physics-engine boundaries",
       "player_mode": "Network-capable prototype; see limits",
       "platforms": "Windows",
       "audience": "Not formally classified",
       "input": "See project README; hardware acceptance separate",
-      "session_length": "Not measured"
+      "session_length": "Not measured",
+      "sub_genre": "classic-rts",
+      "networking": "Client-Server",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Stylized PBR"
     }
   },
   {
@@ -5539,7 +5643,7 @@
     "description": "A soft cartoon island adventure with Poofy, Plumpy, friendship quests, sailing and creature activities.",
     "logic": "Walk/run/jump/fly/swim and contextual fishing/climbing/hugging feed quests and island unlocks. Coyote time and jump buffering improve control. Autosave retains quest timers and restores safe activity states; developer fixtures isolate player saves.",
     "reuse": "hero.gd/hero_swim.gd: movement; adventure_save.gd: persistence; island_adventure.gd/friend_missions.gd: progression; fishing_logic.gd: activity.",
-    "assets": "Authored character rigs/clips, editable Blender sources and version histories; stylized three-tone/outline characters with PBR sand/ocean. Strong donor for characters and expressive motion; retain exact approved version.",
+    "assets": "Authored character rigs/clips, editable Blender sources and version histories; stylized three-tone/outline characters with PBR sand/ocean. Strong donor for characters and expressive motion; retain exact approved version. Existing score utilized: Already has 10 full island songs and Sonic Alchemist reconstructions.",
     "limitations": "Godot GDScript, not Unreal C++. Canon and model approval matter. Review models may not be integrated gameplay assets. Main adventure and VR are separate consumers.",
     "capabilities": [
       {
@@ -6880,8 +6984,8 @@
         "provider": "ArcoreSonicAlchemist",
         "path": "X:/Projects/ArcoreSonicAlchemist",
         "asset_id": "",
-        "version": "",
-        "description": "Playlist/radio and island songs have local production history; inspect Music Review, game assets and provenance before reusing a composition."
+        "version": "existing-score",
+        "description": "Existing score utilized: Already has 10 full island songs and Sonic Alchemist reconstructions."
       }
     ],
     "asset_file_count": 13391,
@@ -6894,14 +6998,18 @@
     ],
     "classification": {
       "genre": "adventure",
-      "perspective": "See game description and controller source",
+      "perspective": "Third-Person",
       "visual_style": "See asset overview",
       "simulation": "See named mechanics for analytic, discrete or physics-engine boundaries",
       "player_mode": "Local / single-player or collection",
       "platforms": "Windows",
       "audience": "Not formally classified",
       "input": "See project README; hardware acceptance separate",
-      "session_length": "Not measured"
+      "session_length": "Not measured",
+      "sub_genre": "walking-sim",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Low-Poly"
     }
   },
   {
@@ -6914,7 +7022,7 @@
     "description": "A small story-driven island game plus an authoring tool for reviewed layouts, quests and narration.",
     "logic": "Ordered talk/visit/collect/return events advance a deterministic cursor; duplicate collectibles are rejected. Saves validate level hash, version and expected collected sequence. Preview does not write progress. Collect three wish items and return to Plumpy in the original vignette.",
     "reuse": "Runtime/scripts/quest_state.gd: small reusable quest engine; hero.gd: controller; island.gd: scene; Tooling: compile/validate/export.",
-    "assets": "Poofy v010 and Plumpy v005 lineage, Kenney scenery, original effects and prerecorded narration. Runtime/content contains declarative layouts/dialogue.",
+    "assets": "Poofy v010 and Plumpy v005 lineage, Kenney scenery, original effects and prerecorded narration. Runtime/content contains declarative layouts/dialogue. Adaptive music generated & analyzed via Suno MCP (Bubble Wishes / Poofy's Story Studio - main theme, Recommended Take 1: clip 5e48798f-2284-4b01-baf4-5dbf91bdebc4, detected 124.5 BPM, D major, 79 bars, 32-bar loop window 29.135s\u201390.351s): target stems Acoustic Guitar, Drums, Marimba, Upright Bass.",
     "limitations": "Published ShampooIsland package and newer LayoutQA candidate differ. Narration needs listening/editorial review; arbitrary generated mechanics are unsupported.",
     "capabilities": [
       {
@@ -7112,8 +7220,8 @@
         "provider": "ArcoreSonicAlchemist",
         "path": "X:/Projects/ArcoreSonicAlchemist",
         "asset_id": "",
-        "version": "",
-        "description": "No separate finished score is established here. Keep dialogue/voice lineage and any music rights separate."
+        "version": "suno-v6-analyzed",
+        "description": "Adaptive music generated & analyzed via Suno MCP (Bubble Wishes / Poofy's Story Studio - main theme, Recommended Take 1: clip 5e48798f-2284-4b01-baf4-5dbf91bdebc4, detected 124.5 BPM, D major, 79 bars, 32-bar loop window 29.135s\u201390.351s): target stems Acoustic Guitar, Drums, Marimba, Upright Bass."
       }
     ],
     "asset_file_count": 82,
@@ -7121,14 +7229,18 @@
     "variants": [],
     "classification": {
       "genre": "adventure",
-      "perspective": "See game description and controller source",
+      "perspective": "Third-Person",
       "visual_style": "See asset overview",
       "simulation": "See named mechanics for analytic, discrete or physics-engine boundaries",
       "player_mode": "Local / single-player or collection",
       "platforms": "Windows",
       "audience": "Not formally classified",
       "input": "See project README; hardware acceptance separate",
-      "session_length": "Not measured"
+      "session_length": "Not measured",
+      "sub_genre": "point-and-click",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Low-Poly"
     }
   },
   {
@@ -7141,7 +7253,7 @@
     "description": "A Pokemon encyclopedia with browser battle modes and team-building data.",
     "logic": "Client-side battle state selects moves and computes turns/damage; catalog supplies species/types/moves. Team battle and local alternating PVP are distinct from remote authoritative multiplayer.",
     "reuse": "ui/static/app.js: battle and catalog UI; schema/integrated_database.md: database; source manifests under docs/resources.",
-    "assets": "Species images/models/data carry third-party provenance. Treat as restricted reference material until exact rights permit reuse; do not treat franchise characters as project-original art.",
+    "assets": "Species images/models/data carry third-party provenance. Treat as restricted reference material until exact rights permit reuse; do not treat franchise characters as project-original art. Adaptive music generated & analyzed via Suno MCP (ColoBrary battle modes - main theme, Recommended Take 2: clip be624cc3-f621-4ca3-be53-b4e3e824ebd5, detected 140 BPM, E minor, 90 bars, 32-bar loop window 31.469s\u201386.326s): target stems Arpeggiator, Drums, Synth Bass, Synth Lead.",
     "limitations": "Catalog totals do not prove move/ability parity. Assistant or remote battle API is not established by local UI. No commercial reuse clearance is inferred.",
     "capabilities": [
       {
@@ -7250,23 +7362,27 @@
         "provider": "ArcoreSonicAlchemist",
         "path": "X:/Projects/ArcoreSonicAlchemist",
         "asset_id": "",
-        "version": "",
-        "description": "No cleared original soundtrack is identified; do not assume franchise media is commercially reusable."
+        "version": "suno-v6-analyzed",
+        "description": "Adaptive music generated & analyzed via Suno MCP (ColoBrary battle modes - main theme, Recommended Take 2: clip be624cc3-f621-4ca3-be53-b4e3e824ebd5, detected 140 BPM, E minor, 90 bars, 32-bar loop window 31.469s\u201386.326s): target stems Arpeggiator, Drums, Synth Bass, Synth Lead."
       }
     ],
     "asset_file_count": 29836,
     "source_file_count": 35,
     "variants": [],
     "classification": {
-      "genre": "turn-based",
-      "perspective": "See game description and controller source",
+      "genre": "tbs",
+      "perspective": "Side-Scroller",
       "visual_style": "See asset overview",
       "simulation": "See named mechanics for analytic, discrete or physics-engine boundaries",
       "player_mode": "Local / single-player or collection",
       "platforms": "Browser",
       "audience": "Not formally classified",
       "input": "See project README; hardware acceptance separate",
-      "session_length": "Not measured"
+      "session_length": "Not measured",
+      "sub_genre": "tactical-rpg",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Pixel Art"
     }
   },
   {
@@ -7279,7 +7395,7 @@
     "description": "A cozy 2D sea-creature platformer with chapter-specific traversal and bosses.",
     "logic": "Phaser scenes organize islands/dungeons and boss encounters; Plumpy/Enemy entities own local behavior; crew assists, dialogue, save/settings and content validation are separate systems. Godot C# port is incomplete and must be assessed independently.",
     "reuse": "src/entities/Plumpy.ts; src/systems/CrewAssistSystem.ts,SaveSystem.ts,LevelValidation.ts; src/scenes; godot and porting manifests for port status.",
-    "assets": "2D generated/art definitions and parallax backgrounds; no 3D rig inference from character names.",
+    "assets": "2D generated/art definitions and parallax backgrounds; no 3D rig inference from character names. Adaptive music generated & analyzed via Suno MCP (Plumpy Adventures - main theme, Recommended Take 1: clip f20a0e9e-4b8e-4648-826d-309a1898f820, detected 186 BPM, G major, 95 bars, 32-bar loop window 24.84s\u201366.123s): target stems Acoustic Guitar, Drums, Marimba, Upright Bass.",
     "limitations": "README calls web build shipping; not independently revalidated here. Godot .NET build does not imply web compatibility or working Android touch controls.",
     "capabilities": [
       {
@@ -7391,8 +7507,8 @@
         "provider": "ArcoreSonicAlchemist",
         "path": "X:/Projects/ArcoreSonicAlchemist",
         "asset_id": "",
-        "version": "",
-        "description": "No exact production project has been linked; inspect chapter music and credits before extraction."
+        "version": "suno-v6-analyzed",
+        "description": "Adaptive music generated & analyzed via Suno MCP (Plumpy Adventures - main theme, Recommended Take 1: clip f20a0e9e-4b8e-4648-826d-309a1898f820, detected 186 BPM, G major, 95 bars, 32-bar loop window 24.84s\u201366.123s): target stems Acoustic Guitar, Drums, Marimba, Upright Bass."
       }
     ],
     "asset_file_count": 66,
@@ -7404,15 +7520,19 @@
       }
     ],
     "classification": {
-      "genre": "platforming",
-      "perspective": "See game description and controller source",
+      "genre": "platformer",
+      "perspective": "Side-Scroller",
       "visual_style": "See asset overview",
       "simulation": "See named mechanics for analytic, discrete or physics-engine boundaries",
       "player_mode": "Local / single-player or collection",
       "platforms": "Browser",
       "audience": "Not formally classified",
       "input": "See project README; hardware acceptance separate",
-      "session_length": "Not measured"
+      "session_length": "Not measured",
+      "sub_genre": "precision-2d",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Pixel Art"
     }
   },
   {
@@ -7425,7 +7545,7 @@
     "description": "The Phaser artillery game underlying the later native 3D adaptation.",
     "logic": "TurnManager alternates players, starts countdowns and stops timers during transitions. AimController, WindManager, Projectile, Tower and AIPlayer divide aiming/environment/combat/AI responsibilities.",
     "reuse": "src/managers/TurnManager.js and WindManager.js; src/controllers/AimController.js; src/objects/Projectile.js; constants.js.",
-    "assets": "Browser 2D tower/projectile visuals and sketches. Native 3D version is a related implementation, not this engine runtime.",
+    "assets": "Browser 2D tower/projectile visuals and sketches. Native 3D version is a related implementation, not this engine runtime. Adaptive music generated & analyzed via Suno MCP (Tower Assault Web - main theme, Recommended Take 2: clip c20f055b-ce86-418b-804a-ee71e09dc11c, detected 141.7 BPM, E minor, 83 bars, 32-bar loop window 27.455s\u201381.88s): target stems Arpeggiator, Drums, Synth Bass, Synth Lead.",
     "limitations": "A second copy exists under ArcoreClaw/projects/TowerAssault; compare hashes before choosing donor. Plans/checklists are not current playtest evidence.",
     "capabilities": [
       {
@@ -7524,8 +7644,8 @@
         "provider": "ArcoreSonicAlchemist",
         "path": "X:/Projects/ArcoreSonicAlchemist",
         "asset_id": "",
-        "version": "",
-        "description": "No linked SonicAlchemist composition or score version."
+        "version": "suno-v6-analyzed",
+        "description": "Adaptive music generated & analyzed via Suno MCP (Tower Assault Web - main theme, Recommended Take 2: clip c20f055b-ce86-418b-804a-ee71e09dc11c, detected 141.7 BPM, E minor, 83 bars, 32-bar loop window 27.455s\u201381.88s): target stems Arpeggiator, Drums, Synth Bass, Synth Lead."
       }
     ],
     "asset_file_count": 4,
@@ -7537,15 +7657,19 @@
       }
     ],
     "classification": {
-      "genre": "artillery",
-      "perspective": "See game description and controller source",
+      "genre": "rts",
+      "perspective": "Side-Scroller",
       "visual_style": "See asset overview",
       "simulation": "See named mechanics for analytic, discrete or physics-engine boundaries",
       "player_mode": "Local / single-player or collection",
       "platforms": "Browser",
       "audience": "Not formally classified",
       "input": "See project README; hardware acceptance separate",
-      "session_length": "Not measured"
+      "session_length": "Not measured",
+      "sub_genre": "survival-td",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Pixel Art"
     }
   },
   {
@@ -7558,7 +7682,7 @@
     "description": "A browser candy-world learning adventure with story scenes, math challenges and Amber's Arcade.",
     "logic": "Phaser scene flow connects exploration, quizzes, brewing, story choices and team puzzles. A Next.js/Prisma service tracks progression and arcade sessions. Twenty-one registered arcade games provide focused mechanics and shared rewards.",
     "reuse": "src/game/scenes and content: gameplay; src/lib/math/evaluator.ts: grading; src/lib/arcade/ArcadeService.ts and app/api/arcade: session/rewards; TouchControls.ts.",
-    "assets": "HD/retro texture registration, paper/parallax effects, synthesized SFX and beatmap/music assets. Each scene depends on shared boot registration and API contracts.",
+    "assets": "HD/retro texture registration, paper/parallax effects, synthesized SFX and beatmap/music assets. Each scene depends on shared boot registration and API contracts. Existing score utilized: Already has 4 theme/stage MP3 tracks in public/assets/mp3.",
     "limitations": "Registered scene is not a fresh playtest. Extract mini-games with textures, audio, settings, reward API and result scene dependencies; do not copy one TS file alone.",
     "capabilities": [
       {
@@ -7748,7 +7872,7 @@
       {
         "name": "Mega Bubble Bounce",
         "id": "mega_bubble_bounce",
-        "description": "Bounce higher on a giant bubble — don't fall!",
+        "description": "Bounce higher on a giant bubble \u00e2\u20ac\u201d don't fall!",
         "source": "src/game/scenes/arcade/ArcadeMegaBubbleBounceScene.ts",
         "source_present": true,
         "sha256": "8cf50915bc43b4e9aa02d510199298059ed27135a9e4621a8702bea39b363bcf",
@@ -7915,23 +8039,27 @@
         "provider": "ArcoreSonicAlchemist",
         "path": "X:/Projects/ArcoreSonicAlchemist",
         "asset_id": "",
-        "version": "",
-        "description": "Gummy Bear Boogie has a music key and beatmap, with offset calibration. Exact composition rights and Sonic project linkage remain unreviewed."
+        "version": "existing-score",
+        "description": "Existing score utilized: Already has 4 theme/stage MP3 tracks in public/assets/mp3."
       }
     ],
     "asset_file_count": 40,
     "source_file_count": 126,
     "variants": [],
     "classification": {
-      "genre": "adventure",
-      "perspective": "See game description and controller source",
+      "genre": "rpg",
+      "perspective": "Side-Scroller",
       "visual_style": "See asset overview",
       "simulation": "See named mechanics for analytic, discrete or physics-engine boundaries",
       "player_mode": "Local / single-player or collection",
       "platforms": "Browser",
       "audience": "Not formally classified",
       "input": "See project README; hardware acceptance separate",
-      "session_length": "Not measured"
+      "session_length": "Not measured",
+      "sub_genre": "jrpg",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Pixel Art"
     }
   },
   {
@@ -7944,7 +8072,7 @@
     "description": "An interactive math-learning app with graded practice, mastery and rewards.",
     "logic": "Server provides deterministic problem content and pure graders; attempts update mastery and a wallet ledger/claims. React/Pixi frontend displays tasks; Fastify plus Postgres/Redis owns service/persistence.",
     "reuse": "apps/backend/src/domain/graders.ts and types.ts; content packs; apps/frontend for manipulatives and feedback.",
-    "assets": "2D learning UI and configurable audio. Educational system donor rather than 3D asset library.",
+    "assets": "2D learning UI and configurable audio. Educational system donor rather than 3D asset library. Existing score utilized: Already has 87 module background audio tracks.",
     "limitations": "Trusted classroom/LAN assumptions in student routes; production identity and broader instructional validation need separate work.",
     "capabilities": [
       {
@@ -8070,23 +8198,27 @@
         "provider": "ArcoreSonicAlchemist",
         "path": "X:/Projects/ArcoreSonicAlchemist",
         "asset_id": "",
-        "version": "",
-        "description": "No standalone score/production project has been linked."
+        "version": "existing-score",
+        "description": "Existing score utilized: Already has 87 module background audio tracks."
       }
     ],
     "asset_file_count": 89,
     "source_file_count": 164,
     "variants": [],
     "classification": {
-      "genre": "education",
-      "perspective": "See game description and controller source",
+      "genre": "puzzle",
+      "perspective": "Side-Scroller",
       "visual_style": "See asset overview",
       "simulation": "See named mechanics for analytic, discrete or physics-engine boundaries",
       "player_mode": "Local / single-player or collection",
       "platforms": "Browser",
       "audience": "Not formally classified",
       "input": "See project README; hardware acceptance separate",
-      "session_length": "Not measured"
+      "session_length": "Not measured",
+      "sub_genre": "match3-rhythm",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Pixel Art"
     }
   },
   {
@@ -8099,7 +8231,7 @@
     "description": "A separate third-person VR beach vignette for PC OpenXR and Quest, with monitor preview.",
     "logic": "Guide Poofy, collect shell, talk to Plumpy, open journal and change viewpoint. Journal pauses character control; station changes fade and translate observer without rotating tracked head. Separate save from main adventure.",
     "reuse": "beach.gd: controller/quest/UI/station transitions; openxr_action_map.tres: Touch bindings; tests: scene smoke.",
-    "assets": "Reused pinned Poofy/Plumpy and lightweight water shader. Mobile renderer and 72Hz physics target.",
+    "assets": "Reused pinned Poofy/Plumpy and lightweight water shader. Mobile renderer and 72Hz physics target. Existing score utilized: Vignette in the ShammyVerse universe; reuses ShammyVerse island music.",
     "limitations": "Monitor/headless tests do not validate headset comfort, stereo, tracking or sustained Quest frame time. No grabbing, hand tracking or full adventure VR.",
     "capabilities": [
       {
@@ -8240,23 +8372,27 @@
         "provider": "ArcoreSonicAlchemist",
         "path": "X:/Projects/ArcoreSonicAlchemist",
         "asset_id": "",
-        "version": "",
-        "description": "No dedicated VR score is linked; do not infer parity with main adventure audio."
+        "version": "existing-score",
+        "description": "Existing score utilized: Vignette in the ShammyVerse universe; reuses ShammyVerse island music."
       }
     ],
     "asset_file_count": 9,
     "source_file_count": 4,
     "variants": [],
     "classification": {
-      "genre": "vr",
-      "perspective": "See game description and controller source",
+      "genre": "adventure",
+      "perspective": "Third-Person",
       "visual_style": "See asset overview",
       "simulation": "See named mechanics for analytic, discrete or physics-engine boundaries",
       "player_mode": "Local / single-player or collection",
       "platforms": "Windows PC OpenXR / Quest ARM64 / monitor preview",
       "audience": "Not formally classified",
       "input": "See project README; hardware acceptance separate",
-      "session_length": "Not measured"
+      "session_length": "Not measured",
+      "sub_genre": "walking-sim",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Low-Poly"
     }
   },
   {
@@ -8269,7 +8405,7 @@
     "description": "Curriculum-organized interactive activities and game-like learning hubs from early grades through precalculus.",
     "logic": "React workspaces separate manipulatives, curriculum activities, rendering and arcade engines. Course folders contain both implemented hubs and planning-only lesson entries; individual folders are not all finished games.",
     "reuse": "shared/src/components: number bonds, ten frames, rekenrek, place value and dice; course hub src/engines.jsx and arcade.jsx; engage-math-app/src.",
-    "assets": "Reusable 2D manipulatives and learning interaction patterns; curriculum/source rights require checking per content pack.",
+    "assets": "Reusable 2D manipulatives and learning interaction patterns; curriculum/source rights require checking per content pack. Adaptive music generated & analyzed via Suno MCP (Engage Math activity collection - main theme, Recommended Take 1: clip 32ba6b91-01e2-4c3d-a8c1-3291e386331f, detected 188.3 BPM, G major, 108 bars, 32-bar loop window 27.067s\u201367.821s): target stems Acoustic Guitar, Drums, Marimba, Upright Bass.",
     "limitations": "Collection includes worksheets, proposals and classroom tools. Treat as adjacent educational portfolio and inspect activity implementation before claiming completion.",
     "capabilities": [
       {
@@ -8363,23 +8499,27 @@
         "provider": "ArcoreSonicAlchemist",
         "path": "X:/Projects/ArcoreSonicAlchemist",
         "asset_id": "",
-        "version": "",
-        "description": "No exact music production project is linked."
+        "version": "suno-v6-analyzed",
+        "description": "Adaptive music generated & analyzed via Suno MCP (Engage Math activity collection - main theme, Recommended Take 1: clip 32ba6b91-01e2-4c3d-a8c1-3291e386331f, detected 188.3 BPM, G major, 108 bars, 32-bar loop window 27.067s\u201367.821s): target stems Acoustic Guitar, Drums, Marimba, Upright Bass."
       }
     ],
     "asset_file_count": 1,
     "source_file_count": 143,
     "variants": [],
     "classification": {
-      "genre": "education",
-      "perspective": "See game description and controller source",
+      "genre": "puzzle",
+      "perspective": "Side-Scroller",
       "visual_style": "See asset overview",
       "simulation": "See named mechanics for analytic, discrete or physics-engine boundaries",
       "player_mode": "Local / single-player or collection",
       "platforms": "Browser",
       "audience": "Not formally classified",
       "input": "See project README; hardware acceptance separate",
-      "session_length": "Not measured"
+      "session_length": "Not measured",
+      "sub_genre": "match3-rhythm",
+      "networking": "Single-Player",
+      "scale_density": "Modular Levels",
+      "art_pipeline": "Pixel Art"
     }
   }
 ]

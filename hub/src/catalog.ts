@@ -12,6 +12,6 @@ export function mediaReadiness(items:Media[]){
  const trailers=selected.filter(m=>m.kind==='trailer');
  return {total:active.length,screenshots:screenshots.length,videos:videos.length,trailers:trailers.length,
   needsScreenshot:!screenshots.length,needsGameplay:!videos.some(m=>['gameplay','environment-showcase'].includes(m.content_role||'')),needsTrailer:!trailers.length,
-  needsClearance:active.some(m=>m.status!=='approved'),cover:screenshots.sort((a,b)=>a.sort_order-b.sort_order)[0],
+  needsClearance:active.some(m=>m.status!=='approved'),cover:active.find(m=>m.kind==='screenshot'&&m.is_thumbnail)||screenshots.sort((a,b)=>a.sort_order-b.sort_order)[0],
   referenceOnly:active.some(m=>m.kind==='screenshot')&&!screenshots.length};
 }

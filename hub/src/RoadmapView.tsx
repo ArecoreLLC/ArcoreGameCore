@@ -8,7 +8,10 @@ import {roadmapReviewExport} from './roadmapExport';
 
 import {ArrowLeft,ArrowUpRight,FolderOpen,Save,Search} from 'lucide-react';
 
-import type {Game,Library,FileRecord} from './types';
+import type {Game,Library,FileRecord,MusicDesignRecord} from './types';
+
+import {ARCHETYPES,PARENT_ARCHETYPE_IDS,SUB_ARCHETYPE_IDS,archetypeLabel,parentArchetypeFor,subArchetypeFor,matchesArchetypeFilter,applyArchetypeToRecord,pipelineStage} from './music';
+import {MAIN_GENRES,ORTHOGONAL_FACETS,subGenresFor,mainGenreById,subGenreById,mainGenreLabel,subGenreLabel,matchesGenreFilter} from './genreTaxonomy';
 
 import {accepted,progress,unmet,previewRoadmap,type RoadmapGame,type TargetProgress} from './roadmap';
 
@@ -20,13 +23,13 @@ const states=['planned','in_progress','blocked','implemented','verified','reused
 
 function Field({label,value,onChange,multi=false}:{label:string;value:string;onChange:(s:string)=>void;multi?:boolean}){return <label className="field"><span>{label}</span>{multi?<textarea value={value} rows={3} onChange={e=>onChange(e.target.value)}/>:<input value={value} onChange={e=>onChange(e.target.value)}/>}</label>}
 
-export default function Roadmap({lib,onDirty,onBusy,openGame}:{lib:Library;onDirty:(v:boolean)=>void;onBusy:(v:boolean)=>void;openGame:(g:Game)=>void}){
+export default function Roadmap({lib,musicRecords=[],onSaveMusicRecord,onDirty,onBusy,openGame}:{lib:Library;musicRecords?:MusicDesignRecord[];onSaveMusicRecord?:(rec:MusicDesignRecord)=>Promise<void>;onDirty:(v:boolean)=>void;onBusy:(v:boolean)=>void;openGame:(g:Game)=>void}){
 
  const [rows,setRows]=useState<RoadmapGame[]>([]),[draft,setDraft]=useState<RoadmapGame|null>(null),[dirty,setDirty]=useState(false),[busy,setBusy]=useState(false),[error,setError]=useState(''),[notice,setNotice]=useState('');
 
  const [exportText,setExportText]=useState(''),[exportMessage,setExportMessage]=useState('');
 
- const [query,setQuery]=useState(''),[wave,setWave]=useState(''),[filter,setFilter]=useState(''),[target,setTarget]=useState('');
+ const [query,setQuery]=useState(''),[wave,setWave]=useState(''),[filter,setFilter]=useState(''),[genreFilter,setGenreFilter]=useState(''),[subGenreFilter,setSubGenreFilter]=useState(''),[archFilter,setArchFilter]=useState(''),[subArchFilter,setSubArchFilter]=useState(''),[target,setTarget]=useState('');
 
  const [donor,setDonor]=useState(''),[kind,setKind]=useState('source'),[fileQuery,setFileQuery]=useState(''),[files,setFiles]=useState<FileRecord[]>([]);
 
@@ -64,7 +67,11 @@ export default function Roadmap({lib,onDirty,onBusy,openGame}:{lib:Library;onDir
 
  const sorted=[...rows].sort((a,b)=>a.priority-b.priority||a.title.localeCompare(b.title));
 
- const visible=sorted.filter(g=>(!wave||g.wave===Number(wave))&&(!filter||(filter==='ready'?unmet(g,rows).length===0:filter==='waiting'?unmet(g,rows).length>0:filter==='blocked'?g.status==='blocked'||progress(g).blocked>0:g.status===filter))&&[g.title,g.pitch,g.owner,...g.capability_ids.map(label)].join(' ').toLowerCase().includes(query.toLowerCase()));
+ const musicFor=(id:string)=>musicRecords.find(r=>r.game_id===id);
+
+ const effArchFor=(id:string)=>{const m=musicFor(id);return m?.archetype||m?.recommended_archetype||''};
+
+ const visible=sorted.filter(g=>(!wave||g.wave===Number(wave))&&matchesGenreFilter(g.genre,g.sub_genre,genreFilter,subGenreFilter)&&matchesArchetypeFilter(effArchFor(g.id),archFilter,subArchFilter)&&(!filter||(filter==='ready'?unmet(g,rows).length===0:filter==='waiting'?unmet(g,rows).length>0:filter==='blocked'?g.status==='blocked'||progress(g).blocked>0:g.status===filter))&&[g.title,g.pitch,g.owner,g.genre||'',g.sub_genre||'',effArchFor(g.id),...g.capability_ids.map(label)].join(' ').toLowerCase().includes(query.toLowerCase()));
 
  const unique=new Set(rows.flatMap(g=>g.capability_ids)),acceptedUnique=new Set(rows.flatMap(g=>g.capability_ids.filter(id=>accepted(g.target_progress[id]))));
 
@@ -82,7 +89,48 @@ export default function Roadmap({lib,onDirty,onBusy,openGame}:{lib:Library;onDir
 
    <div className="roadmap-summary"><span>{progress(draft).accepted}/{progress(draft).total} accepted targets</span><span>{progress(draft).first}/{draft.first_slice_capabilities.length} first-slice targets</span><span>{unmet(draft,rows).length} first-slice gates · {unmet(draft,rows,'later').length} later gates</span><span>{draft.technical_risk} technical risk</span></div>
 
-   <section className="panel"><h2>Creative direction</h2><p>{draft.creative_direction}</p><h3>Visual identity</h3><p>{draft.visual_direction}</p><small>{draft.creative_scope}</small><details><summary>Review changes{draft.previous_title?' · formerly '+draft.previous_title:''}</summary>{draft.review_changes?.map((s,i)=><p key={i}>{s}</p>)}{!!Object.keys(draft.archived_target_progress||{}).length&&<p>Retired target evidence is retained in the JSON export and SQLite history.</p>}</details></section>
+   <section className="panel"><h2>Creative direction</h2><p>{draft.creative_direction}</p><h3>Visual identity</h3><p>{draft.visual_direction}</p><small>{draft.creative_scope}</small>
+    {(()=>{const mr=musicFor(draft.id);const eff=effArchFor(draft.id);const pArch=parentArchetypeFor(eff);const sArch=subArchetypeFor(eff);const curMain=mainGenreById(draft.genre);const curSub=subGenreById(draft.sub_genre);const updateMusicArch=(nextArch:string)=>{if(!mr||!onSaveMusicRecord||!nextArch)return;void onSaveMusicRecord(applyArchetypeToRecord(mr,nextArch,mr.setting||'',mr.status==='approved'))};return (<>
+     <div className="form-row" style={{marginTop:12}}>
+      <label className="field"><span>Main genre</span>
+       <select aria-label="Roadmap game genre" disabled={!native||busy} value={draft.genre||''} onChange={e=>{const nextMain=e.target.value;const firstSub=subGenresFor(nextMain)[0]?.id||'';change({genre:nextMain,sub_genre:firstSub})}}>
+        <option value="">Unclassified</option>
+        {MAIN_GENRES.map(gn=><option key={gn.id} value={gn.id}>{gn.label}</option>)}
+       </select>
+      </label>
+      <label className="field"><span>Sub-genre</span>
+       <select aria-label="Roadmap game sub-genre" disabled={!native||busy} value={draft.sub_genre||''} onChange={e=>change({sub_genre:e.target.value})}>
+        <option value="">Unclassified</option>
+        {subGenresFor(draft.genre).map(sg=><option key={sg.id} value={sg.id}>{sg.label}</option>)}
+       </select>
+      </label>
+      <label className="field"><span>Music archetype</span>
+       <select aria-label="Roadmap game archetype" disabled={!native||busy||!mr} value={pArch} onChange={e=>updateMusicArch(e.target.value)}>
+        <option value="">Unassigned</option>
+        {PARENT_ARCHETYPE_IDS.map(id=><option key={id} value={id}>{archetypeLabel(id)}</option>)}
+       </select>
+      </label>
+      <label className="field"><span>Music sub-archetype</span>
+       <select aria-label="Roadmap game sub-archetype" disabled={!native||busy||!mr} value={sArch} onChange={e=>updateMusicArch(e.target.value||pArch)}>
+        <option value="">Base archetype only</option>
+        {SUB_ARCHETYPE_IDS.filter(id=>!pArch||(ARCHETYPES[id] as {parent_archetype?:string}).parent_archetype===pArch).map(id=><option key={id} value={id}>{archetypeLabel(id)}</option>)}
+       </select>
+      </label>
+     </div>
+     <div className="form-row" style={{marginTop:8}}>
+      {([['perspective',ORTHOGONAL_FACETS.perspective],['networking',ORTHOGONAL_FACETS.networking],['scale_density',ORTHOGONAL_FACETS.scale_density],['art_pipeline',ORTHOGONAL_FACETS.art_pipeline]] as [keyof RoadmapGame,string[]][]).map(([fk,opts])=>(
+       <label className="field" key={fk}><span>{fk.replaceAll('_',' ')}</span>
+        <select aria-label={`Roadmap ${fk}`} disabled={!native||busy} value={(draft[fk] as string)||''} onChange={e=>change({[fk]:e.target.value})}>
+         <option value="">Unclassified</option>
+         {opts.map(o=><option key={o} value={o}>{o}</option>)}
+        </select>
+       </label>
+      ))}
+     </div>
+     {curSub&&<p className="muted small" style={{marginTop:6}}><strong>{curSub.label}:</strong> {curSub.how_it_plays} <em>({curSub.examples})</em> · {curSub.engine_note}</p>}
+     {curMain&&<p className="muted small"><strong>Subsystems:</strong> Godot: {curMain.subsystems.godot} · Unreal: {curMain.subsystems.unreal}</p>}
+    </>)})()}
+    <details><summary>Review changes{draft.previous_title?' · formerly '+draft.previous_title:''}</summary>{draft.review_changes?.map((s,i)=><p key={i}>{s}</p>)}{!!Object.keys(draft.archived_target_progress||{}).length&&<p>Retired target evidence is retained in the JSON export and SQLite history.</p>}</details></section>
 
    <div className="two-col"><section className="panel"><h2>Plan and ownership</h2><fieldset disabled={!native||busy}><div className="form-row"><label className="field"><span>Priority</span><input type="number" min="1" max="999" value={draft.priority} onChange={e=>change({priority:Number(e.target.value)})}/></label><label className="field"><span>Game status</span><select value={draft.status} onChange={e=>change({status:e.target.value})}>{['planned','active','blocked','paused','completed'].map(s=><option key={s}>{s}</option>)}</select></label></div><Field label="Owner" value={draft.owner} onChange={v=>change({owner:v})}/><Field label="Game notes / blockers" value={draft.notes} onChange={v=>change({notes:v})} multi/></fieldset><p>{draft.priority_reason}</p><small>{draft.preferred_runtime}</small><h3>Reusable outputs</h3><ul>{draft.reusable_outputs.map(s=><li key={s}>{s}</li>)}</ul></section>
 
@@ -96,15 +144,15 @@ export default function Roadmap({lib,onDirty,onBusy,openGame}:{lib:Library;onDir
 
   </>:<>
 
-   <div className="page-heading"><div><div className="eyebrow">FROM SMALL GAMES TO SHARED FOUNDATIONS</div><h1>Game roadmap</h1><p>{rows.length} game tracks · Priorities, prerequisite milestones and evidence-backed progress.</p></div><div className="inline"><button disabled={busy||!rows.length} onClick={reviewJson}>Export JSON</button><button disabled={busy} onClick={load}>Refresh roadmap</button></div></div>
+   <div className="page-heading compact"><div><h1>Game roadmap</h1><p>{rows.length} game tracks · Priorities, prerequisite milestones and evidence-backed progress.</p></div><div className="inline"><button disabled={busy||!rows.length} onClick={reviewJson}>Export JSON</button><button disabled={busy} onClick={load}>Refresh roadmap</button></div></div>
 
    <div className="stats"><div><strong>{rows.length}</strong><span>Planned game tracks</span></div><div><strong>{unique.size}</strong><span>Unique capability targets</span></div><div><strong>{acceptedUnique.size}</strong><span>With accepted roadmap evidence</span></div><div><strong>{rows.reduce((n,g)=>n+progress(g).accepted,0)}/{rows.reduce((n,g)=>n+g.capability_ids.length,0)}</strong><span>Accepted game–capability targets</span></div></div>
 
-   <section className="panel"><p>All 143 original gaps plus 3 failure-case capabilities have at least two planned consumers across 50 games. Assignments do not imply implementation. Readiness uses first-slice gates; later dependencies are tracked separately.</p><details><summary>Incorporated review</summary>{seed.feedback_review.accepted.map(s=><p key={s}>{s}</p>)}<h3>Corrections to reviewer claims</h3>{seed.feedback_review.corrected.map(s=><p key={s}>{s}</p>)}</details><details><summary>Audit existing candidates before building</summary>{seed.audit_first.map(a=><p key={a.project_id}><strong>{lib.projects.find(g=>g.id===a.project_id)?.name}</strong> · {a.capabilities.join(', ')}</p>)}</details></section>
+   <details className="about"><summary>About this roadmap and incorporated reviews</summary><p>All 143 original gaps plus 3 failure-case capabilities have at least two planned consumers across 50 games. Assignments do not imply implementation. Readiness uses first-slice gates; later dependencies are tracked separately.</p><details><summary>Incorporated review</summary>{seed.feedback_review.accepted.map(s=><p key={s}>{s}</p>)}<h3>Corrections to reviewer claims</h3>{seed.feedback_review.corrected.map(s=><p key={s}>{s}</p>)}</details><details><summary>Audit existing candidates before building</summary>{seed.audit_first.map(a=><p key={a.project_id}><strong>{lib.projects.find(g=>g.id===a.project_id)?.name}</strong> · {a.capabilities.join(', ')}</p>)}</details></details>
 
-   <div className="filterbar"><div className="search"><Search size={18}/><input aria-label="Search roadmap" value={query} onChange={e=>setQuery(e.target.value)} placeholder="Game, capability or owner…"/></div><select aria-label="Roadmap wave" value={wave} onChange={e=>setWave(e.target.value)}><option value="">All waves</option>{seed.waves.map(w=><option key={w.wave} value={w.wave}>{w.wave}. {w.title}</option>)}</select><select aria-label="Roadmap status" value={filter} onChange={e=>setFilter(e.target.value)}><option value="">All states</option><option value="ready">Prerequisites met</option><option value="waiting">Waiting on prerequisites</option>{['planned','active','blocked','paused','completed'].map(s=><option key={s}>{s}</option>)}</select></div><p className="muted">{visible.length} game tracks · Lower priority number comes first.</p>
+   <div className="filterbar"><div className="search"><Search size={18}/><input aria-label="Search roadmap" value={query} onChange={e=>setQuery(e.target.value)} placeholder="Game, capability or owner…"/></div><select aria-label="Roadmap wave" value={wave} onChange={e=>setWave(e.target.value)}><option value="">All waves</option>{seed.waves.map(w=><option key={w.wave} value={w.wave}>{w.wave}. {w.title}</option>)}</select><select aria-label="Roadmap genre" value={genreFilter} onChange={e=>{setGenreFilter(e.target.value);setSubGenreFilter('')}}><option value="">All genres</option>{MAIN_GENRES.map(gn=><option key={gn.id} value={gn.id}>{gn.label}</option>)}</select><select aria-label="Roadmap sub-genre" value={subGenreFilter} onChange={e=>setSubGenreFilter(e.target.value)}><option value="">All sub-genres</option>{subGenresFor(genreFilter).map(sg=><option key={sg.id} value={sg.id}>{sg.label}</option>)}</select><select aria-label="Roadmap archetype" value={archFilter} onChange={e=>{setArchFilter(e.target.value);setSubArchFilter('')}}><option value="">All archetypes</option>{PARENT_ARCHETYPE_IDS.map(id=><option key={id} value={id}>{archetypeLabel(id)}</option>)}</select><select aria-label="Roadmap sub-archetype" value={subArchFilter} onChange={e=>setSubArchFilter(e.target.value)}><option value="">All sub-archetypes</option>{SUB_ARCHETYPE_IDS.filter(id=>!archFilter||(ARCHETYPES[id] as {parent_archetype?:string}).parent_archetype===archFilter).map(id=><option key={id} value={id}>{archetypeLabel(id)}</option>)}</select><select aria-label="Roadmap status" value={filter} onChange={e=>setFilter(e.target.value)}><option value="">All states</option><option value="ready">Prerequisites met</option><option value="waiting">Waiting on prerequisites</option>{['planned','active','blocked','paused','completed'].map(s=><option key={s}>{s}</option>)}</select></div><p className="muted">{visible.length} game tracks · Lower priority number comes first.</p>
 
-   <div className="roadmap-grid">{visible.map(g=>{const p=progress(g),pending=unmet(g,rows).length;return <button className="roadmap-card panel" key={g.id} onClick={()=>select(g)}><div className="inline"><span className="priority-number">{String(g.priority).padStart(2,'0')}</span><span className="pill">Wave {g.wave} · {g.status}</span></div><h2>{g.title}</h2><p>{g.pitch}</p><progress max={p.total} value={p.accepted} aria-label={g.title+' accepted targets'}/><div className="roadmap-card-footer"><span>{p.accepted}/{p.total} accepted · {p.implemented} implemented</span><span>{pending?`${pending} prerequisites pending`:'Prerequisites met'}</span></div><small>{g.owner||'Unassigned'} · {g.technical_risk} risk</small></button>})}</div>{!visible.length&&<p>No roadmap games match these filters.</p>}
+   <div className="roadmap-grid">{visible.map(g=>{const p=progress(g),pending=unmet(g,rows).length,mr=musicFor(g.id),eff=effArchFor(g.id),pArch=parentArchetypeFor(eff),sArch=subArchetypeFor(eff);return <button className="roadmap-card panel" key={g.id} onClick={()=>select(g)}><div className="inline"><span className="priority-number">{String(g.priority).padStart(2,'0')}</span><span className="pill">Wave {g.wave} · {g.status}</span>{g.sub_genre?<span className="pill">{subGenreLabel(g.sub_genre)}</span>:g.genre&&<span className="pill">{mainGenreLabel(g.genre)}</span>}</div><h2>{g.title}</h2><p>{g.pitch}</p><progress max={p.total} value={p.accepted} aria-label={g.title+' accepted targets'}/><div className="roadmap-card-footer"><span>{p.accepted}/{p.total} accepted · {p.implemented} implemented</span><span>{pending?`${pending} prerequisites pending`:'Prerequisites met'}</span></div><small>{eff?`${pArch}${sArch?' / '+sArch:''} · ${mr?pipelineStage(mr).replaceAll('_',' '):''}`:(g.owner||'Unassigned')} · {g.technical_risk} risk</small></button>})}</div>{!visible.length&&<p>No roadmap games match these filters.</p>}
 
    <section className="panel"><h2>Larger-game combinations</h2><div className="donor-cards">{seed.larger_game_combinations.map(g=><article key={g.id}><h3>{g.name}</h3><p>{g.core}</p><p>{g.creative_direction}</p><p className="muted">{g.visual_direction}</p><div className="tag-list">{g.combine.map(id=><button key={id} onClick={()=>{const game=rows.find(g=>g.id===id);if(game)select(game)}}>{rows.find(g=>g.id===id)?.title}</button>)}</div><p className="muted">{g.first_combined_slice}</p></article>)}</div></section>
 

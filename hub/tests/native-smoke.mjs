@@ -16,7 +16,7 @@ async function start(){
  }
  if(!browser)throw new Error('Native WebView did not expose the test debug port');
  const page=browser.contexts()[0].pages()[0];
- await page.getByRole('heading',{name:'Small worlds. Big potential.'}).waitFor({timeout:45000});
+ await page.getByRole('heading',{name:'Game library',exact:true}).waitFor({timeout:45000});
  return page;
 }
 function stop(){if(app?.pid)spawn('taskkill',['/PID',String(app.pid),'/T','/F'],{windowsHide:true,stdio:'ignore'});}
@@ -36,7 +36,7 @@ try{
  await page.getByRole('heading',{name:'Raft mass and buoyancy',exact:true}).waitFor();
  await page.screenshot({path:path.join(output,'mechanics.png'),fullPage:false});
  await page.getByRole('button',{name:'Edit project',exact:true}).click();
- await page.getByRole('tab',{name:'Marketing',exact:true}).click();
+ await page.getByRole('tab',{name:'Media & marketing'}).click();
  await page.getByLabel('tagline',{exact:true}).fill('QA isolated press kit');
  await page.getByLabel('pitch',{exact:true}).fill('A tiny raft, a big storm.');
  await page.getByRole('button',{name:'Save changes',exact:true}).click();
@@ -48,7 +48,7 @@ try{
  const game=lib.projects.find(g=>g.name==='Flotsam Citadel');
  const item=await invoke('import_media',{projectId:game.id,path:path.join(root,'src-tauri','icons','icon.png'),kind:'screenshot'});
  assert.equal(item.status,'draft');
- await page.getByRole('button',{name:'Back to library'}).click();
+ await page.getByRole('button',{name:'Back to game library'}).click();
  await page.locator('.game-card').filter({hasText:'Flotsam Citadel'}).click();
  await page.getByRole('tab',{name:/^Media/}).click();
  await page.locator('.media-card').first().click();

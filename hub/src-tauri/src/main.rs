@@ -1,6 +1,10 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
+mod approvals;
 mod roadmap;
 mod store;
+mod iteration;
+mod mcp;
+mod music;
 use serde_json::{json, Value};
 use std::sync::Mutex;
 use store::{Media, Store};
@@ -56,6 +60,40 @@ fn save_roadmap(project: Value, state: State<AppState>) -> Result<Value> {
         .save_roadmap(project)
 }
 #[tauri::command]
+fn music_designs(state: State<AppState>) -> Result<Vec<Value>> {
+    state.lock().map_err(|e| e.to_string())?.music_designs()
+}
+#[tauri::command]
+fn save_music_design(record: Value, state: State<AppState>) -> Result<Value> {
+    state
+        .lock()
+        .map_err(|e| e.to_string())?
+        .save_music_design(record)
+}
+#[tauri::command]
+fn provider_catalogs() -> Result<Value> {
+    Ok(music::discover_provider_catalogs())
+}
+#[tauri::command]
+fn open_folder_for_path(path: String) -> Result<()> {
+    let raw = std::path::Path::new(&path);
+    let folder = if raw.is_dir() {
+        raw
+    } else {
+        raw.parent().ok_or("No parent folder")?
+    };
+    let canonical = folder.canonicalize().map_err(|e| e.to_string())?;
+    if !canonical.is_dir() {
+        return Err("Folder does not exist".into());
+    }
+    std::process::Command::new("explorer.exe")
+        .arg(canonical)
+        .spawn()
+        .map_err(|e| e.to_string())?;
+    Ok(())
+}
+
+#[tauri::command]
 fn reveal_indexed_file(
     project_id: String,
     kind: String,
@@ -100,6 +138,17 @@ fn list_files(
         .files(&project_id, &kind, &query)
 }
 #[tauri::command]
+fn approval_history(limit: Option<usize>, state: State<AppState>) -> Result<Vec<Value>> {
+    state
+        .lock()
+        .map_err(|e| e.to_string())?
+        .approval_history(limit.unwrap_or(500))
+}
+#[tauri::command]
+fn record_approval(entry: Value, state: State<AppState>) -> Result<Value> {
+    state.lock().map_err(|e| e.to_string())?.record_approval(entry)
+}
+#[tauri::command]
 fn list_media(project_id: String, state: State<AppState>) -> Result<Vec<Media>> {
     state.lock().map_err(|e| e.to_string())?.media(&project_id)
 }
@@ -114,6 +163,21 @@ async fn import_media(
         .lock()
         .map_err(|e| e.to_string())?
         .import_media(&project_id, &path, &kind)
+}
+#[tauri::command]
+fn import_clipboard_image(
+    project_id: String,
+    bytes: Vec<u8>,
+    state: State<AppState>,
+) -> Result<Media> {
+    state
+        .lock()
+        .map_err(|e| e.to_string())?
+        .import_clipboard_image(&project_id, &bytes)
+}
+#[tauri::command]
+fn set_thumbnail(project_id: String, media_id: String, state: State<AppState>) -> Result<()> {
+    state.lock().map_err(|e| e.to_string())?.set_thumbnail(&project_id, &media_id)
 }
 #[tauri::command]
 fn update_media(media: Media, state: State<AppState>) -> Result<Media> {
@@ -143,11 +207,20 @@ fn open_project_folder(
     let s = state.lock().map_err(|e| e.to_string())?;
     let p = s.project(&project_id)?;
     let path = if let Some(provider) = provider {
-        let links = p["provider_links"].as_array().ok_or("No provider links")?;
+        let links = p["provider_links"].as_array();
         links
-            .iter()
-            .find(|l| l["provider"].as_str() == Some(&provider))
-            .and_then(|l| l["path"].as_str())
+            .and_then(|l| {
+                l.iter()
+                    .find(|x| x["provider"].as_str() == Some(&provider))
+                    .and_then(|x| x["path"].as_str())
+                    .filter(|s| !s.is_empty())
+            })
+            .or(match provider.as_str() {
+                "ArcoreModelForge" => Some("X:/Projects/ArcoreModelForge"),
+                "ArcoreSoundCore" => Some("X:/Projects/ArcoreSoundCore"),
+                "ArcoreSonicAlchemist" => Some("X:/Projects/ArcoreSonicAlchemist"),
+                _ => None,
+            })
             .ok_or("Unknown provider")?
     } else {
         p["path"].as_str().ok_or("No source path")?
@@ -165,6 +238,10 @@ fn open_project_folder(
     Ok(())
 }
 fn main() {
+    if std::env::args().any(|arg| arg == "--mcp") {
+        if let Err(error) = mcp::run() { eprintln!("{error}"); std::process::exit(1); }
+        return;
+    }
     tauri::Builder::default()
         .plugin(tauri_plugin_dialog::init())
         .setup(|app| {
@@ -180,6 +257,8 @@ fn main() {
             .map_err(std::io::Error::other)?;
             s.seed_roadmap(include_str!("../../data/capability-roadmap.json"))
                 .map_err(std::io::Error::other)?;
+            s.seed_music_design(include_str!("../../data/music-design/index.json"))
+                .map_err(std::io::Error::other)?;
             s.rebase_media().map_err(std::io::Error::other)?;
             // Permit only the managed media directory, including an explicit isolated test library.
             app.asset_protocol_scope()
@@ -191,13 +270,21 @@ fn main() {
             library,
             roadmap,
             save_roadmap,
+            music_designs,
+            save_music_design,
+            approval_history,
+            record_approval,
+            provider_catalogs,
             export_roadmap_json,
+            open_folder_for_path,
             reveal_indexed_file,
             save_project,
             list_files,
             list_media,
             import_media,
+            import_clipboard_image,
             update_media,
+            set_thumbnail,
             export_presskit,
             backup_library,
             open_project_folder

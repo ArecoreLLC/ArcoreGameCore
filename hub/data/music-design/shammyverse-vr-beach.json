@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "game_id": "shammyverse-vr-beach",
+  "name": "ShammyVerse VR Beach",
+  "status": "excluded",
+  "exclusion_reason": "Vignette in the ShammyVerse universe; reuses ShammyVerse island music.",
+  "archetype": null,
+  "setting": "",
+  "tracks": [],
+  "updated_at": "2026-11-17T14:16:59Z",
+  "scope": "catalog",
+  "recommended_archetype": "cozy",
+  "recommended_setting": "tropical VR beach vignette",
+  "recommendation_reason": "Shares the ShammyVerse island musical universe and ambient beach soundscape."
+}

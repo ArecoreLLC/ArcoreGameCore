@@ -3,17 +3,18 @@
   "modules": [
     {
       "id": "attachment-grid",
-      "version": "0.2.0",
+      "version": "0.3.0",
       "description": "Connected attachment validation",
       "language": "cpp",
       "kind": "header-only",
       "maturity": "pilot",
       "source": "shared/cpp/AttachmentGrid.h",
-      "sha256": "01ab5775897a3f7a7d35f3179579de8727a29f74825abb873e6122ea98118146",
+      "sha256": "c4f8929fa8782693d9a7fc1f87f04261d6eba3025eedbfc3ef1d47ccda1204da",
       "documentation": "shared/cpp/AttachmentGrid.md",
       "dependencies": [],
       "tests": [
-        "shared/cpp/tests/AttachmentGridRemovalTests.cpp"
+        "shared/cpp/tests/AttachmentGridRemovalTests.cpp",
+        "shared/cpp/tests/AttachmentGridAdditionTests.cpp"
       ],
       "known_consumers": [
         "Snap-Rally",
@@ -23,13 +24,13 @@
     },
     {
       "id": "buoyancy",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "description": "Mass properties and capped buoyant force",
       "language": "cpp",
       "kind": "header-only",
       "maturity": "pilot",
       "source": "shared/cpp/Buoyancy.h",
-      "sha256": "ddf895db844f58d96d87c18b95e8d1a32fb7492d02cbc7fc9f2fe3555668177b",
+      "sha256": "9afb6a425a94915d919ca552330709a15cae4abb7ef173c15f0663565f67c7d6",
       "documentation": "shared/cpp/Buoyancy.md",
       "dependencies": [],
       "tests": [
@@ -42,20 +43,22 @@
     },
     {
       "id": "combat-window",
-      "version": "0.1.0",
+      "version": "0.3.0",
       "description": "Active and recovery timing",
       "language": "cpp",
       "kind": "header-only",
       "maturity": "pilot",
       "source": "shared/cpp/CombatWindow.h",
-      "sha256": "94ebeee340527dc1bc2595d1f1677a3de1d7e0e5bfb066cf3ad238186fbb9d09",
+      "sha256": "0781d616ab4fe9e89e3f4591d43b205c48da0c4a3cb494a3b1b89f271bbabb5d",
       "documentation": "shared/cpp/CombatWindow.md",
       "dependencies": [],
       "tests": [
         "shared/cpp/tests/CombatWindowTest.cpp"
       ],
       "known_consumers": [
-        "Scrapshift-Arena"
+        "Scrapshift-Arena",
+        "Flotsam-Citadel",
+        "Pocket-Fort-Patrol"
       ],
       "validation_note": "Test source references only; not a fresh test result. Consumer tests remain game-owned."
     },
@@ -80,13 +83,13 @@
     },
     {
       "id": "grid-route",
-      "version": "0.2.0",
+      "version": "0.3.0",
       "description": "Bounded grid route finding",
       "language": "cpp",
       "kind": "header-only",
       "maturity": "pilot",
       "source": "shared/cpp/GridRoute.h",
-      "sha256": "70129955ad575dc69bc260bd5a03914d7708f6a78f42d4ac31c7d7fc6fb9f0d3",
+      "sha256": "a507fb59398b2da9b8155dc5bea0ef160c7148e876608d4d8a6b8e222141e814",
       "documentation": "shared/cpp/GridRoute.md",
       "dependencies": [],
       "tests": [
@@ -99,20 +102,22 @@
     },
     {
       "id": "interaction-rules",
-      "version": "0.2.0",
-      "description": "Finite range, cooldown and nearest eligible interaction selection",
+      "version": "0.4.0",
+      "description": "Finite range, signed speed, cooldown and nearest eligible interaction selection",
       "language": "cpp",
       "kind": "header-only",
       "maturity": "pilot",
       "source": "shared/cpp/InteractionRules.h",
-      "sha256": "0655c7d21a40c73e975421ed2ae0a51c074a1d70b163587125470e41abf8bb0d",
+      "sha256": "c4a5126399dd59be7b23702c1f9ea686bd918814de7477604edd6701e4aed6e9",
       "documentation": "shared/cpp/InteractionRules.md",
       "dependencies": [],
       "tests": [
         "shared/cpp/tests/InteractionRulesTests.cpp"
       ],
       "known_consumers": [
-        "Haunt-and-Haul"
+        "Haunt-and-Haul",
+        "Tugboat-Tumble",
+        "Pocket-Fort-Patrol"
       ],
       "validation_note": "Test source references only; not a fresh test result. Consumer tests remain game-owned."
     },
@@ -135,20 +140,21 @@
     },
     {
       "id": "objective-latch",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "description": "Idempotent objective collection",
       "language": "cpp",
       "kind": "header-only",
       "maturity": "pilot",
       "source": "shared/cpp/ObjectiveLatch.h",
-      "sha256": "9267c99a0dbb3aec4fef8318cae2ac32b454b90e6e57c8e7c196844e1f471ef2",
+      "sha256": "bce37714eae296e667b9b2258517effd627325767f0ec7866c9bbeb37c4085fa",
       "documentation": "shared/cpp/ObjectiveLatch.md",
       "dependencies": [],
       "tests": [
         "shared/cpp/tests/ObjectiveLatchTests.cpp"
       ],
       "known_consumers": [
-        "Gully-Giants"
+        "Gully-Giants",
+        "Snap-Rally"
       ],
       "validation_note": "Test source references only; not a fresh test result. Consumer tests remain game-owned."
     },
@@ -260,26 +266,28 @@
       "dependencies": [],
       "tests": [],
       "known_consumers": [
-        "Lumen-Weaver"
+        "Lumen-Weaver",
+        "Lantern-Heist"
       ],
       "validation_note": "Consumer-owned Unreal tests; see Lumen-Weaver validation evidence. No cross-engine parity claim."
     },
     {
       "id": "rechargeable-reserve",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "description": "Bounded finite resource spending and saturation-safe recharge",
       "language": "cpp",
       "kind": "header-only",
       "maturity": "pilot",
       "source": "shared/cpp/RechargeableReserve.h",
-      "sha256": "324bffc6dc1745218421c737b3ab3e6b915d84d5eace9fc75b0c6cc266ee3b74",
+      "sha256": "a6af7c1fc1e407c9b62dea02c62f8bbbd614c4ce8a3992d28c1104a3cd07b3ee",
       "documentation": "shared/cpp/RechargeableReserve.md",
       "dependencies": [],
       "tests": [
         "shared/cpp/tests/RechargeableReserveTests.cpp"
       ],
       "known_consumers": [
-        "Gully-Giants"
+        "Gully-Giants",
+        "Snap-Rally"
       ],
       "validation_note": "Consumer owns ability behavior and timing; see its validation evidence."
     },
@@ -320,6 +328,339 @@
         "Box-Fort-Brigade"
       ],
       "validation_note": "Portable tests and consumer possession/collision tests; execution evidence is consumer-owned."
+    },
+    {
+      "id": "hold-repeat",
+      "version": "0.1.0",
+      "description": "Monotonic held-input repeat with hitch suppression and release-to-rearm cancellation",
+      "language": "cpp",
+      "kind": "header-only",
+      "maturity": "pilot",
+      "source": "shared/cpp/HoldRepeat.h",
+      "sha256": "dbe9332ec61c4ca9f2341c20ee84c36473ec521e07bed4a4ef261b426f22bf32",
+      "documentation": "shared/cpp/HoldRepeat.md",
+      "dependencies": [],
+      "tests": [
+        "shared/cpp/tests/HoldRepeatTests.cpp"
+      ],
+      "known_consumers": [
+        "Echo-Forge"
+      ],
+      "validation_note": "Consumer owns input focus and ability eligibility; execution evidence is consumer-owned."
+    },
+    {
+      "id": "sustained-hold",
+      "version": "0.1.0",
+      "description": "Interruptible continuous eligibility timer",
+      "language": "cpp",
+      "kind": "header-only",
+      "maturity": "pilot",
+      "source": "shared/cpp/SustainedHold.h",
+      "sha256": "a66f1ca6f35736e287fa699e8e71a9fb25af2d504ed51f5c1bda7c784fa5c01d",
+      "documentation": "shared/cpp/SustainedHold.md",
+      "dependencies": [],
+      "tests": [
+        "shared/cpp/tests/SustainedHoldTests.cpp"
+      ],
+      "known_consumers": [
+        "Haunt-and-Haul"
+      ],
+      "validation_note": "Execution evidence is consumer-owned; no cross-engine parity claim."
+    },
+    {
+      "id": "timed-window",
+      "version": "0.2.0",
+      "description": "Caller-clocked consumable input and eligibility windows",
+      "language": "cpp",
+      "kind": "header-only",
+      "maturity": "pilot",
+      "source": "shared/cpp/TimedWindow.h",
+      "sha256": "9594cbbf95ced3ff2c8c293a3563f047b3b6fee7d95646d136ac427181b43e60",
+      "documentation": "shared/cpp/TimedWindow.md",
+      "dependencies": [],
+      "tests": [
+        "shared/cpp/tests/TimedWindowTests.cpp"
+      ],
+      "known_consumers": [
+        "Gully-Giants",
+        "Scrapshift-Arena",
+        "Skybound-Sabotage"
+      ],
+      "validation_note": "Portable boundary tests and consumer jump tests; execution evidence is consumer-owned."
+    },
+    {
+      "id": "viewport-layout",
+      "version": "0.1.0",
+      "description": "Viewport fitting and shared logical hit rectangles",
+      "language": "cpp",
+      "kind": "header-only",
+      "maturity": "pilot",
+      "source": "shared/cpp/ViewportLayout.h",
+      "sha256": "7a20b7957bc09e90223782fbca385140e4490fa01ea2289795d914ce0961f7c1",
+      "documentation": "shared/cpp/ViewportLayout.md",
+      "dependencies": [],
+      "tests": [
+        "shared/cpp/tests/ViewportLayoutTests.cpp"
+      ],
+      "known_consumers": [
+        "Critter-Contraptions",
+        "Gully-Giants",
+        "Skybound-Sabotage",
+        "Lantern-Heist"
+      ],
+      "validation_note": "Test references only; consumer receipts record actual execution."
+    },
+    {
+      "id": "capture-objective",
+      "version": "0.1.0",
+      "description": "Continuous occupancy capture with prerequisite and latched completion",
+      "language": "cpp",
+      "kind": "header-only",
+      "maturity": "pilot",
+      "source": "shared/cpp/CaptureObjective.h",
+      "sha256": "a2035e010a002b645883f558a38d66e05a95a3253991341a0d4cb98aa7be6d4b",
+      "documentation": "shared/cpp/CaptureObjective.md",
+      "dependencies": [],
+      "tests": [
+        "shared/cpp/tests/CaptureObjectiveTests.cpp"
+      ],
+      "known_consumers": [
+        "Box-Fort-Brigade"
+      ],
+      "validation_note": "Test source references only; not a fresh test result. Consumer tests remain game-owned."
+    },
+    {
+      "id": "unreal-beam-mesh",
+      "version": "0.1.0",
+      "description": "Unreal-only noncolliding cylinder beam presentation adapter",
+      "language": "cpp",
+      "kind": "header-only",
+      "maturity": "pilot",
+      "source": "3d/unreal/BeamMesh.h",
+      "sha256": "3045f9a0b35a8fee95e955b4e241be1d8042926786acf31963cf0f0e232fa124",
+      "documentation": "3d/unreal/BeamMesh.md",
+      "dependencies": [],
+      "tests": [],
+      "known_consumers": [
+        "Lumen-Weaver",
+        "Tugboat-Tumble"
+      ],
+      "validation_note": "Unreal-specific. Consumer LumenWeaver.Light.Chamber owns engine tests; see consumer evidence. No standalone or second-consumer validation."
+    },
+    {
+      "id": "planar-placement",
+      "version": "0.1.0",
+      "description": "Bounded deterministic planar placement with caller-owned occupancy",
+      "language": "cpp",
+      "kind": "header-only",
+      "maturity": "pilot",
+      "source": "shared/cpp/PlanarPlacement.h",
+      "sha256": "e2ba488aaba7ee3154112ce5873a79b1d5cef296bcbe991912b3070bd7acef78",
+      "documentation": "shared/cpp/PlanarPlacement.md",
+      "dependencies": [],
+      "tests": [
+        "shared/cpp/tests/PlanarPlacementTests.cpp"
+      ],
+      "known_consumers": [
+        "SandboxKingdoms"
+      ],
+      "validation_note": "Consumer-owned runtime evidence; no general collision avoidance claim."
+    },
+    {
+      "id": "bounded-order-admission",
+      "version": "0.1.0",
+      "description": "Non-destructive bounded pending-order admission",
+      "language": "cpp",
+      "kind": "header-only",
+      "maturity": "pilot",
+      "source": "shared/cpp/BoundedOrderAdmission.h",
+      "sha256": "cfc115702da2a77c402e7f503083fbb81adc6c36ee5d99aa9d9356f98c8dcbdf",
+      "documentation": "shared/cpp/BoundedOrderAdmission.md",
+      "dependencies": [],
+      "tests": [
+        "shared/cpp/tests/BoundedOrderAdmissionTests.cpp"
+      ],
+      "known_consumers": [
+        "ScorchedFrontier"
+      ],
+      "validation_note": "Consumer-owned runtime queue tests; no cross-engine parity claim."
+    },
+    {
+      "id": "stock-demand",
+      "version": "0.1.0",
+      "description": "Round-robin demand bounded by available and promised stock",
+      "language": "cpp",
+      "kind": "header-only",
+      "maturity": "pilot",
+      "source": "shared/cpp/StockDemand.h",
+      "sha256": "b659bac85b126b5e34dab6f3402f00cad1b465488be054d3c40a7ebee7fd2cc5",
+      "documentation": "shared/cpp/StockDemand.md",
+      "dependencies": [],
+      "tests": [
+        "shared/cpp/tests/StockDemandTests.cpp"
+      ],
+      "known_consumers": [
+        "Dungeon-Dash-Market"
+      ],
+      "validation_note": "Consumer runtime evidence is separate from portable allocation tests."
+    },
+    {
+      "id": "deadline-countdown",
+      "version": "0.1.1",
+      "description": "Absolute caller-clock countdown and finite expiry checks",
+      "language": "cpp",
+      "kind": "header-only",
+      "maturity": "pilot",
+      "source": "shared/cpp/DeadlineCountdown.h",
+      "sha256": "3380fe2b2e1af66c2103866fdf847f6bd021f177040bab7544a9909daba7926f",
+      "documentation": "shared/cpp/DeadlineCountdown.md",
+      "dependencies": [],
+      "tests": [
+        "shared/cpp/tests/DeadlineCountdownTests.cpp"
+      ],
+      "known_consumers": [
+        "Skybound-Sabotage"
+      ],
+      "validation_note": "Consumer owns clock synchronization and authoritative transitions; see consumer evidence."
+    },
+    {
+      "id": "unreal-interaction-trace",
+      "version": "0.1.0",
+      "description": "Unreal first-blocker interaction preview and surface reach query",
+      "language": "cpp",
+      "kind": "header-only",
+      "maturity": "pilot",
+      "source": "3d/unreal/InteractionTrace.h",
+      "sha256": "6d2651a31fc9fdd82a1de4fa862ef11bfa5c4982403273dfca1dc4e8ac708e1e",
+      "documentation": "3d/unreal/InteractionTrace.md",
+      "dependencies": [],
+      "tests": [],
+      "known_consumers": [
+        "Lumen-Weaver"
+      ],
+      "validation_note": "Consumer LumenWeaver.Interaction.Focus owns engine tests; execution evidence remains consumer-owned."
+    },
+    {
+      "id": "presentation-motion",
+      "version": "0.3.0",
+      "description": "Frame-independent interpolation and retriggerable feedback pulses",
+      "language": "cpp",
+      "kind": "header-only",
+      "maturity": "pilot",
+      "source": "shared/cpp/PresentationMotion.h",
+      "sha256": "34d18a88414a4997d3f178f2a357e9810f623337365c4e47334dcf9967023941",
+      "documentation": "shared/cpp/PresentationMotion.md",
+      "dependencies": [],
+      "tests": [
+        "shared/cpp/tests/PresentationMotionTests.cpp"
+      ],
+      "known_consumers": [
+        "Critter-Contraptions",
+        "Snap-Rally",
+        "Gully-Giants",
+        "Pocket-Fort-Patrol",
+        "Haunt-and-Haul",
+        "Scrapshift-Arena",
+        "Tugboat-Tumble",
+        "Skybound-Sabotage",
+        "Lumen-Weaver",
+        "Lantern-Heist"
+      ],
+      "validation_note": "Test references only; consumer receipts record actual execution."
+    },
+    {
+      "id": "rate-ramp",
+      "version": "0.2.0",
+      "description": "Bounded rate ramp with exact travel integration",
+      "language": "cpp",
+      "kind": "header-only",
+      "maturity": "pilot",
+      "source": "shared/cpp/RateRamp.h",
+      "sha256": "dcc24ecef12e0b22eceefc0f77dcb0c7166db0e822614f3509184d946003f246",
+      "documentation": "shared/cpp/RateRamp.md",
+      "dependencies": [],
+      "tests": [
+        "shared/cpp/tests/RateRampTests.cpp",
+        "shared/cpp/tests/SignedRateRampTests.cpp"
+      ],
+      "known_consumers": [
+        "Gully-Giants",
+        "Tugboat-Tumble"
+      ],
+      "validation_note": "Portable tests and consumer traversal tests; execution evidence is consumer-owned."
+    },
+    {
+      "id": "jump-grace",
+      "version": "0.1.0",
+      "description": "Buffered jump requests and ledge grace with one-shot landing rearm",
+      "language": "cpp",
+      "kind": "header-only",
+      "maturity": "pilot",
+      "source": "shared/cpp/JumpGrace.h",
+      "sha256": "f176fb2f1b6399299061f2c5ebf72a6eb94642cf1f15533debea19e34ebc43a3",
+      "documentation": "shared/cpp/JumpGrace.md",
+      "dependencies": [],
+      "tests": [
+        "shared/cpp/tests/JumpGraceTests.cpp"
+      ],
+      "known_consumers": [
+        "Echo-Forge"
+      ],
+      "validation_note": "Consumer owns grounding, press edges and execution; see consumer validation evidence."
+    },
+    {
+      "id": "unreal-visual-tint",
+      "version": "0.1.0",
+      "description": "Unreal dynamic tint initialization with finite color validation",
+      "language": "cpp",
+      "kind": "header-only",
+      "maturity": "pilot",
+      "source": "3d/unreal/VisualTint.h",
+      "sha256": "55c55106149f474717586eaec9553f9e91231f9e2754673d962cbb056c77e1b3",
+      "documentation": "3d/unreal/VisualTint.md",
+      "dependencies": [],
+      "tests": [],
+      "known_consumers": [
+        "Lumen-Weaver"
+      ],
+      "validation_note": "Engine tests owned by LumenWeaver.Light.Chamber; see consumer validation."
+    },
+    {
+      "id": "action-cooldown",
+      "version": "0.1.0",
+      "description": "Caller-clocked action admission with recovery and hitch suppression",
+      "language": "cpp",
+      "kind": "header-only",
+      "maturity": "pilot",
+      "source": "shared/cpp/ActionCooldown.h",
+      "sha256": "cc938732f8a64a41e4c4b3318e07ea05f56e8bc3734351e870875544798863de",
+      "documentation": "shared/cpp/ActionCooldown.md",
+      "dependencies": [],
+      "tests": [
+        "shared/cpp/tests/ActionCooldownTests.cpp"
+      ],
+      "known_consumers": [
+        "Box-Fort-Brigade"
+      ],
+      "validation_note": "Consumer-owned firing/reset evidence; portable tests are separate."
+    },
+    {
+      "id": "unreal-world-ring",
+      "version": "0.2.0",
+      "description": "Bounded Canvas projected planar feedback ring",
+      "language": "cpp",
+      "kind": "header-only",
+      "maturity": "pilot",
+      "source": "3d/unreal/WorldRing.h",
+      "sha256": "42309a574ee87860b39019e9e2241bf82458d22c0688f04ea246566c639e604d",
+      "documentation": "3d/unreal/WorldRing.md",
+      "dependencies": [],
+      "tests": [],
+      "known_consumers": [
+        "Dungeon-Dash-Market",
+        "Lantern-Heist"
+      ],
+      "validation_note": "Consumer-owned build and rendered smoke; no packaged verification."
     }
   ]
 }

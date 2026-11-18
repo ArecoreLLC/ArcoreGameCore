@@ -1,5 +1,6 @@
 """Common Unreal build/automation/smoke runner. No arbitrary manifest commands."""
 import argparse
+import copy
 from datetime import datetime, timezone
 import json
 import os
@@ -11,6 +12,7 @@ import time
 import uuid
 
 from check_unreal_automation import validate
+from check_unreal_smoke import validate as validate_smoke, validate_stages
 from gamecore_modules import ROOT, check_lock, contained, digest, read_json, registry, sync, write_json
 
 
@@ -39,7 +41,28 @@ def project_config(project):
         raise ValueError("Smoke markers are required")
     if "game_mode" in smoke and not re.fullmatch(r"/Script/[A-Za-z][A-Za-z0-9]*\.[A-Za-z][A-Za-z0-9]*", smoke["game_mode"]):
         raise ValueError("Invalid smoke game_mode; expected a native /Script/Module.Class")
+    stages=smoke.get("required_markers", [])
+    # Validate the declaration without pretending this synthetic text is execution evidence.
+    if not isinstance(stages,list): raise ValueError("Required smoke markers must be a list")
+    validate_stages('\n'.join(str(s) for s in [*stages,smoke['pass_marker']]),stages,smoke['pass_marker'])
     return manifest
+
+
+def select_scenario(manifest, name):
+    if name is None: return manifest
+    if not re.fullmatch(r'[a-z][a-z0-9-]*',name): raise ValueError('Invalid smoke scenario name')
+    overrides=manifest.get('smoke_scenarios',{}).get(name)
+    if not isinstance(overrides,dict): raise ValueError(f'Unknown smoke scenario: {name}')
+    allowed={'flag','pass_marker','fail_marker','required_markers'}
+    if not set(overrides).issubset(allowed): raise ValueError('Scenario may only override flag and evidence markers')
+    result=copy.deepcopy(manifest); result['smoke'].update(overrides); result['_scenario']=name
+    smoke=result['smoke']
+    if not re.fullmatch(r'[A-Za-z0-9]+',smoke['flag']): raise ValueError('Invalid smoke scenario flag')
+    stages=smoke.get('required_markers',[])
+    if not isinstance(stages,list): raise ValueError('Required smoke markers must be a list')
+    validate_stages('\n'.join(str(s) for s in [*stages,smoke['pass_marker']]),stages,smoke['pass_marker'])
+    if not smoke['fail_marker']: raise ValueError('Scenario requires a failure marker')
+    return result
 
 
 def engine_tools(engine, version):
@@ -76,7 +99,7 @@ def commands(project, manifest, tools, output, action, rendered=False):
     return base + [map_url, "-game", f"-{smoke['flag']}"] + common + display
 
 
-def verify_result(manifest, output, action):
+def verify_result(manifest, output, action, started_at=0):
     if action == "automation":
         result = validate(read_json(output / "report/index.json"), manifest["automation"]["prefix"])
         missing = set(manifest["automation"]["required_tests"]) - set(result["tests"])
@@ -88,16 +111,19 @@ def verify_result(manifest, output, action):
         smoke = manifest["smoke"]
         if smoke["pass_marker"] not in log or smoke["fail_marker"] in log:
             raise ValueError("Smoke log lacks a pass marker or contains a failure marker")
+        result=validate_smoke(output / "engine.log",smoke['pass_marker'],0,started_at)
+        result['stages']=validate_stages(log,smoke.get('required_markers',[]),smoke['pass_marker'])
+        return result
     return {"status": "passed"}
 
 
 def snapshot(project):
     files = {}
-    for folder in ("Source", "Config", "Scripts", "Content"):
+    for folder in ("Source", "Config", "Scripts", "Content", "Tools/GameCore/tools"):
         base = project / folder
         if base.exists():
             for path in sorted(base.rglob("*")):
-                if path.is_file():
+                if path.is_file() and '__pycache__' not in path.parts and path.suffix!='.pyc':
                     checked = contained(project, path.relative_to(project).as_posix())
                     files[path.relative_to(project).as_posix()] = digest(checked)
     for path in sorted(project.glob("*.uproject")):
@@ -120,9 +146,29 @@ def execute(command, project, output, timeout):
             raise
 
 
+def binary_snapshot(project):
+    files={p.relative_to(project).as_posix():digest(p) for p in (project/'Binaries/Win64').glob('*')
+           if p.is_file() and p.suffix in ('.dll','.modules')}
+    if not any(name.endswith('.dll') for name in files):
+        raise ValueError('No project Editor DLL; run GameCore build first')
+    return files
+
+
+def matching_build(project, sources, binaries, engine):
+    for path in sorted((project/'Saved/GameCore').glob('*-build/receipt.json'),reverse=True):
+        receipt=read_json(path)
+        if (receipt.get('status')=='passed' and receipt.get('engine')==engine
+                and receipt.get('source_hashes')==sources and receipt.get('binary_hashes')==binaries):
+            return {'receipt':str(path),'sha256':digest(path)}
+    raise ValueError('No successful GameCore build matches current sources and binaries; rebuild before testing')
+
+
 def run(project, manifest, engine, action, timeout, rendered=False):
     check_lock(project, manifest)
     tools, engine_version = engine_tools(engine, manifest["engine_version"])
+    sources=snapshot(project)
+    binaries=binary_snapshot(project) if action!='build' else None
+    build=matching_build(project,sources,binaries,engine_version) if binaries else None
     if action == "smoke":
         map_path = "Content/" + manifest["smoke"]["map"][len("/Game/"):] + ".umap"
         if not contained(project, map_path).is_file():
@@ -133,19 +179,27 @@ def run(project, manifest, engine, action, timeout, rendered=False):
     command = commands(project, manifest, tools, output, action, rendered)
     receipt = {"schema_version": 1, "project_id": manifest["project_id"], "action": action,
                "status": "running", "command": command, "engine": engine_version,
-               "platform": "Win64", "rendered": rendered, "source_hashes": snapshot(project),
+               "platform": "Win64", "rendered": rendered, "source_hashes": sources,
+               "build_provenance": build,
+               "scenario": manifest.get('_scenario','default'),
+               "smoke_validator_sha256":digest(ROOT / 'tools/check_unreal_smoke.py'),
                "runner_sha256": digest(Path(__file__)), "module_tool_sha256": digest(ROOT / "tools/gamecore_modules.py"),
                "started_utc": datetime.now(timezone.utc).isoformat()}
     write_json(output / "receipt.json", receipt)
     print(f"Running {action}: {output}", flush=True)
     started = time.monotonic()
+    started_at=time.time()
     try:
         receipt["exit_code"] = execute(command, project, output, timeout)
         if receipt["exit_code"] != 0:
             raise ValueError(f"Process failed with exit code {receipt['exit_code']}")
-        receipt["result"] = verify_result(manifest, output, action)
+        receipt["result"] = verify_result(manifest, output, action,started_at)
         if snapshot(project) != receipt["source_hashes"]:
             raise ValueError("Project inputs changed during run; rerun against a stable baseline")
+        current_binaries=binary_snapshot(project)
+        if binaries is not None and current_binaries!=binaries:
+            raise ValueError('Project binaries changed during test; rerun against a stable build')
+        receipt['binary_hashes']=current_binaries
         receipt["status"] = "passed"
     except (Exception, KeyboardInterrupt) as error:
         receipt["status"] = "failed"
@@ -169,6 +223,7 @@ def main():
     parser.add_argument("--update", action="store_true", help="Explicitly accept changed dependency selections during sync")
     parser.add_argument("--rendered", action="store_true", help="Rendered smoke only; does not certify visual quality")
     parser.add_argument("--timeout", type=int, default=1800)
+    parser.add_argument('--scenario',help='Named smoke scenario declared in the project manifest')
     args = parser.parse_args()
     try:
         if args.timeout <= 0:
@@ -177,13 +232,15 @@ def main():
             raise ValueError("--update is only valid for sync")
         if args.rendered and args.action not in ("smoke", "test"):
             raise ValueError("--rendered is only valid for smoke/test")
+        if args.scenario and args.action not in ('smoke','test'):
+            raise ValueError('--scenario is only valid for smoke/test')
         if args.action == "modules":
             print(json.dumps(list(registry().values()), indent=2))
             return
         if not args.project:
             raise ValueError("--project is required")
         project = args.project.resolve()
-        manifest = project_config(project)
+        manifest = select_scenario(project_config(project),args.scenario)
         if args.action == "sync":
             print(json.dumps(sync(project, manifest, args.update), indent=2))
         elif args.action in ("check", "doctor"):
