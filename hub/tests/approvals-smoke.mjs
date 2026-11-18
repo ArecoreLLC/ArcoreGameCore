@@ -24,7 +24,13 @@ async function stop(){await browser?.close().catch(()=>{});app?.kill();await new
 const invoke=(page,command,args={})=>page.evaluate(({command,args})=>window.__TAURI_INTERNALS__.invoke(command,args),{command,args});
 try{
  let page=await start();const errors=[];page.on('pageerror',e=>errors.push(e.message));
- const before=await invoke(page,'music_designs');
+ let before=await invoke(page,'music_designs');
+ // The seed may have no directions awaiting review; queue three in this isolated library.
+ if(before.filter(r=>r.status==='recommended').length<3){
+  for(const r of before.filter(r=>r.status!=='excluded'&&r.recommended_archetype&&r.status!=='recommended').slice(0,3))await invoke(page,'save_music_design',{record:{...r,status:'recommended'}});
+  await page.getByRole('button',{name:'Refresh library'}).click();await page.waitForTimeout(800);
+  before=await invoke(page,'music_designs');
+ }
  const recommended=before.filter(r=>r.status==='recommended');
  const reviewable=before.flatMap(r=>r.tracks).filter(t=>['generated','stems_split'].includes(t.status));
  assert.ok(recommended.length>1&&reviewable.length>0,'Seed has recommended directions and generated takes');

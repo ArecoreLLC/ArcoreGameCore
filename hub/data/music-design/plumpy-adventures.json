@@ -243,6 +243,13 @@
             "quality_score": 20.4,
             "midi_files": [
               {
+                "stem": "strings",
+                "audio_id": "00441080-cbf4-4b49-9c47-b9a0615ab2d8",
+                "path": "X:/Projects/GameMusic/Plumpy-Adventures/midi/plumpy-adventures-take1-strings.mid",
+                "tracks": 3,
+                "notes_count": 1340
+              },
+              {
                 "stem": "bass",
                 "audio_id": "00985047-0bd8-466b-8541-f7c780087011",
                 "path": "X:/Projects/GameMusic/Plumpy-Adventures/midi/plumpy-adventures-take1-bass.mid",
@@ -257,6 +264,13 @@
                 "notes_count": 1144
               },
               {
+                "stem": "percussion",
+                "audio_id": "414038d8-b44e-48a2-a15b-fd438637e22a",
+                "path": "X:/Projects/GameMusic/Plumpy-Adventures/midi/plumpy-adventures-take1-percussion.mid",
+                "tracks": 12,
+                "notes_count": 1691
+              },
+              {
                 "stem": "guitar",
                 "audio_id": "44684a3d-12d0-4357-b56d-e25e26c2d88e",
                 "path": "X:/Projects/GameMusic/Plumpy-Adventures/midi/plumpy-adventures-take1-guitar.mid",
@@ -269,6 +283,27 @@
                 "path": "X:/Projects/GameMusic/Plumpy-Adventures/midi/plumpy-adventures-take1-keyboard.mid",
                 "tracks": 2,
                 "notes_count": 1271
+              },
+              {
+                "stem": "woodwinds",
+                "audio_id": "53782f3d-86f6-47de-aecd-ad26c766b37e",
+                "path": "X:/Projects/GameMusic/Plumpy-Adventures/midi/plumpy-adventures-take1-woodwinds.mid",
+                "tracks": 7,
+                "notes_count": 606
+              },
+              {
+                "stem": "synth",
+                "audio_id": "844b5823-1ac9-477e-9bff-7702f7f55219",
+                "path": "X:/Projects/GameMusic/Plumpy-Adventures/midi/plumpy-adventures-take1-synth.mid",
+                "tracks": 12,
+                "notes_count": 717
+              },
+              {
+                "stem": "brass",
+                "audio_id": "991d49f0-e018-4335-a586-3b244473bceb",
+                "path": "X:/Projects/GameMusic/Plumpy-Adventures/midi/plumpy-adventures-take1-brass.mid",
+                "tracks": 3,
+                "notes_count": 18
               }
             ]
           },
@@ -364,6 +399,26 @@
         },
         {
           "path": "X:/Projects/GameMusic/Plumpy-Adventures/midi/plumpy-adventures-take1-keyboard.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Plumpy-Adventures/midi/plumpy-adventures-take1-strings.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Plumpy-Adventures/midi/plumpy-adventures-take1-percussion.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Plumpy-Adventures/midi/plumpy-adventures-take1-woodwinds.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Plumpy-Adventures/midi/plumpy-adventures-take1-synth.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Plumpy-Adventures/midi/plumpy-adventures-take1-brass.mid",
           "kind": "midi"
         }
       ],
@@ -532,7 +587,7 @@
       "notes": ""
     }
   ],
-  "updated_at": "2026-11-18T21:43:37Z",
+  "updated_at": "2026-11-18T22:11:28Z",
   "scope": "catalog",
   "recommended_archetype": "cozy",
   "recommended_setting": "sea-creature ocean platformer",

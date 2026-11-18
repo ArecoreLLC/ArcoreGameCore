@@ -350,12 +350,103 @@
             "recommended_loop_start_bar": 17,
             "recommended_loop_start_s": 27.455,
             "recommended_loop_end_s": 81.88,
-            "quality_score": 16.345
+            "quality_score": 16.345,
+            "midi_files": [
+              {
+                "stem": "woodwinds",
+                "audio_id": "117b23f9-9697-4f3a-a5f8-87e88d41ff87",
+                "path": "X:/Projects/GameMusic/Tower-Assault-Web/midi/tower-assault-web-take1-woodwinds.mid",
+                "tracks": 13,
+                "notes_count": 179
+              },
+              {
+                "stem": "bass",
+                "audio_id": "4120c238-7bd2-4d48-9300-fcff6b82e565",
+                "path": "X:/Projects/GameMusic/Tower-Assault-Web/midi/tower-assault-web-take1-bass.mid",
+                "tracks": 6,
+                "notes_count": 2918
+              },
+              {
+                "stem": "synth",
+                "audio_id": "6d39888d-5def-4ac7-9377-8e8802807b6f",
+                "path": "X:/Projects/GameMusic/Tower-Assault-Web/midi/tower-assault-web-take1-synth.mid",
+                "tracks": 1,
+                "notes_count": 3215
+              },
+              {
+                "stem": "brass",
+                "audio_id": "81a45ea9-8e9e-4805-b0c2-8fdb2f953e56",
+                "path": "X:/Projects/GameMusic/Tower-Assault-Web/midi/tower-assault-web-take1-brass.mid",
+                "tracks": 3,
+                "notes_count": 63
+              },
+              {
+                "stem": "keyboard",
+                "audio_id": "82e31a72-0555-4fbf-bd01-d1efea141c89",
+                "path": "X:/Projects/GameMusic/Tower-Assault-Web/midi/tower-assault-web-take1-keyboard.mid",
+                "tracks": 1,
+                "notes_count": 3567
+              },
+              {
+                "stem": "strings",
+                "audio_id": "8d50b91e-6a94-4fb6-9ad3-33f3c3803787",
+                "path": "X:/Projects/GameMusic/Tower-Assault-Web/midi/tower-assault-web-take1-strings.mid",
+                "tracks": 1,
+                "notes_count": 65
+              },
+              {
+                "stem": "drums",
+                "audio_id": "9e0444fe-d7e8-4627-b1d0-40c212d74385",
+                "path": "X:/Projects/GameMusic/Tower-Assault-Web/midi/tower-assault-web-take1-drums.mid",
+                "tracks": 3,
+                "notes_count": 1592
+              },
+              {
+                "stem": "percussion",
+                "audio_id": "e7c390fc-cbe9-4384-b40c-dba9575dee96",
+                "path": "X:/Projects/GameMusic/Tower-Assault-Web/midi/tower-assault-web-take1-percussion.mid",
+                "tracks": 5,
+                "notes_count": 80
+              }
+            ]
           }
         ]
       },
-      "files": [],
-      "notes": "Generated 2 takes via Suno MCP (v6) & analyzed via 0-credit audio-analysis:\n- Take 1 (9b4f754c-c4a9-4561-a671-cb27c7819dd4): https://suno.com/song/9b4f754c-c4a9-4561-a671-cb27c7819dd4 \u2014 117.52s, detected 141.4 BPM, E minor, 70 bars, 8 sections, loop bars 15..47 (24.049s\u201378.431s), score=13.69\n- Take 2 (c20f055b-ce86-418b-804a-ee71e09dc11c): https://suno.com/song/c20f055b-ce86-418b-804a-ee71e09dc11c \u2014 138.24s, detected 141.7 BPM, E minor, 83 bars, 14 sections, loop bars 17..49 (27.455s\u201381.88s), score=16.345\nSelected for stem split: Take 2 (c20f055b-ce86-418b-804a-ee71e09dc11c) | 12-stem Auto Split group: stemgrp_5912ad65-f490-4f4e-aab5-a5c7f28819f3 (complete)."
+      "files": [
+        {
+          "path": "X:/Projects/GameMusic/Tower-Assault-Web/midi/tower-assault-web-take1-bass.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Tower-Assault-Web/midi/tower-assault-web-take1-keyboard.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Tower-Assault-Web/midi/tower-assault-web-take1-strings.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Tower-Assault-Web/midi/tower-assault-web-take1-drums.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Tower-Assault-Web/midi/tower-assault-web-take1-percussion.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Tower-Assault-Web/midi/tower-assault-web-take1-woodwinds.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Tower-Assault-Web/midi/tower-assault-web-take1-synth.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Tower-Assault-Web/midi/tower-assault-web-take1-brass.mid",
+          "kind": "midi"
+        }
+      ],
+      "notes": "Generated 2 takes via Suno MCP (v6) & analyzed via 0-credit audio-analysis:\n- Take 1 (9b4f754c-c4a9-4561-a671-cb27c7819dd4): https://suno.com/song/9b4f754c-c4a9-4561-a671-cb27c7819dd4 — 117.52s, detected 141.4 BPM, E minor, 70 bars, 8 sections, loop bars 15..47 (24.049s–78.431s), score=13.69\n- Take 2 (c20f055b-ce86-418b-804a-ee71e09dc11c): https://suno.com/song/c20f055b-ce86-418b-804a-ee71e09dc11c — 138.24s, detected 141.7 BPM, E minor, 83 bars, 14 sections, loop bars 17..49 (27.455s–81.88s), score=16.345\nSelected for stem split: Take 2 (c20f055b-ce86-418b-804a-ee71e09dc11c) | 12-stem Auto Split group: stemgrp_5912ad65-f490-4f4e-aab5-a5c7f28819f3 (complete)."
     },
     {
       "track_id": "tower-assault-web-B",
@@ -520,7 +611,7 @@
       "notes": ""
     }
   ],
-  "updated_at": "2026-11-18T14:03:41Z",
+  "updated_at": "2026-11-18T22:11:28Z",
   "scope": "catalog",
   "recommended_archetype": "arcade",
   "recommended_setting": "2D artillery duel",

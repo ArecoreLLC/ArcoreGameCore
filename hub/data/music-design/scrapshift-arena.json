@@ -373,12 +373,92 @@
             "recommended_loop_start_bar": 17,
             "recommended_loop_start_s": 29.918,
             "recommended_loop_end_s": 88.746,
-            "quality_score": 17.825
+            "quality_score": 17.825,
+            "midi_files": [
+              {
+                "stem": "keyboard",
+                "audio_id": "58b12584-71ca-4852-ba97-f5213e87ed90",
+                "path": "X:/Projects/GameMusic/Scrapshift-Arena/midi/scrapshift-arena-take1-keyboard.mid",
+                "tracks": 1,
+                "notes_count": 927
+              },
+              {
+                "stem": "brass",
+                "audio_id": "590aee9b-182b-4b36-92f1-0f47ac70021e",
+                "path": "X:/Projects/GameMusic/Scrapshift-Arena/midi/scrapshift-arena-take1-brass.mid",
+                "tracks": 3,
+                "notes_count": 44
+              },
+              {
+                "stem": "synth",
+                "audio_id": "5c232256-7937-44cb-a15c-f7833c38f893",
+                "path": "X:/Projects/GameMusic/Scrapshift-Arena/midi/scrapshift-arena-take1-synth.mid",
+                "tracks": 2,
+                "notes_count": 1236
+              },
+              {
+                "stem": "percussion",
+                "audio_id": "76306192-a7d0-412b-b58f-e7d143076e2a",
+                "path": "X:/Projects/GameMusic/Scrapshift-Arena/midi/scrapshift-arena-take1-percussion.mid",
+                "tracks": 8,
+                "notes_count": 683
+              },
+              {
+                "stem": "drums",
+                "audio_id": "ceea4d6d-c7ca-4770-bc14-53564002f01c",
+                "path": "X:/Projects/GameMusic/Scrapshift-Arena/midi/scrapshift-arena-take1-drums.mid",
+                "tracks": 6,
+                "notes_count": 769
+              },
+              {
+                "stem": "strings",
+                "audio_id": "e1f55f19-4c82-4531-b2da-bd1936c5b9f5",
+                "path": "X:/Projects/GameMusic/Scrapshift-Arena/midi/scrapshift-arena-take1-strings.mid",
+                "tracks": 2,
+                "notes_count": 44
+              },
+              {
+                "stem": "bass",
+                "audio_id": "e29359a4-5cbb-483f-ad3c-47932fce5c20",
+                "path": "X:/Projects/GameMusic/Scrapshift-Arena/midi/scrapshift-arena-take1-bass.mid",
+                "tracks": 2,
+                "notes_count": 1253
+              }
+            ]
           }
         ]
       },
-      "files": [],
-      "notes": "Generated 2 takes via Suno MCP (v6) & analyzed via 0-credit audio-analysis:\n- Take 1 (c02c0f12-28fd-4c3e-9e07-e9f8bd5e7edf): https://suno.com/song/c02c0f12-28fd-4c3e-9e07-e9f8bd5e7edf \u2014 149.32s, detected 130.8 BPM, F minor, 82 bars, 10 sections, loop bars 17..49 (29.765s\u201388.586s), score=15.38\n- Take 2 (1dfcc5ce-8271-4be0-9635-99ab33a5b7f8): https://suno.com/song/1dfcc5ce-8271-4be0-9635-99ab33a5b7f8 \u2014 149.52s, detected 130.7 BPM, D minor, 82 bars, 14 sections, loop bars 17..49 (29.918s\u201388.746s), score=17.825\nSelected for stem split: Take 2 (1dfcc5ce-8271-4be0-9635-99ab33a5b7f8) | 12-stem Auto Split group: stemgrp_bd63af10-4557-43e1-9f4e-87df79727838 (complete)."
+      "files": [
+        {
+          "path": "X:/Projects/GameMusic/Scrapshift-Arena/midi/scrapshift-arena-take1-keyboard.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Scrapshift-Arena/midi/scrapshift-arena-take1-brass.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Scrapshift-Arena/midi/scrapshift-arena-take1-synth.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Scrapshift-Arena/midi/scrapshift-arena-take1-percussion.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Scrapshift-Arena/midi/scrapshift-arena-take1-drums.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Scrapshift-Arena/midi/scrapshift-arena-take1-strings.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Scrapshift-Arena/midi/scrapshift-arena-take1-bass.mid",
+          "kind": "midi"
+        }
+      ],
+      "notes": "Generated 2 takes via Suno MCP (v6) & analyzed via 0-credit audio-analysis:\n- Take 1 (c02c0f12-28fd-4c3e-9e07-e9f8bd5e7edf): https://suno.com/song/c02c0f12-28fd-4c3e-9e07-e9f8bd5e7edf — 149.32s, detected 130.8 BPM, F minor, 82 bars, 10 sections, loop bars 17..49 (29.765s–88.586s), score=15.38\n- Take 2 (1dfcc5ce-8271-4be0-9635-99ab33a5b7f8): https://suno.com/song/1dfcc5ce-8271-4be0-9635-99ab33a5b7f8 — 149.52s, detected 130.7 BPM, D minor, 82 bars, 14 sections, loop bars 17..49 (29.918s–88.746s), score=17.825\nSelected for stem split: Take 2 (1dfcc5ce-8271-4be0-9635-99ab33a5b7f8) | 12-stem Auto Split group: stemgrp_bd63af10-4557-43e1-9f4e-87df79727838 (complete)."
     },
     {
       "track_id": "scrapshift-arena-B",
@@ -543,7 +623,7 @@
       "notes": ""
     }
   ],
-  "updated_at": "2026-11-18T14:03:41Z",
+  "updated_at": "2026-11-18T22:11:28Z",
   "scope": "catalog",
   "recommended_archetype": "cyberpunk",
   "recommended_setting": "industrial robot salvage arena",

@@ -352,12 +352,103 @@
             "recommended_loop_start_bar": 21,
             "recommended_loop_start_s": 37.117,
             "recommended_loop_end_s": 95.988,
-            "quality_score": 15.765
+            "quality_score": 15.765,
+            "midi_files": [
+              {
+                "stem": "synth",
+                "audio_id": "4c610b0e-09ac-49d7-ab2f-5fb6ca815b96",
+                "path": "X:/Projects/GameMusic/Salvage-Circuit/midi/salvage-circuit-take1-synth.mid",
+                "tracks": 1,
+                "notes_count": 1078
+              },
+              {
+                "stem": "brass",
+                "audio_id": "50c0180b-e7d1-4681-8024-c266885978f9",
+                "path": "X:/Projects/GameMusic/Salvage-Circuit/midi/salvage-circuit-take1-brass.mid",
+                "tracks": 2,
+                "notes_count": 30
+              },
+              {
+                "stem": "drums",
+                "audio_id": "760d5f97-8542-4664-bbdf-63902fb95229",
+                "path": "X:/Projects/GameMusic/Salvage-Circuit/midi/salvage-circuit-take1-drums.mid",
+                "tracks": 5,
+                "notes_count": 2145
+              },
+              {
+                "stem": "strings",
+                "audio_id": "a9f649c7-a35b-43cd-8fcd-a018b749f46d",
+                "path": "X:/Projects/GameMusic/Salvage-Circuit/midi/salvage-circuit-take1-strings.mid",
+                "tracks": 2,
+                "notes_count": 39
+              },
+              {
+                "stem": "percussion",
+                "audio_id": "b7a387d0-e794-49cc-86f4-7a19cb9ba026",
+                "path": "X:/Projects/GameMusic/Salvage-Circuit/midi/salvage-circuit-take1-percussion.mid",
+                "tracks": 13,
+                "notes_count": 1087
+              },
+              {
+                "stem": "bass",
+                "audio_id": "b805732e-4c29-4172-a882-d79fefbcb077",
+                "path": "X:/Projects/GameMusic/Salvage-Circuit/midi/salvage-circuit-take1-bass.mid",
+                "tracks": 1,
+                "notes_count": 602
+              },
+              {
+                "stem": "guitar",
+                "audio_id": "cdffdb7b-3a2b-41ad-b8b9-9df801d5d8ca",
+                "path": "X:/Projects/GameMusic/Salvage-Circuit/midi/salvage-circuit-take1-guitar.mid",
+                "tracks": 1,
+                "notes_count": 87
+              },
+              {
+                "stem": "keyboard",
+                "audio_id": "d9607522-2624-4032-8240-ebbb8a0c9dab",
+                "path": "X:/Projects/GameMusic/Salvage-Circuit/midi/salvage-circuit-take1-keyboard.mid",
+                "tracks": 1,
+                "notes_count": 1577
+              }
+            ]
           }
         ]
       },
-      "files": [],
-      "notes": "Generated 2 takes via Suno MCP (v6) & analyzed via 0-credit audio-analysis:\n- Take 1 (26675f46-76d2-411b-9edc-9e0d4a94b778): https://suno.com/song/26675f46-76d2-411b-9edc-9e0d4a94b778 \u2014 193.56s, detected 132.2 BPM, D minor, 107 bars, 11 sections, loop bars 22..54 (39.129s\u201397.508s), score=15.37\n- Take 2 (f8e12428-d050-438d-bf32-7e56df390496): https://suno.com/song/f8e12428-d050-438d-bf32-7e56df390496 \u2014 188.4s, detected 130.9 BPM, D minor, 103 bars, 12 sections, loop bars 21..53 (37.117s\u201395.988s), score=15.765\nSelected for stem split: Take 2 (f8e12428-d050-438d-bf32-7e56df390496) | 12-stem Auto Split group: stemgrp_f60973fd-4804-4158-aa2e-113b8f82e9df (complete)."
+      "files": [
+        {
+          "path": "X:/Projects/GameMusic/Salvage-Circuit/midi/salvage-circuit-take1-synth.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Salvage-Circuit/midi/salvage-circuit-take1-brass.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Salvage-Circuit/midi/salvage-circuit-take1-drums.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Salvage-Circuit/midi/salvage-circuit-take1-strings.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Salvage-Circuit/midi/salvage-circuit-take1-percussion.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Salvage-Circuit/midi/salvage-circuit-take1-bass.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Salvage-Circuit/midi/salvage-circuit-take1-guitar.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Salvage-Circuit/midi/salvage-circuit-take1-keyboard.mid",
+          "kind": "midi"
+        }
+      ],
+      "notes": "Generated 2 takes via Suno MCP (v6) & analyzed via 0-credit audio-analysis:\n- Take 1 (26675f46-76d2-411b-9edc-9e0d4a94b778): https://suno.com/song/26675f46-76d2-411b-9edc-9e0d4a94b778 — 193.56s, detected 132.2 BPM, D minor, 107 bars, 11 sections, loop bars 22..54 (39.129s–97.508s), score=15.37\n- Take 2 (f8e12428-d050-438d-bf32-7e56df390496): https://suno.com/song/f8e12428-d050-438d-bf32-7e56df390496 — 188.4s, detected 130.9 BPM, D minor, 103 bars, 12 sections, loop bars 21..53 (37.117s–95.988s), score=15.765\nSelected for stem split: Take 2 (f8e12428-d050-438d-bf32-7e56df390496) | 12-stem Auto Split group: stemgrp_f60973fd-4804-4158-aa2e-113b8f82e9df (complete)."
     },
     {
       "track_id": "salvage-circuit-B",
@@ -522,7 +613,7 @@
       "notes": ""
     }
   ],
-  "updated_at": "2026-11-18T14:03:41Z",
+  "updated_at": "2026-11-18T22:11:28Z",
   "scope": "catalog",
   "recommended_archetype": "cyberpunk",
   "recommended_setting": "industrial swarm-net storm wasteland",

@@ -265,7 +265,65 @@
             "recommended_loop_start_bar": 17,
             "recommended_loop_start_s": 27.215,
             "recommended_loop_end_s": 81.501,
-            "quality_score": 16.085
+            "quality_score": 16.085,
+            "midi_files": [
+              {
+                "stem": "drums",
+                "audio_id": "007d670b-292e-425e-85a8-17615396553c",
+                "path": "X:/Projects/GameMusic/Skybound-Sabotage/midi/skybound-sabotage-take1-drums.mid",
+                "tracks": 2,
+                "notes_count": 2032
+              },
+              {
+                "stem": "keyboard",
+                "audio_id": "25facec4-3f11-41c6-beb8-15bf5c1c57d8",
+                "path": "X:/Projects/GameMusic/Skybound-Sabotage/midi/skybound-sabotage-take1-keyboard.mid",
+                "tracks": 1,
+                "notes_count": 3938
+              },
+              {
+                "stem": "brass",
+                "audio_id": "6401fad1-0689-4606-8419-2830c82d4ddc",
+                "path": "X:/Projects/GameMusic/Skybound-Sabotage/midi/skybound-sabotage-take1-brass.mid",
+                "tracks": 1,
+                "notes_count": 38
+              },
+              {
+                "stem": "synth",
+                "audio_id": "65071270-0aad-4497-b5cd-d44894e0de85",
+                "path": "X:/Projects/GameMusic/Skybound-Sabotage/midi/skybound-sabotage-take1-synth.mid",
+                "tracks": 2,
+                "notes_count": 3635
+              },
+              {
+                "stem": "strings",
+                "audio_id": "7dcb0a1d-d385-4b53-aa85-c104b2d0e188",
+                "path": "X:/Projects/GameMusic/Skybound-Sabotage/midi/skybound-sabotage-take1-strings.mid",
+                "tracks": 2,
+                "notes_count": 63
+              },
+              {
+                "stem": "percussion",
+                "audio_id": "962bb44c-d407-4c20-86da-2b5c738cf534",
+                "path": "X:/Projects/GameMusic/Skybound-Sabotage/midi/skybound-sabotage-take1-percussion.mid",
+                "tracks": 7,
+                "notes_count": 86
+              },
+              {
+                "stem": "woodwinds",
+                "audio_id": "ad708165-d8e1-4759-a26e-16f92d26de75",
+                "path": "X:/Projects/GameMusic/Skybound-Sabotage/midi/skybound-sabotage-take1-woodwinds.mid",
+                "tracks": 9,
+                "notes_count": 293
+              },
+              {
+                "stem": "bass",
+                "audio_id": "df9e05f3-a722-4ec4-9d28-6be78e115990",
+                "path": "X:/Projects/GameMusic/Skybound-Sabotage/midi/skybound-sabotage-take1-bass.mid",
+                "tracks": 3,
+                "notes_count": 2616
+              }
+            ]
           },
           {
             "take": 2,
@@ -338,8 +396,41 @@
           }
         ]
       },
-      "files": [],
-      "notes": "Generated 2 takes via Suno MCP (v6) & analyzed via 0-credit audio-analysis:\n- Take 1 (f65d4a19-a1f8-4a4e-90e6-e6f3a0d2fbbd): https://suno.com/song/f65d4a19-a1f8-4a4e-90e6-e6f3a0d2fbbd \u2014 140s, detected 142.1 BPM, E minor, 83 bars, 13 sections, loop bars 17..49 (27.215s\u201381.501s), score=16.085\n- Take 2 (91327524-61c3-464c-8168-5d7a78a2400f): https://suno.com/song/91327524-61c3-464c-8168-5d7a78a2400f \u2014 78.32s, detected 140.5 BPM, E minor, 46 bars, 7 sections, loop bars 10..42 (16.044s\u201370.688s), score=11.475\nSelected for stem split: Take 1 (f65d4a19-a1f8-4a4e-90e6-e6f3a0d2fbbd) | 12-stem Auto Split group: stemgrp_f0b40912-ba99-4498-805d-779349884d09 (complete)."
+      "files": [
+        {
+          "path": "X:/Projects/GameMusic/Skybound-Sabotage/midi/skybound-sabotage-take1-drums.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Skybound-Sabotage/midi/skybound-sabotage-take1-keyboard.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Skybound-Sabotage/midi/skybound-sabotage-take1-brass.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Skybound-Sabotage/midi/skybound-sabotage-take1-synth.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Skybound-Sabotage/midi/skybound-sabotage-take1-strings.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Skybound-Sabotage/midi/skybound-sabotage-take1-percussion.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Skybound-Sabotage/midi/skybound-sabotage-take1-woodwinds.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Skybound-Sabotage/midi/skybound-sabotage-take1-bass.mid",
+          "kind": "midi"
+        }
+      ],
+      "notes": "Generated 2 takes via Suno MCP (v6) & analyzed via 0-credit audio-analysis:\n- Take 1 (f65d4a19-a1f8-4a4e-90e6-e6f3a0d2fbbd): https://suno.com/song/f65d4a19-a1f8-4a4e-90e6-e6f3a0d2fbbd — 140s, detected 142.1 BPM, E minor, 83 bars, 13 sections, loop bars 17..49 (27.215s–81.501s), score=16.085\n- Take 2 (91327524-61c3-464c-8168-5d7a78a2400f): https://suno.com/song/91327524-61c3-464c-8168-5d7a78a2400f — 78.32s, detected 140.5 BPM, E minor, 46 bars, 7 sections, loop bars 10..42 (16.044s–70.688s), score=11.475\nSelected for stem split: Take 1 (f65d4a19-a1f8-4a4e-90e6-e6f3a0d2fbbd) | 12-stem Auto Split group: stemgrp_f0b40912-ba99-4498-805d-779349884d09 (complete)."
     },
     {
       "track_id": "skybound-sabotage-B",
@@ -504,7 +595,7 @@
       "notes": ""
     }
   ],
-  "updated_at": "2026-11-18T14:03:41Z",
+  "updated_at": "2026-11-18T22:11:28Z",
   "scope": "catalog",
   "recommended_archetype": "arcade",
   "recommended_setting": "skyline obstacle race course",

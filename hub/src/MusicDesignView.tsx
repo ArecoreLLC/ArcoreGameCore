@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import {invoke,isTauri} from '@tauri-apps/api/core';
-import {Music2,Check,Copy,FolderOpen,ArrowUpRight,Plus,Save,Search,Sparkles,X} from 'lucide-react';
-import type {Game,MusicDesignRecord,MusicTrack,ProviderCatalogs} from './types';
+import {Check,Copy,FolderOpen,ArrowUpRight,Plus,Save,Sparkles,X,Star} from 'lucide-react';
+import type {Game,MusicDesignRecord,MusicTrack,SunoCandidate,ProviderCatalogs} from './types';
 import {ARCHETYPE_IDS,ARCHETYPES,SUNO_STANDARD_OPTIONS,SUNO_BETA_OPTIONS,applyArchetypeToRecord,generateTracksForArchetype,pipelineStage} from './music';
 import seedRecords from '../data/music-design/index.json';
 
@@ -10,8 +10,15 @@ const GAME_STATUSES = ['unassigned','recommended','excluded','planned','in_progr
 const TRACK_STATUSES = ['prompt_ready','generated','stems_split','approved','rejected'];
 const IN_GAME_STATUSES = ['not_integrated','stems_downloaded','sonic_alchemist_sliced','wired_in_engine'];
 const VOCALS = ['none','wordless','sung'];
+const STANDARD_FAMILIES = ARCHETYPE_IDS.filter(a=>!('parent_archetype' in ARCHETYPES[a]));
+const BIOME_STYLES = ARCHETYPE_IDS.filter(a=>'parent_archetype' in ARCHETYPES[a]);
+const human = (s:string)=>s.replaceAll('_',' ');
+
+type Section = 'overview'|'tracks'|'matches';
+type TrackPane = 'prompt'|'stems'|'takes'|'files';
 
 function Pill({children,tone=''}:{children:React.ReactNode;tone?:string}){return <span className={'pill '+tone}>{children}</span>}
+const keepList = (inst:MusicTrack['instruments'])=>[...new Set(inst.filter(x=>x.keep).map(x=>x.stem))].sort();
 
 export function GameMusicPanel({
  game, record, providerCatalogs, onSaveRecord, onUpdateGameLink, onOpenFolder, busy
@@ -27,585 +34,344 @@ export function GameMusicPanel({
  const [draft,setDraft] = useState<MusicDesignRecord>(()=>structuredClone(record));
  const [dirty,setDirty] = useState(false);
  const [copied,setCopied] = useState('');
+ const [section,setSection] = useState<Section>('overview');
+ const [trackIdx,setTrackIdx] = useState(0);
+ const [pane,setPane] = useState<TrackPane>('takes');
 
  useEffect(()=>{setDraft(structuredClone(record));setDirty(false)},[record]);
+ useEffect(()=>{setSection('overview');selectTrack(0,record.tracks)},[record.game_id]);
+ function selectTrack(i:number,tracks=draft.tracks){setTrackIdx(i);setPane(tracks[i]?.suno.candidates?.length?'takes':'prompt')}
 
  function openFolderForPath(path?:string){
   if(!path || !native) return;
   void invoke('open_folder_for_path', { path });
  }
-
- function update(patch:Partial<MusicDesignRecord>){
-  setDraft(prev=>({...prev,...patch}));
-  setDirty(true);
- }
-
+ function update(patch:Partial<MusicDesignRecord>){setDraft(prev=>({...prev,...patch}));setDirty(true)}
  function updateTrack(idx:number, patch:Partial<MusicTrack>){
-  setDraft(prev=>({
-   ...prev,
-   tracks: prev.tracks.map((t,i)=>i===idx?{...t,...patch}:t)
-  }));
+  setDraft(prev=>({...prev,tracks:prev.tracks.map((t,i)=>i===idx?{...t,...patch}:t)}));
   setDirty(true);
  }
-
  async function copyText(key:string, text:string){
-  try{
-   await navigator.clipboard.writeText(text);
-   setCopied(key);
-   setTimeout(()=>setCopied(''),2000);
-  }catch{
-   setCopied('');
-  }
+  try{await navigator.clipboard.writeText(text);setCopied(key);setTimeout(()=>setCopied(''),2000)}catch{setCopied('')}
+ }
+ function addTrack(arch:string, label?:string){
+  const letter = String.fromCharCode(65 + draft.tracks.length);
+  const extra = generateTracksForArchetype(draft.game_id, draft.name, arch, activeSetting, [], 1)[0];
+  if(!extra) return;
+  update({tracks:[...draft.tracks,{...extra, track_id:`${draft.game_id}-${letter}`, title:`${draft.name} - ${label||'Track '+letter}`}]});
+  setTrackIdx(draft.tracks.length);setSection('tracks');setPane('prompt');
  }
 
  const activeArch = draft.archetype || draft.recommended_archetype || 'cozy';
  const activeSetting = draft.setting || draft.recommended_setting || '';
- const saList = providerCatalogs['ArcoreSonicAlchemist']?.projects || [];
- const scList = providerCatalogs['ArcoreSoundCore']?.projects || [];
- const mfList = providerCatalogs['ArcoreModelForge']?.projects || [];
-
- const saLink = game.provider_links.find(p=>p.provider==='ArcoreSonicAlchemist')?.asset_id || draft.sonic_alchemist_project || '';
- const scLink = game.provider_links.find(p=>p.provider==='ArcoreSoundCore')?.asset_id || draft.soundcore_project || '';
- const mfLink = game.provider_links.find(p=>p.provider==='ArcoreModelForge')?.asset_id || draft.modelforge_project || '';
- const activeTrack = draft.tracks.find(t=>t.suno.candidates?.some(c=>c.used_in_game)) || draft.tracks[0];
+ const links = [
+  {provider:'ArcoreSonicAlchemist',label:'Sonic Alchemist',field:'sonic_alchemist_project' as const,list:providerCatalogs['ArcoreSonicAlchemist']?.projects||[],own:{value:game.id,label:`Create / link '${game.id}'`}},
+  {provider:'ArcoreSoundCore',label:'SoundCore',field:'soundcore_project' as const,list:providerCatalogs['ArcoreSoundCore']?.projects||[],own:{value:game.id,label:`Project: ${game.id}`}},
+  {provider:'ArcoreModelForge',label:'ModelForge',field:'modelforge_project' as const,list:providerCatalogs['ArcoreModelForge']?.projects||[],own:{value:game.name,label:`Project: ${game.name}`}},
+ ];
+ const activeTrackIdx = Math.max(0, draft.tracks.findIndex(t=>t.suno.candidates?.some(c=>c.used_in_game)));
+ const activeTrack = draft.tracks[activeTrackIdx];
  const activeSuno = activeTrack?.suno;
  const activeCand = activeSuno?.candidates?.find(c=>c.used_in_game) || activeSuno?.candidates?.find(c=>c.clip_id===activeSuno.clip_id);
  const activeStage = pipelineStage(draft);
  const dbFilePath = `hub/data/music-design/${draft.game_id}.json`;
+ const matches = (draft.related_suno_tracks || []).filter(r=>!r.dismissed);
+ const takesTotal = draft.tracks.reduce((n,t)=>n+(t.suno.candidates?.length||0),0);
+ const tIdx = Math.min(trackIdx, Math.max(0,draft.tracks.length-1));
+ const track = draft.tracks[tIdx];
+
+ const sections:[Section,string,number|null][] = [['overview','Overview',null],['tracks','Tracks',draft.tracks.length],...(matches.length?[['matches','Suno matches',matches.length] as [Section,string,number]]:[])];
 
  return <div className="music-tab">
-  <div className="section-heading">
-   <div>
-    <h2>Adaptive music & Suno stem design</h2>
-    <p>Organize Suno takes, 0-credit analysis, listen ratings, stem groups, MIDI exports, and active in-game audio wiring.</p>
+  <div className="music-bar">
+   <div className="music-bar-tabs" role="tablist" aria-label="Music sections">
+    {sections.map(([id,lbl,n])=><button key={id} role="tab" aria-selected={section===id} className={section===id?'selected':''} onClick={()=>setSection(id)}>{lbl}{n!==null&&<span>{n}</span>}</button>)}
    </div>
-   <div className="inline">
-    <Pill tone={activeStage==='wired_in_engine'||draft.status==='approved'?'green':'warm'}>{activeStage}</Pill>
-    <Pill tone={draft.status==='approved'||draft.status==='planned'?'green':'warm'}>{draft.status}</Pill>
-    <button className="primary" disabled={!native||busy||!dirty} onClick={()=>onSaveRecord(draft)}><Save size={16}/> Save music design</button>
+   <div className="inline music-bar-status">
+    <Pill tone={activeStage==='wired_in_engine'||draft.status==='approved'?'green':'warm'}>{human(activeStage)}</Pill>
+    <Pill tone={draft.status==='approved'||draft.status==='planned'?'green':'warm'}>{human(draft.status)}</Pill>
+    {dirty&&<span className="unsaved">Unsaved changes</span>}
+    <button className="primary" disabled={!native||busy||!dirty} onClick={()=>onSaveRecord(draft)}><Save size={15}/> Save music design</button>
    </div>
   </div>
 
-  {activeTrack && (
-   <section className="panel">
-    <div className="section-heading">
-     <div>
-      <div className="eyebrow">CURRENTLY SELECTED & IN-GAME MUSIC</div>
-      <h2>{activeTrack.title}</h2>
-      <div className="tag-list" style={{marginTop:6}}>
-       <Pill tone={activeSuno?.in_game_status==='wired_in_engine'?'green':'warm'}>
-        In-Game: {activeSuno?.in_game_status || 'not_integrated'}
-       </Pill>
-       {activeCand && <Pill tone="green">Take {activeCand.take}{activeCand.used_in_game ? ' · Used in game' : ''}</Pill>}
-       {activeSuno?.analysis && (
-        <>
-         <Pill>{activeSuno.analysis.bpm_detected} BPM</Pill>
-         <Pill>{activeSuno.analysis.key_detected}</Pill>
-         <Pill>{activeSuno.analysis.bars_detected} bars</Pill>
-        </>
-       )}
-       {activeSuno?.in_game_loop_s && <Pill tone="green">Loop: {activeSuno.in_game_loop_s}s</Pill>}
-       {activeSuno?.stem_group_id && <Pill>Stem group: {activeSuno.stem_group_id}</Pill>}
+  {section==='overview'&&<>
+   <div className="music-overview">
+    <section className="panel">
+     <div className="eyebrow">MUSIC DIRECTION</div>
+     <div className="section-heading tight">
+      <div>
+       <h2>{draft.recommended_archetype || 'Unassigned'}{draft.recommended_setting ? ` · ${draft.recommended_setting}` : ''}</h2>
+       <p className="muted">{draft.recommendation_reason || 'Select an archetype and setting to generate 2–3 adaptive tracks with locked instrumentation.'}</p>
       </div>
-     </div>
-     <div className="inline">
-      {activeSuno?.url && (
-       <a className="button" href={activeSuno.url} target="_blank" rel="noreferrer">
-        Open in Suno <ArrowUpRight size={14}/>
-       </a>
+      {draft.recommended_archetype && draft.status !== 'excluded' && !['approved','in_progress'].includes(draft.status) && (
+       <button className="primary" disabled={!native||busy} onClick={()=>{
+        const next = applyArchetypeToRecord(draft, draft.recommended_archetype!, draft.recommended_setting || draft.setting, true);
+        setDraft(next);void onSaveRecord(next);
+       }}><Check size={16}/> Approve recommendation</button>
       )}
-      <button onClick={()=>void copyText('db-file', dbFilePath)}>
-       <Copy size={14}/> {copied==='db-file'?'Copied DB path!':'Copy DB JSON path'}
-      </button>
      </div>
-    </div>
-
-    <div className="form-row">
-     <label className="field">
-      <span>In-game integration status</span>
-      <select
-       aria-label="In-game integration status"
-       value={activeSuno?.in_game_status || 'not_integrated'}
-       onChange={e=>{
-        const idx = Math.max(0, draft.tracks.findIndex(t=>t.track_id===activeTrack.track_id));
-        updateTrack(idx,{suno:{...activeTrack.suno, in_game_status:e.target.value}});
-       }}
-      >
-       {IN_GAME_STATUSES.map(s=><option key={s} value={s}>{s}</option>)}
-      </select>
-     </label>
-     <label className="field">
-      <span>Engine audio path (e.g. /Game/Audio/Music)</span>
-      <input
-       aria-label="Engine audio path"
-       value={activeSuno?.engine_asset_path || ''}
-       placeholder="/Game/Audio/Music"
-       onChange={e=>{
-        const idx = Math.max(0, draft.tracks.findIndex(t=>t.track_id===activeTrack.track_id));
-        updateTrack(idx,{suno:{...activeTrack.suno, engine_asset_path:e.target.value}});
-       }}
-      />
-     </label>
-     <label className="field">
-      <span>In-game loop length (s)</span>
-      <input
-       aria-label="In-game loop length"
-       type="number"
-       step="0.01"
-       value={activeSuno?.in_game_loop_s ?? ''}
-       placeholder="e.g. 54.86"
-       onChange={e=>{
-        const idx = Math.max(0, draft.tracks.findIndex(t=>t.track_id===activeTrack.track_id));
-        const val = e.target.value ? Number(e.target.value) : undefined;
-        updateTrack(idx,{suno:{...activeTrack.suno, in_game_loop_s:val}});
-       }}
-      />
-     </label>
-    </div>
-
-    <div className="small muted" style={{marginTop:8}}>
-     <strong>Music DB file:</strong> <code>{dbFilePath}</code>
-     {activeSuno?.clip_id && <> · <strong>Active Clip:</strong> <code>{activeSuno.clip_id}</code></>}
-     {(activeSuno?.in_game_stems?.length ? activeSuno.in_game_stems : activeTrack.stems_requested).length > 0 && (
-      <> · <strong>Active Stems:</strong> {(activeSuno?.in_game_stems?.length ? activeSuno.in_game_stems : activeTrack.stems_requested).join(', ')}</>
-     )}
-    </div>
-   </section>
-  )}
-
-  <section className="panel">
-   <div className="section-heading">
-    <div>
-     <div className="eyebrow">RECOMMENDED BIOME / ARCHETYPE</div>
-     <h2>{draft.recommended_archetype || 'Unassigned'} {draft.recommended_setting ? `· ${draft.recommended_setting}` : ''}</h2>
-     <p className="muted">{draft.recommendation_reason || 'Select an archetype and setting to generate 2–3 adaptive tracks with locked instrumentation.'}</p>
-    </div>
-    {draft.recommended_archetype && draft.status !== 'excluded' && (
-     <button className="primary" disabled={!native||busy} onClick={()=>{
-      const next = applyArchetypeToRecord(draft, draft.recommended_archetype!, draft.recommended_setting || draft.setting, true);
-      setDraft(next);
-      void onSaveRecord(next);
-     }}>
-      <Check size={16}/> Approve recommended ({draft.recommended_archetype})
-     </button>
-    )}
-   </div>
-
-   <div className="form-row">
-    <label className="field">
-     <span>Music status</span>
-     <select aria-label="Music status" value={draft.status} onChange={e=>update({status:e.target.value})}>
-      {GAME_STATUSES.map(s=><option key={s} value={s}>{s}</option>)}
-     </select>
-    </label>
-    <label className="field">
-     <span>Selected archetype</span>
-     <select aria-label="Selected archetype" value={draft.archetype||''} onChange={e=>{
-      const arch = e.target.value || null;
-      if(arch){
-       setDraft(prev=>applyArchetypeToRecord(prev, arch, prev.setting || prev.recommended_setting, false));
-       setDirty(true);
-      }else{
-       update({archetype:null});
-      }
-     }}>
-      <option value="">(Use recommendation: {draft.recommended_archetype||'none'})</option>
-      <optgroup label="Standard Families (6)">
-       {ARCHETYPE_IDS.filter(a=>!('parent_archetype' in ARCHETYPES[a])).map(a=><option key={a} value={a}>{a} — {ARCHETYPES[a].genre} ({ARCHETYPES[a].bpm} BPM)</option>)}
-      </optgroup>
-      <optgroup label="Granular Biome / Theme Styles (10)">
-       {ARCHETYPE_IDS.filter(a=>'parent_archetype' in ARCHETYPES[a]).map(a=><option key={a} value={a}>{a} [{(ARCHETYPES[a] as {parent_archetype?:string}).parent_archetype}] — {ARCHETYPES[a].genre} ({ARCHETYPES[a].bpm} BPM)</option>)}
-      </optgroup>
-     </select>
-    </label>
-   </div>
-
-   <div className="form-row">
-    <label className="field">
-     <span>Biome / atmosphere setting</span>
-     <input aria-label="Biome / atmosphere setting" value={draft.setting} placeholder={draft.recommended_setting||'e.g. neon grid, sunken crypt, breezy harbor'} onChange={e=>update({setting:e.target.value})}/>
-    </label>
-    <label className="field">
-     <span>Exclusion note (if already scored)</span>
-     <input aria-label="Exclusion note" value={draft.exclusion_reason} placeholder="Leave blank unless game already has music" onChange={e=>update({exclusion_reason:e.target.value})}/>
-    </label>
-   </div>
-
-   <div className="inline">
-    <button disabled={busy} onClick={()=>{
-     const tracks = generateTracksForArchetype(draft.game_id, draft.name, activeArch, activeSetting, draft.tracks, 3);
-     update({archetype:activeArch, setting:activeSetting, tracks});
-    }}><Sparkles size={15}/> Regenerate prompt templates (A/B/C)</button>
-    <button disabled={busy} onClick={()=>{
-     const letter = String.fromCharCode(65 + draft.tracks.length);
-     const extra = generateTracksForArchetype(draft.game_id, draft.name, activeArch, activeSetting, [], 1)[0];
-     if(extra){
-      update({tracks:[...draft.tracks,{...extra, track_id:`${draft.game_id}-${letter}`, title:`${draft.name} - Track ${letter}`}]});
-     }
-    }}><Plus size={15}/> Add song slot</button>
-    <select aria-label="Add theme variation from archetype" value="" disabled={busy} onChange={e=>{
-     const arch = e.target.value;
-     if(!arch) return;
-     const letter = String.fromCharCode(65 + draft.tracks.length);
-     const extra = generateTracksForArchetype(draft.game_id, draft.name, arch, activeSetting, [], 1)[0];
-     if(extra){
-      update({tracks:[...draft.tracks,{...extra, track_id:`${draft.game_id}-${letter}`, title:`${draft.name} - ${arch}`}]});
-     }
-    }}>
-     <option value="">+ Add theme variation from archetype…</option>
-     <optgroup label="Granular Biome / Theme Styles (10)">
-      {ARCHETYPE_IDS.filter(a=>'parent_archetype' in ARCHETYPES[a]).map(a=><option key={a} value={a}>{a} ({ARCHETYPES[a].bpm} BPM)</option>)}
-     </optgroup>
-     <optgroup label="Standard Families (6)">
-      {ARCHETYPE_IDS.filter(a=>!('parent_archetype' in ARCHETYPES[a])).map(a=><option key={a} value={a}>{a} ({ARCHETYPES[a].bpm} BPM)</option>)}
-     </optgroup>
-    </select>
-   </div>
-  </section>
-
-  <section className="panel">
-   <h2>Ecosystem library links (SoundAlchemist · SoundCore · ModelForge)</h2>
-   <p className="muted">Link this game directly to its adaptive music project in Sonic Alchemist, its sound effects gallery in SoundCore, and its 3D asset project in ModelForge.</p>
-   <div className="provider-grid">
-    <div className="panel provider">
-     <Music2 size={20}/>
-     <h3>ArcoreSonicAlchemist</h3>
-     <p className="muted">Adaptive music production, stem splitting, and state-machine arrangements.</p>
-     <label className="field">
-      <span>Linked Sonic Alchemist project</span>
-      <select aria-label="Sonic Alchemist project" value={saLink} onChange={e=>{
-       const val = e.target.value;
-       update({sonic_alchemist_project:val});
-       void onUpdateGameLink('ArcoreSonicAlchemist', val);
-      }}>
-       <option value="">Not linked — pick a project or composition…</option>
-       {saList.map(p=><option key={p.id} value={p.id}>{p.label}</option>)}
-       <option value={game.id}>Create / link '{game.id}'</option>
-      </select>
-     </label>
-     <button disabled={!native} onClick={()=>onOpenFolder('ArcoreSonicAlchemist')}>Open Sonic Alchemist <ArrowUpRight size={14}/></button>
-    </div>
-
-    <div className="panel provider">
-     <Music2 size={20}/>
-     <h3>ArcoreSoundCore</h3>
-     <p className="muted">Sound effects catalog, provenance, and game audio delivery manifests.</p>
-     <label className="field">
-      <span>Linked SoundCore project / collection</span>
-      <select aria-label="SoundCore project" value={scLink} onChange={e=>{
-       const val = e.target.value;
-       update({soundcore_project:val});
-       void onUpdateGameLink('ArcoreSoundCore', val);
-      }}>
-       <option value="">Not linked — pick a collection or category…</option>
-       {scList.map(p=><option key={p.id} value={p.id}>{p.label}</option>)}
-       <option value={game.id}>Project: {game.id}</option>
-      </select>
-     </label>
-     <button disabled={!native} onClick={()=>onOpenFolder('ArcoreSoundCore')}>Open SoundCore gallery <ArrowUpRight size={14}/></button>
-    </div>
-
-    <div className="panel provider">
-     <FolderOpen size={20}/>
-     <h3>ArcoreModelForge</h3>
-     <p className="muted">Versioned 3D models, rigs, materials, and texture lab assets.</p>
-     <label className="field">
-      <span>Linked ModelForge project</span>
-      <select aria-label="ModelForge project" value={mfLink} onChange={e=>{
-       const val = e.target.value;
-       update({modelforge_project:val});
-       void onUpdateGameLink('ArcoreModelForge', val);
-      }}>
-       <option value="">Not linked — pick a 3D project…</option>
-       {mfList.map(p=><option key={p.id} value={p.id}>{p.label}</option>)}
-       <option value={game.name}>Project: {game.name}</option>
-      </select>
-     </label>
-     <button disabled={!native} onClick={()=>onOpenFolder('ArcoreModelForge')}>Open ModelForge <ArrowUpRight size={14}/></button>
-    </div>
-   </div>
-  </section>
-
-  {draft.tracks.map((t,idx)=>(
-   <section className="panel track-card" key={t.track_id}>
-    <div className="section-heading">
-     <div className="inline">
-      <Pill tone={t.status==='approved'?'green':'warm'}>{t.track_id}</Pill>
-      <h2>{t.title}</h2>
-      <Pill>{t.bpm} BPM</Pill>
-      <Pill>Vocals: {t.vocals}</Pill>
-     </div>
-     <div className="inline">
-      <button onClick={()=>void copyText(`${t.track_id}-style`, t.style_prompt)}>
-       <Copy size={14}/> {copied===`${t.track_id}-style`?'Copied style!':'Copy Style Box'}
-      </button>
-      <button onClick={()=>void copyText(`${t.track_id}-lyrics`, t.lyrics)}>
-       <Copy size={14}/> {copied===`${t.track_id}-lyrics`?'Copied lyrics!':'Copy Lyrics Box'}
-      </button>
-     </div>
-    </div>
-
-    <div className="form-row">
-     <label className="field">
-      <span>Song title</span>
-      <input aria-label={`Song title ${t.track_id}`} value={t.title} onChange={e=>updateTrack(idx,{title:e.target.value})}/>
-     </label>
      <div className="form-row">
-      <label className="field">
-       <span>Track status</span>
-       <select aria-label={`Track status ${t.track_id}`} value={t.status} onChange={e=>updateTrack(idx,{status:e.target.value})}>
-        {TRACK_STATUSES.map(s=><option key={s} value={s}>{s}</option>)}
+      <label className="field"><span>Music status</span>
+       <select aria-label="Music status" value={draft.status} onChange={e=>update({status:e.target.value})}>
+        {GAME_STATUSES.map(s=><option key={s} value={s}>{human(s)}</option>)}
        </select>
       </label>
-      <label className="field">
-       <span>Vocals mode</span>
-       <select aria-label={`Vocals mode ${t.track_id}`} value={t.vocals} onChange={e=>updateTrack(idx,{vocals:e.target.value})}>
-        {VOCALS.map(v=><option key={v} value={v}>{v}</option>)}
-       </select>
-      </label>
-     </div>
-    </div>
-
-    <label className="field">
-     <span>Suno Style of Music prompt (includes genre, mood, BPM & explicit instruments for stem split)</span>
-     <textarea aria-label={`Style prompt ${t.track_id}`} rows={3} value={t.style_prompt} onChange={e=>updateTrack(idx,{style_prompt:e.target.value})}/>
-    </label>
-
-    <div className="two-col">
-     <div>
-      <label className="field">
-       <span>{t.vocals==='sung'?'Suno Lyrics & Adaptive Section Tags (sung vocals + section cues)':'Suno Lyrics Box — Adaptive Architecture (Intro → Explore → Tension → Combat → Boss → Outro)'}</span>
-       <textarea aria-label={`Lyrics ${t.track_id}`} rows={11} value={t.lyrics} onChange={e=>updateTrack(idx,{lyrics:e.target.value})}/>
-      </label>
-     </div>
-     <div>
-      <h3>Suno Advanced Split instruments (22 Standard · 68 Beta)</h3>
-      <p className="muted small">Restricted to Suno’s exact stem separation options. Check core hero stems to isolate in Advanced Split; use <strong>Synth Pad</strong> for pads and separate <strong>Rhythm Electric Guitar</strong> / <strong>Lead Guitar</strong>.</p>
-      <div className="stem-table">
-       {t.instruments.map((inst,i)=>(
-        <div className="classification" key={i}>
-         <label className="inline" style={{minWidth:70}}>
-          <input type="checkbox" checked={inst.keep} onChange={e=>{
-           const nextInst = t.instruments.map((x,j)=>j===i?{...x,keep:e.target.checked}:x);
-           const nextKeep = [...new Set(nextInst.filter(x=>x.keep).map(x=>x.stem))].sort();
-           updateTrack(idx,{instruments:nextInst, stems_requested:nextKeep});
-          }}/>
-          <small>{inst.keep?'Keep':'Filler'}</small>
-         </label>
-         <select aria-label={`Suno instrument ${t.track_id} ${i}`} value={inst.stem} style={{flex:1}} onChange={e=>{
-          const val = e.target.value;
-          const nextInst = t.instruments.map((x,j)=>j===i?{...x,name:val,stem:val}:x);
-          const nextKeep = [...new Set(nextInst.filter(x=>x.keep).map(x=>x.stem))].sort();
-          updateTrack(idx,{instruments:nextInst, stems_requested:nextKeep});
-         }}>
-          <optgroup label="Standard options (22)">
-           {SUNO_STANDARD_OPTIONS.map(s=><option key={s} value={s}>{s} (Standard)</option>)}
-          </optgroup>
-          <optgroup label="Beta options (68)">
-           {SUNO_BETA_OPTIONS.map(s=><option key={s} value={s}>{s} (Beta)</option>)}
-          </optgroup>
-         </select>
-         <Pill tone={SUNO_STANDARD_OPTIONS.includes(inst.stem)?'green':'warm'}>{SUNO_STANDARD_OPTIONS.includes(inst.stem)?'Standard':'Beta'}</Pill>
-         {t.instruments.length>1&&(
-          <button aria-label={`Remove ${inst.name}`} onClick={()=>{
-           const nextInst = t.instruments.filter((_,j)=>j!==i);
-           const nextKeep = [...new Set(nextInst.filter(x=>x.keep).map(x=>x.stem))].sort();
-           updateTrack(idx,{instruments:nextInst, stems_requested:nextKeep});
-          }}><X size={14}/></button>
-         )}
-        </div>
-       ))}
-      </div>
-      <div className="inline" style={{margin:'10px 0'}}>
-       <select aria-label={`Add Suno instrument to ${t.track_id}`} value="" onChange={e=>{
-        const val = e.target.value;
-        if(!val || t.instruments.some(x=>x.stem===val)) return;
-        const nextInst = [...t.instruments, {name:val, stem:val, keep:true}];
-        const nextKeep = [...new Set(nextInst.filter(x=>x.keep).map(x=>x.stem))].sort();
-        updateTrack(idx,{instruments:nextInst, stems_requested:nextKeep});
+      <label className="field"><span>Selected archetype</span>
+       <select aria-label="Selected archetype" value={draft.archetype||''} onChange={e=>{
+        const arch = e.target.value || null;
+        if(arch){setDraft(prev=>applyArchetypeToRecord(prev, arch, prev.setting || prev.recommended_setting, false));setDirty(true)}
+        else update({archetype:null});
        }}>
-        <option value="">+ Add Suno instrument (22 Standard / 68 Beta)…</option>
-        <optgroup label="Standard options (22)">
-         {SUNO_STANDARD_OPTIONS.filter(s=>!t.instruments.some(x=>x.stem===s)).map(s=><option key={s} value={s}>{s} (Standard)</option>)}
-        </optgroup>
-        <optgroup label="Beta options (68)">
-         {SUNO_BETA_OPTIONS.filter(s=>!t.instruments.some(x=>x.stem===s)).map(s=><option key={s} value={s}>{s} (Beta)</option>)}
-        </optgroup>
+        <option value="">(Use recommendation: {draft.recommended_archetype||'none'})</option>
+        <optgroup label="Standard families">{STANDARD_FAMILIES.map(a=><option key={a} value={a}>{a} — {ARCHETYPES[a].genre} ({ARCHETYPES[a].bpm} BPM)</option>)}</optgroup>
+        <optgroup label="Biome / theme styles">{BIOME_STYLES.map(a=><option key={a} value={a}>{a} [{(ARCHETYPES[a] as {parent_archetype?:string}).parent_archetype}] — {ARCHETYPES[a].genre} ({ARCHETYPES[a].bpm} BPM)</option>)}</optgroup>
        </select>
-      </div>
-      <p className="small"><strong>Target Advanced Split Stems:</strong> {t.stems_requested.join(', ') || 'none'}</p>
-      <div className="form-row">
-       <label className="field">
-        <span>Suno song URL</span>
-        <input aria-label={`Suno URL ${t.track_id}`} value={t.suno.url} placeholder="https://suno.com/song/..." onChange={e=>updateTrack(idx,{suno:{...t.suno,url:e.target.value}})}/>
-       </label>
-       <label className="field">
-        <span>Suno clip ID / model</span>
-        <input aria-label={`Suno clip ID ${t.track_id}`} value={t.suno.clip_id} placeholder="clip UUID or v4" onChange={e=>updateTrack(idx,{suno:{...t.suno,clip_id:e.target.value}})}/>
-       </label>
-      </div>
-      <label className="field">
-       <span>Production / stem notes</span>
-       <input aria-label={`Notes ${t.track_id}`} value={t.notes} placeholder="Loop bar boundaries, listening review notes…" onChange={e=>updateTrack(idx,{notes:e.target.value})}/>
       </label>
-      {(t.suno.analysis || (t.suno.candidates && t.suno.candidates.length>0) || t.files.length>0) && (
-       <div style={{marginTop:12,padding:12,border:'1px solid var(--border, #2a333d)',borderRadius:8}}>
-        <div className="eyebrow">SUNO MCP ANALYSIS, LISTEN STATS & ALL GENERATED TAKES ({t.suno.candidates?.length || 0})</div>
-        {t.suno.analysis && (
-         <div className="tag-list" style={{margin:'8px 0'}}>
-          <Pill tone="green">Detected {t.suno.analysis.bpm_detected} BPM</Pill>
-          <Pill>{t.suno.analysis.key_detected}</Pill>
-          <Pill>{t.suno.analysis.bars_detected} bars ({t.suno.analysis.time_signature}/4)</Pill>
-          {t.suno.analysis.recommended_loop_start_s!==undefined && (
-           <Pill tone="warm">32-Bar Loop: Bar {t.suno.analysis.recommended_loop_start_bar} ({t.suno.analysis.recommended_loop_start_s}s–{t.suno.analysis.recommended_loop_end_s}s)</Pill>
-          )}
-          {t.suno.stem_group_id && <Pill>Stems: {t.suno.stem_group_id}</Pill>}
-         </div>
-        )}
-        {t.suno.candidates && t.suno.candidates.map(cand=>{
-         const isSelected = t.suno.clip_id===cand.clip_id;
-         const instPct = cand.labels?.['arrangement:instrumental'] !== undefined ? Math.round(cand.labels['arrangement:instrumental']*100) : null;
-         const updateCand = (patch:Partial<typeof cand>)=>{
-          const nextCands = (t.suno.candidates||[]).map(c=>c.clip_id===cand.clip_id?{...c,...patch}:c);
-          updateTrack(idx,{suno:{...t.suno, candidates:nextCands}});
-         };
-         return (
-          <div key={cand.clip_id} style={{marginTop:8,padding:10,border:'1px solid var(--border, #2a333d)',borderRadius:6}}>
-           <div className="section-heading">
-            <div className="inline">
-             <strong>Take {cand.take}</strong>
-             {cand.used_in_game && <Pill tone="green">USED IN GAME</Pill>}
-             {isSelected && <Pill tone="green">SELECTED</Pill>}
-             {cand.liked && <Pill tone="warm">LIKED</Pill>}
-             {cand.take===t.suno.recommended_take && <Pill>Recommended</Pill>}
-             <Pill>Score {cand.quality_score}</Pill>
-            </div>
-            <div className="inline">
-             <a className="button" href={cand.url} target="_blank" rel="noreferrer">Open <ArrowUpRight size={13}/></a>
-             <button onClick={()=>void copyText(`url-${cand.clip_id}`, cand.url)}>
-              {copied===`url-${cand.clip_id}`?<Check size={13}/>:<Copy size={13}/>} Copy URL
-             </button>
-             <button className={isSelected?'primary':''} onClick={()=>{
-              const nextCands = (t.suno.candidates||[]).map(c=>({...c, used_in_game:c.clip_id===cand.clip_id}));
-              updateTrack(idx,{suno:{...t.suno, url:cand.url, clip_id:cand.clip_id, recommended_take:cand.take, candidates:nextCands}});
-             }}>
-              {cand.used_in_game?'Used in game':isSelected?'Mark Used in Game':'Use Take '+cand.take}
-             </button>
-            </div>
-           </div>
-           <small className="muted" style={{display:'block',margin:'4px 0'}}>
-            {cand.duration_s}s · {cand.bpm_detected} BPM · {cand.key_detected} · {cand.bars_detected} bars · {cand.sections_count} sections
-            {instPct!==null ? ` · Instrumental ${instPct}%` : ''}
-            {cand.recommended_loop_start_s!==undefined ? ` · Loop ${cand.recommended_loop_start_s}s–${cand.recommended_loop_end_s}s` : ''}
-            {cand.terms?.length ? ` · ${cand.terms.slice(0,4).join(', ')}` : ''}
-           </small>
-           <div className="form-row" style={{marginTop:6}}>
-            <label className="field" style={{maxWidth:120}}>
-             <span>Listen rating</span>
-             <select aria-label={`Listen rating ${cand.clip_id}`} value={cand.listen_rating ?? ''} onChange={e=>updateCand({listen_rating:e.target.value?Number(e.target.value):undefined})}>
-              <option value="">Unrated</option>
-              {[5,4,3,2,1].map(n=><option key={n} value={n}>{n} / 5</option>)}
-             </select>
-            </label>
-            <label className="field">
-             <span>Listen / QA notes</span>
-             <input aria-label={`Listen notes ${cand.clip_id}`} value={cand.listen_notes || ''} placeholder="Mix balance, loop seam, vocal bleed…" onChange={e=>updateCand({listen_notes:e.target.value})}/>
-            </label>
-            <div className="inline" style={{alignSelf:'flex-end'}}>
-             <button onClick={()=>updateCand({liked:!cand.liked})}>{cand.liked?'Liked ★':'Like'}</button>
-            </div>
-           </div>
-           {cand.midi_files && cand.midi_files.length>0 && (
-            <div className="small muted" style={{marginTop:6,display:'flex',flexWrap:'wrap',gap:6,alignItems:'center'}}>
-             <strong>MIDI stems ({cand.midi_files.length}):</strong>
-             {cand.midi_files.map((m,mi)=>m.path?(
-              <button key={m.audio_id||mi} type="button" className="file-link" disabled={!native} title={m.path} onClick={()=>openFolderForPath(m.path)}>
-               {m.stem} ({m.notes_count ?? 0} notes)<FolderOpen size={12}/>
-              </button>
-             ):(
-              <span key={m.audio_id||mi}>{m.stem} ({m.notes_count ?? 0} notes)</span>
-             ))}
-            </div>
-           )}
-          </div>
-         );
-        })}
-        {t.files.length>0 && (
-         <div className="small muted" style={{marginTop:8,display:'flex',flexWrap:'wrap',gap:6,alignItems:'center'}}>
-          <strong>Local pipeline files ({t.files.length}):</strong>
-          {t.files.map((f,fi)=>(
-           <button key={f.path+fi} type="button" className="file-link" disabled={!native} title={f.path} onClick={()=>openFolderForPath(f.path)}>
-            {f.path}<FolderOpen size={12}/>
-           </button>
-          ))}
-         </div>
-        )}
-       </div>
-      )}
+      <label className="field"><span>Biome / atmosphere setting</span>
+       <input aria-label="Biome / atmosphere setting" value={draft.setting} placeholder={draft.recommended_setting||'e.g. neon grid, sunken crypt, breezy harbor'} onChange={e=>update({setting:e.target.value})}/>
+      </label>
+      <label className="field"><span>Exclusion note (if already scored)</span>
+       <input aria-label="Exclusion note" value={draft.exclusion_reason} placeholder="Leave blank unless game already has music" onChange={e=>update({exclusion_reason:e.target.value})}/>
+      </label>
      </div>
-    </div>
-   </section>
-  ))}
+    </section>
 
-  {(draft.related_suno_tracks || []).some(r=>!r.dismissed) && (
-   <section className="panel">
-    <div className="section-heading">
-     <div>
-      <div className="eyebrow">SUNO LIBRARY TITLE MATCHES</div>
-      <h2>Related Suno tracks ({(draft.related_suno_tracks || []).filter(r=>!r.dismissed).length})</h2>
-      <p className="muted">Library clips matched by title (ignoring generic words like "3D" alone). Attach a match to Track A or dismiss false/ambiguous matches.</p>
-     </div>
-    </div>
-    {(draft.related_suno_tracks || []).filter(r=>!r.dismissed).map(rel=>(
-     <div key={rel.clip_id} style={{marginTop:8,padding:10,border:'1px solid var(--border, #2a333d)',borderRadius:6}}>
-      <div className="section-heading">
-       <div className="inline">
-        <strong>{rel.title}</strong>
-        <Pill tone={rel.match_confidence==='ambiguous'?'warm':'green'}>{rel.match_confidence} match</Pill>
-        {rel.liked && <Pill tone="warm">LIKED</Pill>}
-        {rel.duration_s && <Pill>{rel.duration_s}s</Pill>}
-        {rel.model && <Pill>{rel.model}</Pill>}
+    <section className="panel">
+     <div className="eyebrow">IN-GAME MUSIC</div>
+     {activeTrack ? <>
+      <div className="section-heading tight">
+       <div>
+        <h2>{activeTrack.title}</h2>
+        <div className="tag-list">
+         {activeCand && <Pill tone="green">Take {activeCand.take}{activeCand.used_in_game ? ' · used in game' : ''}</Pill>}
+         {activeSuno?.analysis && <><Pill>{activeSuno.analysis.bpm_detected} BPM</Pill><Pill>{activeSuno.analysis.key_detected}</Pill><Pill>{activeSuno.analysis.bars_detected} bars</Pill></>}
+         {activeSuno?.stem_group_id && <Pill>Stems: {activeSuno.stem_group_id}</Pill>}
+        </div>
        </div>
        <div className="inline">
-        <a className="button" href={rel.url} target="_blank" rel="noreferrer">Open <ArrowUpRight size={13}/></a>
-        <button onClick={()=>void copyText(`rel-${rel.clip_id}`, rel.url)}>
-         {copied===`rel-${rel.clip_id}`?<Check size={13}/>:<Copy size={13}/>} Copy URL
-        </button>
-        {draft.tracks[0] && !draft.tracks[0].suno.candidates?.some(c=>c.clip_id===rel.clip_id) && (
-         <button className="primary" onClick={()=>{
-          const t0 = draft.tracks[0];
-          const nextTake = (t0.suno.candidates?.length || 0) + 1;
-          const newCand = {
-           take: nextTake,
-           clip_id: rel.clip_id,
-           url: rel.url,
-           duration_s: rel.duration_s || 0,
-           bpm_detected: t0.bpm,
-           key_detected: 'Unanalyzed',
-           time_signature: 4,
-           bars_detected: 0,
-           sections_count: 0,
-           quality_score: 0,
-           liked: rel.liked,
-           listen_notes: `Attached from related Suno library (${rel.title})`,
-          };
-          updateTrack(0,{suno:{...t0.suno, candidates:[...(t0.suno.candidates||[]), newCand]}});
-         }}>Attach to Track A</button>
-        )}
-        <button onClick={()=>{
-         update({related_suno_tracks:(draft.related_suno_tracks||[]).map(x=>x.clip_id===rel.clip_id?{...x,dismissed:true}:x)});
-        }}><X size={13}/> Dismiss</button>
+        {activeSuno?.url && <a className="button" href={activeSuno.url} target="_blank" rel="noreferrer">Suno <ArrowUpRight size={14}/></a>}
+        <button onClick={()=>{selectTrack(activeTrackIdx);setSection('tracks')}}>View takes</button>
        </div>
       </div>
-      <small className="muted" style={{display:'block',marginTop:4}}>
-       Clip: <code>{rel.clip_id}</code> · Matched: {rel.matched_terms.join(', ')}
-       {rel.match_candidates && rel.match_candidates.length>1 ? ` · Possible games: ${rel.match_candidates.join(', ')}` : ''}
-       {rel.style ? ` · ${rel.style.slice(0,140)}${rel.style.length>140?'…':''}` : ''}
-      </small>
-     </div>
-    ))}
+      <div className="form-row three">
+       <label className="field"><span>Integration status</span>
+        <select aria-label="In-game integration status" value={activeSuno?.in_game_status || 'not_integrated'} onChange={e=>updateTrack(activeTrackIdx,{suno:{...activeTrack.suno, in_game_status:e.target.value}})}>
+         {IN_GAME_STATUSES.map(s=><option key={s} value={s}>{human(s)}</option>)}
+        </select>
+       </label>
+       <label className="field"><span>Engine audio path</span>
+        <input aria-label="Engine audio path" value={activeSuno?.engine_asset_path || ''} placeholder="/Game/Audio/Music" onChange={e=>updateTrack(activeTrackIdx,{suno:{...activeTrack.suno, engine_asset_path:e.target.value}})}/>
+       </label>
+       <label className="field"><span>Loop length (s)</span>
+        <input aria-label="In-game loop length" type="number" step="0.01" value={activeSuno?.in_game_loop_s ?? ''} placeholder="e.g. 54.86" onChange={e=>updateTrack(activeTrackIdx,{suno:{...activeTrack.suno, in_game_loop_s:e.target.value?Number(e.target.value):undefined}})}/>
+       </label>
+      </div>
+      <p className="small muted kv">
+       {(()=>{const stems=activeSuno?.in_game_stems?.length?activeSuno.in_game_stems:activeTrack.stems_requested;return stems.length?<><strong>Stems:</strong> {stems.join(', ')}<br/></>:null})()}
+       <strong>DB file:</strong> <code>{dbFilePath}</code> <button className="link-button" onClick={()=>void copyText('db-file', dbFilePath)}>{copied==='db-file'?'Copied':'Copy'}</button>
+      </p>
+     </> : <p className="muted">No tracks yet. Open Tracks to generate prompt templates.</p>}
+    </section>
+   </div>
+
+   <section className="panel music-links">
+    <div className="eyebrow">ECOSYSTEM LINKS</div>
+    <div className="music-links-grid">
+     {links.map(l=>{
+      const value = game.provider_links.find(p=>p.provider===l.provider)?.asset_id || draft[l.field] || '';
+      return <div className="music-link" key={l.provider}>
+       <label className="field"><span>{l.label}</span>
+        <select aria-label={`${l.label} project`} value={value} onChange={e=>{const val=e.target.value;update({[l.field]:val} as Partial<MusicDesignRecord>);void onUpdateGameLink(l.provider,val)}}>
+         <option value="">Not linked</option>
+         {l.list.map(p=><option key={p.id} value={p.id}>{p.label}</option>)}
+         <option value={l.own.value}>{l.own.label}</option>
+        </select>
+       </label>
+       <button className="icon-button" aria-label={`Open ${l.label}`} title={`Open ${l.label}`} disabled={!native} onClick={()=>onOpenFolder(l.provider)}><FolderOpen size={15}/></button>
+      </div>;
+     })}
+    </div>
    </section>
-  )}
+  </>}
+
+  {section==='tracks'&&<div className="music-tracks">
+   <aside className="track-picker" aria-label="Tracks">
+    {draft.tracks.map((t,i)=>{
+     const n=t.suno.candidates?.length||0;const inGame=t.suno.candidates?.some(c=>c.used_in_game);
+     return <button key={t.track_id} className={'track-pick'+(i===tIdx?' selected':'')} aria-current={i===tIdx} onClick={()=>selectTrack(i)}>
+      <strong>{t.title.replace(`${draft.name} - `,'')}</strong>
+      <small>{human(t.status)} · {n} take{n===1?'':'s'}{inGame?' · in game':''}</small>
+     </button>;
+    })}
+    <div className="track-picker-actions">
+     <button disabled={busy} onClick={()=>addTrack(activeArch)}><Plus size={14}/> Add song slot</button>
+     <select aria-label="Add theme variation from archetype" value="" disabled={busy} onChange={e=>{if(e.target.value)addTrack(e.target.value,e.target.value)}}>
+      <option value="">+ Theme variation…</option>
+      <optgroup label="Biome / theme styles">{BIOME_STYLES.map(a=><option key={a} value={a}>{a} ({ARCHETYPES[a].bpm} BPM)</option>)}</optgroup>
+      <optgroup label="Standard families">{STANDARD_FAMILIES.map(a=><option key={a} value={a}>{a} ({ARCHETYPES[a].bpm} BPM)</option>)}</optgroup>
+     </select>
+     <button disabled={busy} title="Replace all tracks with fresh A/B/C prompt templates for the selected archetype" onClick={()=>{
+      update({archetype:activeArch, setting:activeSetting, tracks:generateTracksForArchetype(draft.game_id, draft.name, activeArch, activeSetting, draft.tracks, 3)});
+     }}><Sparkles size={14}/> Regenerate A/B/C</button>
+    </div>
+   </aside>
+
+   {track ? <section className="panel track-editor" key={track.track_id}>
+    <div className="track-head">
+     <input className="track-title" aria-label={`Song title ${track.track_id}`} value={track.title} onChange={e=>updateTrack(tIdx,{title:e.target.value})}/>
+     <label className="compact-field"><span>Status</span>
+      <select aria-label={`Track status ${track.track_id}`} value={track.status} onChange={e=>updateTrack(tIdx,{status:e.target.value})}>{TRACK_STATUSES.map(s=><option key={s} value={s}>{human(s)}</option>)}</select>
+     </label>
+     <label className="compact-field"><span>Vocals</span>
+      <select aria-label={`Vocals mode ${track.track_id}`} value={track.vocals} onChange={e=>updateTrack(tIdx,{vocals:e.target.value})}>{VOCALS.map(v=><option key={v} value={v}>{v}</option>)}</select>
+     </label>
+     <Pill>{track.bpm} BPM</Pill>
+    </div>
+
+    <div className="tabs track-panes" role="tablist" aria-label="Track details">
+     {([['takes','Takes',track.suno.candidates?.length||0],['prompt','Prompt',null],['stems','Stems',track.stems_requested.length],['files','Files',track.files.length]] as [TrackPane,string,number|null][]).map(([id,lbl,n])=>
+      <button key={id} role="tab" aria-selected={pane===id} className={pane===id?'selected':''} onClick={()=>setPane(id)}>{lbl}{n!==null&&<span>{n}</span>}</button>)}
+    </div>
+
+    {pane==='prompt'&&<div className="prompt-grid">
+     <div>
+      <label className="field"><span className="field-head">Style of music <button className="link-button" onClick={()=>void copyText(`${track.track_id}-style`, track.style_prompt)}><Copy size={12}/> {copied===`${track.track_id}-style`?'Copied':'Copy'}</button></span>
+       <textarea aria-label={`Style prompt ${track.track_id}`} rows={5} value={track.style_prompt} onChange={e=>updateTrack(tIdx,{style_prompt:e.target.value})}/>
+      </label>
+      <label className="field"><span>Production / stem notes</span>
+       <textarea aria-label={`Notes ${track.track_id}`} rows={3} value={track.notes} placeholder="Loop bar boundaries, listening review notes…" onChange={e=>updateTrack(tIdx,{notes:e.target.value})}/>
+      </label>
+      <div className="form-row">
+       <label className="field"><span>Suno song URL</span>
+        <input aria-label={`Suno URL ${track.track_id}`} value={track.suno.url} placeholder="https://suno.com/song/..." onChange={e=>updateTrack(tIdx,{suno:{...track.suno,url:e.target.value}})}/>
+       </label>
+       <label className="field"><span>Suno clip ID / model</span>
+        <input aria-label={`Suno clip ID ${track.track_id}`} value={track.suno.clip_id} placeholder="clip UUID or v4" onChange={e=>updateTrack(tIdx,{suno:{...track.suno,clip_id:e.target.value}})}/>
+       </label>
+      </div>
+     </div>
+     <label className="field"><span className="field-head">{track.vocals==='sung'?'Lyrics & section tags':'Lyrics box · adaptive sections'} <button className="link-button" onClick={()=>void copyText(`${track.track_id}-lyrics`, track.lyrics)}><Copy size={12}/> {copied===`${track.track_id}-lyrics`?'Copied':'Copy'}</button></span>
+      <textarea aria-label={`Lyrics ${track.track_id}`} rows={14} value={track.lyrics} onChange={e=>updateTrack(tIdx,{lyrics:e.target.value})}/>
+     </label>
+    </div>}
+
+    {pane==='stems'&&<>
+     <p className="muted small">Suno Advanced Split options only. Checked stems are isolated; unchecked ones are filler. Use <strong>Synth Pad</strong> for pads and separate <strong>Rhythm Electric Guitar</strong> / <strong>Lead Guitar</strong>.</p>
+     <div className="stem-grid">
+      {track.instruments.map((inst,i)=>(
+       <div className={'stem-row'+(inst.keep?'':' filler')} key={i}>
+        <input type="checkbox" aria-label={`Keep ${inst.stem}`} checked={inst.keep} onChange={e=>{const next=track.instruments.map((x,j)=>j===i?{...x,keep:e.target.checked}:x);updateTrack(tIdx,{instruments:next,stems_requested:keepList(next)})}}/>
+        <select aria-label={`Suno instrument ${track.track_id} ${i}`} value={inst.stem} onChange={e=>{const val=e.target.value;const next=track.instruments.map((x,j)=>j===i?{...x,name:val,stem:val}:x);updateTrack(tIdx,{instruments:next,stems_requested:keepList(next)})}}>
+         <optgroup label="Standard">{SUNO_STANDARD_OPTIONS.map(s=><option key={s} value={s}>{s}</option>)}</optgroup>
+         <optgroup label="Beta">{SUNO_BETA_OPTIONS.map(s=><option key={s} value={s}>{s}</option>)}</optgroup>
+        </select>
+        <Pill tone={SUNO_STANDARD_OPTIONS.includes(inst.stem)?'green':'warm'}>{SUNO_STANDARD_OPTIONS.includes(inst.stem)?'Std':'Beta'}</Pill>
+        {track.instruments.length>1&&<button className="icon-button" aria-label={`Remove ${inst.name}`} onClick={()=>{const next=track.instruments.filter((_,j)=>j!==i);updateTrack(tIdx,{instruments:next,stems_requested:keepList(next)})}}><X size={13}/></button>}
+       </div>
+      ))}
+     </div>
+     <div className="inline" style={{marginTop:12}}>
+      <select aria-label={`Add Suno instrument to ${track.track_id}`} value="" onChange={e=>{const val=e.target.value;if(!val||track.instruments.some(x=>x.stem===val))return;const next=[...track.instruments,{name:val,stem:val,keep:true}];updateTrack(tIdx,{instruments:next,stems_requested:keepList(next)})}}>
+       <option value="">+ Add instrument…</option>
+       <optgroup label="Standard">{SUNO_STANDARD_OPTIONS.filter(s=>!track.instruments.some(x=>x.stem===s)).map(s=><option key={s} value={s}>{s}</option>)}</optgroup>
+       <optgroup label="Beta">{SUNO_BETA_OPTIONS.filter(s=>!track.instruments.some(x=>x.stem===s)).map(s=><option key={s} value={s}>{s}</option>)}</optgroup>
+      </select>
+      <span className="small muted"><strong>Split targets:</strong> {track.stems_requested.join(', ') || 'none'}</span>
+     </div>
+    </>}
+
+    {pane==='takes'&&<>
+     {track.suno.analysis && <div className="tag-list" style={{marginBottom:12}}>
+      <Pill tone="green">{track.suno.analysis.bpm_detected} BPM detected</Pill>
+      <Pill>{track.suno.analysis.key_detected}</Pill>
+      <Pill>{track.suno.analysis.bars_detected} bars ({track.suno.analysis.time_signature}/4)</Pill>
+      {track.suno.analysis.recommended_loop_start_s!==undefined && <Pill tone="warm">Loop: bar {track.suno.analysis.recommended_loop_start_bar} ({track.suno.analysis.recommended_loop_start_s}s–{track.suno.analysis.recommended_loop_end_s}s)</Pill>}
+      {track.suno.stem_group_id && <Pill>Stems: {track.suno.stem_group_id}</Pill>}
+     </div>}
+     {!(track.suno.candidates?.length) && <p className="muted">No takes yet. Generate in Suno with the Prompt tab, then record the URL or attach a Suno match.</p>}
+     <div className="take-list">
+      {(track.suno.candidates||[]).map(cand=><TakeRow key={cand.clip_id} cand={cand} track={track} copied={copied}
+       onCopy={()=>void copyText(`url-${cand.clip_id}`, cand.url)}
+       onPatch={patch=>updateTrack(tIdx,{suno:{...track.suno,candidates:(track.suno.candidates||[]).map(c=>c.clip_id===cand.clip_id?{...c,...patch}:c)}})}
+       onUse={()=>updateTrack(tIdx,{suno:{...track.suno,url:cand.url,clip_id:cand.clip_id,recommended_take:cand.take,candidates:(track.suno.candidates||[]).map(c=>({...c,used_in_game:c.clip_id===cand.clip_id}))}})}
+       onOpenPath={openFolderForPath}/>)}
+     </div>
+    </>}
+
+    {pane==='files'&&(track.files.length ? <div className="file-links">
+     {track.files.map((f,fi)=><button key={f.path+fi} type="button" className="file-link" disabled={!native} title={f.path} onClick={()=>openFolderForPath(f.path)}>{f.path}<FolderOpen size={12}/></button>)}
+    </div> : <p className="muted">No local pipeline files recorded for this track.</p>)}
+   </section> : <section className="panel"><p className="muted">No tracks yet. Use Regenerate A/B/C to create prompt templates.</p></section>}
+  </div>}
+
+  {section==='matches'&&<section className="panel">
+   <p className="muted small">Suno library clips matched by title. Attach a match to the selected track as a new take, or dismiss false matches.</p>
+   <div className="take-list">
+    {matches.map(rel=>{
+     const target = draft.tracks[tIdx];
+     const attached = draft.tracks.some(t=>t.suno.candidates?.some(c=>c.clip_id===rel.clip_id));
+     return <div className="take-row" key={rel.clip_id}>
+      <div className="take-main">
+       <div className="inline"><strong>{rel.title}</strong>
+        <Pill tone={rel.match_confidence==='ambiguous'?'warm':'green'}>{rel.match_confidence}</Pill>
+        {rel.liked && <Pill tone="warm">Liked</Pill>}{rel.duration_s && <Pill>{rel.duration_s}s</Pill>}{rel.model && <Pill>{rel.model}</Pill>}
+       </div>
+       <small className="muted">Matched: {rel.matched_terms.join(', ')}{rel.match_candidates && rel.match_candidates.length>1 ? ` · Possible games: ${rel.match_candidates.join(', ')}` : ''}{rel.style ? ` · ${rel.style.slice(0,120)}${rel.style.length>120?'…':''}` : ''}</small>
+      </div>
+      <div className="inline take-actions">
+       <a className="button" href={rel.url} target="_blank" rel="noreferrer">Open <ArrowUpRight size={13}/></a>
+       <button onClick={()=>void copyText(`rel-${rel.clip_id}`, rel.url)}>{copied===`rel-${rel.clip_id}`?<Check size={13}/>:<Copy size={13}/>}</button>
+       {target && !attached && <button className="primary" onClick={()=>{
+        const take=(target.suno.candidates?.length||0)+1;
+        const cand:SunoCandidate={take,clip_id:rel.clip_id,url:rel.url,duration_s:rel.duration_s||0,bpm_detected:target.bpm,key_detected:'Unanalyzed',time_signature:4,bars_detected:0,sections_count:0,quality_score:0,liked:rel.liked,listen_notes:`Attached from related Suno library (${rel.title})`};
+        updateTrack(tIdx,{suno:{...target.suno,candidates:[...(target.suno.candidates||[]),cand]}});
+       }}>Attach to {target.title.replace(`${draft.name} - `,'')}</button>}
+       {attached && <Pill tone="green">Attached</Pill>}
+       <button aria-label={`Dismiss ${rel.title}`} onClick={()=>update({related_suno_tracks:(draft.related_suno_tracks||[]).map(x=>x.clip_id===rel.clip_id?{...x,dismissed:true}:x)})}><X size={13}/> Dismiss</button>
+      </div>
+     </div>;
+    })}
+   </div>
+  </section>}
+ </div>;
+}
+
+function TakeRow({cand,track,copied,onCopy,onPatch,onUse,onOpenPath}:{cand:SunoCandidate;track:MusicTrack;copied:string;onCopy:()=>void;onPatch:(p:Partial<SunoCandidate>)=>void;onUse:()=>void;onOpenPath:(p?:string)=>void}){
+ const isSelected = track.suno.clip_id===cand.clip_id;
+ const instPct = cand.labels?.['arrangement:instrumental'] !== undefined ? Math.round(cand.labels['arrangement:instrumental']*100) : null;
+ const meta = [`${cand.duration_s}s`,`${cand.bpm_detected} BPM`,cand.key_detected,`${cand.bars_detected} bars`,`${cand.sections_count} sections`,
+  instPct!==null?`instrumental ${instPct}%`:'',cand.recommended_loop_start_s!==undefined?`loop ${cand.recommended_loop_start_s}s–${cand.recommended_loop_end_s}s`:'',
+  cand.terms?.length?cand.terms.slice(0,4).join(', '):''].filter(Boolean).join(' · ');
+ return <div className={'take-row'+(cand.used_in_game?' in-game':'')}>
+  <div className="take-main">
+   <div className="inline">
+    <strong>Take {cand.take}</strong>
+    {cand.used_in_game && <Pill tone="green">In game</Pill>}
+    {isSelected && !cand.used_in_game && <Pill tone="green">Selected</Pill>}
+    {cand.take===track.suno.recommended_take && <Pill>Recommended</Pill>}
+    <Pill>Score {cand.quality_score}</Pill>
+   </div>
+   <small className="muted">{meta}</small>
+   {cand.midi_files && cand.midi_files.length>0 && <details className="midi">
+    <summary>MIDI stems ({cand.midi_files.length})</summary>
+    <div className="file-links">{cand.midi_files.map((m,mi)=>m.path
+     ?<button key={m.audio_id||mi} type="button" className="file-link" disabled={!native} title={m.path} onClick={()=>onOpenPath(m.path)}>{m.stem} ({m.notes_count ?? 0} notes)<FolderOpen size={12}/></button>
+     :<span key={m.audio_id||mi}>{m.stem} ({m.notes_count ?? 0} notes)</span>)}</div>
+   </details>}
+  </div>
+  <div className="take-review">
+   <select aria-label={`Listen rating ${cand.clip_id}`} value={cand.listen_rating ?? ''} onChange={e=>onPatch({listen_rating:e.target.value?Number(e.target.value):undefined})}>
+    <option value="">Rate…</option>{[5,4,3,2,1].map(n=><option key={n} value={n}>{n} / 5</option>)}
+   </select>
+   <input aria-label={`Listen notes ${cand.clip_id}`} value={cand.listen_notes || ''} placeholder="Listen notes: mix, loop seam, bleed…" onChange={e=>onPatch({listen_notes:e.target.value})}/>
+  </div>
+  <div className="inline take-actions">
+   <button className={'icon-button'+(cand.liked?' liked':'')} aria-label={cand.liked?'Unlike':'Like'} aria-pressed={!!cand.liked} title={cand.liked?'Liked':'Like'} onClick={()=>onPatch({liked:!cand.liked})}><Star size={14} fill={cand.liked?'currentColor':'none'}/></button>
+   <a className="button" href={cand.url} target="_blank" rel="noreferrer" title="Open in Suno">Listen <ArrowUpRight size={13}/></a>
+   <button className="icon-button" aria-label="Copy URL" title="Copy URL" onClick={onCopy}>{copied===`url-${cand.clip_id}`?<Check size={13}/>:<Copy size={13}/>}</button>
+   <button className={cand.used_in_game?'':'primary'} disabled={!!cand.used_in_game} onClick={onUse}>{cand.used_in_game?'In game':'Use in game'}</button>
+  </div>
  </div>;
 }
 

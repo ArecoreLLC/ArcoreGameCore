@@ -24,8 +24,10 @@ describe('music design recommendations and adaptive prompt generation',()=>{
   expect(tracks[0].style_prompt).toContain('neon grid atmosphere');
   expect(tracks[0].style_prompt).toContain('Synth Bass');
   expect(tracks[0].style_prompt).toContain('Synth Pad');
-  expect(tracks[0].lyrics).toContain('[Verse 1 - Exploration Layer]');
-  expect(tracks[0].lyrics).toContain('[Chorus - Combat Layer]');
+  // Lyrics build the arrangement one stem at a time so Suno's split stays clean.
+  expect(tracks[0].lyrics).toContain('[Instrumental]');
+  expect(tracks[0].lyrics).toContain('[Intro - Bass Stem Only]');
+  expect(tracks[0].lyrics).toContain('[Part 3 - Add Combat & Climax Layer]');
   expect(tracks[0].stems_requested).toEqual(['Arpeggiator','Drums','Synth Bass','Synth Lead']);
  });
 

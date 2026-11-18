@@ -312,12 +312,48 @@
             "recommended_loop_start_bar": 21,
             "recommended_loop_start_s": 26.076,
             "recommended_loop_end_s": 67.036,
-            "quality_score": 20.328
+            "quality_score": 20.328,
+            "midi_files": [
+              {
+                "stem": "guitar",
+                "audio_id": "05d59a81-a737-486c-8eb5-6a3ca5423902",
+                "path": "X:/Projects/GameMusic/Tugboat-Tumble/midi/tugboat-tumble-take1-guitar.mid",
+                "tracks": 3,
+                "notes_count": 2351
+              },
+              {
+                "stem": "drums",
+                "audio_id": "8c3995ca-0d49-4ff1-aa0e-5694e15ab671",
+                "path": "X:/Projects/GameMusic/Tugboat-Tumble/midi/tugboat-tumble-take1-drums.mid",
+                "tracks": 5,
+                "notes_count": 963
+              },
+              {
+                "stem": "bass",
+                "audio_id": "a22a1c48-f2a9-45da-bbb7-2b12006d7e98",
+                "path": "X:/Projects/GameMusic/Tugboat-Tumble/midi/tugboat-tumble-take1-bass.mid",
+                "tracks": 3,
+                "notes_count": 433
+              }
+            ]
           }
         ]
       },
-      "files": [],
-      "notes": "Generated 2 takes via Suno MCP (v6) & analyzed via 0-credit audio-analysis:\n- Take 1 (8d834c46-1de2-4a7f-a01c-631c799d9e24): https://suno.com/song/8d834c46-1de2-4a7f-a01c-631c799d9e24 \u2014 136.68s, detected 186.9 BPM, G major, 107 bars, 9 sections, loop bars 22..54 (27.389s\u201368.527s), score=19.962\n- Take 2 (561e2784-c1c1-4bd4-a929-cf23cfa761e2): https://suno.com/song/561e2784-c1c1-4bd4-a929-cf23cfa761e2 \u2014 132s, detected 187.5 BPM, G major, 104 bars, 10 sections, loop bars 21..53 (26.076s\u201367.036s), score=20.328\nSelected for stem split: Take 2 (561e2784-c1c1-4bd4-a929-cf23cfa761e2) | 12-stem Auto Split group: stemgrp_5ea1475c-40c6-4ff3-a5aa-226ffea297cc (complete)."
+      "files": [
+        {
+          "path": "X:/Projects/GameMusic/Tugboat-Tumble/midi/tugboat-tumble-take1-guitar.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Tugboat-Tumble/midi/tugboat-tumble-take1-drums.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Tugboat-Tumble/midi/tugboat-tumble-take1-bass.mid",
+          "kind": "midi"
+        }
+      ],
+      "notes": "Generated 2 takes via Suno MCP (v6) & analyzed via 0-credit audio-analysis:\n- Take 1 (8d834c46-1de2-4a7f-a01c-631c799d9e24): https://suno.com/song/8d834c46-1de2-4a7f-a01c-631c799d9e24 — 136.68s, detected 186.9 BPM, G major, 107 bars, 9 sections, loop bars 22..54 (27.389s–68.527s), score=19.962\n- Take 2 (561e2784-c1c1-4bd4-a929-cf23cfa761e2): https://suno.com/song/561e2784-c1c1-4bd4-a929-cf23cfa761e2 — 132s, detected 187.5 BPM, G major, 104 bars, 10 sections, loop bars 21..53 (26.076s–67.036s), score=20.328\nSelected for stem split: Take 2 (561e2784-c1c1-4bd4-a929-cf23cfa761e2) | 12-stem Auto Split group: stemgrp_5ea1475c-40c6-4ff3-a5aa-226ffea297cc (complete)."
     },
     {
       "track_id": "tugboat-tumble-B",
@@ -482,7 +518,7 @@
       "notes": ""
     }
   ],
-  "updated_at": "2026-11-18T14:03:41Z",
+  "updated_at": "2026-11-18T22:11:28Z",
   "scope": "catalog",
   "recommended_archetype": "cozy",
   "recommended_setting": "breezy harbor & salvage bay",

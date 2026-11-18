@@ -189,7 +189,51 @@
             "recommended_loop_start_bar": 4,
             "recommended_loop_start_s": 5.024,
             "recommended_loop_end_s": 58.692,
-            "quality_score": 8.335
+            "quality_score": 8.335,
+            "midi_files": [
+              {
+                "stem": "keyboard",
+                "audio_id": "0b94d446-356f-479c-b42a-aeb63ba17c98",
+                "path": "X:/Projects/GameMusic/Pocket-Fort-Patrol/midi/pocket-fort-patrol-take1-keyboard.mid",
+                "tracks": 1,
+                "notes_count": 1474
+              },
+              {
+                "stem": "bass",
+                "audio_id": "1dd4b360-2290-45d3-920d-92acba652271",
+                "path": "X:/Projects/GameMusic/Pocket-Fort-Patrol/midi/pocket-fort-patrol-take1-bass.mid",
+                "tracks": 2,
+                "notes_count": 1190
+              },
+              {
+                "stem": "percussion",
+                "audio_id": "23015dea-99f1-45e6-baff-43bcd5f95399",
+                "path": "X:/Projects/GameMusic/Pocket-Fort-Patrol/midi/pocket-fort-patrol-take1-percussion.mid",
+                "tracks": 5,
+                "notes_count": 392
+              },
+              {
+                "stem": "drums",
+                "audio_id": "23dfb4f2-d044-4ae3-a640-9ed11df624c4",
+                "path": "X:/Projects/GameMusic/Pocket-Fort-Patrol/midi/pocket-fort-patrol-take1-drums.mid",
+                "tracks": 8,
+                "notes_count": 1062
+              },
+              {
+                "stem": "brass",
+                "audio_id": "df8137c1-d650-455f-949b-4943123f7ba5",
+                "path": "X:/Projects/GameMusic/Pocket-Fort-Patrol/midi/pocket-fort-patrol-take1-brass.mid",
+                "tracks": 2,
+                "notes_count": 71
+              },
+              {
+                "stem": "synth",
+                "audio_id": "fd4de3cd-240a-4c8a-811b-3cef9f5541fd",
+                "path": "X:/Projects/GameMusic/Pocket-Fort-Patrol/midi/pocket-fort-patrol-take1-synth.mid",
+                "tracks": 1,
+                "notes_count": 1493
+              }
+            ]
           },
           {
             "take": 2,
@@ -250,8 +294,33 @@
           }
         ]
       },
-      "files": [],
-      "notes": "Generated 2 takes via Suno MCP (v6) & analyzed via 0-credit audio-analysis:\n- Take 1 (38fd1b7b-eebe-4896-b8b8-e88f63083d6c): https://suno.com/song/38fd1b7b-eebe-4896-b8b8-e88f63083d6c \u2014 60.12s, detected 143.1 BPM, E minor, 36 bars, 6 sections, loop bars 4..36 (5.024s\u201358.692s), score=8.335\n- Take 2 (9ec1a551-3a7c-4be9-8d13-fb9e0e8c9f91): https://suno.com/song/9ec1a551-3a7c-4be9-8d13-fb9e0e8c9f91 \u2014 59.68s, detected 140 BPM, Db minor, 35 bars, 6 sections, loop bars 3..35 (3.427s\u201358.278s), score=4.7\nSelected for stem split: Take 1 (38fd1b7b-eebe-4896-b8b8-e88f63083d6c) | 12-stem Auto Split group: stemgrp_deee0c1d-3d78-46ce-bce9-12eeb87237ad (complete)."
+      "files": [
+        {
+          "path": "X:/Projects/GameMusic/Pocket-Fort-Patrol/midi/pocket-fort-patrol-take1-keyboard.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Pocket-Fort-Patrol/midi/pocket-fort-patrol-take1-bass.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Pocket-Fort-Patrol/midi/pocket-fort-patrol-take1-percussion.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Pocket-Fort-Patrol/midi/pocket-fort-patrol-take1-drums.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Pocket-Fort-Patrol/midi/pocket-fort-patrol-take1-brass.mid",
+          "kind": "midi"
+        },
+        {
+          "path": "X:/Projects/GameMusic/Pocket-Fort-Patrol/midi/pocket-fort-patrol-take1-synth.mid",
+          "kind": "midi"
+        }
+      ],
+      "notes": "Generated 2 takes via Suno MCP (v6) & analyzed via 0-credit audio-analysis:\n- Take 1 (38fd1b7b-eebe-4896-b8b8-e88f63083d6c): https://suno.com/song/38fd1b7b-eebe-4896-b8b8-e88f63083d6c — 60.12s, detected 143.1 BPM, E minor, 36 bars, 6 sections, loop bars 4..36 (5.024s–58.692s), score=8.335\n- Take 2 (9ec1a551-3a7c-4be9-8d13-fb9e0e8c9f91): https://suno.com/song/9ec1a551-3a7c-4be9-8d13-fb9e0e8c9f91 — 59.68s, detected 140 BPM, Db minor, 35 bars, 6 sections, loop bars 3..35 (3.427s–58.278s), score=4.7\nSelected for stem split: Take 1 (38fd1b7b-eebe-4896-b8b8-e88f63083d6c) | 12-stem Auto Split group: stemgrp_deee0c1d-3d78-46ce-bce9-12eeb87237ad (complete)."
     },
     {
       "track_id": "pocket-fort-patrol-B",
@@ -416,7 +485,7 @@
       "notes": ""
     }
   ],
-  "updated_at": "2026-11-18T14:03:41Z",
+  "updated_at": "2026-11-18T22:11:28Z",
   "scope": "catalog",
   "recommended_archetype": "arcade",
   "recommended_setting": "living-room bottle-cap trap defense",

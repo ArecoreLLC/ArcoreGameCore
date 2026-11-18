@@ -44,7 +44,7 @@ describe('approvals inbox',()=>{
  });
 
  it('approves a music direction as `approved` and rejects it back to unassigned',()=>{
-  const rec=structuredClone(records.find(r=>r.status==='recommended')!);
+  const rec={...structuredClone(records.find(r=>r.status!=='excluded'&&r.recommended_archetype)!),status:'recommended'};
   expect(decideMusicDirection(rec,'approved').status).toBe('approved');
   expect(decideMusicDirection(rec,'rejected').status).toBe('unassigned');
   expect(decideMusicDirection(rec,'changes_requested')).toBe(rec);
