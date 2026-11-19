@@ -98,10 +98,11 @@ class GameMusicVideoTests(unittest.TestCase):
             (project / "project.godot").write_text("", encoding="utf-8")
             lock = gmv.vendor(project, module="world-life")
             names = [f["name"] for f in lock["files"]]
-            self.assertEqual(names, ["world_life_kit.gd", "sea_breach.gd"])
+            self.assertEqual(names[:2], ["world_life_kit.gd", "sea_breach.gd"])
+            self.assertIn("beat_dance.gd", names);self.assertIn("celebration_burst.gd", names);self.assertEqual(len(names), 12)
             for f in lock["files"]:
                 self.assertEqual(f["sha256"], gmv.sha256(project / "addons/gamecore_world_life" / f["name"]))
-            self.assertEqual(lock["version"], "0.1.0")
+            self.assertEqual(lock["version"], "0.2.0")
             breach = project / "addons/gamecore_world_life/sea_breach.gd"
             breach.write_text(breach.read_text(encoding="utf-8") + "\n# local edit\n", encoding="utf-8")
             with self.assertRaises(SystemExit):

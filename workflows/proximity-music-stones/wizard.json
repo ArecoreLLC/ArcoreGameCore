@@ -1,0 +1,228 @@
+{
+  "schema_version": 1,
+  "template_id": "gamecore.game.proximity-music-stones",
+  "template_version": "0.1.0",
+  "title": "Musical stones and chimes",
+  "description": "Turn objects (standing stones, bells, flowers) into an instrument: each sings a pentatonic note when the player passes, and several in a row sing a chord. Component: 3d/godot/world_life/proximity_notes.gd (world-life module). Derived from ShammyVerse.",
+  "workflow": "proximity-music-stones",
+  "implementation_status": "partial",
+  "assistance": {
+    "ai_required": false,
+    "offline_after_setup": true,
+    "optional_ai": [
+      "Wiring the component into the game; a person reviews the result in play."
+    ]
+  },
+  "capabilities": {
+    "godot": {
+      "title": "Godot 4 console executable (Movie Maker)",
+      "kind": "tool",
+      "version": "4.7.2",
+      "probe": "godot-version",
+      "notes": "Movie Maker records at the window size; the tool applies the resolution through a temporary override.cfg."
+    },
+    "python": {
+      "title": "Python 3.11+",
+      "kind": "tool",
+      "probe": "python-version"
+    }
+  },
+  "fields": {
+    "project_folder": {
+      "type": "folder",
+      "title": "Godot project folder",
+      "required": true,
+      "widget": "folder_picker",
+      "help": "The game's folder that contains project.godot. The world-life module is vendored into addons/gamecore_world_life/.",
+      "implemented": true
+    },
+    "godot_executable": {
+      "type": "file",
+      "title": "Godot console executable",
+      "required": true,
+      "widget": "file_picker",
+      "help": "Exact engine build used for capture (Godot_*_console.exe on Windows); recorded in the production record.",
+      "implemented": true
+    }
+  },
+  "artifacts": {
+    "vendored_kit": {
+      "title": "Vendored world-life module and lock",
+      "media_type": "record",
+      "path": "addons/gamecore_world_life/gamecore_world_life.lock.json"
+    },
+    "wiring": {
+      "title": "Game wiring",
+      "media_type": "record",
+      "path": "<game scripts>",
+      "requires_human_review": true
+    },
+    "test_report": {
+      "title": "Test output",
+      "media_type": "report",
+      "path": "proximity-music-stones-test.log"
+    },
+    "production_record": {
+      "title": "Design log",
+      "media_type": "record",
+      "path": "DESIGN_LOG.md"
+    }
+  },
+  "stages": [
+    {
+      "id": "vendor",
+      "title": "Vendor the world-life module",
+      "description": "Copy the kit and components into the game with a SHA-256 lock per file.",
+      "flow_category": "game",
+      "adapter": "gamecore.world-life.vendor",
+      "implementation": "parameterized",
+      "requires": [
+        "python"
+      ],
+      "inputs": {
+        "fields": [
+          "project_folder"
+        ]
+      },
+      "outputs": [
+        "vendored_kit"
+      ],
+      "checks": [
+        {
+          "id": "lock_matches",
+          "title": "Vendored copies match their lock",
+          "kind": "automatic"
+        }
+      ]
+    },
+    {
+      "id": "wire",
+      "title": "Wire the component",
+      "description": "Game code: Place the objects (an arc along a shore works well) and list them in `objects`. Leave `notes` empty for C-major pentatonic, or set frequencies. Sounds are synthesised at load time. Connect `sang(index)` to a glow or ring and `chord_played()` to a bigger effect. `radius`, `cooldown`, `chord_count`, `chord_window`, `volume_db`.",
+      "flow_category": "game",
+      "adapter": "game.proximity-music-stones.wire",
+      "implementation": "script_only",
+      "assistance": "optional",
+      "inputs": {
+        "fields": [
+          "project_folder",
+          "godot_executable"
+        ],
+        "artifacts": [
+          "vendored_kit"
+        ]
+      },
+      "outputs": [
+        "wiring"
+      ],
+      "checks": [
+        {
+          "id": "wired",
+          "title": "Component connected to game state",
+          "kind": "human"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "title": "Test",
+      "description": "Headless test on a fixed clock (the GameCore component test, plus the game's own).",
+      "flow_category": "game",
+      "adapter": "game.proximity-music-stones.test",
+      "implementation": "script_only",
+      "requires": [
+        "godot"
+      ],
+      "inputs": {
+        "fields": [
+          "godot_executable",
+          "project_folder"
+        ],
+        "artifacts": [
+          "wiring"
+        ]
+      },
+      "outputs": [
+        "test_report"
+      ],
+      "checks": [
+        {
+          "id": "chord_on_sequence",
+          "title": "Passing three objects quickly plays a chord",
+          "kind": "automatic"
+        }
+      ]
+    },
+    {
+      "id": "review",
+      "title": "Review in play",
+      "description": "The requester reviews the result in play or in a showcase shot; notes go to the design log.",
+      "flow_category": "game",
+      "adapter": "gamecore.review",
+      "implementation": "not_started",
+      "inputs": {
+        "artifacts": [
+          "test_report"
+        ]
+      },
+      "outputs": [
+        "production_record"
+      ],
+      "checks": [
+        {
+          "id": "pleasant",
+          "title": "Notes and chord sound pleasant at the effects volume",
+          "kind": "human"
+        }
+      ]
+    }
+  ],
+  "wizard": {
+    "steps": [
+      {
+        "id": "setup",
+        "title": "Choose the game",
+        "summary": "Godot project and engine; the world-life module is vendored with a lock.",
+        "fields": [
+          "project_folder",
+          "godot_executable"
+        ],
+        "stages": [
+          "vendor"
+        ]
+      },
+      {
+        "id": "wire",
+        "title": "Wire and test",
+        "summary": "Connect the component to the game and run the tests.",
+        "fields": [],
+        "stages": [
+          "wire",
+          "test"
+        ]
+      },
+      {
+        "id": "review",
+        "title": "Review",
+        "summary": "Look at it in play.",
+        "fields": [],
+        "stages": [
+          "review"
+        ]
+      }
+    ]
+  },
+  "acceptance": {
+    "no_ai_run": "not_run",
+    "clean_machine": "not_run",
+    "offline_run": "not_run",
+    "wizard_cli_parity": "not_run",
+    "evidence": []
+  },
+  "sources": [
+    "workflows/proximity-music-stones/README.md",
+    "workflows/proximity-music-stones/example.md",
+    "3d/godot/world_life/README.md",
+    "3d/godot/world_life/proximity_notes.gd"
+  ]
+}

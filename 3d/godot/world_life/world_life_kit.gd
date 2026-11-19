@@ -11,7 +11,7 @@ extends RefCounted
 ## The game advances KIT.time each frame (a root node's _process) and may set effects_volume to a
 ## Callable returning the effects volume (0..1, or a negative number while sounds are off).
 ## Vendored by tools/game_music_video.py vendor --module world-life; do not edit the vendored copy.
-const VERSION := "0.1.0"
+const VERSION := "0.2.0"
 
 static var time := 0.0
 static var night := 0.0
@@ -32,6 +32,21 @@ static var _shaders := {}
 
 static func reset() -> void:
     time=0.0;night=0.0;pings.clear();beat_phase=0.0;beat_index=0;on_beat=false;song_id="";song_time=-1.0;song_override_until=-1.0
+
+## Set the beat clock for this frame from a beat map ({id: {"bpm", "offset"}}, tools/song_beats.py)
+## and the song position in seconds. An unknown song or a negative position ticks at 120 BPM on
+## KIT.time. Call once per frame from the game's root node (after any recorder override).
+static func set_beat(beats: Dictionary, id: String, seconds: float) -> void:
+    if song_override_until>time:id=song_id;seconds=song_time
+    var entry: Dictionary=beats.get(id,{})
+    var count: float
+    if entry.is_empty() or seconds<0:
+        bpm=120.0;count=time*2.0
+    else:
+        bpm=float(entry.bpm);count=(seconds-float(entry.offset))*bpm/60.0
+    var index := int(floor(count))
+    on_beat=index!=beat_index
+    beat_index=index;beat_phase=count-index
 
 ## The recorder (or a cutscene) drives the beat from its own clock: call every frame with the song id
 ## and the song position in seconds.

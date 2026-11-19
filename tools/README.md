@@ -56,3 +56,6 @@ shape and file identity; it does not run commands or certify gameplay.
 `song_beats.py` estimates each song's tempo (BPM) and first-beat offset for beat-synced game life (dances, drums,
 stomps) and writes JSON or a GDScript constant. It is part of the [ambient-world-life](../workflows/ambient-world-life/README.md)
 and [game-music-video](../workflows/game-music-video/README.md) workflows. It needs FFmpeg; its unit tests do not.
+
+`tests/test_world_life_godot.py` runs the world-life components' headless Godot test when `GODOT` is set (for example
+`GODOT=<Godot_console.exe> python -m unittest tools.tests.test_world_life_godot`); it is skipped otherwise.

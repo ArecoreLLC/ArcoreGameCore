@@ -158,6 +158,166 @@
       "specs": [
         "3d/godot/music_video/README.md"
       ]
+    },
+    {
+      "id": "beat-synced-dance",
+      "status": "scaffold",
+      "dimensions": [
+        "3d"
+      ],
+      "guide": "workflows/beat-synced-dance/README.md",
+      "example": "workflows/beat-synced-dance/example.md",
+      "wizard": "workflows/beat-synced-dance/wizard.json",
+      "shared": [
+        "shared/ecosystem.json"
+      ],
+      "specs": [
+        "3d/godot/world_life/README.md"
+      ]
+    },
+    {
+      "id": "character-attention-glance",
+      "status": "scaffold",
+      "dimensions": [
+        "3d"
+      ],
+      "guide": "workflows/character-attention-glance/README.md",
+      "example": "workflows/character-attention-glance/example.md",
+      "wizard": "workflows/character-attention-glance/wizard.json",
+      "shared": [
+        "shared/ecosystem.json"
+      ],
+      "specs": [
+        "3d/godot/world_life/README.md"
+      ]
+    },
+    {
+      "id": "idle-fidgets-and-visitors",
+      "status": "scaffold",
+      "dimensions": [
+        "3d"
+      ],
+      "guide": "workflows/idle-fidgets-and-visitors/README.md",
+      "example": "workflows/idle-fidgets-and-visitors/example.md",
+      "wizard": "workflows/idle-fidgets-and-visitors/wizard.json",
+      "shared": [
+        "shared/ecosystem.json"
+      ],
+      "specs": [
+        "3d/godot/world_life/README.md"
+      ]
+    },
+    {
+      "id": "vehicle-escort-formation",
+      "status": "scaffold",
+      "dimensions": [
+        "3d"
+      ],
+      "guide": "workflows/vehicle-escort-formation/README.md",
+      "example": "workflows/vehicle-escort-formation/example.md",
+      "wizard": "workflows/vehicle-escort-formation/wizard.json",
+      "shared": [
+        "shared/ecosystem.json"
+      ],
+      "specs": [
+        "3d/godot/world_life/README.md"
+      ]
+    },
+    {
+      "id": "proximity-music-stones",
+      "status": "scaffold",
+      "dimensions": [
+        "3d"
+      ],
+      "guide": "workflows/proximity-music-stones/README.md",
+      "example": "workflows/proximity-music-stones/example.md",
+      "wizard": "workflows/proximity-music-stones/wizard.json",
+      "shared": [
+        "shared/ecosystem.json"
+      ],
+      "specs": [
+        "3d/godot/world_life/README.md"
+      ]
+    },
+    {
+      "id": "time-of-day-toggle",
+      "status": "scaffold",
+      "dimensions": [
+        "3d"
+      ],
+      "guide": "workflows/time-of-day-toggle/README.md",
+      "example": "workflows/time-of-day-toggle/example.md",
+      "wizard": "workflows/time-of-day-toggle/wizard.json",
+      "shared": [
+        "shared/ecosystem.json"
+      ],
+      "specs": [
+        "3d/godot/world_life/README.md"
+      ]
+    },
+    {
+      "id": "ambient-chatter",
+      "status": "scaffold",
+      "dimensions": [
+        "3d"
+      ],
+      "guide": "workflows/ambient-chatter/README.md",
+      "example": "workflows/ambient-chatter/example.md",
+      "wizard": "workflows/ambient-chatter/wizard.json",
+      "shared": [
+        "shared/ecosystem.json"
+      ],
+      "specs": [
+        "3d/godot/world_life/README.md"
+      ]
+    },
+    {
+      "id": "route-boost-gates",
+      "status": "scaffold",
+      "dimensions": [
+        "3d"
+      ],
+      "guide": "workflows/route-boost-gates/README.md",
+      "example": "workflows/route-boost-gates/example.md",
+      "wizard": "workflows/route-boost-gates/wizard.json",
+      "shared": [
+        "shared/ecosystem.json"
+      ],
+      "specs": [
+        "3d/godot/world_life/README.md"
+      ]
+    },
+    {
+      "id": "arrival-celebration",
+      "status": "scaffold",
+      "dimensions": [
+        "3d"
+      ],
+      "guide": "workflows/arrival-celebration/README.md",
+      "example": "workflows/arrival-celebration/example.md",
+      "wizard": "workflows/arrival-celebration/wizard.json",
+      "shared": [
+        "shared/ecosystem.json"
+      ],
+      "specs": [
+        "3d/godot/world_life/README.md"
+      ]
+    },
+    {
+      "id": "sea-leap-and-splash",
+      "status": "scaffold",
+      "dimensions": [
+        "3d"
+      ],
+      "guide": "workflows/sea-leap-and-splash/README.md",
+      "example": "workflows/sea-leap-and-splash/example.md",
+      "wizard": "workflows/sea-leap-and-splash/wizard.json",
+      "shared": [
+        "shared/ecosystem.json"
+      ],
+      "specs": [
+        "3d/godot/world_life/README.md"
+      ]
     }
   ]
 }

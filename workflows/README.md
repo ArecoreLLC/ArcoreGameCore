@@ -13,6 +13,16 @@ Choose a use case, then the [2D](../2d/README.md) or [3D](../3d/README.md) catal
 | Gameplay music videos / trailers | [Guide](game-music-video/README.md) | [ShammyVerse soundtrack](game-music-video/example.md) | Scaffold |
 | Game asset showcase / demo video | [Guide](game-asset-showcase/README.md) | [ShammyVerse world-life demo](game-asset-showcase/example.md) | Scaffold |
 | Ambient world life | [Guide](ambient-world-life/README.md) | [ShammyVerse world life](ambient-world-life/example.md) | Scaffold |
+| ↳ Characters dancing to the music | [Guide](beat-synced-dance/README.md) | [ShammyVerse](beat-synced-dance/example.md) | Scaffold |
+| ↳ Characters glance at passing life | [Guide](character-attention-glance/README.md) | [ShammyVerse](character-attention-glance/example.md) | Scaffold |
+| ↳ Idle fidgets and visitors for still characters | [Guide](idle-fidgets-and-visitors/README.md) | [ShammyVerse](idle-fidgets-and-visitors/example.md) | Scaffold |
+| ↳ Escorts that follow a vehicle | [Guide](vehicle-escort-formation/README.md) | [ShammyVerse](vehicle-escort-formation/example.md) | Scaffold |
+| ↳ Musical stones and chimes | [Guide](proximity-music-stones/README.md) | [ShammyVerse](proximity-music-stones/example.md) | Scaffold |
+| ↳ Day, dusk and night | [Guide](time-of-day-toggle/README.md) | [ShammyVerse](time-of-day-toggle/example.md) | Scaffold |
+| ↳ Ambient chatter from bystanders | [Guide](ambient-chatter/README.md) | [ShammyVerse](ambient-chatter/example.md) | Scaffold |
+| ↳ Boost gates along a route | [Guide](route-boost-gates/README.md) | [ShammyVerse](route-boost-gates/example.md) | Scaffold |
+| ↳ Arrival celebrations | [Guide](arrival-celebration/README.md) | [ShammyVerse](arrival-celebration/example.md) | Scaffold |
+| ↳ Sea leaps and splashes | [Guide](sea-leap-and-splash/README.md) | [ShammyVerse](sea-leap-and-splash/example.md) | Scaffold |
 | Hair, fur and card textures | [Guide](hair-fur-textures/README.md) | [Short fur, 16 shells](hair-fur-textures/example.md) | Exploratory |
 | Recorded music â†’ vocals + MIDI instruments | [Guide](music-reconstruction/README.md) | [Recorded game theme](music-reconstruction/example.md) | Exploratory |
 

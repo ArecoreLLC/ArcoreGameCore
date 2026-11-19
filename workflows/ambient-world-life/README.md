@@ -32,6 +32,23 @@ the showcase is the [game-asset-showcase workflow](../game-asset-showcase/README
 | 10 | Showcase | One titled 6.5 s shot per asset ([game-asset-showcase](../game-asset-showcase/README.md)): screenshots while building, then a demo video |
 | 11 | Recorder hooks | The game's music-video adapter answers `_stage_ambient("still" / "beat" / "lyric:<kind>")` and `_beat_clock()` |
 
+## Small pipelines
+
+Each reusable piece has its own short workflow and a Godot component in the world-life module:
+
+| Pipeline | Component |
+|---|---|
+| [Characters dancing to the music](../beat-synced-dance/README.md) | `beat_dance.gd` |
+| [Characters glance at passing life](../character-attention-glance/README.md) | `attention_glance.gd` |
+| [Idle fidgets and visitors for still characters](../idle-fidgets-and-visitors/README.md) | `idle_scheduler.gd` |
+| [Escorts that follow a vehicle](../vehicle-escort-formation/README.md) | `escort_formation.gd` |
+| [Musical stones and chimes](../proximity-music-stones/README.md) | `proximity_notes.gd` |
+| [Day, dusk and night](../time-of-day-toggle/README.md) | `time_of_day.gd` |
+| [Ambient chatter from bystanders](../ambient-chatter/README.md) | `ambient_chatter.gd` |
+| [Boost gates along a route](../route-boost-gates/README.md) | `route_gates.gd` |
+| [Arrival celebrations](../arrival-celebration/README.md) | `celebration_burst.gd` |
+| [Sea leaps and splashes](../sea-leap-and-splash/README.md) | `splash_pool.gd` |
+
 ## Backlog rules (from the ShammyVerse review)
 
 - **Start from the shots where nothing moves.** Count the held shots (close-ups, gazes) and look at what is behind the

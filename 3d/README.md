@@ -18,7 +18,8 @@ screenshots (`tools/game_music_video.py showcase`) or a demo video (`record`).
 [world_life](godot/world_life/README.md) is the Godot 4 runtime of the
 [ambient-world-life workflow](../workflows/ambient-world-life/README.md): merged primitive meshes, cached materials and
 a flutter shader, shore and water placement, an attention registry, night and beat clocks, synthesised sounds, birds
-and leap arcs. Games vendor it with `tools/game_music_video.py vendor --module world-life`.
+and leap arcs, plus ten components for the small pipelines (beat-synced dance, attention glance, idle fidgets, escort
+formation, musical stones, time of day, ambient chatter, route gates, arrival celebrations, splashes). Games vendor it with `tools/game_music_video.py vendor --module world-life`.
 
 ## Unreal game feel
 

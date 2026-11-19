@@ -1,0 +1,253 @@
+{
+  "schema_version": 1,
+  "template_id": "gamecore.game.beat-synced-dance",
+  "template_version": "0.1.0",
+  "title": "Characters dancing to the music",
+  "description": "Make characters hop, squash and swing their limbs on the beat of whatever song is playing, and stomp up dust, tap drums or play footsteps on each landing. Component: 3d/godot/world_life/beat_dance.gd (world-life module). Derived from ShammyVerse.",
+  "workflow": "beat-synced-dance",
+  "implementation_status": "partial",
+  "assistance": {
+    "ai_required": false,
+    "offline_after_setup": true,
+    "optional_ai": [
+      "Wiring the component into the game; a person reviews the result in play."
+    ]
+  },
+  "capabilities": {
+    "godot": {
+      "title": "Godot 4 console executable (Movie Maker)",
+      "kind": "tool",
+      "version": "4.7.2",
+      "probe": "godot-version",
+      "notes": "Movie Maker records at the window size; the tool applies the resolution through a temporary override.cfg."
+    },
+    "python": {
+      "title": "Python 3.11+",
+      "kind": "tool",
+      "probe": "python-version"
+    }
+  },
+  "fields": {
+    "project_folder": {
+      "type": "folder",
+      "title": "Godot project folder",
+      "required": true,
+      "widget": "folder_picker",
+      "help": "The game's folder that contains project.godot. The world-life module is vendored into addons/gamecore_world_life/.",
+      "implemented": true
+    },
+    "godot_executable": {
+      "type": "file",
+      "title": "Godot console executable",
+      "required": true,
+      "widget": "file_picker",
+      "help": "Exact engine build used for capture (Godot_*_console.exe on Windows); recorded in the production record.",
+      "implemented": true
+    },
+    "beat_map_output": {
+      "type": "file",
+      "title": "Beat map output",
+      "required": true,
+      "extensions": [
+        ".gd",
+        ".json"
+      ],
+      "widget": "file_picker",
+      "help": "Where tools/song_beats.py writes the table; .gd for a script constant.",
+      "implemented": true
+    },
+    "song_audio_folder": {
+      "type": "folder",
+      "title": "Runtime song files",
+      "required": true,
+      "widget": "folder_picker",
+      "help": "Runtime songs measured by the beat map.",
+      "implemented": true
+    }
+  },
+  "artifacts": {
+    "vendored_kit": {
+      "title": "Vendored world-life module and lock",
+      "media_type": "record",
+      "path": "addons/gamecore_world_life/gamecore_world_life.lock.json"
+    },
+    "wiring": {
+      "title": "Game wiring",
+      "media_type": "record",
+      "path": "<game scripts>",
+      "requires_human_review": true
+    },
+    "test_report": {
+      "title": "Test output",
+      "media_type": "report",
+      "path": "beat-synced-dance-test.log"
+    },
+    "production_record": {
+      "title": "Design log",
+      "media_type": "record",
+      "path": "DESIGN_LOG.md"
+    }
+  },
+  "stages": [
+    {
+      "id": "vendor",
+      "title": "Vendor the world-life module",
+      "description": "Copy the kit and components into the game with a SHA-256 lock per file.",
+      "flow_category": "game",
+      "adapter": "gamecore.world-life.vendor",
+      "implementation": "parameterized",
+      "requires": [
+        "python"
+      ],
+      "inputs": {
+        "fields": [
+          "project_folder"
+        ]
+      },
+      "outputs": [
+        "vendored_kit"
+      ],
+      "checks": [
+        {
+          "id": "lock_matches",
+          "title": "Vendored copies match their lock",
+          "kind": "automatic"
+        }
+      ]
+    },
+    {
+      "id": "wire",
+      "title": "Wire the component",
+      "description": "Game code: `tools/song_beats.py --song id=path … --out <game>/song_beats.gd` writes each song's tempo and first-beat offset (a GDScript constant always exports). The game's root node calls `KIT.set_beat(BEATS, song_id, song_seconds)` every frame. In music videos the recorder adapter's `_beat_clock(t)` calls `KIT.song_clock(id, t)` so dances follow the video. Add `beat_dance.gd` under each dancer: `body`, optional `limbs` (arms then legs), `hop_height`, `beats_per_hop`, and `phase_offset` to stagger a group. Connect `stomped(at)` to dust puffs, drum taps (`KIT.tone`) or footsteps.",
+      "flow_category": "game",
+      "adapter": "game.beat-synced-dance.wire",
+      "implementation": "script_only",
+      "assistance": "optional",
+      "inputs": {
+        "fields": [
+          "project_folder",
+          "godot_executable",
+          "beat_map_output",
+          "song_audio_folder"
+        ],
+        "artifacts": [
+          "vendored_kit"
+        ]
+      },
+      "outputs": [
+        "wiring"
+      ],
+      "checks": [
+        {
+          "id": "wired",
+          "title": "Component connected to game state",
+          "kind": "human"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "title": "Test",
+      "description": "Headless test on a fixed clock (the GameCore component test, plus the game's own).",
+      "flow_category": "game",
+      "adapter": "game.beat-synced-dance.test",
+      "implementation": "script_only",
+      "requires": [
+        "godot"
+      ],
+      "inputs": {
+        "fields": [
+          "godot_executable",
+          "project_folder"
+        ],
+        "artifacts": [
+          "wiring"
+        ]
+      },
+      "outputs": [
+        "test_report"
+      ],
+      "checks": [
+        {
+          "id": "stomps_fire",
+          "title": "Stomp signal fires once per hop",
+          "kind": "automatic"
+        }
+      ]
+    },
+    {
+      "id": "review",
+      "title": "Review in play",
+      "description": "The requester reviews the result in play or in a showcase shot; notes go to the design log.",
+      "flow_category": "game",
+      "adapter": "gamecore.review",
+      "implementation": "not_started",
+      "inputs": {
+        "artifacts": [
+          "test_report"
+        ]
+      },
+      "outputs": [
+        "production_record"
+      ],
+      "checks": [
+        {
+          "id": "dancers_on_beat",
+          "title": "Landings coincide with the song's beat (watch with sound)",
+          "kind": "human"
+        }
+      ]
+    }
+  ],
+  "wizard": {
+    "steps": [
+      {
+        "id": "setup",
+        "title": "Choose the game",
+        "summary": "Godot project and engine; the world-life module is vendored with a lock.",
+        "fields": [
+          "project_folder",
+          "godot_executable"
+        ],
+        "stages": [
+          "vendor"
+        ]
+      },
+      {
+        "id": "wire",
+        "title": "Wire and test",
+        "summary": "Connect the component to the game and run the tests.",
+        "fields": [
+          "beat_map_output",
+          "song_audio_folder"
+        ],
+        "stages": [
+          "wire",
+          "test"
+        ]
+      },
+      {
+        "id": "review",
+        "title": "Review",
+        "summary": "Look at it in play.",
+        "fields": [],
+        "stages": [
+          "review"
+        ]
+      }
+    ]
+  },
+  "acceptance": {
+    "no_ai_run": "not_run",
+    "clean_machine": "not_run",
+    "offline_run": "not_run",
+    "wizard_cli_parity": "not_run",
+    "evidence": []
+  },
+  "sources": [
+    "workflows/beat-synced-dance/README.md",
+    "workflows/beat-synced-dance/example.md",
+    "3d/godot/world_life/README.md",
+    "3d/godot/world_life/beat_dance.gd"
+  ]
+}
