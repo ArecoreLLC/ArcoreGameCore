@@ -1,0 +1,521 @@
+{
+  "schema_version": 1,
+  "template_id": "gamecore.video.game-music-video",
+  "template_version": "0.2.0",
+  "title": "Gameplay music videos and trailers",
+  "description": "One music video or trailer per song, from real gameplay driven by script in engine, captured frame-accurately with Godot Movie Maker and laid over the exact song file with its captions. Derived from the ShammyVerse soundtrack production. The vendor, dry-run and record stages run through tools/game_music_video.py; shot lists are game code written per song. Recorder 0.4.0 adds ambient staging hooks (held shots, beats, lyric keywords), a beat-clock hook and a motion check for dead shots.",
+  "workflow": "game-music-video",
+  "implementation_status": "partial",
+  "assistance": {
+    "ai_required": false,
+    "offline_after_setup": true,
+    "optional_ai": [
+      "Drafting a song's shot list from its captions and the game's settings; a person writes or approves every shot."
+    ]
+  },
+  "capabilities": {
+    "godot": {
+      "title": "Godot 4 console executable (Movie Maker)",
+      "kind": "tool",
+      "version": "4.7.2",
+      "probe": "godot-version",
+      "notes": "Movie Maker records at the window size; the tool applies the resolution through a temporary override.cfg."
+    },
+    "ffmpeg": {
+      "title": "FFmpeg and FFprobe",
+      "kind": "tool",
+      "probe": "ffmpeg-version"
+    },
+    "python": {
+      "title": "Python 3.11+",
+      "kind": "tool",
+      "probe": "python-version"
+    },
+    "display": {
+      "title": "Desktop display at least as large as the capture window",
+      "kind": "hardware",
+      "notes": "Recording opens a visible Godot window for the length of the render. Dry runs are headless."
+    }
+  },
+  "fields": {
+    "project_folder": {
+      "type": "folder",
+      "title": "Godot project folder",
+      "required": true,
+      "widget": "folder_picker",
+      "help": "The game's folder that contains project.godot. The recorder base is vendored into addons/gamecore_music_video/.",
+      "implemented": true
+    },
+    "godot_executable": {
+      "type": "file",
+      "title": "Godot console executable",
+      "required": true,
+      "widget": "file_picker",
+      "help": "Exact engine build used for capture (Godot_*_console.exe on Windows); recorded in the production record.",
+      "implemented": true
+    },
+    "recorder_script": {
+      "type": "file",
+      "title": "Game recorder script",
+      "required": true,
+      "extensions": [
+        ".gd"
+      ],
+      "widget": "file_picker",
+      "help": "The game's adapter and shot lists, extending the vendored music_video_recorder.gd.",
+      "implemented": true
+    },
+    "output_folder": {
+      "type": "folder",
+      "title": "Output folder",
+      "required": true,
+      "widget": "folder_picker",
+      "help": "In the game's design folder; videos are not stored in GameCore.",
+      "implemented": true
+    },
+    "songs": {
+      "type": "text",
+      "title": "Song ids",
+      "required": true,
+      "widget": "textarea",
+      "help": "One song id per line, matching the recorder script's _produce() cases.",
+      "implemented": true
+    },
+    "song_audio_folder": {
+      "type": "folder",
+      "title": "Runtime song files",
+      "required": true,
+      "widget": "folder_picker",
+      "help": "The exact audio the game ships; mixed unnormalized over the capture and hashed in each video record.",
+      "implemented": true
+    },
+    "spoiler_policy": {
+      "type": "enum",
+      "title": "Spoiler policy",
+      "required": true,
+      "values": [
+        "spoiler-light",
+        "full-gameplay"
+      ],
+      "default": "spoiler-light",
+      "widget": "select",
+      "help": "spoiler-light: each song stays in its own setting; no completions, rewards, unlocks or story reveals. Enforced by shot-list review, not by the tool."
+    },
+    "hud": {
+      "type": "enum",
+      "title": "HUD",
+      "values": [
+        "captions-only",
+        "full-hud"
+      ],
+      "default": "captions-only",
+      "widget": "select",
+      "help": "captions-only hides every CanvasLayer except the caption layer the adapter keeps."
+    },
+    "min_shot": {
+      "type": "number",
+      "title": "Shortest shot",
+      "unit": "s",
+      "default": 8.5,
+      "minimum": 3,
+      "maximum": 30,
+      "widget": "number",
+      "advanced": true,
+      "help": "Cuts land on caption starts at least this far apart (recorder MIN_SHOT)."
+    },
+    "max_shot": {
+      "type": "number",
+      "title": "Shot length without captions",
+      "unit": "s",
+      "default": 16,
+      "minimum": 6,
+      "maximum": 60,
+      "widget": "number",
+      "advanced": true,
+      "help": "Uncaptioned stretches are cut about this often (recorder MAX_SHOT)."
+    },
+    "resolution": {
+      "type": "enum",
+      "title": "Capture size",
+      "values": [
+        "1920x1200",
+        "1920x1080",
+        "2560x1600",
+        "1280x800"
+      ],
+      "default": "1920x1200",
+      "widget": "select",
+      "help": "Match the game's aspect so nothing is letterboxed and UI layout does not change.",
+      "implemented": true
+    },
+    "fps": {
+      "type": "integer",
+      "title": "Frame rate",
+      "default": 30,
+      "minimum": 24,
+      "maximum": 60,
+      "widget": "number",
+      "help": "Must equal the recorder's FPS constant.",
+      "implemented": true
+    },
+    "sfx_db": {
+      "type": "number",
+      "title": "Game effects level under the song",
+      "unit": "dB",
+      "default": -4,
+      "minimum": -30,
+      "maximum": 0,
+      "widget": "slider",
+      "implemented": true
+    },
+    "preview_mb": {
+      "type": "number",
+      "title": "Sharing preview size",
+      "unit": "MB",
+      "default": 28,
+      "minimum": 5,
+      "maximum": 200,
+      "widget": "number",
+      "advanced": true,
+      "help": "960x600 copy for sharing tools with an upload limit.",
+      "implemented": true
+    }
+  },
+  "artifacts": {
+    "readiness_report": {
+      "title": "Readiness report",
+      "media_type": "report",
+      "path": "readiness.json"
+    },
+    "vendored_recorder": {
+      "title": "Vendored recorder and lock",
+      "media_type": "record",
+      "path": "addons/gamecore_music_video/gamecore_music_video.lock.json"
+    },
+    "shot_lists": {
+      "title": "Adapter and per-song shot lists",
+      "media_type": "record",
+      "path": "<recorder_script>",
+      "requires_human_review": true
+    },
+    "dry_run_report": {
+      "title": "Dry-run report per song",
+      "media_type": "report",
+      "path": "dry-run/<song>.json"
+    },
+    "music_video": {
+      "title": "Music video",
+      "media_type": "video",
+      "path": "<song>-music-video.mp4",
+      "requires_human_review": true
+    },
+    "preview_video": {
+      "title": "Sharing preview",
+      "media_type": "video",
+      "path": "<song>-music-video-preview.mp4"
+    },
+    "contact_sheet": {
+      "title": "Contact sheet",
+      "media_type": "image",
+      "path": "<song>-contact.png",
+      "requires_human_review": true
+    },
+    "production_record": {
+      "title": "Production record",
+      "media_type": "record",
+      "path": "README.md"
+    }
+  },
+  "stages": [
+    {
+      "id": "readiness",
+      "title": "Check tools and inputs",
+      "description": "Probe Godot, FFmpeg and Python, confirm the project and song files exist and the output folder is writable.",
+      "flow_category": "game",
+      "adapter": "gamecore.readiness",
+      "implementation": "not_started",
+      "requires": [
+        "godot",
+        "ffmpeg",
+        "python"
+      ],
+      "inputs": {
+        "fields": [
+          "project_folder",
+          "godot_executable",
+          "song_audio_folder",
+          "output_folder"
+        ]
+      },
+      "outputs": [
+        "readiness_report"
+      ],
+      "checks": [
+        {
+          "id": "tools_ready",
+          "title": "Engine, FFmpeg and song files present",
+          "kind": "automatic"
+        }
+      ]
+    },
+    {
+      "id": "vendor",
+      "title": "Vendor the recorder",
+      "description": "Copy 3d/godot/music_video/music_video_recorder.gd into the game with a SHA-256 lock; refuse to overwrite local edits.",
+      "flow_category": "game",
+      "adapter": "gamecore.music-video.vendor",
+      "implementation": "parameterized",
+      "requires": [
+        "python"
+      ],
+      "inputs": {
+        "fields": [
+          "project_folder"
+        ],
+        "artifacts": [
+          "readiness_report"
+        ]
+      },
+      "outputs": [
+        "vendored_recorder"
+      ],
+      "checks": [
+        {
+          "id": "lock_matches",
+          "title": "Vendored copy matches its lock",
+          "kind": "automatic"
+        }
+      ]
+    },
+    {
+      "id": "author-shots",
+      "title": "Write adapter and shot lists",
+      "description": "Game code: adapter methods, per-song fixture and a shot list of short purposeful shots cut on caption starts, following the spoiler policy.",
+      "flow_category": "game",
+      "adapter": "game.music-video.shots",
+      "implementation": "script_only",
+      "assistance": "optional",
+      "inputs": {
+        "fields": [
+          "recorder_script",
+          "songs",
+          "spoiler_policy",
+          "hud",
+          "min_shot",
+          "max_shot"
+        ],
+        "artifacts": [
+          "vendored_recorder"
+        ]
+      },
+      "outputs": [
+        "shot_lists"
+      ],
+      "checks": [
+        {
+          "id": "policy_reviewed",
+          "title": "Shot lists reviewed against the spoiler policy",
+          "kind": "human"
+        }
+      ]
+    },
+    {
+      "id": "dry-run",
+      "title": "Dry run headless",
+      "description": "Run every song headless at the fixed frame rate: completion, shot count, script errors and shots the camera guard could not clear (CHECK).",
+      "flow_category": "game",
+      "adapter": "gamecore.music-video.dry-run",
+      "implementation": "parameterized",
+      "requires": [
+        "godot",
+        "python"
+      ],
+      "resumable": true,
+      "inputs": {
+        "fields": [
+          "godot_executable",
+          "project_folder",
+          "recorder_script",
+          "songs",
+          "fps"
+        ],
+        "artifacts": [
+          "shot_lists"
+        ]
+      },
+      "outputs": [
+        "dry_run_report"
+      ],
+      "checks": [
+        {
+          "id": "all_songs_finish",
+          "title": "Every song finishes with no script errors",
+          "kind": "automatic"
+        },
+        {
+          "id": "blocked_shots_reviewed",
+          "title": "Every CHECK shot looked at and fixed or accepted",
+          "kind": "human"
+        }
+      ]
+    },
+    {
+      "id": "record",
+      "title": "Record, mix and encode",
+      "description": "Movie Maker capture at the chosen window size (shared temporary override.cfg), trim to the song start, mix the exact song over game effects, encode MP4, preview and contact sheet.",
+      "flow_category": "media",
+      "adapter": "gamecore.music-video.record",
+      "implementation": "parameterized",
+      "requires": [
+        "godot",
+        "ffmpeg",
+        "python",
+        "display"
+      ],
+      "resumable": true,
+      "cancellable": true,
+      "inputs": {
+        "fields": [
+          "godot_executable",
+          "project_folder",
+          "recorder_script",
+          "songs",
+          "song_audio_folder",
+          "output_folder",
+          "resolution",
+          "fps",
+          "sfx_db",
+          "preview_mb"
+        ],
+        "artifacts": [
+          "dry_run_report"
+        ]
+      },
+      "outputs": [
+        "music_video",
+        "preview_video",
+        "contact_sheet"
+      ],
+      "checks": [
+        {
+          "id": "encoded",
+          "title": "Video length equals song plus tail; preview under the size limit",
+          "kind": "automatic"
+        }
+      ]
+    },
+    {
+      "id": "review",
+      "title": "Review and deliver",
+      "description": "Contact-sheet review, spoiler review and audio audition by a person; results written to the production record.",
+      "flow_category": "media",
+      "adapter": "gamecore.review",
+      "implementation": "not_started",
+      "inputs": {
+        "artifacts": [
+          "music_video",
+          "preview_video",
+          "contact_sheet"
+        ]
+      },
+      "outputs": [
+        "production_record"
+      ],
+      "checks": [
+        {
+          "id": "dead_shots",
+          "title": "tools/game_music_video.py motion run; dead shots reframed or accepted",
+          "kind": "human"
+        },
+        {
+          "id": "contact_sheets_reviewed",
+          "title": "Contact sheets reviewed for framing",
+          "kind": "human"
+        },
+        {
+          "id": "spoiler_review",
+          "title": "Each video watched against the spoiler policy",
+          "kind": "human"
+        },
+        {
+          "id": "audio_auditioned",
+          "title": "Song and effects auditioned on speakers and headphones",
+          "kind": "human"
+        }
+      ]
+    }
+  ],
+  "wizard": {
+    "steps": [
+      {
+        "id": "project",
+        "title": "Choose the game",
+        "summary": "Godot project, engine build, the game's recorder script and the output folder; the recorder is vendored with a lock.",
+        "fields": [
+          "project_folder",
+          "godot_executable",
+          "recorder_script",
+          "output_folder"
+        ],
+        "stages": [
+          "readiness",
+          "vendor"
+        ]
+      },
+      {
+        "id": "songs",
+        "title": "Songs and shot lists",
+        "summary": "Song ids, runtime audio, spoiler policy and HUD; shot lists are written in the game and dry-run headless.",
+        "fields": [
+          "songs",
+          "song_audio_folder",
+          "spoiler_policy",
+          "hud",
+          "min_shot",
+          "max_shot"
+        ],
+        "stages": [
+          "author-shots",
+          "dry-run"
+        ],
+        "preview": "dry-run"
+      },
+      {
+        "id": "capture",
+        "title": "Capture and mix",
+        "summary": "Capture size and frame rate, effects level and preview size; each song renders slower than real time.",
+        "fields": [
+          "resolution",
+          "fps",
+          "sfx_db",
+          "preview_mb"
+        ],
+        "stages": [
+          "record"
+        ],
+        "preview": "record"
+      },
+      {
+        "id": "review",
+        "title": "Review and deliver",
+        "summary": "Contact sheets, spoiler review and audio audition, recorded in the production record.",
+        "fields": [],
+        "stages": [
+          "review"
+        ]
+      }
+    ]
+  },
+  "acceptance": {
+    "no_ai_run": "not_run",
+    "clean_machine": "not_run",
+    "offline_run": "not_run",
+    "wizard_cli_parity": "not_run",
+    "evidence": []
+  },
+  "sources": [
+    "workflows/game-music-video/README.md",
+    "workflows/game-music-video/example.md",
+    "3d/godot/music_video/README.md"
+  ]
+}

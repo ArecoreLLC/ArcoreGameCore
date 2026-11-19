@@ -1,0 +1,405 @@
+{
+  "schema_version": 1,
+  "template_id": "gamecore.video.game-asset-showcase",
+  "template_version": "0.1.0",
+  "title": "Game asset showcase",
+  "description": "One titled shot (about 6.5 s) per new asset or effect: screenshots while building and a demo video over the game's music, from one shot list on the vendored music-video recorder's asset_showcase.gd. Derived from the ShammyVerse world-life demo.",
+  "workflow": "game-asset-showcase",
+  "implementation_status": "partial",
+  "assistance": {
+    "ai_required": false,
+    "offline_after_setup": true,
+    "optional_ai": [
+      "Drafting framing for each shot from the asset list; a person reviews the screenshots."
+    ]
+  },
+  "capabilities": {
+    "godot": {
+      "title": "Godot 4 console executable (Movie Maker)",
+      "kind": "tool",
+      "version": "4.7.2",
+      "probe": "godot-version",
+      "notes": "Movie Maker records at the window size; the tool applies the resolution through a temporary override.cfg."
+    },
+    "ffmpeg": {
+      "title": "FFmpeg and FFprobe",
+      "kind": "tool",
+      "probe": "ffmpeg-version"
+    },
+    "python": {
+      "title": "Python 3.11+",
+      "kind": "tool",
+      "probe": "python-version"
+    },
+    "display": {
+      "title": "Desktop display at least as large as the capture window",
+      "kind": "hardware",
+      "notes": "Recording opens a visible Godot window for the length of the render. Dry runs are headless."
+    }
+  },
+  "fields": {
+    "project_folder": {
+      "type": "folder",
+      "title": "Godot project folder",
+      "required": true,
+      "widget": "folder_picker",
+      "help": "The game's folder that contains project.godot. The recorder base is vendored into addons/gamecore_music_video/.",
+      "implemented": true
+    },
+    "godot_executable": {
+      "type": "file",
+      "title": "Godot console executable",
+      "required": true,
+      "widget": "file_picker",
+      "help": "Exact engine build used for capture (Godot_*_console.exe on Windows); recorded in the production record.",
+      "implemented": true
+    },
+    "showcase_script": {
+      "type": "file",
+      "title": "Game showcase script",
+      "required": true,
+      "extensions": [
+        ".gd"
+      ],
+      "widget": "file_picker",
+      "help": "Extends the vendored asset_showcase.gd: adapter, fixture and one add() per asset.",
+      "implemented": true
+    },
+    "output_folder": {
+      "type": "folder",
+      "title": "Output folder",
+      "required": true,
+      "widget": "folder_picker",
+      "help": "In the game's design folder; videos are not stored in GameCore.",
+      "implemented": true
+    },
+    "only": {
+      "type": "text",
+      "title": "Groups to capture",
+      "required": false,
+      "widget": "text",
+      "help": "Comma-separated first letters of shot ids (for example A,B) for screenshots of one batch.",
+      "implemented": true
+    },
+    "soundtrack": {
+      "type": "file",
+      "title": "Soundtrack",
+      "required": true,
+      "extensions": [
+        ".mp3",
+        ".wav",
+        ".ogg"
+      ],
+      "widget": "file_picker",
+      "help": "Songs joined with short crossfades, trimmed to 6.5 s × shots with a fade.",
+      "implemented": true
+    },
+    "shot_seconds": {
+      "type": "number",
+      "title": "Seconds per asset",
+      "unit": "s",
+      "default": 6.5,
+      "minimum": 3,
+      "maximum": 12,
+      "widget": "number",
+      "help": "Showcase SHOT; 5–8 s reads well.",
+      "implemented": true
+    },
+    "resolution": {
+      "type": "enum",
+      "title": "Capture size",
+      "values": [
+        "1920x1200",
+        "1920x1080",
+        "2560x1600",
+        "1280x800"
+      ],
+      "default": "1920x1200",
+      "widget": "select",
+      "help": "Match the game's aspect so nothing is letterboxed and UI layout does not change.",
+      "implemented": true
+    },
+    "fps": {
+      "type": "integer",
+      "title": "Frame rate",
+      "default": 30,
+      "minimum": 24,
+      "maximum": 60,
+      "widget": "number",
+      "help": "Must equal the recorder's FPS constant.",
+      "implemented": true
+    },
+    "preview_mb": {
+      "type": "number",
+      "title": "Sharing preview size",
+      "unit": "MB",
+      "default": 28,
+      "minimum": 5,
+      "maximum": 200,
+      "widget": "number",
+      "advanced": true,
+      "help": "960x600 copy for sharing tools with an upload limit.",
+      "implemented": true
+    }
+  },
+  "artifacts": {
+    "vendored_recorder": {
+      "title": "Vendored recorder and lock",
+      "media_type": "record",
+      "path": "addons/gamecore_music_video/gamecore_music_video.lock.json"
+    },
+    "showcase_shots": {
+      "title": "Showcase script",
+      "media_type": "record",
+      "path": "<showcase_script>",
+      "requires_human_review": true
+    },
+    "screenshots": {
+      "title": "Screenshots and sheets",
+      "media_type": "image",
+      "path": "<output_folder>/sheet_<n>.jpg",
+      "requires_human_review": true
+    },
+    "demo_video": {
+      "title": "Demo video",
+      "media_type": "video",
+      "path": "<id>-music-video.mp4",
+      "requires_human_review": true
+    },
+    "preview_video": {
+      "title": "Sharing preview",
+      "media_type": "video",
+      "path": "<id>-music-video-preview.mp4"
+    },
+    "production_record": {
+      "title": "Production record",
+      "media_type": "record",
+      "path": "README.md"
+    }
+  },
+  "stages": [
+    {
+      "id": "vendor",
+      "title": "Vendor the recorder",
+      "description": "Install music_video_recorder.gd and asset_showcase.gd with a SHA-256 lock per file.",
+      "flow_category": "game",
+      "adapter": "gamecore.music-video.vendor",
+      "implementation": "parameterized",
+      "requires": [
+        "python"
+      ],
+      "inputs": {
+        "fields": [
+          "project_folder"
+        ]
+      },
+      "outputs": [
+        "vendored_recorder"
+      ],
+      "checks": [
+        {
+          "id": "lock_matches",
+          "title": "Vendored copies match their lock",
+          "kind": "automatic"
+        }
+      ]
+    },
+    {
+      "id": "author",
+      "title": "Write one shot per asset",
+      "description": "Game code: adapter, fixture, add(id, label, fn) per asset using the framing helpers, and clearing of forced states.",
+      "flow_category": "game",
+      "adapter": "game.asset-showcase.shots",
+      "implementation": "script_only",
+      "assistance": "optional",
+      "inputs": {
+        "fields": [
+          "showcase_script",
+          "shot_seconds"
+        ],
+        "artifacts": [
+          "vendored_recorder"
+        ]
+      },
+      "outputs": [
+        "showcase_shots"
+      ],
+      "checks": [
+        {
+          "id": "every_asset_listed",
+          "title": "Every new asset has a shot",
+          "kind": "human"
+        }
+      ]
+    },
+    {
+      "id": "screenshots",
+      "title": "Capture screenshots",
+      "description": "tools/game_music_video.py showcase: windowed at a fixed frame rate without a movie, one PNG per shot, sheets of eight.",
+      "flow_category": "media",
+      "adapter": "gamecore.asset-showcase.screenshots",
+      "implementation": "parameterized",
+      "requires": [
+        "godot",
+        "ffmpeg",
+        "python",
+        "display"
+      ],
+      "resumable": true,
+      "inputs": {
+        "fields": [
+          "godot_executable",
+          "project_folder",
+          "showcase_script",
+          "output_folder",
+          "only",
+          "fps"
+        ],
+        "artifacts": [
+          "showcase_shots"
+        ]
+      },
+      "outputs": [
+        "screenshots"
+      ],
+      "checks": [
+        {
+          "id": "no_script_errors",
+          "title": "Showcase ran with no script errors",
+          "kind": "automatic"
+        },
+        {
+          "id": "framing_reviewed",
+          "title": "Each subject visible in its screenshot, or reframed",
+          "kind": "human"
+        }
+      ]
+    },
+    {
+      "id": "record",
+      "title": "Record the demo",
+      "description": "tools/game_music_video.py record with the soundtrack: Movie Maker capture, mix, MP4, preview and contact sheet.",
+      "flow_category": "media",
+      "adapter": "gamecore.music-video.record",
+      "implementation": "parameterized",
+      "requires": [
+        "godot",
+        "ffmpeg",
+        "python",
+        "display"
+      ],
+      "resumable": true,
+      "cancellable": true,
+      "inputs": {
+        "fields": [
+          "godot_executable",
+          "project_folder",
+          "showcase_script",
+          "soundtrack",
+          "output_folder",
+          "resolution",
+          "fps",
+          "preview_mb"
+        ],
+        "artifacts": [
+          "screenshots"
+        ]
+      },
+      "outputs": [
+        "demo_video",
+        "preview_video"
+      ],
+      "checks": [
+        {
+          "id": "lengths_match",
+          "title": "Video and audio lengths match the shot list",
+          "kind": "automatic"
+        }
+      ]
+    },
+    {
+      "id": "review",
+      "title": "Review",
+      "description": "Frames from each shot's middle; faint assets listed in the production record for a later pass.",
+      "flow_category": "media",
+      "adapter": "gamecore.review",
+      "implementation": "not_started",
+      "inputs": {
+        "artifacts": [
+          "demo_video",
+          "preview_video"
+        ]
+      },
+      "outputs": [
+        "production_record"
+      ],
+      "checks": [
+        {
+          "id": "demo_watched",
+          "title": "Demo watched by the requester",
+          "kind": "human"
+        }
+      ]
+    }
+  ],
+  "wizard": {
+    "steps": [
+      {
+        "id": "project",
+        "title": "Choose the game",
+        "summary": "Godot project, engine build, showcase script and output folder; the recorder is vendored with a lock.",
+        "fields": [
+          "project_folder",
+          "godot_executable",
+          "showcase_script",
+          "output_folder"
+        ],
+        "stages": [
+          "vendor",
+          "author"
+        ]
+      },
+      {
+        "id": "screenshots",
+        "title": "Screenshots",
+        "summary": "Capture one group at a time and fix framing.",
+        "fields": [
+          "only",
+          "shot_seconds",
+          "fps"
+        ],
+        "stages": [
+          "screenshots"
+        ],
+        "preview": "screenshots"
+      },
+      {
+        "id": "demo",
+        "title": "Demo video",
+        "summary": "Soundtrack, capture size and preview size.",
+        "fields": [
+          "soundtrack",
+          "resolution",
+          "preview_mb"
+        ],
+        "stages": [
+          "record",
+          "review"
+        ],
+        "preview": "record"
+      }
+    ]
+  },
+  "acceptance": {
+    "no_ai_run": "not_run",
+    "clean_machine": "not_run",
+    "offline_run": "not_run",
+    "wizard_cli_parity": "not_run",
+    "evidence": []
+  },
+  "sources": [
+    "workflows/game-asset-showcase/README.md",
+    "workflows/game-asset-showcase/example.md",
+    "3d/godot/music_video/README.md"
+  ]
+}

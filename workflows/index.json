@@ -110,6 +110,54 @@
         "shared/migration-contract.md",
         "shared/ecosystem.json"
       ]
+    },
+    {
+      "id": "game-music-video",
+      "status": "scaffold",
+      "dimensions": [
+        "3d"
+      ],
+      "guide": "workflows/game-music-video/README.md",
+      "example": "workflows/game-music-video/example.md",
+      "wizard": "workflows/game-music-video/wizard.json",
+      "shared": [
+        "shared/ecosystem.json"
+      ],
+      "specs": [
+        "3d/godot/music_video/README.md"
+      ]
+    },
+    {
+      "id": "ambient-world-life",
+      "status": "scaffold",
+      "dimensions": [
+        "3d"
+      ],
+      "guide": "workflows/ambient-world-life/README.md",
+      "example": "workflows/ambient-world-life/example.md",
+      "wizard": "workflows/ambient-world-life/wizard.json",
+      "shared": [
+        "shared/ecosystem.json"
+      ],
+      "specs": [
+        "3d/godot/world_life/README.md"
+      ]
+    },
+    {
+      "id": "game-asset-showcase",
+      "status": "scaffold",
+      "dimensions": [
+        "3d"
+      ],
+      "guide": "workflows/game-asset-showcase/README.md",
+      "example": "workflows/game-asset-showcase/example.md",
+      "wizard": "workflows/game-asset-showcase/wizard.json",
+      "shared": [
+        "shared/ecosystem.json"
+      ],
+      "specs": [
+        "3d/godot/music_video/README.md"
+      ]
     }
   ]
 }

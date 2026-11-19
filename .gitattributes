@@ -10,3 +10,7 @@ shared/cpp/JumpGrace.h -text
 
 # Preserve the reviewed Unreal visual-tint module digest.
 3d/unreal/VisualTint.h -text
+
+# Preserve the digests of vendored Godot modules (games lock them by SHA-256).
+3d/godot/music_video/*.gd text eol=lf
+3d/godot/world_life/*.gd text eol=lf

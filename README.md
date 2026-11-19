@@ -6,7 +6,7 @@ AI-assisted game-development framework organized by dimension and migration use 
 
 - [Shared module registry and common Unreal build/test runner](shared/module-registry.md): versioned portable headers, local dependency locks, fresh automation/smoke receipts, and Dungeon Dash Market / Critter Contraptions pilots.
 
-- [Workflow catalog](workflows/README.md): Phaser → Godot, Godot Windows → Android, game project integration, logo sting / splash video, and exploratory Godot → Unreal and music reconstruction.
+- [Workflow catalog](workflows/README.md): Phaser → Godot, Godot Windows → Android, game project integration, logo sting / splash video, gameplay music videos / trailers, game asset showcases, ambient world life, and exploratory Godot → Unreal and music reconstruction.
 - [GameCore studio library](hub/README.md): implemented Tauri/SQLite game catalog, mechanic records, capability atlas, asset-provider references and curated marketing media. Open [Launch-GameCore.cmd](Launch-GameCore.cmd) after building.
 - [GameCore hub and wizard design](docs/GAMECORE_HUB_AND_WIZARD_DESIGN.md): proposed workflow orchestration and no-AI logo-sting wizard. The catalog app is implemented; the workflow runner remains design work.
 - [2D systems](2d/README.md), [3D systems](3d/README.md), and [shared contracts](shared/README.md).

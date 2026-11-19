@@ -1,0 +1,405 @@
+{
+  "schema_version": 1,
+  "template_id": "gamecore.game.ambient-world-life",
+  "template_version": "0.1.0",
+  "title": "Ambient world life",
+  "description": "Take a game whose world feels deserted to small reusable ambient systems: review footage and lyrics, write a backlog, build modules on the vendored GameCore world-life kit, add a song beat map and character attention, test, measure the frame cost and showcase every asset. Derived from the ShammyVerse world-life work.",
+  "workflow": "ambient-world-life",
+  "implementation_status": "partial",
+  "assistance": {
+    "ai_required": false,
+    "offline_after_setup": true,
+    "optional_ai": [
+      "Drafting the backlog from footage notes and lyrics; a person sets priorities and approves every item.",
+      "Writing module code on the kit; a person reviews the look and the tests."
+    ]
+  },
+  "capabilities": {
+    "godot": {
+      "title": "Godot 4 console executable (Movie Maker)",
+      "kind": "tool",
+      "version": "4.7.2",
+      "probe": "godot-version",
+      "notes": "Movie Maker records at the window size; the tool applies the resolution through a temporary override.cfg."
+    },
+    "ffmpeg": {
+      "title": "FFmpeg and FFprobe",
+      "kind": "tool",
+      "probe": "ffmpeg-version"
+    },
+    "python": {
+      "title": "Python 3.11+",
+      "kind": "tool",
+      "probe": "python-version"
+    }
+  },
+  "fields": {
+    "project_folder": {
+      "type": "folder",
+      "title": "Godot project folder",
+      "required": true,
+      "widget": "folder_picker",
+      "help": "The game's folder that contains project.godot. The kit is vendored into addons/gamecore_world_life/.",
+      "implemented": true
+    },
+    "godot_executable": {
+      "type": "file",
+      "title": "Godot console executable",
+      "required": true,
+      "widget": "file_picker",
+      "help": "Exact engine build used for capture (Godot_*_console.exe on Windows); recorded in the production record.",
+      "implemented": true
+    },
+    "review_sources": {
+      "type": "text",
+      "title": "Footage and text to review",
+      "required": true,
+      "widget": "textarea",
+      "help": "Music videos, playthrough captures, lyrics or story text; one per line.",
+      "implemented": false
+    },
+    "song_audio_folder": {
+      "type": "folder",
+      "title": "Runtime song files",
+      "required": false,
+      "widget": "folder_picker",
+      "help": "Runtime songs for the beat map (tempo and first-beat offset per song).",
+      "implemented": true
+    },
+    "beat_map_output": {
+      "type": "file",
+      "title": "Beat map output",
+      "required": false,
+      "extensions": [
+        ".gd",
+        ".json"
+      ],
+      "widget": "file_picker",
+      "help": "A .gd path writes a GDScript constant (always exports); .json writes JSON.",
+      "implemented": true
+    },
+    "spoiler_policy": {
+      "type": "enum",
+      "title": "Spoiler policy",
+      "required": true,
+      "values": [
+        "spoiler-light",
+        "full-gameplay"
+      ],
+      "default": "spoiler-light",
+      "widget": "select",
+      "help": "spoiler-light: ambient life never shows rewards, finished objectives or story moments saved for later chapters."
+    },
+    "perf_budget_ms": {
+      "type": "number",
+      "title": "Frame-cost budget",
+      "unit": "ms",
+      "default": 3,
+      "minimum": 0.5,
+      "maximum": 16,
+      "widget": "number",
+      "help": "Extra frame time allowed for the ambient systems at the busiest spot (windowed, vsync off).",
+      "implemented": true
+    }
+  },
+  "artifacts": {
+    "backlog": {
+      "title": "Asset backlog",
+      "media_type": "record",
+      "path": "<design folder>/WORLD_LIFE_ASSET_LIST.md",
+      "requires_human_review": true
+    },
+    "vendored_kit": {
+      "title": "Vendored world-life kit and lock",
+      "media_type": "record",
+      "path": "addons/gamecore_world_life/gamecore_world_life.lock.json"
+    },
+    "modules": {
+      "title": "Game modules on the kit",
+      "media_type": "record",
+      "path": "<game scripts>",
+      "requires_human_review": true
+    },
+    "beat_map": {
+      "title": "Song beat map",
+      "media_type": "record",
+      "path": "<beat_map_output>"
+    },
+    "test_report": {
+      "title": "World-life test output",
+      "media_type": "report",
+      "path": "world_life_test.log"
+    },
+    "perf_report": {
+      "title": "Frame cost on and off",
+      "media_type": "report",
+      "path": "world_life_perf.log"
+    },
+    "production_record": {
+      "title": "Design log",
+      "media_type": "record",
+      "path": "DESIGN_LOG.md"
+    }
+  },
+  "stages": [
+    {
+      "id": "review",
+      "title": "Review footage and lyrics",
+      "description": "Count held shots with empty backgrounds and list lyric or story moments the game never shows.",
+      "flow_category": "game",
+      "adapter": "gamecore.review",
+      "implementation": "not_started",
+      "assistance": "optional",
+      "inputs": {
+        "fields": [
+          "review_sources"
+        ]
+      },
+      "outputs": [
+        "backlog"
+      ],
+      "checks": [
+        {
+          "id": "backlog_approved",
+          "title": "Backlog priorities and spoiler exclusions approved",
+          "kind": "human"
+        }
+      ]
+    },
+    {
+      "id": "vendor",
+      "title": "Vendor the world-life kit",
+      "description": "Copy 3d/godot/world_life/world_life_kit.gd and sea_breach.gd into the game with a SHA-256 lock per file.",
+      "flow_category": "game",
+      "adapter": "gamecore.world-life.vendor",
+      "implementation": "parameterized",
+      "requires": [
+        "python"
+      ],
+      "inputs": {
+        "fields": [
+          "project_folder"
+        ]
+      },
+      "outputs": [
+        "vendored_kit"
+      ],
+      "checks": [
+        {
+          "id": "lock_matches",
+          "title": "Vendored copies match their lock",
+          "kind": "automatic"
+        }
+      ]
+    },
+    {
+      "id": "build",
+      "title": "Build the modules",
+      "description": "Game code: a root node (clock, beat, quality, effects volume) and one module per family, each near-camera, nonblocking, with stage(kind) and set_quality().",
+      "flow_category": "game",
+      "adapter": "game.world-life.modules",
+      "implementation": "script_only",
+      "assistance": "optional",
+      "inputs": {
+        "fields": [
+          "project_folder",
+          "spoiler_policy"
+        ],
+        "artifacts": [
+          "backlog",
+          "vendored_kit"
+        ]
+      },
+      "outputs": [
+        "modules"
+      ],
+      "checks": [
+        {
+          "id": "spoiler_reviewed",
+          "title": "Modules reviewed against the spoiler policy",
+          "kind": "human"
+        }
+      ]
+    },
+    {
+      "id": "beat-map",
+      "title": "Map song beats",
+      "description": "tools/song_beats.py estimates each song's tempo and first-beat offset for dances, drums and stomps.",
+      "flow_category": "media",
+      "adapter": "gamecore.world-life.beat-map",
+      "implementation": "parameterized",
+      "requires": [
+        "ffmpeg",
+        "python"
+      ],
+      "inputs": {
+        "fields": [
+          "song_audio_folder",
+          "beat_map_output"
+        ]
+      },
+      "outputs": [
+        "beat_map"
+      ],
+      "checks": [
+        {
+          "id": "tempos_plausible",
+          "title": "Every song has a tempo between 70 and 180 BPM",
+          "kind": "automatic"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "title": "Test and check regressions",
+      "description": "Headless test of every module and stage(); earlier tests rerun with the systems switched off to separate old failures from new.",
+      "flow_category": "game",
+      "adapter": "game.world-life.test",
+      "implementation": "script_only",
+      "requires": [
+        "godot"
+      ],
+      "inputs": {
+        "fields": [
+          "godot_executable",
+          "project_folder"
+        ],
+        "artifacts": [
+          "modules"
+        ]
+      },
+      "outputs": [
+        "test_report"
+      ],
+      "checks": [
+        {
+          "id": "tests_pass",
+          "title": "World-life test passes with no script errors",
+          "kind": "automatic"
+        },
+        {
+          "id": "regressions_explained",
+          "title": "Every failing earlier test also fails with the systems off",
+          "kind": "human"
+        }
+      ]
+    },
+    {
+      "id": "perf",
+      "title": "Measure the frame cost",
+      "description": "Windowed, vsync off: frame time with and without the systems at the busiest spot, recorded with the hardware.",
+      "flow_category": "game",
+      "adapter": "game.world-life.perf",
+      "implementation": "script_only",
+      "requires": [
+        "godot"
+      ],
+      "inputs": {
+        "fields": [
+          "godot_executable",
+          "project_folder",
+          "perf_budget_ms"
+        ],
+        "artifacts": [
+          "modules"
+        ]
+      },
+      "outputs": [
+        "perf_report"
+      ],
+      "checks": [
+        {
+          "id": "within_budget",
+          "title": "Extra frame time within the budget",
+          "kind": "automatic"
+        }
+      ]
+    },
+    {
+      "id": "showcase",
+      "title": "Showcase every asset",
+      "description": "One titled shot per asset through the game-asset-showcase workflow: screenshots while building, a demo video at the end.",
+      "flow_category": "media",
+      "adapter": "gamecore.asset-showcase",
+      "implementation": "parameterized",
+      "requires": [
+        "godot",
+        "ffmpeg",
+        "python"
+      ],
+      "inputs": {
+        "artifacts": [
+          "modules"
+        ]
+      },
+      "outputs": [
+        "production_record"
+      ],
+      "checks": [
+        {
+          "id": "look_approved",
+          "title": "Showcase reviewed by the requester",
+          "kind": "human"
+        }
+      ]
+    }
+  ],
+  "wizard": {
+    "steps": [
+      {
+        "id": "plan",
+        "title": "Review and plan",
+        "summary": "Footage and lyrics in, an approved backlog out.",
+        "fields": [
+          "review_sources",
+          "spoiler_policy"
+        ],
+        "stages": [
+          "review"
+        ]
+      },
+      {
+        "id": "build",
+        "title": "Vendor and build",
+        "summary": "Install the kit, build the game's modules and map the song beats.",
+        "fields": [
+          "project_folder",
+          "godot_executable",
+          "song_audio_folder",
+          "beat_map_output"
+        ],
+        "stages": [
+          "vendor",
+          "build",
+          "beat-map"
+        ]
+      },
+      {
+        "id": "verify",
+        "title": "Test, measure and show",
+        "summary": "Headless tests, regression check, frame cost and the showcase.",
+        "fields": [
+          "perf_budget_ms"
+        ],
+        "stages": [
+          "test",
+          "perf",
+          "showcase"
+        ]
+      }
+    ]
+  },
+  "acceptance": {
+    "no_ai_run": "not_run",
+    "clean_machine": "not_run",
+    "offline_run": "not_run",
+    "wizard_cli_parity": "not_run",
+    "evidence": []
+  },
+  "sources": [
+    "workflows/ambient-world-life/README.md",
+    "workflows/ambient-world-life/example.md",
+    "3d/godot/world_life/README.md",
+    "tools/song_beats.py"
+  ]
+}

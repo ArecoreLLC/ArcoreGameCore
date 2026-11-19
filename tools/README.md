@@ -26,6 +26,8 @@ Tests cover a valid scaffold and invalid manifests/paths/links. No packages, eng
 
 For agent context, select the workflow from [index.json](../workflows/index.json), then read its guide/example and one dimension catalog. Full context generation remains future work; the bounded Unreal pilot runner is documented above. The older [porting CLI](../porting/README.md) remains separate.
 
+`game_music_video.py` runs the [gameplay music-video workflow](../workflows/game-music-video/README.md): `vendor` (copy the Godot recorder into a game with a SHA-256 lock), `dry-run` (headless, per song), `vendor --module music-video|world-life` (the recorder with the asset-showcase base, or the world-life kit), `record` (Movie Maker capture, exact-song mix, MP4, sharing preview and contact sheet), `showcase` (asset showcase: one PNG per shot, windowed without a movie, tiled into sheets of eight), `sheet`, and `motion` (flags dead shots: shots whose mean frame-to-frame change stays under a threshold, usually a still subject over an empty background). It needs Godot 4 and FFmpeg for the last three; its unit tests do not.
+
 See [MCP modeling integration](integrations/modeling-mcp.md) for the modeling-tool boundary and reviewed external Unreal consumer.
 
 ## Unreal source inventory
@@ -50,3 +52,7 @@ evidence hashes, including for consumers without Git. See the
 shape and file identity; it does not run commands or certify gameplay.
 
 `tools/synthesize_tone.py` writes deterministic original stereo PCM cues with bounded duration, harmonic count, peak gain and echo. Call `write_tone(path, frequencies, ...)`; the game owns note selection and engine import. Sources are generated without external samples. Tests validate finite inputs, clipping bounds, silent endpoints and repeatability. Listening and runtime mix approval remain separate.
+
+`song_beats.py` estimates each song's tempo (BPM) and first-beat offset for beat-synced game life (dances, drums,
+stomps) and writes JSON or a GDScript constant. It is part of the [ambient-world-life](../workflows/ambient-world-life/README.md)
+and [game-music-video](../workflows/game-music-video/README.md) workflows. It needs FFmpeg; its unit tests do not.

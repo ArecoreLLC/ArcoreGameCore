@@ -1,5 +1,25 @@
 # 3D systems
 
+## Godot gameplay music-video recorder
+
+[music_video](godot/music_video/README.md) is the Godot 4 runtime of the
+[game-music-video workflow](../workflows/game-music-video/README.md). It provides a frame-counted video clock,
+camera-relative scripted movement, a camera guard, cuts on caption starts and generic shots. Games vendor it with
+`tools/game_music_video.py vendor` and add their own adapter and shot lists.
+
+## Godot asset showcase
+
+`asset_showcase.gd`, beside the recorder in [music_video](godot/music_video/README.md), is the Godot runtime of the
+[game-asset-showcase workflow](../workflows/game-asset-showcase/README.md): one titled shot per new asset, as
+screenshots (`tools/game_music_video.py showcase`) or a demo video (`record`).
+
+## Godot world-life kit
+
+[world_life](godot/world_life/README.md) is the Godot 4 runtime of the
+[ambient-world-life workflow](../workflows/ambient-world-life/README.md): merged primitive meshes, cached materials and
+a flutter shader, shore and water placement, an attention registry, night and beat clocks, synthesised sounds, birds
+and leap arcs. Games vendor it with `tools/game_music_video.py vendor --module world-life`.
+
 ## Unreal game feel
 
 [GameFeel](unreal/GameFeel.md) catalogs reusable buffered input and feedback envelopes

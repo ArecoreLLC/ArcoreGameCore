@@ -10,6 +10,9 @@ Choose a use case, then the [2D](../2d/README.md) or [3D](../3d/README.md) catal
 | Godot Windows â†’ Android | [Guide](godot-windows-to-android/README.md) | [Touch exploration room](godot-windows-to-android/example.md) | Scaffold |
 | Godot â†’ Unreal | [Guide](godot-to-unreal/README.md) | [Switch-and-door room](godot-to-unreal/example.md) | Exploratory scaffold |
 | Logo sting / splash video | [Guide](logo-sting-video/README.md) | [AreCore V3 Pro at 1.5x](logo-sting-video/example.md) | Scaffold |
+| Gameplay music videos / trailers | [Guide](game-music-video/README.md) | [ShammyVerse soundtrack](game-music-video/example.md) | Scaffold |
+| Game asset showcase / demo video | [Guide](game-asset-showcase/README.md) | [ShammyVerse world-life demo](game-asset-showcase/example.md) | Scaffold |
+| Ambient world life | [Guide](ambient-world-life/README.md) | [ShammyVerse world life](ambient-world-life/example.md) | Scaffold |
 | Hair, fur and card textures | [Guide](hair-fur-textures/README.md) | [Short fur, 16 shells](hair-fur-textures/example.md) | Exploratory |
 | Recorded music â†’ vocals + MIDI instruments | [Guide](music-reconstruction/README.md) | [Recorded game theme](music-reconstruction/example.md) | Exploratory |
 
