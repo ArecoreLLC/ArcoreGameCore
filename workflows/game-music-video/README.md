@@ -136,7 +136,7 @@ Look at every contact sheet before sending videos. Typical faults are scenery fi
 angle) and repeats. A person then watches each video against the spoiler policy and listens to the mix. Record the
 results in the production record.
 
-## Ambient life and lyrics (recorder 0.3.0–0.4.0)
+## Ambient life and lyrics (recorder 0.3.0–0.6.0)
 
 A world can look deserted behind held shots. With a game that has ambient systems (see the
 [ambient-world-life workflow](../ambient-world-life/README.md)), the adapter answers:
@@ -146,10 +146,36 @@ A world can look deserted behind held shots. With a game that has ambient system
 - `_stage_ambient("lyric:<kind>")` when a caption names something the world can show (`lyric_stage`, for example
   `{"dolphin": "pod", "bubble": "bubbles", "cannon": "salute"}`).
 - `_beat_clock(t)`, so dances and drums follow the song in the video.
+- `lyric_shots` (0.5.0): `[keyword, Callable(until)]` pairs. A cut whose lines name the keyword plays that shot
+  instead of the next list shot, once per pair ("Tiny drums make a tippy-tap sound" → the drums). Unlike
+  `lyric_stage`, which drops something into the current shot, this chooses the whole shot. The framing helpers
+  (`watch_point`, `hover_watch`, `overview`, `face_yaw`) are in the base, so these shots can track moving life.
 - An escort in the game's own vehicle shot (the ShammyVerse dolphin pod rides beside the ship).
 
 After recording, `python tools/game_music_video.py motion <video> --log <recorder log>` flags dead shots, where the
 mean frame-to-frame change stays under a threshold.
+
+## Cue list and framing (recorder 0.6.0–0.7.0)
+
+- **Plan before recording.** Write a cue list: one row per shot, starting on its lyric line, naming what the viewer
+  sees and which system or ability shows it. Songs without captions cut on musical section changes (the
+  ShammyVerse example finds them from loudness and spectral change, snapped to bars). Play it with `play_plan()`.
+- **Framing guard.** On by default. Each cut opens on the nearest clear view, and the camera orbits slowly to keep the
+  subject unblocked and in frame. Exclude what belongs to the shot (`_occluder_excluded`) and give the guard the
+  game's exact camera boom (`_camera_position_for`). Dry-run with `MUSIC_VIDEO_FRAME_DEBUG=1` and fix each
+  `MUSIC_VIDEO_BLOCK` cause: a subject point inside a prop (aim above a table top), a shot that starts in water,
+  a camera the game lowers into the sand.
+- **Foreground clearing (0.7.0).** Props that fill the frame in front of the subject (a giant egg, a palm trunk) are
+  hidden for that shot, as a film crew would move them. Games that re-show objects every frame (quest characters)
+  need the adapter to hold its own cleared set for a staged moment.
+
+## GPU safety (Windows)
+
+`record` and `showcase` check the System log before starting. If the display driver reset since the last boot
+(provider Display, event 4101 or 4109), they stop with exit code 3. A driver that "successfully recovered" can leave
+the graphics stack half-working: on the ShammyVerse PC, a timeout during a long capture restarted the desktop
+compositor, and later GPU work hung the whole machine. Reboot, then record. `--allow-after-gpu-reset` overrides the
+check. Batch scripts should stop on exit code 3, not move on to the next song.
 
 ## Delivery variants
 

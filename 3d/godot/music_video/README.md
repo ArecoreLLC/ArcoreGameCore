@@ -1,6 +1,6 @@
 # Godot gameplay music-video recorder
 
-`music_video_recorder.gd` (version 0.4.0) is the Godot 4 runtime of the
+`music_video_recorder.gd` (version 0.7.0) is the Godot 4 runtime of the
 [game-music-video workflow](../../../workflows/game-music-video/README.md). It is a `SceneTree` script. A game
 extends it with an adapter and its shot lists, then runs it with `--fixed-fps 30`. Add `--write-movie` to record.
 
@@ -15,10 +15,14 @@ Install it with `python tools/game_music_video.py vendor --project <game project
 | Markers | `MUSIC_VIDEO_SONG_START frame=… length=…`, `MUSIC_VIDEO_SHOT i a-b blocked=n%[ CHECK]`, `MUSIC_VIDEO_END`, parsed by the tool |
 | Input | `key()`, `tap()`, `release()`, `stop_moving()`; bindings in `KEY_FORWARD` … `KEY_FLY` (default WASD, Shift, Space, Ctrl, Q, E) |
 | Steering | `camera(theta, pitch, distance)` sets the angle relative to travel; `steer()`, `travel()`, `fly()`, `hold_camera()` |
-| Camera guard | Every frame, a physics ray and a bounding-box test against nearby props (within `prop_radius`, 25 m; many props have no collision), including a camera that ends up inside a prop. If blocked for more than 0.25 s the camera swings around, reversing after 2.5 s |
+| Framing guard (0.6.0, `frame_guard`, default on) | Keeps the subject unblocked and fully in frame. Every frame it tests lines from the camera to points on the hero (`_subject_points()`: feet, chest, head, both sides) and to any watched subject (`frame_targets`) against colliders **and the real triangles of nearby meshes** (`Mesh.generate_triangle_mesh()`, cached), so batched props without collision count. It also checks the hero is inside the frame and the camera is not under the ground. At each cut it picks the nearest clear view before the first frame is drawn (orbit angle first, then a higher or closer camera). During a shot, if the view stays blocked for 0.15 s, it orbits slowly (`orbit_speed`, 0.55 rad/s) to the nearest clear angle. Offsets are added to the shot's own view through `set_view()` / `view_yaw()`. `frame_guard_shot = false` turns it off for one shot; `MUSIC_VIDEO_FRAME_DEBUG=1` prints what blocks each shot (`MUSIC_VIDEO_BLOCK`). The 0.2.0 swing guard remains for `frame_guard = false` |
 | Placement | `ground()`, `at()`, `shore()` (march outward from an island centre to the waterline), `cut_to()` |
 | Shots | `stroll`, `run_front`, `jumps`, `takeoff`, `glide`, `low_glide`, `closeup`, `gaze`, `walk` |
+| Framing helpers (0.5.0) | `face_yaw(target)` (looks past the hero, swung by `SIDE`, 0.42 rad), `watch_point` (hero stands, camera tracks a moving subject), `hover_watch` (hero hovers beyond a subject over open ground or water), `overview` (slow high look down). Moved here from `asset_showcase.gd` so song shot lists can use them |
 | Edit plan | `cut_times()` cuts on caption starts at least `MIN_SHOT` apart and every `MAX_SHOT` in uncaptioned stretches; `play_shots(shots, from, final_shot)` |
+| Foreground clearing (0.7.0, `clear_foreground`, default on) | At each cut, after the framing guard picks its view, props nearer than the subject that cover more than `foreground_cover` (12 %) of the frame are hidden for the shot, and every 10 frames anything the moving camera brushes within 6 m is cleared too. Only individual props (under `foreground_max_size`, 25 m) are hidden, never anything holding the subject; all come back at the next cut. `MUSIC_VIDEO_CLEAR` lines name them in frame-debug mode |
+| Planned edit (0.6.0) | `play_plan([[start, Callable(until)], …])` plays shots at planned times (each to the next row's start, the last to the song end), so a cue list written against the lyrics maps one row to one shot. Rows whose start has passed are skipped |
+| Lyric-matched shots (0.5.0) | Set `lyric_shots` to `[keyword, Callable(until)]` pairs. When a cut's window holds a caption line containing a keyword (starting at least `lyric_shot_lead`, 1.5 s, before the cut ends), that shot plays instead of the next one in the list, once per pair, and the base prints `MUSIC_VIDEO_LYRIC_SHOT`. The song's own list continues where it left off, so lyric shots never skip list shots |
 | Ambient staging | Every held shot (`closeup`, `gaze`, any `hold_camera`) calls `_stage_ambient("still")` once, so an empty background gets something passing through it (`stage_still`, default on). With `stage_beats` = N, every Nth caption start calls `_stage_ambient("beat")`. Both print `MUSIC_VIDEO_STAGE` |
 | Lyric staging | Set `lyric_stage` (lowercase keyword → kind). When a caption whose text contains a keyword starts, the base calls `_stage_ambient("lyric:"+kind)`, at most once every `lyric_spacing` seconds (3 s), and prints `MUSIC_VIDEO_STAGE lyric` |
 | Beat clock | `_beat_clock(t)` is called every frame with the video time, so beat-synced systems (dances, drums) follow the song, not the game's muted player |
@@ -42,6 +46,9 @@ Install it with `python tools/game_music_video.py vendor --project <game project
 | `_keep_layer(layer)` | `true` for the caption layer(s) |
 | `_caption_text(index)` | Optional. The text of caption `index` (same order as `_caption_starts()`), for lyric staging |
 | `_beat_clock(t)` | Optional. Drive the game's beat clock from the video time (for example the world-life kit's `KIT.song_clock(id, t)`) |
+| `_camera_position_for(yaw, pitch, distance)`, `_camera_basis_for(yaw, pitch)` | Optional (0.6.0). Where the follow camera would sit and face, so the guard can test a view before showing it. Include the game's own camera-collision pull-in for exact framing. Defaults orbit 1 m above the hero |
+| `_subject_points()` | Optional (0.6.0). Points on the hero that must stay visible |
+| `_occluder_excluded(node)` | Optional (0.6.0). Geometry the guard ignores: the vehicle the hero rides, ability effects, moving life that is the subject of the shot |
 | `_stage_ambient(kind)` | Optional. Put ambient life in front of the camera now (`"still"` or `"beat"`) and return whether anything was staged. Escorts for vehicle shots belong in the game's own vehicle shot |
 
 Movement assumes camera-relative keys with Godot's forward = −Z convention. A game with other controls overrides
@@ -49,14 +56,14 @@ Movement assumes camera-relative keys with Godot's forward = −Z convention. A 
 
 ## Asset showcase base
 
-`asset_showcase.gd` (0.1.0) extends the recorder for the [game-asset-showcase workflow](../../../workflows/game-asset-showcase/README.md):
+`asset_showcase.gd` (0.3.0) extends the recorder for the [game-asset-showcase workflow](../../../workflows/game-asset-showcase/README.md):
 - a shot list (`add(id, label, fn)`) of titled shots, `SHOT` seconds each (6.5)
 - a title-card layer that stays visible
 - `--only=<letters>` and `--snap=<dir>` user arguments
-- framing helpers: `face_yaw`, `watch_point`, `hover_watch`, `overview`, `gaze_out`
+- `gaze_out` (the other framing helpers come from the recorder base since 0.5.0)
 
 A game implements the recorder adapter plus `_setup_showcase()`, `_build_showcase()` and `_clear_stages()`. Still-shot
-staging is off by default, so each shot shows only its own subject.
+staging and the framing guard are off by default, so each hand-framed shot shows only its own subject.
 
 ## Validation
 

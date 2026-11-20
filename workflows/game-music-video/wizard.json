@@ -3,7 +3,7 @@
   "template_id": "gamecore.video.game-music-video",
   "template_version": "0.2.0",
   "title": "Gameplay music videos and trailers",
-  "description": "One music video or trailer per song, from real gameplay driven by script in engine, captured frame-accurately with Godot Movie Maker and laid over the exact song file with its captions. Derived from the ShammyVerse soundtrack production. The vendor, dry-run and record stages run through tools/game_music_video.py; shot lists are game code written per song. Recorder 0.4.0 adds ambient staging hooks (held shots, beats, lyric keywords), a beat-clock hook and a motion check for dead shots.",
+  "description": "One music video or trailer per song, from real gameplay driven by script in engine, captured frame-accurately with Godot Movie Maker and laid over the exact song file with its captions. Derived from the ShammyVerse soundtrack production. The vendor, dry-run and record stages run through tools/game_music_video.py; shot lists are game code written per song. Recorder 0.4.0 adds ambient staging hooks (held shots, beats, lyric keywords), a beat-clock hook and a motion check for dead shots; 0.5.0 adds lyric-matched shots and shared framing helpers; 0.6.0 adds planned edits (play_plan) and a framing guard that keeps the subject unblocked and in frame; 0.7.0 clears props out of the foreground per shot.",
   "workflow": "game-music-video",
   "implementation_status": "partial",
   "assistance": {

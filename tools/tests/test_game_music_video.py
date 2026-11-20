@@ -114,7 +114,28 @@ class GameMusicVideoTests(unittest.TestCase):
             (project / "project.godot").write_text("", encoding="utf-8")
             lock = gmv.vendor(project)
             self.assertEqual([f["name"] for f in lock["files"]], ["music_video_recorder.gd", "asset_showcase.gd"])
-            self.assertEqual(lock["files"][1]["version"], "0.1.0")
+            self.assertEqual(lock["files"][1]["version"], "0.3.0")
+            self.assertEqual(lock["version"], "0.7.0")
+
+    def test_gpu_resets_parse_powershell_lines(self):
+        class Out:
+            stdout = "2026-11-19T17:03:42 4101\r\n\r\n2026-11-19T17:04:09 4109\r\n"
+        calls = []
+        def run(cmd, **kw):
+            calls.append(cmd);return Out()
+        self.assertEqual(gmv.gpu_resets_since_boot(run=run, platform='nt'), ["2026-11-19T17:03:42 4101", "2026-11-19T17:04:09 4109"])
+        self.assertIn("4101,4109", calls[0][-1])
+        self.assertEqual(gmv.gpu_resets_since_boot(run=run, platform='posix'), [])
+
+    def test_gpu_preflight_stops_with_exit_code_3(self):
+        import types
+        a = types.SimpleNamespace(allow_after_gpu_reset=False)
+        with self.assertRaises(SystemExit) as stop:
+            gmv.gpu_preflight(a, check=lambda: ["2026-11-19T17:03:42 4101"])
+        self.assertEqual(stop.exception.code, gmv.GPU_RESET_EXIT)
+        gmv.gpu_preflight(a, check=lambda: [])
+        a.allow_after_gpu_reset = True
+        gmv.gpu_preflight(a, check=lambda: ["2026-11-19T17:03:42 4101"])
 
     def test_showcase_tile_command_lays_out_two_rows(self):
         cmd = gmv.tile_command([f"{i}.png" for i in range(6)], "sheet.jpg")

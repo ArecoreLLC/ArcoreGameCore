@@ -10,6 +10,11 @@ touches saves; the recorder script is responsible for disabling saving.
            over the recorded game effects (no normalization), encode H.264/AAC, a sharing preview and a contact sheet.
   sheet    Contact sheet of an existing video.
 
+GPU safety (Windows): record and showcase refuse to start when the display driver has reset since the last boot
+(System log, provider Display, event 4101 "stopped responding and has recovered" or 4109 "blocked from accessing
+graphics hardware"). A recovered driver can leave the graphics stack half-working, and more GPU work on it has hung
+the whole PC. Reboot first, or pass --allow-after-gpu-reset. The refusal exits with code 3 so batch scripts can stop.
+
 Examples (from the GameCore root):
   python tools/game_music_video.py vendor --project X:/Projects/MyGame/game
   python tools/game_music_video.py dry-run --godot <Godot_console.exe> --project X:/Projects/MyGame/game \
@@ -39,6 +44,12 @@ START_RE = re.compile(r'MUSIC_VIDEO_SONG_START frame=(\d+) length=([0-9.]+)')
 SHOT_RE = re.compile(r'MUSIC_VIDEO_SHOT (\d+) ([0-9.]+)-([0-9.]+) blocked=(\d+)%( CHECK)?')
 ERROR_RE = re.compile(r'SCRIPT ERROR|Parse Error')
 MOTION_RE = re.compile(r'lavfi\.signalstats\.YAVG=([0-9.]+)')
+GPU_RESET_EVENTS = (4101, 4109)    # Display: driver stopped responding and recovered; application blocked from the GPU
+GPU_RESET_EXIT = 3
+GPU_RESET_QUERY = ("$b=(Get-CimInstance Win32_OperatingSystem).LastBootUpTime;"
+                   "Get-WinEvent -FilterHashtable @{LogName='System';ProviderName='Display';StartTime=$b} -ErrorAction SilentlyContinue|"
+                   "Where-Object {$_.Id -in " + ",".join(str(i) for i in GPU_RESET_EVENTS) + "}|"
+                   "ForEach-Object {$_.TimeCreated.ToString('s')+' '+$_.Id}")
 
 
 def sha256(path):
@@ -185,6 +196,29 @@ def godot_command(godot, project, script, song, fps=30, movie=None):
     return cmd + ['--script', str(script), '--', f'--song={song}']
 
 
+# ---------- GPU safety ----------
+def gpu_resets_since_boot(run=subprocess.run, platform=os.name):
+    """Display-driver reset events since the last boot, as 'ISO-time event-id' lines (Windows only; else [])."""
+    if platform != 'nt':
+        return []
+    try:
+        out = run(['powershell', '-NoProfile', '-NonInteractive', '-Command', GPU_RESET_QUERY], capture_output=True, text=True, timeout=90)
+    except (OSError, subprocess.TimeoutExpired):
+        return []
+    return [line.strip() for line in (out.stdout or '').splitlines() if line.strip()]
+
+
+def gpu_preflight(a, check=gpu_resets_since_boot):
+    """Refuse GPU work after a display-driver reset this boot (exit code 3), unless overridden."""
+    if getattr(a, 'allow_after_gpu_reset', False):
+        return
+    events = check()
+    if events:
+        print(f'GPU_RESET_SINCE_BOOT {"; ".join(events)}', file=sys.stderr)
+        print('The display driver reset since the last reboot. Reboot before recording, or pass --allow-after-gpu-reset.', file=sys.stderr)
+        raise SystemExit(GPU_RESET_EXIT)
+
+
 # ---------- commands ----------
 def cmd_dry_run(a):
     log = Path(a.log or Path(tempfile.gettempdir()) / f'music-video-dry-{a.song}.log')
@@ -197,6 +231,7 @@ def cmd_dry_run(a):
 
 
 def cmd_record(a):
+    gpu_preflight(a)
     out_dir = Path(a.out);out_dir.mkdir(parents=True, exist_ok=True)
     width, height = (int(v) for v in a.resolution.lower().split('x'))
     avi = Path(a.avi_dir or tempfile.gettempdir()) / f'music-video-{a.song}-{os.getpid()}.avi'
@@ -285,6 +320,7 @@ def cmd_showcase(a):
     snaps.mkdir(parents=True, exist_ok=True)
     log = snaps / 'showcase.log'
     if not a.sheets_only:
+        gpu_preflight(a)
         cmd = [a.godot, '--path', str(Path(a.project).resolve()), '--fixed-fps', str(a.fps), '--script', str(Path(a.script).resolve()),
                '--', f'--song={a.song}', f'--snap={snaps.resolve()}'] + ([f'--only={a.only}'] if a.only else [])
         with open(log, 'w', encoding='utf-8') as f:
@@ -338,6 +374,7 @@ def main(argv=None):
             s.add_argument('--title')
             s.add_argument('--avi-dir')
             s.add_argument('--keep-avi', action='store_true')
+            s.add_argument('--allow-after-gpu-reset', action='store_true', help='record even though the display driver reset since the last boot')
     sh = sub.add_parser('sheet')
     sh.add_argument('video');sh.add_argument('out')
     sc = sub.add_parser('showcase', help='asset showcase: one PNG per shot (windowed, no movie) and contact sheets')
@@ -350,6 +387,7 @@ def main(argv=None):
     sc.add_argument('--fps', type=int, default=30)
     sc.add_argument('--timeout', type=int, default=3600)
     sc.add_argument('--sheets-only', action='store_true', help='re-tile existing PNGs listed in the last showcase.log')
+    sc.add_argument('--allow-after-gpu-reset', action='store_true', help='capture even though the display driver reset since the last boot')
     mo = sub.add_parser('motion', help='flag shots whose picture barely changes (empty backgrounds)')
     mo.add_argument('video');mo.add_argument('--log', required=True, help='recorder log with MUSIC_VIDEO_SHOT markers')
     mo.add_argument('--threshold', type=float, default=1.2, help='mean luma difference per frame below which a shot is dead')

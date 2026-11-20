@@ -27,7 +27,7 @@ the ShammyVerse world-life demo (see [example](example.md)).
 | 5 | Record | `record --song <id> --audio <soundtrack>` captures with Movie Maker, mixes, encodes, and writes a preview under 28 MB and a contact sheet |
 | 6 | Review | Check frames from each shot's middle; list shots whose asset reads faintly, then reframe or accept them |
 
-## Framing helpers (`asset_showcase.gd`)
+## Framing helpers (recorder base since 0.5.0; `gaze_out` in `asset_showcase.gd`)
 
 | Helper | Use |
 |---|---|
