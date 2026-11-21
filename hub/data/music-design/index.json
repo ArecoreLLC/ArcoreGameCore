@@ -283,7 +283,7 @@
         "notes": "Clean Stem-Builder variation (modern-tactics, parent: action-rock)."
       }
     ],
-    "updated_at": "2026-11-18T18:20:41Z",
+    "updated_at": "2026-11-18T21:43:39Z",
     "scope": "catalog",
     "recommended_archetype": "dark-fantasy",
     "recommended_setting": "wind-swept artillery battlefield",
@@ -296,7 +296,7 @@
         "created_at": "2026-11-18T17:32:33.840Z",
         "duration_s": 287.72,
         "model": "v6",
-        "style": "Dark orchestral hybrid, 115 BPM strict 4/4 march...",
+        "style": "Dark orchestral hybrid, 115 BPM strict 4/4 march surging into a double-time industrial breakbeat; hurdy-gurdy lead over plucked lute, down-tuned distorted guitar, brass braams, taiko, analog synth arpeggios, low piano ostinato and staccato strings. Complex multi-layered orchestration moves from radar pings and metallic hits through a harpsichord breakdown to a 12-part maximum-intensity final theme, then fades on solo cello. Latin vocals pair deep male Gregorian choir chant with soaring high female operatic vocalise; stacked hook harmonies and gang-vocal shouts fill the climax before the chant falls back beneath the final refrain.",
         "liked": false,
         "match_confidence": "exact",
         "matched_terms": [
@@ -310,7 +310,7 @@
         "created_at": "2026-11-18T17:32:33.840Z",
         "duration_s": 282.8,
         "model": "v6",
-        "style": "Maximalist dark orchestral hybrid, 12-part complex multi-layered orchestration...",
+        "style": "Maximalist dark orchestral hybrid, 12-part complex multi-layered orchestration, hushed close-mic intimacy and layered octave doubles amid dense textures, polyphonic medieval siege & modern industrial artillery; hurdy-gurdy lead, plucked lute and mandolin, down-tuned distorted guitar, brass, choir, taiko, analog synth, pulsing modular arpeggio, sonar pings, analog sub-bass drone, low grand piano ostinato, anvil, ticking clock, shaker, military snare roll, heavy kick drum, staccato cello and viola, war horn, contrabassoon, harpsichord, prepared piano, tremolo violins, nyckelharpa, radio static, saw-wave bassline, chains, trumpets and tuba stabs; 115 BPM, strict 4/4, maximum intensity, four-minute build through a breakdown to a double-time breakbeat and 32-bar climax; Latin male and female, h",
         "liked": false,
         "match_confidence": "exact",
         "matched_terms": [
@@ -324,7 +324,7 @@
         "created_at": "2026-11-18T17:24:10.109Z",
         "duration_s": 93.32,
         "model": "v6",
-        "style": "Minimalist dark orchestral hybrid, instrumental, 110 BPM with a measured military march pulse...",
+        "style": "Minimalist dark orchestral hybrid, instrumental, 110 BPM with a measured military march pulse; clean, dry studio mix; pulsing sub-bass, crisp military drums, plucked lute, and restrained low brass.",
         "liked": false,
         "match_confidence": "exact",
         "matched_terms": [
@@ -338,7 +338,7 @@
         "created_at": "2026-11-18T17:24:10.109Z",
         "duration_s": 86.4,
         "model": "v6",
-        "style": "Orchestral hybrid, dark and minimalist; clean mix, dry studio recording; steady 110 BPM...",
+        "style": "Orchestral hybrid, dark and minimalist; clean mix, dry studio recording; steady 110 BPM; pulsing sub-bass beneath crisp military drums, sparse plucked lute, and low brass; instrumental.",
         "liked": false,
         "match_confidence": "exact",
         "matched_terms": [
@@ -1237,7 +1237,7 @@
         "notes": ""
       }
     ],
-    "updated_at": "2026-11-18T17:52:51Z",
+    "updated_at": "2026-11-18T22:11:28Z",
     "scope": "catalog",
     "recommended_archetype": "dark-fantasy",
     "recommended_setting": "island, mountain & jungle frontier",
@@ -3956,7 +3956,7 @@
         "notes": ""
       }
     ],
-    "updated_at": "2026-11-18T17:52:51Z",
+    "updated_at": "2026-11-18T22:11:28Z",
     "scope": "catalog",
     "recommended_archetype": "cozy",
     "recommended_setting": "storybook island & narration studio",
@@ -8041,7 +8041,7 @@
         "notes": ""
       }
     ],
-    "updated_at": "2026-11-18T17:52:51Z",
+    "updated_at": "2026-11-18T22:11:28Z",
     "scope": "catalog",
     "recommended_archetype": "arcade",
     "recommended_setting": "creature battle stadium",
@@ -8577,41 +8577,31 @@
         "lyrics": "[Intro]\n(sparse ambient layer, quiet pulse)\n[Verse 1 - Exploration Layer]\n(fingerpicked Acoustic Guitar, gentle Marimba melody)\n[Pre-Chorus - Tension Build]\n(soft Glockenspiel top-line, warm Upright Bass pulse)\n[Chorus - Combat Layer]\n(full cozy rhythm section, bouncing Upright Bass, upbeat brush Drums)\n[Bridge - Danger / Boss State]\n(slightly melancholic shift, minor chord Acoustic Guitar, solo Flute)\n[Outro]\n(resolution back to ambient loop tail)",
         "instruments": [
           {
-            "name": "Acoustic Guitar",
-            "stem": "Acoustic Guitar",
+            "name": "Keyboards",
+            "stem": "Keyboards",
             "keep": true
           },
           {
-            "name": "Marimba",
-            "stem": "Marimba",
+            "name": "Synth",
+            "stem": "Synth",
             "keep": true
           },
           {
-            "name": "Upright Bass",
-            "stem": "Upright Bass",
+            "name": "Bass",
+            "stem": "Bass",
             "keep": true
           },
           {
             "name": "Drums",
             "stem": "Drums",
             "keep": true
-          },
-          {
-            "name": "Glockenspiel",
-            "stem": "Glockenspiel",
-            "keep": false
-          },
-          {
-            "name": "Flute",
-            "stem": "Flute",
-            "keep": false
           }
         ],
         "stems_requested": [
-          "Acoustic Guitar",
+          "Bass",
           "Drums",
-          "Marimba",
-          "Upright Bass"
+          "Keyboards",
+          "Synth"
         ],
         "states": [
           {
@@ -8640,46 +8630,34 @@
           }
         ],
         "suno": {
-          "url": "https://suno.com/song/a4e91dfa-70cb-4963-aed7-56468104f9dc",
-          "clip_id": "a4e91dfa-70cb-4963-aed7-56468104f9dc",
-          "model": "v6 (MCP audio-create + audio-stems-create mode=twelve)",
-          "generated_at": "2026-11-18T04:32:33Z"
+          "url": "X:/Projects/GameMusic/Critter-Contraptions/Main Theme",
+          "clip_id": "critter-contraptions-main-theme",
+          "model": "Suno Premier Stem Split (32-bit float 48kHz)",
+          "generated_at": "2026-11-18T23:41:00Z"
         },
         "files": [
           {
-            "path": "X:/Projects/GameMusic/Critter-Contraptions/midi/critter-contraptions-take1-percussion.mid",
-            "kind": "midi"
+            "path": "Media/Audio/Sonic-v001/Export/layer-01.wav",
+            "kind": "Keyboards (SW_Music_Keyboards_v001)",
+            "sha256": "d4c91b1fb602e30c8e7ccd94fe9b761c0b4a4e396e51eb1369742505b54cf45b"
           },
           {
-            "path": "X:/Projects/GameMusic/Critter-Contraptions/midi/critter-contraptions-take1-drums.mid",
-            "kind": "midi"
+            "path": "Media/Audio/Sonic-v001/Export/layer-02.wav",
+            "kind": "Synth (SW_Music_Synth_v001)",
+            "sha256": "f6f3ab28035d7d5f1b59b746eaaf4963eec104bfbd398fd4504314882db8216d"
           },
           {
-            "path": "X:/Projects/GameMusic/Critter-Contraptions/midi/critter-contraptions-take1-woodwinds.mid",
-            "kind": "midi"
+            "path": "Media/Audio/Sonic-v001/Export/layer-03.wav",
+            "kind": "Bass (SW_Music_Bass_v001)",
+            "sha256": "8ecf408eb6155a402e33c7a1d03a98243dc396ae57c7d608985c44c5fb893489"
           },
           {
-            "path": "X:/Projects/GameMusic/Critter-Contraptions/midi/critter-contraptions-take1-keyboard.mid",
-            "kind": "midi"
-          },
-          {
-            "path": "X:/Projects/GameMusic/Critter-Contraptions/midi/critter-contraptions-take1-fx.mid",
-            "kind": "midi"
-          },
-          {
-            "path": "X:/Projects/GameMusic/Critter-Contraptions/midi/critter-contraptions-take1-bass.mid",
-            "kind": "midi"
-          },
-          {
-            "path": "X:/Projects/GameMusic/Critter-Contraptions/midi/critter-contraptions-take1-synth.mid",
-            "kind": "midi"
-          },
-          {
-            "path": "X:/Projects/GameMusic/Critter-Contraptions/midi/critter-contraptions-take1-guitar.mid",
-            "kind": "midi"
+            "path": "Media/Audio/Sonic-v001/Export/layer-04.wav",
+            "kind": "Drums (SW_Music_Drums_v001)",
+            "sha256": "454d051ecdca26376ff9e3f85b19c6e976910007eb8a3b98d8f58b82ba09654b"
           }
         ],
-        "notes": "Generated via Suno MCP (Take 1: a4e91dfa-70cb-4963-aed7-56468104f9dc, 128.88s, detected 91.2 BPM C major; Take 2: 3a2cb2b0-3daf-4f47-aaeb-135ab10335f0, 92.76s). 12-stem Auto Split completed via MCP audio-stems-create (group: stemgrp_27fd5387-f39f-4d47-8aa4-bfe637d69658) — Take 1 stems ready in Suno library: drums (308397ed-0a23-45b1-b426-433251b4746a), bass (8aea2817-542f-4e66-a214-85d6e56783bb), guitar (bf490f5a-cfac-4003-8f9c-6a736120028a), keyboard (55aa3b94-745d-4ab4-bb37-32c0e304375d), percussion (02676bc5-a325-4188-9611-b378a29a983f), strings (7532a754-9253-45c9-9b8e-48b1faa7cdfa), synth (90ce9254-850b-4e37-b35a-9c7d534b8ac9), woodwinds (42aa1e45-87c2-4a8b-8b69-c1eb27bd7262)."
+        "notes": "Exported 32-bar loop (bars 6-38, 15.65s-99.13s, 83.48s, 4006957 frames @ 48kHz 24-bit) via SonicAlchemist export-adaptive.exe with 0.85s fade-in/fade-out clip envelopes (seam_step <= 0.000001). Integrated into /Game/Audio/Music/SW_Music_*_v001 with 4 states (Explore, Tension, Combat, Boss)."
       },
       {
         "track_id": "critter-contraptions-B",
@@ -8844,11 +8822,12 @@
         "notes": ""
       }
     ],
-    "updated_at": "2026-11-18T17:52:51Z",
+    "updated_at": "2026-11-18T22:11:28Z",
     "scope": "catalog",
     "recommended_archetype": "cozy",
     "recommended_setting": "friendly creature parcel factory",
-    "recommendation_reason": "Befriending creatures on a tiny parcel line calls for warm marimba and acoustic guitar."
+    "recommendation_reason": "Befriending creatures on a tiny parcel line calls for warm marimba and acoustic guitar.",
+    "sonic_alchemist_project": "critter-contraptions-adaptive"
   },
   {
     "schema_version": 1,
@@ -9643,7 +9622,7 @@
         "notes": ""
       }
     ],
-    "updated_at": "2026-11-18T17:52:51Z",
+    "updated_at": "2026-11-18T22:11:28Z",
     "scope": "catalog",
     "recommended_archetype": "dark-fantasy",
     "recommended_setting": "slime dungeon & bustling fantasy shop",
@@ -9883,7 +9862,72 @@
               "recommended_loop_start_bar": 18,
               "recommended_loop_start_s": 35.372,
               "recommended_loop_end_s": 101.556,
-              "quality_score": 23.21
+              "quality_score": 23.21,
+              "midi_files": [
+                {
+                  "stem": "drums",
+                  "audio_id": "1122fd1f-d3db-4ecd-a194-ecf981c2391b",
+                  "path": "X:/Projects/GameMusic/Echo-Forge/midi/echo-forge-take1-drums.mid",
+                  "tracks": 6,
+                  "notes_count": 657
+                },
+                {
+                  "stem": "guitar",
+                  "audio_id": "15becc53-72f9-49b9-a5b0-6f04c551cdee",
+                  "path": "X:/Projects/GameMusic/Echo-Forge/midi/echo-forge-take1-guitar.mid",
+                  "tracks": 3,
+                  "notes_count": 333
+                },
+                {
+                  "stem": "woodwinds",
+                  "audio_id": "3738ffe3-1bf2-4bda-867b-942af974a945",
+                  "path": "X:/Projects/GameMusic/Echo-Forge/midi/echo-forge-take1-woodwinds.mid",
+                  "tracks": 7,
+                  "notes_count": 451
+                },
+                {
+                  "stem": "percussion",
+                  "audio_id": "3ed5a5ca-1af8-4a8a-8894-c5fc52a1aa6d",
+                  "path": "X:/Projects/GameMusic/Echo-Forge/midi/echo-forge-take1-percussion.mid",
+                  "tracks": 13,
+                  "notes_count": 1042
+                },
+                {
+                  "stem": "synth",
+                  "audio_id": "48092e16-c331-4c4a-b6b2-ce16dae96bce",
+                  "path": "X:/Projects/GameMusic/Echo-Forge/midi/echo-forge-take1-synth.mid",
+                  "tracks": 10,
+                  "notes_count": 3141
+                },
+                {
+                  "stem": "strings",
+                  "audio_id": "544aacb3-7d3d-41b6-9646-8d72a7ea902e",
+                  "path": "X:/Projects/GameMusic/Echo-Forge/midi/echo-forge-take1-strings.mid",
+                  "tracks": 1,
+                  "notes_count": 1763
+                },
+                {
+                  "stem": "brass",
+                  "audio_id": "70738c40-2724-4930-bd0c-02eb74d37d32",
+                  "path": "X:/Projects/GameMusic/Echo-Forge/midi/echo-forge-take1-brass.mid",
+                  "tracks": 4,
+                  "notes_count": 3076
+                },
+                {
+                  "stem": "bass",
+                  "audio_id": "87db128b-4c92-472c-9b7c-0999e48c39bd",
+                  "path": "X:/Projects/GameMusic/Echo-Forge/midi/echo-forge-take1-bass.mid",
+                  "tracks": 8,
+                  "notes_count": 441
+                },
+                {
+                  "stem": "keyboard",
+                  "audio_id": "8a2e4ef6-7cec-4072-b479-1d8cae4d0edd",
+                  "path": "X:/Projects/GameMusic/Echo-Forge/midi/echo-forge-take1-keyboard.mid",
+                  "tracks": 3,
+                  "notes_count": 191
+                }
+              ]
             },
             {
               "take": 2,
@@ -9981,7 +10025,44 @@
             }
           ]
         },
-        "files": [],
+        "files": [
+          {
+            "path": "X:/Projects/GameMusic/Echo-Forge/midi/echo-forge-take1-drums.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Echo-Forge/midi/echo-forge-take1-guitar.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Echo-Forge/midi/echo-forge-take1-woodwinds.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Echo-Forge/midi/echo-forge-take1-percussion.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Echo-Forge/midi/echo-forge-take1-synth.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Echo-Forge/midi/echo-forge-take1-strings.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Echo-Forge/midi/echo-forge-take1-brass.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Echo-Forge/midi/echo-forge-take1-bass.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Echo-Forge/midi/echo-forge-take1-keyboard.mid",
+            "kind": "midi"
+          }
+        ],
         "notes": "Generated 2 takes via Suno MCP (v6) & analyzed via 0-credit audio-analysis:\n- Take 1 (4026cb1c-0099-4c78-840d-3aa227cd6630, Liked): https://suno.com/song/4026cb1c-0099-4c78-840d-3aa227cd6630 — 187.04s, detected 115.8 BPM, D minor, 89 bars, 9 sections, loop bars 18..50 (35.372s–101.556s), score=23.21\n- Take 2 (ac676f72-edc2-41c7-a74c-eb25f9db9386): https://suno.com/song/ac676f72-edc2-41c7-a74c-eb25f9db9386 — 183.24s, detected 116.3 BPM, G minor, 87 bars, 12 sections, loop bars 18..50 (35.41s–100.802s), score=18.615\nSelected for stem split: Take 1 (4026cb1c-0099-4c78-840d-3aa227cd6630) | 12-stem Auto Split group: stemgrp_a7972b30-706f-4049-89ea-1fdc4f580fe8 (complete)."
       },
       {
@@ -10147,7 +10228,7 @@
         "notes": ""
       }
     ],
-    "updated_at": "2026-11-18T13:23:41Z",
+    "updated_at": "2026-11-18T22:11:28Z",
     "scope": "catalog",
     "recommended_archetype": "dark-fantasy",
     "recommended_setting": "ancient resonant cavern & world-organ",
@@ -11412,7 +11493,72 @@
               "recommended_loop_start_bar": 22,
               "recommended_loop_start_s": 27.067,
               "recommended_loop_end_s": 67.821,
-              "quality_score": 22.457
+              "quality_score": 22.457,
+              "midi_files": [
+                {
+                  "stem": "drums",
+                  "audio_id": "13f8a9a7-2cb3-4dc8-88f0-f09c3c47a67f",
+                  "path": "X:/Projects/GameMusic/Engage-Math/midi/engage-math-activity-collection-take1-drums.mid",
+                  "tracks": 3,
+                  "notes_count": 791
+                },
+                {
+                  "stem": "brass",
+                  "audio_id": "1c1e00f3-6964-4f2e-a840-ad6cc496b0ca",
+                  "path": "X:/Projects/GameMusic/Engage-Math/midi/engage-math-activity-collection-take1-brass.mid",
+                  "tracks": 2,
+                  "notes_count": 78
+                },
+                {
+                  "stem": "strings",
+                  "audio_id": "2fa9c034-fc0d-4af1-ae43-4dfe3387077c",
+                  "path": "X:/Projects/GameMusic/Engage-Math/midi/engage-math-activity-collection-take1-strings.mid",
+                  "tracks": 3,
+                  "notes_count": 1003
+                },
+                {
+                  "stem": "keyboard",
+                  "audio_id": "359ebc9e-6fa5-479b-a9d2-cf0c075fa16f",
+                  "path": "X:/Projects/GameMusic/Engage-Math/midi/engage-math-activity-collection-take1-keyboard.mid",
+                  "tracks": 4,
+                  "notes_count": 1768
+                },
+                {
+                  "stem": "percussion",
+                  "audio_id": "7228d935-7057-420e-9e56-a3e2c7a4a4b6",
+                  "path": "X:/Projects/GameMusic/Engage-Math/midi/engage-math-activity-collection-take1-percussion.mid",
+                  "tracks": 11,
+                  "notes_count": 1167
+                },
+                {
+                  "stem": "bass",
+                  "audio_id": "851817b9-ddec-43ac-9523-260cc4c1c452",
+                  "path": "X:/Projects/GameMusic/Engage-Math/midi/engage-math-activity-collection-take1-bass.mid",
+                  "tracks": 4,
+                  "notes_count": 1061
+                },
+                {
+                  "stem": "woodwinds",
+                  "audio_id": "a7c9f9f1-c4cb-408f-8085-fc6a7fd0aab1",
+                  "path": "X:/Projects/GameMusic/Engage-Math/midi/engage-math-activity-collection-take1-woodwinds.mid",
+                  "tracks": 8,
+                  "notes_count": 792
+                },
+                {
+                  "stem": "synth",
+                  "audio_id": "a89a8d23-53bc-4b3d-89f7-1bf7f2543f04",
+                  "path": "X:/Projects/GameMusic/Engage-Math/midi/engage-math-activity-collection-take1-synth.mid",
+                  "tracks": 6,
+                  "notes_count": 1803
+                },
+                {
+                  "stem": "guitar",
+                  "audio_id": "f758084c-6e30-4273-973b-e2c45b487e25",
+                  "path": "X:/Projects/GameMusic/Engage-Math/midi/engage-math-activity-collection-take1-guitar.mid",
+                  "tracks": 3,
+                  "notes_count": 1688
+                }
+              ]
             },
             {
               "take": 2,
@@ -11509,7 +11655,44 @@
             }
           ]
         },
-        "files": [],
+        "files": [
+          {
+            "path": "X:/Projects/GameMusic/Engage-Math/midi/engage-math-activity-collection-take1-drums.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Engage-Math/midi/engage-math-activity-collection-take1-brass.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Engage-Math/midi/engage-math-activity-collection-take1-strings.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Engage-Math/midi/engage-math-activity-collection-take1-keyboard.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Engage-Math/midi/engage-math-activity-collection-take1-percussion.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Engage-Math/midi/engage-math-activity-collection-take1-bass.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Engage-Math/midi/engage-math-activity-collection-take1-woodwinds.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Engage-Math/midi/engage-math-activity-collection-take1-synth.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Engage-Math/midi/engage-math-activity-collection-take1-guitar.mid",
+            "kind": "midi"
+          }
+        ],
         "notes": "Generated 2 takes via Suno MCP (v6) & analyzed via 0-credit audio-analysis:\n- Take 1 (32ba6b91-01e2-4c3d-a8c1-3291e386331f, Liked): https://suno.com/song/32ba6b91-01e2-4c3d-a8c1-3291e386331f — 141.04s, detected 188.3 BPM, G major, 108 bars, 7 sections, loop bars 22..54 (27.067s–67.821s), score=22.457\n- Take 2 (eb672a81-c56f-441f-829e-3a95d6be1f68): https://suno.com/song/eb672a81-c56f-441f-829e-3a95d6be1f68 — 147.2s, detected 188.1 BPM, G major, 114 bars, 12 sections, loop bars 23..55 (28.386s–69.237s), score=18.663\nSelected for stem split: Take 1 (32ba6b91-01e2-4c3d-a8c1-3291e386331f) | 12-stem Auto Split group: stemgrp_8710a285-aee5-4cdf-9ad3-acac7a1f46b9 (complete)."
       },
       {
@@ -11675,7 +11858,7 @@
         "notes": ""
       }
     ],
-    "updated_at": "2026-11-18T13:23:41Z",
+    "updated_at": "2026-11-18T22:11:28Z",
     "scope": "catalog",
     "recommended_archetype": "cozy",
     "recommended_setting": "playful classroom learning hub",
@@ -12523,11 +12706,60 @@
               "quality_score": 16.11,
               "midi_files": [
                 {
+                  "stem": "bass",
+                  "audio_id": "0f81ace1-43ae-432e-8018-8c52044424d2",
+                  "path": "X:/Projects/GameMusic/Flotsam-Citadel/midi/flotsam-citadel-take1-bass.mid",
+                  "tracks": 2,
+                  "notes_count": 899
+                },
+                {
                   "stem": "guitar",
                   "audio_id": "30578ce4-8494-49c2-9cc2-2db97e285606",
                   "path": "X:/Projects/GameMusic/Flotsam-Citadel/midi/flotsam-citadel-take1-guitar.mid",
                   "tracks": 1,
                   "notes_count": 1644
+                },
+                {
+                  "stem": "woodwinds",
+                  "audio_id": "3858bfce-8699-4626-a04e-3d7d92c60776",
+                  "path": "X:/Projects/GameMusic/Flotsam-Citadel/midi/flotsam-citadel-take1-woodwinds.mid",
+                  "tracks": 1,
+                  "notes_count": 5
+                },
+                {
+                  "stem": "keyboard",
+                  "audio_id": "3db10ea2-4e85-4e3a-a303-46c4b2fec12e",
+                  "path": "X:/Projects/GameMusic/Flotsam-Citadel/midi/flotsam-citadel-take1-keyboard.mid",
+                  "tracks": 4,
+                  "notes_count": 400
+                },
+                {
+                  "stem": "drums",
+                  "audio_id": "79c774f4-87f9-4408-8de4-99f460300765",
+                  "path": "X:/Projects/GameMusic/Flotsam-Citadel/midi/flotsam-citadel-take1-drums.mid",
+                  "tracks": 2,
+                  "notes_count": 1428
+                },
+                {
+                  "stem": "brass",
+                  "audio_id": "88fe2dda-dbf5-42bd-8934-b4b96ca2be24",
+                  "path": "X:/Projects/GameMusic/Flotsam-Citadel/midi/flotsam-citadel-take1-brass.mid",
+                  "tracks": 2,
+                  "notes_count": 8
+                },
+                {
+                  "stem": "synth",
+                  "audio_id": "e4478b09-8816-4403-86e4-50bfeea2009f",
+                  "path": "X:/Projects/GameMusic/Flotsam-Citadel/midi/flotsam-citadel-take1-synth.mid",
+                  "tracks": 2,
+                  "notes_count": 3334
+                },
+                {
+                  "stem": "percussion",
+                  "audio_id": "f8001f4b-40ee-480b-bad1-bd46ff32deff",
+                  "path": "X:/Projects/GameMusic/Flotsam-Citadel/midi/flotsam-citadel-take1-percussion.mid",
+                  "tracks": 1,
+                  "notes_count": 2
                 }
               ]
             }
@@ -12536,6 +12768,34 @@
         "files": [
           {
             "path": "X:/Projects/GameMusic/Flotsam-Citadel/midi/flotsam-citadel-take1-guitar.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Flotsam-Citadel/midi/flotsam-citadel-take1-bass.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Flotsam-Citadel/midi/flotsam-citadel-take1-woodwinds.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Flotsam-Citadel/midi/flotsam-citadel-take1-keyboard.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Flotsam-Citadel/midi/flotsam-citadel-take1-drums.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Flotsam-Citadel/midi/flotsam-citadel-take1-brass.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Flotsam-Citadel/midi/flotsam-citadel-take1-synth.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Flotsam-Citadel/midi/flotsam-citadel-take1-percussion.mid",
             "kind": "midi"
           }
         ],
@@ -12704,7 +12964,7 @@
         "notes": ""
       }
     ],
-    "updated_at": "2026-11-18T17:52:51Z",
+    "updated_at": "2026-11-18T22:11:28Z",
     "scope": "catalog",
     "recommended_archetype": "action-rock",
     "recommended_setting": "storm-tossed salvage raft",
@@ -14961,7 +15221,72 @@
               "recommended_loop_start_bar": 16,
               "recommended_loop_start_s": 31.603,
               "recommended_loop_end_s": 97.798,
-              "quality_score": 20.385
+              "quality_score": 20.385,
+              "midi_files": [
+                {
+                  "stem": "percussion",
+                  "audio_id": "283a9475-d20c-4665-a3ae-a24f87d8592a",
+                  "path": "X:/Projects/GameMusic/Gully-Giants/midi/gully-giants-take1-percussion.mid",
+                  "tracks": 11,
+                  "notes_count": 868
+                },
+                {
+                  "stem": "strings",
+                  "audio_id": "2af0c1f5-a34b-4db5-953c-7ef35ccea97b",
+                  "path": "X:/Projects/GameMusic/Gully-Giants/midi/gully-giants-take1-strings.mid",
+                  "tracks": 3,
+                  "notes_count": 4048
+                },
+                {
+                  "stem": "synth",
+                  "audio_id": "4464e28e-d08b-4194-8e72-0502dd76ce7c",
+                  "path": "X:/Projects/GameMusic/Gully-Giants/midi/gully-giants-take1-synth.mid",
+                  "tracks": 10,
+                  "notes_count": 1492
+                },
+                {
+                  "stem": "brass",
+                  "audio_id": "51b7dfe5-b686-4a49-a033-9460dcff4233",
+                  "path": "X:/Projects/GameMusic/Gully-Giants/midi/gully-giants-take1-brass.mid",
+                  "tracks": 9,
+                  "notes_count": 2164
+                },
+                {
+                  "stem": "guitar",
+                  "audio_id": "813cfd5e-9a26-4a26-b4f5-8c9959ccc7c6",
+                  "path": "X:/Projects/GameMusic/Gully-Giants/midi/gully-giants-take1-guitar.mid",
+                  "tracks": 2,
+                  "notes_count": 136
+                },
+                {
+                  "stem": "keyboard",
+                  "audio_id": "8a518df1-f251-4d3c-9ca0-e37be9e67386",
+                  "path": "X:/Projects/GameMusic/Gully-Giants/midi/gully-giants-take1-keyboard.mid",
+                  "tracks": 9,
+                  "notes_count": 561
+                },
+                {
+                  "stem": "bass",
+                  "audio_id": "e46ff4f1-01de-4c7f-8745-7b575b0ba8ca",
+                  "path": "X:/Projects/GameMusic/Gully-Giants/midi/gully-giants-take1-bass.mid",
+                  "tracks": 5,
+                  "notes_count": 181
+                },
+                {
+                  "stem": "woodwinds",
+                  "audio_id": "efd10060-f905-49d8-9cbb-e04db29144eb",
+                  "path": "X:/Projects/GameMusic/Gully-Giants/midi/gully-giants-take1-woodwinds.mid",
+                  "tracks": 4,
+                  "notes_count": 434
+                },
+                {
+                  "stem": "drums",
+                  "audio_id": "f61a25aa-21ae-4af1-b838-b823e273516b",
+                  "path": "X:/Projects/GameMusic/Gully-Giants/midi/gully-giants-take1-drums.mid",
+                  "tracks": 5,
+                  "notes_count": 487
+                }
+              ]
             },
             {
               "take": 2,
@@ -15053,7 +15378,44 @@
             }
           ]
         },
-        "files": [],
+        "files": [
+          {
+            "path": "X:/Projects/GameMusic/Gully-Giants/midi/gully-giants-take1-bass.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Gully-Giants/midi/gully-giants-take1-drums.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Gully-Giants/midi/gully-giants-take1-percussion.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Gully-Giants/midi/gully-giants-take1-strings.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Gully-Giants/midi/gully-giants-take1-synth.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Gully-Giants/midi/gully-giants-take1-brass.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Gully-Giants/midi/gully-giants-take1-guitar.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Gully-Giants/midi/gully-giants-take1-keyboard.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Gully-Giants/midi/gully-giants-take1-woodwinds.mid",
+            "kind": "midi"
+          }
+        ],
         "notes": "Generated 2 takes via Suno MCP (v6) & analyzed via 0-credit audio-analysis:\n- Take 1 (e4d20385-a706-47f7-9614-7f4a670095f5): https://suno.com/song/e4d20385-a706-47f7-9614-7f4a670095f5 — 164.32s, detected 115.7 BPM, G minor, 79 bars, 10 sections, loop bars 16..48 (31.603s–97.798s), score=20.385\n- Take 2 (9b9bde78-547f-4a73-b249-9ce9aba4d26d): https://suno.com/song/9b9bde78-547f-4a73-b249-9ce9aba4d26d — 151.4s, detected 117.3 BPM, C minor, 81 bars, 11 sections, loop bars 17..49 (25.536s–84.962s), score=20.265\nSelected for stem split: Take 1 (e4d20385-a706-47f7-9614-7f4a670095f5) | 12-stem Auto Split group: stemgrp_37a5e19e-813a-46e1-9396-cb1ed05f7f58 (complete)."
       },
       {
@@ -15219,7 +15581,7 @@
         "notes": ""
       }
     ],
-    "updated_at": "2026-11-18T14:03:41Z",
+    "updated_at": "2026-11-18T22:11:28Z",
     "scope": "catalog",
     "recommended_archetype": "dark-fantasy",
     "recommended_setting": "mossy garden colossus climb",
@@ -15541,11 +15903,113 @@
               "recommended_loop_start_bar": 10,
               "recommended_loop_start_s": 28.605,
               "recommended_loop_end_s": 124.613,
-              "quality_score": 20.085
+              "quality_score": 20.085,
+              "midi_files": [
+                {
+                  "stem": "keyboard",
+                  "audio_id": "0e40a9d7-2fbc-4c72-9c98-6c564ed12a5a",
+                  "path": "X:/Projects/GameMusic/Haunt-and-Haul/midi/haunt-and-haul-take1-keyboard.mid",
+                  "tracks": 2,
+                  "notes_count": 534
+                },
+                {
+                  "stem": "guitar",
+                  "audio_id": "328d496b-b6e7-45fb-be43-ccf73f848bd5",
+                  "path": "X:/Projects/GameMusic/Haunt-and-Haul/midi/haunt-and-haul-take1-guitar.mid",
+                  "tracks": 5,
+                  "notes_count": 127
+                },
+                {
+                  "stem": "synth",
+                  "audio_id": "3999010b-f9b0-4d7f-b553-d820b0b4f663",
+                  "path": "X:/Projects/GameMusic/Haunt-and-Haul/midi/haunt-and-haul-take1-synth.mid",
+                  "tracks": 4,
+                  "notes_count": 713
+                },
+                {
+                  "stem": "bass",
+                  "audio_id": "6e647af7-ede9-49ff-ade2-fbd2bec988e4",
+                  "path": "X:/Projects/GameMusic/Haunt-and-Haul/midi/haunt-and-haul-take1-bass.mid",
+                  "tracks": 5,
+                  "notes_count": 179
+                },
+                {
+                  "stem": "drums",
+                  "audio_id": "71a205a4-9682-4298-b941-8c95f9a84d05",
+                  "path": "X:/Projects/GameMusic/Haunt-and-Haul/midi/haunt-and-haul-take1-drums.mid",
+                  "tracks": 3,
+                  "notes_count": 5
+                },
+                {
+                  "stem": "woodwinds",
+                  "audio_id": "7291a2dd-917e-4550-ae6a-efee7afa6393",
+                  "path": "X:/Projects/GameMusic/Haunt-and-Haul/midi/haunt-and-haul-take1-woodwinds.mid",
+                  "tracks": 2,
+                  "notes_count": 80
+                },
+                {
+                  "stem": "percussion",
+                  "audio_id": "77c42d66-8ead-4b4f-b4a6-e1f5afe92da5",
+                  "path": "X:/Projects/GameMusic/Haunt-and-Haul/midi/haunt-and-haul-take1-percussion.mid",
+                  "tracks": 7,
+                  "notes_count": 87
+                },
+                {
+                  "stem": "brass",
+                  "audio_id": "d0f01896-129c-4315-9a6c-781b694c7bd5",
+                  "path": "X:/Projects/GameMusic/Haunt-and-Haul/midi/haunt-and-haul-take1-brass.mid",
+                  "tracks": 3,
+                  "notes_count": 139
+                },
+                {
+                  "stem": "strings",
+                  "audio_id": "ee9bc554-3c52-47ce-9536-5f9ccf601fa0",
+                  "path": "X:/Projects/GameMusic/Haunt-and-Haul/midi/haunt-and-haul-take1-strings.mid",
+                  "tracks": 5,
+                  "notes_count": 487
+                }
+              ]
             }
           ]
         },
-        "files": [],
+        "files": [
+          {
+            "path": "X:/Projects/GameMusic/Haunt-and-Haul/midi/haunt-and-haul-take1-keyboard.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Haunt-and-Haul/midi/haunt-and-haul-take1-guitar.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Haunt-and-Haul/midi/haunt-and-haul-take1-synth.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Haunt-and-Haul/midi/haunt-and-haul-take1-bass.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Haunt-and-Haul/midi/haunt-and-haul-take1-drums.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Haunt-and-Haul/midi/haunt-and-haul-take1-woodwinds.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Haunt-and-Haul/midi/haunt-and-haul-take1-percussion.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Haunt-and-Haul/midi/haunt-and-haul-take1-brass.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Haunt-and-Haul/midi/haunt-and-haul-take1-strings.mid",
+            "kind": "midi"
+          }
+        ],
         "notes": "Generated 2 takes via Suno MCP (v6) & analyzed via 0-credit audio-analysis:\n- Take 1 (adbde960-c222-49da-bbf3-293c6288b7b4): https://suno.com/song/adbde960-c222-49da-bbf3-293c6288b7b4 — 133.6s, detected 79.7 BPM, C minor, 41 bars, 11 sections, loop bars 9..41 (21.224s–120.714s), score=20.035\n- Take 2 (24a6876d-bd4b-481f-8009-d16d149b01c4): https://suno.com/song/24a6876d-bd4b-481f-8009-d16d149b01c4 — 142.96s, detected 79.5 BPM, C minor, 47 bars, 9 sections, loop bars 10..42 (28.605s–124.613s), score=20.085\nSelected for stem split: Take 2 (24a6876d-bd4b-481f-8009-d16d149b01c4) | 12-stem Auto Split group: stemgrp_cf8a07dc-b9b2-435f-82f7-c8f95e116573 (complete)."
       },
       {
@@ -15711,7 +16175,7 @@
         "notes": ""
       }
     ],
-    "updated_at": "2026-11-18T14:03:41Z",
+    "updated_at": "2026-11-18T22:11:28Z",
     "scope": "catalog",
     "recommended_archetype": "horror",
     "recommended_setting": "creepy nocturnal museum heist",
@@ -18125,11 +18589,113 @@
               "recommended_loop_start_bar": 13,
               "recommended_loop_start_s": 25.25,
               "recommended_loop_end_s": 91.777,
-              "quality_score": 20.38
+              "quality_score": 20.38,
+              "midi_files": [
+                {
+                  "stem": "synth",
+                  "audio_id": "1f84382e-720d-4597-9d22-07d751e8d7b3",
+                  "path": "X:/Projects/GameMusic/Lumen-Weaver/midi/lumen-weaver-take1-synth.mid",
+                  "tracks": 3,
+                  "notes_count": 1915
+                },
+                {
+                  "stem": "brass",
+                  "audio_id": "2c24cd3f-923a-4366-85cd-cc649e7cdb75",
+                  "path": "X:/Projects/GameMusic/Lumen-Weaver/midi/lumen-weaver-take1-brass.mid",
+                  "tracks": 2,
+                  "notes_count": 2180
+                },
+                {
+                  "stem": "percussion",
+                  "audio_id": "576d231e-c61a-48b5-b1d9-42f871a729af",
+                  "path": "X:/Projects/GameMusic/Lumen-Weaver/midi/lumen-weaver-take1-percussion.mid",
+                  "tracks": 5,
+                  "notes_count": 283
+                },
+                {
+                  "stem": "drums",
+                  "audio_id": "57ab781a-9565-4e6a-a145-bb3de7fa30f1",
+                  "path": "X:/Projects/GameMusic/Lumen-Weaver/midi/lumen-weaver-take1-drums.mid",
+                  "tracks": 3,
+                  "notes_count": 201
+                },
+                {
+                  "stem": "woodwinds",
+                  "audio_id": "800c3940-b388-4cc4-8bfc-3c725d4cac10",
+                  "path": "X:/Projects/GameMusic/Lumen-Weaver/midi/lumen-weaver-take1-woodwinds.mid",
+                  "tracks": 9,
+                  "notes_count": 1670
+                },
+                {
+                  "stem": "bass",
+                  "audio_id": "93d41f02-a750-480d-9050-d397a322d03d",
+                  "path": "X:/Projects/GameMusic/Lumen-Weaver/midi/lumen-weaver-take1-bass.mid",
+                  "tracks": 6,
+                  "notes_count": 164
+                },
+                {
+                  "stem": "guitar",
+                  "audio_id": "ba843237-db81-48bf-94f2-c4a70f64e5d6",
+                  "path": "X:/Projects/GameMusic/Lumen-Weaver/midi/lumen-weaver-take1-guitar.mid",
+                  "tracks": 1,
+                  "notes_count": 346
+                },
+                {
+                  "stem": "strings",
+                  "audio_id": "c28bc17e-f54c-489f-aa77-7deaf2f51823",
+                  "path": "X:/Projects/GameMusic/Lumen-Weaver/midi/lumen-weaver-take1-strings.mid",
+                  "tracks": 1,
+                  "notes_count": 2448
+                },
+                {
+                  "stem": "keyboard",
+                  "audio_id": "c7fd5aba-be13-4ebe-bd0c-c795096d6d6f",
+                  "path": "X:/Projects/GameMusic/Lumen-Weaver/midi/lumen-weaver-take1-keyboard.mid",
+                  "tracks": 4,
+                  "notes_count": 303
+                }
+              ]
             }
           ]
         },
-        "files": [],
+        "files": [
+          {
+            "path": "X:/Projects/GameMusic/Lumen-Weaver/midi/lumen-weaver-take1-synth.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Lumen-Weaver/midi/lumen-weaver-take1-brass.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Lumen-Weaver/midi/lumen-weaver-take1-percussion.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Lumen-Weaver/midi/lumen-weaver-take1-drums.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Lumen-Weaver/midi/lumen-weaver-take1-woodwinds.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Lumen-Weaver/midi/lumen-weaver-take1-bass.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Lumen-Weaver/midi/lumen-weaver-take1-guitar.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Lumen-Weaver/midi/lumen-weaver-take1-strings.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Lumen-Weaver/midi/lumen-weaver-take1-keyboard.mid",
+            "kind": "midi"
+          }
+        ],
         "notes": "Generated 2 takes via Suno MCP (v6) & analyzed via 0-credit audio-analysis:\n- Take 1 (f3cf9939-9600-4d2c-9568-bf831e83fe88): https://suno.com/song/f3cf9939-9600-4d2c-9568-bf831e83fe88 — 134.92s, detected 116.7 BPM, E minor, 65 bars, 8 sections, loop bars 14..46 (27.16s–92.393s), score=19.655\n- Take 2 (d5a5952f-9456-44bf-80bc-c1cc7cef81a7): https://suno.com/song/d5a5952f-9456-44bf-80bc-c1cc7cef81a7 — 132.4s, detected 115.4 BPM, C minor, 63 bars, 10 sections, loop bars 13..45 (25.25s–91.777s), score=20.38\nSelected for stem split: Take 2 (d5a5952f-9456-44bf-80bc-c1cc7cef81a7) | 12-stem Auto Split group: stemgrp_b3d67717-ddd8-43a5-8467-7a353555b2fd (complete)."
       },
       {
@@ -18295,7 +18861,7 @@
         "notes": ""
       }
     ],
-    "updated_at": "2026-11-18T14:03:41Z",
+    "updated_at": "2026-11-18T22:11:28Z",
     "scope": "catalog",
     "recommended_archetype": "dark-fantasy",
     "recommended_setting": "amber cathedral mirror chamber",
@@ -21597,7 +22163,72 @@
               "recommended_loop_start_bar": 15,
               "recommended_loop_start_s": 29.524,
               "recommended_loop_end_s": 95.357,
-              "quality_score": 20.51
+              "quality_score": 20.51,
+              "midi_files": [
+                {
+                  "stem": "guitar",
+                  "audio_id": "14b43fae-d7db-4974-b392-4d754a839620",
+                  "path": "X:/Projects/GameMusic/Pebblekin-Command/midi/pebblekin-command-take1-guitar.mid",
+                  "tracks": 2,
+                  "notes_count": 133
+                },
+                {
+                  "stem": "keyboard",
+                  "audio_id": "275297a3-bc9e-4aff-afa5-9be6a0adc7fc",
+                  "path": "X:/Projects/GameMusic/Pebblekin-Command/midi/pebblekin-command-take1-keyboard.mid",
+                  "tracks": 4,
+                  "notes_count": 428
+                },
+                {
+                  "stem": "strings",
+                  "audio_id": "3de425f2-1497-42ca-b0bc-4e3f3448dc57",
+                  "path": "X:/Projects/GameMusic/Pebblekin-Command/midi/pebblekin-command-take1-strings.mid",
+                  "tracks": 1,
+                  "notes_count": 2829
+                },
+                {
+                  "stem": "woodwinds",
+                  "audio_id": "94dde17c-b65b-4504-8bc0-981cde10c24d",
+                  "path": "X:/Projects/GameMusic/Pebblekin-Command/midi/pebblekin-command-take1-woodwinds.mid",
+                  "tracks": 7,
+                  "notes_count": 365
+                },
+                {
+                  "stem": "drums",
+                  "audio_id": "98da525e-5648-408e-9490-ebc5143a3465",
+                  "path": "X:/Projects/GameMusic/Pebblekin-Command/midi/pebblekin-command-take1-drums.mid",
+                  "tracks": 4,
+                  "notes_count": 548
+                },
+                {
+                  "stem": "synth",
+                  "audio_id": "bbe39357-9bb4-4d0b-bdfc-15b2c8cfbedf",
+                  "path": "X:/Projects/GameMusic/Pebblekin-Command/midi/pebblekin-command-take1-synth.mid",
+                  "tracks": 2,
+                  "notes_count": 1907
+                },
+                {
+                  "stem": "percussion",
+                  "audio_id": "e7731f06-87ee-4797-81fa-3902f02ba104",
+                  "path": "X:/Projects/GameMusic/Pebblekin-Command/midi/pebblekin-command-take1-percussion.mid",
+                  "tracks": 6,
+                  "notes_count": 624
+                },
+                {
+                  "stem": "brass",
+                  "audio_id": "ebc39c1e-f520-44d2-88be-f3357e9dcaaf",
+                  "path": "X:/Projects/GameMusic/Pebblekin-Command/midi/pebblekin-command-take1-brass.mid",
+                  "tracks": 3,
+                  "notes_count": 2529
+                },
+                {
+                  "stem": "bass",
+                  "audio_id": "f891cc5f-3511-4813-add8-fa8c8bf82fc1",
+                  "path": "X:/Projects/GameMusic/Pebblekin-Command/midi/pebblekin-command-take1-bass.mid",
+                  "tracks": 2,
+                  "notes_count": 240
+                }
+              ]
             },
             {
               "take": 2,
@@ -21687,7 +22318,44 @@
             }
           ]
         },
-        "files": [],
+        "files": [
+          {
+            "path": "X:/Projects/GameMusic/Pebblekin-Command/midi/pebblekin-command-take1-guitar.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Pebblekin-Command/midi/pebblekin-command-take1-keyboard.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Pebblekin-Command/midi/pebblekin-command-take1-strings.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Pebblekin-Command/midi/pebblekin-command-take1-woodwinds.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Pebblekin-Command/midi/pebblekin-command-take1-drums.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Pebblekin-Command/midi/pebblekin-command-take1-synth.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Pebblekin-Command/midi/pebblekin-command-take1-percussion.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Pebblekin-Command/midi/pebblekin-command-take1-brass.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Pebblekin-Command/midi/pebblekin-command-take1-bass.mid",
+            "kind": "midi"
+          }
+        ],
         "notes": "Generated 2 takes via Suno MCP (v6) & analyzed via 0-credit audio-analysis:\n- Take 1 (3fab3bf4-33a8-457e-810b-59e0c3e766bd): https://suno.com/song/3fab3bf4-33a8-457e-810b-59e0c3e766bd — 148s, detected 116.6 BPM, G minor, 72 bars, 12 sections, loop bars 15..47 (29.524s–95.357s), score=20.51\n- Take 2 (18904881-030a-43a2-94b3-98e6766ebfbb): https://suno.com/song/18904881-030a-43a2-94b3-98e6766ebfbb — 142.76s, detected 117.1 BPM, C minor, 70 bars, 11 sections, loop bars 15..47 (29.566s–95.129s), score=20.295\nSelected for stem split: Take 1 (3fab3bf4-33a8-457e-810b-59e0c3e766bd) | 12-stem Auto Split group: stemgrp_ba2c7735-5938-4829-9aae-a8cdfb160cd3 (complete)."
       },
       {
@@ -21853,7 +22521,7 @@
         "notes": ""
       }
     ],
-    "updated_at": "2026-11-18T14:03:41Z",
+    "updated_at": "2026-11-18T22:11:28Z",
     "scope": "catalog",
     "recommended_archetype": "dark-fantasy",
     "recommended_setting": "miniature stone-knight valley",
@@ -22101,7 +22769,72 @@
               "recommended_loop_start_bar": 20,
               "recommended_loop_start_s": 24.84,
               "recommended_loop_end_s": 66.123,
-              "quality_score": 20.4
+              "quality_score": 20.4,
+              "midi_files": [
+                {
+                  "stem": "strings",
+                  "audio_id": "00441080-cbf4-4b49-9c47-b9a0615ab2d8",
+                  "path": "X:/Projects/GameMusic/Plumpy-Adventures/midi/plumpy-adventures-take1-strings.mid",
+                  "tracks": 3,
+                  "notes_count": 1340
+                },
+                {
+                  "stem": "bass",
+                  "audio_id": "00985047-0bd8-466b-8541-f7c780087011",
+                  "path": "X:/Projects/GameMusic/Plumpy-Adventures/midi/plumpy-adventures-take1-bass.mid",
+                  "tracks": 4,
+                  "notes_count": 522
+                },
+                {
+                  "stem": "drums",
+                  "audio_id": "0a0673c5-124e-4301-8c17-17b3ea08eea8",
+                  "path": "X:/Projects/GameMusic/Plumpy-Adventures/midi/plumpy-adventures-take1-drums.mid",
+                  "tracks": 4,
+                  "notes_count": 1144
+                },
+                {
+                  "stem": "percussion",
+                  "audio_id": "414038d8-b44e-48a2-a15b-fd438637e22a",
+                  "path": "X:/Projects/GameMusic/Plumpy-Adventures/midi/plumpy-adventures-take1-percussion.mid",
+                  "tracks": 12,
+                  "notes_count": 1691
+                },
+                {
+                  "stem": "guitar",
+                  "audio_id": "44684a3d-12d0-4357-b56d-e25e26c2d88e",
+                  "path": "X:/Projects/GameMusic/Plumpy-Adventures/midi/plumpy-adventures-take1-guitar.mid",
+                  "tracks": 5,
+                  "notes_count": 2602
+                },
+                {
+                  "stem": "keyboard",
+                  "audio_id": "52906fc8-f624-4d48-9db6-fa4653bbde9d",
+                  "path": "X:/Projects/GameMusic/Plumpy-Adventures/midi/plumpy-adventures-take1-keyboard.mid",
+                  "tracks": 2,
+                  "notes_count": 1271
+                },
+                {
+                  "stem": "woodwinds",
+                  "audio_id": "53782f3d-86f6-47de-aecd-ad26c766b37e",
+                  "path": "X:/Projects/GameMusic/Plumpy-Adventures/midi/plumpy-adventures-take1-woodwinds.mid",
+                  "tracks": 7,
+                  "notes_count": 606
+                },
+                {
+                  "stem": "synth",
+                  "audio_id": "844b5823-1ac9-477e-9bff-7702f7f55219",
+                  "path": "X:/Projects/GameMusic/Plumpy-Adventures/midi/plumpy-adventures-take1-synth.mid",
+                  "tracks": 12,
+                  "notes_count": 717
+                },
+                {
+                  "stem": "brass",
+                  "audio_id": "991d49f0-e018-4335-a586-3b244473bceb",
+                  "path": "X:/Projects/GameMusic/Plumpy-Adventures/midi/plumpy-adventures-take1-brass.mid",
+                  "tracks": 3,
+                  "notes_count": 18
+                }
+              ]
             },
             {
               "take": 2,
@@ -22180,7 +22913,44 @@
             }
           ]
         },
-        "files": [],
+        "files": [
+          {
+            "path": "X:/Projects/GameMusic/Plumpy-Adventures/midi/plumpy-adventures-take1-bass.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Plumpy-Adventures/midi/plumpy-adventures-take1-drums.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Plumpy-Adventures/midi/plumpy-adventures-take1-guitar.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Plumpy-Adventures/midi/plumpy-adventures-take1-keyboard.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Plumpy-Adventures/midi/plumpy-adventures-take1-strings.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Plumpy-Adventures/midi/plumpy-adventures-take1-percussion.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Plumpy-Adventures/midi/plumpy-adventures-take1-woodwinds.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Plumpy-Adventures/midi/plumpy-adventures-take1-synth.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Plumpy-Adventures/midi/plumpy-adventures-take1-brass.mid",
+            "kind": "midi"
+          }
+        ],
         "notes": "Generated 2 takes via Suno MCP (v6) & analyzed via 0-credit audio-analysis:\n- Take 1 (f20a0e9e-4b8e-4648-826d-309a1898f820): https://suno.com/song/f20a0e9e-4b8e-4648-826d-309a1898f820 — 122.4s, detected 186 BPM, G major, 95 bars, 10 sections, loop bars 20..52 (24.84s–66.123s), score=20.4\n- Take 2 (c19290c4-3ba2-4262-914a-d0c4c9581532): https://suno.com/song/c19290c4-3ba2-4262-914a-d0c4c9581532 — 134.92s, detected 188.7 BPM, G major, 105 bars, 9 sections, loop bars 22..54 (27.286s–67.994s), score=19.888\nSelected for stem split: Take 1 (f20a0e9e-4b8e-4648-826d-309a1898f820) | 12-stem Auto Split group: stemgrp_9e9cbd6a-f0f8-4aa8-bdb3-32f10b7c9171 (complete)."
       },
       {
@@ -22346,7 +23116,7 @@
         "notes": ""
       }
     ],
-    "updated_at": "2026-11-18T14:03:41Z",
+    "updated_at": "2026-11-18T22:11:28Z",
     "scope": "catalog",
     "recommended_archetype": "cozy",
     "recommended_setting": "sea-creature ocean platformer",
@@ -23063,7 +23833,51 @@
               "recommended_loop_start_bar": 4,
               "recommended_loop_start_s": 5.024,
               "recommended_loop_end_s": 58.692,
-              "quality_score": 8.335
+              "quality_score": 8.335,
+              "midi_files": [
+                {
+                  "stem": "keyboard",
+                  "audio_id": "0b94d446-356f-479c-b42a-aeb63ba17c98",
+                  "path": "X:/Projects/GameMusic/Pocket-Fort-Patrol/midi/pocket-fort-patrol-take1-keyboard.mid",
+                  "tracks": 1,
+                  "notes_count": 1474
+                },
+                {
+                  "stem": "bass",
+                  "audio_id": "1dd4b360-2290-45d3-920d-92acba652271",
+                  "path": "X:/Projects/GameMusic/Pocket-Fort-Patrol/midi/pocket-fort-patrol-take1-bass.mid",
+                  "tracks": 2,
+                  "notes_count": 1190
+                },
+                {
+                  "stem": "percussion",
+                  "audio_id": "23015dea-99f1-45e6-baff-43bcd5f95399",
+                  "path": "X:/Projects/GameMusic/Pocket-Fort-Patrol/midi/pocket-fort-patrol-take1-percussion.mid",
+                  "tracks": 5,
+                  "notes_count": 392
+                },
+                {
+                  "stem": "drums",
+                  "audio_id": "23dfb4f2-d044-4ae3-a640-9ed11df624c4",
+                  "path": "X:/Projects/GameMusic/Pocket-Fort-Patrol/midi/pocket-fort-patrol-take1-drums.mid",
+                  "tracks": 8,
+                  "notes_count": 1062
+                },
+                {
+                  "stem": "brass",
+                  "audio_id": "df8137c1-d650-455f-949b-4943123f7ba5",
+                  "path": "X:/Projects/GameMusic/Pocket-Fort-Patrol/midi/pocket-fort-patrol-take1-brass.mid",
+                  "tracks": 2,
+                  "notes_count": 71
+                },
+                {
+                  "stem": "synth",
+                  "audio_id": "fd4de3cd-240a-4c8a-811b-3cef9f5541fd",
+                  "path": "X:/Projects/GameMusic/Pocket-Fort-Patrol/midi/pocket-fort-patrol-take1-synth.mid",
+                  "tracks": 1,
+                  "notes_count": 1493
+                }
+              ]
             },
             {
               "take": 2,
@@ -23124,7 +23938,32 @@
             }
           ]
         },
-        "files": [],
+        "files": [
+          {
+            "path": "X:/Projects/GameMusic/Pocket-Fort-Patrol/midi/pocket-fort-patrol-take1-keyboard.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Pocket-Fort-Patrol/midi/pocket-fort-patrol-take1-bass.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Pocket-Fort-Patrol/midi/pocket-fort-patrol-take1-percussion.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Pocket-Fort-Patrol/midi/pocket-fort-patrol-take1-drums.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Pocket-Fort-Patrol/midi/pocket-fort-patrol-take1-brass.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Pocket-Fort-Patrol/midi/pocket-fort-patrol-take1-synth.mid",
+            "kind": "midi"
+          }
+        ],
         "notes": "Generated 2 takes via Suno MCP (v6) & analyzed via 0-credit audio-analysis:\n- Take 1 (38fd1b7b-eebe-4896-b8b8-e88f63083d6c): https://suno.com/song/38fd1b7b-eebe-4896-b8b8-e88f63083d6c — 60.12s, detected 143.1 BPM, E minor, 36 bars, 6 sections, loop bars 4..36 (5.024s–58.692s), score=8.335\n- Take 2 (9ec1a551-3a7c-4be9-8d13-fb9e0e8c9f91): https://suno.com/song/9ec1a551-3a7c-4be9-8d13-fb9e0e8c9f91 — 59.68s, detected 140 BPM, Db minor, 35 bars, 6 sections, loop bars 3..35 (3.427s–58.278s), score=4.7\nSelected for stem split: Take 1 (38fd1b7b-eebe-4896-b8b8-e88f63083d6c) | 12-stem Auto Split group: stemgrp_deee0c1d-3d78-46ce-bce9-12eeb87237ad (complete)."
       },
       {
@@ -23290,7 +24129,7 @@
         "notes": ""
       }
     ],
-    "updated_at": "2026-11-18T14:03:41Z",
+    "updated_at": "2026-11-18T22:11:28Z",
     "scope": "catalog",
     "recommended_archetype": "arcade",
     "recommended_setting": "living-room bottle-cap trap defense",
@@ -27640,11 +28479,102 @@
               "recommended_loop_start_bar": 21,
               "recommended_loop_start_s": 37.117,
               "recommended_loop_end_s": 95.988,
-              "quality_score": 15.765
+              "quality_score": 15.765,
+              "midi_files": [
+                {
+                  "stem": "synth",
+                  "audio_id": "4c610b0e-09ac-49d7-ab2f-5fb6ca815b96",
+                  "path": "X:/Projects/GameMusic/Salvage-Circuit/midi/salvage-circuit-take1-synth.mid",
+                  "tracks": 1,
+                  "notes_count": 1078
+                },
+                {
+                  "stem": "brass",
+                  "audio_id": "50c0180b-e7d1-4681-8024-c266885978f9",
+                  "path": "X:/Projects/GameMusic/Salvage-Circuit/midi/salvage-circuit-take1-brass.mid",
+                  "tracks": 2,
+                  "notes_count": 30
+                },
+                {
+                  "stem": "drums",
+                  "audio_id": "760d5f97-8542-4664-bbdf-63902fb95229",
+                  "path": "X:/Projects/GameMusic/Salvage-Circuit/midi/salvage-circuit-take1-drums.mid",
+                  "tracks": 5,
+                  "notes_count": 2145
+                },
+                {
+                  "stem": "strings",
+                  "audio_id": "a9f649c7-a35b-43cd-8fcd-a018b749f46d",
+                  "path": "X:/Projects/GameMusic/Salvage-Circuit/midi/salvage-circuit-take1-strings.mid",
+                  "tracks": 2,
+                  "notes_count": 39
+                },
+                {
+                  "stem": "percussion",
+                  "audio_id": "b7a387d0-e794-49cc-86f4-7a19cb9ba026",
+                  "path": "X:/Projects/GameMusic/Salvage-Circuit/midi/salvage-circuit-take1-percussion.mid",
+                  "tracks": 13,
+                  "notes_count": 1087
+                },
+                {
+                  "stem": "bass",
+                  "audio_id": "b805732e-4c29-4172-a882-d79fefbcb077",
+                  "path": "X:/Projects/GameMusic/Salvage-Circuit/midi/salvage-circuit-take1-bass.mid",
+                  "tracks": 1,
+                  "notes_count": 602
+                },
+                {
+                  "stem": "guitar",
+                  "audio_id": "cdffdb7b-3a2b-41ad-b8b9-9df801d5d8ca",
+                  "path": "X:/Projects/GameMusic/Salvage-Circuit/midi/salvage-circuit-take1-guitar.mid",
+                  "tracks": 1,
+                  "notes_count": 87
+                },
+                {
+                  "stem": "keyboard",
+                  "audio_id": "d9607522-2624-4032-8240-ebbb8a0c9dab",
+                  "path": "X:/Projects/GameMusic/Salvage-Circuit/midi/salvage-circuit-take1-keyboard.mid",
+                  "tracks": 1,
+                  "notes_count": 1577
+                }
+              ]
             }
           ]
         },
-        "files": [],
+        "files": [
+          {
+            "path": "X:/Projects/GameMusic/Salvage-Circuit/midi/salvage-circuit-take1-synth.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Salvage-Circuit/midi/salvage-circuit-take1-brass.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Salvage-Circuit/midi/salvage-circuit-take1-drums.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Salvage-Circuit/midi/salvage-circuit-take1-strings.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Salvage-Circuit/midi/salvage-circuit-take1-percussion.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Salvage-Circuit/midi/salvage-circuit-take1-bass.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Salvage-Circuit/midi/salvage-circuit-take1-guitar.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Salvage-Circuit/midi/salvage-circuit-take1-keyboard.mid",
+            "kind": "midi"
+          }
+        ],
         "notes": "Generated 2 takes via Suno MCP (v6) & analyzed via 0-credit audio-analysis:\n- Take 1 (26675f46-76d2-411b-9edc-9e0d4a94b778): https://suno.com/song/26675f46-76d2-411b-9edc-9e0d4a94b778 — 193.56s, detected 132.2 BPM, D minor, 107 bars, 11 sections, loop bars 22..54 (39.129s–97.508s), score=15.37\n- Take 2 (f8e12428-d050-438d-bf32-7e56df390496): https://suno.com/song/f8e12428-d050-438d-bf32-7e56df390496 — 188.4s, detected 130.9 BPM, D minor, 103 bars, 12 sections, loop bars 21..53 (37.117s–95.988s), score=15.765\nSelected for stem split: Take 2 (f8e12428-d050-438d-bf32-7e56df390496) | 12-stem Auto Split group: stemgrp_f60973fd-4804-4158-aa2e-113b8f82e9df (complete)."
       },
       {
@@ -27810,7 +28740,7 @@
         "notes": ""
       }
     ],
-    "updated_at": "2026-11-18T14:03:41Z",
+    "updated_at": "2026-11-18T22:11:28Z",
     "scope": "catalog",
     "recommended_archetype": "cyberpunk",
     "recommended_setting": "industrial swarm-net storm wasteland",
@@ -29138,11 +30068,91 @@
               "recommended_loop_start_bar": 17,
               "recommended_loop_start_s": 29.918,
               "recommended_loop_end_s": 88.746,
-              "quality_score": 17.825
+              "quality_score": 17.825,
+              "midi_files": [
+                {
+                  "stem": "keyboard",
+                  "audio_id": "58b12584-71ca-4852-ba97-f5213e87ed90",
+                  "path": "X:/Projects/GameMusic/Scrapshift-Arena/midi/scrapshift-arena-take1-keyboard.mid",
+                  "tracks": 1,
+                  "notes_count": 927
+                },
+                {
+                  "stem": "brass",
+                  "audio_id": "590aee9b-182b-4b36-92f1-0f47ac70021e",
+                  "path": "X:/Projects/GameMusic/Scrapshift-Arena/midi/scrapshift-arena-take1-brass.mid",
+                  "tracks": 3,
+                  "notes_count": 44
+                },
+                {
+                  "stem": "synth",
+                  "audio_id": "5c232256-7937-44cb-a15c-f7833c38f893",
+                  "path": "X:/Projects/GameMusic/Scrapshift-Arena/midi/scrapshift-arena-take1-synth.mid",
+                  "tracks": 2,
+                  "notes_count": 1236
+                },
+                {
+                  "stem": "percussion",
+                  "audio_id": "76306192-a7d0-412b-b58f-e7d143076e2a",
+                  "path": "X:/Projects/GameMusic/Scrapshift-Arena/midi/scrapshift-arena-take1-percussion.mid",
+                  "tracks": 8,
+                  "notes_count": 683
+                },
+                {
+                  "stem": "drums",
+                  "audio_id": "ceea4d6d-c7ca-4770-bc14-53564002f01c",
+                  "path": "X:/Projects/GameMusic/Scrapshift-Arena/midi/scrapshift-arena-take1-drums.mid",
+                  "tracks": 6,
+                  "notes_count": 769
+                },
+                {
+                  "stem": "strings",
+                  "audio_id": "e1f55f19-4c82-4531-b2da-bd1936c5b9f5",
+                  "path": "X:/Projects/GameMusic/Scrapshift-Arena/midi/scrapshift-arena-take1-strings.mid",
+                  "tracks": 2,
+                  "notes_count": 44
+                },
+                {
+                  "stem": "bass",
+                  "audio_id": "e29359a4-5cbb-483f-ad3c-47932fce5c20",
+                  "path": "X:/Projects/GameMusic/Scrapshift-Arena/midi/scrapshift-arena-take1-bass.mid",
+                  "tracks": 2,
+                  "notes_count": 1253
+                }
+              ]
             }
           ]
         },
-        "files": [],
+        "files": [
+          {
+            "path": "X:/Projects/GameMusic/Scrapshift-Arena/midi/scrapshift-arena-take1-keyboard.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Scrapshift-Arena/midi/scrapshift-arena-take1-brass.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Scrapshift-Arena/midi/scrapshift-arena-take1-synth.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Scrapshift-Arena/midi/scrapshift-arena-take1-percussion.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Scrapshift-Arena/midi/scrapshift-arena-take1-drums.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Scrapshift-Arena/midi/scrapshift-arena-take1-strings.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Scrapshift-Arena/midi/scrapshift-arena-take1-bass.mid",
+            "kind": "midi"
+          }
+        ],
         "notes": "Generated 2 takes via Suno MCP (v6) & analyzed via 0-credit audio-analysis:\n- Take 1 (c02c0f12-28fd-4c3e-9e07-e9f8bd5e7edf): https://suno.com/song/c02c0f12-28fd-4c3e-9e07-e9f8bd5e7edf — 149.32s, detected 130.8 BPM, F minor, 82 bars, 10 sections, loop bars 17..49 (29.765s–88.586s), score=15.38\n- Take 2 (1dfcc5ce-8271-4be0-9635-99ab33a5b7f8): https://suno.com/song/1dfcc5ce-8271-4be0-9635-99ab33a5b7f8 — 149.52s, detected 130.7 BPM, D minor, 82 bars, 14 sections, loop bars 17..49 (29.918s–88.746s), score=17.825\nSelected for stem split: Take 2 (1dfcc5ce-8271-4be0-9635-99ab33a5b7f8) | 12-stem Auto Split group: stemgrp_bd63af10-4557-43e1-9f4e-87df79727838 (complete)."
       },
       {
@@ -29308,7 +30318,7 @@
         "notes": ""
       }
     ],
-    "updated_at": "2026-11-18T14:03:41Z",
+    "updated_at": "2026-11-18T22:11:28Z",
     "scope": "catalog",
     "recommended_archetype": "cyberpunk",
     "recommended_setting": "industrial robot salvage arena",
@@ -31076,7 +32086,65 @@
               "recommended_loop_start_bar": 17,
               "recommended_loop_start_s": 27.215,
               "recommended_loop_end_s": 81.501,
-              "quality_score": 16.085
+              "quality_score": 16.085,
+              "midi_files": [
+                {
+                  "stem": "drums",
+                  "audio_id": "007d670b-292e-425e-85a8-17615396553c",
+                  "path": "X:/Projects/GameMusic/Skybound-Sabotage/midi/skybound-sabotage-take1-drums.mid",
+                  "tracks": 2,
+                  "notes_count": 2032
+                },
+                {
+                  "stem": "keyboard",
+                  "audio_id": "25facec4-3f11-41c6-beb8-15bf5c1c57d8",
+                  "path": "X:/Projects/GameMusic/Skybound-Sabotage/midi/skybound-sabotage-take1-keyboard.mid",
+                  "tracks": 1,
+                  "notes_count": 3938
+                },
+                {
+                  "stem": "brass",
+                  "audio_id": "6401fad1-0689-4606-8419-2830c82d4ddc",
+                  "path": "X:/Projects/GameMusic/Skybound-Sabotage/midi/skybound-sabotage-take1-brass.mid",
+                  "tracks": 1,
+                  "notes_count": 38
+                },
+                {
+                  "stem": "synth",
+                  "audio_id": "65071270-0aad-4497-b5cd-d44894e0de85",
+                  "path": "X:/Projects/GameMusic/Skybound-Sabotage/midi/skybound-sabotage-take1-synth.mid",
+                  "tracks": 2,
+                  "notes_count": 3635
+                },
+                {
+                  "stem": "strings",
+                  "audio_id": "7dcb0a1d-d385-4b53-aa85-c104b2d0e188",
+                  "path": "X:/Projects/GameMusic/Skybound-Sabotage/midi/skybound-sabotage-take1-strings.mid",
+                  "tracks": 2,
+                  "notes_count": 63
+                },
+                {
+                  "stem": "percussion",
+                  "audio_id": "962bb44c-d407-4c20-86da-2b5c738cf534",
+                  "path": "X:/Projects/GameMusic/Skybound-Sabotage/midi/skybound-sabotage-take1-percussion.mid",
+                  "tracks": 7,
+                  "notes_count": 86
+                },
+                {
+                  "stem": "woodwinds",
+                  "audio_id": "ad708165-d8e1-4759-a26e-16f92d26de75",
+                  "path": "X:/Projects/GameMusic/Skybound-Sabotage/midi/skybound-sabotage-take1-woodwinds.mid",
+                  "tracks": 9,
+                  "notes_count": 293
+                },
+                {
+                  "stem": "bass",
+                  "audio_id": "df9e05f3-a722-4ec4-9d28-6be78e115990",
+                  "path": "X:/Projects/GameMusic/Skybound-Sabotage/midi/skybound-sabotage-take1-bass.mid",
+                  "tracks": 3,
+                  "notes_count": 2616
+                }
+              ]
             },
             {
               "take": 2,
@@ -31149,7 +32217,40 @@
             }
           ]
         },
-        "files": [],
+        "files": [
+          {
+            "path": "X:/Projects/GameMusic/Skybound-Sabotage/midi/skybound-sabotage-take1-drums.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Skybound-Sabotage/midi/skybound-sabotage-take1-keyboard.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Skybound-Sabotage/midi/skybound-sabotage-take1-brass.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Skybound-Sabotage/midi/skybound-sabotage-take1-synth.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Skybound-Sabotage/midi/skybound-sabotage-take1-strings.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Skybound-Sabotage/midi/skybound-sabotage-take1-percussion.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Skybound-Sabotage/midi/skybound-sabotage-take1-woodwinds.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Skybound-Sabotage/midi/skybound-sabotage-take1-bass.mid",
+            "kind": "midi"
+          }
+        ],
         "notes": "Generated 2 takes via Suno MCP (v6) & analyzed via 0-credit audio-analysis:\n- Take 1 (f65d4a19-a1f8-4a4e-90e6-e6f3a0d2fbbd): https://suno.com/song/f65d4a19-a1f8-4a4e-90e6-e6f3a0d2fbbd — 140s, detected 142.1 BPM, E minor, 83 bars, 13 sections, loop bars 17..49 (27.215s–81.501s), score=16.085\n- Take 2 (91327524-61c3-464c-8168-5d7a78a2400f): https://suno.com/song/91327524-61c3-464c-8168-5d7a78a2400f — 78.32s, detected 140.5 BPM, E minor, 46 bars, 7 sections, loop bars 10..42 (16.044s–70.688s), score=11.475\nSelected for stem split: Take 1 (f65d4a19-a1f8-4a4e-90e6-e6f3a0d2fbbd) | 12-stem Auto Split group: stemgrp_f0b40912-ba99-4498-805d-779349884d09 (complete)."
       },
       {
@@ -31315,7 +32416,7 @@
         "notes": ""
       }
     ],
-    "updated_at": "2026-11-18T14:03:41Z",
+    "updated_at": "2026-11-18T22:11:28Z",
     "scope": "catalog",
     "recommended_archetype": "arcade",
     "recommended_setting": "skyline obstacle race course",
@@ -33461,11 +34562,102 @@
               "recommended_loop_start_bar": 17,
               "recommended_loop_start_s": 27.455,
               "recommended_loop_end_s": 81.88,
-              "quality_score": 16.345
+              "quality_score": 16.345,
+              "midi_files": [
+                {
+                  "stem": "woodwinds",
+                  "audio_id": "117b23f9-9697-4f3a-a5f8-87e88d41ff87",
+                  "path": "X:/Projects/GameMusic/Tower-Assault-Web/midi/tower-assault-web-take1-woodwinds.mid",
+                  "tracks": 13,
+                  "notes_count": 179
+                },
+                {
+                  "stem": "bass",
+                  "audio_id": "4120c238-7bd2-4d48-9300-fcff6b82e565",
+                  "path": "X:/Projects/GameMusic/Tower-Assault-Web/midi/tower-assault-web-take1-bass.mid",
+                  "tracks": 6,
+                  "notes_count": 2918
+                },
+                {
+                  "stem": "synth",
+                  "audio_id": "6d39888d-5def-4ac7-9377-8e8802807b6f",
+                  "path": "X:/Projects/GameMusic/Tower-Assault-Web/midi/tower-assault-web-take1-synth.mid",
+                  "tracks": 1,
+                  "notes_count": 3215
+                },
+                {
+                  "stem": "brass",
+                  "audio_id": "81a45ea9-8e9e-4805-b0c2-8fdb2f953e56",
+                  "path": "X:/Projects/GameMusic/Tower-Assault-Web/midi/tower-assault-web-take1-brass.mid",
+                  "tracks": 3,
+                  "notes_count": 63
+                },
+                {
+                  "stem": "keyboard",
+                  "audio_id": "82e31a72-0555-4fbf-bd01-d1efea141c89",
+                  "path": "X:/Projects/GameMusic/Tower-Assault-Web/midi/tower-assault-web-take1-keyboard.mid",
+                  "tracks": 1,
+                  "notes_count": 3567
+                },
+                {
+                  "stem": "strings",
+                  "audio_id": "8d50b91e-6a94-4fb6-9ad3-33f3c3803787",
+                  "path": "X:/Projects/GameMusic/Tower-Assault-Web/midi/tower-assault-web-take1-strings.mid",
+                  "tracks": 1,
+                  "notes_count": 65
+                },
+                {
+                  "stem": "drums",
+                  "audio_id": "9e0444fe-d7e8-4627-b1d0-40c212d74385",
+                  "path": "X:/Projects/GameMusic/Tower-Assault-Web/midi/tower-assault-web-take1-drums.mid",
+                  "tracks": 3,
+                  "notes_count": 1592
+                },
+                {
+                  "stem": "percussion",
+                  "audio_id": "e7c390fc-cbe9-4384-b40c-dba9575dee96",
+                  "path": "X:/Projects/GameMusic/Tower-Assault-Web/midi/tower-assault-web-take1-percussion.mid",
+                  "tracks": 5,
+                  "notes_count": 80
+                }
+              ]
             }
           ]
         },
-        "files": [],
+        "files": [
+          {
+            "path": "X:/Projects/GameMusic/Tower-Assault-Web/midi/tower-assault-web-take1-bass.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Tower-Assault-Web/midi/tower-assault-web-take1-keyboard.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Tower-Assault-Web/midi/tower-assault-web-take1-strings.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Tower-Assault-Web/midi/tower-assault-web-take1-drums.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Tower-Assault-Web/midi/tower-assault-web-take1-percussion.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Tower-Assault-Web/midi/tower-assault-web-take1-woodwinds.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Tower-Assault-Web/midi/tower-assault-web-take1-synth.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Tower-Assault-Web/midi/tower-assault-web-take1-brass.mid",
+            "kind": "midi"
+          }
+        ],
         "notes": "Generated 2 takes via Suno MCP (v6) & analyzed via 0-credit audio-analysis:\n- Take 1 (9b4f754c-c4a9-4561-a671-cb27c7819dd4): https://suno.com/song/9b4f754c-c4a9-4561-a671-cb27c7819dd4 — 117.52s, detected 141.4 BPM, E minor, 70 bars, 8 sections, loop bars 15..47 (24.049s–78.431s), score=13.69\n- Take 2 (c20f055b-ce86-418b-804a-ee71e09dc11c): https://suno.com/song/c20f055b-ce86-418b-804a-ee71e09dc11c — 138.24s, detected 141.7 BPM, E minor, 83 bars, 14 sections, loop bars 17..49 (27.455s–81.88s), score=16.345\nSelected for stem split: Take 2 (c20f055b-ce86-418b-804a-ee71e09dc11c) | 12-stem Auto Split group: stemgrp_5912ad65-f490-4f4e-aab5-a5c7f28819f3 (complete)."
       },
       {
@@ -33631,7 +34823,7 @@
         "notes": ""
       }
     ],
-    "updated_at": "2026-11-18T14:03:41Z",
+    "updated_at": "2026-11-18T22:11:28Z",
     "scope": "catalog",
     "recommended_archetype": "arcade",
     "recommended_setting": "2D artillery duel",
@@ -34501,11 +35693,47 @@
               "recommended_loop_start_bar": 21,
               "recommended_loop_start_s": 26.076,
               "recommended_loop_end_s": 67.036,
-              "quality_score": 20.328
+              "quality_score": 20.328,
+              "midi_files": [
+                {
+                  "stem": "guitar",
+                  "audio_id": "05d59a81-a737-486c-8eb5-6a3ca5423902",
+                  "path": "X:/Projects/GameMusic/Tugboat-Tumble/midi/tugboat-tumble-take1-guitar.mid",
+                  "tracks": 3,
+                  "notes_count": 2351
+                },
+                {
+                  "stem": "drums",
+                  "audio_id": "8c3995ca-0d49-4ff1-aa0e-5694e15ab671",
+                  "path": "X:/Projects/GameMusic/Tugboat-Tumble/midi/tugboat-tumble-take1-drums.mid",
+                  "tracks": 5,
+                  "notes_count": 963
+                },
+                {
+                  "stem": "bass",
+                  "audio_id": "a22a1c48-f2a9-45da-bbb7-2b12006d7e98",
+                  "path": "X:/Projects/GameMusic/Tugboat-Tumble/midi/tugboat-tumble-take1-bass.mid",
+                  "tracks": 3,
+                  "notes_count": 433
+                }
+              ]
             }
           ]
         },
-        "files": [],
+        "files": [
+          {
+            "path": "X:/Projects/GameMusic/Tugboat-Tumble/midi/tugboat-tumble-take1-guitar.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Tugboat-Tumble/midi/tugboat-tumble-take1-drums.mid",
+            "kind": "midi"
+          },
+          {
+            "path": "X:/Projects/GameMusic/Tugboat-Tumble/midi/tugboat-tumble-take1-bass.mid",
+            "kind": "midi"
+          }
+        ],
         "notes": "Generated 2 takes via Suno MCP (v6) & analyzed via 0-credit audio-analysis:\n- Take 1 (8d834c46-1de2-4a7f-a01c-631c799d9e24): https://suno.com/song/8d834c46-1de2-4a7f-a01c-631c799d9e24 — 136.68s, detected 186.9 BPM, G major, 107 bars, 9 sections, loop bars 22..54 (27.389s–68.527s), score=19.962\n- Take 2 (561e2784-c1c1-4bd4-a929-cf23cfa761e2): https://suno.com/song/561e2784-c1c1-4bd4-a929-cf23cfa761e2 — 132s, detected 187.5 BPM, G major, 104 bars, 10 sections, loop bars 21..53 (26.076s–67.036s), score=20.328\nSelected for stem split: Take 2 (561e2784-c1c1-4bd4-a929-cf23cfa761e2) | 12-stem Auto Split group: stemgrp_5ea1475c-40c6-4ff3-a5aa-226ffea297cc (complete)."
       },
       {
@@ -34671,7 +35899,7 @@
         "notes": ""
       }
     ],
-    "updated_at": "2026-11-18T14:03:41Z",
+    "updated_at": "2026-11-18T22:11:28Z",
     "scope": "catalog",
     "recommended_archetype": "cozy",
     "recommended_setting": "breezy harbor & salvage bay",

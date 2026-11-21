@@ -64,7 +64,7 @@ Status: prompt_ready | Vocals: none | BPM: 118
 **Style prompt**
 
 ```
-Medieval castle siege orchestral and folk-warfare score, clean mix, dry studio recording, minimalist frequency separation, martial, ancient and thunderous, stone castle battlements & siege engines atmosphere, Strings, Brass, Snare, Timpani, Harpsichord, Bagpipes, 118 BPM, strict quantize, steady 4/4 rhythm, memorable repeating melodic motif, instrumental
+Medieval castle siege orchestral and folk-warfare score, clean mix, dry studio recording, minimalist frequency separation, martial, ancient and thunderous, Strings, Brass, Snare, Timpani, Harpsichord, Bagpipes, 118 BPM, strict quantize, steady 4/4 rhythm, different key, castle siege motif, instrumental
 ```
 
 **Instruments and Advanced Split stems**
@@ -86,18 +86,20 @@ Stems requested: Brass, Snare, Strings, Timpani
 [Instrumental]
 [Tempo: 118 BPM, strict quantize, steady rhythm]
 
-[Intro]
-[Bass stem only: clean pulsing Strings, dry low-end, minimal]
-[Verse 1 - Exploration Layer]
-[Add percussion stem: low Strings ostinato, Harpsichord motif, distant Snare march]
-[Pre-Chorus - Tension Build]
-[Add melody stem: rising Brass horn calls, tightening Snare cadence]
-[Chorus - Combat Layer]
-[Add combat layer: full Brass fanfare, pounding Timpani, driving Strings]
-[Bridge - Danger / Boss State]
-[Maximum intensity: fierce Bagpipes lead, relentless Timpani and Snare volley]
-[Outro]
-[Strip back: bass pulse and distant drum fade out]
+[Intro - Bass Stem Only]
+[Deep pulsing Strings, clean low-end drone, minimal]
+
+[Part 1 - Add Percussion Stem]
+[low Strings ostinato, Harpsichord motif, distant Snare march, steady 4/4 rhythm]
+
+[Part 2 - Add Melody Stem]
+[rising Brass horn calls, tightening Snare cadence, high frequency separation, dry studio]
+
+[Part 3 - Add Combat & Climax Layer]
+[full Brass fanfare, pounding Timpani, driving Strings; fierce Bagpipes lead, relentless Timpani and Snare volley]
+
+[Outro - Strip Back]
+[Sub-bass pulse and distant percussion fade out]
 ```
 
 Notes: Clean Stem-Builder variation (medieval-siege, parent: dark-fantasy).
@@ -109,7 +111,7 @@ Status: prompt_ready | Vocals: none | BPM: 132
 **Style prompt**
 
 ```
-Modern military tactical hybrid electronic-orchestral score, clean mix, dry studio recording, minimalist frequency separation, precise, urgent and high-stakes, modern tactical artillery & air support strike atmosphere, Electric Guitar, Synth Bass, Drums, Brass, Synth Pad, Percussion, 132 BPM, strict quantize, steady 4/4 rhythm, memorable repeating melodic motif, instrumental
+Modern military tactical hybrid electronic-orchestral score, clean mix, dry studio recording, minimalist frequency separation, precise, urgent and high-stakes, Electric Guitar, Synth Bass, Drums, Brass, Synth Pad, Percussion, 132 BPM, strict quantize, steady 4/4 rhythm, artillery & air support escalation motif, instrumental
 ```
 
 **Instruments and Advanced Split stems**
@@ -131,18 +133,20 @@ Stems requested: Brass, Drums, Electric Guitar, Synth Bass
 [Instrumental]
 [Tempo: 132 BPM, strict quantize, steady rhythm]
 
-[Intro]
-[Bass stem only: clean pulsing Synth Bass, dry low-end, minimal]
-[Verse 1 - Exploration Layer]
-[Add percussion stem: pulsing Synth Bass, muted Synth Pad, crisp tactical Percussion]
-[Pre-Chorus - Tension Build]
-[Add melody stem: palm-muted Electric Guitar chugs, building Brass swells]
-[Chorus - Combat Layer]
-[Add combat layer: heavy Drums, driving Synth Bass, soaring Brass and Electric Guitar]
-[Bridge - Danger / Boss State]
-[Maximum intensity: staccato artillery Percussion hits, aggressive Brass and Guitar stabs]
-[Outro]
-[Strip back: bass pulse and distant drum fade out]
+[Intro - Bass Stem Only]
+[Deep pulsing Synth Bass, clean low-end drone, minimal]
+
+[Part 1 - Add Percussion Stem]
+[pulsing Synth Bass, muted Synth Pad, crisp tactical Percussion, steady 4/4 rhythm]
+
+[Part 2 - Add Melody Stem]
+[palm-muted Electric Guitar chugs, building Brass swells, high frequency separation, dry studio]
+
+[Part 3 - Add Combat & Climax Layer]
+[heavy Drums, driving Synth Bass, soaring Brass and Electric Guitar; staccato artillery Percussion hits, aggressive Brass and Guitar stabs]
+
+[Outro - Strip Back]
+[Sub-bass pulse and distant percussion fade out]
 ```
 
 Notes: Clean Stem-Builder variation (modern-tactics, parent: action-rock).

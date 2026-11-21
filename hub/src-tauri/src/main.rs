@@ -5,6 +5,7 @@ mod store;
 mod iteration;
 mod mcp;
 mod music;
+mod pipelines;
 use serde_json::{json, Value};
 use std::sync::Mutex;
 use store::{Media, Store};
@@ -73,6 +74,34 @@ fn save_music_design(record: Value, state: State<AppState>) -> Result<Value> {
 #[tauri::command]
 fn provider_catalogs() -> Result<Value> {
     Ok(music::discover_provider_catalogs())
+}
+#[tauri::command]
+fn pipeline_proposals(state: State<AppState>) -> Result<Vec<Value>> {
+    state.lock().map_err(|e| e.to_string())?.pipeline_proposals()
+}
+#[tauri::command]
+fn save_pipeline_proposal(proposal: Value, state: State<AppState>) -> Result<Value> {
+    state
+        .lock()
+        .map_err(|e| e.to_string())?
+        .save_pipeline_proposal(proposal)
+}
+#[tauri::command]
+fn export_pipeline_proposal(directory: String, proposal: Value, markdown: String) -> Result<String> {
+    let id = proposal["id"].as_str().ok_or("Missing proposal id")?.trim();
+    if !pipelines::valid_id(id) {
+        return Err("Invalid proposal id".into());
+    }
+    let folder = std::path::Path::new(&directory).canonicalize().map_err(|e| e.to_string())?;
+    if !folder.is_dir() {
+        return Err("Choose an export folder".into());
+    }
+    let json_path = folder.join(format!("{id}.json"));
+    let md_path = folder.join(format!("{id}.md"));
+    std::fs::write(&json_path, serde_json::to_string_pretty(&proposal).map_err(|e| e.to_string())? + "\n")
+        .map_err(|e| e.to_string())?;
+    std::fs::write(&md_path, markdown).map_err(|e| e.to_string())?;
+    Ok(format!("{} (+ .md)", json_path.display()))
 }
 #[tauri::command]
 fn open_folder_for_path(path: String) -> Result<()> {
@@ -275,6 +304,9 @@ fn main() {
             approval_history,
             record_approval,
             provider_catalogs,
+            pipeline_proposals,
+            save_pipeline_proposal,
+            export_pipeline_proposal,
             export_roadmap_json,
             open_folder_for_path,
             reveal_indexed_file,

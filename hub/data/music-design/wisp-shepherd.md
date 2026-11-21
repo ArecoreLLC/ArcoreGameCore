@@ -1,7 +1,7 @@
 # Music design: Wisp Shepherd
 
 Game: `wisp-shepherd` (roadmap)  
-Status: **recommended**  
+Status: **in_progress**  
 Archetype: cosmic-ambient  
 Setting: glowing wisp twilight habitat
 
@@ -9,7 +9,22 @@ Recommendation: Guiding twelve wisps to a sheltered nest fits delicate glockensp
 
 ## Wisp Shepherd - main theme (`wisp-shepherd-A`)
 
-Status: prompt_ready | Vocals: none | BPM: 104
+Status: generated | Vocals: none | BPM: 104
+
+Suno: https://suno.com/song/9128389f-731c-4135-8f19-4efe53bfcd9d (clip `9128389f-731c-4135-8f19-4efe53bfcd9d`, model v6 (MCP audio-create + audio-analysis), 2026-11-18T18:58:33Z)
+
+**Suno MCP Audio Analysis (0-credit beat/key/section map)**
+
+- Detected BPM: `104.0` | Key: `Unknown` | Meter: `4/4` | Bars: `0` | Sections: `0`
+- Recommended 32-bar loop window: Bar `3` (`4.615s`–`78.461s`)
+- Tags / terms: ``
+
+**Generated Takes Comparison**
+
+| Take | Clip ID | Duration | Detected BPM | Key | Bars | Sections | Instrumental Prob | Score | URL |
+|---|---|---|---|---|---|---|---|---|---|
+| Take 1 **(Recommended)** | `9128389f-731c-4135-8f19-4efe53bfcd9d` | 139.76s | 104.0 | Unknown | 0 | 0 | 0.000 | 5.00 | https://suno.com/song/9128389f-731c-4135-8f19-4efe53bfcd9d |
+| Take 2 | `5e5c7f1e-a595-4e33-b9da-1dc25498f93e` | 139.6s | 104.0 | Unknown | 0 | 0 | 0.000 | 5.00 | https://suno.com/song/5e5c7f1e-a595-4e33-b9da-1dc25498f93e |
 
 **Style prompt**
 
@@ -50,94 +65,101 @@ Stems requested: Arpeggiator, Piano, Strings, Synth Pad
 [Strip back: bass pulse and distant drum fade out]
 ```
 
-Notes: Clean Stem-Builder variation (cosmic-ambient, parent: dark-fantasy).
+Notes: Generated 2 takes via Suno MCP (v6) & analyzed via 0-credit audio-analysis:
+- Take 1 (9128389f-731c-4135-8f19-4efe53bfcd9d): https://suno.com/song/9128389f-731c-4135-8f19-4efe53bfcd9d — 139.76s, detected 104.0 BPM, Unknown, 0 bars, 0 sections, loop bars 3..35 (4.615s–78.461s), score=5.0
+- Take 2 (5e5c7f1e-a595-4e33-b9da-1dc25498f93e): https://suno.com/song/5e5c7f1e-a595-4e33-b9da-1dc25498f93e — 139.6s, detected 104.0 BPM, Unknown, 0 bars, 0 sections, loop bars 3..35 (4.615s–78.461s), score=5.0
+Selected for stem split: Take 1 (9128389f-731c-4135-8f19-4efe53bfcd9d).
 
-## Wisp Shepherd - alternate region (`wisp-shepherd-B`)
+## Wisp Shepherd - alternate region (noir-mystery) (`wisp-shepherd-B`)
 
-Status: prompt_ready | Vocals: none | BPM: 96
+Status: prompt_ready | Vocals: none | BPM: 88
 
 **Style prompt**
 
 ```
-Ethereal sci-fi orbital ambient and crystalline synth score, clean mix, dry studio recording, minimalist frequency separation, vast, wondrous and weightless, glowing wisp twilight habitat atmosphere, Synth Pad, Arpeggiator, Piano, Strings, Synth Bass, Bells, 96 BPM, strict quantize, steady 4/4 rhythm, different key, same instrumentation, new motif, instrumental
+Moody nocturnal jazz-noir and suspense heist score, clean mix, dry studio recording, minimalist frequency separation, sleek, shadowy and intriguing, glowing wisp twilight habitat atmosphere, Upright Bass, Piano, Tenor Saxophone, Drums, Strings, Vibraphone, 88 BPM, strict quantize, steady 4/4 rhythm, different key, blended sub-archetype palette, new motif, instrumental
 ```
 
 **Instruments and Advanced Split stems**
 
 | Instrument | Stem category | Keep |
 |---|---|---|
-| Synth Pad | Synth Pad | yes |
-| Arpeggiator | Arpeggiator | yes |
+| Upright Bass | Upright Bass | yes |
 | Piano | Piano | yes |
-| Strings | Strings | yes |
-| Synth Bass | Synth Bass | no |
-| Bells | Bells | no |
+| Tenor Saxophone | Tenor Saxophone | yes |
+| Drums | Drums | yes |
+| Strings | Strings | no |
+| Vibraphone | Vibraphone | no |
 
-Stems requested: Arpeggiator, Piano, Strings, Synth Pad
+Stems requested: Drums, Piano, Tenor Saxophone, Upright Bass
 
 **Lyrics / section structure**
 
 ```
 [Instrumental]
-[Tempo: 96 BPM, strict quantize, steady rhythm]
+[Tempo: 88 BPM, strict quantize, steady rhythm]
 
-[Intro]
-[Bass stem only: clean pulsing Synth Bass, dry low-end, minimal]
-[Verse 1 - Exploration Layer]
-[Add percussion stem: evolving Synth Pad, resonant Piano notes, soft Bells]
-[Pre-Chorus - Tension Build]
-[Add melody stem: shimmering Arpeggiator pulse, deep Synth Bass swell]
-[Chorus - Combat Layer]
-[Add combat layer: soaring Strings over sequenced Arpeggiator and Synth Bass]
-[Bridge - Danger / Boss State]
-[Maximum intensity: urgent crystalline Bells, dramatic Synth Pad swells]
-[Outro]
-[Strip back: bass pulse and distant drum fade out]
+[Intro - Bass Stem Only]
+[Deep pulsing Upright Bass, clean low-end drone, minimal]
+
+[Part 1 - Add Percussion Stem]
+[sneaky Upright Bass walk, sparse minor Piano chords, brush Drums, steady 4/4 rhythm]
+
+[Part 2 - Add Melody Stem]
+[moody Vibraphone shimmer, muted Strings tension, high frequency separation, dry studio]
+
+[Part 3 - Add Combat & Climax Layer]
+[smoky Tenor Saxophone lead, tight snare Drums, driving Upright Bass; urgent Piano ostinato, dramatic Strings stabs]
+
+[Outro - Strip Back]
+[Sub-bass pulse and distant percussion fade out]
 ```
 
 Notes: Clean Stem-Builder variation (cosmic-ambient, parent: dark-fantasy).
 
-## Wisp Shepherd - late-game variation (`wisp-shepherd-C`)
+## Wisp Shepherd - late-game variation (mech-industrial + dark-fantasy) (`wisp-shepherd-C`)
 
-Status: prompt_ready | Vocals: none | BPM: 114
+Status: prompt_ready | Vocals: none | BPM: 136
 
 **Style prompt**
 
 ```
-Ethereal sci-fi orbital ambient and crystalline synth score, clean mix, dry studio recording, minimalist frequency separation, vast, wondrous and weightless, glowing wisp twilight habitat atmosphere, Synth Pad, Arpeggiator, Piano, Strings, Synth Bass, Bells, 114 BPM, strict quantize, steady 4/4 rhythm, darker harmony, same instrumentation, motif reprised, instrumental
+Heavy mechanical industrial breakbeat and modular synth score blended with Dark fantasy orchestral cinematic score, clean mix, dry studio recording, minimalist frequency separation, gritty, relentless and mechanical, glowing wisp twilight habitat atmosphere, Synth Bass, Percussion, Drums, Synth Lead, 808, Risers, Strings, 136 BPM, strict quantize, steady 4/4 rhythm, darker harmony, hybrid escalation palette, motif reprised, instrumental
 ```
 
 **Instruments and Advanced Split stems**
 
 | Instrument | Stem category | Keep |
 |---|---|---|
-| Synth Pad | Synth Pad | yes |
-| Arpeggiator | Arpeggiator | yes |
-| Piano | Piano | yes |
-| Strings | Strings | yes |
-| Synth Bass | Synth Bass | no |
-| Bells | Bells | no |
+| Synth Bass | Synth Bass | yes |
+| Percussion | Percussion | yes |
+| Drums | Drums | yes |
+| Synth Lead | Synth Lead | yes |
+| 808 | 808 | no |
+| Risers | Risers | no |
 
-Stems requested: Arpeggiator, Piano, Strings, Synth Pad
+Stems requested: Drums, Percussion, Synth Bass, Synth Lead
 
 **Lyrics / section structure**
 
 ```
 [Instrumental]
-[Tempo: 114 BPM, strict quantize, steady rhythm]
+[Tempo: 136 BPM, strict quantize, steady rhythm]
 
-[Intro]
-[Bass stem only: clean pulsing Synth Bass, dry low-end, minimal]
-[Verse 1 - Exploration Layer]
-[Add percussion stem: evolving Synth Pad, resonant Piano notes, soft Bells]
-[Pre-Chorus - Tension Build]
-[Add melody stem: shimmering Arpeggiator pulse, deep Synth Bass swell]
-[Chorus - Combat Layer]
-[Add combat layer: soaring Strings over sequenced Arpeggiator and Synth Bass]
-[Bridge - Danger / Boss State]
-[Maximum intensity: urgent crystalline Bells, dramatic Synth Pad swells]
-[Outro]
-[Strip back: bass pulse and distant drum fade out]
+[Intro - Bass Stem Only]
+[Deep pulsing Synth Bass, clean low-end drone, minimal]
+
+[Part 1 - Add Percussion Stem]
+[metallic Percussion clangs, sub 808 pulse, sparse Synth Bass, steady 4/4 rhythm]
+
+[Part 2 - Add Melody Stem]
+[modular Risers sweep, accelerating breakbeat Drums, high frequency separation, dry studio]
+
+[Part 3 - Add Combat & Climax Layer]
+[crunchy industrial Drums, distorted Synth Bass, piercing Synth Lead; relentless anvil Percussion, heavy 808 drop]
+
+[Outro - Strip Back]
+[Sub-bass pulse and distant percussion fade out]
 ```
 
 Notes: Clean Stem-Builder variation (cosmic-ambient, parent: dark-fantasy).

@@ -67,54 +67,14 @@ Notes: Generated 2 takes via Suno MCP (v6) & analyzed via 0-credit audio-analysi
 - Take 2 (fcf69afa-3b05-4a90-9875-c6688c3a7f4f): https://suno.com/song/fcf69afa-3b05-4a90-9875-c6688c3a7f4f — 139.56s, detected 183.6 BPM, G major, 105 bars, 12 sections, loop bars 22..54 (27.702s–69.444s), score=20.92
 Selected for stem split: Take 2 (fcf69afa-3b05-4a90-9875-c6688c3a7f4f).
 
-## Garden Council - alternate region (`garden-council-B`)
-
-Status: prompt_ready | Vocals: none | BPM: 84
-
-**Style prompt**
-
-```
-Cozy whimsical acoustic indie game music, peaceful and nostalgic, turn-based garden rescue board atmosphere, Acoustic Guitar, Marimba, Upright Bass, Drums, Glockenspiel, Flute, 84 BPM, different key, same instrumentation, new motif, instrumental, no vocals, dynamic game soundtrack score, seamless looping structure
-```
-
-**Instruments and Advanced Split stems**
-
-| Instrument | Stem category | Keep |
-|---|---|---|
-| Acoustic Guitar | Acoustic Guitar | yes |
-| Marimba | Marimba | yes |
-| Upright Bass | Upright Bass | yes |
-| Drums | Drums | yes |
-| Glockenspiel | Glockenspiel | no |
-| Flute | Flute | no |
-
-Stems requested: Acoustic Guitar, Drums, Marimba, Upright Bass
-
-**Lyrics / section structure**
-
-```
-[Intro]
-(sparse ambient layer, quiet pulse)
-[Verse 1 - Exploration Layer]
-(fingerpicked Acoustic Guitar, gentle Marimba melody)
-[Pre-Chorus - Tension Build]
-(soft Glockenspiel top-line, warm Upright Bass pulse)
-[Chorus - Combat Layer]
-(full cozy rhythm section, bouncing Upright Bass, upbeat brush Drums)
-[Bridge - Danger / Boss State]
-(slightly melancholic shift, minor chord Acoustic Guitar, solo Flute)
-[Outro]
-(resolution back to ambient loop tail)
-```
-
-## Garden Council - late-game variation (`garden-council-C`)
+## Garden Council - alternate region (nautical-folk) (`garden-council-B`)
 
 Status: prompt_ready | Vocals: none | BPM: 102
 
 **Style prompt**
 
 ```
-Cozy whimsical acoustic indie game music, peaceful and nostalgic, turn-based garden rescue board atmosphere, Acoustic Guitar, Marimba, Upright Bass, Drums, Glockenspiel, Flute, 102 BPM, darker harmony, same instrumentation, motif reprised, instrumental, no vocals, dynamic game soundtrack score, seamless looping structure
+Breezy coastal harbor and acoustic sea-shanty folk score, clean mix, dry studio recording, minimalist frequency separation, buoyant, salty and adventurous, turn-based garden rescue board atmosphere, Acoustic Guitar, Accordion, Fiddle, Upright Bass, Drums, Flute, 102 BPM, strict quantize, steady 4/4 rhythm, different key, blended sub-archetype palette, new motif, instrumental
 ```
 
 **Instruments and Advanced Split stems**
@@ -122,27 +82,77 @@ Cozy whimsical acoustic indie game music, peaceful and nostalgic, turn-based gar
 | Instrument | Stem category | Keep |
 |---|---|---|
 | Acoustic Guitar | Acoustic Guitar | yes |
-| Marimba | Marimba | yes |
+| Accordion | Accordion | yes |
+| Fiddle | Fiddle | yes |
 | Upright Bass | Upright Bass | yes |
-| Drums | Drums | yes |
-| Glockenspiel | Glockenspiel | no |
+| Drums | Drums | no |
 | Flute | Flute | no |
 
-Stems requested: Acoustic Guitar, Drums, Marimba, Upright Bass
+Stems requested: Accordion, Acoustic Guitar, Fiddle, Upright Bass
 
 **Lyrics / section structure**
 
 ```
-[Intro]
-(sparse ambient layer, quiet pulse)
-[Verse 1 - Exploration Layer]
-(fingerpicked Acoustic Guitar, gentle Marimba melody)
-[Pre-Chorus - Tension Build]
-(soft Glockenspiel top-line, warm Upright Bass pulse)
-[Chorus - Combat Layer]
-(full cozy rhythm section, bouncing Upright Bass, upbeat brush Drums)
-[Bridge - Danger / Boss State]
-(slightly melancholic shift, minor chord Acoustic Guitar, solo Flute)
-[Outro]
-(resolution back to ambient loop tail)
+[Instrumental]
+[Tempo: 102 BPM, strict quantize, steady rhythm]
+
+[Intro - Bass Stem Only]
+[Deep pulsing Upright Bass, clean low-end drone, minimal]
+
+[Part 1 - Add Percussion Stem]
+[strummed Acoustic Guitar, warm Accordion chords, Upright Bass, steady 4/4 rhythm]
+
+[Part 2 - Add Melody Stem]
+[lilting Flute counter-melody, brisk brush Drums, high frequency separation, dry studio]
+
+[Part 3 - Add Combat & Climax Layer]
+[lively Fiddle lead, full Accordion, bouncing Upright Bass and Drums; minor-key Fiddle reel, driving Acoustic Guitar rhythm]
+
+[Outro - Strip Back]
+[Sub-bass pulse and distant percussion fade out]
+```
+
+## Garden Council - late-game variation (storybook-orchestral + cosmic-ambient) (`garden-council-C`)
+
+Status: prompt_ready | Vocals: none | BPM: 96
+
+**Style prompt**
+
+```
+Whimsical storybook chamber ensemble score blended with Ethereal sci-fi orbital ambient and crystalline synth score, clean mix, dry studio recording, minimalist frequency separation, enchanting, curious and heartwarming, turn-based garden rescue board atmosphere, Piano, Clarinet, Cello, Harp, Glockenspiel, Percussion, Synth Pad, 96 BPM, strict quantize, steady 4/4 rhythm, darker harmony, hybrid escalation palette, motif reprised, instrumental
+```
+
+**Instruments and Advanced Split stems**
+
+| Instrument | Stem category | Keep |
+|---|---|---|
+| Piano | Piano | yes |
+| Clarinet | Clarinet | yes |
+| Cello | Cello | yes |
+| Harp | Harp | yes |
+| Glockenspiel | Glockenspiel | no |
+| Percussion | Percussion | no |
+
+Stems requested: Cello, Clarinet, Harp, Piano
+
+**Lyrics / section structure**
+
+```
+[Instrumental]
+[Tempo: 96 BPM, strict quantize, steady rhythm]
+
+[Intro - Bass Stem Only]
+[Deep pulsing Piano, clean low-end drone, minimal]
+
+[Part 1 - Add Percussion Stem]
+[delicate Harp arpeggios, warm Piano, pizzicato Cello, steady 4/4 rhythm]
+
+[Part 2 - Add Melody Stem]
+[playful Clarinet phrase, twinkling Glockenspiel, high frequency separation, dry studio]
+
+[Part 3 - Add Combat & Climax Layer]
+[sweeping Cello melody, expressive Piano, light chamber Percussion; mysterious Clarinet and low Cello interplay]
+
+[Outro - Strip Back]
+[Sub-bass pulse and distant percussion fade out]
 ```

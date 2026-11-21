@@ -55,14 +55,14 @@ Files:
 
 Notes: Exported 32-bar loop (bars 32-64, 54.86s-109.71s, 54.86s, 2633143 frames @ 48kHz 24-bit) via SonicAlchemist export-adaptive.exe with 0.85s fade-in/fade-out clip envelopes (seam_step <= 0.000001). Integrated into /Game/Audio/Music/SW_Music_*_v001 with 4 states (Explore, Tension, Combat, Boss).
 
-## Chroma-Turf - alternate region (`chroma-turf-B`)
+## Chroma-Turf - alternate region (retro-chiptune-rock) (`chroma-turf-B`)
 
-Status: prompt_ready | Vocals: none | BPM: 132
+Status: prompt_ready | Vocals: none | BPM: 148
 
 **Style prompt**
 
 ```
-Energetic chiptune-meets-modern arcade electronic, playful and urgent, elemental paint arena atmosphere, Synth Lead, Synth Bass, Drums, Arpeggiator, Synth Keys, 132 BPM, different key, same instrumentation, new motif, instrumental, no vocals, dynamic game soundtrack score, seamless looping structure
+High-octane 16-bit chiptune and electric guitar arcade fusion, clean mix, dry studio recording, minimalist frequency separation, hyper-energetic, heroic and retro, elemental paint arena atmosphere, Synth Lead, Lead Guitar, Bass Guitar, Drums, Arpeggiator, Synth Keys, 148 BPM, strict quantize, steady 4/4 rhythm, different key, blended sub-archetype palette, new motif, instrumental
 ```
 
 **Instruments and Advanced Split stems**
@@ -70,65 +70,77 @@ Energetic chiptune-meets-modern arcade electronic, playful and urgent, elemental
 | Instrument | Stem category | Keep |
 |---|---|---|
 | Synth Lead | Synth Lead | yes |
-| Synth Bass | Synth Bass | yes |
+| Lead Guitar | Lead Guitar | yes |
+| Bass Guitar | Bass Guitar | yes |
 | Drums | Drums | yes |
-| Arpeggiator | Arpeggiator | yes |
+| Arpeggiator | Arpeggiator | no |
 | Synth Keys | Synth Keys | no |
 
-Stems requested: Arpeggiator, Drums, Synth Bass, Synth Lead
+Stems requested: Bass Guitar, Drums, Lead Guitar, Synth Lead
 
 **Lyrics / section structure**
 
 ```
-[Intro]
-(sparse ambient layer, quiet pulse)
-[Verse 1 - Exploration Layer]
-(light Synth Bass and Arpeggiator, relaxed Drums)
-[Pre-Chorus - Tension Build]
-(rising Synth Lead, Snare build)
-[Chorus - Combat Layer]
-(full Drums, driving Synth Bass, bright Synth Lead)
-[Bridge - Danger / Boss State]
-(fast minor Arpeggiator, urgent Kick pattern)
-[Outro]
-(resolution back to ambient loop tail)
+[Instrumental]
+[Tempo: 148 BPM, strict quantize, steady rhythm]
+
+[Intro - Bass Stem Only]
+[Deep pulsing Bass Guitar, clean low-end drone, minimal]
+
+[Part 1 - Add Percussion Stem]
+[fast 16-bit Arpeggiator, tight Bass Guitar, crisp arcade Drums, steady 4/4 rhythm]
+
+[Part 2 - Add Melody Stem]
+[ascending Synth Keys, palm-muted Guitar buildup, high frequency separation, dry studio]
+
+[Part 3 - Add Combat & Climax Layer]
+[dueling Synth Lead and Lead Guitar melody, full-throttle Drums; shredding Lead Guitar solo over rapid chiptune Arpeggiator]
+
+[Outro - Strip Back]
+[Sub-bass pulse and distant percussion fade out]
 ```
 
-## Chroma-Turf - late-game variation (`chroma-turf-C`)
+## Chroma-Turf - late-game variation (neon-synthfunk + mech-industrial) (`chroma-turf-C`)
 
-Status: prompt_ready | Vocals: none | BPM: 150
+Status: prompt_ready | Vocals: none | BPM: 118
 
 **Style prompt**
 
 ```
-Energetic chiptune-meets-modern arcade electronic, playful and urgent, elemental paint arena atmosphere, Synth Lead, Synth Bass, Drums, Arpeggiator, Synth Keys, 150 BPM, darker harmony, same instrumentation, motif reprised, instrumental, no vocals, dynamic game soundtrack score, seamless looping structure
+Groovy retro-futuristic synth-funk and neon bassline score blended with Heavy mechanical industrial breakbeat and modular synth score, clean mix, dry studio recording, minimalist frequency separation, slick, kinetic and stylish, elemental paint arena atmosphere, Synth Bass, Electric Guitar, Synth Keys, Drums, Vocoder, Clap, Percussion, 118 BPM, strict quantize, steady 4/4 rhythm, darker harmony, hybrid escalation palette, motif reprised, instrumental
 ```
 
 **Instruments and Advanced Split stems**
 
 | Instrument | Stem category | Keep |
 |---|---|---|
-| Synth Lead | Synth Lead | yes |
 | Synth Bass | Synth Bass | yes |
+| Electric Guitar | Electric Guitar | yes |
+| Synth Keys | Synth Keys | yes |
 | Drums | Drums | yes |
-| Arpeggiator | Arpeggiator | yes |
-| Synth Keys | Synth Keys | no |
+| Vocoder | Vocoder | no |
+| Clap | Clap | no |
 
-Stems requested: Arpeggiator, Drums, Synth Bass, Synth Lead
+Stems requested: Drums, Electric Guitar, Synth Bass, Synth Keys
 
 **Lyrics / section structure**
 
 ```
-[Intro]
-(sparse ambient layer, quiet pulse)
-[Verse 1 - Exploration Layer]
-(light Synth Bass and Arpeggiator, relaxed Drums)
-[Pre-Chorus - Tension Build]
-(rising Synth Lead, Snare build)
-[Chorus - Combat Layer]
-(full Drums, driving Synth Bass, bright Synth Lead)
-[Bridge - Danger / Boss State]
-(fast minor Arpeggiator, urgent Kick pattern)
-[Outro]
-(resolution back to ambient loop tail)
+[Instrumental]
+[Tempo: 118 BPM, strict quantize, steady rhythm]
+
+[Intro - Bass Stem Only]
+[Deep pulsing Synth Bass, clean low-end drone, minimal]
+
+[Part 1 - Add Percussion Stem]
+[slap Synth Bass pocket, clean funk Electric Guitar, light Clap, steady 4/4 rhythm]
+
+[Part 2 - Add Melody Stem]
+[lush Synth Keys chords, rising rhythmic groove, high frequency separation, dry studio]
+
+[Part 3 - Add Combat & Climax Layer]
+[punchy four-on-the-floor Drums, bright Synth Keys lead, funky Guitar; wordless Vocoder stabs, heavy Synth Bass octave riff]
+
+[Outro - Strip Back]
+[Sub-bass pulse and distant percussion fade out]
 ```

@@ -17,41 +17,31 @@
       "lyrics": "[Intro]\n(sparse ambient layer, quiet pulse)\n[Verse 1 - Exploration Layer]\n(fingerpicked Acoustic Guitar, gentle Marimba melody)\n[Pre-Chorus - Tension Build]\n(soft Glockenspiel top-line, warm Upright Bass pulse)\n[Chorus - Combat Layer]\n(full cozy rhythm section, bouncing Upright Bass, upbeat brush Drums)\n[Bridge - Danger / Boss State]\n(slightly melancholic shift, minor chord Acoustic Guitar, solo Flute)\n[Outro]\n(resolution back to ambient loop tail)",
       "instruments": [
         {
-          "name": "Acoustic Guitar",
-          "stem": "Acoustic Guitar",
+          "name": "Keyboards",
+          "stem": "Keyboards",
           "keep": true
         },
         {
-          "name": "Marimba",
-          "stem": "Marimba",
+          "name": "Synth",
+          "stem": "Synth",
           "keep": true
         },
         {
-          "name": "Upright Bass",
-          "stem": "Upright Bass",
+          "name": "Bass",
+          "stem": "Bass",
           "keep": true
         },
         {
           "name": "Drums",
           "stem": "Drums",
           "keep": true
-        },
-        {
-          "name": "Glockenspiel",
-          "stem": "Glockenspiel",
-          "keep": false
-        },
-        {
-          "name": "Flute",
-          "stem": "Flute",
-          "keep": false
         }
       ],
       "stems_requested": [
-        "Acoustic Guitar",
+        "Bass",
         "Drums",
-        "Marimba",
-        "Upright Bass"
+        "Keyboards",
+        "Synth"
       ],
       "states": [
         {
@@ -80,46 +70,34 @@
         }
       ],
       "suno": {
-        "url": "https://suno.com/song/a4e91dfa-70cb-4963-aed7-56468104f9dc",
-        "clip_id": "a4e91dfa-70cb-4963-aed7-56468104f9dc",
-        "model": "v6 (MCP audio-create + audio-stems-create mode=twelve)",
-        "generated_at": "2026-11-18T04:32:33Z"
+        "url": "X:/Projects/GameMusic/Critter-Contraptions/Main Theme",
+        "clip_id": "critter-contraptions-main-theme",
+        "model": "Suno Premier Stem Split (32-bit float 48kHz)",
+        "generated_at": "2026-11-18T23:41:00Z"
       },
       "files": [
         {
-          "path": "X:/Projects/GameMusic/Critter-Contraptions/midi/critter-contraptions-take1-percussion.mid",
-          "kind": "midi"
+          "path": "Media/Audio/Sonic-v001/Export/layer-01.wav",
+          "kind": "Keyboards (SW_Music_Keyboards_v001)",
+          "sha256": "d4c91b1fb602e30c8e7ccd94fe9b761c0b4a4e396e51eb1369742505b54cf45b"
         },
         {
-          "path": "X:/Projects/GameMusic/Critter-Contraptions/midi/critter-contraptions-take1-drums.mid",
-          "kind": "midi"
+          "path": "Media/Audio/Sonic-v001/Export/layer-02.wav",
+          "kind": "Synth (SW_Music_Synth_v001)",
+          "sha256": "f6f3ab28035d7d5f1b59b746eaaf4963eec104bfbd398fd4504314882db8216d"
         },
         {
-          "path": "X:/Projects/GameMusic/Critter-Contraptions/midi/critter-contraptions-take1-woodwinds.mid",
-          "kind": "midi"
+          "path": "Media/Audio/Sonic-v001/Export/layer-03.wav",
+          "kind": "Bass (SW_Music_Bass_v001)",
+          "sha256": "8ecf408eb6155a402e33c7a1d03a98243dc396ae57c7d608985c44c5fb893489"
         },
         {
-          "path": "X:/Projects/GameMusic/Critter-Contraptions/midi/critter-contraptions-take1-keyboard.mid",
-          "kind": "midi"
-        },
-        {
-          "path": "X:/Projects/GameMusic/Critter-Contraptions/midi/critter-contraptions-take1-fx.mid",
-          "kind": "midi"
-        },
-        {
-          "path": "X:/Projects/GameMusic/Critter-Contraptions/midi/critter-contraptions-take1-bass.mid",
-          "kind": "midi"
-        },
-        {
-          "path": "X:/Projects/GameMusic/Critter-Contraptions/midi/critter-contraptions-take1-synth.mid",
-          "kind": "midi"
-        },
-        {
-          "path": "X:/Projects/GameMusic/Critter-Contraptions/midi/critter-contraptions-take1-guitar.mid",
-          "kind": "midi"
+          "path": "Media/Audio/Sonic-v001/Export/layer-04.wav",
+          "kind": "Drums (SW_Music_Drums_v001)",
+          "sha256": "454d051ecdca26376ff9e3f85b19c6e976910007eb8a3b98d8f58b82ba09654b"
         }
       ],
-      "notes": "Generated via Suno MCP (Take 1: a4e91dfa-70cb-4963-aed7-56468104f9dc, 128.88s, detected 91.2 BPM C major; Take 2: 3a2cb2b0-3daf-4f47-aaeb-135ab10335f0, 92.76s). 12-stem Auto Split completed via MCP audio-stems-create (group: stemgrp_27fd5387-f39f-4d47-8aa4-bfe637d69658) — Take 1 stems ready in Suno library: drums (308397ed-0a23-45b1-b426-433251b4746a), bass (8aea2817-542f-4e66-a214-85d6e56783bb), guitar (bf490f5a-cfac-4003-8f9c-6a736120028a), keyboard (55aa3b94-745d-4ab4-bb37-32c0e304375d), percussion (02676bc5-a325-4188-9611-b378a29a983f), strings (7532a754-9253-45c9-9b8e-48b1faa7cdfa), synth (90ce9254-850b-4e37-b35a-9c7d534b8ac9), woodwinds (42aa1e45-87c2-4a8b-8b69-c1eb27bd7262)."
+      "notes": "Exported 32-bar loop (bars 6-38, 15.65s-99.13s, 83.48s, 4006957 frames @ 48kHz 24-bit) via SonicAlchemist export-adaptive.exe with 0.85s fade-in/fade-out clip envelopes (seam_step <= 0.000001). Integrated into /Game/Audio/Music/SW_Music_*_v001 with 4 states (Explore, Tension, Combat, Boss)."
     },
     {
       "track_id": "critter-contraptions-B",
@@ -288,5 +266,6 @@
   "scope": "catalog",
   "recommended_archetype": "cozy",
   "recommended_setting": "friendly creature parcel factory",
-  "recommendation_reason": "Befriending creatures on a tiny parcel line calls for warm marimba and acoustic guitar."
+  "recommendation_reason": "Befriending creatures on a tiny parcel line calls for warm marimba and acoustic guitar.",
+  "sonic_alchemist_project": "critter-contraptions-adaptive"
 }

@@ -55,80 +55,92 @@ Files:
 
 Notes: Exported 32-bar loop (bars 47-79, 75.20s-126.40s, 51.20s, 2457600 frames @ 48kHz 24-bit) via SonicAlchemist export-adaptive.exe with 0.85s fade-in/fade-out clip envelopes (seam_step <= 0.000002). Integrated into /Game/Audio/Music/SW_Music_*_v001 with 4 states (Explore, Tension, Combat, Boss).
 
-## Beast Bistro Express - alternate region (`beast-bistro-express-B`)
+## Beast Bistro Express - alternate region (modern-tactics) (`beast-bistro-express-B`)
 
-Status: prompt_ready | Vocals: none | BPM: 142
+Status: prompt_ready | Vocals: none | BPM: 132
 
 **Style prompt**
 
 ```
-Driving instrumental rock action score, aggressive and adrenaline-fueled, island food truck & crab boss hunt atmosphere, Rhythm Electric Guitar, Lead Guitar, Bass Guitar, Drums, Synth Pad, 142 BPM, different key, same instrumentation, new motif, instrumental, no vocals, dynamic game soundtrack score, seamless looping structure
+Modern military tactical hybrid electronic-orchestral score, clean mix, dry studio recording, minimalist frequency separation, precise, urgent and high-stakes, island food truck & crab boss hunt atmosphere, Electric Guitar, Synth Bass, Drums, Brass, Synth Pad, Percussion, 132 BPM, strict quantize, steady 4/4 rhythm, different key, blended sub-archetype palette, new motif, instrumental
 ```
 
 **Instruments and Advanced Split stems**
 
 | Instrument | Stem category | Keep |
 |---|---|---|
-| Rhythm Electric Guitar | Rhythm Electric Guitar | yes |
-| Lead Guitar | Lead Guitar | yes |
-| Bass Guitar | Bass Guitar | yes |
+| Electric Guitar | Electric Guitar | yes |
+| Synth Bass | Synth Bass | yes |
 | Drums | Drums | yes |
+| Brass | Brass | yes |
 | Synth Pad | Synth Pad | no |
+| Percussion | Percussion | no |
 
-Stems requested: Bass Guitar, Drums, Lead Guitar, Rhythm Electric Guitar
+Stems requested: Brass, Drums, Electric Guitar, Synth Bass
 
 **Lyrics / section structure**
 
 ```
-[Intro]
-(sparse ambient layer, quiet pulse)
-[Verse 1 - Exploration Layer]
-(clean Rhythm Electric Guitar, Synth Pad, light Hi-Hat)
-[Pre-Chorus - Tension Build]
-(palm-muted Rhythm Electric Guitar riff, Snare roll)
-[Chorus - Combat Layer]
-(full Rhythm Electric Guitar, heavy Drums, driving Bass Guitar)
-[Bridge - Danger / Boss State]
-(double-time Drums, harmonized Lead Guitar stabs)
-[Outro]
-(resolution back to ambient loop tail)
+[Instrumental]
+[Tempo: 132 BPM, strict quantize, steady rhythm]
+
+[Intro - Bass Stem Only]
+[Deep pulsing Synth Bass, clean low-end drone, minimal]
+
+[Part 1 - Add Percussion Stem]
+[pulsing Synth Bass, muted Synth Pad, crisp tactical Percussion, steady 4/4 rhythm]
+
+[Part 2 - Add Melody Stem]
+[palm-muted Electric Guitar chugs, building Brass swells, high frequency separation, dry studio]
+
+[Part 3 - Add Combat & Climax Layer]
+[heavy Drums, driving Synth Bass, soaring Brass and Electric Guitar; staccato artillery Percussion hits, aggressive Brass and Guitar stabs]
+
+[Outro - Strip Back]
+[Sub-bass pulse and distant percussion fade out]
 ```
 
-## Beast Bistro Express - late-game variation (`beast-bistro-express-C`)
+## Beast Bistro Express - late-game variation (mech-industrial + retro-chiptune-rock) (`beast-bistro-express-C`)
 
-Status: prompt_ready | Vocals: none | BPM: 160
+Status: prompt_ready | Vocals: none | BPM: 136
 
 **Style prompt**
 
 ```
-Driving instrumental rock action score, aggressive and adrenaline-fueled, island food truck & crab boss hunt atmosphere, Rhythm Electric Guitar, Lead Guitar, Bass Guitar, Drums, Synth Pad, 160 BPM, darker harmony, same instrumentation, motif reprised, instrumental, no vocals, dynamic game soundtrack score, seamless looping structure
+Heavy mechanical industrial breakbeat and modular synth score blended with High-octane 16-bit chiptune and electric guitar arcade fusion, clean mix, dry studio recording, minimalist frequency separation, gritty, relentless and mechanical, island food truck & crab boss hunt atmosphere, Synth Bass, Percussion, Drums, Synth Lead, 808, Risers, Lead Guitar, 136 BPM, strict quantize, steady 4/4 rhythm, darker harmony, hybrid escalation palette, motif reprised, instrumental
 ```
 
 **Instruments and Advanced Split stems**
 
 | Instrument | Stem category | Keep |
 |---|---|---|
-| Rhythm Electric Guitar | Rhythm Electric Guitar | yes |
-| Lead Guitar | Lead Guitar | yes |
-| Bass Guitar | Bass Guitar | yes |
+| Synth Bass | Synth Bass | yes |
+| Percussion | Percussion | yes |
 | Drums | Drums | yes |
-| Synth Pad | Synth Pad | no |
+| Synth Lead | Synth Lead | yes |
+| 808 | 808 | no |
+| Risers | Risers | no |
 
-Stems requested: Bass Guitar, Drums, Lead Guitar, Rhythm Electric Guitar
+Stems requested: Drums, Percussion, Synth Bass, Synth Lead
 
 **Lyrics / section structure**
 
 ```
-[Intro]
-(sparse ambient layer, quiet pulse)
-[Verse 1 - Exploration Layer]
-(clean Rhythm Electric Guitar, Synth Pad, light Hi-Hat)
-[Pre-Chorus - Tension Build]
-(palm-muted Rhythm Electric Guitar riff, Snare roll)
-[Chorus - Combat Layer]
-(full Rhythm Electric Guitar, heavy Drums, driving Bass Guitar)
-[Bridge - Danger / Boss State]
-(double-time Drums, harmonized Lead Guitar stabs)
-[Outro]
-(resolution back to ambient loop tail)
+[Instrumental]
+[Tempo: 136 BPM, strict quantize, steady rhythm]
+
+[Intro - Bass Stem Only]
+[Deep pulsing Synth Bass, clean low-end drone, minimal]
+
+[Part 1 - Add Percussion Stem]
+[metallic Percussion clangs, sub 808 pulse, sparse Synth Bass, steady 4/4 rhythm]
+
+[Part 2 - Add Melody Stem]
+[modular Risers sweep, accelerating breakbeat Drums, high frequency separation, dry studio]
+
+[Part 3 - Add Combat & Climax Layer]
+[crunchy industrial Drums, distorted Synth Bass, piercing Synth Lead; relentless anvil Percussion, heavy 808 drop]
+
+[Outro - Strip Back]
+[Sub-bass pulse and distant percussion fade out]
 ```

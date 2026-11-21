@@ -11,7 +11,7 @@ Recommendation: Befriending creatures on a tiny parcel line calls for warm marim
 
 Status: stems_split | Vocals: none | BPM: 92
 
-Suno: https://suno.com/song/a4e91dfa-70cb-4963-aed7-56468104f9dc (clip `a4e91dfa-70cb-4963-aed7-56468104f9dc`, model v6 (MCP audio-create + audio-stems-create mode=twelve), 2026-11-18T04:32:33Z)
+Suno: X:/Projects/GameMusic/Critter-Contraptions/Main Theme (clip `critter-contraptions-main-theme`, model Suno Premier Stem Split (32-bit float 48kHz), 2026-11-18T23:41:00Z)
 
 **Style prompt**
 
@@ -23,14 +23,12 @@ Cozy whimsical acoustic indie game music, peaceful and nostalgic, friendly creat
 
 | Instrument | Stem category | Keep |
 |---|---|---|
-| Acoustic Guitar | Acoustic Guitar | yes |
-| Marimba | Marimba | yes |
-| Upright Bass | Upright Bass | yes |
+| Keyboards | Keyboards | yes |
+| Synth | Synth | yes |
+| Bass | Bass | yes |
 | Drums | Drums | yes |
-| Glockenspiel | Glockenspiel | no |
-| Flute | Flute | no |
 
-Stems requested: Acoustic Guitar, Drums, Marimba, Upright Bass
+Stems requested: Bass, Drums, Keyboards, Synth
 
 **Lyrics / section structure**
 
@@ -50,65 +48,21 @@ Stems requested: Acoustic Guitar, Drums, Marimba, Upright Bass
 ```
 
 Files:
-- `X:/Projects/GameMusic/Critter-Contraptions/midi/critter-contraptions-take1-percussion.mid` midi 
-- `X:/Projects/GameMusic/Critter-Contraptions/midi/critter-contraptions-take1-drums.mid` midi 
-- `X:/Projects/GameMusic/Critter-Contraptions/midi/critter-contraptions-take1-woodwinds.mid` midi 
-- `X:/Projects/GameMusic/Critter-Contraptions/midi/critter-contraptions-take1-keyboard.mid` midi 
-- `X:/Projects/GameMusic/Critter-Contraptions/midi/critter-contraptions-take1-fx.mid` midi 
-- `X:/Projects/GameMusic/Critter-Contraptions/midi/critter-contraptions-take1-bass.mid` midi 
-- `X:/Projects/GameMusic/Critter-Contraptions/midi/critter-contraptions-take1-synth.mid` midi 
-- `X:/Projects/GameMusic/Critter-Contraptions/midi/critter-contraptions-take1-guitar.mid` midi 
+- `Media/Audio/Sonic-v001/Export/layer-01.wav` Keyboards (SW_Music_Keyboards_v001) d4c91b1fb602e30c8e7ccd94fe9b761c0b4a4e396e51eb1369742505b54cf45b
+- `Media/Audio/Sonic-v001/Export/layer-02.wav` Synth (SW_Music_Synth_v001) f6f3ab28035d7d5f1b59b746eaaf4963eec104bfbd398fd4504314882db8216d
+- `Media/Audio/Sonic-v001/Export/layer-03.wav` Bass (SW_Music_Bass_v001) 8ecf408eb6155a402e33c7a1d03a98243dc396ae57c7d608985c44c5fb893489
+- `Media/Audio/Sonic-v001/Export/layer-04.wav` Drums (SW_Music_Drums_v001) 454d051ecdca26376ff9e3f85b19c6e976910007eb8a3b98d8f58b82ba09654b
 
-Notes: Generated via Suno MCP (Take 1: a4e91dfa-70cb-4963-aed7-56468104f9dc, 128.88s, detected 91.2 BPM C major; Take 2: 3a2cb2b0-3daf-4f47-aaeb-135ab10335f0, 92.76s). 12-stem Auto Split completed via MCP audio-stems-create (group: stemgrp_27fd5387-f39f-4d47-8aa4-bfe637d69658) — Take 1 stems ready in Suno library: drums (308397ed-0a23-45b1-b426-433251b4746a), bass (8aea2817-542f-4e66-a214-85d6e56783bb), guitar (bf490f5a-cfac-4003-8f9c-6a736120028a), keyboard (55aa3b94-745d-4ab4-bb37-32c0e304375d), percussion (02676bc5-a325-4188-9611-b378a29a983f), strings (7532a754-9253-45c9-9b8e-48b1faa7cdfa), synth (90ce9254-850b-4e37-b35a-9c7d534b8ac9), woodwinds (42aa1e45-87c2-4a8b-8b69-c1eb27bd7262).
+Notes: Exported 32-bar loop (bars 6-38, 15.65s-99.13s, 83.48s, 4006957 frames @ 48kHz 24-bit) via SonicAlchemist export-adaptive.exe with 0.85s fade-in/fade-out clip envelopes (seam_step <= 0.000001). Integrated into /Game/Audio/Music/SW_Music_*_v001 with 4 states (Explore, Tension, Combat, Boss).
 
-## Critter Contraptions - alternate region (`critter-contraptions-B`)
-
-Status: prompt_ready | Vocals: none | BPM: 84
-
-**Style prompt**
-
-```
-Cozy whimsical acoustic indie game music, peaceful and nostalgic, friendly creature parcel factory atmosphere, Acoustic Guitar, Marimba, Upright Bass, Drums, Glockenspiel, Flute, 84 BPM, different key, same instrumentation, new motif, instrumental, no vocals, dynamic game soundtrack score, seamless looping structure
-```
-
-**Instruments and Advanced Split stems**
-
-| Instrument | Stem category | Keep |
-|---|---|---|
-| Acoustic Guitar | Acoustic Guitar | yes |
-| Marimba | Marimba | yes |
-| Upright Bass | Upright Bass | yes |
-| Drums | Drums | yes |
-| Glockenspiel | Glockenspiel | no |
-| Flute | Flute | no |
-
-Stems requested: Acoustic Guitar, Drums, Marimba, Upright Bass
-
-**Lyrics / section structure**
-
-```
-[Intro]
-(sparse ambient layer, quiet pulse)
-[Verse 1 - Exploration Layer]
-(fingerpicked Acoustic Guitar, gentle Marimba melody)
-[Pre-Chorus - Tension Build]
-(soft Glockenspiel top-line, warm Upright Bass pulse)
-[Chorus - Combat Layer]
-(full cozy rhythm section, bouncing Upright Bass, upbeat brush Drums)
-[Bridge - Danger / Boss State]
-(slightly melancholic shift, minor chord Acoustic Guitar, solo Flute)
-[Outro]
-(resolution back to ambient loop tail)
-```
-
-## Critter Contraptions - late-game variation (`critter-contraptions-C`)
+## Critter Contraptions - alternate region (nautical-folk) (`critter-contraptions-B`)
 
 Status: prompt_ready | Vocals: none | BPM: 102
 
 **Style prompt**
 
 ```
-Cozy whimsical acoustic indie game music, peaceful and nostalgic, friendly creature parcel factory atmosphere, Acoustic Guitar, Marimba, Upright Bass, Drums, Glockenspiel, Flute, 102 BPM, darker harmony, same instrumentation, motif reprised, instrumental, no vocals, dynamic game soundtrack score, seamless looping structure
+Breezy coastal harbor and acoustic sea-shanty folk score, clean mix, dry studio recording, minimalist frequency separation, buoyant, salty and adventurous, friendly creature parcel factory atmosphere, Acoustic Guitar, Accordion, Fiddle, Upright Bass, Drums, Flute, 102 BPM, strict quantize, steady 4/4 rhythm, different key, blended sub-archetype palette, new motif, instrumental
 ```
 
 **Instruments and Advanced Split stems**
@@ -116,27 +70,77 @@ Cozy whimsical acoustic indie game music, peaceful and nostalgic, friendly creat
 | Instrument | Stem category | Keep |
 |---|---|---|
 | Acoustic Guitar | Acoustic Guitar | yes |
-| Marimba | Marimba | yes |
+| Accordion | Accordion | yes |
+| Fiddle | Fiddle | yes |
 | Upright Bass | Upright Bass | yes |
-| Drums | Drums | yes |
-| Glockenspiel | Glockenspiel | no |
+| Drums | Drums | no |
 | Flute | Flute | no |
 
-Stems requested: Acoustic Guitar, Drums, Marimba, Upright Bass
+Stems requested: Accordion, Acoustic Guitar, Fiddle, Upright Bass
 
 **Lyrics / section structure**
 
 ```
-[Intro]
-(sparse ambient layer, quiet pulse)
-[Verse 1 - Exploration Layer]
-(fingerpicked Acoustic Guitar, gentle Marimba melody)
-[Pre-Chorus - Tension Build]
-(soft Glockenspiel top-line, warm Upright Bass pulse)
-[Chorus - Combat Layer]
-(full cozy rhythm section, bouncing Upright Bass, upbeat brush Drums)
-[Bridge - Danger / Boss State]
-(slightly melancholic shift, minor chord Acoustic Guitar, solo Flute)
-[Outro]
-(resolution back to ambient loop tail)
+[Instrumental]
+[Tempo: 102 BPM, strict quantize, steady rhythm]
+
+[Intro - Bass Stem Only]
+[Deep pulsing Upright Bass, clean low-end drone, minimal]
+
+[Part 1 - Add Percussion Stem]
+[strummed Acoustic Guitar, warm Accordion chords, Upright Bass, steady 4/4 rhythm]
+
+[Part 2 - Add Melody Stem]
+[lilting Flute counter-melody, brisk brush Drums, high frequency separation, dry studio]
+
+[Part 3 - Add Combat & Climax Layer]
+[lively Fiddle lead, full Accordion, bouncing Upright Bass and Drums; minor-key Fiddle reel, driving Acoustic Guitar rhythm]
+
+[Outro - Strip Back]
+[Sub-bass pulse and distant percussion fade out]
+```
+
+## Critter Contraptions - late-game variation (storybook-orchestral + cosmic-ambient) (`critter-contraptions-C`)
+
+Status: prompt_ready | Vocals: none | BPM: 96
+
+**Style prompt**
+
+```
+Whimsical storybook chamber ensemble score blended with Ethereal sci-fi orbital ambient and crystalline synth score, clean mix, dry studio recording, minimalist frequency separation, enchanting, curious and heartwarming, friendly creature parcel factory atmosphere, Piano, Clarinet, Cello, Harp, Glockenspiel, Percussion, Synth Pad, 96 BPM, strict quantize, steady 4/4 rhythm, darker harmony, hybrid escalation palette, motif reprised, instrumental
+```
+
+**Instruments and Advanced Split stems**
+
+| Instrument | Stem category | Keep |
+|---|---|---|
+| Piano | Piano | yes |
+| Clarinet | Clarinet | yes |
+| Cello | Cello | yes |
+| Harp | Harp | yes |
+| Glockenspiel | Glockenspiel | no |
+| Percussion | Percussion | no |
+
+Stems requested: Cello, Clarinet, Harp, Piano
+
+**Lyrics / section structure**
+
+```
+[Instrumental]
+[Tempo: 96 BPM, strict quantize, steady rhythm]
+
+[Intro - Bass Stem Only]
+[Deep pulsing Piano, clean low-end drone, minimal]
+
+[Part 1 - Add Percussion Stem]
+[delicate Harp arpeggios, warm Piano, pizzicato Cello, steady 4/4 rhythm]
+
+[Part 2 - Add Melody Stem]
+[playful Clarinet phrase, twinkling Glockenspiel, high frequency separation, dry studio]
+
+[Part 3 - Add Combat & Climax Layer]
+[sweeping Cello melody, expressive Piano, light chamber Percussion; mysterious Clarinet and low Cello interplay]
+
+[Outro - Strip Back]
+[Sub-bass pulse and distant percussion fade out]
 ```

@@ -1,0 +1,154 @@
+{
+  "schema_version": 1,
+  "contract": "shared/pipeline-contract.md",
+  "pipelines": [
+    {
+      "id": "adaptive-music-stems",
+      "title": "Adaptive Music Stems (Suno -> Sonic Alchemist -> Engine)",
+      "status": "scaffold",
+      "kind": "existing",
+      "source_component": "Suno MCP + GameMusic",
+      "target_component": "ArcoreSonicAlchemist -> Unreal 5.8 / Godot",
+      "summary": "Generate clean stem-builder prompts, audition/analyze takes, extract 12-stem WAVs & 0-credit MIDIs, slice 32-bar loops in Sonic Alchemist, and wire 4-layer bar-quantized adaptive audio into Unreal/Godot.",
+      "guide_path": "workflows/adaptive-music-stems/README.md",
+      "tool_path": "tools/sonic_adaptive_pipeline.py",
+      "handoffs": [
+        { "from": "GameCore Music DB", "to": "Suno MCP", "artifact": "Clean Stem-Builder style + lyrics prompt", "contract": "hub/data/music-design/<game>.json" },
+        { "from": "Suno Studio / MCP", "to": "GameMusic", "artifact": "Stem ZIP / WAVs + 0-credit MIDI stems", "contract": "X:/Projects/GameMusic/<Game>/" },
+        { "from": "GameMusic", "to": "ArcoreSonicAlchemist", "artifact": "4 hero stems + 32-bar loop Design.json", "contract": "tools/sonic_adaptive_pipeline.py" },
+        { "from": "ArcoreSonicAlchemist", "to": "Unreal / Godot Consumer", "artifact": "48kHz 24-bit layer-01..04.wav + verified-copies.json", "contract": "shared/migration-contract.md" }
+      ],
+      "stages": [
+        { "step": "1. Prompt & Suno generation", "owner": "GameCore + Suno", "tool_or_guide": "tools/adaptive_music_prompts.py", "acceptance": "Instrumental, steady BPM, stem-separated layers" },
+        { "step": "2. Stem & MIDI extraction", "owner": "Suno Studio / MCP", "tool_or_guide": "X:/Projects/GameMusic/<Game>/", "acceptance": "Non-empty WAV stems + .mid files linked in Music DB" },
+        { "step": "3. Loop slice & acoustic gate", "owner": "Sonic Alchemist", "tool_or_guide": "tools/sonic_adaptive_pipeline.py", "acceptance": "seam_step < 0.001, coherent peak < 0.99, 48kHz 24-bit" },
+        { "step": "4. Engine wiring & cook", "owner": "Game Consumer", "tool_or_guide": "DefaultGame.ini + USoundWave / AudioStreamPlayer", "acceptance": "Explore/Tension/Combat/Boss bar-quantized transitions" }
+      ]
+    },
+    {
+      "id": "game-project-integration",
+      "title": "Game Project Integration (Forge + Sound + Music -> Consumer)",
+      "status": "scaffold",
+      "kind": "existing",
+      "source_component": "ModelForge + SoundCore + SonicAlchemist",
+      "target_component": "Unreal / Godot Consumer",
+      "summary": "Wire versioned 3D models, SFX manifests, and adaptive music stems into a consumer game project with SHA-256 provenance.",
+      "guide_path": "workflows/game-project-integration/README.md",
+      "tool_path": "shared/ecosystem.json",
+      "handoffs": [
+        { "from": "ArcoreModelForge", "to": "Game Consumer", "artifact": "Versioned 3D assets / FBX / GLTF", "contract": "shared/ecosystem.json" },
+        { "from": "ArcoreSoundCore", "to": "Game Consumer", "artifact": "SFX cues + catalog/sounds.json", "contract": "shared/ecosystem.json" },
+        { "from": "ArcoreSonicAlchemist", "to": "Game Consumer", "artifact": "Adaptive music layers", "contract": "shared/migration-contract.md" }
+      ],
+      "stages": [
+        { "step": "1. Provider asset linking", "owner": "GameCore Hub", "tool_or_guide": "Assets tab", "acceptance": "Pinned provider asset_id and version" },
+        { "step": "2. Provenance & import", "owner": "Consumer project", "tool_or_guide": "workflows/game-project-integration/README.md", "acceptance": "SHA-256 verified copies + smoke build" }
+      ]
+    },
+    {
+      "id": "logo-sting-video",
+      "title": "Logo Sting Video Pipeline",
+      "status": "scaffold",
+      "kind": "existing",
+      "source_component": "ModelForge + SoundCore + Unreal",
+      "target_component": "MP4 Press Kit / Intro",
+      "summary": "Orchestrate 3D logo asset retrieval, sting audio selection, Unreal Sequencer render, and MP4 export through wizard.json.",
+      "guide_path": "workflows/logo-sting-video/README.md",
+      "tool_path": "workflows/logo-sting-video/wizard.json",
+      "handoffs": [
+        { "from": "ArcoreModelForge", "to": "Unreal Sequencer", "artifact": "Logo mesh & materials", "contract": "workflows/logo-sting-video/wizard.json" },
+        { "from": "ArcoreSoundCore", "to": "Unreal Sequencer", "artifact": "Audio sting WAV", "contract": "workflows/logo-sting-video/wizard.json" }
+      ],
+      "stages": [
+        { "step": "1. Gather logo & audio", "owner": "GameCore Hub MCP", "tool_or_guide": "workflows/logo-sting-video/wizard.json", "acceptance": "Validated mesh + audio assets" },
+        { "step": "2. Render & approve", "owner": "Unreal + Approvals", "tool_or_guide": "Approvals tab", "acceptance": "Approved MP4 in Media tab" }
+      ]
+    },
+    {
+      "id": "music-reconstruction",
+      "title": "Music Reconstruction (Audio -> MIDI -> Re-arrangement)",
+      "status": "exploratory",
+      "kind": "existing",
+      "source_component": "Reference Audio / Suno Stems",
+      "target_component": "Sonic Alchemist / DAW",
+      "summary": "Transcribe and reconstruct musical arrangements from audio stems into editable MIDI and re-instrumented sessions.",
+      "guide_path": "workflows/music-reconstruction/README.md",
+      "tool_path": "workflows/music-reconstruction/example.md",
+      "handoffs": [
+        { "from": "Audio Stems", "to": "MIDI Extractor", "artifact": "Per-stem .mid files", "contract": "workflows/music-reconstruction/README.md" },
+        { "from": "MIDI Extractor", "to": "Sonic Alchemist", "artifact": "Tempo-aligned arrangement", "contract": "workflows/music-reconstruction/example.md" }
+      ],
+      "stages": [
+        { "step": "1. Stem transcription", "owner": "Suno / MIDI tool", "tool_or_guide": "workflows/music-reconstruction/README.md", "acceptance": "Clean non-empty MIDI tracks" }
+      ]
+    },
+    {
+      "id": "hair-fur-textures",
+      "title": "Hair & Fur Textures (ModelForge HairLab -> Engine)",
+      "status": "exploratory",
+      "kind": "existing",
+      "source_component": "ArcoreModelForge HairLab",
+      "target_component": "Unreal / Godot Material",
+      "summary": "Generate version-pinned hair/fur texture maps in HairLab and hand off to engine shaders.",
+      "guide_path": "workflows/hair-fur-textures/README.md",
+      "tool_path": "workflows/hair-fur-textures/pin.json",
+      "handoffs": [
+        { "from": "ModelForge HairLab", "to": "Engine Consumer", "artifact": "Pinned texture maps", "contract": "workflows/hair-fur-textures/pin.json" }
+      ],
+      "stages": [
+        { "step": "1. Version check & export", "owner": "ModelForge", "tool_or_guide": "workflows/hair-fur-textures/README.md", "acceptance": "hairlab_version.py passes" }
+      ]
+    },
+    {
+      "id": "phaser-to-godot",
+      "title": "Phaser Web -> Godot 2D Migration",
+      "status": "scaffold",
+      "kind": "existing",
+      "source_component": "Phaser 3 / JS",
+      "target_component": "Godot 4.x (2D)",
+      "summary": "Assisted playbook for porting 2D Phaser web prototypes to Godot with input, scene, and contract verification.",
+      "guide_path": "workflows/phaser-to-godot/README.md",
+      "tool_path": "workflows/phaser-to-godot/example.md",
+      "handoffs": [
+        { "from": "Phaser Source", "to": "Godot 2D Project", "artifact": "Scene & gameplay port", "contract": "shared/migration-contract.md" }
+      ],
+      "stages": [
+        { "step": "1. Baseline & port", "owner": "Developer / Agent", "tool_or_guide": "workflows/phaser-to-godot/README.md", "acceptance": "Acceptance tests recorded per migration-contract.md" }
+      ]
+    },
+    {
+      "id": "godot-windows-to-android",
+      "title": "Godot Windows -> Android Mobile Port",
+      "status": "scaffold",
+      "kind": "existing",
+      "source_component": "Godot Windows",
+      "target_component": "Godot Android",
+      "summary": "Assisted playbook for adapting Windows Godot projects to Android touch controls, scaling, and APK packaging.",
+      "guide_path": "workflows/godot-windows-to-android/README.md",
+      "tool_path": "workflows/godot-windows-to-android/example.md",
+      "handoffs": [
+        { "from": "Godot Desktop", "to": "Godot Android Export", "artifact": "Touch UI + Android APK", "contract": "shared/migration-contract.md" }
+      ],
+      "stages": [
+        { "step": "1. Touch & export", "owner": "Developer / Agent", "tool_or_guide": "workflows/godot-windows-to-android/README.md", "acceptance": "Device playtest & build evidence" }
+      ]
+    },
+    {
+      "id": "godot-to-unreal",
+      "title": "Godot -> Unreal Engine 5.8 Migration",
+      "status": "exploratory",
+      "kind": "existing",
+      "source_component": "Godot 4.x",
+      "target_component": "Unreal 5.8.4 / C++",
+      "summary": "Exploratory playbook for translating Godot scenes, mechanics, and C# systems to Unreal Engine 5.8 C++.",
+      "guide_path": "workflows/godot-to-unreal/README.md",
+      "tool_path": "workflows/godot-to-unreal/example.md",
+      "handoffs": [
+        { "from": "Godot Project", "to": "Unreal 5.8 Project", "artifact": "C++ / Blueprint port", "contract": "shared/migration-contract.md" }
+      ],
+      "stages": [
+        { "step": "1. Architecture mapping", "owner": "Developer / Agent", "tool_or_guide": "workflows/godot-to-unreal/README.md", "acceptance": "Smoke check + playtest evidence" }
+      ]
+    }
+  ]
+}

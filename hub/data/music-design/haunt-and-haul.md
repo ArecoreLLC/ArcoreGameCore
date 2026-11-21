@@ -61,85 +61,108 @@ Stems requested: Drone, Percussion, Piano, Strings
 (resolution back to ambient loop tail)
 ```
 
+Files:
+- `X:/Projects/GameMusic/Haunt-and-Haul/midi/haunt-and-haul-take1-keyboard.mid` midi
+- `X:/Projects/GameMusic/Haunt-and-Haul/midi/haunt-and-haul-take1-guitar.mid` midi
+- `X:/Projects/GameMusic/Haunt-and-Haul/midi/haunt-and-haul-take1-synth.mid` midi
+- `X:/Projects/GameMusic/Haunt-and-Haul/midi/haunt-and-haul-take1-bass.mid` midi
+- `X:/Projects/GameMusic/Haunt-and-Haul/midi/haunt-and-haul-take1-drums.mid` midi
+- `X:/Projects/GameMusic/Haunt-and-Haul/midi/haunt-and-haul-take1-woodwinds.mid` midi
+- `X:/Projects/GameMusic/Haunt-and-Haul/midi/haunt-and-haul-take1-percussion.mid` midi
+- `X:/Projects/GameMusic/Haunt-and-Haul/midi/haunt-and-haul-take1-brass.mid` midi
+- `X:/Projects/GameMusic/Haunt-and-Haul/midi/haunt-and-haul-take1-strings.mid` midi
+
 Notes: Generated 2 takes via Suno MCP (v6) & analyzed via 0-credit audio-analysis:
 - Take 1 (adbde960-c222-49da-bbf3-293c6288b7b4): https://suno.com/song/adbde960-c222-49da-bbf3-293c6288b7b4 — 133.6s, detected 79.7 BPM, C minor, 41 bars, 11 sections, loop bars 9..41 (21.224s–120.714s), score=20.035
 - Take 2 (24a6876d-bd4b-481f-8009-d16d149b01c4): https://suno.com/song/24a6876d-bd4b-481f-8009-d16d149b01c4 — 142.96s, detected 79.5 BPM, C minor, 47 bars, 9 sections, loop bars 10..42 (28.605s–124.613s), score=20.085
 Selected for stem split: Take 2 (24a6876d-bd4b-481f-8009-d16d149b01c4) | 12-stem Auto Split group: stemgrp_cf8a07dc-b9b2-435f-82f7-c8f95e116573 (complete).
 
-## Haunt and Haul - alternate region (`haunt-and-haul-B`)
+## Haunt and Haul - alternate region (noir-mystery) (`haunt-and-haul-B`)
 
-Status: prompt_ready | Vocals: none | BPM: 72
+Status: prompt_ready | Vocals: none | BPM: 88
 
 **Style prompt**
 
 ```
-Dark ambient horror score, dread and unease, creepy nocturnal museum heist atmosphere, Strings, Drone, Piano, Percussion, Cello, 72 BPM, different key, same instrumentation, new motif, instrumental, no vocals, dynamic game soundtrack score, seamless looping structure
+Moody nocturnal jazz-noir and suspense heist score, clean mix, dry studio recording, minimalist frequency separation, sleek, shadowy and intriguing, creepy nocturnal museum heist atmosphere, Upright Bass, Piano, Tenor Saxophone, Drums, Strings, Vibraphone, 88 BPM, strict quantize, steady 4/4 rhythm, different key, blended sub-archetype palette, new motif, instrumental
 ```
 
 **Instruments and Advanced Split stems**
 
 | Instrument | Stem category | Keep |
 |---|---|---|
-| Strings | Strings | yes |
-| Drone | Drone | yes |
+| Upright Bass | Upright Bass | yes |
 | Piano | Piano | yes |
-| Percussion | Percussion | yes |
-| Cello | Cello | no |
+| Tenor Saxophone | Tenor Saxophone | yes |
+| Drums | Drums | yes |
+| Strings | Strings | no |
+| Vibraphone | Vibraphone | no |
 
-Stems requested: Drone, Percussion, Piano, Strings
+Stems requested: Drums, Piano, Tenor Saxophone, Upright Bass
 
 **Lyrics / section structure**
 
 ```
-[Intro]
-(sparse ambient layer, quiet pulse)
-[Verse 1 - Exploration Layer]
-(sparse detuned Piano, low Drone, silence between notes)
-[Pre-Chorus - Tension Build]
-(tremolo Strings rising, heartbeat Bass pulse)
-[Chorus - Combat Layer]
-(violent Strings stabs, pounding Percussion, low Cello)
-[Bridge - Danger / Boss State]
-(dissonant Piano cluster hits, relentless metallic Percussion)
-[Outro]
-(resolution back to ambient loop tail)
+[Instrumental]
+[Tempo: 88 BPM, strict quantize, steady rhythm]
+
+[Intro - Bass Stem Only]
+[Deep pulsing Upright Bass, clean low-end drone, minimal]
+
+[Part 1 - Add Percussion Stem]
+[sneaky Upright Bass walk, sparse minor Piano chords, brush Drums, steady 4/4 rhythm]
+
+[Part 2 - Add Melody Stem]
+[moody Vibraphone shimmer, muted Strings tension, high frequency separation, dry studio]
+
+[Part 3 - Add Combat & Climax Layer]
+[smoky Tenor Saxophone lead, tight snare Drums, driving Upright Bass; urgent Piano ostinato, dramatic Strings stabs]
+
+[Outro - Strip Back]
+[Sub-bass pulse and distant percussion fade out]
 ```
 
-## Haunt and Haul - late-game variation (`haunt-and-haul-C`)
+## Haunt and Haul - late-game variation (cosmic-ambient + mech-industrial) (`haunt-and-haul-C`)
 
-Status: prompt_ready | Vocals: none | BPM: 90
+Status: prompt_ready | Vocals: none | BPM: 104
 
 **Style prompt**
 
 ```
-Dark ambient horror score, dread and unease, creepy nocturnal museum heist atmosphere, Strings, Drone, Piano, Percussion, Cello, 90 BPM, darker harmony, same instrumentation, motif reprised, instrumental, no vocals, dynamic game soundtrack score, seamless looping structure
+Ethereal sci-fi orbital ambient and crystalline synth score blended with Heavy mechanical industrial breakbeat and modular synth score, clean mix, dry studio recording, minimalist frequency separation, vast, wondrous and weightless, creepy nocturnal museum heist atmosphere, Synth Pad, Arpeggiator, Piano, Strings, Synth Bass, Bells, Percussion, 104 BPM, strict quantize, steady 4/4 rhythm, darker harmony, hybrid escalation palette, motif reprised, instrumental
 ```
 
 **Instruments and Advanced Split stems**
 
 | Instrument | Stem category | Keep |
 |---|---|---|
-| Strings | Strings | yes |
-| Drone | Drone | yes |
+| Synth Pad | Synth Pad | yes |
+| Arpeggiator | Arpeggiator | yes |
 | Piano | Piano | yes |
-| Percussion | Percussion | yes |
-| Cello | Cello | no |
+| Strings | Strings | yes |
+| Synth Bass | Synth Bass | no |
+| Bells | Bells | no |
 
-Stems requested: Drone, Percussion, Piano, Strings
+Stems requested: Arpeggiator, Piano, Strings, Synth Pad
 
 **Lyrics / section structure**
 
 ```
-[Intro]
-(sparse ambient layer, quiet pulse)
-[Verse 1 - Exploration Layer]
-(sparse detuned Piano, low Drone, silence between notes)
-[Pre-Chorus - Tension Build]
-(tremolo Strings rising, heartbeat Bass pulse)
-[Chorus - Combat Layer]
-(violent Strings stabs, pounding Percussion, low Cello)
-[Bridge - Danger / Boss State]
-(dissonant Piano cluster hits, relentless metallic Percussion)
-[Outro]
-(resolution back to ambient loop tail)
+[Instrumental]
+[Tempo: 104 BPM, strict quantize, steady rhythm]
+
+[Intro - Bass Stem Only]
+[Deep pulsing Synth Bass, clean low-end drone, minimal]
+
+[Part 1 - Add Percussion Stem]
+[evolving Synth Pad, resonant Piano notes, soft Bells, steady 4/4 rhythm]
+
+[Part 2 - Add Melody Stem]
+[shimmering Arpeggiator pulse, deep Synth Bass swell, high frequency separation, dry studio]
+
+[Part 3 - Add Combat & Climax Layer]
+[soaring Strings over sequenced Arpeggiator and Synth Bass; urgent crystalline Bells, dramatic Synth Pad swells]
+
+[Outro - Strip Back]
+[Sub-bass pulse and distant percussion fade out]
 ```
