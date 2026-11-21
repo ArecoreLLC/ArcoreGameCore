@@ -70,3 +70,13 @@ staging and the framing guard are off by default, so each hand-framed shot shows
 `tools/tests/test_game_music_video.py` covers the tool: marker parsing, the shared override, mix and preview
 commands, and the vendor lock. The GDScript base is exercised by the consuming game's dry runs. There is no
 GameCore-side Godot test project.
+
+## Optional capture lighting
+
+`capture_lighting.gd` is a small engine-specific sampler for ArcoreCut-exported `gamecore.lighting.v1` plans. Load the versioned plan, then call `sample(song_seconds, night_amount)` with the recorder clock. Apply `sunlight` and `ambient` multipliers to saved time-of-day baseline values, never multiply the previous frame’s values. Multiply the original Environment `tonemap_exposure` once by the profile’s `capture_exposure` for a video-only overall look. Keep gameplay defaults unchanged unless explicitly adopting the look.
+
+Scene overrides use exclusive integer frame ranges and rational FPS; blends are deterministic smoothstep transitions from the preceding look at each range boundary. Prefer ranges at least as long as the blend. `preserve_dusk_night` fades scene changes back to neutral over night amount 0–0.55; exposure remains global. This helper does not alter shot clocks, music, shadow algorithms, geometry or camera paths. The game adapter remains responsible for loading the world and applying the sampled values. Plans are metadata, never executable script input.
+
+Engine acceptance: `Godot_console.exe --headless --path <Godot project> --script <absolute path to tests/capture_lighting_test.gd>`. Capture validation must compare original frame counts, exact shot markers and continuous audio; do not infer gameplay equivalence from the sampler test.
+
+Optional `capture_fill.gd` is a single shadow-free SpotLight3D following the active camera. Call `configure(character_roots, unused_layer)` (default layer 20), then set `light_energy` from the sampled `camera_fill` (0–1, neutral 0). Only opted-in character geometry receives the fill; call `release_targets()` while the scene is alive before removing the fill to restore mesh layers (do not mutate renderer layers during tree teardown). The sampler’s dusk/night protection returns fill to zero. Adapters must reserve an unused render layer and keep camera cull masks compatible. The fill adds no shadow algorithm changes and leaves the environment untouched.

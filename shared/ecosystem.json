@@ -318,6 +318,7 @@
           "type": "none"
         },
         "tools": [
+          "video_lighting",
           "video_captions",
           "video_caption_export",
           "video_scripts",
@@ -335,6 +336,7 @@
           "video_workflows"
         ],
         "write_tools": [
+          "video_lighting",
           "video_captions",
           "video_caption_export",
           "video_scripts",
