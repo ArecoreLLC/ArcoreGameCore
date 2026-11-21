@@ -4,6 +4,7 @@ mod roadmap;
 mod store;
 mod iteration;
 mod mcp;
+mod video_bridge;
 mod music;
 mod pipelines;
 use serde_json::{json, Value};

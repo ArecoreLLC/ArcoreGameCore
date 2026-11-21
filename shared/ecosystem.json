@@ -68,20 +68,60 @@
         "packages/node-registry/src/index.ts"
       ],
       "runtime": "workflow-designer"
+    },
+    {
+      "id": "arcore-cut",
+      "root": "../ArcoreCut",
+      "role": "Rust/Tauri video production workspace, SQLite timelines, lossless scene validation and MCP",
+      "required_files": [
+        "src-tauri/Cargo.toml",
+        "src-tauri/src/api.rs"
+      ],
+      "runtime": "rust-tauri"
+    },
+    {
+      "id": "photo-master",
+      "root": "../arcorephotomaster",
+      "role": "Non-destructive photo editing and photo-derived texture sets",
+      "required_files": [
+        "Cargo.toml",
+        "crates/photo-mcp/src/main.rs"
+      ],
+      "runtime": "rust-tauri"
     }
   ],
   "mcp": {
     "hub": {
       "id": "gamecore-hub",
       "status": "media-implemented-wizards-planned",
-      "command": ["hub/src-tauri/target/release/gamecore-library.exe", "--mcp"],
-      "implemented_tools": ["list_projects", "list_media", "import_media"],
+      "command": [
+        "hub/src-tauri/target/release/gamecore-library.exe",
+        "--mcp"
+      ],
+      "implemented_tools": [
+        "list_projects",
+        "list_media",
+        "import_media",
+        "video_production"
+      ],
       "role": "The only MCP server agents register. It exposes wizard-level tools and calls the servers below itself, with typed arguments and no LLM in the loop.",
       "transport": "stdio",
       "tools": [
-        {"name": "list_projects", "writes": false, "purpose": "List local catalog projects; implemented"},
-        {"name": "list_media", "writes": false, "purpose": "Read media and import-time Git iteration tags; implemented"},
-        {"name": "import_media", "writes": true, "purpose": "Import local media as draft with automatic screenshot iteration tags; implemented"},
+        {
+          "name": "list_projects",
+          "writes": false,
+          "purpose": "List local catalog projects; implemented"
+        },
+        {
+          "name": "list_media",
+          "writes": false,
+          "purpose": "Read media and import-time Git iteration tags; implemented"
+        },
+        {
+          "name": "import_media",
+          "writes": true,
+          "purpose": "Import local media as draft with automatic screenshot iteration tags; implemented"
+        },
         {
           "name": "list_wizards",
           "writes": false,
@@ -126,6 +166,11 @@
           "name": "publish_to_flow",
           "writes": true,
           "purpose": "Create or update the matching ArcoreFlow workflow for a template or run"
+        },
+        {
+          "name": "video_production",
+          "writes": true,
+          "purpose": "Registry-routed ArcoreCut production operations; tool returns persistent jobs for media work"
         }
       ]
     },
@@ -235,6 +280,82 @@
           "update_workflow",
           "publish_workflow",
           "generate_workflow_from_wizard"
+        ]
+      },
+      {
+        "id": "arcore-cut",
+        "label": "ArcoreCut",
+        "component": "arcore-cut",
+        "transport": "stdio",
+        "command": [
+          "src-tauri/target/debug/arcore-cut.exe",
+          "--mcp"
+        ],
+        "connection": "Build ArcoreCut first. GameCore video_production routes calls here; GAMEVIDEO_ROOT optionally selects the media library.",
+        "auth": {
+          "type": "none"
+        },
+        "tools": [
+          "video_projects",
+          "video_project",
+          "video_import",
+          "video_timing",
+          "video_mix",
+          "video_validate",
+          "video_render",
+          "video_replace",
+          "video_jobs",
+          "video_cancel",
+          "video_workflows"
+        ],
+        "write_tools": [
+          "video_import",
+          "video_timing",
+          "video_mix",
+          "video_validate",
+          "video_render",
+          "video_replace",
+          "video_cancel",
+          "video_workflows"
+        ]
+      },
+      {
+        "id": "photo-master",
+        "label": "Arcore PhotoMaster",
+        "component": "photo-master",
+        "transport": "stdio",
+        "command": [
+          "target/debug/photo-mcp.exe",
+          "--workspace",
+          "X:/Projects/GameVideo"
+        ],
+        "connection": "Headless workspace for production images and texture sets. Session-based editing needs a persistent provider connection; no automatic engine-material import is claimed.",
+        "auth": {
+          "type": "none"
+        },
+        "tools": [
+          "studio_state",
+          "open_image",
+          "set_adjustments",
+          "transform",
+          "preview",
+          "save_project",
+          "export_image",
+          "texture_source",
+          "set_texture_selection",
+          "set_texture_settings",
+          "texture_preview",
+          "export_textures"
+        ],
+        "write_tools": [
+          "open_image",
+          "set_adjustments",
+          "transform",
+          "save_project",
+          "export_image",
+          "set_texture_selection",
+          "set_texture_settings",
+          "export_textures"
         ]
       }
     ]

@@ -12,7 +12,7 @@ extends SceneTree
 ## a recording write the player's save; disable saving in _load_world().
 ## Vendored copy: do not edit in the game; change it in ArcoreGameCore and
 ## re-run `python tools/game_music_video.py vendor`.
-const VERSION := "0.7.0"
+const VERSION := "0.7.1"
 const FPS := 30
 var MIN_SHOT := 8.5          # seconds; cuts land on caption starts at least this far apart
 var MAX_SHOT := 16.0         # songs without captions get a cut roughly this often
@@ -572,6 +572,7 @@ func play_shots(shots: Array[Callable],from: float,last_shot: Callable) -> void:
     var used: Dictionary={}
     for until in cuts:
         var started_at := t()
+        var started_frame := Engine.get_process_frames()-song_frame
         var shot: Callable=last_shot if i==cuts.size()-1 else lyric_shot(started_at,until,used)
         if not shot.is_valid():
             shot=shots[cycle%shots.size()];cycle+=1
@@ -580,6 +581,7 @@ func play_shots(shots: Array[Callable],from: float,last_shot: Callable) -> void:
         await wait_until(until)
         var blocked := 100.0*blocked_samples/maxf(1,shot_samples)
         print("MUSIC_VIDEO_SHOT %d %.1f-%.1f blocked=%.0f%%%s"%[i,started_at,until,blocked," CHECK" if blocked>20 else ""])
+        print("MUSIC_VIDEO_SHOT_FRAMES %d %d %d"%[i,started_frame,Engine.get_process_frames()-song_frame])
         i+=1
 ## 0.6.0: a planned edit. Rows are [start_seconds, Callable(until)]; each shot runs to the next row's start and
 ## the last to the end of the song. Rows whose start has already passed (a title sequence ran long) are skipped.
@@ -588,12 +590,14 @@ func play_plan(plan: Array) -> void:
         var until: float=float(plan[i+1][0]) if i+1<plan.size() else song_length+1.0
         if t()>=until-.5:continue
         var started_at := t()
+        var started_frame := Engine.get_process_frames()-song_frame
         blocked_samples=0;shot_samples=0;blocked_time=0;staged_this_shot=false;measure_unguarded=true
         reset_guard()   # shots that do not cut (a vehicle under way) still start with a fresh guard
         await (plan[i][1] as Callable).call(until)
         await wait_until(until)
         var blocked := 100.0*blocked_samples/maxf(1,shot_samples)
         print("MUSIC_VIDEO_SHOT %d %.1f-%.1f blocked=%.0f%%%s"%[i,started_at,until,blocked," CHECK" if blocked>20 else ""])
+        print("MUSIC_VIDEO_SHOT_FRAMES %d %d %d"%[i,started_frame,Engine.get_process_frames()-song_frame])
     restore_foreground()
 ## The first unused lyric shot whose keyword appears in a caption line starting inside this cut, or
 ## an invalid Callable (the cut then takes the next shot of the song's list).

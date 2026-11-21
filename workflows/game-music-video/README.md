@@ -191,3 +191,11 @@ check. Batch scripts should stop on exit code 3, not move on to the next song.
 - Fixture flags used to reach later areas are the game's responsibility. A fixture that bypasses a rule (for
   example, taking a ship's wheel) should log a warning, as the example does.
 - `stages` stay `script_only` until a second game produces videos with the tool unmodified.
+
+## ArcoreCut editing handoff
+
+For retained originals, frame-exact scene splits, working masters and continuous
+music/effects mixing, use the sibling ArcoreCut application and the
+[video production contract](../../shared/video-production-contract.md). Recorder
+0.7.1 adds exact frame markers without changing the shot clock or animation plan.
+Keep media under `X:/Projects/GameVideo/<Game>/`; workflow code remains here.

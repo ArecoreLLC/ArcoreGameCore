@@ -1,10 +1,11 @@
-//! Local stdio media tools for the GameCore hub; no downstream connections.
+//! Local media tools and registry-routed video production tools.
 use crate::store::Store;
 use serde_json::{json, Value};
 use std::io::{BufRead, Write};
 
 fn definitions() -> Value {
     json!([
+        {"name":"video_production","description":"Call ArcoreCut through the GameCore registry. First use operation=tools/list with arguments={} to discover full typed schemas. Operations: video_projects, video_project, video_import, video_timing, video_mix, video_validate, video_render, video_replace, video_jobs, video_cancel, video_workflows. Long media operations return persistent jobs. Edits require project_id and expected_revision; read video_project first. Media remains in GameVideo.","inputSchema":{"type":"object","properties":{"operation":{"type":"string"},"arguments":{"type":"object"}},"required":["operation","arguments"],"additionalProperties":false}},
         {"name":"list_projects","description":"List GameCore project IDs, names and source folders.","inputSchema":{"type":"object","properties":{},"additionalProperties":false}},
         {"name":"list_media","description":"List a game's media including immutable iteration observations. basis=import records the checkout at import, not the image's capture/build revision. Null iteration means legacy/unknown.","inputSchema":{"type":"object","properties":{"project_id":{"type":"string"}},"required":["project_id"],"additionalProperties":false}},
         {"name":"import_media","description":"Copy local media into GameCore as a draft. Screenshots automatically record UTC date, full Git HEAD and modified state from the selected game's folder at import. Does not capture a game, commit changes or prove the pictured build. Originals are preserved.","inputSchema":{"type":"object","properties":{"project_id":{"type":"string"},"path":{"type":"string"},"kind":{"type":"string","enum":["screenshot","video","trailer"]}},"required":["project_id","path","kind"],"additionalProperties":false}}
@@ -33,6 +34,13 @@ pub fn respond(store: &Store, request: Value) -> Option<Value> {
         Some("initialize") => json!({"protocolVersion":"2024-11-05","capabilities":{"tools":{}},"serverInfo":{"name":"gamecore-hub","version":env!("CARGO_PKG_VERSION")}}),
         Some("ping") => json!({}),
         Some("tools/list") => json!({"tools":definitions()}),
+        Some("tools/call") if request["params"]["name"]=="video_production" => {
+            let args=&request["params"]["arguments"];
+            match crate::video_bridge::call(args["operation"].as_str().unwrap_or(""),&args["arguments"]) {
+                Ok(result)=>result,
+                Err(error)=>json!({"content":[{"type":"text","text":error}],"isError":true})
+            }
+        },
         Some("tools/call") => match call(store, &request["params"]) {
             Ok(value) => json!({"content":[{"type":"text","text":value.to_string()}],"isError":false}),
             Err(error) => json!({"content":[{"type":"text","text":error}],"isError":true}),

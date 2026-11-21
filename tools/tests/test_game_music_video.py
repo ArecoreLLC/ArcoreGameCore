@@ -115,7 +115,7 @@ class GameMusicVideoTests(unittest.TestCase):
             lock = gmv.vendor(project)
             self.assertEqual([f["name"] for f in lock["files"]], ["music_video_recorder.gd", "asset_showcase.gd"])
             self.assertEqual(lock["files"][1]["version"], "0.3.0")
-            self.assertEqual(lock["version"], "0.7.0")
+            self.assertEqual(lock["version"], "0.7.1")
 
     def test_gpu_resets_parse_powershell_lines(self):
         class Out:
