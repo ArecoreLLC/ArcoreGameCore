@@ -26,7 +26,8 @@ class ScaffoldValidationTests(unittest.TestCase):
         # Root README links to the desktop hub. Keep the link target in the
         # scaffold fixture without copying dependencies, builds or user media.
         (self.root / 'hub').mkdir()
-        shutil.copy2(source / 'hub/README.md', self.root / 'hub/README.md')
+        for document in ('README.md', 'ANIMATION.md'):
+            shutil.copy2(source / 'hub' / document, self.root / 'hub' / document)
 
     def mutate_index(self, change):
         path = self.root / 'workflows/index.json'
