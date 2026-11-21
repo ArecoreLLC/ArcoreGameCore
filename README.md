@@ -75,4 +75,12 @@ Point it at any game with `--manifest=<path>`.
 
 ## Connect the Arcore ecosystem
 
+[Arcore Animate inventory and pipeline](../ArcoreAnimate/docs/GAMECORE_PIPELINE.md)
+documents the sibling animation studio, its use of Drawing Atelier's Python
+environment, game-owned reference captures and shared contracts. Video tracking
+and corrections are implemented there, with a [Poofy-specific body retarget and
+rendered preview](../ArcoreAnimate/docs/POOFY_RETARGET.md) preserving authored wings.
+General rig support and GameCore pipeline/wizard registration remain planned.
+These links require the sibling checkout.
+
 Use the [game project integration workflow](workflows/game-project-integration/README.md) to connect ModelForge, SoundCore, WorldFramework and an engine-specific game. Run `python tools/ecosystem.py --project <game>/Config/ArcoreProject.json` for read-only dependency checks. OpenWorld remains a reference consumer; existing Godot paths remain in place. This is dependency wiring, not a completed runtime integration.
