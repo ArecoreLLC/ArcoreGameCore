@@ -296,6 +296,7 @@
           "type": "none"
         },
         "tools": [
+          "video_scripts",
           "video_app",
           "video_projects",
           "video_project",
@@ -310,6 +311,7 @@
           "video_workflows"
         ],
         "write_tools": [
+          "video_scripts",
           "video_app",
           "video_import",
           "video_timing",
