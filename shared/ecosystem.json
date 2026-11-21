@@ -88,6 +88,16 @@
         "crates/photo-mcp/src/main.rs"
       ],
       "runtime": "rust-tauri"
+    },
+    {
+      "id": "arcore-animate",
+      "root": "../ArcoreAnimate",
+      "role": "Detailed animation authoring, move library, choreography and app-owned workers",
+      "required_files": [
+        "studio/mcp_server.py",
+        "studio/server.py"
+      ],
+      "runtime": "animation-service"
     }
   ],
   "mcp": {
@@ -102,7 +112,9 @@
         "list_projects",
         "list_media",
         "import_media",
-        "video_production"
+        "video_production",
+        "animation_production",
+        "animation_pipeline"
       ],
       "role": "The only MCP server agents register. It exposes wizard-level tools and calls the servers below itself, with typed arguments and no LLM in the loop.",
       "transport": "stdio",
@@ -171,6 +183,16 @@
           "name": "video_production",
           "writes": true,
           "purpose": "Registry-routed ArcoreCut production operations; tool returns persistent jobs for media work"
+        },
+        {
+          "name": "animation_production",
+          "writes": true,
+          "purpose": "Registry-routed detailed Animate operations"
+        },
+        {
+          "name": "animation_pipeline",
+          "writes": true,
+          "purpose": "Persistent GameCore stage orchestration using Animate jobs"
         }
       ]
     },
@@ -360,6 +382,57 @@
           "set_texture_selection",
           "set_texture_settings",
           "export_textures"
+        ]
+      },
+      {
+        "id": "arcore-animate",
+        "label": "ArcoreAnimate",
+        "component": "arcore-animate",
+        "transport": "stdio",
+        "command": [
+          "../ArcoreGameCore/tools/drawing-studio/.venv-vision/Scripts/python.exe",
+          "studio/mcp_server.py"
+        ],
+        "connection": "GameCore animation_production routes here. animate_app starts or inspects the local Animate service; service discovery stays in LocalAppData/ArcoreAnimate/service.json. Detailed jobs remain in Animate.",
+        "auth": {
+          "type": "none"
+        },
+        "tools": [
+          "animate_app",
+          "animate_companion_pack",
+          "animate_import_corrections",
+          "animate_state",
+          "animate_history",
+          "animate_save_brief",
+          "animate_add_take",
+          "animate_import_takes",
+          "animate_save_anchors",
+          "animate_tracks",
+          "animate_frame",
+          "animate_guide",
+          "animate_rom",
+          "animate_save_rom",
+          "animate_retarget_report",
+          "animate_moves",
+          "animate_save_moves",
+          "animate_start_job",
+          "animate_jobs",
+          "animate_cancel_job",
+          "animate_library",
+          "animate_artifact"
+        ],
+        "write_tools": [
+          "animate_app",
+          "animate_save_brief",
+          "animate_add_take",
+          "animate_import_takes",
+          "animate_save_anchors",
+          "animate_save_rom",
+          "animate_save_moves",
+          "animate_start_job",
+          "animate_cancel_job",
+          "animate_companion_pack",
+          "animate_import_corrections"
         ]
       }
     ]

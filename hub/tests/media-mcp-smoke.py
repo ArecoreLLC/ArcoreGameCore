@@ -30,7 +30,7 @@ with tempfile.TemporaryDirectory(prefix="gamecore-mcp-") as tmp:
     ])
     assert len(initial) == 2
     assert initial[0]["result"]["serverInfo"]["name"] == "gamecore-hub"
-    assert {t["name"] for t in initial[1]["result"]["tools"]} == {"list_projects", "list_media", "import_media", "video_production"}
+    assert {t["name"] for t in initial[1]["result"]["tools"]} == {"list_projects", "list_media", "import_media", "video_production", "animation_production", "animation_pipeline"}
     # Seed a generic project only in this isolated library.
     import sqlite3
     with closing(sqlite3.connect(root / "library/catalog.sqlite3")) as db:
