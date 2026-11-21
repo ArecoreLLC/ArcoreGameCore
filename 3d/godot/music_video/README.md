@@ -80,3 +80,50 @@ Scene overrides use exclusive integer frame ranges and rational FPS; blends are 
 Engine acceptance: `Godot_console.exe --headless --path <Godot project> --script <absolute path to tests/capture_lighting_test.gd>`. Capture validation must compare original frame counts, exact shot markers and continuous audio; do not infer gameplay equivalence from the sampler test.
 
 Optional `capture_fill.gd` is a single shadow-free SpotLight3D following the active camera. Call `configure(character_roots, unused_layer)` (default layer 20), then set `light_energy` from the sampled `camera_fill` (0–1, neutral 0). Only opted-in character geometry receives the fill; call `release_targets()` while the scene is alive before removing the fill to restore mesh layers (do not mutate renderer layers during tree teardown). The sampler’s dusk/night protection returns fill to zero. Adapters must reserve an unused render layer and keep camera cull masks compatible. The fill adds no shadow algorithm changes and leaves the environment untouched.
+
+
+## Live lighting studio (Godot 4, 3D)
+
+`lighting_studio.gd` provides the shared Godot UI and acknowledged MCP mailbox. It uses the same
+`gamecore.lighting.v1` sampler as recording. ArcoreCut owns saved profiles in SQLite; slider changes
+are drafts until **Save lighting to ArcoreCut**. Exposure is global; fill edits the selected default
+or existing scene override. The sample frame selects profile timing, **not gameplay simulation time**.
+Day/dusk/night is a preview condition; the saved profile retains dusk/night protection.
+
+To integrate another game, start with `examples/lighting_studio/project.godot` and
+`examples/lighting_studio/studio_adapter.gd`. This runnable second-game example uses procedural
+geometry only. The game adapter is a SceneTree script that loads a safe scene, configures a camera
+and optional character-only `capture_fill.gd`, then adds the shared studio and calls:
+
+```gdscript
+studio.configure(OS.get_environment("ARCORE_STUDIO_SESSION"), apply_look, set_day, night_amount)
+```
+
+The three callbacks are the entire game-facing contract:
+
+- `apply_look(settings: Dictionary, exposure: float)`: apply sunlight, ambient and camera_fill
+  to saved original values, plus original Environment tonemap_exposure times exposure. Never
+  multiply last frame's values. Run the game's time-of-day system after these baseline updates.
+- `set_day(name: String)`: choose `day`, `dusk` or `night` immediately in the game's sky system.
+- `night_amount() -> float`: return 0 for day, 0.55 for dusk and 1 for night (continuous values work).
+
+Keep game names, assets, scene setup, poses, camera positioning and save isolation in the adapter.
+Reserve an unused mesh layer for character fill. Disable autosave before scene setup. Do not restore
+mesh layers during scene teardown. The studio's UI runs while paused; the adapter decides whether
+the world should run. No new Godot addon, HTTP server or editor plugin is needed.
+
+Use the GameCore hub `video_production` operation `video_lighting_studio`. First `open` specifies
+`project_id`, `godot` executable, `game_project` folder and `adapter` script; the connection is
+remembered per production. The native ArcoreCut lighting panel exposes these same connection fields.
+`status` returns the actual Godot heartbeat, draft `generation`, profile, dirty flag and effective look.
+`update` accepts `exposure` (0.1-2), `camera_fill` (0-1), `scope` (-1 for default, otherwise override
+index), sample `frame`, `time_of_day` and `compare` (original game look). `update`, `save` and `reload`
+require `expected_generation`. Poll `status` with returned `command_id` until Godot acknowledges it;
+queued does not mean applied. `save` also checks loaded lighting version and timeline revision.
+`reload` loads the latest SQLite profile and discards draft edits. `screenshot` captures the engine
+viewport including studio controls; `close` shuts down only that preview. Media is never modified.
+
+Session plans, commands, heartbeat, screenshots and logs live beneath the production's
+`lighting/studio/<session>` folder in GameVideo. Local file IPC keeps slider edits in-process;
+only Save invokes the Rust backend. This first implementation targets local desktop Godot 4,
+not Godot web exports, remote hosts or arbitrary full-scene timeline scrubbing.
