@@ -26,6 +26,13 @@ belong in this registry, receipts, or workflow.
 4. Save reviewable private upload metadata using `youtube_prepare`. Queue a
    private upload with `youtube_queue` only when requested. Public release
    remains a separate owner decision. Check `youtube_upload_status` afterwards.
+5. After the owner explicitly approves public release, confirm the publication's
+   `video_id` and `channel_id` with `youtube_upload_status`. Call
+   `youtube_approve_public` with that `publication_id`, exact `video_id`, and
+   `approve_public=true`. `sync_playlist` defaults to true. This changes the
+   existing upload's visibility without rendering or uploading again. Check
+   `youtube_upload_status` again for `status=public` and the expected channel.
+   Private-upload approval alone never authorizes this step.
 
 For newly rendered Showcase publications, `branding_profile=null` explicitly
 overrides a project's splash default; omission inherits the project setting.
