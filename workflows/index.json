@@ -318,6 +318,20 @@
       "specs": [
         "3d/godot/world_life/README.md"
       ]
+    },
+    {
+      "id": "svg-to-relief-sprites",
+      "status": "scaffold",
+      "dimensions": [
+        "2d",
+        "3d"
+      ],
+      "guide": "workflows/svg-to-relief-sprites/README.md",
+      "example": "workflows/svg-to-relief-sprites/example.md",
+      "shared": [
+        "shared/migration-contract.md",
+        "shared/ecosystem.json"
+      ]
     }
   ]
 }

@@ -238,12 +238,15 @@
           "blender_render",
           "create_design_iteration",
           "library_overview",
-          "list_models"
+          "list_models",
+          "import_files",
+          "blender_status"
         ],
         "write_tools": [
           "blender_run",
           "create_design_iteration",
-          "check_model"
+          "check_model",
+          "import_files"
         ],
         "discovery": {
           "file": "~/.modelvault/settings.json",
