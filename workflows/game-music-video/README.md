@@ -20,6 +20,11 @@ commands, timings and lessons.
 
 ## Pipeline
 
+Finished masters can be handed to the Fleet-hosted Showcase catalog and Games
+YouTube publishing plan through the hub's `showcase_production` MCP tool.
+See [the exact-master handoff](showcase.md) for discovery, validation receipts,
+and bypassing an additional studio splash when branding is already in the video.
+
 ```mermaid
 flowchart LR
   A[1 Vendor recorder] --> B[2 Write adapter]
