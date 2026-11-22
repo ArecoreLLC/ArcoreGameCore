@@ -5,6 +5,8 @@ use std::io::{BufRead, Write};
 
 fn definitions() -> Value {
     json!([
+        {"name":"showcase_production","description":"Showcase on Fleet: discover typed tools with operation=tools/list. Import exact approved masters with finished_video_import (no extra splash), then youtube_prepare for the Games channel. youtube_queue uploads privately only when requested. Existing protected credentials stay in the provider.","inputSchema":{"type":"object","properties":{"operation":{"type":"string"},"arguments":{"type":"object"}},"required":["operation","arguments"],"additionalProperties":false}},
+        {"name":"model_production","description":"ModelForge operations through the GameCore registry. Discover typed schemas with operation=tools/list. Local app credentials are discovered privately; no direct downstream agent registration.","inputSchema":{"type":"object","properties":{"operation":{"type":"string"},"arguments":{"type":"object"}},"required":["operation","arguments"],"additionalProperties":false}},
         {"name":"animation_production","description":"Detailed Animate work routed through the GameCore registry. First operation=tools/list, arguments={}. Animate owns cases, anchors, provenance, ROM, versioned moves, composition, job workers and previews. Jobs persist after this call. Use animate_app to start/inspect the service. Use animation_pipeline for tracked multi-stage orchestration.","inputSchema":{"type":"object","properties":{"operation":{"type":"string"},"arguments":{"type":"object"}},"required":["operation","arguments"],"additionalProperties":false}},
         {"name":"animation_pipeline","description":"GameCore-owned persistent animation pipeline. action=start requires case_id and stages (track/refine/retarget/bake_moves). For bake_moves provide moves_revision and optional sequence. action=status polls and advances completed stages; action=cancel stops its active worker. The returned run_id is durable.","inputSchema":{"type":"object","properties":{"action":{"type":"string","enum":["start","status","cancel"]},"run_id":{"type":"string"},"case_id":{"type":"string"},"stages":{"type":"array","items":{"type":"string","enum":["track","refine","retarget","bake_moves"]}},"moves_revision":{"type":"string"},"sequence":{"type":"array","items":{"type":"string"}}},"required":["action"],"additionalProperties":false}},
         {"name":"video_production","description":"Call ArcoreCut through the GameCore registry. First use operation=tools/list with arguments={} to discover full typed schemas. Operations: video_projects, video_project, video_import, video_timing, video_mix, video_validate, video_render, video_replace, video_jobs, video_cancel, video_workflows. Long media operations return persistent jobs. Edits require project_id and expected_revision; read video_project first. Media remains in GameVideo.","inputSchema":{"type":"object","properties":{"operation":{"type":"string"},"arguments":{"type":"object"}},"required":["operation","arguments"],"additionalProperties":false}},
@@ -41,6 +43,14 @@ pub fn respond(store: &Store, request: Value) -> Option<Value> {
                 Ok(value)=>json!({"content":[{"type":"text","text":value.to_string()}],"isError":false}),
                 Err(error)=>json!({"content":[{"type":"text","text":error}],"isError":true}),
             }
+        },
+        Some("tools/call") if request["params"]["name"]=="showcase_production" => {
+            let args=&request["params"]["arguments"];
+            match crate::video_bridge::call_provider("showcase",args["operation"].as_str().unwrap_or(""),&args["arguments"]) {Ok(result)=>result,Err(error)=>json!({"content":[{"type":"text","text":error}],"isError":true})}
+        },
+        Some("tools/call") if request["params"]["name"]=="model_production" => {
+            let args=&request["params"]["arguments"];
+            match crate::video_bridge::call_provider("model-forge",args["operation"].as_str().unwrap_or(""),&args["arguments"]) {Ok(result)=>result,Err(error)=>json!({"content":[{"type":"text","text":error}],"isError":true})}
         },
         Some("tools/call") if request["params"]["name"]=="animation_production" => {
             let args=&request["params"]["arguments"];

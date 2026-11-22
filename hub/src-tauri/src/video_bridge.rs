@@ -12,7 +12,7 @@ pub fn call(operation: &str, arguments: &Value) -> Result<Value, String> {
 }
 
 pub fn call_provider(provider: &str, operation: &str, arguments: &Value) -> Result<Value, String> {
-    if !["arcore-cut", "arcore-animate"].contains(&provider) { return Err("Unsupported provider".into()); }
+    if !["arcore-cut", "arcore-animate", "model-forge", "showcase"].contains(&provider) { return Err("Unsupported provider".into()); }
     let root = std::env::var_os("GAMECORE_ROOT")
         .map(PathBuf::from)
         .unwrap_or_else(|| PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../.."));
@@ -35,6 +35,15 @@ pub fn call_provider(provider: &str, operation: &str, arguments: &Value) -> Resu
     {
         return Err("Operation is not a registered provider tool".into());
     }
+    if server["transport"]=="streamable-http" {
+        let mut command=Command::new("python");
+        #[cfg(windows)] {use std::os::windows::process::CommandExt;command.creation_flags(0x08000000);}
+        let mut child=command.arg(root.join("tools/mcp_provider.py")).arg(provider).arg(operation).stdin(Stdio::piped()).stdout(Stdio::piped()).stderr(Stdio::null()).spawn().map_err(|e|e.to_string())?;
+        child.stdin.take().ok_or("Missing provider input")?.write_all(arguments.to_string().as_bytes()).map_err(|e|e.to_string())?;
+        let output=child.wait_with_output().map_err(|e|e.to_string())?;
+        if !output.status.success(){return Err("Local HTTP provider bridge failed".into());}
+        return serde_json::from_slice(&output.stdout).map_err(|e|e.to_string());
+    }
     let component = registry["components"]
         .as_array()
         .unwrap()
@@ -48,7 +57,8 @@ pub fn call_provider(provider: &str, operation: &str, arguments: &Value) -> Resu
     let command = server["command"]
         .as_array()
         .ok_or("Missing provider command")?;
-    let exe = cwd.join(command[0].as_str().ok_or("Invalid provider executable")?);
+    let program = command[0].as_str().ok_or("Invalid provider executable")?;
+    let exe = if std::path::Path::new(program).components().count() == 1 { PathBuf::from(program) } else { cwd.join(program) };
     let capture = std::env::temp_dir().join(format!("gamecore-provider-{}.jsonl", uuid::Uuid::new_v4()));
     let output = std::fs::File::create(&capture).map_err(|e| e.to_string())?;
     let result = (|| {
@@ -72,50 +82,54 @@ pub fn call_provider(provider: &str, operation: &str, arguments: &Value) -> Resu
         let mut child = cmd
             .spawn()
             .map_err(|e| format!("Provider executable unavailable: {e}"))?;
-        let input = format!(
-            "{}\n{}\n{}\n",
-            json!({"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"gamecore-hub","version":"0.1.0"}}}),
-            json!({"jsonrpc":"2.0","method":"notifications/initialized"}),
-            if operation == "tools/list" {
-                json!({"jsonrpc":"2.0","id":2,"method":"tools/list"})
-            } else {
-                json!({"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":operation,"arguments":arguments}})
-            }
-        );
-        child
-            .stdin
-            .take()
-            .ok_or("Provider stdin unavailable")?
-            .write_all(input.as_bytes())
-            .map_err(|e| e.to_string())?;
+        let mut input = child.stdin.take().ok_or("Provider stdin unavailable")?;
+        writeln!(input, "{}", json!({"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"gamecore-hub","version":"0.1.0"}}})).map_err(|e|e.to_string())?;
         let start = Instant::now();
-        loop {
-            if let Some(status) = child.try_wait().map_err(|e| e.to_string())? {
-                if !status.success() {
-                    return Err(format!("Provider exited with {status}"));
+        let mut initialized = false;
+        let outcome = loop {
+            let text = std::fs::read_to_string(&capture).map_err(|e|e.to_string())?;
+            let mut response = None;
+            for line in text.lines() {
+                // A provider can be midway through writing its last JSON line.
+                let Ok(v) = serde_json::from_str::<Value>(line) else { continue };
+                if v["id"] == 1 && !initialized {
+                    if let Some(error) = v.get("error") { response = Some(Err(format!("Provider initialization failed: {error}"))); break; }
+                    writeln!(input, "{}", json!({"jsonrpc":"2.0","method":"notifications/initialized"})).map_err(|e|e.to_string())?;
+                    let request = if operation == "tools/list" {
+                        json!({"jsonrpc":"2.0","id":2,"method":"tools/list"})
+                    } else {
+                        json!({"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":operation,"arguments":arguments}})
+                    };
+                    writeln!(input, "{request}").map_err(|e|e.to_string())?;
+                    initialized = true;
                 }
-                break;
+                if v["id"] == 2 {
+                    response = Some(if let Some(error) = v.get("error") {
+                        Err(format!("Provider RPC error: {error}"))
+                    } else if operation == "tools/list" {
+                        Ok(json!({"content":[{"type":"text","text":v["result"].to_string()}],"isError":false}))
+                    } else { Ok(v["result"].clone()) });
+                    break;
+                }
             }
-            if start.elapsed() > Duration::from_secs(30) {
-                let _ = child.kill();
-                let _ = child.wait();
-                return Err("Provider MCP timeout; inspect jobs before retrying a write".into());
+            if let Some(response) = response { break response; }
+            if let Some(status) = child.try_wait().map_err(|e|e.to_string())? {
+                break Err(format!("Provider exited before responding: {status}"));
+            }
+            if start.elapsed() > Duration::from_secs(server["timeout_seconds"].as_u64().unwrap_or(30).clamp(1, 900)) {
+                break Err("Provider MCP timeout; inspect jobs before retrying a write".into());
             }
             std::thread::sleep(Duration::from_millis(25));
+        };
+        drop(input);
+        // Closing stdin permits SDK servers to exit after their response.
+        for _ in 0..20 {
+            if child.try_wait().map_err(|e|e.to_string())?.is_some() { break; }
+            std::thread::sleep(Duration::from_millis(25));
         }
-        let text = std::fs::read_to_string(&capture).map_err(|e| e.to_string())?;
-        for line in text.lines() {
-            let v: Value = serde_json::from_str(line).map_err(|e| e.to_string())?;
-            if v["id"] == 2 {
-                if let Some(error) = v.get("error") { return Err(format!("Provider RPC error: {error}")); }
-                return Ok(if operation == "tools/list" {
-                    json!({"content":[{"type":"text","text":v["result"].to_string()}],"isError":false})
-                } else {
-                    v["result"].clone()
-                });
-            }
-        }
-        Err("Provider returned no tool response".into())
+        let _ = child.kill();
+        let _ = child.wait();
+        outcome
     })();
     let _ = std::fs::remove_file(capture);
     result

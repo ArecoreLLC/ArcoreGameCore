@@ -98,6 +98,16 @@
         "studio/server.py"
       ],
       "runtime": "animation-service"
+    },
+    {
+      "id": "showcase",
+      "root": "../ArcoreUATFramework/ArcoreShowcase",
+      "role": "Fleet-hosted finished video catalog and YouTube publishing; optional branding, exact-master handoff",
+      "required_files": [
+        "scripts/Start-GameCoreMCP.ps1",
+        "backend/src/arcore_showcase/gamecore_mcp.py"
+      ],
+      "runtime": "python"
     }
   ],
   "mcp": {
@@ -114,7 +124,9 @@
         "import_media",
         "video_production",
         "animation_production",
-        "animation_pipeline"
+        "animation_pipeline",
+        "model_production",
+        "showcase_production"
       ],
       "role": "The only MCP server agents register. It exposes wizard-level tools and calls the servers below itself, with typed arguments and no LLM in the loop.",
       "transport": "stdio",
@@ -193,6 +205,16 @@
           "name": "animation_pipeline",
           "writes": true,
           "purpose": "Persistent GameCore stage orchestration using Animate jobs"
+        },
+        {
+          "name": "model_production",
+          "writes": true,
+          "purpose": "Registry-routed ModelForge operations through local HTTP MCP"
+        },
+        {
+          "name": "showcase_production",
+          "writes": true,
+          "purpose": "Discover Showcase, import finished masters without extra splash, prepare private Games channel publishing through Fleet"
         }
       ]
     },
@@ -214,7 +236,9 @@
           "check_model",
           "blender_run",
           "blender_render",
-          "create_design_iteration"
+          "create_design_iteration",
+          "library_overview",
+          "list_models"
         ],
         "write_tools": [
           "blender_run",
@@ -318,6 +342,7 @@
           "type": "none"
         },
         "tools": [
+          "video_package",
           "video_lighting_studio",
           "video_lighting",
           "video_captions",
@@ -337,6 +362,7 @@
           "video_workflows"
         ],
         "write_tools": [
+          "video_package",
           "video_lighting_studio",
           "video_lighting",
           "video_captions",
@@ -441,6 +467,37 @@
           "animate_cancel_job",
           "animate_companion_pack",
           "animate_import_corrections"
+        ]
+      },
+      {
+        "id": "showcase",
+        "label": "ArcoreShowcase (Fleet)",
+        "component": "showcase",
+        "transport": "stdio",
+        "command": [
+          "powershell.exe",
+          "-NoProfile",
+          "-File",
+          "scripts/Start-GameCoreMCP.ps1"
+        ],
+        "timeout_seconds": 660,
+        "connection": "Fleet service through localhost:23439 SSH tunnel. Start-GameCoreMCP.ps1 loads the existing Windows protected publishing credential; no secrets in registry. See workflows/game-music-video/showcase.md.",
+        "auth": {
+          "type": "none"
+        },
+        "tools": [
+          "finished_video_import",
+          "youtube_status",
+          "youtube_manager",
+          "youtube_prepare",
+          "youtube_upload_status",
+          "youtube_queue",
+          "branding_profiles",
+          "branding_select",
+          "youtube_set_thumbnail",
+          "finished_video_verify",
+          "findings_list",
+          "finding_log"
         ]
       }
     ]

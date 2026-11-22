@@ -127,3 +127,15 @@ Session plans, commands, heartbeat, screenshots and logs live beneath the produc
 `lighting/studio/<session>` folder in GameVideo. Local file IPC keeps slider edits in-process;
 only Save invokes the Rust backend. This first implementation targets local desktop Godot 4,
 not Godot web exports, remote hosts or arbitrary full-scene timeline scrubbing.
+
+
+## Presentation packaging in ArcoreCut
+
+After a verified working video exists, the hub's `video_package` operation can wrap it with a
+short teaser/title hook, rolling credits and a closing card. It can also overlay a hook on the
+existing opening. These are separately versioned SQLite presentation settings, not scene edits.
+The main scene coordinates remain unchanged; added intro frames are recorded as an output offset.
+Teaser footage uses the immutable original, while the main uses the selected passed working job.
+Export checks continuous audio, output frame timestamps and the intro audio offset. Assets,
+snapshots and validation remain in GameVideo. GameCore still owns the game/recorder workflows;
+ArcoreCut owns presentation settings and export. No wizard stages are duplicated here.
