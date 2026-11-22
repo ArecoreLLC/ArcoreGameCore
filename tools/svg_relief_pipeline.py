@@ -25,7 +25,10 @@ def run(manifest_path, output):
  output=Path(output).resolve()
  if output.exists():raise FileExistsError('Use a fresh version directory: '+str(output))
  output.mkdir(parents=True);(output/'final').mkdir();(output/'recipes').mkdir()
- receipt={'pipeline':'svg-relief-v1','subjects':[], 'status':'running'}
+ recipe=manifest.get('render_recipe','relief-v1')
+ if recipe not in ['relief-v1','volume-v2']:raise ValueError('Unknown render recipe')
+ renderer='relief_volume_render.py' if recipe=='volume-v2' else 'relief_render.py'
+ receipt={'pipeline':'svg-'+recipe,'subjects':[], 'status':'running'}
  photo_command=next(x['command'] for x in json.loads((ROOT/'shared/ecosystem.json').read_text())['mcp']['servers'] if x['id']=='photo-master')
  photo_root=next(x['root'] for x in json.loads((ROOT/'shared/ecosystem.json').read_text())['components'] if x['id']=='photo-master')
  photo=Session([str((ROOT/photo_root/photo_command[0]).resolve()),'--workspace',str(output)])
@@ -51,7 +54,10 @@ def run(manifest_path, output):
    imported=model_call('import_files',{'paths':[str(obj)],'note':'Original SVG relief seed; common GameCore pipeline v1'})
    if imported.get('errors'):raise RuntimeError(imported)
    mid=imported['imported'][0]['model_id']
-   render=job(mid,(ROOT/'tools/relief_render.py').read_text(),{'output':str(output/name),'palette':str(obj.with_suffix('.json'))},True)
+   render=job(mid,(ROOT/'tools'/renderer).read_text(encoding='utf-8'),{'output':str(output/name),'palette':str(obj.with_suffix('.json'))},True)
+   volume_export=None
+   if recipe=='volume-v2':
+    volume_export=job(mid,(ROOT/'tools/relief_bake_morphs.py').read_text(encoding='utf-8'),{'entries':[{'source':str(output/name/'editable.blend'),'output':str(output/name)}]},False)
    atlas=Image.new('RGBA',(1536,1536))
    for frame in range(16):
     with Image.open(output/name/('frame_%02d.png'%frame)) as image:
@@ -59,7 +65,7 @@ def run(manifest_path, output):
      atlas.alpha_composite(image.convert('RGBA'),((frame%4)*384,(frame//4)*384))
    raw=output/(name+'_raw.png');atlas.save(raw)
    digest=finish(raw,name,manifest['character_finish'])
-   receipt['subjects'].append({'id':name,'model_id':mid,'source_sha256':geometry['source_sha256'],'geometry_version':geometry.get('geometry_version',1),'job_id':render['job_id'],'model_result':render.get('result',{}).get('saved'),'sha256':digest,'frame_size':384,'columns':4,'rows':4,'clips':{'idle':[0,4],'cast':[4,4],'guard':[8,4],'hit':[12,4]}})
+   receipt['subjects'].append({'id':name,'render_recipe':recipe,'volume_export_job':volume_export['job_id'] if volume_export else None,'model_id':mid,'source_sha256':geometry['source_sha256'],'geometry_version':geometry.get('geometry_version',1),'job_id':render['job_id'],'model_result':render.get('result',{}).get('saved'),'sha256':digest,'frame_size':384,'columns':4,'rows':4,'clips':{'idle':[0,4],'cast':[4,4],'guard':[8,4],'hit':[12,4]}})
    (output/'receipt.json').write_text(json.dumps(receipt,indent=2),encoding='utf-8')
    print('Finished',name,flush=True)
   if manifest.get('environment',False):

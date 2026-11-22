@@ -35,3 +35,14 @@ Author semantic SVG groups and family-specific anchor sidecars when part-level m
 ## Acceptance evidence
 
 CLI production has been exercised in a Godot consumer: thirteen character atlases and one environment, with original sources kept by the consumer. Shared unit tests cover conversion/rejection and source preservation. Device FPS, save behavior and gameplay evidence must be recorded by each consumer separately; do not infer a passed port from this workflow. More advanced stroke/fill rules, fully rigged models, frame interpolation and a guided hub wizard remain future work.
+
+
+## Volume and editable animation recipe (volume-v2)
+
+Set `"render_recipe": "volume-v2"` in the consumer manifest for a new production directory. The original `relief-v1` remains the default. This shared recipe uses a convex 0.42-unit surface displacement, 0.24-unit solid depth, 0.025-unit bevel and identical lighting for every subject. It preserves the SVG silhouette; it does not reconstruct unseen anatomy or create a skeletal rig.
+
+Sixteen editable morph poses provide idle, cast anticipation/strike/recovery, guard and hit clips. Four NLA actions interpolate these poses in Blender/GLB. Tablet layout stays at 384px per frame, 4×4 cells, so existing sprite memory and clip indices remain compatible. The different action motion needs consumer review of modular attachment alignment; old anchor equations are not exact for this recipe.
+
+`relief_bake_morphs.py` bakes the neutral modifiers once before creating fixed-topology morph targets. This avoids bevel topology changing between poses. It writes new `editable-volume.blend` and `animated-volume.glb` files, preserving the original render master. The GLB has real backs/beveled edges and four clips; its morph data is intended for desktop review, not mobile runtime loading. Consumer receipt records the export job. Keep predecessor models, recipes and hashes for comparison.
+
+Acceptance for the first five-actor consumer slice: inspect silhouette/transparency and changed action frames; verify all four GLB clips deform vertices in the browser; check reduced-motion stills and presentation-only idle updates; run the consumer's device battle tests. Do not infer readiness of the rest of a roster from this pilot.
