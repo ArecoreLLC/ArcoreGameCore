@@ -26,8 +26,8 @@ def run(manifest_path, output):
  if output.exists():raise FileExistsError('Use a fresh version directory: '+str(output))
  output.mkdir(parents=True);(output/'final').mkdir();(output/'recipes').mkdir()
  recipe=manifest.get('render_recipe','relief-v1')
- if recipe not in ['relief-v1','volume-v2','articulated-v1']:raise ValueError('Unknown render recipe')
- renderer={'relief-v1':'relief_render.py','volume-v2':'relief_volume_render.py','articulated-v1':'relief_articulated_render.py'}[recipe]
+ if recipe not in ['relief-v1','volume-v2','articulated-v1','articulated-volume-v2']:raise ValueError('Unknown render recipe')
+ renderer={'relief-v1':'relief_render.py','volume-v2':'relief_volume_render.py','articulated-v1':'relief_articulated_render.py','articulated-volume-v2':'relief_articulated_render.py'}[recipe]
  receipt={'pipeline':'svg-'+recipe,'subjects':[], 'status':'running'}
  photo_command=next(x['command'] for x in json.loads((ROOT/'shared/ecosystem.json').read_text())['mcp']['servers'] if x['id']=='photo-master')
  photo_root=next(x['root'] for x in json.loads((ROOT/'shared/ecosystem.json').read_text())['components'] if x['id']=='photo-master')
@@ -56,7 +56,8 @@ def run(manifest_path, output):
    mid=imported['imported'][0]['model_id']
    render_params={'output':str(output/name),'palette':str(obj.with_suffix('.json'))}
    rig_hash=None
-   if recipe=='articulated-v1':
+   if recipe in ['articulated-v1','articulated-volume-v2']:
+    render_params['rounded_volume']=recipe=='articulated-volume-v2'
     rig_path=(manifest_path.parent/asset['rig']).resolve()
     rig_data=json.loads(rig_path.read_text(encoding='utf-8'))
     if rig_data['source_sha256']!=geometry['source_sha256']:raise ValueError('Rig SVG source changed; review authored layer bindings')

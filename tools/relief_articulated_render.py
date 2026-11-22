@@ -18,6 +18,7 @@ scene.render.image_settings.color_mode = 'RGBA'
 scene.view_settings.view_transform = 'Standard'
 scene.world.color = (0.16,0.16,0.16)
 rig=json.loads(Path(params['rig']).read_text(encoding='utf-8'))
+rounded_volume = params.get('rounded_volume', False)
 def point(p):return Vector(((p[0]/512-.5)*4,(.5-p[1]/512)*4,0.25))
 arm_data=bpy.data.armatures.new('Authored skeleton')
 arm=bpy.data.objects.new('Skeleton',arm_data);bpy.context.collection.objects.link(arm)
@@ -36,7 +37,7 @@ for obj in objects:
         if face.normal.z < 0: face.normal_flip()
     bmesh.ops.dissolve_limit(bm, angle_limit=0.0001, verts=list(bm.verts), edges=list(bm.edges), delimit={'MATERIAL'})
     bmesh.ops.triangulate(bm, faces=list(bm.faces))
-    bmesh.ops.subdivide_edges(bm, edges=list(bm.edges), cuts=1, use_grid_fill=True)
+    bmesh.ops.subdivide_edges(bm, edges=list(bm.edges), cuts=3 if rounded_volume else 1, use_grid_fill=True)
     bm.to_mesh(obj.data); bm.free()
     groups={b['name']:obj.vertex_groups.new(name=b['name']) for b in rig['bones']}
     for v in obj.data.vertices:
@@ -55,12 +56,18 @@ for obj in objects:
             break
         for name,weight in weights.items():
             if weight>0:groups[name].add([v.index],weight,'REPLACE')
+    thickness = obj.vertex_groups.new(name='Volume thickness') if rounded_volume else None
     for v in obj.data.vertices:
         # A shared convex volume, preserving the authored front silhouette.
         dome=max(0.0,1-(v.co.x/2.1)**2)*max(0.0,1-(v.co.y/2.1)**2)
-        v.co.z = v.co.z*1.8 + 0.42*dome
-    solid=obj.modifiers.new('Raised ink depth','SOLIDIFY');solid.thickness=0.24;solid.offset=-1
-    bevel=obj.modifiers.new('Soft enamel edge','BEVEL');bevel.width=0.025;bevel.segments=3
+        # For deep shells, extrude the planar layers first: normal-based extrusion
+        # of an already curved sheet can push its back through neighboring faces.
+        v.co.z = v.co.z*1.8 + (0 if rounded_volume else 0.42)*dome
+        if thickness:thickness.add([v.index],dome,'REPLACE')
+    solid=obj.modifiers.new('Raised ink depth','SOLIDIFY');solid.thickness=1.35 if rounded_volume else 0.24;solid.offset=-1
+    if thickness:
+        solid.vertex_group=thickness.name;solid.thickness_vertex_group=0.18
+    bevel=obj.modifiers.new('Soft enamel edge','BEVEL');bevel.width=0.055 if rounded_volume else 0.025;bevel.segments=3
     for mat in obj.data.materials:
         key=mat.name.split('.')[0]
         rgba=palette.get(key,[0.12,0.3,0.35,1]);rgb=rgba[:3]
@@ -84,6 +91,12 @@ for name, loc, power, color, size in [('Key',(-3,4,5),450,(0.82,0.94,1),4),('Rim
 for obj in objects:
     bpy.context.view_layer.objects.active=obj
     for modifier in list(obj.modifiers):bpy.ops.object.modifier_apply(modifier=modifier.name)
+    if rounded_volume:
+        for v in obj.data.vertices:
+            dome=max(0.0,1-(v.co.x/2.1)**2)*max(0.0,1-(v.co.y/2.1)**2)
+            v.co.z += 0.90*dome
+    # Thickness is a modeling mask, never a skin influence.
+    if rounded_volume:obj.vertex_groups.remove(obj.vertex_groups['Volume thickness'])
     modifier=obj.modifiers.new('Articulated skin','ARMATURE');modifier.object=arm
     obj.parent=arm
     for v in obj.data.vertices:
@@ -119,4 +132,4 @@ for obj in objects:obj.select_set(True)
 bpy.context.view_layer.objects.active=arm
 for track in arm.animation_data.nla_tracks:track.mute=False
 bpy.ops.export_scene.gltf(filepath=str(out/'animated.glb'),export_format='GLB',use_selection=True,export_animations=True,export_nla_strips=True,export_skins=True,export_apply=False,export_cameras=False,export_lights=False)
-result['pipeline']={'type':'svg-articulated-v1','bones':len(rig['bones']),'clips':clips,'frames':16,'frame_size':384,'rig':params['rig']}
+result['pipeline']={'type':'svg-articulated-volume-v2' if rounded_volume else 'svg-articulated-v1','bones':len(rig['bones']),'clips':clips,'frames':16,'frame_size':384,'rig':params['rig']}
