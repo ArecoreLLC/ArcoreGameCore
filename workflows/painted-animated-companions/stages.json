@@ -1,0 +1,180 @@
+{
+  "schema_version": 1,
+  "workflow": "painted-animated-companions",
+  "automation_classes": {
+    "procedural": "Deterministic code. Same inputs give the same output; no model in the loop.",
+    "algorithmic-search": "A measured loop: change a parameter, measure, keep the better value. Needs a metric, not judgement.",
+    "local-model": "A local vision or language model can do it well enough, with a numeric check afterwards.",
+    "frontier-model": "Needs a frontier multimodal model (or a person): spatial reasoning from a picture into 3D code, new motion design, or diagnosing why a render is wrong.",
+    "human": "A person decides: taste, approval, publication."
+  },
+  "stages": [
+    {
+      "id": "reference",
+      "title": "Reference painting",
+      "automation": "frontier-model",
+      "fallback": "human",
+      "inputs": ["subject brief", "house style"],
+      "outputs": ["reference.png", "prompt.txt"],
+      "check": "A person approves the identity art.",
+      "why": "Image generation or hand art. Style consistency across a roster is a judgement; a local image model can draft but drifts from the house style.",
+      "tools": ["GameCore hub drawing_production (2D painting assets)"]
+    },
+    {
+      "id": "geometry",
+      "title": "Part-built model and base rig",
+      "automation": "frontier-model",
+      "fallback": "human",
+      "inputs": ["reference.png", "an existing species builder to start from"],
+      "outputs": ["builder script", "parts with a Color attribute", "bone table"],
+      "check": "Silhouette review beside the reference from front, three-quarter and back.",
+      "why": "Turning a 2D character into proportioned 3D forms is spatial design. Out of scope for this workflow's code, which starts from a built model.",
+      "tools": ["ModelForge blender_run", "consumer builder script"]
+    },
+    {
+      "id": "sample-colours",
+      "title": "Sample pigment colours from the reference",
+      "automation": "procedural",
+      "inputs": ["reference.png", "named sample points or cluster count"],
+      "outputs": ["colours as sRGB hex with spread"],
+      "check": "Spread (standard deviation) of each sample is small; clusters cover the painting.",
+      "why": "Median of a pixel window and k-means are exact. Choosing which region each colour belongs to is the next stage.",
+      "tools": ["tools/companion_review.py sample", "tools/companion_review.py palette"]
+    },
+    {
+      "id": "markings",
+      "title": "Author markings as functions of position",
+      "automation": "frontier-model",
+      "fallback": "human",
+      "inputs": ["reference.png", "sampled colours", "part names and positions from the builder"],
+      "outputs": ["painter(T) in the consumer's markings file"],
+      "check": "compare-palette numbers, then a look at the review sheet for placement.",
+      "why": "The reference is a posed 2D picture and the model has different proportions, so every marking must be re-placed relative to model landmarks (a brow above this model's eye, not at the painting's pixel). A local vision model can name the markings; placing them in 3D coordinates and writing the masks took spatial reasoning plus two or three visual iterations per animal.",
+      "tools": ["3d/blender/companion_studio/painterly.py helpers (ellipse, pool, jag, shade)"]
+    },
+    {
+      "id": "bake",
+      "title": "Bake the painted atlas and embed it",
+      "automation": "procedural",
+      "inputs": ["parts", "painter"],
+      "outputs": ["painted_albedo.png", "GLB with baseColorTexture", "Blender master"],
+      "check": "validate-glb: every material textured, UVs inside the atlas.",
+      "why": "Charts, packing, rasterising, pigment wash and contact pooling are deterministic.",
+      "tools": ["3d/blender/companion_studio/painterly.py bake", "ModelForge blender_run"]
+    },
+    {
+      "id": "engine-material",
+      "title": "Engine material and lighting calibration",
+      "automation": "algorithmic-search",
+      "first_time": "frontier-model",
+      "inputs": ["review render in the real scene", "atlas colours"],
+      "outputs": ["shader constants (light, shadow band, fill, ambient)"],
+      "check": "compare-palette: dominant pigments within about +/-15 per 8-bit channel on screen.",
+      "why": "Once the shader has the right terms, tuning the constants against the palette metric is a search. Finding the terms the first time was diagnosis: albedo applied twice by the existing light function, a sky ambient that lit tops far more than fronts, and tonemap saturation. Do not trust a model's visual impression of brightness; in this project it read a face as bright gold that measured mid-tan. Measure.",
+      "tools": ["3d/godot/painted_companion/painted_lighting.gdshaderinc", "tools/companion_review.py compare"]
+    },
+    {
+      "id": "rig-chains",
+      "title": "Add bone chains for tails, trunks, manes, wings",
+      "automation": "procedural",
+      "inputs": ["sweep path of the tube", "bone count"],
+      "outputs": ["chain bones", "blended weights"],
+      "check": "validate-glb: skin weights normalised.",
+      "why": "Bones laid along the same path the tube sweeps, weights blended across joints: no judgement once the archetype says a chain is wanted.",
+      "tools": ["consumer builder (chain helper)"]
+    },
+    {
+      "id": "clips-archetype",
+      "title": "Clips from an existing archetype",
+      "automation": "local-model",
+      "fallback": "frontier-model",
+      "inputs": ["archetype (seated quadruped, standing quadruped)", "game movement speed", "personality settings"],
+      "outputs": ["Idle, Walk or Fly, Greet clips"],
+      "check": "clip report: loops close, slide near 0 at the game's speed, nothing below the floor, no pops.",
+      "why": "Choosing numbers for an existing routine (how sleepy, how bouncy, which arm waves) is parameter filling that a local model can do, because the clip report catches bad values. The stride is derived from the game's speed, not chosen.",
+      "tools": ["3d/blender/companion_studio/motion.py seated_clips, Stepper, tail_wave"]
+    },
+    {
+      "id": "clips-new-motion",
+      "title": "New motion or a new archetype",
+      "automation": "frontier-model",
+      "fallback": "human",
+      "inputs": ["what the animal should do", "rig bone table"],
+      "outputs": ["a new pose routine"],
+      "check": "clip report plus pose sheet and motion preview review.",
+      "why": "A crawl, a trunk that trumpets, wings that trail: these were designed, not looked up. Recorded reference video plus ArcoreAnimate's tracking is the alternative route for motion that should look captured rather than authored.",
+      "tools": ["3d/blender/companion_studio/motion.py Pose, Animator", "ArcoreAnimate (video to rig) for captured motion"]
+    },
+    {
+      "id": "clip-report",
+      "title": "Numeric clip review",
+      "automation": "procedural",
+      "inputs": ["GLB", "game movement speed", "optional foot joint names"],
+      "outputs": ["per clip: length, loop gap, implied ground speed, foot slide, lowest point, pops"],
+      "check": "Thresholds in the workflow guide.",
+      "why": "Reads the file and runs the skeleton forward. This found foot skating and sinking paws that stills and previews did not show.",
+      "tools": ["GameCore hub animation_production -> animate_app action=clip_report", "ArcoreAnimate mocap/clip_report.py"]
+    },
+    {
+      "id": "captures",
+      "title": "In-engine review captures",
+      "automation": "procedural",
+      "inputs": ["consumer capture scripts in the real scene"],
+      "outputs": ["front/close/three-quarter/back/print stills", "pose sheet", "motion preview"],
+      "check": "Captures exist for every animal and clip.",
+      "why": "Scripted. The scene and the flow that brings the character on screen are the game's, so the capture scripts are consumer adapters.",
+      "tools": ["tools/companion_review.py sheet", "tools/companion_review.py gif", "consumer capture scripts"]
+    },
+    {
+      "id": "visual-review",
+      "title": "Does it look right and move right",
+      "automation": "frontier-model",
+      "fallback": "human",
+      "inputs": ["review sheet", "pose sheets", "motion previews", "numeric reports"],
+      "outputs": ["list of fixes or approval to continue"],
+      "check": "Each finding is tied to a capture or a number.",
+      "why": "Marking placement, silhouette reading and whether a walk reads as that animal are judgements. A local vision model is useful for presence checks (is there a tail stripe) but missed placement and motion quality; pair any model's opinion with the numbers.",
+      "tools": []
+    },
+    {
+      "id": "model-check",
+      "title": "Game-readiness check",
+      "automation": "procedural",
+      "inputs": ["GLB or library model"],
+      "outputs": ["issues with severity; stats: clips, bones, textures, triangles"],
+      "check": "No errors; expected clips present.",
+      "why": "Structural checks.",
+      "tools": ["tools/companion_pipeline.py validate-glb", "GameCore hub model_production -> open_model, check_model"]
+    },
+    {
+      "id": "game-tests",
+      "title": "Consumer gameplay tests",
+      "automation": "procedural",
+      "inputs": ["game test scripts"],
+      "outputs": ["pass/fail logs"],
+      "check": "All pass from source; packaged build re-tested before release.",
+      "why": "Scripted; owned by the game.",
+      "tools": ["consumer tests"]
+    },
+    {
+      "id": "archive",
+      "title": "Archive source and runtime files",
+      "automation": "procedural",
+      "inputs": ["version folder"],
+      "outputs": ["library versions with verified checksums", "receipt"],
+      "check": "Stored checksums equal local files; status stays review.",
+      "why": "API calls and hashes.",
+      "tools": ["ModelForge import_project_folder, update_model, verify_file_integrity"]
+    },
+    {
+      "id": "approval",
+      "title": "Release approval",
+      "automation": "human",
+      "inputs": ["all evidence above"],
+      "outputs": ["approved version"],
+      "check": "A person approves.",
+      "why": "Publication is a person's decision.",
+      "tools": []
+    }
+  ]
+}
