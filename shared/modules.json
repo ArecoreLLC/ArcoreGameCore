@@ -64,13 +64,13 @@
     },
     {
       "id": "cooperative-task",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "description": "Shared work accumulation",
       "language": "cpp",
       "kind": "header-only",
       "maturity": "pilot",
       "source": "shared/cpp/CooperativeTask.h",
-      "sha256": "dec7dda3ac62074da4cc63fa5733afea32f76cf585675e31943e85e55b063008",
+      "sha256": "9ef375f0ba56e607c39478b747fe5561228194b6cd14ffb90938e5a52c2dfaea",
       "documentation": "shared/cpp/CooperativeTask.md",
       "dependencies": [],
       "tests": [
@@ -661,6 +661,50 @@
         "Lantern-Heist"
       ],
       "validation_note": "Consumer-owned build and rendered smoke; no packaged verification."
+    },
+    {
+      "id": "adaptive-music",
+      "version": "0.1.0",
+      "description": "Sonic Alchemist adaptive score with boundary-quantized equal-power layer mixing",
+      "language": "cpp",
+      "kind": "header-only",
+      "maturity": "pilot",
+      "source": "shared/cpp/AdaptiveMusic.h",
+      "sha256": "c57b714383680453fb9da68045999676f331ce175439a858d28f701fd6f3cd44",
+      "documentation": "shared/cpp/AdaptiveMusic.md",
+      "dependencies": [],
+      "tests": [
+        "shared/cpp/tests/AdaptiveMusicTests.cpp"
+      ],
+      "known_consumers": [
+        "3dTowerAssault"
+      ],
+      "validation_note": "Portable tests plus consumer TowerAssault.Audio automation; audible sync is consumer-validated.",
+      "capability_ids": [
+        "audio"
+      ]
+    },
+    {
+      "id": "unreal-adaptive-music",
+      "version": "0.1.0",
+      "description": "Unreal Quartz-locked adaptive music stems and design.json score parser",
+      "language": "cpp",
+      "kind": "header-only",
+      "maturity": "pilot",
+      "source": "3d/unreal/AdaptiveMusicPlayer.h",
+      "sha256": "7611d16644fb148f49cd7f1def6c522156e30cf7b47a8626837d91e4c7866aa6",
+      "documentation": "3d/unreal/AdaptiveMusicPlayer.md",
+      "dependencies": [
+        "adaptive-music"
+      ],
+      "tests": [],
+      "known_consumers": [
+        "3dTowerAssault"
+      ],
+      "validation_note": "Unreal-specific; requires AudioMixer and Json. Consumer TowerAssault.Audio tests and sound-enabled playtest own engine evidence.",
+      "capability_ids": [
+        "audio"
+      ]
     }
   ]
 }

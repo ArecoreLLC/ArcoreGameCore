@@ -80,6 +80,16 @@
       "runtime": "rust-tauri"
     },
     {
+      "id": "sonic-alchemist",
+      "root": "../ArcoreSonicAlchemist",
+      "role": "Rust/Tauri stem lab and adaptive music authoring; exports aligned layer WAVs with a runtime manifest and serves the adaptive MCP",
+      "required_files": [
+        "crates/audio-core/Cargo.toml",
+        "crates/audio-core/src/adaptive_mcp.rs"
+      ],
+      "runtime": "rust-tauri"
+    },
+    {
       "id": "photo-master",
       "root": "../arcorephotomaster",
       "role": "Non-destructive photo editing and photo-derived texture sets",
@@ -123,6 +133,7 @@
         "list_media",
         "import_media",
         "video_production",
+        "music_production",
         "animation_production",
         "animation_pipeline",
         "model_production",
@@ -195,6 +206,11 @@
           "name": "video_production",
           "writes": true,
           "purpose": "Registry-routed ArcoreCut production operations; tool returns persistent jobs for media work"
+        },
+        {
+          "name": "music_production",
+          "writes": true,
+          "purpose": "Registry-routed Sonic Alchemist adaptive music: list designs, validate, export layer WAVs with runtime manifest, verify exports; implemented"
         },
         {
           "name": "animation_production",
@@ -382,6 +398,19 @@
           "video_workflows"
         ]
       },
+      {
+        "id": "sonic-alchemist",
+        "label": "Arcore Sonic Alchemist (adaptive music)",
+        "component": "sonic-alchemist",
+        "transport": "stdio",
+        "command": [
+          "target/release/sonic-adaptive-mcp.exe"
+        ],
+        "timeout_seconds": 900,
+        "connection": "Build with cargo build --release -p arcore-audio --bin sonic-adaptive-mcp. GameCore music_production routes here; the pipeline uses the same server. Paths are absolute and local.",
+        "auth": {
+          "type": "none"
+        },
       {
         "id": "photo-master",
         "label": "Arcore PhotoMaster",

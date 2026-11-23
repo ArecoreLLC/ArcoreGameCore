@@ -12,7 +12,7 @@ pub fn call(operation: &str, arguments: &Value) -> Result<Value, String> {
 }
 
 pub fn call_provider(provider: &str, operation: &str, arguments: &Value) -> Result<Value, String> {
-    if !["arcore-cut", "arcore-animate", "model-forge", "showcase"].contains(&provider) { return Err("Unsupported provider".into()); }
+    if !["arcore-cut", "arcore-animate", "model-forge", "showcase", "sonic-alchemist"].contains(&provider) { return Err("Unsupported provider".into()); }
     let root = std::env::var_os("GAMECORE_ROOT")
         .map(PathBuf::from)
         .unwrap_or_else(|| PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../.."));

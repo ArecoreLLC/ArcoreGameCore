@@ -1,6 +1,8 @@
 import importlib.util
 import json
 import math
+import shutil
+import subprocess
 import struct
 import tempfile
 import unittest
@@ -70,6 +72,67 @@ class SonicAdaptivePipelineTests(unittest.TestCase):
             (cfg / "DefaultGame.ini").write_text("[/Script/UnrealEd.ProjectPackagingSettings]\n", encoding="utf-8")
             sap.ensure_always_cook_music(tdir, "/Game/Audio/Music")
             self.assertIn('+DirectoriesToAlwaysCook=(Path="/Game/Audio/Music")', (cfg / "DefaultGame.ini").read_text(encoding="utf-8"))
+
+
+class SonicAdaptiveIntegrationTests(unittest.TestCase):
+    """Score codegen and the registered Sonic Alchemist MCP round trip."""
+
+    def test_score_header_compiles_against_the_portable_module(self):
+        design = {"schema": "arcore-adaptive-v1", "title": "Demo \"Loop\"", "bpm": 92.0, "key": "C", "beatsPerBar": 4,
+                  "bars": 32, "start": 0.0, "masterDb": -8.0,
+                  "layers": [{"id": 1, "name": "Keys", "duration": 90.0}, {"id": 2, "name": "Drums", "duration": 90.0}],
+                  "states": [{"name": "Explore", "intensity": 0.2, "levels": [{"enabled": True, "gainDb": -5.0}, {"enabled": False, "gainDb": 0.0}]},
+                             {"name": "Combat", "intensity": 0.9, "levels": [{"enabled": True, "gainDb": -2.0}, {"enabled": True, "gainDb": 1.5}]}],
+                  "transition": {"boundary": "phrase", "fadeBeats": 2.0}}
+        self.assertEqual(sap.score_function_name("3d-tower-assault"), "Game3dTowerAssaultScore")
+        self.assertEqual(sap.score_function_name("acorn&anvil"), "AcornAnvilScore")
+        text = sap.score_header(design, "DemoScore")
+        self.assertIn("GameCore::MusicBoundary::Phrase", text)
+        self.assertIn("{-5.0f, -60.0f}, // Explore", text)
+        with self.assertRaises(ValueError):
+            sap.score_header(design, "not a name")
+        compiler = shutil.which("g++") or shutil.which("c++")
+        if not compiler:
+            self.skipTest("No host C++ compiler")
+        with tempfile.TemporaryDirectory() as tmp:
+            tdir = Path(tmp)
+            (tdir / "DemoScore.h").write_text(text, encoding="utf-8")
+            (tdir / "main.cpp").write_text(
+                '#include "DemoScore.h"\n#include <cassert>\nint main(){const auto& s=DemoScore();'
+                'assert(s.Valid() && s.Layers()==2 && s.TargetGain(0,1)==0 && s.stateGainDb[1][1]==1.5f);}\n', encoding="utf-8")
+            exe = tdir / "demo.exe"
+            subprocess.run([compiler, "-std=c++14", f"-I{ROOT / 'shared' / 'cpp'}", str(tdir / "main.cpp"), "-o", str(exe)], check=True)
+            subprocess.run([str(exe)], check=True)
+
+    def test_registered_mcp_validates_exports_and_verifies(self):
+        command, _, server = sap.sonic_server()
+        self.assertEqual(server["write_tools"], ["adaptive_export"])
+        if not Path(command[0]).is_file():
+            self.skipTest("Sonic Alchemist MCP server is not built")
+        with self.assertRaises(ValueError):
+            sap.sonic_mcp_call("delete_everything", {})
+        with tempfile.TemporaryDirectory() as tmp:
+            tdir = Path(tmp)
+            stems = []
+            for index, freq in enumerate([220.0, 330.0, 110.0, 440.0], start=1):
+                write_float32_wav(tdir / f"s{index}.wav", 48000, 6.0, freq, 0.2)
+                stems.append((index, f"L{index}", f"s{index}.wav", 6.0, "role"))
+            session, design = sap.build_session_and_design("MCP round trip", 120.0, "A minor", 4, 2, 0, -8.0, 2.0, stems)
+            sap.save_json(tdir / "game.arcore", session)
+            sap.save_json(tdir / "Design.json", design)
+            checked = sap.sonic_mcp_call("adaptive_validate", {"design": str(tdir / "Design.json"), "project": str(tdir / "game.arcore")})
+            self.assertTrue(checked["project"]["matches"])
+            self.assertAlmostEqual(checked["runtime"]["barSeconds"], 2.0)
+            exported = sap.sonic_mcp_call("adaptive_export", {"project": str(tdir / "game.arcore"), "design": str(tdir / "Design.json"),
+                                                               "output": str(tdir / "Export")})
+            self.assertTrue(exported["verified"], exported["problems"])
+            self.assertEqual(exported["runtimeSource"], "assets.json")
+            self.assertEqual(len(exported["layers"]), 4)
+            self.assertTrue(all(len(layer["sha256"]) == 64 for layer in exported["layers"]))
+            self.assertEqual(sap.validate_export(tdir / "Export")["frames"], 192000)
+            with self.assertRaisesRegex(RuntimeError, "new output folder"):
+                sap.sonic_mcp_call("adaptive_export", {"project": str(tdir / "game.arcore"), "design": str(tdir / "Design.json"),
+                                                        "output": str(tdir / "Export")})
 
 
 if __name__ == "__main__":

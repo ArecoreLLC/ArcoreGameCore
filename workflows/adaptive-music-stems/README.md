@@ -48,7 +48,7 @@ Once Suno stems are exported (for example `X:\Projects\GameMusic\<Game>\<Song>\*
 
 ```
 python tools/sonic_adaptive_pipeline.py --source "X:\Projects\GameMusic\3dTowerAssault\Wind-Swept artillery" --project "X:\Projects\3dTowerAssault" --game-id 3d-tower-assault --title "3D Tower Assault - Wind-Swept Artillery v001" --overwrite
-python tools/sonic_adaptive_pipeline.py --source "X:\Projects\GameMusic\Acorn&Anvil\Forest Loop" --project "X:\Projects\Acorn&Anvil" --game-id acorn-anvil --title "Acorn & Anvil - Forest Loop v001" --overwrite
+python tools/sonic_adaptive_pipeline.py --source "X:\Projects\GameMusic\Acorn&Anvil\Forest Loop" --project "X:\Projects\Acorn&Anvil" --game-id acorn-anvil --title "Acorn & Anvil - Forest Loop v001" --overwrite --score-header "X:\Projects\Acorn&Anvil\Source\AcornAnvil\Private\AcornAnvilMusicScore.h"
 ```
 
 ### Pipeline steps (reusable across all games)
@@ -60,10 +60,10 @@ python tools/sonic_adaptive_pipeline.py --source "X:\Projects\GameMusic\Acorn&An
    - Set `edit.offset = start`, `edit.trimStart = start`, `edit.trimEnd = end`, and `edit.fadeIn = edit.fadeOut = 0.85` (0.85s gentle fade-in and fade-out at the loop boundary) so Suno stems wrap smoothly without beat-phase stutter (`seam_step <= 0.00001`).
    - Define the 4 adaptive game states (`Explore`, `Tension`, `Combat`, `Boss`) with per-layer `gainDb` and `masterDb = -8.0` so the coherent peak sum across all enabled layers stays `< 0.99`.
    - Save a copy of `Design.json` to `ArcoreSonicAlchemist/compositions/<game-id>-adaptive.json` so the GameCore hub and Sonic Alchemist discover it automatically.
-4. **Run Sonic Alchemist `export-adaptive.exe`:** Renders aligned 48 kHz 24-bit stereo `layer-01.wav`..`layer-04.wav`, `assets.json`, and `design.json` into `<Game>/Media/Audio/Sonic-v001/Export/`.
+4. **Validate and export through the Sonic Alchemist MCP:** The pipeline calls the registered `sonic-alchemist` stdio server (`adaptive_validate` against the `.arcore` session, then `adaptive_export`), which renders aligned 48 kHz 24-bit stereo `layer-01.wav`..`layer-04.wav`, `design.json`, and `assets.json` with a `runtime` manifest (linear gains with the master, bar/fade seconds, equal-power curve, per-layer peak/RMS/seam step/SHA-256) into `<Game>/Media/Audio/Sonic-v001/Export/`, then verifies frames and hashes. The reply is kept as `Media/Provenance/<version>/sonic-manifest.json`. Build the server once with `cargo build --release -p arcore-audio --bin sonic-adaptive-mcp` in ArcoreSonicAlchemist; `--via exe` keeps the legacy `export-adaptive.exe` path offline. Agents reach the same tools through the GameCore hub's `music_production` (operation `tools/list` first) and must not register the Sonic server directly.
 5. **Verify acoustic gates & provenance:** Check `(channels, sampwidth, framerate, nframes) == (2, 3, 48000, expected_frames)`, `0 < rms < 0.5`, `peak < 0.99`, `seam_step < 0.001`, and state coherent peak bounds `< 0.99`. Write `Media/Provenance/Sonic-v001/{validation.json, verified-copies.json, exporter.json}`.
 6. **Unreal Editor import & cooker config:** Verify SHA-256 hashes from `verified-copies.json`, import `SW_Music_<Stem>_v001` into `/Game/.../Audio/Music`, set `looping = True` and `virtualization_mode = PlayWhenSilent`, and ensure `+DirectoriesToAlwaysCook=(Path="/Game/.../Audio/Music")` is present in `Config/DefaultGame.ini` when stems are loaded dynamically via `LoadObject<USoundWave>`.
-7. **Runtime bar-quantized mixer:** Spawn the 4 looping 2D `UAudioComponent` voices together in `BeginPlay`, compute the desired state (`0=Explore`, `1=Tension`, `2=Combat` with a 6–8s combat hold, `3=Boss`) each tick, and crossfade at the next bar boundary (`60 / BPM * BeatsPerBar`) over `FadeBeats`.
+7. **Runtime: GameCore adaptive-music modules.** Select `adaptive-music` and `unreal-adaptive-music` in `Config/GameCore.project.json` and run `python tools/gamecore.py sync --project <Game>` (module-only consumers need no smoke declaration for sync/check). Pass `--score-header` to the pipeline to generate the compiled `GameCore::AdaptiveScore` from the export. The game keeps only its state rules: hold an `Arcore::Unreal::FAdaptiveMusicPlayer` on a long-lived actor, `Start` it with the imported waves, and `Tick` it with the desired state and volume. Stems start sample-locked on a Quartz clock and transitions follow the audio clock with Sonic Alchemist's equal-power fades. Use `GameCore::EngagementHold` for the 6–8 s combat hold, and add an editor test that compares the compiled score with `design.json` via `ParseAdaptiveDesign`. Tower Assault (`Source/TowerAssault3D/Private/TAMusic.cpp`) is the reference consumer. See [AdaptiveMusic.md](../../shared/cpp/AdaptiveMusic.md) and [AdaptiveMusicPlayer.md](../../3d/unreal/AdaptiveMusicPlayer.md).
 
 ## Caveats on the source prompt design
 
@@ -71,3 +71,15 @@ python tools/sonic_adaptive_pipeline.py --source "X:\Projects\GameMusic\Acorn&An
 - Use `Synth Pad` explicitly (not generic `Synth`) when extracting pads, and separate `Rhythm Electric Guitar` and `Lead Guitar` (rather than generic `Electric Guitar`) to avoid electric guitar stem bleed.
 - Section tags guide Suno but do not guarantee clean, loop-aligned, or equal-length sections. Slice at bar boundaries after listening and check loop seams. Cue words in the lyrics box can be sung if you do not add "instrumental" to the style box.
 - Not-run so far: no Suno generation, no in-engine playback. Only the generator's unit tests ran.
+
+## Shared music library
+
+Reusable cues that are not tied to one game live outside this repo (default `X:/Projects/GameMusic/Library`, or `$GAMECORE_MUSIC_LIBRARY`). Each folder holds the audio plus a `metadata.json` (`gamecore.music-library.folder/v1`) that tags every track with an `archetype` and optional `secondary_archetypes` from [archetypes.json](archetypes.json), the energy `game_states` it covers (explore, tension, combat, boss, resolve), usage `contexts` (menu, town, boss, racing…), an optional `world_flavor`, Suno IDs and review scores.
+
+```
+python tools/music_library.py validate   # check every folder's metadata against the taxonomy
+python tools/music_library.py coverage   # archetype x game-state gaps worth generating next
+python tools/music_library.py build      # write hub/data/music-library/index.json for the hub
+```
+
+The hub's **Music library** view browses the index by archetype family and biome style, shows a coverage matrix, and each game's Music tab lists library cues that already fit its archetype. Desktop playback reads the files in place (the Tauri asset scope includes the library root); nothing is copied into the repo.

@@ -1,5 +1,14 @@
 
 # Portable module digests require stable checkout bytes.
+# Every registry header checks out as LF on all platforms (core.autocrlf would
+# otherwise change the bytes games lock by SHA-256). Raw -text exceptions below win.
+shared/cpp/*.h text eol=lf
+3d/unreal/*.h text eol=lf
+# Reviewed digests recorded from CRLF bytes; Echo-Forge, Flotsam-Citadel, Scrapshift-Arena,
+# Lantern-Heist and Lumen-Weaver lock them. Change only with a version bump.
+shared/cpp/CombatWindow.h text eol=crlf
+shared/cpp/ResonanceRule.h text eol=crlf
+shared/cpp/ExposureMeter.h text eol=crlf
 shared/cpp/RechargeableReserve.h text eol=lf
 shared/cpp/TimedStacks.h text eol=lf
 
@@ -14,3 +23,7 @@ shared/cpp/JumpGrace.h -text
 # Preserve the digests of vendored Godot modules (games lock them by SHA-256).
 3d/godot/music_video/*.gd text eol=lf
 3d/godot/world_life/*.gd text eol=lf
+
+# Adaptive music runtime module digests (Tower Assault locks them by SHA-256).
+shared/cpp/AdaptiveMusic.h text eol=lf
+3d/unreal/AdaptiveMusicPlayer.h text eol=lf

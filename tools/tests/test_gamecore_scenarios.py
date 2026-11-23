@@ -28,3 +28,18 @@ class ScenarioTests(unittest.TestCase):
                 manifest['smoke']['game_mode']=mode
                 path.write_text(json.dumps(manifest))
                 with self.assertRaisesRegex(ValueError,'game_mode'): gamecore.project_config(root)
+
+    def test_module_only_consumer_needs_no_runner_declaration(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory)
+            (root/'Config').mkdir()
+            (root/'Game.uproject').write_text('{}')
+            manifest=dict(schema_version=1, project_id='modules-only', editor_target='GameEditor',
+                          platform='Win64', project_file='Game.uproject', modules=[])
+            (root/'Config/GameCore.project.json').write_text(json.dumps(manifest))
+            self.assertEqual(gamecore.project_config(root, runner=False)['project_id'], 'modules-only')
+            with self.assertRaises(KeyError): gamecore.project_config(root)
+            manifest['smoke']=dict(map='/Engine/Maps/Entry',flag='X',pass_marker='P',fail_marker='F')
+            (root/'Config/GameCore.project.json').write_text(json.dumps(manifest))
+            # A declared runner block is still validated even for module-only actions.
+            with self.assertRaises((KeyError, ValueError)): gamecore.project_config(root, runner=False)
