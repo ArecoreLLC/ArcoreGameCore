@@ -45,6 +45,21 @@ class GifExportTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             run(args)
 
+    def test_draw_and_paint_skips_construction_without_empty_lead_in(self):
+        with tempfile.TemporaryDirectory(dir=ROOT) as temp:
+            root=Path(temp);source=root/'reference.png'
+            image=Image.new('RGB',(200,100),'white')
+            ImageDraw.Draw(image).ellipse((50,15,150,85),fill=(170,70,30));image.save(source)
+            args=argparse.Namespace(input=source,lesson=None,output=root/'trace.gif',sheet=root/'sheet.png',width=320,fps=2,duration=6,hold=1,no_cursor=True,skip_construction=True)
+            report=run(args)
+            self.assertTrue(report['skip_construction'])
+            self.assertFalse(report['advanced'])
+            self.assertEqual(report['stroke_counts'][:2],[0,0])
+            self.assertEqual(report['duration_ms'],7000)
+            with Image.open(args.output) as gif:
+                first=gif.convert('RGB').crop((0,0,320,174));gif.seek(1)
+                self.assertIsNotNone(ImageChops.difference(first,gif.convert('RGB').crop((0,0,320,174))).getbbox())
+
 
 if __name__=='__main__':
     unittest.main()

@@ -16,7 +16,7 @@ from check_unreal_smoke import validate as validate_smoke, validate_stages
 from gamecore_modules import ROOT, check_lock, contained, digest, read_json, registry, sync, write_json
 
 
-def project_config(project):
+def project_config(project, runner=True):
     manifest = read_json(contained(project, "Config/GameCore.project.json"))
     if manifest.get("schema_version") != 1:
         raise ValueError("Unsupported project manifest")
@@ -29,6 +29,10 @@ def project_config(project):
     project_file = contained(project, manifest["project_file"])
     if project_file.suffix != ".uproject" or not project_file.is_file():
         raise ValueError("Missing Unreal project")
+    if not runner and "automation" not in manifest and "smoke" not in manifest:
+        # Module-only consumers install and check locked headers without a GameCore
+        # automation/smoke declaration; build and test actions still require one.
+        return manifest
     automation = manifest["automation"]
     if not re.fullmatch(r"[A-Za-z0-9_.]+", automation["prefix"]) or not automation["required_tests"]:
         raise ValueError("Automation requires a prefix and named tests")
@@ -240,7 +244,7 @@ def main():
         if not args.project:
             raise ValueError("--project is required")
         project = args.project.resolve()
-        manifest = select_scenario(project_config(project),args.scenario)
+        manifest = select_scenario(project_config(project, runner=args.action not in ("sync", "check", "doctor")),args.scenario)
         if args.action == "sync":
             print(json.dumps(sync(project, manifest, args.update), indent=2))
         elif args.action in ("check", "doctor"):

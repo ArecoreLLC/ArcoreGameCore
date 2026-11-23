@@ -1,0 +1,859 @@
+{
+  "schema": "gamecore.reusable-modules.v1",
+  "source_project": "ShammyVerse",
+  "audit_date": "2026-11-22",
+  "specialization_policy": "shared/module-specialization.md",
+  "reuse_review_required": "Before extraction, shared API changes, consumer specialization and upgrades; record coupling, boundary decision, alternate-use evidence and limits.",
+  "entries": [
+    {
+      "id": "flutter-motion",
+      "name": "Butterfly swarm, orbit and perch flight",
+      "status": "extracted",
+      "engine": "Godot 4",
+      "dimension": "3d",
+      "files": [
+        "3d/godot/world_life/flutter_motion.gd"
+      ],
+      "consumer_paths": [
+        "game/scripts/sky_life.gd",
+        "game/scripts/beach_life.gd",
+        "game/scripts/close_visitors.gd"
+      ],
+      "guide": "3d/godot/world_life/REUSE_AUDIT.md",
+      "limitations": "Headless checked; one consumer. Fresh rendered review and second-game validation not_run.",
+      "tags": [
+        "flutter",
+        "motion"
+      ],
+      "languages": [
+        "gdscript"
+      ],
+      "source_project_ids": [
+        "shammyverse"
+      ],
+      "capability_ids": []
+    },
+    {
+      "id": "flutter-swarm",
+      "name": "Butterfly fixed-size spawning and update",
+      "status": "extracted",
+      "engine": "Godot 4",
+      "dimension": "3d",
+      "files": [
+        "3d/godot/world_life/flutter_swarm.gd"
+      ],
+      "consumer_paths": [
+        "game/scripts/sky_life.gd"
+      ],
+      "guide": "3d/godot/world_life/REUSE_AUDIT.md",
+      "limitations": "Headless checked; one consumer. Fresh rendered review and second-game validation not_run.",
+      "tags": [
+        "flutter",
+        "swarm"
+      ],
+      "languages": [
+        "gdscript"
+      ],
+      "source_project_ids": [
+        "shammyverse"
+      ],
+      "capability_ids": []
+    },
+    {
+      "id": "wing-patterns",
+      "name": "Butterfly JSON species palettes and wing patterns",
+      "status": "extracted",
+      "engine": "Godot 4",
+      "dimension": "3d",
+      "files": [
+        "3d/godot/world_life/wing_patterns.gd"
+      ],
+      "consumer_paths": [
+        "game/data/butterfly-species.json",
+        "game/scripts/butterfly_species.gd"
+      ],
+      "guide": "3d/godot/world_life/REUSE_AUDIT.md",
+      "limitations": "Headless checked; one consumer. Fresh rendered review and second-game validation not_run.",
+      "tags": [
+        "wing",
+        "patterns"
+      ],
+      "languages": [
+        "gdscript"
+      ],
+      "source_project_ids": [
+        "shammyverse"
+      ],
+      "capability_ids": []
+    },
+    {
+      "id": "timed-stroke-track",
+      "name": "Song-driven stroke interpolation",
+      "status": "extracted",
+      "engine": "Godot 4",
+      "dimension": "3d",
+      "files": [
+        "3d/godot/world_life/timed_stroke_track.gd"
+      ],
+      "consumer_paths": [
+        "game/scripts/sand_painting.gd"
+      ],
+      "guide": "3d/godot/world_life/REUSE_AUDIT.md",
+      "limitations": "Headless checked; one consumer. Fresh rendered review and second-game validation not_run.",
+      "tags": [
+        "timed",
+        "stroke",
+        "track"
+      ],
+      "languages": [
+        "gdscript"
+      ],
+      "source_project_ids": [
+        "shammyverse"
+      ],
+      "capability_ids": []
+    },
+    {
+      "id": "world-life-kit",
+      "name": "Primitive meshes, cached materials, placement, beat clock and wing flapping",
+      "status": "existing",
+      "engine": "Godot 4",
+      "dimension": "3d",
+      "files": [
+        "3d/godot/world_life/world_life_kit.gd"
+      ],
+      "consumer_paths": [
+        "game/addons/gamecore_world_life/world_life_kit.gd"
+      ],
+      "guide": "3d/godot/world_life/README.md",
+      "limitations": "Consumer owns assets, world rules and tuning.",
+      "tags": [
+        "world",
+        "life",
+        "kit"
+      ],
+      "languages": [
+        "gdscript"
+      ],
+      "source_project_ids": [
+        "shammyverse"
+      ],
+      "capability_ids": []
+    },
+    {
+      "id": "attention-glance",
+      "name": "Attention ping and glance/rest rhythm",
+      "status": "existing",
+      "engine": "Godot 4",
+      "dimension": "3d",
+      "files": [
+        "3d/godot/world_life/attention_glance.gd"
+      ],
+      "consumer_paths": [
+        "game/addons/gamecore_world_life/attention_glance.gd"
+      ],
+      "guide": "3d/godot/world_life/README.md",
+      "limitations": "Consumer owns assets, world rules and tuning.",
+      "tags": [
+        "attention",
+        "glance"
+      ],
+      "languages": [
+        "gdscript"
+      ],
+      "source_project_ids": [
+        "shammyverse"
+      ],
+      "capability_ids": []
+    },
+    {
+      "id": "idle-scheduler",
+      "name": "Still-character fidgets and visitor timing",
+      "status": "existing",
+      "engine": "Godot 4",
+      "dimension": "3d",
+      "files": [
+        "3d/godot/world_life/idle_scheduler.gd"
+      ],
+      "consumer_paths": [
+        "game/addons/gamecore_world_life/idle_scheduler.gd"
+      ],
+      "guide": "3d/godot/world_life/README.md",
+      "limitations": "Consumer owns assets, world rules and tuning.",
+      "tags": [
+        "idle",
+        "scheduler"
+      ],
+      "languages": [
+        "gdscript"
+      ],
+      "source_project_ids": [
+        "shammyverse"
+      ],
+      "capability_ids": []
+    },
+    {
+      "id": "beat-dance",
+      "name": "Beat-synchronized dancing",
+      "status": "existing",
+      "engine": "Godot 4",
+      "dimension": "3d",
+      "files": [
+        "3d/godot/world_life/beat_dance.gd"
+      ],
+      "consumer_paths": [
+        "game/addons/gamecore_world_life/beat_dance.gd"
+      ],
+      "guide": "3d/godot/world_life/README.md",
+      "limitations": "Consumer owns assets, world rules and tuning.",
+      "tags": [
+        "beat",
+        "dance"
+      ],
+      "languages": [
+        "gdscript"
+      ],
+      "source_project_ids": [
+        "shammyverse"
+      ],
+      "capability_ids": []
+    },
+    {
+      "id": "escort-formation",
+      "name": "Moving-leader escort formation",
+      "status": "existing",
+      "engine": "Godot 4",
+      "dimension": "3d",
+      "files": [
+        "3d/godot/world_life/escort_formation.gd"
+      ],
+      "consumer_paths": [
+        "game/addons/gamecore_world_life/escort_formation.gd"
+      ],
+      "guide": "3d/godot/world_life/README.md",
+      "limitations": "Consumer owns assets, world rules and tuning.",
+      "tags": [
+        "escort",
+        "formation"
+      ],
+      "languages": [
+        "gdscript"
+      ],
+      "source_project_ids": [
+        "shammyverse"
+      ],
+      "capability_ids": []
+    },
+    {
+      "id": "proximity-notes",
+      "name": "Proximity musical notes",
+      "status": "existing",
+      "engine": "Godot 4",
+      "dimension": "3d",
+      "files": [
+        "3d/godot/world_life/proximity_notes.gd"
+      ],
+      "consumer_paths": [
+        "game/addons/gamecore_world_life/proximity_notes.gd"
+      ],
+      "guide": "3d/godot/world_life/README.md",
+      "limitations": "Consumer owns assets, world rules and tuning.",
+      "tags": [
+        "proximity",
+        "notes"
+      ],
+      "languages": [
+        "gdscript"
+      ],
+      "source_project_ids": [
+        "shammyverse"
+      ],
+      "capability_ids": []
+    },
+    {
+      "id": "time-of-day",
+      "name": "Day dusk night transitions",
+      "status": "existing",
+      "engine": "Godot 4",
+      "dimension": "3d",
+      "files": [
+        "3d/godot/world_life/time_of_day.gd"
+      ],
+      "consumer_paths": [
+        "game/addons/gamecore_world_life/time_of_day.gd"
+      ],
+      "guide": "3d/godot/world_life/README.md",
+      "limitations": "Consumer owns assets, world rules and tuning.",
+      "tags": [
+        "time",
+        "of",
+        "day"
+      ],
+      "languages": [
+        "gdscript"
+      ],
+      "source_project_ids": [
+        "shammyverse"
+      ],
+      "capability_ids": []
+    },
+    {
+      "id": "ambient-chatter",
+      "name": "Noninterrupting proximity chatter",
+      "status": "existing",
+      "engine": "Godot 4",
+      "dimension": "3d",
+      "files": [
+        "3d/godot/world_life/ambient_chatter.gd"
+      ],
+      "consumer_paths": [
+        "game/addons/gamecore_world_life/ambient_chatter.gd"
+      ],
+      "guide": "3d/godot/world_life/README.md",
+      "limitations": "Consumer owns assets, world rules and tuning.",
+      "tags": [
+        "ambient",
+        "chatter"
+      ],
+      "languages": [
+        "gdscript"
+      ],
+      "source_project_ids": [
+        "shammyverse"
+      ],
+      "capability_ids": []
+    },
+    {
+      "id": "route-gates",
+      "name": "Route boost gates",
+      "status": "existing",
+      "engine": "Godot 4",
+      "dimension": "3d",
+      "files": [
+        "3d/godot/world_life/route_gates.gd"
+      ],
+      "consumer_paths": [
+        "game/addons/gamecore_world_life/route_gates.gd"
+      ],
+      "guide": "3d/godot/world_life/README.md",
+      "limitations": "Consumer owns assets, world rules and tuning.",
+      "tags": [
+        "route",
+        "gates"
+      ],
+      "languages": [
+        "gdscript"
+      ],
+      "source_project_ids": [
+        "shammyverse"
+      ],
+      "capability_ids": []
+    },
+    {
+      "id": "celebration-burst",
+      "name": "Arrival celebration",
+      "status": "existing",
+      "engine": "Godot 4",
+      "dimension": "3d",
+      "files": [
+        "3d/godot/world_life/celebration_burst.gd"
+      ],
+      "consumer_paths": [
+        "game/addons/gamecore_world_life/celebration_burst.gd"
+      ],
+      "guide": "3d/godot/world_life/README.md",
+      "limitations": "Consumer owns assets, world rules and tuning.",
+      "tags": [
+        "celebration",
+        "burst"
+      ],
+      "languages": [
+        "gdscript"
+      ],
+      "source_project_ids": [
+        "shammyverse"
+      ],
+      "capability_ids": []
+    },
+    {
+      "id": "splash-pool",
+      "name": "Pooled water splashes",
+      "status": "existing",
+      "engine": "Godot 4",
+      "dimension": "3d",
+      "files": [
+        "3d/godot/world_life/splash_pool.gd"
+      ],
+      "consumer_paths": [
+        "game/addons/gamecore_world_life/splash_pool.gd"
+      ],
+      "guide": "3d/godot/world_life/README.md",
+      "limitations": "Consumer owns assets, world rules and tuning.",
+      "tags": [
+        "splash",
+        "pool"
+      ],
+      "languages": [
+        "gdscript"
+      ],
+      "source_project_ids": [
+        "shammyverse"
+      ],
+      "capability_ids": []
+    },
+    {
+      "id": "music-video-recorder",
+      "name": "Deterministic gameplay music-video recorder and showcase",
+      "status": "existing",
+      "engine": "Godot 4",
+      "dimension": "3d",
+      "files": [
+        "3d/godot/music_video/music_video_recorder.gd",
+        "3d/godot/music_video/asset_showcase.gd"
+      ],
+      "consumer_paths": [
+        "game/addons/gamecore_music_video/music_video_recorder.gd"
+      ],
+      "guide": "3d/godot/music_video/README.md",
+      "limitations": "",
+      "tags": [
+        "music",
+        "video",
+        "recorder"
+      ],
+      "languages": [
+        "gdscript"
+      ],
+      "source_project_ids": [
+        "shammyverse"
+      ],
+      "capability_ids": []
+    },
+    {
+      "id": "capture-lighting",
+      "name": "Capture exposure and character fill",
+      "status": "existing",
+      "engine": "Godot 4",
+      "dimension": "3d",
+      "files": [
+        "3d/godot/music_video/capture_lighting.gd",
+        "3d/godot/music_video/capture_fill.gd"
+      ],
+      "consumer_paths": [
+        "Design/Iterations/painting-lighting-v001/record_every_line_lighting.gd"
+      ],
+      "guide": "workflows/game-music-video/README.md",
+      "limitations": "",
+      "tags": [
+        "capture",
+        "lighting"
+      ],
+      "languages": [
+        "gdscript"
+      ],
+      "source_project_ids": [
+        "shammyverse"
+      ],
+      "capability_ids": []
+    },
+    {
+      "id": "drawing-production",
+      "name": "Drawing jobs, animal manifests and explicit review gates",
+      "status": "existing",
+      "engine": "Python tooling",
+      "dimension": "3d",
+      "files": [
+        "tools/drawing-studio/production.py",
+        "tools/drawing-studio/animal_pipeline.py"
+      ],
+      "consumer_paths": [
+        "Design/Iterations/canvas-animal-pipelines-v001/manifests/unicorn.animal.json"
+      ],
+      "guide": "tools/drawing-studio/ANIMAL_PIPELINE.md",
+      "limitations": "",
+      "tags": [
+        "drawing",
+        "production"
+      ],
+      "languages": [
+        "python"
+      ],
+      "source_project_ids": [
+        "shammyverse"
+      ],
+      "capability_ids": []
+    },
+    {
+      "id": "palette-brush",
+      "name": "Palette paint coverage and brush completion",
+      "status": "extracted",
+      "engine": "Godot 4",
+      "dimension": "3d",
+      "files": [
+        "3d/godot/world_life/painting_coverage.gd"
+      ],
+      "consumer_paths": [
+        "game/scripts/painting_brush_canvas.gd"
+      ],
+      "guide": "3d/godot/world_life/PAINTING_MODULES.md",
+      "limitations": "Pixel coverage only; game owns segmentation, textures, input and completion events.",
+      "bundle_version": "0.4.0",
+      "file_version": "1.0.0",
+      "tags": [
+        "palette",
+        "brush"
+      ],
+      "languages": [
+        "gdscript"
+      ],
+      "source_project_ids": [
+        "shammyverse"
+      ],
+      "capability_ids": [
+        "authoring"
+      ]
+    },
+    {
+      "id": "sand-print-reveal",
+      "name": "Painting shrink and vertical sand-print reveal",
+      "status": "extracted",
+      "engine": "Godot 4",
+      "dimension": "3d",
+      "files": [
+        "3d/godot/world_life/sand_reveal.gd"
+      ],
+      "consumer_paths": [
+        "game/scripts/painting_animal_friend.gd",
+        "game/shaders/sand_animal_reveal.gdshader"
+      ],
+      "guide": "3d/godot/world_life/PAINTING_MODULES.md",
+      "limitations": "Reveal state and grains only; shader, fur, models, terrain and effect presentation remain game-owned.",
+      "bundle_version": "0.4.0",
+      "file_version": "1.0.0",
+      "tags": [
+        "sand",
+        "print",
+        "reveal"
+      ],
+      "languages": [
+        "gdscript"
+      ],
+      "source_project_ids": [
+        "shammyverse"
+      ],
+      "capability_ids": [
+        "animation"
+      ]
+    },
+    {
+      "id": "companion-follow",
+      "name": "Leashed painted-companion following",
+      "status": "extracted",
+      "engine": "Godot 4",
+      "dimension": "3d",
+      "files": [
+        "3d/godot/world_life/companion_follow.gd"
+      ],
+      "consumer_paths": [
+        "game/scripts/painting_animal_friend.gd"
+      ],
+      "guide": "3d/godot/world_life/PAINTING_MODULES.md",
+      "limitations": "Direct XZ following; no obstacle avoidance. Game owns height, flight, navigation and animations.",
+      "bundle_version": "0.4.0",
+      "file_version": "1.0.0",
+      "tags": [
+        "companion",
+        "follow"
+      ],
+      "languages": [
+        "gdscript"
+      ],
+      "source_project_ids": [
+        "shammyverse"
+      ],
+      "capability_ids": [
+        "traversal"
+      ]
+    },
+    {
+      "id": "reef-clearance",
+      "name": "Terrain ring clearance with injected height sampler",
+      "status": "extracted",
+      "engine": "Godot 4",
+      "dimension": "3d",
+      "files": [
+        "3d/godot/world_life/terrain_ring_clearance.gd"
+      ],
+      "consumer_paths": [
+        "game/scripts/reef_life.gd"
+      ],
+      "guide": "3d/godot/world_life/ROUTE_CUE_MODULES.md",
+      "limitations": "One consumer plus synthetic fixtures; no fresh rendered or second-game validation. See guide for sampling and cue-consumption limits.",
+      "bundle_version": "0.5.0",
+      "file_version": "1.0.0",
+      "tags": [
+        "terrain",
+        "underwater",
+        "clearance",
+        "orbit"
+      ],
+      "review_decision": "extract-adapter",
+      "languages": [
+        "gdscript"
+      ],
+      "source_project_ids": [
+        "shammyverse"
+      ],
+      "capability_ids": [
+        "terrain",
+        "cap-terrain-height-sampling"
+      ]
+    },
+    {
+      "id": "lyric-world-cues",
+      "name": "Timed interval cue cursor with rewind and duplicate suppression",
+      "status": "extracted",
+      "engine": "Godot 4",
+      "dimension": "3d",
+      "files": [
+        "3d/godot/world_life/timed_cue_cursor.gd"
+      ],
+      "consumer_paths": [
+        "game/scripts/gameplay_world_effects.gd"
+      ],
+      "guide": "3d/godot/world_life/ROUTE_CUE_MODULES.md",
+      "limitations": "One consumer plus synthetic fixtures; no fresh rendered or second-game validation. See guide for sampling and cue-consumption limits.",
+      "bundle_version": "0.5.0",
+      "file_version": "1.0.0",
+      "tags": [
+        "timeline",
+        "lyric",
+        "cue",
+        "rewind",
+        "tutorial"
+      ],
+      "review_decision": "extract-adapter",
+      "languages": [
+        "gdscript"
+      ],
+      "source_project_ids": [
+        "shammyverse"
+      ],
+      "capability_ids": [
+        "audio"
+      ]
+    },
+    {
+      "id": "save-rotation",
+      "name": "Validated save backup rotation and recovery",
+      "status": "candidate",
+      "engine": "Godot 4",
+      "dimension": "3d",
+      "files": [],
+      "consumer_paths": [
+        "game/scripts/adventure_save.gd"
+      ],
+      "guide": "3d/godot/world_life/REMAINING_REUSE_REVIEW.md",
+      "limitations": "Keep game-owned until filesystem failure injection covers temp write, backup rotation and rollback; game save schema and UI always remain adapters.",
+      "review_decision": "retain",
+      "disposition": "game-owned",
+      "languages": [
+        "gdscript"
+      ],
+      "source_project_ids": [
+        "shammyverse"
+      ],
+      "capability_ids": [
+        "persistence"
+      ],
+      "catalog_mechanic_refs": [
+        {
+          "project_id": "shammyverse",
+          "mechanic_id": "shammyverse-3"
+        }
+      ]
+    },
+    {
+      "id": "flight-clearance",
+      "name": "Flight wing clearance correction",
+      "status": "candidate",
+      "engine": "Godot 4",
+      "dimension": "3d",
+      "files": [],
+      "consumer_paths": [
+        "game/scripts/poofy_flight_clearance.gd"
+      ],
+      "guide": "3d/godot/world_life/REMAINING_REUSE_REVIEW.md",
+      "limitations": "Keep game-owned: Poofy bone conventions, torso dimensions and authored wing sweep. Revisit only with a tested second rig.",
+      "review_decision": "retain",
+      "disposition": "game-owned",
+      "languages": [
+        "gdscript"
+      ],
+      "source_project_ids": [
+        "shammyverse"
+      ],
+      "capability_ids": [
+        "animation"
+      ]
+    },
+    {
+      "id": "character-authoring",
+      "name": "Reference-led Blender geometry and rig helpers",
+      "status": "candidate",
+      "engine": "Blender Python",
+      "dimension": "3d",
+      "files": [],
+      "consumer_paths": [
+        "Design/Characters/CanvasCompanions/artist.py"
+      ],
+      "guide": "3d/godot/world_life/REMAINING_REUSE_REVIEW.md",
+      "limitations": "Keep game-owned: destructive scene reset, fixed body rig/materials, private exporter and paths. Revisit with explicit scene ownership, exporter injection and second-rig tests.",
+      "review_decision": "retain",
+      "disposition": "game-owned",
+      "languages": [
+        "python"
+      ],
+      "source_project_ids": [
+        "shammyverse"
+      ],
+      "capability_ids": [
+        "authoring"
+      ]
+    },
+    {
+      "id": "legacy-csharp-services",
+      "name": "Legacy Godot C# autoload services",
+      "status": "existing",
+      "engine": "Godot .NET",
+      "dimension": "any",
+      "languages": [
+        "csharp"
+      ],
+      "files": [
+        "autoload/GameState.cs",
+        "autoload/SaveManager.cs",
+        "autoload/AudioManager.cs",
+        "autoload/InputManager.cs",
+        "autoload/SceneRouter.cs"
+      ],
+      "consumer_paths": [],
+      "source_project_ids": [],
+      "capability_ids": [
+        "persistence",
+        "audio"
+      ],
+      "guide": "shared/module-languages.md",
+      "limitations": "Legacy source only; no fresh build/export or consumer validation. Not included in the world-life vendor bundle. Configured Boot scene absent.",
+      "tags": [
+        "legacy",
+        "csharp",
+        "c#",
+        "godot",
+        "dotnet"
+      ],
+      "review_decision": "retain",
+      "disposition": "legacy-source"
+    },
+    {
+      "id": "legacy-csharp-platform",
+      "name": "Legacy Godot C# platform adapters",
+      "status": "existing",
+      "engine": "Godot .NET",
+      "dimension": "any",
+      "languages": [
+        "csharp"
+      ],
+      "files": [
+        "autoload/PlatformBridge.cs",
+        "autoload/platform_bridges/DebugPlatformAdapter.cs",
+        "autoload/platform_bridges/LocalPlatformAdapter.cs",
+        "autoload/platform_bridges/SteamPlatformAdapter.cs",
+        "autoload/platform_bridges/WebPlatformAdapter.cs"
+      ],
+      "consumer_paths": [],
+      "source_project_ids": [],
+      "capability_ids": [],
+      "guide": "shared/module-languages.md",
+      "limitations": "Legacy source only; no fresh build/export or consumer validation. Not included in the world-life vendor bundle. Configured Boot scene absent.",
+      "tags": [
+        "legacy",
+        "csharp",
+        "c#",
+        "godot",
+        "dotnet"
+      ],
+      "review_decision": "retain",
+      "disposition": "legacy-source"
+    },
+    {
+      "id": "legacy-csharp-visuals",
+      "name": "Legacy Godot C# visual components",
+      "status": "existing",
+      "engine": "Godot .NET",
+      "dimension": "2d",
+      "languages": [
+        "csharp"
+      ],
+      "files": [
+        "scripts/visual/CameraShake.cs",
+        "scripts/visual/DamageNumber.cs",
+        "scripts/visual/ParallaxBackground.cs",
+        "scripts/visual/ScreenTransition.cs"
+      ],
+      "consumer_paths": [],
+      "source_project_ids": [],
+      "capability_ids": [
+        "animation"
+      ],
+      "guide": "shared/module-languages.md",
+      "limitations": "Legacy source only; no fresh build/export or consumer validation. Not included in the world-life vendor bundle. Configured Boot scene absent.",
+      "tags": [
+        "legacy",
+        "csharp",
+        "c#",
+        "godot",
+        "dotnet"
+      ],
+      "review_decision": "retain",
+      "disposition": "legacy-source"
+    },
+    {
+      "id": "companion-studio",
+      "name": "Painted albedo and clip baking for part-built companions",
+      "status": "extracted",
+      "engine": "Blender 5.2 Python",
+      "dimension": "3d",
+      "languages": [
+        "python"
+      ],
+      "files": [
+        "3d/blender/companion_studio/painterly.py",
+        "3d/blender/companion_studio/motion.py",
+        "3d/godot/painted_companion/painted_lighting.gdshaderinc"
+      ],
+      "consumer_paths": [
+        "Design/Characters/CanvasCompanions/painterly.py",
+        "Design/Characters/CanvasCompanions/animate.py",
+        "Design/Characters/CanvasCompanions/paintings.py",
+        "game/shaders/sand_animal_reveal.gdshader"
+      ],
+      "source_project_ids": [
+        "shammyverse"
+      ],
+      "capability_ids": [],
+      "guide": "3d/blender/companion_studio/README.md",
+      "limitations": "One consumer and one art style. One bone per limb; no knees or elbows. Unit-tested math and packing; bake and clip baking exercised only through the consumer's Blender 5.2.3 builds. The Godot shader include (painted lighting) is listed here because the registry has no shader language; its defaults were tuned in one scene and must be re-measured per scene.",
+      "tags": [
+        "texture",
+        "albedo",
+        "watercolour",
+        "animation",
+        "walk",
+        "tail",
+        "blender"
+      ],
+      "review_decision": "extract-adapter"
+    }
+  ]
+}

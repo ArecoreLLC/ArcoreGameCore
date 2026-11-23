@@ -4,6 +4,10 @@ AI-assisted game-development framework organized by dimension and migration use 
 
 ## Start here: assisted workflows
 
+- [Module search and growth architecture](shared/module-discovery.md) and
+  [implementation languages](shared/module-languages.md): find modules by language,
+  engine and existing catalog capability, then inspect their reuse boundaries.
+
 - [Shared module registry and common Unreal build/test runner](shared/module-registry.md): versioned portable headers, local dependency locks, fresh automation/smoke receipts, and Dungeon Dash Market / Critter Contraptions pilots.
 
 - [Workflow catalog](workflows/README.md): Phaser → Godot, Godot Windows → Android, game project integration, logo sting / splash video, gameplay music videos / trailers, game asset showcases, ambient world life, and exploratory Godot → Unreal and music reconstruction.

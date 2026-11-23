@@ -244,6 +244,19 @@ impl Store {
         if project.to_string().len() > 2_000_000 {
             return Err("Project metadata exceeds 2 MB.".into());
         }
+        for field in ["languages","module_keys"] {
+            if let Some(value)=project.get(field) {
+                let rows=value.as_array().ok_or_else(||format!("{field} must be an array"))?;
+                if rows.len()>200 {return Err(format!("Too many {field}"));}
+                let mut seen=std::collections::HashSet::new();
+                for row in rows {
+                    let text=row.as_str().ok_or_else(||format!("{field} must contain strings"))?;
+                    if !seen.insert(text) {return Err(format!("Duplicate {field} tag"));}
+                    if field=="languages" && !["cpp","csharp","gdscript","python","typescript","javascript","rust"].contains(&text) {return Err("Unknown language tag".into());}
+                    if field=="module_keys" && crate::module_search::search(&json!({"key":text}))?["total"]==0 {return Err("Unknown module tag".into());}
+                }
+            }
+        }
         for c in project["capabilities"]
             .as_array()
             .ok_or("Capabilities must be a list")?
@@ -683,6 +696,18 @@ impl Store {
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn game_module_language_tags_persist_and_validate() {
+        let (_d,s)=fixture();let mut project=s.project("test").unwrap();
+        let name=project["name"].clone();
+        project["languages"]=json!(["cpp","gdscript"]);
+        project["module_keys"]=json!(["procedures:reef-clearance"]);
+        s.save_project(project.clone()).unwrap();
+        let saved=s.project("test").unwrap();
+        assert_eq!(saved["module_keys"],project["module_keys"]);assert_eq!(saved["name"],name);
+        project["module_keys"]=json!(["missing:key"]);assert!(s.save_project(project.clone()).is_err());
+        project["module_keys"]=json!([]);project["languages"]=json!(["not-a-language"]);assert!(s.save_project(project).is_err());
+    }
     #[test]
     fn screenshot_iteration_is_persistent_and_shared_with_mcp() {
         let (d, s) = fixture();

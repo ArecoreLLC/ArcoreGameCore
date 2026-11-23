@@ -80,6 +80,16 @@
       "runtime": "rust-tauri"
     },
     {
+      "id": "sonic-alchemist",
+      "root": "../ArcoreSonicAlchemist",
+      "role": "Rust/Tauri stem lab and adaptive music authoring; exports aligned layer WAVs with a runtime manifest and serves the adaptive MCP",
+      "required_files": [
+        "crates/audio-core/Cargo.toml",
+        "crates/audio-core/src/adaptive_mcp.rs"
+      ],
+      "runtime": "rust-tauri"
+    },
+    {
       "id": "photo-master",
       "root": "../arcorephotomaster",
       "role": "Non-destructive photo editing and photo-derived texture sets",
@@ -119,18 +129,27 @@
         "--mcp"
       ],
       "implemented_tools": [
+        "drawing_production",
         "list_projects",
         "list_media",
         "import_media",
         "video_production",
+        "music_production",
         "animation_production",
         "animation_pipeline",
         "model_production",
-        "showcase_production"
+        "showcase_production",
+        "module_search",
+        "reusable_modules"
       ],
       "role": "The only MCP server agents register. It exposes wizard-level tools and calls the servers below itself, with typed arguments and no LLM in the loop.",
       "transport": "stdio",
       "tools": [
+        {
+          "name": "drawing_production",
+          "writes": true,
+          "purpose": "First-party geometry-first Drawing Atelier: discover typed tools, import personal art, validate authored guides, render cached advanced studies, poll persistent jobs; implemented"
+        },
         {
           "name": "list_projects",
           "writes": false,
@@ -197,6 +216,11 @@
           "purpose": "Registry-routed ArcoreCut production operations; tool returns persistent jobs for media work"
         },
         {
+          "name": "music_production",
+          "writes": true,
+          "purpose": "Registry-routed Sonic Alchemist adaptive music: list designs, validate, export layer WAVs with runtime manifest, verify exports; implemented"
+        },
+        {
           "name": "animation_production",
           "writes": true,
           "purpose": "Registry-routed detailed Animate operations"
@@ -215,6 +239,16 @@
           "name": "showcase_production",
           "writes": true,
           "purpose": "Discover Showcase, import finished masters without extra splash, prepare private Games channel publishing through Fleet"
+        },
+        {
+          "name": "module_search",
+          "writes": false,
+          "purpose": "Cached paged discovery across procedure and portable module catalogs; exact keys, filters and optional canonical details; implemented"
+        },
+        {
+          "name": "reusable_modules",
+          "writes": false,
+          "purpose": "Backward-compatible procedure registry lookup including reviewed game-owned candidates; implemented"
         }
       ]
     },
@@ -240,13 +274,27 @@
           "library_overview",
           "list_models",
           "import_files",
-          "blender_status"
+          "blender_status",
+          "open_model",
+          "close_session",
+          "import_project_folder",
+          "update_model",
+          "set_model_source",
+          "list_references",
+          "add_reference",
+          "verify_file_integrity"
         ],
         "write_tools": [
           "blender_run",
           "create_design_iteration",
           "check_model",
-          "import_files"
+          "import_files",
+          "open_model",
+          "close_session",
+          "import_project_folder",
+          "update_model",
+          "set_model_source",
+          "add_reference"
         ],
         "discovery": {
           "file": "~/.modelvault/settings.json",
@@ -380,6 +428,29 @@
           "video_replace",
           "video_cancel",
           "video_workflows"
+        ]
+      },
+      {
+        "id": "sonic-alchemist",
+        "label": "Arcore Sonic Alchemist (adaptive music)",
+        "component": "sonic-alchemist",
+        "transport": "stdio",
+        "command": [
+          "target/release/sonic-adaptive-mcp.exe"
+        ],
+        "timeout_seconds": 900,
+        "connection": "Build with cargo build --release -p arcore-audio --bin sonic-adaptive-mcp. GameCore music_production routes here; the pipeline uses the same server. Paths are absolute and local.",
+        "auth": {
+          "type": "none"
+        },
+        "tools": [
+          "adaptive_compositions",
+          "adaptive_validate",
+          "adaptive_export",
+          "adaptive_manifest"
+        ],
+        "write_tools": [
+          "adaptive_export"
         ]
       },
       {

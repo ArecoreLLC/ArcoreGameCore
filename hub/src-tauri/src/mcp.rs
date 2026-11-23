@@ -5,11 +5,15 @@ use std::io::{BufRead, Write};
 
 fn definitions() -> Value {
     json!([
+        {"name":"module_search","description":"Search reusable procedures and portable C++ modules together. Cached metadata search; whitespace terms are ANDed, case-insensitive substrings. Use returned key for exact lookup and details=true for the canonical entry. Default 20 results, maximum 100; next_offset paginates. Filters are exact. Discovery is not installation or portability certification. See shared/module-discovery.md.","inputSchema":{"type":"object","properties":{"query":{"type":"string"},"key":{"type":"string"},"catalog":{"type":"string","enum":["procedures","portable"]},"state":{"type":"string"},"engine":{"type":"string"},"dimension":{"type":"string"},"language":{"type":"string","enum":["cpp","csharp","gdscript","python"]},"capability":{"type":"string"},"reuse":{"type":"string","enum":["reusable","game-specific","legacy"]},"limit":{"type":"integer","minimum":1,"maximum":100},"offset":{"type":"integer","minimum":0},"details":{"type":"boolean"}},"additionalProperties":false}},
+        {"name":"reusable_modules","description":"Read GameCore's reusable procedure registry. Filter query (e.g. butterfly), id, or status: extracted/existing/candidate. Returns source files, documentation, consumer references and limitations. Candidate entries are not extracted modules; no code is executed.","inputSchema":{"type":"object","properties":{"query":{"type":"string"},"id":{"type":"string"},"status":{"type":"string","enum":["extracted","existing","candidate"]}},"additionalProperties":false}},
+        {"name":"drawing_production","description":"Drawing Atelier: discover tools/list, then drawing_guide. Import personal artwork with drawing_import_reference. drawing_render mode=trace (default) skips shapes; mode=advanced uses user-authored geometry. drawing_validate checks the chosen mode; drawing_job polls cached persistent renders. Outputs: GIF, sheet, evidence, plus advanced palette. Use animal_guide for trusted animal manifests; animal_validate, animal_status, animal_resume and animal_review provide hashed resumable stages and explicit review gates. Hand clean game footage to video_production for ArcoreCut editing.","inputSchema":{"type":"object","properties":{"operation":{"type":"string"},"arguments":{"type":"object"}},"required":["operation","arguments"],"additionalProperties":false}},
         {"name":"showcase_production","description":"Showcase on Fleet: discover typed tools with operation=tools/list. Import exact approved masters with finished_video_import (no extra splash), then youtube_prepare for the Games channel. youtube_queue uploads privately only when requested. Existing protected credentials stay in the provider.","inputSchema":{"type":"object","properties":{"operation":{"type":"string"},"arguments":{"type":"object"}},"required":["operation","arguments"],"additionalProperties":false}},
         {"name":"model_production","description":"ModelForge operations through the GameCore registry. Discover typed schemas with operation=tools/list. Local app credentials are discovered privately; no direct downstream agent registration.","inputSchema":{"type":"object","properties":{"operation":{"type":"string"},"arguments":{"type":"object"}},"required":["operation","arguments"],"additionalProperties":false}},
         {"name":"animation_production","description":"Detailed Animate work routed through the GameCore registry. First operation=tools/list, arguments={}. Animate owns cases, anchors, provenance, ROM, versioned moves, composition, job workers and previews. Jobs persist after this call. Use animate_app to start/inspect the service. Use animation_pipeline for tracked multi-stage orchestration.","inputSchema":{"type":"object","properties":{"operation":{"type":"string"},"arguments":{"type":"object"}},"required":["operation","arguments"],"additionalProperties":false}},
         {"name":"animation_pipeline","description":"GameCore-owned persistent animation pipeline. action=start requires case_id and stages (track/refine/retarget/bake_moves). For bake_moves provide moves_revision and optional sequence. action=status polls and advances completed stages; action=cancel stops its active worker. The returned run_id is durable.","inputSchema":{"type":"object","properties":{"action":{"type":"string","enum":["start","status","cancel"]},"run_id":{"type":"string"},"case_id":{"type":"string"},"stages":{"type":"array","items":{"type":"string","enum":["track","refine","retarget","bake_moves"]}},"moves_revision":{"type":"string"},"sequence":{"type":"array","items":{"type":"string"}}},"required":["action"],"additionalProperties":false}},
         {"name":"video_production","description":"Call ArcoreCut through the GameCore registry. First use operation=tools/list with arguments={} to discover full typed schemas. Operations: video_projects, video_project, video_import, video_timing, video_mix, video_validate, video_render, video_replace, video_jobs, video_cancel, video_workflows. Long media operations return persistent jobs. Edits require project_id and expected_revision; read video_project first. Media remains in GameVideo.","inputSchema":{"type":"object","properties":{"operation":{"type":"string"},"arguments":{"type":"object"}},"required":["operation","arguments"],"additionalProperties":false}},
+        {"name":"music_production","description":"Sonic Alchemist adaptive music through the GameCore registry. First operation=tools/list, arguments={}. Operations: adaptive_compositions (saved game designs), adaptive_validate (design path or object, optional .arcore project; returns the runtime contract: bar/fade seconds, boundary, equal-power curve, linear gains), adaptive_export (writes layer WAVs, design.json, assets.json with runtime manifest into a NEW folder), adaptive_manifest (verify an export's frames and SHA-256). Paths are absolute. Games play exports with GameCore adaptive-music modules.","inputSchema":{"type":"object","properties":{"operation":{"type":"string"},"arguments":{"type":"object"}},"required":["operation","arguments"],"additionalProperties":false}},
         {"name":"list_projects","description":"List GameCore project IDs, names and source folders.","inputSchema":{"type":"object","properties":{},"additionalProperties":false}},
         {"name":"list_media","description":"List a game's media including immutable iteration observations. basis=import records the checkout at import, not the image's capture/build revision. Null iteration means legacy/unknown.","inputSchema":{"type":"object","properties":{"project_id":{"type":"string"}},"required":["project_id"],"additionalProperties":false}},
         {"name":"import_media","description":"Copy local media into GameCore as a draft. Screenshots automatically record UTC date, full Git HEAD and modified state from the selected game's folder at import. Does not capture a game, commit changes or prove the pictured build. Originals are preserved.","inputSchema":{"type":"object","properties":{"project_id":{"type":"string"},"path":{"type":"string"},"kind":{"type":"string","enum":["screenshot","video","trailer"]}},"required":["project_id","path","kind"],"additionalProperties":false}}
@@ -21,6 +25,16 @@ fn call(store: &Store, params: &Value) -> Result<Value, String> {
     let string = |key: &str| args[key].as_str().filter(|s| !s.is_empty())
         .ok_or_else(|| format!("{key} is required"));
     match params["name"].as_str() {
+        Some("module_search") => crate::module_search::search(args),
+        Some("reusable_modules") => {
+            let registry = crate::module_search::reusable();
+            let query=args["query"].as_str().unwrap_or("").to_lowercase();
+            let entries: Vec<Value> = registry["entries"].as_array().ok_or("Invalid reuse registry")?.iter()
+                .filter(|item| args["id"].as_str().map_or(true,|id|item["id"].as_str()==Some(id)))
+                .filter(|item| args["status"].as_str().map_or(true,|status|item["status"].as_str()==Some(status)))
+                .filter(|item| query.is_empty() || item.to_string().to_lowercase().contains(&query)).cloned().collect();
+            Ok(json!({"schema":registry["schema"],"audit_date":registry["audit_date"],"specialization_policy":registry["specialization_policy"],"reuse_review_required":registry["reuse_review_required"],"entries":entries}))
+        },
         Some("list_projects") => Ok(json!(store.values("SELECT json_object('id',id,'name',name,'path',json_extract(data,'$.path')) FROM projects ORDER BY name")?)),
         Some("list_media") => {
             let id = string("project_id")?;
@@ -38,6 +52,13 @@ pub fn respond(store: &Store, request: Value) -> Option<Value> {
         Some("initialize") => json!({"protocolVersion":"2024-11-05","capabilities":{"tools":{}},"serverInfo":{"name":"gamecore-hub","version":env!("CARGO_PKG_VERSION")}}),
         Some("ping") => json!({}),
         Some("tools/list") => json!({"tools":definitions()}),
+        Some("tools/call") if request["params"]["name"]=="drawing_production" => {
+            let args=&request["params"]["arguments"];
+            match crate::drawing::call(args["operation"].as_str().unwrap_or(""),&args["arguments"]) {
+                Ok(value)=>json!({"content":[{"type":"text","text":value.to_string()}],"isError":false}),
+                Err(error)=>json!({"content":[{"type":"text","text":error}],"isError":true}),
+            }
+        },
         Some("tools/call") if request["params"]["name"]=="animation_pipeline" => {
             match crate::animation_pipeline::call(&request["params"]["arguments"]) {
                 Ok(value)=>json!({"content":[{"type":"text","text":value.to_string()}],"isError":false}),
@@ -58,6 +79,10 @@ pub fn respond(store: &Store, request: Value) -> Option<Value> {
                 Ok(result)=>result,
                 Err(error)=>json!({"content":[{"type":"text","text":error}],"isError":true}),
             }
+        },
+        Some("tools/call") if request["params"]["name"]=="music_production" => {
+            let args=&request["params"]["arguments"];
+            match crate::video_bridge::call_provider("sonic-alchemist",args["operation"].as_str().unwrap_or(""),&args["arguments"]) {Ok(result)=>result,Err(error)=>json!({"content":[{"type":"text","text":error}],"isError":true})}
         },
         Some("tools/call") if request["params"]["name"]=="video_production" => {
             let args=&request["params"]["arguments"];

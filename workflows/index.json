@@ -332,6 +332,43 @@
         "shared/migration-contract.md",
         "shared/ecosystem.json"
       ]
+    },
+    {
+      "id": "painted-animated-companions",
+      "status": "scaffold",
+      "dimensions": [
+        "3d"
+      ],
+      "guide": "workflows/painted-animated-companions/README.md",
+      "example": "workflows/painted-animated-companions/example.md",
+      "shared": [
+        "shared/migration-contract.md",
+        "shared/ecosystem.json"
+      ],
+      "specs": [
+        "3d/blender/companion_studio/README.md",
+        "3d/godot/painted_companion/README.md",
+        "workflows/painted-animated-companions/stages.json"
+      ]
+    },
+    {
+      "id": "procedural-world-generation",
+      "status": "scaffold",
+      "dimensions": [
+        "3d"
+      ],
+      "guide": "workflows/procedural-world-generation/README.md",
+      "example": "workflows/procedural-world-generation/example.md",
+      "wizard": "workflows/procedural-world-generation/wizard.json",
+      "shared": [
+        "shared/migration-contract.md",
+        "shared/procgen/README.md"
+      ],
+      "specs": [
+        "3d/procgen/README.md",
+        "3d/godot/procgen/README.md",
+        "3d/unreal/procgen/README.md"
+      ]
     }
   ]
 }

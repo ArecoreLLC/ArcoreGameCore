@@ -1,5 +1,9 @@
 # Make gameplay music videos and trailers
 
+For a character drawing/painting to music, start with the [geometry-first art
+pipeline](drawing.md). It covers authored construction shapes, advanced Drawing
+Atelier studies through MCP, consumer song timing, and clean ArcoreCut caption editing.
+
 Status: scaffold, built from one production (ShammyVerse, ten songs plus a finale review, November 2026). This is a
 reusable playbook for a music video or trailer per song that shows **real gameplay**. The game is driven by script,
 captured frame-accurately in engine, and laid over the exact song file with its captions. The runtime is Godot 4

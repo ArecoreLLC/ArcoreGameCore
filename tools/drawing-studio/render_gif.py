@@ -34,6 +34,7 @@ def parser():
     p.add_argument('--hold', type=float, default=2, help='Hold the finished painting for 0-10 seconds')
     p.add_argument('--no-cursor', action='store_true', help='Hide the animated pencil/brush tip')
     p.add_argument('--advanced', action='store_true', help='Finish each construction part before painting the next; generate six stock colors and recipes')
+    p.add_argument('--skip-construction', action='store_true', help='Draw & Paint: start directly with traced contours, then graphite and color; no authored shapes needed. Cannot combine with --advanced.')
     p.add_argument('--mixing-output', type=Path, help='Export a separate color-mixing GIF (also generates palette JSON and PNG)')
     p.add_argument('--mixing-only', action='store_true', help='Export the palette and mixing GIF without rendering the drawing GIF')
     p.add_argument('--palette-output', type=Path, help='Recipe JSON path; defaults to OUTPUT-palette.json')
@@ -208,7 +209,8 @@ class Renderer:
         output.paste(result,(0,0))
         draw=ImageDraw.Draw(output)
         draw.line((20,self.height+2,self.width-20,self.height+2),fill=(221,220,210))
-        title=f'{stage+1:02} / {self.data["instructions"][stage]["title"]}'
+        number=stage-1 if self.data.get('skip_construction') else stage+1
+        title=f'{number:02} / {self.data["instructions"][stage]["title"]}'
         if stage in (2,3) and self.active_part and self.data.get('sketch_schedules'):
             title=f'{self.active_part["name"]} / Lines & graphite'
         elif stage>=4 and self.active_part:
@@ -217,7 +219,8 @@ class Renderer:
         draw.text((22,self.height+12),title,font=font(max(12,min(19,self.width//34)),True),fill=(51,77,61))
         draw.text((22,self.height+43),'DRAWING ATELIER  /  pencil to paint',font=font(12),fill=(116,123,112))
         draw.line((self.width-152,self.height+53,self.width-22,self.height+53),fill=(218,222,210),width=3)
-        draw.line((self.width-152,self.height+53,self.width-152+round(130*progress),self.height+53),fill=(62,92,71),width=3)
+        shown_progress=(progress-2/6)*1.5 if self.data.get('skip_construction') else progress
+        draw.line((self.width-152,self.height+53,self.width-152+round(130*shown_progress),self.height+53),fill=(62,92,71),width=3)
         if self.data.get('advanced'):
             for i,base in enumerate(self.data['base_colors']):
                 x=22+i*min(95,(self.width-44)//6)
@@ -248,9 +251,9 @@ def wrap(draw,text,x,y,width,face,line_height):
     draw.text((x,y),row,font=face,fill=(105,112,97))
 
 
-def make_sheet(frames,instructions,name,path):
+def make_sheet(frames,instructions,name,path,trace_only=False):
     sheet=Image.new('RGB',(1800,2240),PAPER);draw=ImageDraw.Draw(sheet)
-    draw.text((65,35),'DRAWING ATELIER / SIX-STEP STUDY',font=font(18),fill=(62,92,71))
+    draw.text((65,35),'DRAWING ATELIER / DRAW & PAINT' if trace_only else 'DRAWING ATELIER / SIX-STEP STUDY',font=font(18),fill=(62,92,71))
     draw.text((65,78),name[:65],font=font(40,True),fill=(51,77,61))
     for i,frame in enumerate(frames):
         x,y=65+(i%2)*850,160+(i//2)*680
@@ -268,6 +271,8 @@ def run(args):
     if args.sheet and args.sheet.suffix.lower()!='.png':
         raise ValueError('--sheet must end in .png.')
     advanced=getattr(args,'advanced',False)
+    skip_construction=getattr(args,'skip_construction',False)
+    if advanced and skip_construction:raise ValueError('Choose Shapes First (--advanced) or Draw & Paint (--skip-construction), not both.')
     mixing_only=getattr(args,'mixing_only',False)
     mixing_output=getattr(args,'mixing_output',None)
     if mixing_only and mixing_output is None:
@@ -311,6 +316,8 @@ def run(args):
             print(json.dumps(mixing_report,indent=2),flush=True)
         if mixing_only:return mixing_report
     renderer=Renderer(data,args.width,regions);palette=make_palette(reference)
+    if skip_construction:
+        data['stages'][0]=[];data['stages'][1]=[];data['skip_construction']=True
     # Include every stage boundary exactly, irrespective of fps/duration.
     sheet_times=[.1,.2,.3,.4,.7,1] if advanced else [i/6 for i in range(1,7)]
     samples=sorted(set([i/(frame_count-1) for i in range(frame_count)]+sheet_times))
@@ -318,6 +325,7 @@ def run(args):
     for index,progress in enumerate(samples):
         # Give region-based painting 60% of the movie; construction/graphite use 40%.
         drawing_progress=(progress/.4*4/6 if progress<.4 else 4/6+(progress-.4)/.6*2/6) if advanced else progress
+        if skip_construction:drawing_progress=2/6+progress*4/6
         frame=renderer.frame(drawing_progress,cursor=not args.no_cursor)
         frames.append(frame.quantize(palette=palette,dither=Image.Dither.NONE))
         next_time=samples[index+1] if index+1<len(samples) else progress
@@ -325,22 +333,27 @@ def run(args):
         durations.append(max(10,(round(next_time*args.duration*100)-round(progress*args.duration*100))*10))
         if progress in sheet_times:
             # Stage labels describe the completed stage rather than the next stage.
-            completed.append(renderer.frame(drawing_progress,cursor=False,label_stage=sheet_times.index(progress)))
-        current=min(5,int(progress*6))
+            label=min(5,int(drawing_progress*6-1e-8)) if skip_construction else sheet_times.index(progress)
+            completed.append(renderer.frame(drawing_progress,cursor=False,label_stage=label))
+        current=min(5,int(drawing_progress*6)) if skip_construction else min(5,int(progress*6))
         if current!=last_stage:
-            print(f'Rendering {current+1}/6: {data["instructions"][current]["title"]}',flush=True);last_stage=current
+            number=current-1 if skip_construction else current+1
+            total=4 if skip_construction else 6
+            print(f'Rendering {number}/{total}: {data["instructions"][current]["title"]}',flush=True);last_stage=current
     durations[-1]=max(10,round(args.hold*100)*10)
     args.output.parent.mkdir(parents=True,exist_ok=True)
     print(f'Encoding {len(frames)} frames ...',flush=True)
     frames[0].save(args.output,save_all=True,append_images=frames[1:],duration=durations,loop=0,disposal=1,optimize=False)
     if args.sheet:
-        make_sheet(completed,data['instructions'],name,args.sheet)
+        sheet_instructions=[data['instructions'][min(5,int((2/6+p*4/6)*6-1e-8))] for p in sheet_times] if skip_construction else data['instructions']
+        make_sheet(completed,sheet_instructions,name,args.sheet,skip_construction)
     # Decode the actual GIF, checking all frames and recorded duration.
     with Image.open(args.output) as saved:
         duration=0
         for i in range(saved.n_frames):
             saved.seek(i);saved.load();duration+=saved.info.get('duration',0)
         report={'status':'passed','output':str(args.output.resolve()),'size':list(saved.size),'frames':saved.n_frames,'duration_ms':duration,'loop':saved.info.get('loop'),'bytes':args.output.stat().st_size,'sha256':hashlib.sha256(args.output.read_bytes()).hexdigest(),'python':sys.version.split()[0],'pillow':pillow_version,'elapsed_seconds':round(time.perf_counter()-start,2),'stroke_counts':[len(s) for s in data['stages']],'advanced':advanced}
+        report['skip_construction']=skip_construction
         if manifest:
             report['palette']=str(palette_output.resolve());report['mixture_count']=len(manifest['recipes']);report['part_count']=len(manifest['paint_order'])
         if saved.n_frames<7 or saved.info.get('loop')!=0:

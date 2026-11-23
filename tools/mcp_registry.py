@@ -213,6 +213,9 @@ def probe_server(server, components, env=os.environ):
             root = (ROOT / components[server['component']]['root']).resolve()
             child_env = {**env, **auth.get('env', {})}
             command = [sys.executable if c == 'python' else c for c in server['command']]
+            # Match the hub: a relative executable path resolves against the component root.
+            if len(Path(command[0]).parts) > 1 and (root / command[0]).exists():
+                command[0] = str(root / command[0])
             if not (root / command[-1]).exists() and len(command) > 1:
                 return {'id': sid, 'status': 'not_installed', 'detail': f'{command[-1]} not found in {root}'}
             info, tools = probe_stdio(command, str(root), child_env)

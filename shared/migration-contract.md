@@ -12,6 +12,11 @@ Read the selected workflow guide/example and dimension catalog. Then load only t
 
 ## Outputs
 
+For shared module extraction or specialization, include the
+[reuse suitability review](module-specialization.md#reuse-suitability-review):
+coupling findings, boundary decision, alternate-use evidence and remaining limits.
+Apply it before implementation and revisit it during regression review.
+
 1. An inventory and source-to-target mapping, including unsupported features and manual rebuilds.
 2. One implemented slice in the consuming game's working branch, plus tests and reproducible build commands.
 3. A parity report and a decision to expand, revise or stop. The workflow documents alone do not satisfy these outputs.

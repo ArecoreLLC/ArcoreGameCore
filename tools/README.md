@@ -59,3 +59,10 @@ and [game-music-video](../workflows/game-music-video/README.md) workflows. It ne
 
 `tests/test_world_life_godot.py` runs the world-life components' headless Godot test when `GODOT` is set (for example
 `GODOT=<Godot_console.exe> python -m unittest tools.tests.test_world_life_godot`); it is skipped otherwise.
+
+`companion_pipeline.py` and `companion_review.py` run the [painted, animated companion workflow](../workflows/painted-animated-companions/README.md).
+`companion_pipeline.py` is standard library only: `vendor` copies the Blender studio and the Godot shader include into a game with a SHA-256 lock
+(`--check` reports drift), `stages` lists the pipeline with the kind of automation each stage suits, and `validate-glb` checks geometry, skin weights,
+UVs, textures, expected clips and loop closure. `companion_review.py` needs numpy and Pillow (`tools/drawing-studio/.venv-vision`): `sample` and
+`palette` read pigment colours from a reference, `compare` finds those colours in a render, `sheet` and `gif` assemble captures. Its test is skipped
+without those packages.

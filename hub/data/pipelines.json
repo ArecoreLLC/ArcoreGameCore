@@ -149,6 +149,26 @@
       "stages": [
         { "step": "1. Architecture mapping", "owner": "Developer / Agent", "tool_or_guide": "workflows/godot-to-unreal/README.md", "acceptance": "Smoke check + playtest evidence" }
       ]
+    },
+    {
+      "id": "procedural-world-generation",
+      "title": "Procedural World Generation (Rust SDF/Surface Nets -> Godot / Unreal)",
+      "status": "scaffold",
+      "kind": "existing",
+      "source_component": "arcore_procgen (shared/procgen/rust)",
+      "target_component": "Godot 4 / Unreal 5.x Consumer",
+      "summary": "Generate deterministic 3D terrain chunks, parametric meshes, cell-grouped scatter instances, and grounded prop anchors from JSON recipes into glTF 2.0 + JSON bundles.",
+      "guide_path": "workflows/procedural-world-generation/README.md",
+      "tool_path": "shared/procgen/rust/Cargo.toml",
+      "handoffs": [
+        { "from": "World Recipe", "to": "arcore-procgen CLI", "artifact": "arcore.procgen.world-recipe.v1 JSON", "contract": "shared/procgen/README.md" },
+        { "from": "arcore-procgen CLI", "to": "Godot 4 / Unreal 5.x", "artifact": "terrain.glb + meshes.glb + instances.json + manifest.json", "contract": "shared/procgen/README.md" }
+      ],
+      "stages": [
+        { "step": "1. Recipe authoring & validation", "owner": "Developer / Agent", "tool_or_guide": "arcore-procgen validate", "acceptance": "Zero schema or reference errors" },
+        { "step": "2. Deterministic world bake", "owner": "arcore_procgen", "tool_or_guide": "arcore-procgen bake", "acceptance": "Deterministic SHA-256 outputs across thread counts" },
+        { "step": "3. Engine import & presentation", "owner": "Game Consumer", "tool_or_guide": "3d/godot/procgen/README.md or 3d/unreal/procgen/README.md", "acceptance": "Cells loaded, external props bound, consumer shaders & collision verified" }
+      ]
     }
   ]
 }

@@ -1,5 +1,31 @@
 # GameCore studio library
 
+## Standalone launch and module discovery
+
+Open **Modules** in the sidebar to browse by language, capability and reuse status.
+Select a result for boundaries, code examples, its guide and game tags. Add/remove
+module references there; edit a project's language tags with **Edit project**.
+The game library can filter by language or saved module tag. Reference tags are
+not installation or validation claims. Existing project and media data is preserved.
+
+Run `node tests/modules-ui-smoke.mjs` after a standalone build to test the complete
+flow against an isolated SQLite backup, including persistent tags and removal.
+
+From the repository root, run `Build-GameCore.cmd`, then `Launch-GameCore.cmd`.
+The build compiles the frontend and runs Cargo release with `custom-protocol`,
+embedding the UI. It needs no Vite server. A plain `cargo build --release` without
+that feature remains a development-URL build and can show a connection-refused
+page at 127.0.0.1:1437. Use `npm run tauri dev` from hub for development instead.
+The launcher now selects only the canonical release path; it does not fall back
+to an old export build or a debug executable. Close GameCore before rebuilding
+if Windows reports the executable is locked. No library data reset is needed.
+
+MCP additionally offers `module_search` (paged cross-catalog lookup with language
+and capability filters) and `reusable_modules` (legacy procedure lookup). See
+[discovery architecture](../shared/module-discovery.md) and
+[language guide](../shared/module-languages.md). Catalog changes require rebuilding
+and restarting the hub; existing project/media records remain in SQLite.
+
 A Windows Tauri 2 desktop catalog backed by local SQLite. Browse games, compare reusable mechanics, inspect source and asset indexes, classify portfolio capabilities, and curate marketing media without modifying the original game projects.
 
 ## Run

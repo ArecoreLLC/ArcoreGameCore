@@ -1,0 +1,192 @@
+{
+  "schema": "arcore.procgen.world-recipe.v1",
+  "name": "underwater-basin",
+  "seed": 20261112,
+  "bounds": {
+    "origin": [-96.0, -48.0, -96.0],
+    "size": [192.0, 56.0, 192.0],
+    "voxel": 1.0
+  },
+  "cells": {
+    "size": 24.0
+  },
+  "water_level": 0.0,
+  "terrain": {
+    "base_height": -28.0,
+    "height": {
+      "amplitude": 7.5,
+      "frequency": 0.015,
+      "octaves": 4,
+      "lacunarity": 2.0,
+      "gain": 0.5
+    },
+    "detail": {
+      "amplitude": 1.6,
+      "frequency": 0.06,
+      "octaves": 3,
+      "lacunarity": 2.1,
+      "gain": 0.48
+    },
+    "primitives": [
+      {
+        "id": "west-mesa",
+        "shape": "cylinder",
+        "center": [-36.0, -24.0, -18.0],
+        "radius": 18.0,
+        "height": 22.0,
+        "op": "union",
+        "smooth": 4.0
+      },
+      {
+        "id": "east-ridge",
+        "shape": "capsule",
+        "a": [28.0, -26.0, -24.0],
+        "b": [42.0, -20.0, 26.0],
+        "radius": 11.0,
+        "op": "union",
+        "smooth": 3.5
+      },
+      {
+        "id": "central-arch",
+        "shape": "torus",
+        "center": [0.0, -26.0, -6.0],
+        "major_radius": 18.0,
+        "minor_radius": 4.5,
+        "yaw_deg": 22.0,
+        "op": "union",
+        "smooth": 3.0
+      },
+      {
+        "id": "swim-tunnel",
+        "shape": "capsule",
+        "a": [-48.0, -22.0, -18.0],
+        "b": [-22.0, -22.0, -18.0],
+        "radius": 4.5,
+        "op": "subtract",
+        "smooth": 2.0
+      },
+      {
+        "id": "grotto-basin",
+        "shape": "sphere",
+        "center": [8.0, -22.0, 44.0],
+        "radius": 16.0,
+        "op": "subtract",
+        "smooth": 3.0
+      }
+    ]
+  },
+  "zones": [
+    {
+      "id": "grotto",
+      "center": [8.0, 44.0],
+      "radius": 24.0,
+      "falloff": 14.0
+    },
+    {
+      "id": "central-clearing",
+      "center": [0.0, -6.0],
+      "radius": 10.0,
+      "falloff": 6.0
+    }
+  ],
+  "meshes": [
+    {
+      "id": "kelp_blade",
+      "kind": "blade",
+      "length": 5.5,
+      "width": 0.42,
+      "segments": 6,
+      "bend": 0.45
+    },
+    {
+      "id": "boulder",
+      "kind": "rock",
+      "radius": 1.4,
+      "subdivisions": 2,
+      "roughness": 0.28
+    },
+    {
+      "id": "barrel_sponge",
+      "kind": "lathe",
+      "profile": [
+        [0.35, 0.0],
+        [0.58, 0.45],
+        [0.64, 1.05],
+        [0.52, 1.55],
+        [0.40, 1.60],
+        [0.36, 0.90]
+      ],
+      "segments": 14
+    }
+  ],
+  "scatter": [
+    {
+      "id": "kelp_forest",
+      "mesh": "kelp_blade",
+      "density": 0.14,
+      "max_slope_deg": 35.0,
+      "height_range": [-36.0, -12.0],
+      "zone": "grotto",
+      "zone_mode": "exclude",
+      "clustering": {
+        "frequency": 0.045,
+        "threshold": -0.05,
+        "softness": 0.2
+      },
+      "scale_range": [0.7, 1.45],
+      "align_to_normal": false,
+      "normal_offset": -0.15,
+      "max_per_cell": 180
+    },
+    {
+      "id": "grotto_sponges",
+      "mesh": "barrel_sponge",
+      "density": 0.05,
+      "max_slope_deg": 40.0,
+      "zone": "grotto",
+      "zone_mode": "include",
+      "scale_range": [0.65, 1.35],
+      "align_to_normal": true,
+      "normal_offset": -0.1,
+      "max_per_cell": 48
+    },
+    {
+      "id": "seabed_rocks",
+      "mesh": "boulder",
+      "density": 0.025,
+      "max_slope_deg": 55.0,
+      "zone": "central-clearing",
+      "zone_mode": "exclude",
+      "scale_range": [0.45, 1.6],
+      "align_to_normal": true,
+      "normal_offset": -0.25,
+      "max_per_cell": 32
+    }
+  ],
+  "props": [
+    {
+      "id": "arch_marker_sponge",
+      "mesh": "barrel_sponge",
+      "position": [0.0, -10.0, -6.0],
+      "yaw_deg": 30.0,
+      "scale": 1.8,
+      "snap_to_ground": true
+    },
+    {
+      "id": "wreck_anchor",
+      "mesh": "hero_shipwreck",
+      "external": true,
+      "position": [-18.0, -12.0, 22.0],
+      "yaw_deg": -40.0,
+      "scale": 1.0,
+      "snap_to_ground": true
+    }
+  ],
+  "presentation": {
+    "theme": "underwater-basin",
+    "water_color": [0.16, 0.58, 0.90],
+    "grotto_color": [0.58, 0.66, 0.98],
+    "sun_color": [1.7, 1.6, 1.45],
+    "note": "Consumer-owned look parameters; ignored by arcore_procgen."
+  }
+}

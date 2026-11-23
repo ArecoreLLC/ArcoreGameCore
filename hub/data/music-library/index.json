@@ -1,0 +1,2347 @@
+{
+  "schema": "gamecore.music-library.index/v1",
+  "generated_at": "2026-11-23T01:55:07+00:00",
+  "library_root": "X:/Projects/GameMusic/Library",
+  "game_states": [
+    "explore",
+    "tension",
+    "combat",
+    "boss",
+    "resolve"
+  ],
+  "contexts": [
+    "ambient",
+    "arena",
+    "boss",
+    "building",
+    "chase",
+    "combat",
+    "crafting",
+    "credits",
+    "duel",
+    "dungeon",
+    "farming",
+    "game-over",
+    "hub",
+    "investigation",
+    "menu",
+    "minigame",
+    "overworld",
+    "platformer",
+    "puzzle",
+    "racing",
+    "rhythm",
+    "sailing",
+    "sanctuary",
+    "shop",
+    "social",
+    "sports",
+    "stealth",
+    "strategy-map",
+    "town",
+    "underwater",
+    "victory"
+  ],
+  "families": [
+    {
+      "archetype": "cyberpunk",
+      "sub_archetypes": [
+        "neon-synthfunk",
+        "mech-industrial"
+      ]
+    },
+    {
+      "archetype": "dark-fantasy",
+      "sub_archetypes": [
+        "medieval-siege",
+        "cosmic-ambient"
+      ]
+    },
+    {
+      "archetype": "cozy",
+      "sub_archetypes": [
+        "nautical-folk",
+        "lofi-workshop",
+        "storybook-orchestral"
+      ]
+    },
+    {
+      "archetype": "arcade",
+      "sub_archetypes": [
+        "retro-chiptune-rock"
+      ]
+    },
+    {
+      "archetype": "horror",
+      "sub_archetypes": [
+        "noir-mystery"
+      ]
+    },
+    {
+      "archetype": "action-rock",
+      "sub_archetypes": [
+        "modern-tactics"
+      ]
+    }
+  ],
+  "folders": [
+    {
+      "folder": "action-rock",
+      "label": "Action rock",
+      "description": "Guitar-driven chase and pursuit energy.",
+      "track_count": 1
+    },
+    {
+      "folder": "action-shooter",
+      "label": "Action shooter",
+      "description": "Tactical and arena combat loops.",
+      "track_count": 2
+    },
+    {
+      "folder": "casual",
+      "label": "Casual",
+      "description": "Cafe and shop-management background music.",
+      "track_count": 1
+    },
+    {
+      "folder": "city-builder",
+      "label": "City builder",
+      "description": "Hopeful growth and construction.",
+      "track_count": 1
+    },
+    {
+      "folder": "cozy",
+      "label": "Cozy",
+      "description": "Pastoral farming and gentle life-sim mornings.",
+      "track_count": 1
+    },
+    {
+      "folder": "cyberpunk",
+      "label": "Cyberpunk",
+      "description": "Neon-noir city and market ambience.",
+      "track_count": 1
+    },
+    {
+      "folder": "fantasy-rpg",
+      "label": "Fantasy RPG",
+      "description": "Orchestral and folk cues for fantasy adventure: overworld, town, dungeon, boss, tavern, sanctuary.",
+      "track_count": 6
+    },
+    {
+      "folder": "horror",
+      "label": "Horror",
+      "description": "Haunted exploration dread and survival chase.",
+      "track_count": 2
+    },
+    {
+      "folder": "lofi",
+      "label": "Lo-fi",
+      "description": "Relaxed crafting, menu and study beats.",
+      "track_count": 1
+    },
+    {
+      "folder": "nautical",
+      "label": "Nautical",
+      "description": "Pirate and high-seas sailing.",
+      "track_count": 1
+    },
+    {
+      "folder": "noir-mystery",
+      "label": "Noir mystery",
+      "description": "Smoky detective jazz for investigation.",
+      "track_count": 1
+    },
+    {
+      "folder": "party",
+      "label": "Party",
+      "description": "Comedic competitive minigames.",
+      "track_count": 1
+    },
+    {
+      "folder": "platformer",
+      "label": "Platformer",
+      "description": "Bright, bouncy cartoon platforming.",
+      "track_count": 1
+    },
+    {
+      "folder": "post-apocalyptic",
+      "label": "Post-apocalyptic",
+      "description": "Desolate wasteland exploration.",
+      "track_count": 1
+    },
+    {
+      "folder": "puzzle",
+      "label": "Puzzle",
+      "description": "Calm, focused puzzle loops.",
+      "track_count": 1
+    },
+    {
+      "folder": "racing",
+      "label": "Racing",
+      "description": "Night-drive synthwave and arcade racing.",
+      "track_count": 2
+    },
+    {
+      "folder": "retro-arcade",
+      "label": "Retro arcade",
+      "description": "8-bit and 16-bit chiptune overworld and boss rush.",
+      "track_count": 2
+    },
+    {
+      "folder": "rhythm",
+      "label": "Rhythm",
+      "description": "EDM dance-battle tracks.",
+      "track_count": 1
+    },
+    {
+      "folder": "sci-fi",
+      "label": "Sci-fi",
+      "description": "Starship hubs, alien exploration, mech combat and space battles.",
+      "track_count": 4
+    },
+    {
+      "folder": "sports",
+      "label": "Sports",
+      "description": "Stadium and extreme-sports energy.",
+      "track_count": 2
+    },
+    {
+      "folder": "stealth",
+      "label": "Stealth",
+      "description": "Espionage infiltration tension.",
+      "track_count": 1
+    },
+    {
+      "folder": "strategy",
+      "label": "Strategy",
+      "description": "Campaign-map and war-planning marches.",
+      "track_count": 1
+    },
+    {
+      "folder": "tropical",
+      "label": "Tropical",
+      "description": "Island and beach calypso.",
+      "track_count": 1
+    },
+    {
+      "folder": "ui-meta",
+      "label": "UI / meta",
+      "description": "Title menu, victory, game over and end credits.",
+      "track_count": 4
+    },
+    {
+      "folder": "underwater",
+      "label": "Underwater",
+      "description": "Serene deep-ocean ambience.",
+      "track_count": 1
+    },
+    {
+      "folder": "western",
+      "label": "Western",
+      "description": "Spaghetti-western frontier exploration.",
+      "track_count": 1
+    },
+    {
+      "folder": "world-desert",
+      "label": "World: desert",
+      "description": "Middle Eastern desert adventure.",
+      "track_count": 1
+    },
+    {
+      "folder": "world-eastasian",
+      "label": "World: East Asian",
+      "description": "Japanese-instrument orchestral combat.",
+      "track_count": 1
+    }
+  ],
+  "coverage": [
+    {
+      "archetype": "cyberpunk",
+      "parent_archetype": "cyberpunk",
+      "primary_tracks": 2,
+      "related_tracks": 0,
+      "missing_states": [
+        "tension",
+        "boss",
+        "resolve"
+      ]
+    },
+    {
+      "archetype": "neon-synthfunk",
+      "parent_archetype": "cyberpunk",
+      "primary_tracks": 1,
+      "related_tracks": 4,
+      "missing_states": [
+        "tension",
+        "boss",
+        "resolve"
+      ]
+    },
+    {
+      "archetype": "mech-industrial",
+      "parent_archetype": "cyberpunk",
+      "primary_tracks": 1,
+      "related_tracks": 2,
+      "missing_states": [
+        "explore",
+        "tension",
+        "boss",
+        "resolve"
+      ]
+    },
+    {
+      "archetype": "dark-fantasy",
+      "parent_archetype": "dark-fantasy",
+      "primary_tracks": 5,
+      "related_tracks": 3,
+      "missing_states": [
+        "combat"
+      ]
+    },
+    {
+      "archetype": "medieval-siege",
+      "parent_archetype": "dark-fantasy",
+      "primary_tracks": 2,
+      "related_tracks": 2,
+      "missing_states": [
+        "explore",
+        "resolve"
+      ]
+    },
+    {
+      "archetype": "cosmic-ambient",
+      "parent_archetype": "dark-fantasy",
+      "primary_tracks": 4,
+      "related_tracks": 1,
+      "missing_states": [
+        "tension"
+      ]
+    },
+    {
+      "archetype": "cozy",
+      "parent_archetype": "cozy",
+      "primary_tracks": 3,
+      "related_tracks": 6,
+      "missing_states": [
+        "tension",
+        "combat",
+        "boss"
+      ]
+    },
+    {
+      "archetype": "nautical-folk",
+      "parent_archetype": "cozy",
+      "primary_tracks": 2,
+      "related_tracks": 0,
+      "missing_states": [
+        "tension",
+        "boss"
+      ]
+    },
+    {
+      "archetype": "lofi-workshop",
+      "parent_archetype": "cozy",
+      "primary_tracks": 3,
+      "related_tracks": 1,
+      "missing_states": [
+        "tension",
+        "combat",
+        "boss"
+      ]
+    },
+    {
+      "archetype": "storybook-orchestral",
+      "parent_archetype": "cozy",
+      "primary_tracks": 5,
+      "related_tracks": 7,
+      "missing_states": [
+        "tension",
+        "combat",
+        "boss"
+      ]
+    },
+    {
+      "archetype": "arcade",
+      "parent_archetype": "arcade",
+      "primary_tracks": 5,
+      "related_tracks": 4,
+      "missing_states": [
+        "tension",
+        "boss",
+        "resolve"
+      ]
+    },
+    {
+      "archetype": "retro-chiptune-rock",
+      "parent_archetype": "arcade",
+      "primary_tracks": 1,
+      "related_tracks": 1,
+      "missing_states": [
+        "explore",
+        "tension",
+        "combat",
+        "resolve"
+      ]
+    },
+    {
+      "archetype": "horror",
+      "parent_archetype": "horror",
+      "primary_tracks": 3,
+      "related_tracks": 1,
+      "missing_states": [
+        "resolve"
+      ]
+    },
+    {
+      "archetype": "noir-mystery",
+      "parent_archetype": "horror",
+      "primary_tracks": 2,
+      "related_tracks": 2,
+      "missing_states": [
+        "combat",
+        "boss",
+        "resolve"
+      ]
+    },
+    {
+      "archetype": "action-rock",
+      "parent_archetype": "action-rock",
+      "primary_tracks": 4,
+      "related_tracks": 3,
+      "missing_states": [
+        "boss",
+        "resolve"
+      ]
+    },
+    {
+      "archetype": "modern-tactics",
+      "parent_archetype": "action-rock",
+      "primary_tracks": 1,
+      "related_tracks": 3,
+      "missing_states": [
+        "explore",
+        "tension",
+        "boss",
+        "resolve"
+      ]
+    }
+  ],
+  "tracks": [
+    {
+      "id": "GCL-001",
+      "title": "Horizon of Banners",
+      "file": "GCL-001 Horizon of Banners.mp3",
+      "format": "mp3",
+      "duration_s": 224.88,
+      "size_bytes": 5710902,
+      "bpm_target": 108,
+      "archetype": "dark-fantasy",
+      "secondary_archetypes": [
+        "storybook-orchestral"
+      ],
+      "game_states": [
+        "explore"
+      ],
+      "contexts": [
+        "overworld"
+      ],
+      "world_flavor": null,
+      "vocals": "none",
+      "loopable": false,
+      "use": "overworld exploration",
+      "style_prompt": "Heroic fantasy adventure orchestral score, soaring French Horn melody, driving Strings ostinato, Timpani, Harp arpeggios, Woodwinds, major key, uplifting open-world exploration, 108 BPM, memorable main motif, instrumental game soundtrack",
+      "suno": {
+        "clip_id": "b6bd40dc-e18b-439f-9ba4-a5a9225cc7ad",
+        "url": "https://suno.com/song/b6bd40dc-e18b-439f-9ba4-a5a9225cc7ad",
+        "alternate_clip_id": "74561c0f-e7ed-4794-b88e-6df5b052bd03",
+        "model": "v6",
+        "generated_on": "2026-11-22"
+      },
+      "review": {
+        "method": "suno audio-listen (best of pair)",
+        "brief_match": 90,
+        "musicality": 90,
+        "melody": null,
+        "notes": "G major, 108 BPM; takes tied 9/9, A chosen for clearer ABAC structure"
+      },
+      "status": "library",
+      "rights_note": "Generated on a paid Suno plan. Confirm current Suno terms before commercial release.",
+      "folder": "fantasy-rpg",
+      "path": "fantasy-rpg/GCL-001 Horizon of Banners.mp3",
+      "parent_archetype": "dark-fantasy"
+    },
+    {
+      "id": "GCL-002",
+      "title": "Hearthstone Lane",
+      "file": "GCL-002 Hearthstone Lane.mp3",
+      "format": "mp3",
+      "duration_s": 224.52,
+      "size_bytes": 5430442,
+      "bpm_target": 96,
+      "archetype": "cozy",
+      "secondary_archetypes": [
+        "storybook-orchestral"
+      ],
+      "game_states": [
+        "explore",
+        "resolve"
+      ],
+      "contexts": [
+        "town",
+        "hub"
+      ],
+      "world_flavor": "celtic",
+      "vocals": "none",
+      "loopable": false,
+      "use": "town / hub",
+      "style_prompt": "Celtic folk village theme, Fiddle lead, Tin Whistle, Harp, Acoustic Guitar, Bodhran, Accordion, warm cozy medieval town, gentle dance feel, 96 BPM, instrumental RPG town music",
+      "suno": {
+        "clip_id": "d1aa8f02-5b9c-4767-8b15-5eb2a3becc3f",
+        "url": "https://suno.com/song/d1aa8f02-5b9c-4767-8b15-5eb2a3becc3f",
+        "alternate_clip_id": "c01ff96d-21b6-41b4-95f1-e20bf7b19f84",
+        "model": "v6",
+        "generated_on": "2026-11-22"
+      },
+      "review": {
+        "method": "suno audio-listen (best of pair)",
+        "brief_match": 92,
+        "musicality": 86,
+        "melody": 88,
+        "notes": "whistle-led melody, clean"
+      },
+      "status": "library",
+      "rights_note": "Generated on a paid Suno plan. Confirm current Suno terms before commercial release.",
+      "folder": "fantasy-rpg",
+      "path": "fantasy-rpg/GCL-002 Hearthstone Lane.mp3",
+      "parent_archetype": "cozy"
+    },
+    {
+      "id": "GCL-003",
+      "title": "Halls of the Forgotten",
+      "file": "GCL-003 Halls of the Forgotten.mp3",
+      "format": "mp3",
+      "duration_s": 239.88,
+      "size_bytes": 5410382,
+      "bpm_target": 78,
+      "archetype": "dark-fantasy",
+      "secondary_archetypes": [
+        "horror"
+      ],
+      "game_states": [
+        "explore",
+        "tension"
+      ],
+      "contexts": [
+        "dungeon"
+      ],
+      "world_flavor": null,
+      "vocals": "none",
+      "loopable": false,
+      "use": "dungeon / ruins exploration",
+      "style_prompt": "Mysterious ancient ruins ambient orchestral, low Drone, Harp, Celesta, Cello, distant wordless Choir pads, sparse Percussion, minor key, suspenseful dungeon exploration, 78 BPM, instrumental",
+      "suno": {
+        "clip_id": "294e854d-2538-4484-8fa4-2357c63324e4",
+        "url": "https://suno.com/song/294e854d-2538-4484-8fa4-2357c63324e4",
+        "alternate_clip_id": "2c559f5a-f8b5-417d-82b9-b017d0eca7a0",
+        "model": "v6",
+        "generated_on": "2026-11-22"
+      },
+      "review": {
+        "method": "suno audio-listen (best of pair)",
+        "brief_match": 88,
+        "musicality": 88,
+        "melody": 79,
+        "notes": "regenerated (v1 pair rejected: voice, trap drift, cut-off ending); 4:00"
+      },
+      "status": "library",
+      "rights_note": "Generated on a paid Suno plan. Confirm current Suno terms before commercial release.",
+      "folder": "fantasy-rpg",
+      "path": "fantasy-rpg/GCL-003 Halls of the Forgotten.mp3",
+      "parent_archetype": "dark-fantasy"
+    },
+    {
+      "id": "GCL-004",
+      "title": "Wyrmfire Ascendant",
+      "file": "GCL-004 Wyrmfire Ascendant.mp3",
+      "format": "mp3",
+      "duration_s": 224.16,
+      "size_bytes": 5236437,
+      "bpm_target": 160,
+      "archetype": "dark-fantasy",
+      "secondary_archetypes": [
+        "action-rock"
+      ],
+      "game_states": [
+        "boss"
+      ],
+      "contexts": [
+        "boss"
+      ],
+      "world_flavor": null,
+      "vocals": "wordless",
+      "loopable": false,
+      "use": "boss battle",
+      "style_prompt": "Epic orchestral symphonic metal boss battle, heavy Electric Guitar riffs, Brass stabs, thundering Taiko and Timpani, fast Strings, dramatic wordless Choir, minor key, 160 BPM, intense final boss, instrumental",
+      "suno": {
+        "clip_id": "82b3601f-4012-4ca6-b1c0-40c42f9facf8",
+        "url": "https://suno.com/song/82b3601f-4012-4ca6-b1c0-40c42f9facf8",
+        "alternate_clip_id": "e30612ce-5f57-42bd-97e0-3a8d8729bd45",
+        "model": "v6",
+        "generated_on": "2026-11-22"
+      },
+      "review": {
+        "method": "suno audio-listen (best of pair)",
+        "brief_match": 91,
+        "musicality": 85,
+        "melody": 87,
+        "notes": "G minor ~165 BPM; other take cut off abruptly"
+      },
+      "status": "library",
+      "rights_note": "Generated on a paid Suno plan. Confirm current Suno terms before commercial release.",
+      "folder": "fantasy-rpg",
+      "path": "fantasy-rpg/GCL-004 Wyrmfire Ascendant.mp3",
+      "parent_archetype": "dark-fantasy"
+    },
+    {
+      "id": "GCL-005",
+      "title": "The Gilded Tankard",
+      "file": "GCL-005 The Gilded Tankard.mp3",
+      "format": "mp3",
+      "duration_s": 224.72,
+      "size_bytes": 5391840,
+      "bpm_target": 120,
+      "archetype": "cozy",
+      "secondary_archetypes": [
+        "medieval-siege"
+      ],
+      "game_states": [
+        "resolve"
+      ],
+      "contexts": [
+        "town",
+        "social"
+      ],
+      "world_flavor": "medieval",
+      "vocals": "none",
+      "loopable": false,
+      "use": "tavern / social",
+      "style_prompt": "Lively medieval tavern folk jig, Lute, Hurdy-Gurdy, Fiddle, Recorder, Frame Drum, Tambourine, 6/8 time, festive and rowdy, 120 BPM, instrumental fantasy inn music",
+      "suno": {
+        "clip_id": "e1eeb905-e4ee-407f-abbd-1cac69b538a6",
+        "url": "https://suno.com/song/e1eeb905-e4ee-407f-abbd-1cac69b538a6",
+        "alternate_clip_id": "b3ac3e48-bb4f-4e5e-bf04-3de6858a8c24",
+        "model": "v6",
+        "generated_on": "2026-11-22"
+      },
+      "review": {
+        "method": "suno audio-listen (best of pair)",
+        "brief_match": 88,
+        "musicality": 87,
+        "melody": 88,
+        "notes": "~126 BPM, plays in 4 not 6/8"
+      },
+      "status": "library",
+      "rights_note": "Generated on a paid Suno plan. Confirm current Suno terms before commercial release.",
+      "folder": "fantasy-rpg",
+      "path": "fantasy-rpg/GCL-005 The Gilded Tankard.mp3",
+      "parent_archetype": "cozy"
+    },
+    {
+      "id": "GCL-006",
+      "title": "Glimmerleaf Sanctuary",
+      "file": "GCL-006 Glimmerleaf Sanctuary.mp3",
+      "format": "mp3",
+      "duration_s": 224.8,
+      "size_bytes": 5192886,
+      "bpm_target": 72,
+      "archetype": "storybook-orchestral",
+      "secondary_archetypes": [
+        "cosmic-ambient"
+      ],
+      "game_states": [
+        "explore",
+        "resolve"
+      ],
+      "contexts": [
+        "sanctuary",
+        "ambient"
+      ],
+      "world_flavor": null,
+      "vocals": "none",
+      "loopable": false,
+      "use": "sanctuary / forest",
+      "style_prompt": "Ethereal elven forest ambient, Flute melody, Harp, Celesta, shimmering Synth Pad, soft Strings, gentle Chimes, serene magical sanctuary, 72 BPM, instrumental, peaceful and wondrous",
+      "suno": {
+        "clip_id": "11b89426-8035-422d-a6e8-345e829ec778",
+        "url": "https://suno.com/song/11b89426-8035-422d-a6e8-345e829ec778",
+        "alternate_clip_id": "424336f6-9801-4964-999b-fa5a0b3981c5",
+        "model": "v6",
+        "generated_on": "2026-11-22"
+      },
+      "review": {
+        "method": "suno audio-listen (best of pair)",
+        "brief_match": 93,
+        "musicality": 89,
+        "melody": 86,
+        "notes": "~71 BPM, harp/flute/bells"
+      },
+      "status": "library",
+      "rights_note": "Generated on a paid Suno plan. Confirm current Suno terms before commercial release.",
+      "folder": "fantasy-rpg",
+      "path": "fantasy-rpg/GCL-006 Glimmerleaf Sanctuary.mp3",
+      "parent_archetype": "cozy"
+    },
+    {
+      "id": "GCL-007",
+      "title": "Command Deck",
+      "file": "GCL-007 Command Deck.mp3",
+      "format": "mp3",
+      "duration_s": 210.0,
+      "size_bytes": 4949055,
+      "bpm_target": 90,
+      "archetype": "cosmic-ambient",
+      "secondary_archetypes": [
+        "storybook-orchestral"
+      ],
+      "game_states": [
+        "explore",
+        "resolve"
+      ],
+      "contexts": [
+        "hub",
+        "menu"
+      ],
+      "world_flavor": null,
+      "vocals": "none",
+      "loopable": false,
+      "use": "ship hub / menu",
+      "style_prompt": "Cinematic sci-fi ambient orchestral hybrid, warm analog Synth Pad, pulsing Arpeggiator, Strings, soft Piano, subtle electronic Percussion, hopeful starship bridge hub, 90 BPM, instrumental",
+      "suno": {
+        "clip_id": "2371b2af-a0ee-4110-bf70-28a03e1a0f03",
+        "url": "https://suno.com/song/2371b2af-a0ee-4110-bf70-28a03e1a0f03",
+        "alternate_clip_id": "059d3d39-b4be-489d-b5b9-6ad8cdc1c16e",
+        "model": "v6",
+        "generated_on": "2026-11-22"
+      },
+      "review": {
+        "method": "suno audio-listen (best of pair)",
+        "brief_match": 96,
+        "musicality": 94,
+        "melody": 88,
+        "notes": "~94 BPM hopeful hub"
+      },
+      "status": "library",
+      "rights_note": "Generated on a paid Suno plan. Confirm current Suno terms before commercial release.",
+      "folder": "sci-fi",
+      "path": "sci-fi/GCL-007 Command Deck.mp3",
+      "parent_archetype": "dark-fantasy"
+    },
+    {
+      "id": "GCL-008",
+      "title": "Xenoflora Drift",
+      "file": "GCL-008 Xenoflora Drift.mp3",
+      "format": "mp3",
+      "duration_s": 225.2,
+      "size_bytes": 5342408,
+      "bpm_target": 88,
+      "archetype": "cosmic-ambient",
+      "secondary_archetypes": [],
+      "game_states": [
+        "explore"
+      ],
+      "contexts": [
+        "overworld",
+        "ambient"
+      ],
+      "world_flavor": null,
+      "vocals": "none",
+      "loopable": false,
+      "use": "alien planet exploration",
+      "style_prompt": "Cosmic ambient electronic, evolving analog Synth textures, glassy Bells, deep Synth Bass, slow Arpeggiator, alien planet exploration, wonder and isolation, 88 BPM, instrumental space soundtrack",
+      "suno": {
+        "clip_id": "81c69f00-447f-46bf-a187-40b94951a253",
+        "url": "https://suno.com/song/81c69f00-447f-46bf-a187-40b94951a253",
+        "alternate_clip_id": "e32923f2-1173-402d-9f0c-89443a23d4f0",
+        "model": "v6",
+        "generated_on": "2026-11-22"
+      },
+      "review": {
+        "method": "suno audio-listen (best of pair)",
+        "brief_match": 88,
+        "musicality": 86,
+        "melody": 75,
+        "notes": "evolving cosmic ambient"
+      },
+      "status": "library",
+      "rights_note": "Generated on a paid Suno plan. Confirm current Suno terms before commercial release.",
+      "folder": "sci-fi",
+      "path": "sci-fi/GCL-008 Xenoflora Drift.mp3",
+      "parent_archetype": "dark-fantasy"
+    },
+    {
+      "id": "GCL-009",
+      "title": "Iron Colossus Protocol",
+      "file": "GCL-009 Iron Colossus Protocol.mp3",
+      "format": "mp3",
+      "duration_s": 224.6,
+      "size_bytes": 5192254,
+      "bpm_target": 140,
+      "archetype": "mech-industrial",
+      "secondary_archetypes": [
+        "action-rock"
+      ],
+      "game_states": [
+        "combat"
+      ],
+      "contexts": [
+        "combat"
+      ],
+      "world_flavor": null,
+      "vocals": "none",
+      "loopable": false,
+      "use": "mech combat",
+      "style_prompt": "Industrial mech combat, distorted Synth Bass, heavy Electric Guitar, metallic Percussion, aggressive Drums, cinematic Brass hits, dark cyber industrial, 140 BPM, instrumental action game",
+      "suno": {
+        "clip_id": "60c5e9e7-45f9-459c-860d-a7f160ab62ea",
+        "url": "https://suno.com/song/60c5e9e7-45f9-459c-860d-a7f160ab62ea",
+        "alternate_clip_id": "5282101f-ac3d-49bb-b589-7db2cf660a86",
+        "model": "v6",
+        "generated_on": "2026-11-22"
+      },
+      "review": {
+        "method": "suno audio-listen (best of pair)",
+        "brief_match": 94,
+        "musicality": 88,
+        "melody": 78,
+        "notes": "140 BPM industrial"
+      },
+      "status": "library",
+      "rights_note": "Generated on a paid Suno plan. Confirm current Suno terms before commercial release.",
+      "folder": "sci-fi",
+      "path": "sci-fi/GCL-009 Iron Colossus Protocol.mp3",
+      "parent_archetype": "cyberpunk"
+    },
+    {
+      "id": "GCL-010",
+      "title": "Neon Bazaar",
+      "file": "GCL-010 Neon Bazaar.mp3",
+      "format": "mp3",
+      "duration_s": 239.2,
+      "size_bytes": 5696173,
+      "bpm_target": 100,
+      "archetype": "cyberpunk",
+      "secondary_archetypes": [
+        "neon-synthfunk"
+      ],
+      "game_states": [
+        "explore"
+      ],
+      "contexts": [
+        "town",
+        "hub"
+      ],
+      "world_flavor": null,
+      "vocals": "none",
+      "loopable": false,
+      "use": "city / market",
+      "style_prompt": "Downtempo cyberpunk synthwave, rain-soaked neon night market, Synth Keys, gated Drums, fretless Synth Bass, Electric Piano, retro-futuristic, 100 BPM, instrumental, moody and stylish",
+      "suno": {
+        "clip_id": "84104220-87f0-4846-b6b7-d2c7a8478867",
+        "url": "https://suno.com/song/84104220-87f0-4846-b6b7-d2c7a8478867",
+        "alternate_clip_id": "ad775195-b4f6-4498-98a6-2c8d8c9b09f2",
+        "model": "v6",
+        "generated_on": "2026-11-22"
+      },
+      "review": {
+        "method": "suno audio-listen (best of pair)",
+        "brief_match": 91,
+        "musicality": 88,
+        "melody": 84,
+        "notes": "half-time ~100 BPM, fade ending; other take cut off"
+      },
+      "status": "library",
+      "rights_note": "Generated on a paid Suno plan. Confirm current Suno terms before commercial release.",
+      "folder": "cyberpunk",
+      "path": "cyberpunk/GCL-010 Neon Bazaar.mp3",
+      "parent_archetype": "cyberpunk"
+    },
+    {
+      "id": "GCL-011",
+      "title": "Fleet at Vanguard Point",
+      "file": "GCL-011 Fleet at Vanguard Point.mp3",
+      "format": "mp3",
+      "duration_s": 239.56,
+      "size_bytes": 5524981,
+      "bpm_target": 150,
+      "archetype": "cosmic-ambient",
+      "secondary_archetypes": [
+        "modern-tactics"
+      ],
+      "game_states": [
+        "combat",
+        "boss"
+      ],
+      "contexts": [
+        "combat"
+      ],
+      "world_flavor": null,
+      "vocals": "none",
+      "loopable": false,
+      "use": "space battle",
+      "style_prompt": "Epic orchestral sci-fi space battle, heroic Brass fanfare, rapid Strings, Taiko, Synth Bass pulses, Cymbals, cinematic hybrid score, 150 BPM, instrumental, heroic and urgent",
+      "suno": {
+        "clip_id": "c377b121-ada6-4a42-8f77-4120f955a837",
+        "url": "https://suno.com/song/c377b121-ada6-4a42-8f77-4120f955a837",
+        "alternate_clip_id": "278723cf-622d-4c75-89cf-2aa1cf298fe6",
+        "model": "v6",
+        "generated_on": "2026-11-22"
+      },
+      "review": {
+        "method": "suno audio-listen (best of pair)",
+        "brief_match": 94,
+        "musicality": 91,
+        "melody": 88,
+        "notes": "153 BPM, resolved orchestral hit ending"
+      },
+      "status": "library",
+      "rights_note": "Generated on a paid Suno plan. Confirm current Suno terms before commercial release.",
+      "folder": "sci-fi",
+      "path": "sci-fi/GCL-011 Fleet at Vanguard Point.mp3",
+      "parent_archetype": "dark-fantasy"
+    },
+    {
+      "id": "GCL-012",
+      "title": "Breach Protocol",
+      "file": "GCL-012 Breach Protocol.mp3",
+      "format": "mp3",
+      "duration_s": 239.6,
+      "size_bytes": 5611016,
+      "bpm_target": 128,
+      "archetype": "modern-tactics",
+      "secondary_archetypes": [
+        "mech-industrial"
+      ],
+      "game_states": [
+        "combat"
+      ],
+      "contexts": [
+        "combat"
+      ],
+      "world_flavor": null,
+      "vocals": "none",
+      "loopable": false,
+      "use": "tactical combat",
+      "style_prompt": "Modern tactical shooter combat music, hybrid trailer percussion, pulsing Synth Bass, staccato Strings, distorted Electric Guitar texture, Risers, tense military action, 128 BPM, instrumental",
+      "suno": {
+        "clip_id": "363d9e4e-c96f-4d0e-89cc-8c6eafc84850",
+        "url": "https://suno.com/song/363d9e4e-c96f-4d0e-89cc-8c6eafc84850",
+        "alternate_clip_id": "f3b2426c-7639-4265-b999-4fdbcbf5d594",
+        "model": "v6",
+        "generated_on": "2026-11-22"
+      },
+      "review": {
+        "method": "suno audio-listen (best of pair)",
+        "brief_match": 91,
+        "musicality": 88,
+        "melody": 67,
+        "notes": "hybrid percussion-driven, low melodic focus (by design)"
+      },
+      "status": "library",
+      "rights_note": "Generated on a paid Suno plan. Confirm current Suno terms before commercial release.",
+      "folder": "action-shooter",
+      "path": "action-shooter/GCL-012 Breach Protocol.mp3",
+      "parent_archetype": "action-rock"
+    },
+    {
+      "id": "GCL-013",
+      "title": "Overclock Arena",
+      "file": "GCL-013 Overclock Arena.mp3",
+      "format": "mp3",
+      "duration_s": 240.0,
+      "size_bytes": 5274951,
+      "bpm_target": 174,
+      "archetype": "cyberpunk",
+      "secondary_archetypes": [
+        "arcade"
+      ],
+      "game_states": [
+        "combat"
+      ],
+      "contexts": [
+        "combat",
+        "arena"
+      ],
+      "world_flavor": null,
+      "vocals": "none",
+      "loopable": false,
+      "use": "arena combat",
+      "style_prompt": "High-energy drum and bass arena combat, rolling breakbeat Drums, Reese Synth Bass, Synth Lead stabs, Risers, futuristic competitive shooter, 174 BPM, instrumental",
+      "suno": {
+        "clip_id": "42c59da7-6541-459b-a954-f8e8498ee549",
+        "url": "https://suno.com/song/42c59da7-6541-459b-a954-f8e8498ee549",
+        "alternate_clip_id": "50755ff3-072f-4738-9a64-cb5daaae3f22",
+        "model": "v6",
+        "generated_on": "2026-11-22"
+      },
+      "review": {
+        "method": "suno audio-listen (best of pair)",
+        "brief_match": 94,
+        "musicality": 91,
+        "melody": 84,
+        "notes": "~178 BPM DnB; other take had vocal chops"
+      },
+      "status": "library",
+      "rights_note": "Generated on a paid Suno plan. Confirm current Suno terms before commercial release.",
+      "folder": "action-shooter",
+      "path": "action-shooter/GCL-013 Overclock Arena.mp3",
+      "parent_archetype": "cyberpunk"
+    },
+    {
+      "id": "GCL-014",
+      "title": "Silent Clearance",
+      "file": "GCL-014 Silent Clearance.mp3",
+      "format": "mp3",
+      "duration_s": 239.96,
+      "size_bytes": 5749742,
+      "bpm_target": 95,
+      "archetype": "noir-mystery",
+      "secondary_archetypes": [
+        "modern-tactics"
+      ],
+      "game_states": [
+        "tension"
+      ],
+      "contexts": [
+        "stealth"
+      ],
+      "world_flavor": null,
+      "vocals": "none",
+      "loopable": false,
+      "use": "stealth / infiltration",
+      "style_prompt": "Minimal spy stealth infiltration music, tense ticking Percussion, muted Synth Bass pulse, pizzicato Strings, Vibraphone, low Brass swells, suspenseful espionage, 95 BPM, instrumental",
+      "suno": {
+        "clip_id": "35266b2f-0eb2-441c-a6e1-38cf1b7d1723",
+        "url": "https://suno.com/song/35266b2f-0eb2-441c-a6e1-38cf1b7d1723",
+        "alternate_clip_id": "f7119880-be92-4481-b034-9b1baf2b098e",
+        "model": "v6",
+        "generated_on": "2026-11-22"
+      },
+      "review": {
+        "method": "suno audio-listen (best of pair)",
+        "brief_match": 91,
+        "musicality": 88,
+        "melody": 75,
+        "notes": "regenerated (v1 pair both under 3:00); 4:00"
+      },
+      "status": "library",
+      "rights_note": "Generated on a paid Suno plan. Confirm current Suno terms before commercial release.",
+      "folder": "stealth",
+      "path": "stealth/GCL-014 Silent Clearance.mp3",
+      "parent_archetype": "horror"
+    },
+    {
+      "id": "GCL-015",
+      "title": "Redline Pursuit",
+      "file": "GCL-015 Redline Pursuit.mp3",
+      "format": "mp3",
+      "duration_s": 239.52,
+      "size_bytes": 5369533,
+      "bpm_target": 150,
+      "archetype": "action-rock",
+      "secondary_archetypes": [],
+      "game_states": [
+        "combat"
+      ],
+      "contexts": [
+        "chase"
+      ],
+      "world_flavor": null,
+      "vocals": "none",
+      "loopable": false,
+      "use": "chase / pursuit",
+      "style_prompt": "Hard rock action chase, driving Electric Guitar riffs, punchy Drums, Bass Guitar, Hammond Organ, energetic adrenaline, 150 BPM, instrumental game soundtrack",
+      "suno": {
+        "clip_id": "2d4ee636-c64e-4bea-90da-d6b69863959c",
+        "url": "https://suno.com/song/2d4ee636-c64e-4bea-90da-d6b69863959c",
+        "alternate_clip_id": "6fd4698b-e304-4331-b2ad-05c55356ef68",
+        "model": "v6",
+        "generated_on": "2026-11-22"
+      },
+      "review": {
+        "method": "suno audio-listen (best of pair)",
+        "brief_match": 94,
+        "musicality": 91,
+        "melody": 88,
+        "notes": "145 BPM; other take had peak clipping"
+      },
+      "status": "library",
+      "rights_note": "Generated on a paid Suno plan. Confirm current Suno terms before commercial release.",
+      "folder": "action-rock",
+      "path": "action-rock/GCL-015 Redline Pursuit.mp3",
+      "parent_archetype": "action-rock"
+    },
+    {
+      "id": "GCL-016",
+      "title": "Midnight Overdrive",
+      "file": "GCL-016 Midnight Overdrive.mp3",
+      "format": "mp3",
+      "duration_s": 240.0,
+      "size_bytes": 5752769,
+      "bpm_target": 118,
+      "archetype": "neon-synthfunk",
+      "secondary_archetypes": [
+        "arcade"
+      ],
+      "game_states": [
+        "explore",
+        "combat"
+      ],
+      "contexts": [
+        "racing"
+      ],
+      "world_flavor": null,
+      "vocals": "none",
+      "loopable": false,
+      "use": "night racing",
+      "style_prompt": "Outrun synthwave night racing, retro 80s Synth Lead, gated reverb Drums, pumping Synth Bass, bright Arpeggiator, neon highway, nostalgic and driving, 118 BPM, instrumental",
+      "suno": {
+        "clip_id": "249ad147-0dee-4fec-814a-d64c79935562",
+        "url": "https://suno.com/song/249ad147-0dee-4fec-814a-d64c79935562",
+        "alternate_clip_id": "c4967a53-f39c-49b7-ae12-037ee9daead7",
+        "model": "v6",
+        "generated_on": "2026-11-22"
+      },
+      "review": {
+        "method": "suno audio-listen (best of pair)",
+        "brief_match": 93,
+        "musicality": 91,
+        "melody": 89,
+        "notes": "122 BPM outrun; both takes strong"
+      },
+      "status": "library",
+      "rights_note": "Generated on a paid Suno plan. Confirm current Suno terms before commercial release.",
+      "folder": "racing",
+      "path": "racing/GCL-016 Midnight Overdrive.mp3",
+      "parent_archetype": "cyberpunk"
+    },
+    {
+      "id": "GCL-017",
+      "title": "Turbo Apex",
+      "file": "GCL-017 Turbo Apex.mp3",
+      "format": "mp3",
+      "duration_s": 238.4,
+      "size_bytes": 5312796,
+      "bpm_target": 140,
+      "archetype": "arcade",
+      "secondary_archetypes": [
+        "neon-synthfunk"
+      ],
+      "game_states": [
+        "combat"
+      ],
+      "contexts": [
+        "racing"
+      ],
+      "world_flavor": null,
+      "vocals": "none",
+      "loopable": false,
+      "use": "circuit racing",
+      "style_prompt": "Big beat electronic racing, breakbeat Drums, distorted Synth Bass, Electric Guitar riffs, Synth Lead hooks, Risers, adrenaline arcade racer, 140 BPM, instrumental",
+      "suno": {
+        "clip_id": "c328d856-c4b6-4450-9fe9-087fb2d7925e",
+        "url": "https://suno.com/song/c328d856-c4b6-4450-9fe9-087fb2d7925e",
+        "alternate_clip_id": "237e5e47-e5e4-4936-919a-100c42f6698b",
+        "model": "v6",
+        "generated_on": "2026-11-22"
+      },
+      "review": {
+        "method": "suno audio-listen (best of pair)",
+        "brief_match": 75,
+        "musicality": 88,
+        "melody": 86,
+        "notes": "3rd attempt; clean instrumental but Eurobeat-leaning (little guitar). Prior 5 takes had vocal chops/shouts"
+      },
+      "status": "library",
+      "rights_note": "Generated on a paid Suno plan. Confirm current Suno terms before commercial release.",
+      "folder": "racing",
+      "path": "racing/GCL-017 Turbo Apex.mp3",
+      "parent_archetype": "arcade"
+    },
+    {
+      "id": "GCL-018",
+      "title": "Full Stadium",
+      "file": "GCL-018 Full Stadium.mp3",
+      "format": "mp3",
+      "duration_s": 236.76,
+      "size_bytes": 5215861,
+      "bpm_target": 120,
+      "archetype": "action-rock",
+      "secondary_archetypes": [
+        "neon-synthfunk"
+      ],
+      "game_states": [
+        "combat"
+      ],
+      "contexts": [
+        "sports"
+      ],
+      "world_flavor": null,
+      "vocals": "none",
+      "loopable": false,
+      "use": "stadium / match",
+      "style_prompt": "Sports stadium funk rock anthem, stomp and Clap rhythm, punchy Brass section, slap Bass Guitar, Electric Guitar, energetic Drums, competitive and celebratory, 120 BPM, instrumental",
+      "suno": {
+        "clip_id": "d36c60ab-2fdc-4f03-9d7f-62838a784c8c",
+        "url": "https://suno.com/song/d36c60ab-2fdc-4f03-9d7f-62838a784c8c",
+        "alternate_clip_id": "8ea64a95-1645-4690-b569-218fcd8b31ad",
+        "model": "v6",
+        "generated_on": "2026-11-22"
+      },
+      "review": {
+        "method": "suno audio-listen (best of pair)",
+        "brief_match": 94,
+        "musicality": 89,
+        "melody": 84,
+        "notes": "other take had shouts + cut-off"
+      },
+      "status": "library",
+      "rights_note": "Generated on a paid Suno plan. Confirm current Suno terms before commercial release.",
+      "folder": "sports",
+      "path": "sports/GCL-018 Full Stadium.mp3",
+      "parent_archetype": "action-rock"
+    },
+    {
+      "id": "GCL-019",
+      "title": "Halfpipe Heat",
+      "file": "GCL-019 Halfpipe Heat.mp3",
+      "format": "mp3",
+      "duration_s": 239.76,
+      "size_bytes": 5529420,
+      "bpm_target": 180,
+      "archetype": "action-rock",
+      "secondary_archetypes": [
+        "arcade"
+      ],
+      "game_states": [
+        "combat"
+      ],
+      "contexts": [
+        "sports"
+      ],
+      "world_flavor": null,
+      "vocals": "none",
+      "loopable": false,
+      "use": "extreme sports",
+      "style_prompt": "Skate punk instrumental, fast Drums, crunchy Electric Guitar power chords, Bass Guitar, catchy guitar lead melody, extreme sports game, 180 BPM, instrumental, youthful energy",
+      "suno": {
+        "clip_id": "2ef380ef-7e96-4066-897c-6cee567128a9",
+        "url": "https://suno.com/song/2ef380ef-7e96-4066-897c-6cee567128a9",
+        "alternate_clip_id": "d67dcf69-23ef-4b2d-b8e0-82c22f1f49cf",
+        "model": "v6",
+        "generated_on": "2026-11-22"
+      },
+      "review": {
+        "method": "suno audio-listen (best of pair)",
+        "brief_match": 94,
+        "musicality": 91,
+        "melody": 88,
+        "notes": "~192 BPM; other take cut off mid-bar"
+      },
+      "status": "library",
+      "rights_note": "Generated on a paid Suno plan. Confirm current Suno terms before commercial release.",
+      "folder": "sports",
+      "path": "sports/GCL-019 Halfpipe Heat.mp3",
+      "parent_archetype": "action-rock"
+    },
+    {
+      "id": "GCL-020",
+      "title": "Pixel Meadow Quest",
+      "file": "GCL-020 Pixel Meadow Quest.mp3",
+      "format": "mp3",
+      "duration_s": 239.12,
+      "size_bytes": 5588914,
+      "bpm_target": 140,
+      "archetype": "arcade",
+      "secondary_archetypes": [
+        "retro-chiptune-rock"
+      ],
+      "game_states": [
+        "explore"
+      ],
+      "contexts": [
+        "overworld",
+        "platformer"
+      ],
+      "world_flavor": null,
+      "vocals": "none",
+      "loopable": false,
+      "use": "platformer overworld",
+      "style_prompt": "8-bit chiptune adventure, square wave lead melody, triangle bass, noise drums, NES style retro platformer overworld, catchy and bouncy, major key, 140 BPM, instrumental",
+      "suno": {
+        "clip_id": "ea05057f-26a9-466f-996f-11b049ec5b4e",
+        "url": "https://suno.com/song/ea05057f-26a9-466f-996f-11b049ec5b4e",
+        "alternate_clip_id": "3d4ac84c-288b-4d92-b33e-3f0fdc7d3f60",
+        "model": "v6",
+        "generated_on": "2026-11-22"
+      },
+      "review": {
+        "method": "suno audio-listen (best of pair)",
+        "brief_match": 94,
+        "musicality": 91,
+        "melody": 92,
+        "notes": "pure chiptune 144 BPM; other take drifted to dance w/ vocal samples"
+      },
+      "status": "library",
+      "rights_note": "Generated on a paid Suno plan. Confirm current Suno terms before commercial release.",
+      "folder": "retro-arcade",
+      "path": "retro-arcade/GCL-020 Pixel Meadow Quest.mp3",
+      "parent_archetype": "arcade"
+    },
+    {
+      "id": "GCL-021",
+      "title": "16-Bit Gauntlet",
+      "file": "GCL-021 16-Bit Gauntlet.mp3",
+      "format": "mp3",
+      "duration_s": 239.2,
+      "size_bytes": 5505398,
+      "bpm_target": 170,
+      "archetype": "retro-chiptune-rock",
+      "secondary_archetypes": [
+        "arcade"
+      ],
+      "game_states": [
+        "boss"
+      ],
+      "contexts": [
+        "boss"
+      ],
+      "world_flavor": null,
+      "vocals": "none",
+      "loopable": false,
+      "use": "boss rush",
+      "style_prompt": "16-bit chiptune rock boss rush, FM Synth Lead, Electric Guitar, fast Drums, Synth Bass, retro console battle, intense and heroic, 170 BPM, instrumental",
+      "suno": {
+        "clip_id": "3d0128c8-5df4-4327-9fd0-98463f99e56b",
+        "url": "https://suno.com/song/3d0128c8-5df4-4327-9fd0-98463f99e56b",
+        "alternate_clip_id": "33e8cbff-f98d-44b6-a2d3-29ca9c40f04b",
+        "model": "v6",
+        "generated_on": "2026-11-22"
+      },
+      "review": {
+        "method": "suno audio-listen (best of pair)",
+        "brief_match": 96,
+        "musicality": 91,
+        "melody": 92,
+        "notes": "172 BPM; other take cut off unresolved"
+      },
+      "status": "library",
+      "rights_note": "Generated on a paid Suno plan. Confirm current Suno terms before commercial release.",
+      "folder": "retro-arcade",
+      "path": "retro-arcade/GCL-021 16-Bit Gauntlet.mp3",
+      "parent_archetype": "arcade"
+    },
+    {
+      "id": "GCL-022",
+      "title": "Bounce Garden",
+      "file": "GCL-022 Bounce Garden.mp3",
+      "format": "mp3",
+      "duration_s": 238.6,
+      "size_bytes": 5840920,
+      "bpm_target": 128,
+      "archetype": "arcade",
+      "secondary_archetypes": [
+        "cozy"
+      ],
+      "game_states": [
+        "explore"
+      ],
+      "contexts": [
+        "platformer"
+      ],
+      "world_flavor": null,
+      "vocals": "none",
+      "loopable": false,
+      "use": "bright platformer level",
+      "style_prompt": "Upbeat whimsical platformer, Xylophone, Ukulele, bouncy Bass Guitar, Glockenspiel, Clap, playful Brass, sunny cartoon adventure, 128 BPM, instrumental",
+      "suno": {
+        "clip_id": "3978453c-a428-480b-9a37-3d195133b30b",
+        "url": "https://suno.com/song/3978453c-a428-480b-9a37-3d195133b30b",
+        "alternate_clip_id": "5ca3e638-183c-4c52-9f78-4f57a7ee228d",
+        "model": "v6",
+        "generated_on": "2026-11-22"
+      },
+      "review": {
+        "method": "suno audio-listen (best of pair)",
+        "brief_match": 89,
+        "musicality": 88,
+        "melody": 86,
+        "notes": "brisk feel; other take 2:39 + cut off"
+      },
+      "status": "library",
+      "rights_note": "Generated on a paid Suno plan. Confirm current Suno terms before commercial release.",
+      "folder": "platformer",
+      "path": "platformer/GCL-022 Bounce Garden.mp3",
+      "parent_archetype": "arcade"
+    },
+    {
+      "id": "GCL-023",
+      "title": "Tessellate",
+      "file": "GCL-023 Tessellate.mp3",
+      "format": "mp3",
+      "duration_s": 239.88,
+      "size_bytes": 5824960,
+      "bpm_target": 100,
+      "archetype": "lofi-workshop",
+      "secondary_archetypes": [
+        "cozy"
+      ],
+      "game_states": [
+        "explore"
+      ],
+      "contexts": [
+        "puzzle"
+      ],
+      "world_flavor": null,
+      "vocals": "none",
+      "loopable": false,
+      "use": "puzzle gameplay",
+      "style_prompt": "Minimalist puzzle electronic, Marimba patterns, soft Synth Pad, gentle Electric Piano, light electronic Percussion, focused calm and clever, 100 BPM, instrumental",
+      "suno": {
+        "clip_id": "78fec6b1-4b20-4fff-860b-8afea33864c2",
+        "url": "https://suno.com/song/78fec6b1-4b20-4fff-860b-8afea33864c2",
+        "alternate_clip_id": "19edfa55-10b8-431f-9edf-56a3fb3acb9f",
+        "model": "v6",
+        "generated_on": "2026-11-22"
+      },
+      "review": {
+        "method": "suno audio-listen (best of pair)",
+        "brief_match": 96,
+        "musicality": 94,
+        "melody": 89,
+        "notes": "interlocking mallets, ~100 BPM feel"
+      },
+      "status": "library",
+      "rights_note": "Generated on a paid Suno plan. Confirm current Suno terms before commercial release.",
+      "folder": "puzzle",
+      "path": "puzzle/GCL-023 Tessellate.mp3",
+      "parent_archetype": "cozy"
+    },
+    {
+      "id": "GCL-024",
+      "title": "Dewdrop Acres",
+      "file": "GCL-024 Dewdrop Acres.mp3",
+      "format": "mp3",
+      "duration_s": 239.88,
+      "size_bytes": 5739520,
+      "bpm_target": 92,
+      "archetype": "cozy",
+      "secondary_archetypes": [
+        "storybook-orchestral"
+      ],
+      "game_states": [
+        "explore",
+        "resolve"
+      ],
+      "contexts": [
+        "farming",
+        "ambient"
+      ],
+      "world_flavor": null,
+      "vocals": "none",
+      "loopable": false,
+      "use": "farming / morning",
+      "style_prompt": "Cozy farming morning, Acoustic Guitar fingerpicking, Mandolin, Flute, Glockenspiel, light Strings, warm pastoral, gentle and sunny, 92 BPM, instrumental",
+      "suno": {
+        "clip_id": "2d9ae189-eb55-40b5-8f2e-c0f59cb2c430",
+        "url": "https://suno.com/song/2d9ae189-eb55-40b5-8f2e-c0f59cb2c430",
+        "alternate_clip_id": "e8e53561-21fc-4986-ac33-8117dabcc029",
+        "model": "v6",
+        "generated_on": "2026-11-22"
+      },
+      "review": {
+        "method": "suno audio-listen (best of pair)",
+        "brief_match": 96,
+        "musicality": 92,
+        "melody": 91,
+        "notes": "94 BPM pastoral"
+      },
+      "status": "library",
+      "rights_note": "Generated on a paid Suno plan. Confirm current Suno terms before commercial release.",
+      "folder": "cozy",
+      "path": "cozy/GCL-024 Dewdrop Acres.mp3",
+      "parent_archetype": "cozy"
+    },
+    {
+      "id": "GCL-025",
+      "title": "Corner Café Puzzle",
+      "file": "GCL-025 Corner Cafe Puzzle.mp3",
+      "format": "mp3",
+      "duration_s": 238.72,
+      "size_bytes": 5909945,
+      "bpm_target": 110,
+      "archetype": "lofi-workshop",
+      "secondary_archetypes": [
+        "cozy"
+      ],
+      "game_states": [
+        "explore"
+      ],
+      "contexts": [
+        "shop",
+        "puzzle"
+      ],
+      "world_flavor": "bossa-nova",
+      "vocals": "none",
+      "loopable": false,
+      "use": "cafe / shop",
+      "style_prompt": "Light jazz bossa nova cafe, nylon Acoustic Guitar, Electric Piano, Upright Bass, brushed Drums, Vibraphone, cozy shop management, 110 BPM, instrumental",
+      "suno": {
+        "clip_id": "b530f57d-da95-4b65-a694-5d9a85a55c64",
+        "url": "https://suno.com/song/b530f57d-da95-4b65-a694-5d9a85a55c64",
+        "alternate_clip_id": "47526700-84ae-4bce-ac2e-0091cb36e4f2",
+        "model": "v6",
+        "generated_on": "2026-11-22"
+      },
+      "review": {
+        "method": "suno audio-listen (best of pair)",
+        "brief_match": 91,
+        "musicality": 88,
+        "melody": 85,
+        "notes": "bossa; vibraphone subtle"
+      },
+      "status": "library",
+      "rights_note": "Generated on a paid Suno plan. Confirm current Suno terms before commercial release.",
+      "folder": "casual",
+      "path": "casual/GCL-025 Corner Cafe Puzzle.mp3",
+      "parent_archetype": "cozy"
+    },
+    {
+      "id": "GCL-026",
+      "title": "Rain on the Workbench",
+      "file": "GCL-026 Rain on the Workbench.mp3",
+      "format": "mp3",
+      "duration_s": 239.56,
+      "size_bytes": 5441255,
+      "bpm_target": 80,
+      "archetype": "lofi-workshop",
+      "secondary_archetypes": [],
+      "game_states": [
+        "explore",
+        "resolve"
+      ],
+      "contexts": [
+        "crafting",
+        "menu"
+      ],
+      "world_flavor": null,
+      "vocals": "none",
+      "loopable": false,
+      "use": "relax / study / crafting",
+      "style_prompt": "Lofi hip hop chill beat, dusty Drums, mellow Electric Piano, warm Bass, vinyl crackle, soft Guitar licks, rainy crafting menu, 80 BPM, instrumental",
+      "suno": {
+        "clip_id": "9b7ea585-5824-4b12-82e9-11065103af97",
+        "url": "https://suno.com/song/9b7ea585-5824-4b12-82e9-11065103af97",
+        "alternate_clip_id": "1c8cb3e3-35ef-407e-ac03-0c7000053cec",
+        "model": "v6",
+        "generated_on": "2026-11-22"
+      },
+      "review": {
+        "method": "suno audio-listen (best of pair)",
+        "brief_match": 92,
+        "musicality": 90,
+        "melody": 83,
+        "notes": "~80 BPM lofi"
+      },
+      "status": "library",
+      "rights_note": "Generated on a paid Suno plan. Confirm current Suno terms before commercial release.",
+      "folder": "lofi",
+      "path": "lofi/GCL-026 Rain on the Workbench.mp3",
+      "parent_archetype": "cozy"
+    },
+    {
+      "id": "GCL-027",
+      "title": "Ashgrove Manor",
+      "file": "GCL-027 Ashgrove Manor.mp3",
+      "format": "mp3",
+      "duration_s": 239.52,
+      "size_bytes": 5471239,
+      "bpm_target": 66,
+      "archetype": "horror",
+      "secondary_archetypes": [
+        "noir-mystery"
+      ],
+      "game_states": [
+        "explore",
+        "tension"
+      ],
+      "contexts": [
+        "dungeon",
+        "ambient"
+      ],
+      "world_flavor": null,
+      "vocals": "none",
+      "loopable": false,
+      "use": "haunted exploration",
+      "style_prompt": "Dark ambient horror, detuned Music Box, dissonant Strings, low Drone, creaking textures, distant Piano notes, haunted mansion exploration, dread and unease, 66 BPM, instrumental",
+      "suno": {
+        "clip_id": "01f6563e-f3ff-4f75-8893-1aded8fc9fce",
+        "url": "https://suno.com/song/01f6563e-f3ff-4f75-8893-1aded8fc9fce",
+        "alternate_clip_id": "e786fcb5-d4d8-4700-9d63-57d715d5325b",
+        "model": "v6",
+        "generated_on": "2026-11-22"
+      },
+      "review": {
+        "method": "suno audio-listen (best of pair)",
+        "brief_match": 94,
+        "musicality": 86,
+        "melody": 78,
+        "notes": "no-beat dread; other take had faint choir pads"
+      },
+      "status": "library",
+      "rights_note": "Generated on a paid Suno plan. Confirm current Suno terms before commercial release.",
+      "folder": "horror",
+      "path": "horror/GCL-027 Ashgrove Manor.mp3",
+      "parent_archetype": "horror"
+    },
+    {
+      "id": "GCL-028",
+      "title": "It Hunts Below",
+      "file": "GCL-028 It Hunts Below.mp3",
+      "format": "mp3",
+      "duration_s": 209.4,
+      "size_bytes": 5035804,
+      "bpm_target": 150,
+      "archetype": "horror",
+      "secondary_archetypes": [
+        "mech-industrial"
+      ],
+      "game_states": [
+        "combat",
+        "boss"
+      ],
+      "contexts": [
+        "chase"
+      ],
+      "world_flavor": null,
+      "vocals": "wordless",
+      "loopable": false,
+      "use": "horror chase",
+      "style_prompt": "Aggressive horror chase, pounding Percussion, screeching dissonant Strings, distorted Synth Bass, Brass blasts, panic and pursuit, 150 BPM, instrumental survival horror",
+      "suno": {
+        "clip_id": "6cf0082e-f683-466c-84b5-e57441119363",
+        "url": "https://suno.com/song/6cf0082e-f683-466c-84b5-e57441119363",
+        "alternate_clip_id": "2f92e7b4-d909-4493-9e40-cd44f32aa058",
+        "model": "v6",
+        "generated_on": "2026-11-22"
+      },
+      "review": {
+        "method": "suno audio-listen (best of pair)",
+        "brief_match": 91,
+        "musicality": 86,
+        "melody": 73,
+        "notes": "regenerated (v1 both cut off); ~3:29, 154 BPM; faint processed wail textures (sound design, no lyrics)"
+      },
+      "status": "library",
+      "rights_note": "Generated on a paid Suno plan. Confirm current Suno terms before commercial release.",
+      "folder": "horror",
+      "path": "horror/GCL-028 It Hunts Below.mp3",
+      "parent_archetype": "horror"
+    },
+    {
+      "id": "GCL-029",
+      "title": "Rain on Ninth Street",
+      "file": "GCL-029 Rain on Ninth Street.mp3",
+      "format": "mp3",
+      "duration_s": 239.52,
+      "size_bytes": 5304035,
+      "bpm_target": 75,
+      "archetype": "noir-mystery",
+      "secondary_archetypes": [
+        "lofi-workshop"
+      ],
+      "game_states": [
+        "explore",
+        "tension"
+      ],
+      "contexts": [
+        "investigation"
+      ],
+      "world_flavor": null,
+      "vocals": "none",
+      "loopable": false,
+      "use": "investigation",
+      "style_prompt": "Smoky film noir detective jazz, muted Trumpet, Tenor Saxophone, Upright Bass, brushed Drums, moody Piano, rainy city investigation, 75 BPM, instrumental",
+      "suno": {
+        "clip_id": "5d08e74c-927e-4860-a684-6f41e4212a1e",
+        "url": "https://suno.com/song/5d08e74c-927e-4860-a684-6f41e4212a1e",
+        "alternate_clip_id": "23a8e4cb-66f3-440c-b2bc-9ae533accf1b",
+        "model": "v6",
+        "generated_on": "2026-11-22"
+      },
+      "review": {
+        "method": "suno audio-listen (best of pair)",
+        "brief_match": 82,
+        "musicality": 88,
+        "melody": 82,
+        "notes": "tenor sax led, ~67 BPM; other take had humming/scat"
+      },
+      "status": "library",
+      "rights_note": "Generated on a paid Suno plan. Confirm current Suno terms before commercial release.",
+      "folder": "noir-mystery",
+      "path": "noir-mystery/GCL-029 Rain on Ninth Street.mp3",
+      "parent_archetype": "horror"
+    },
+    {
+      "id": "GCL-030",
+      "title": "The War Table",
+      "file": "GCL-030 The War Table.mp3",
+      "format": "mp3",
+      "duration_s": 238.92,
+      "size_bytes": 5605805,
+      "bpm_target": 100,
+      "archetype": "medieval-siege",
+      "secondary_archetypes": [
+        "modern-tactics"
+      ],
+      "game_states": [
+        "tension"
+      ],
+      "contexts": [
+        "strategy-map"
+      ],
+      "world_flavor": null,
+      "vocals": "none",
+      "loopable": false,
+      "use": "war map / planning",
+      "style_prompt": "Orchestral strategy campaign map, Snare Drum march, Low Brass, Strings ostinato, French Horn theme, Timpani, tactical and determined, 100 BPM, instrumental",
+      "suno": {
+        "clip_id": "5e3b6d40-0020-4a34-bf7e-ab446404bbdb",
+        "url": "https://suno.com/song/5e3b6d40-0020-4a34-bf7e-ab446404bbdb",
+        "alternate_clip_id": "8f3f48d6-2148-4eb4-bf80-d82c8b0fa0fa",
+        "model": "v6",
+        "generated_on": "2026-11-22"
+      },
+      "review": {
+        "method": "suno audio-listen (best of pair)",
+        "brief_match": 86,
+        "musicality": 88,
+        "melody": 83,
+        "notes": "brisk march; other take had peak clipping"
+      },
+      "status": "library",
+      "rights_note": "Generated on a paid Suno plan. Confirm current Suno terms before commercial release.",
+      "folder": "strategy",
+      "path": "strategy/GCL-030 The War Table.mp3",
+      "parent_archetype": "dark-fantasy"
+    },
+    {
+      "id": "GCL-031",
+      "title": "Foundations of Tomorrow",
+      "file": "GCL-031 Foundations of Tomorrow.mp3",
+      "format": "mp3",
+      "duration_s": 239.8,
+      "size_bytes": 5569728,
+      "bpm_target": 108,
+      "archetype": "storybook-orchestral",
+      "secondary_archetypes": [
+        "cozy"
+      ],
+      "game_states": [
+        "explore",
+        "resolve"
+      ],
+      "contexts": [
+        "building"
+      ],
+      "world_flavor": null,
+      "vocals": "none",
+      "loopable": false,
+      "use": "building / growth",
+      "style_prompt": "Uplifting orchestral city builder, Piano, pizzicato Strings, Woodwinds, light Percussion, warm Brass, hopeful growth and progress, 108 BPM, instrumental",
+      "suno": {
+        "clip_id": "f813912d-4739-4c02-864e-b34e5a4c4f2c",
+        "url": "https://suno.com/song/f813912d-4739-4c02-864e-b34e5a4c4f2c",
+        "alternate_clip_id": "ab7cdb7e-5b79-4289-9c70-5ba65a43602e",
+        "model": "v6",
+        "generated_on": "2026-11-22"
+      },
+      "review": {
+        "method": "suno audio-listen (best of pair)",
+        "brief_match": 96,
+        "musicality": 94,
+        "melody": 93,
+        "notes": "111 BPM; both takes excellent"
+      },
+      "status": "library",
+      "rights_note": "Generated on a paid Suno plan. Confirm current Suno terms before commercial release.",
+      "folder": "city-builder",
+      "path": "city-builder/GCL-031 Foundations of Tomorrow.mp3",
+      "parent_archetype": "cozy"
+    },
+    {
+      "id": "GCL-032",
+      "title": "Caravan of Dunes",
+      "file": "GCL-032 Caravan of Dunes.mp3",
+      "format": "mp3",
+      "duration_s": 239.96,
+      "size_bytes": 5918466,
+      "bpm_target": 100,
+      "archetype": "dark-fantasy",
+      "secondary_archetypes": [
+        "medieval-siege"
+      ],
+      "game_states": [
+        "explore"
+      ],
+      "contexts": [
+        "overworld"
+      ],
+      "world_flavor": "middle-eastern",
+      "vocals": "none",
+      "loopable": false,
+      "use": "desert exploration",
+      "style_prompt": "Middle Eastern desert adventure, Oud melody, Darbuka, Frame Drum, Ney Flute, Strings, Qanun, sweeping sands, 100 BPM, instrumental adventure soundtrack",
+      "suno": {
+        "clip_id": "3ec94556-788a-442b-8039-fae3f007faaf",
+        "url": "https://suno.com/song/3ec94556-788a-442b-8039-fae3f007faaf",
+        "alternate_clip_id": "e9499fea-0b03-4206-b886-e80e357f4db1",
+        "model": "v6",
+        "generated_on": "2026-11-22"
+      },
+      "review": {
+        "method": "suno audio-listen (best of pair)",
+        "brief_match": 94,
+        "musicality": 91,
+        "melody": 90,
+        "notes": "Hijaz ~100 BPM; other take clipped + unresolved end"
+      },
+      "status": "library",
+      "rights_note": "Generated on a paid Suno plan. Confirm current Suno terms before commercial release.",
+      "folder": "world-desert",
+      "path": "world-desert/GCL-032 Caravan of Dunes.mp3",
+      "parent_archetype": "dark-fantasy"
+    },
+    {
+      "id": "GCL-033",
+      "title": "Blade of the Crimson Moon",
+      "file": "GCL-033 Blade of the Crimson Moon.mp3",
+      "format": "mp3",
+      "duration_s": 228.96,
+      "size_bytes": 5457124,
+      "bpm_target": 120,
+      "archetype": "medieval-siege",
+      "secondary_archetypes": [
+        "dark-fantasy"
+      ],
+      "game_states": [
+        "combat",
+        "boss"
+      ],
+      "contexts": [
+        "combat",
+        "duel"
+      ],
+      "world_flavor": "east-asian",
+      "vocals": "none",
+      "loopable": false,
+      "use": "duel / combat",
+      "style_prompt": "Cinematic orchestral film score with Japanese instruments, full symphony orchestra, Taiko drums, Shamisen, Shakuhachi, Koto, driving Strings ostinato, French Horns, Trombones, Timpani, pentatonic, heroic samurai sword duel, 120 BPM, purely instrumental concert recording",
+      "suno": {
+        "clip_id": "3ff75d79-56b4-4b74-924a-6e3d32d2e3d7",
+        "url": "https://suno.com/song/3ff75d79-56b4-4b74-924a-6e3d32d2e3d7",
+        "alternate_clip_id": "1d7a0397-74e7-4b61-a87e-cda380e2ef5e",
+        "model": "v6",
+        "generated_on": "2026-11-22"
+      },
+      "review": {
+        "method": "suno audio-listen (best of pair)",
+        "brief_match": 89,
+        "musicality": 87,
+        "melody": 85,
+        "notes": "round 3 orchestral framing; ~142 BPM feel; other take had choir/shouts"
+      },
+      "status": "library",
+      "rights_note": "Generated on a paid Suno plan. Confirm current Suno terms before commercial release.",
+      "folder": "world-eastasian",
+      "path": "world-eastasian/GCL-033 Blade of the Crimson Moon.mp3",
+      "parent_archetype": "dark-fantasy"
+    },
+    {
+      "id": "GCL-034",
+      "title": "Dust and Tumbleweed",
+      "file": "GCL-034 Dust and Tumbleweed.mp3",
+      "format": "mp3",
+      "duration_s": 239.68,
+      "size_bytes": 5619188,
+      "bpm_target": 100,
+      "archetype": "action-rock",
+      "secondary_archetypes": [
+        "noir-mystery"
+      ],
+      "game_states": [
+        "explore",
+        "tension"
+      ],
+      "contexts": [
+        "overworld"
+      ],
+      "world_flavor": "western-frontier",
+      "vocals": "wordless",
+      "loopable": false,
+      "use": "frontier exploration",
+      "style_prompt": "Spaghetti western frontier, twangy reverb Electric Guitar, Harmonica, whistled melody, Acoustic Guitar strumming, Trumpet, horse gallop Percussion, wide open plains, 100 BPM, instrumental",
+      "suno": {
+        "clip_id": "2dc70c79-bfb3-4129-8751-428e3413e885",
+        "url": "https://suno.com/song/2dc70c79-bfb3-4129-8751-428e3413e885",
+        "alternate_clip_id": "b7b9f7a9-a59d-481c-b35e-ba623bd549be",
+        "model": "v6",
+        "generated_on": "2026-11-22"
+      },
+      "review": {
+        "method": "suno audio-listen (best of pair)",
+        "brief_match": 92,
+        "musicality": 88,
+        "melody": 87,
+        "notes": "100 BPM gallop; faint genre-typical wordless choir pads (no lyrics)"
+      },
+      "status": "library",
+      "rights_note": "Generated on a paid Suno plan. Confirm current Suno terms before commercial release.",
+      "folder": "western",
+      "path": "western/GCL-034 Dust and Tumbleweed.mp3",
+      "parent_archetype": "action-rock"
+    },
+    {
+      "id": "GCL-035",
+      "title": "Coconut Cove",
+      "file": "GCL-035 Coconut Cove.mp3",
+      "format": "mp3",
+      "duration_s": 239.8,
+      "size_bytes": 5715642,
+      "bpm_target": 115,
+      "archetype": "nautical-folk",
+      "secondary_archetypes": [
+        "cozy"
+      ],
+      "game_states": [
+        "explore",
+        "resolve"
+      ],
+      "contexts": [
+        "town",
+        "ambient"
+      ],
+      "world_flavor": "caribbean",
+      "vocals": "none",
+      "loopable": false,
+      "use": "island / beach",
+      "style_prompt": "Tropical island calypso, Steel Drums melody, Marimba, Ukulele, Congas, Bongos, Bass Guitar, sunny beach resort, 115 BPM, instrumental",
+      "suno": {
+        "clip_id": "ef030115-18cf-4acc-ab69-7e60664b1393",
+        "url": "https://suno.com/song/ef030115-18cf-4acc-ab69-7e60664b1393",
+        "alternate_clip_id": "69e1c720-6ed7-4db9-acec-b5503e5cb52c",
+        "model": "v6",
+        "generated_on": "2026-11-22"
+      },
+      "review": {
+        "method": "suno audio-listen (best of pair)",
+        "brief_match": 94,
+        "musicality": 88,
+        "melody": 87,
+        "notes": "114 BPM; other take cut off mid-beat"
+      },
+      "status": "library",
+      "rights_note": "Generated on a paid Suno plan. Confirm current Suno terms before commercial release.",
+      "folder": "tropical",
+      "path": "tropical/GCL-035 Coconut Cove.mp3",
+      "parent_archetype": "cozy"
+    },
+    {
+      "id": "GCL-036",
+      "title": "Brine and Broadside",
+      "file": "GCL-036 Brine and Broadside.mp3",
+      "format": "mp3",
+      "duration_s": 208.0,
+      "size_bytes": 4841523,
+      "bpm_target": 130,
+      "archetype": "nautical-folk",
+      "secondary_archetypes": [
+        "storybook-orchestral"
+      ],
+      "game_states": [
+        "explore",
+        "combat"
+      ],
+      "contexts": [
+        "sailing"
+      ],
+      "world_flavor": "pirate",
+      "vocals": "none",
+      "loopable": false,
+      "use": "sailing / naval",
+      "style_prompt": "Swashbuckling pirate orchestral sea shanty, Accordion, Fiddle, Strings, Brass, Snare, Concertina, adventurous high seas sailing, 6/8 feel, 130 BPM, instrumental",
+      "suno": {
+        "clip_id": "88d81a30-4445-412d-af09-c9717bf4ee1b",
+        "url": "https://suno.com/song/88d81a30-4445-412d-af09-c9717bf4ee1b",
+        "alternate_clip_id": "c875a4f4-f79e-497c-b94b-4f9e088b9679",
+        "model": "v6",
+        "generated_on": "2026-11-22"
+      },
+      "review": {
+        "method": "suno audio-listen (best of pair)",
+        "brief_match": 94,
+        "musicality": 91,
+        "melody": 91,
+        "notes": "~3:28; other take 3:02 + clipping peaks"
+      },
+      "status": "library",
+      "rights_note": "Generated on a paid Suno plan. Confirm current Suno terms before commercial release.",
+      "folder": "nautical",
+      "path": "nautical/GCL-036 Brine and Broadside.mp3",
+      "parent_archetype": "cozy"
+    },
+    {
+      "id": "GCL-037",
+      "title": "Rust Belt Horizon",
+      "file": "GCL-037 Rust Belt Horizon.mp3",
+      "format": "mp3",
+      "duration_s": 239.96,
+      "size_bytes": 5481448,
+      "bpm_target": 85,
+      "archetype": "horror",
+      "secondary_archetypes": [
+        "action-rock"
+      ],
+      "game_states": [
+        "explore"
+      ],
+      "contexts": [
+        "overworld",
+        "ambient"
+      ],
+      "world_flavor": null,
+      "vocals": "none",
+      "loopable": false,
+      "use": "wasteland exploration",
+      "style_prompt": "Post-apocalyptic wasteland, dusty Slide Guitar, low Drone, sparse Drums, desolate Synth Pad, Cello, gritty desert rock ambient, lonely survival, 85 BPM, instrumental",
+      "suno": {
+        "clip_id": "28d69cba-a16e-4ebf-944b-cdf284c3c46f",
+        "url": "https://suno.com/song/28d69cba-a16e-4ebf-944b-cdf284c3c46f",
+        "alternate_clip_id": "3b39caf1-268f-42c0-adb4-48be9452f072",
+        "model": "v6",
+        "generated_on": "2026-11-22"
+      },
+      "review": {
+        "method": "suno audio-listen (best of pair)",
+        "brief_match": 94,
+        "musicality": 88,
+        "melody": 76,
+        "notes": "86 BPM slide-guitar ambient"
+      },
+      "status": "library",
+      "rights_note": "Generated on a paid Suno plan. Confirm current Suno terms before commercial release.",
+      "folder": "post-apocalyptic",
+      "path": "post-apocalyptic/GCL-037 Rust Belt Horizon.mp3",
+      "parent_archetype": "horror"
+    },
+    {
+      "id": "GCL-038",
+      "title": "Confetti Showdown",
+      "file": "GCL-038 Confetti Showdown.mp3",
+      "format": "mp3",
+      "duration_s": 229.2,
+      "size_bytes": 5455217,
+      "bpm_target": 125,
+      "archetype": "arcade",
+      "secondary_archetypes": [
+        "storybook-orchestral"
+      ],
+      "game_states": [
+        "combat"
+      ],
+      "contexts": [
+        "minigame"
+      ],
+      "world_flavor": null,
+      "vocals": "none",
+      "loopable": false,
+      "use": "party minigames",
+      "style_prompt": "Playful orchestral big band party game score, live swing orchestra, Brass section, Clarinet lead, Pizzicato Strings, Upright Bass, brushed swing Drums, Piano, Glockenspiel, Xylophone, comedic and competitive minigame energy, 125 BPM, purely instrumental concert recording",
+      "suno": {
+        "clip_id": "0e57d541-83e5-40f7-a160-5d98e9314830",
+        "url": "https://suno.com/song/0e57d541-83e5-40f7-a160-5d98e9314830",
+        "alternate_clip_id": "63425834-f7c8-472c-b792-76ce9d5a65b6",
+        "model": "v6",
+        "generated_on": "2026-11-22"
+      },
+      "review": {
+        "method": "suno audio-listen (best of pair)",
+        "brief_match": 82,
+        "musicality": 88,
+        "melody": 86,
+        "notes": "round 2 orchestral big band framing (no electro); other take cut off"
+      },
+      "status": "library",
+      "rights_note": "Generated on a paid Suno plan. Confirm current Suno terms before commercial release.",
+      "folder": "party",
+      "path": "party/GCL-038 Confetti Showdown.mp3",
+      "parent_archetype": "arcade"
+    },
+    {
+      "id": "GCL-039",
+      "title": "Pulse Clash",
+      "file": "GCL-039 Pulse Clash.mp3",
+      "format": "mp3",
+      "duration_s": 239.96,
+      "size_bytes": 5602542,
+      "bpm_target": 128,
+      "archetype": "arcade",
+      "secondary_archetypes": [
+        "neon-synthfunk"
+      ],
+      "game_states": [
+        "combat"
+      ],
+      "contexts": [
+        "rhythm"
+      ],
+      "world_flavor": null,
+      "vocals": "none",
+      "loopable": false,
+      "use": "dance battle",
+      "style_prompt": "Future bass EDM rhythm game, supersaw Synth chords, punchy four-on-the-floor Drums, Synth Lead drops, Risers, colorful and euphoric, 128 BPM, instrumental",
+      "suno": {
+        "clip_id": "dbc834a5-501b-42ed-92f3-bc98130623a3",
+        "url": "https://suno.com/song/dbc834a5-501b-42ed-92f3-bc98130623a3",
+        "alternate_clip_id": "d5e487c3-50a9-4843-82f7-aebed2b2de5e",
+        "model": "v6",
+        "generated_on": "2026-11-22"
+      },
+      "review": {
+        "method": "suno audio-listen (best of pair)",
+        "brief_match": 94,
+        "musicality": 92,
+        "melody": 90,
+        "notes": "131 BPM future bass; other take 2:46 w/ vocal chops"
+      },
+      "status": "library",
+      "rights_note": "Generated on a paid Suno plan. Confirm current Suno terms before commercial release.",
+      "folder": "rhythm",
+      "path": "rhythm/GCL-039 Pulse Clash.mp3",
+      "parent_archetype": "arcade"
+    },
+    {
+      "id": "GCL-040",
+      "title": "Legends Await",
+      "file": "GCL-040 Legends Await.mp3",
+      "format": "mp3",
+      "duration_s": 240.0,
+      "size_bytes": 5491760,
+      "bpm_target": 84,
+      "archetype": "dark-fantasy",
+      "secondary_archetypes": [
+        "storybook-orchestral"
+      ],
+      "game_states": [
+        "resolve"
+      ],
+      "contexts": [
+        "menu"
+      ],
+      "world_flavor": null,
+      "vocals": "none",
+      "loopable": false,
+      "use": "title / main menu",
+      "style_prompt": "Cinematic title screen main menu theme, Piano opening, swelling Strings, French Horn melody, soft Choir pads, Timpani rolls, grand and inviting, 84 BPM, instrumental, loopable",
+      "suno": {
+        "clip_id": "15a294b0-3dc1-40bd-aa39-5ab8bba915d2",
+        "url": "https://suno.com/song/15a294b0-3dc1-40bd-aa39-5ab8bba915d2",
+        "alternate_clip_id": "40c309a4-cf71-4e4f-b106-eb0ed3ef04c7",
+        "model": "v6",
+        "generated_on": "2026-11-22"
+      },
+      "review": {
+        "method": "suno audio-listen (best of pair)",
+        "brief_match": 95,
+        "musicality": 94,
+        "melody": 92,
+        "notes": "87 BPM piano-to-orchestra menu arc"
+      },
+      "status": "library",
+      "rights_note": "Generated on a paid Suno plan. Confirm current Suno terms before commercial release.",
+      "folder": "ui-meta",
+      "path": "ui-meta/GCL-040 Legends Await.mp3",
+      "parent_archetype": "dark-fantasy"
+    },
+    {
+      "id": "GCL-041",
+      "title": "Laurels and Light",
+      "file": "GCL-041 Laurels and Light.mp3",
+      "format": "mp3",
+      "duration_s": 239.52,
+      "size_bytes": 5659466,
+      "bpm_target": 120,
+      "archetype": "storybook-orchestral",
+      "secondary_archetypes": [
+        "dark-fantasy"
+      ],
+      "game_states": [
+        "resolve"
+      ],
+      "contexts": [
+        "victory"
+      ],
+      "world_flavor": null,
+      "vocals": "none",
+      "loopable": false,
+      "use": "victory / results",
+      "style_prompt": "Triumphant victory results theme, bright Brass fanfare, rolling Snare, joyful Strings, Glockenspiel, Cymbals, celebratory orchestral, 120 BPM, instrumental",
+      "suno": {
+        "clip_id": "9d204170-3785-4f15-a201-e58712978adc",
+        "url": "https://suno.com/song/9d204170-3785-4f15-a201-e58712978adc",
+        "alternate_clip_id": "f7bd77de-613f-4d53-828f-35b4b74a0d3c",
+        "model": "v6",
+        "generated_on": "2026-11-22"
+      },
+      "review": {
+        "method": "suno audio-listen (best of pair)",
+        "brief_match": 91,
+        "musicality": 88,
+        "melody": 89,
+        "notes": "123 BPM victory march; other take clipped"
+      },
+      "status": "library",
+      "rights_note": "Generated on a paid Suno plan. Confirm current Suno terms before commercial release.",
+      "folder": "ui-meta",
+      "path": "ui-meta/GCL-041 Laurels and Light.mp3",
+      "parent_archetype": "cozy"
+    },
+    {
+      "id": "GCL-042",
+      "title": "Embers After",
+      "file": "GCL-042 Embers After.mp3",
+      "format": "mp3",
+      "duration_s": 239.84,
+      "size_bytes": 5344406,
+      "bpm_target": 68,
+      "archetype": "storybook-orchestral",
+      "secondary_archetypes": [],
+      "game_states": [
+        "resolve"
+      ],
+      "contexts": [
+        "game-over"
+      ],
+      "world_flavor": null,
+      "vocals": "none",
+      "loopable": false,
+      "use": "game over / loss",
+      "style_prompt": "Melancholic reflective game over theme, solo Piano, soft Cello, gentle Strings, sad but hopeful, minor key, 68 BPM, instrumental",
+      "suno": {
+        "clip_id": "15e59c1a-f7fc-4f3d-bc5e-3c109feb008b",
+        "url": "https://suno.com/song/15e59c1a-f7fc-4f3d-bc5e-3c109feb008b",
+        "alternate_clip_id": "15c4c8de-74f2-42ae-ba8e-91a969dc16e5",
+        "model": "v6",
+        "generated_on": "2026-11-22"
+      },
+      "review": {
+        "method": "suno audio-listen (best of pair)",
+        "brief_match": 91,
+        "musicality": 90,
+        "melody": 89,
+        "notes": "piano/cello game-over, no drums"
+      },
+      "status": "library",
+      "rights_note": "Generated on a paid Suno plan. Confirm current Suno terms before commercial release.",
+      "folder": "ui-meta",
+      "path": "ui-meta/GCL-042 Embers After.mp3",
+      "parent_archetype": "cozy"
+    },
+    {
+      "id": "GCL-043",
+      "title": "Roads We Traveled",
+      "file": "GCL-043 Roads We Traveled.mp3",
+      "format": "mp3",
+      "duration_s": 240.0,
+      "size_bytes": 5473364,
+      "bpm_target": 90,
+      "archetype": "storybook-orchestral",
+      "secondary_archetypes": [
+        "dark-fantasy"
+      ],
+      "game_states": [
+        "resolve"
+      ],
+      "contexts": [
+        "credits"
+      ],
+      "world_flavor": null,
+      "vocals": "none",
+      "loopable": false,
+      "use": "end credits",
+      "style_prompt": "Sweeping emotional end credits orchestral, Piano theme, full Strings, French Horn, Harp, gentle Percussion builds to grand finale, nostalgic and bittersweet, 90 BPM, instrumental",
+      "suno": {
+        "clip_id": "0150f26b-798b-45a3-acc8-3915e22b2e72",
+        "url": "https://suno.com/song/0150f26b-798b-45a3-acc8-3915e22b2e72",
+        "alternate_clip_id": "8ecd96d8-3f98-4ad1-8ae9-1fd81435ca08",
+        "model": "v6",
+        "generated_on": "2026-11-22"
+      },
+      "review": {
+        "method": "suno audio-listen (best of pair)",
+        "brief_match": 88,
+        "musicality": 86,
+        "melody": 85,
+        "notes": "~73 BPM; grand peak + clean coda (other take faded without finale)"
+      },
+      "status": "library",
+      "rights_note": "Generated on a paid Suno plan. Confirm current Suno terms before commercial release.",
+      "folder": "ui-meta",
+      "path": "ui-meta/GCL-043 Roads We Traveled.mp3",
+      "parent_archetype": "cozy"
+    },
+    {
+      "id": "GCL-044",
+      "title": "Abyssal Lanterns",
+      "file": "GCL-044 Abyssal Lanterns.mp3",
+      "format": "mp3",
+      "duration_s": 239.64,
+      "size_bytes": 5546287,
+      "bpm_target": 70,
+      "archetype": "cosmic-ambient",
+      "secondary_archetypes": [
+        "cozy"
+      ],
+      "game_states": [
+        "explore"
+      ],
+      "contexts": [
+        "underwater",
+        "ambient"
+      ],
+      "world_flavor": null,
+      "vocals": "none",
+      "loopable": false,
+      "use": "underwater exploration",
+      "style_prompt": "Underwater ambient exploration, liquid Synth Pad, Harp, glassy Bells, deep Bass drones, soft Vibraphone, bioluminescent ocean depths, serene and mysterious, 70 BPM, instrumental",
+      "suno": {
+        "clip_id": "f7468513-ea98-4dda-afe1-7db6be500c4c",
+        "url": "https://suno.com/song/f7468513-ea98-4dda-afe1-7db6be500c4c",
+        "alternate_clip_id": "21ce14da-3949-4caf-afdf-916efe0dbc74",
+        "model": "v6",
+        "generated_on": "2026-11-22"
+      },
+      "review": {
+        "method": "suno audio-listen (best of pair)",
+        "brief_match": 91,
+        "musicality": 89,
+        "melody": 78,
+        "notes": "drum-free ambient; other take truncated tail"
+      },
+      "status": "library",
+      "rights_note": "Generated on a paid Suno plan. Confirm current Suno terms before commercial release.",
+      "folder": "underwater",
+      "path": "underwater/GCL-044 Abyssal Lanterns.mp3",
+      "parent_archetype": "dark-fantasy"
+    }
+  ]
+}
