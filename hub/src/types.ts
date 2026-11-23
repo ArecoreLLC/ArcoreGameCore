@@ -5,6 +5,7 @@ export type Provider = {provider:string; path:string; asset_id:string; version:s
 export type Iteration = {observed_at:string; basis:string; revision:string|null; modified:boolean|null; status:string};
 export type Media = {iteration?:Iteration|null; id:string; project_id:string; kind:string; title:string; caption:string; alt_text:string; rights:string; credit:string; status:string; source_path:string; stored_path:string; sha256:string; created_at:string; approved_at:string|null; sort_order:number; width:number|null; height:number|null; duration_seconds:number|null; curation?:string; content_role?:string; is_thumbnail?:boolean; review_notes?:string};
 export type Game = {
+ languages?:string[]; module_keys?:string[];
  id:string; name:string; path:string; engine:string; dimension:string; kind:string; description:string; logic:string; reuse:string; assets:string; limitations:string;
  capabilities:Capability[]; mechanics:Mechanic[]; provider_links:Provider[]; maturity:string;
  marketing:{tagline:string; pitch:string; audience:string; release_status:string; website:string; credits:string; notes:string};

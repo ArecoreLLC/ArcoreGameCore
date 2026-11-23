@@ -20,7 +20,10 @@
         "Snap-Rally",
         "Flotsam-Citadel"
       ],
-      "validation_note": "Test source references only; not a fresh test result. Consumer tests remain game-owned."
+      "validation_note": "Test source references only; not a fresh test result. Consumer tests remain game-owned.",
+      "capability_ids": [
+        "construction"
+      ]
     },
     {
       "id": "buoyancy",
@@ -39,7 +42,10 @@
       "known_consumers": [
         "Flotsam-Citadel"
       ],
-      "validation_note": "Test source references only; not a fresh test result. Consumer tests remain game-owned."
+      "validation_note": "Test source references only; not a fresh test result. Consumer tests remain game-owned.",
+      "capability_ids": [
+        "buoyancy"
+      ]
     },
     {
       "id": "combat-window",
@@ -60,7 +66,10 @@
         "Flotsam-Citadel",
         "Pocket-Fort-Patrol"
       ],
-      "validation_note": "Test source references only; not a fresh test result. Consumer tests remain game-owned."
+      "validation_note": "Test source references only; not a fresh test result. Consumer tests remain game-owned.",
+      "capability_ids": [
+        "combat"
+      ]
     },
     {
       "id": "cooperative-task",
@@ -79,7 +88,10 @@
       "known_consumers": [
         "Pebblekin-Command"
       ],
-      "validation_note": "Test source references only; not a fresh test result. Consumer tests remain game-owned."
+      "validation_note": "Test source references only; not a fresh test result. Consumer tests remain game-owned.",
+      "capability_ids": [
+        "objectives"
+      ]
     },
     {
       "id": "grid-route",
@@ -98,7 +110,10 @@
       "known_consumers": [
         "Pocket-Fort-Patrol"
       ],
-      "validation_note": "Test source references only; not a fresh test result. Consumer tests remain game-owned."
+      "validation_note": "Test source references only; not a fresh test result. Consumer tests remain game-owned.",
+      "capability_ids": [
+        "navigation"
+      ]
     },
     {
       "id": "interaction-rules",
@@ -119,7 +134,10 @@
         "Tugboat-Tumble",
         "Pocket-Fort-Patrol"
       ],
-      "validation_note": "Test source references only; not a fresh test result. Consumer tests remain game-owned."
+      "validation_note": "Test source references only; not a fresh test result. Consumer tests remain game-owned.",
+      "capability_ids": [
+        "adventure"
+      ]
     },
     {
       "id": "light-reflection",
@@ -136,7 +154,10 @@
       "known_consumers": [
         "Lumen-Weaver"
       ],
-      "validation_note": "Test source references only; not a fresh test result. Consumer tests remain game-owned."
+      "validation_note": "Test source references only; not a fresh test result. Consumer tests remain game-owned.",
+      "capability_ids": [
+        "lighting"
+      ]
     },
     {
       "id": "objective-latch",
@@ -156,7 +177,10 @@
         "Gully-Giants",
         "Snap-Rally"
       ],
-      "validation_note": "Test source references only; not a fresh test result. Consumer tests remain game-owned."
+      "validation_note": "Test source references only; not a fresh test result. Consumer tests remain game-owned.",
+      "capability_ids": [
+        "objectives"
+      ]
     },
     {
       "id": "production-clock",
@@ -175,7 +199,10 @@
       "known_consumers": [
         "Critter-Contraptions"
       ],
-      "validation_note": "Test source references only; not a fresh test result. Consumer tests remain game-owned."
+      "validation_note": "Test source references only; not a fresh test result. Consumer tests remain game-owned.",
+      "capability_ids": [
+        "automation"
+      ]
     },
     {
       "id": "resonance-rule",
@@ -194,7 +221,10 @@
       "known_consumers": [
         "Echo-Forge"
       ],
-      "validation_note": "Test source references only; not a fresh test result. Consumer tests remain game-owned."
+      "validation_note": "Test source references only; not a fresh test result. Consumer tests remain game-owned.",
+      "capability_ids": [
+        "audio"
+      ]
     },
     {
       "id": "stock-ledger",
@@ -213,7 +243,10 @@
       "known_consumers": [
         "Dungeon-Dash-Market"
       ],
-      "validation_note": "Test source references only; not a fresh test result. Consumer tests remain game-owned."
+      "validation_note": "Test source references only; not a fresh test result. Consumer tests remain game-owned.",
+      "capability_ids": [
+        "economy"
+      ]
     },
     {
       "id": "support-graph",
@@ -232,7 +265,10 @@
       "known_consumers": [
         "Box-Fort-Brigade"
       ],
-      "validation_note": "Test source references only; not a fresh test result. Consumer tests remain game-owned."
+      "validation_note": "Test source references only; not a fresh test result. Consumer tests remain game-owned.",
+      "capability_ids": [
+        "construction"
+      ]
     },
     {
       "id": "wheel-contact",
@@ -251,7 +287,10 @@
       "known_consumers": [
         "Snap-Rally"
       ],
-      "validation_note": "See consuming game evidence; no second-engine parity claim."
+      "validation_note": "See consuming game evidence; no second-engine parity claim.",
+      "capability_ids": [
+        "vehicles"
+      ]
     },
     {
       "id": "exposure-meter",
@@ -269,7 +308,10 @@
         "Lumen-Weaver",
         "Lantern-Heist"
       ],
-      "validation_note": "Consumer-owned Unreal tests; see Lumen-Weaver validation evidence. No cross-engine parity claim."
+      "validation_note": "Consumer-owned Unreal tests; see Lumen-Weaver validation evidence. No cross-engine parity claim.",
+      "capability_ids": [
+        "stealth"
+      ]
     },
     {
       "id": "rechargeable-reserve",
@@ -289,7 +331,10 @@
         "Gully-Giants",
         "Snap-Rally"
       ],
-      "validation_note": "Consumer owns ability behavior and timing; see its validation evidence."
+      "validation_note": "Consumer owns ability behavior and timing; see its validation evidence.",
+      "capability_ids": [
+        "progression"
+      ]
     },
     {
       "id": "timed-stacks",
@@ -308,7 +353,10 @@
       "known_consumers": [
         "Scrapshift-Arena"
       ],
-      "validation_note": "Execution evidence is consumer-owned; no cross-engine parity claim."
+      "validation_note": "Execution evidence is consumer-owned; no cross-engine parity claim.",
+      "capability_ids": [
+        "combat"
+      ]
     },
     {
       "id": "planar-move-order",
@@ -327,7 +375,10 @@
       "known_consumers": [
         "Box-Fort-Brigade"
       ],
-      "validation_note": "Portable tests and consumer possession/collision tests; execution evidence is consumer-owned."
+      "validation_note": "Portable tests and consumer possession/collision tests; execution evidence is consumer-owned.",
+      "capability_ids": [
+        "navigation"
+      ]
     },
     {
       "id": "hold-repeat",
@@ -346,7 +397,10 @@
       "known_consumers": [
         "Echo-Forge"
       ],
-      "validation_note": "Consumer owns input focus and ability eligibility; execution evidence is consumer-owned."
+      "validation_note": "Consumer owns input focus and ability eligibility; execution evidence is consumer-owned.",
+      "capability_ids": [
+        "accessibility"
+      ]
     },
     {
       "id": "sustained-hold",
@@ -365,7 +419,10 @@
       "known_consumers": [
         "Haunt-and-Haul"
       ],
-      "validation_note": "Execution evidence is consumer-owned; no cross-engine parity claim."
+      "validation_note": "Execution evidence is consumer-owned; no cross-engine parity claim.",
+      "capability_ids": [
+        "objectives"
+      ]
     },
     {
       "id": "timed-window",
@@ -386,7 +443,10 @@
         "Scrapshift-Arena",
         "Skybound-Sabotage"
       ],
-      "validation_note": "Portable boundary tests and consumer jump tests; execution evidence is consumer-owned."
+      "validation_note": "Portable boundary tests and consumer jump tests; execution evidence is consumer-owned.",
+      "capability_ids": [
+        "platforming"
+      ]
     },
     {
       "id": "viewport-layout",
@@ -408,7 +468,10 @@
         "Skybound-Sabotage",
         "Lantern-Heist"
       ],
-      "validation_note": "Test references only; consumer receipts record actual execution."
+      "validation_note": "Test references only; consumer receipts record actual execution.",
+      "capability_ids": [
+        "accessibility"
+      ]
     },
     {
       "id": "capture-objective",
@@ -427,7 +490,10 @@
       "known_consumers": [
         "Box-Fort-Brigade"
       ],
-      "validation_note": "Test source references only; not a fresh test result. Consumer tests remain game-owned."
+      "validation_note": "Test source references only; not a fresh test result. Consumer tests remain game-owned.",
+      "capability_ids": [
+        "objectives"
+      ]
     },
     {
       "id": "unreal-beam-mesh",
@@ -445,7 +511,10 @@
         "Lumen-Weaver",
         "Tugboat-Tumble"
       ],
-      "validation_note": "Unreal-specific. Consumer LumenWeaver.Light.Chamber owns engine tests; see consumer evidence. No standalone or second-consumer validation."
+      "validation_note": "Unreal-specific. Consumer LumenWeaver.Light.Chamber owns engine tests; see consumer evidence. No standalone or second-consumer validation.",
+      "capability_ids": [
+        "lighting"
+      ]
     },
     {
       "id": "planar-placement",
@@ -464,7 +533,10 @@
       "known_consumers": [
         "SandboxKingdoms"
       ],
-      "validation_note": "Consumer-owned runtime evidence; no general collision avoidance claim."
+      "validation_note": "Consumer-owned runtime evidence; no general collision avoidance claim.",
+      "capability_ids": [
+        "construction"
+      ]
     },
     {
       "id": "bounded-order-admission",
@@ -483,7 +555,10 @@
       "known_consumers": [
         "ScorchedFrontier"
       ],
-      "validation_note": "Consumer-owned runtime queue tests; no cross-engine parity claim."
+      "validation_note": "Consumer-owned runtime queue tests; no cross-engine parity claim.",
+      "capability_ids": [
+        "rts"
+      ]
     },
     {
       "id": "stock-demand",
@@ -502,7 +577,10 @@
       "known_consumers": [
         "Dungeon-Dash-Market"
       ],
-      "validation_note": "Consumer runtime evidence is separate from portable allocation tests."
+      "validation_note": "Consumer runtime evidence is separate from portable allocation tests.",
+      "capability_ids": [
+        "economy"
+      ]
     },
     {
       "id": "deadline-countdown",
@@ -521,7 +599,10 @@
       "known_consumers": [
         "Skybound-Sabotage"
       ],
-      "validation_note": "Consumer owns clock synchronization and authoritative transitions; see consumer evidence."
+      "validation_note": "Consumer owns clock synchronization and authoritative transitions; see consumer evidence.",
+      "capability_ids": [
+        "objectives"
+      ]
     },
     {
       "id": "unreal-interaction-trace",
@@ -538,7 +619,10 @@
       "known_consumers": [
         "Lumen-Weaver"
       ],
-      "validation_note": "Consumer LumenWeaver.Interaction.Focus owns engine tests; execution evidence remains consumer-owned."
+      "validation_note": "Consumer LumenWeaver.Interaction.Focus owns engine tests; execution evidence remains consumer-owned.",
+      "capability_ids": [
+        "adventure"
+      ]
     },
     {
       "id": "presentation-motion",
@@ -566,7 +650,10 @@
         "Lumen-Weaver",
         "Lantern-Heist"
       ],
-      "validation_note": "Test references only; consumer receipts record actual execution."
+      "validation_note": "Test references only; consumer receipts record actual execution.",
+      "capability_ids": [
+        "animation"
+      ]
     },
     {
       "id": "rate-ramp",
@@ -587,7 +674,10 @@
         "Gully-Giants",
         "Tugboat-Tumble"
       ],
-      "validation_note": "Portable tests and consumer traversal tests; execution evidence is consumer-owned."
+      "validation_note": "Portable tests and consumer traversal tests; execution evidence is consumer-owned.",
+      "capability_ids": [
+        "traversal"
+      ]
     },
     {
       "id": "jump-grace",
@@ -606,7 +696,10 @@
       "known_consumers": [
         "Echo-Forge"
       ],
-      "validation_note": "Consumer owns grounding, press edges and execution; see consumer validation evidence."
+      "validation_note": "Consumer owns grounding, press edges and execution; see consumer validation evidence.",
+      "capability_ids": [
+        "platforming"
+      ]
     },
     {
       "id": "unreal-visual-tint",
@@ -623,7 +716,10 @@
       "known_consumers": [
         "Lumen-Weaver"
       ],
-      "validation_note": "Engine tests owned by LumenWeaver.Light.Chamber; see consumer validation."
+      "validation_note": "Engine tests owned by LumenWeaver.Light.Chamber; see consumer validation.",
+      "capability_ids": [
+        "lighting"
+      ]
     },
     {
       "id": "action-cooldown",
@@ -642,7 +738,10 @@
       "known_consumers": [
         "Box-Fort-Brigade"
       ],
-      "validation_note": "Consumer-owned firing/reset evidence; portable tests are separate."
+      "validation_note": "Consumer-owned firing/reset evidence; portable tests are separate.",
+      "capability_ids": [
+        "combat"
+      ]
     },
     {
       "id": "unreal-world-ring",
@@ -660,7 +759,10 @@
         "Dungeon-Dash-Market",
         "Lantern-Heist"
       ],
-      "validation_note": "Consumer-owned build and rendered smoke; no packaged verification."
+      "validation_note": "Consumer-owned build and rendered smoke; no packaged verification.",
+      "capability_ids": [
+        "animation"
+      ]
     },
     {
       "id": "adaptive-music",

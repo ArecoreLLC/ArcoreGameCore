@@ -1,5 +1,9 @@
 # Shared contracts
 
+[Module discovery and growth architecture](module-discovery.md) explains the
+canonical catalogs, paged MCP module search, installation ownership and scaling
+decisions. [Specialization policy](module-specialization.md) defines reuse review.
+
 [Portable production clock](cpp/ProductionClock.md) provides a bounded recipe timer;
 consumers own simulation steps, inventory and worker welfare.
 
@@ -14,5 +18,7 @@ world coordinates and movement; no engine navigation parity is implied.
 [Wizard templates](wizard/README.md) define guided workflows once (fields, stages, artifacts, checks); the GameCore hub, runner and ArcoreFlow nodes all derive from them.
 
 [Subject profile taxonomy](subject-taxonomy/README.md) defines engine-neutral canonical parts, aliases, construction geometry, and composable subject-family profiles for assisted 2D, 3D, rigging, and gameplay tooling.
+
+[Procedural world generation](procgen/README.md) provides an engine-neutral Rust pipeline (`arcore_procgen`) that compiles JSON world recipes into deterministic glTF 2.0 terrain chunks, parametric meshes, cell-grouped scatter instances, and SDF collision queries.
 
 This directory is intended for engine-neutral schemas and contracts, not a universal wrapper around every engine. Save payload versions, content identifiers and validation conventions may be shared; scenes, physics and rendering implementations remain engine-specific.

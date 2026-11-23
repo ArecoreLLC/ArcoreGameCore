@@ -1,0 +1,253 @@
+{
+  "schema_version": 1,
+  "template_id": "gamecore.game.procedural-world-generation",
+  "template_version": "0.1.0",
+  "title": "Procedural world generation",
+  "description": "Randomize or author a JSON world recipe, validate it, bake deterministic glTF 2.0 terrain chunks and cell-grouped scatter instances with arcore_procgen, and bind custom GLB/Blender assets in Godot 4 or Unreal 5.",
+  "workflow": "procedural-world-generation",
+  "implementation_status": "partial",
+  "assistance": {
+    "ai_required": false,
+    "offline_after_setup": true,
+    "optional_ai": [
+      "Tuning recipe primitives, zones and cartoon/underwater presentation palettes; a person reviews the baked world in-engine."
+    ]
+  },
+  "capabilities": {
+    "cargo": {
+      "title": "Rust / Cargo toolchain (1.75+)",
+      "kind": "tool",
+      "version": "1.75+",
+      "probe": "cargo-version"
+    },
+    "godot": {
+      "title": "Godot 4 executable (optional for Godot consumers)",
+      "kind": "tool",
+      "probe": "godot-version"
+    }
+  },
+  "fields": {
+    "world_name": {
+      "type": "text",
+      "title": "World name",
+      "required": true,
+      "default": "coral_reef_01",
+      "widget": "text",
+      "help": "Short identifier for the generated recipe and output bundle folder.",
+      "implemented": true
+    },
+    "seed": {
+      "type": "number",
+      "title": "Random seed",
+      "required": true,
+      "default": 20261123,
+      "minimum": 1,
+      "maximum": 2147483647,
+      "widget": "number",
+      "help": "Deterministic seed controlling terrain noise, landmark placement, and scatter.",
+      "implemented": true
+    },
+    "theme": {
+      "type": "enum",
+      "title": "Theme preset",
+      "required": true,
+      "values": [
+        "underwater-cartoon",
+        "underwater-basin",
+        "canyon-arch"
+      ],
+      "default": "underwater-cartoon",
+      "widget": "select",
+      "help": "Selects default underwater/terrestrial bounds, meshes, and consumer presentation hints.",
+      "implemented": true
+    },
+    "quality": {
+      "type": "enum",
+      "title": "Scatter density tier",
+      "required": true,
+      "values": [
+        "low",
+        "medium",
+        "high"
+      ],
+      "default": "medium",
+      "widget": "select",
+      "help": "Scales scatter density (low=0.25x, medium=0.5x, high=1.0x).",
+      "implemented": true
+    },
+    "mesas": {
+      "type": "number",
+      "title": "Mesa / spire count",
+      "required": true,
+      "default": 3,
+      "minimum": 0,
+      "maximum": 12,
+      "widget": "number",
+      "implemented": true
+    },
+    "arches": {
+      "type": "number",
+      "title": "Rock arch count",
+      "required": true,
+      "default": 2,
+      "minimum": 0,
+      "maximum": 8,
+      "widget": "number",
+      "implemented": true
+    },
+    "tunnels": {
+      "type": "number",
+      "title": "Swim / walk tunnel count",
+      "required": true,
+      "default": 1,
+      "minimum": 0,
+      "maximum": 6,
+      "widget": "number",
+      "implemented": true
+    },
+    "external_props": {
+      "type": "text",
+      "title": "External custom GLB prop keys",
+      "required": false,
+      "default": "hero_shipwreck,treasure_chest",
+      "widget": "text",
+      "help": "Comma-separated mesh keys grounded on the seabed with automatic clearings; bind to .glb scenes in Godot or Unreal.",
+      "implemented": true
+    },
+    "output_folder": {
+      "type": "folder",
+      "title": "Target bundle folder",
+      "required": true,
+      "widget": "folder_picker",
+      "help": "Directory in the consuming game where terrain.glb, meshes.glb, instances.json, and manifest.json will be written.",
+      "implemented": true
+    }
+  },
+  "artifacts": {
+    "recipe": {
+      "title": "Generated world recipe",
+      "media_type": "record",
+      "path": "<output_folder>/recipe.json"
+    },
+    "world_bundle": {
+      "title": "Baked glTF + instances bundle",
+      "media_type": "record",
+      "path": "<output_folder>/manifest.json"
+    }
+  },
+  "stages": [
+    {
+      "id": "randomize",
+      "title": "Randomize world recipe",
+      "description": "Generate a spatially separated arcore.procgen.world-recipe.v1 JSON from seed, theme, landmark counts, and external GLB slots.",
+      "flow_category": "game",
+      "adapter": "gamecore.procgen.randomize",
+      "implementation": "parameterized",
+      "requires": [
+        "cargo"
+      ],
+      "inputs": {
+        "fields": [
+          "world_name",
+          "seed",
+          "theme",
+          "mesas",
+          "arches",
+          "tunnels",
+          "external_props"
+        ]
+      },
+      "outputs": [
+        "recipe"
+      ],
+      "checks": [
+        {
+          "id": "recipe_valid",
+          "title": "Recipe passes arcore-procgen validate with zero errors",
+          "kind": "automatic"
+        }
+      ]
+    },
+    {
+      "id": "bake",
+      "title": "Bake deterministic world bundle",
+      "description": "Run arcore-procgen bake to emit terrain.glb, meshes.glb, instances.json, and SHA-256 manifest.json.",
+      "flow_category": "game",
+      "adapter": "gamecore.procgen.bake",
+      "implementation": "parameterized",
+      "requires": [
+        "cargo"
+      ],
+      "inputs": {
+        "fields": [
+          "quality",
+          "output_folder"
+        ],
+        "artifacts": [
+          "recipe"
+        ]
+      },
+      "outputs": [
+        "world_bundle"
+      ],
+      "checks": [
+        {
+          "id": "bundle_hashes_recorded",
+          "title": "Manifest records SHA-256 hashes for terrain.glb, meshes.glb, and instances.json",
+          "kind": "automatic"
+        },
+        {
+          "id": "in_engine_visual_review",
+          "title": "Consumer loads bundle in Godot 4 or Unreal 5 and reviews look and collision",
+          "kind": "human"
+        }
+      ]
+    }
+  ],
+  "wizard": {
+    "steps": [
+      {
+        "id": "design",
+        "title": "Configure & randomize",
+        "summary": "Pick a seed, theme, landmark counts, and custom GLB prop keys.",
+        "fields": [
+          "world_name",
+          "seed",
+          "theme",
+          "mesas",
+          "arches",
+          "tunnels",
+          "external_props"
+        ],
+        "stages": [
+          "randomize"
+        ]
+      },
+      {
+        "id": "bake",
+        "title": "Bake & export",
+        "summary": "Bake deterministic glTF 2.0 terrain chunks and scatter instances into the target game folder.",
+        "fields": [
+          "quality",
+          "output_folder"
+        ],
+        "stages": [
+          "bake"
+        ]
+      }
+    ]
+  },
+  "acceptance": {
+    "no_ai_run": "not_run",
+    "clean_machine": "not_run",
+    "offline_run": "not_run",
+    "wizard_cli_parity": "not_run",
+    "evidence": []
+  },
+  "sources": [
+    "workflows/procedural-world-generation/README.md",
+    "workflows/procedural-world-generation/example.md",
+    "shared/procgen/README.md",
+    "3d/procgen/README.md"
+  ]
+}

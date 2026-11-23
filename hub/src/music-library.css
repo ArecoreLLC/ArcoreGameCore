@@ -1,0 +1,31 @@
+/* Shared music library view (MusicLibraryView.tsx) */
+.music-library .tabs{margin-bottom:16px}
+.music-library .related-toggle{gap:6px;font-size:13px;color:var(--muted);white-space:nowrap}
+.ml-family{margin:22px 0 8px}
+.ml-family-head{display:flex;align-items:baseline;gap:12px;margin:0 0 10px}
+.ml-group{padding:18px 20px;margin-bottom:14px}
+.ml-group h2{display:flex;align-items:center;gap:8px;font-size:18px;margin:0 0 4px}
+.ml-group .section-heading.tight{margin-bottom:12px;align-items:flex-start}
+.ml-games{display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px;margin:0 0 12px}
+.ml-games .link-button{margin-left:0;font-size:12px}
+.ml-tracks{display:grid;gap:8px}
+.ml-track{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(260px,1fr);gap:12px;align-items:center;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:#121722}
+.ml-track-main{display:grid;gap:5px;min-width:0}
+.ml-track-main .tag-list{gap:5px}
+.ml-track-main .pill{font-size:10px}
+.ml-track-side{display:grid;gap:6px;justify-items:end}
+.ml-track-side audio{width:100%;max-width:340px;height:32px}
+.ml-track-side .inline{gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.ml-track-side .button{padding:6px 10px;font-size:12px}
+.ml-track.compact{grid-template-columns:minmax(0,1fr) minmax(220px,300px)}
+.ml-matches{margin-top:0}
+.ml-matrix{display:grid;gap:2px;overflow-x:auto}
+.ml-row{display:grid;grid-template-columns:minmax(190px,1.6fr) repeat(5,minmax(64px,1fr)) minmax(64px,.8fr) minmax(64px,.8fr);gap:2px;font-size:13px}
+.ml-row>span{padding:7px 10px;background:#121722;border-radius:4px;text-align:center}
+.ml-row>span:first-child{text-align:left}
+.ml-row.head>span{background:none;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.6px}
+.ml-row.parent>span:first-child{font-weight:600}
+.ml-row:not(.parent):not(.head)>span:first-child{color:#c3cad8;padding-left:26px}
+.ml-row .have{background:#14201d;color:var(--green);font-weight:600}
+.ml-row .gap{color:#5d6679}
+@media (max-width:900px){.ml-track,.ml-track.compact{grid-template-columns:1fr}.ml-track-side{justify-items:start}.ml-track-side .inline{justify-content:flex-start}}

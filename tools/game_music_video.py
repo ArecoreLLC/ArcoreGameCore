@@ -37,7 +37,12 @@ MODULES = {
                    'files': ['3d/godot/world_life/world_life_kit.gd', '3d/godot/world_life/sea_breach.gd', '3d/godot/world_life/splash_pool.gd',
                              '3d/godot/world_life/beat_dance.gd', '3d/godot/world_life/attention_glance.gd', '3d/godot/world_life/idle_scheduler.gd',
                              '3d/godot/world_life/escort_formation.gd', '3d/godot/world_life/proximity_notes.gd', '3d/godot/world_life/time_of_day.gd',
-                             '3d/godot/world_life/ambient_chatter.gd', '3d/godot/world_life/route_gates.gd', '3d/godot/world_life/celebration_burst.gd']},
+                             '3d/godot/world_life/ambient_chatter.gd', '3d/godot/world_life/route_gates.gd', '3d/godot/world_life/celebration_burst.gd',
+                             '3d/godot/world_life/flutter_motion.gd','3d/godot/world_life/flutter_swarm.gd',
+                             '3d/godot/world_life/wing_patterns.gd','3d/godot/world_life/timed_stroke_track.gd',
+                             '3d/godot/world_life/painting_coverage.gd','3d/godot/world_life/sand_reveal.gd',
+                             '3d/godot/world_life/companion_follow.gd',
+                             '3d/godot/world_life/terrain_ring_clearance.gd','3d/godot/world_life/timed_cue_cursor.gd']},
 }
 OVERRIDE_DIR = '.gamecore-music-video'          # per-project refcount for the shared override.cfg
 START_RE = re.compile(r'MUSIC_VIDEO_SONG_START frame=(\d+) length=([0-9.]+)')

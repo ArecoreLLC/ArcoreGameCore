@@ -4,6 +4,8 @@ import {Check,Copy,FolderOpen,ArrowUpRight,Plus,Save,Sparkles,X,Star} from 'luci
 import type {Game,MusicDesignRecord,MusicTrack,SunoCandidate,ProviderCatalogs} from './types';
 import {ARCHETYPE_IDS,ARCHETYPES,SUNO_STANDARD_OPTIONS,SUNO_BETA_OPTIONS,applyArchetypeToRecord,generateTracksForArchetype,pipelineStage} from './music';
 import seedRecords from '../data/music-design/index.json';
+import {LibraryMatches} from './MusicLibraryView';
+import {libraryTracksForArchetype} from './musicLibrary';
 
 const native = isTauri();
 const GAME_STATUSES = ['unassigned','recommended','excluded','planned','in_progress','approved'];
@@ -21,7 +23,7 @@ function Pill({children,tone=''}:{children:React.ReactNode;tone?:string}){return
 const keepList = (inst:MusicTrack['instruments'])=>[...new Set(inst.filter(x=>x.keep).map(x=>x.stem))].sort();
 
 export function GameMusicPanel({
- game, record, providerCatalogs, onSaveRecord, onUpdateGameLink, onOpenFolder, busy
+ game, record, providerCatalogs, onSaveRecord, onUpdateGameLink, onOpenFolder, onOpenLibrary, busy
 }:{
  game:Game;
  record:MusicDesignRecord;
@@ -29,6 +31,7 @@ export function GameMusicPanel({
  onSaveRecord:(rec:MusicDesignRecord)=>Promise<void>;
  onUpdateGameLink:(provider:string, assetId:string)=>Promise<void>;
  onOpenFolder:(provider:string|null)=>void;
+ onOpenLibrary?:()=>void;
  busy:boolean;
 }){
  const [draft,setDraft] = useState<MusicDesignRecord>(()=>structuredClone(record));
@@ -174,6 +177,8 @@ export function GameMusicPanel({
      </> : <p className="muted">No tracks yet. Open Tracks to generate prompt templates.</p>}
     </section>
    </div>
+
+   <LibraryMatches archetype={activeArch} tracks={libraryTracksForArchetype(activeArch)} native={native} onBrowse={onOpenLibrary}/>
 
    <section className="panel music-links">
     <div className="eyebrow">ECOSYSTEM LINKS</div>

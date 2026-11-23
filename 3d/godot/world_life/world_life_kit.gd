@@ -11,7 +11,7 @@ extends RefCounted
 ## The game advances KIT.time each frame (a root node's _process) and may set effects_volume to a
 ## Callable returning the effects volume (0..1, or a negative number while sounds are off).
 ## Vendored by tools/game_music_video.py vendor --module world-life; do not edit the vendored copy.
-const VERSION := "0.2.0"
+const VERSION := "0.5.0"
 
 static var time := 0.0
 static var night := 0.0

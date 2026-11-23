@@ -1,13 +1,27 @@
 # Godot world-life kit
 
-`world_life_kit.gd` (version 0.2.0), `sea_breach.gd` and ten components are the Godot 4 runtime of the
+`world_life_kit.gd` (version 0.5.0), `sea_breach.gd`, ten components and nine extracted helpers are the Godot 4 runtime of the
 [ambient-world-life workflow](../../../workflows/ambient-world-life/README.md) and its small pipelines: the shared
 helpers under a game's ambient creatures, weather and props. A game writes its own modules (which creatures, where,
 when) on top of the kit and components.
 
 Install them with `python tools/game_music_video.py vendor --module world-life --project <game project>`. That
-copies all twelve files to `addons/gamecore_world_life/` with a SHA-256 lock per file. Don't edit the vendored copies;
+copies all twenty-one files to `addons/gamecore_world_life/` with a SHA-256 lock per file. Don't edit the vendored copies;
 change GameCore and vendor again.
+
+[Terrain and cue modules](ROUTE_CUE_MODULES.md) cover ring clearance and timed cue
+observation. [Remaining review](REMAINING_REUSE_REVIEW.md) records what stays in the
+game. Prefer [MCP module_search](../../../shared/module-discovery.md) for paged
+discovery across both procedure and portable C++ catalogs.
+
+[Painting modules](PAINTING_MODULES.md) cover palette coverage, sand reveal and
+companion following. [Specialization policy](../../../shared/module-specialization.md)
+explains pinned runtime copies, game adapters and deliberate forks.
+
+New helpers: `flutter_motion.gd`, `flutter_swarm.gd`, `wing_patterns.gd` and
+`timed_stroke_track.gd`. See [the reuse audit and API examples](REUSE_AUDIT.md).
+The hub's `reusable_modules` MCP tool searches existing modules and explicitly
+unextracted candidates; filter with `{"query":"butterfly"}`.
 
 ## World contract
 

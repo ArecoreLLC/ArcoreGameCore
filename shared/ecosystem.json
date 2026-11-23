@@ -129,6 +129,7 @@
         "--mcp"
       ],
       "implemented_tools": [
+        "drawing_production",
         "list_projects",
         "list_media",
         "import_media",
@@ -137,11 +138,18 @@
         "animation_production",
         "animation_pipeline",
         "model_production",
-        "showcase_production"
+        "showcase_production",
+        "module_search",
+        "reusable_modules"
       ],
       "role": "The only MCP server agents register. It exposes wizard-level tools and calls the servers below itself, with typed arguments and no LLM in the loop.",
       "transport": "stdio",
       "tools": [
+        {
+          "name": "drawing_production",
+          "writes": true,
+          "purpose": "First-party geometry-first Drawing Atelier: discover typed tools, import personal art, validate authored guides, render cached advanced studies, poll persistent jobs; implemented"
+        },
         {
           "name": "list_projects",
           "writes": false,
@@ -231,6 +239,16 @@
           "name": "showcase_production",
           "writes": true,
           "purpose": "Discover Showcase, import finished masters without extra splash, prepare private Games channel publishing through Fleet"
+        },
+        {
+          "name": "module_search",
+          "writes": false,
+          "purpose": "Cached paged discovery across procedure and portable module catalogs; exact keys, filters and optional canonical details; implemented"
+        },
+        {
+          "name": "reusable_modules",
+          "writes": false,
+          "purpose": "Backward-compatible procedure registry lookup including reviewed game-owned candidates; implemented"
         }
       ]
     },
@@ -256,13 +274,27 @@
           "library_overview",
           "list_models",
           "import_files",
-          "blender_status"
+          "blender_status",
+          "open_model",
+          "close_session",
+          "import_project_folder",
+          "update_model",
+          "set_model_source",
+          "list_references",
+          "add_reference",
+          "verify_file_integrity"
         ],
         "write_tools": [
           "blender_run",
           "create_design_iteration",
           "check_model",
-          "import_files"
+          "import_files",
+          "open_model",
+          "close_session",
+          "import_project_folder",
+          "update_model",
+          "set_model_source",
+          "add_reference"
         ],
         "discovery": {
           "file": "~/.modelvault/settings.json",
@@ -411,6 +443,16 @@
         "auth": {
           "type": "none"
         },
+        "tools": [
+          "adaptive_compositions",
+          "adaptive_validate",
+          "adaptive_export",
+          "adaptive_manifest"
+        ],
+        "write_tools": [
+          "adaptive_export"
+        ]
+      },
       {
         "id": "photo-master",
         "label": "Arcore PhotoMaster",

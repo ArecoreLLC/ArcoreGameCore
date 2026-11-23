@@ -5,6 +5,10 @@ description = "GameCore game catalog and marketing library"
 edition = "2021"
 default-run = "gamecore-library"
 
+[features]
+# Required for standalone UI builds; plain cargo build is a dev/MCP binary.
+custom-protocol = ["tauri/custom-protocol"]
+
 [[bin]]
 name = "gamecore-library"
 path = "src/main.rs"

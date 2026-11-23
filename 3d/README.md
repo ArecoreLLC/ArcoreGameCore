@@ -1,5 +1,10 @@
 # 3D systems
 
+The [reusable procedure registry](../shared/reusable-modules.json) records source,
+consumer references and extraction status. Search it through the hub MCP tool
+`reusable_modules`. The [ShammyVerse reuse audit](godot/world_life/REUSE_AUDIT.md)
+covers butterfly spawning/flight, JSON wing types and other candidate procedures.
+
 ## Godot gameplay music-video recorder
 
 [music_video](godot/music_video/README.md) is the Godot 4 runtime of the
@@ -20,6 +25,17 @@ screenshots (`tools/game_music_video.py showcase`) or a demo video (`record`).
 a flutter shader, shore and water placement, an attention registry, night and beat clocks, synthesised sounds, birds
 and leap arcs, plus ten components for the small pipelines (beat-synced dance, attention glance, idle fidgets, escort
 formation, musical stones, time of day, ambient chatter, route gates, arrival celebrations, splashes). Games vendor it with `tools/game_music_video.py vendor --module world-life`.
+
+## Procedural world generation
+
+[3d/procgen](procgen/README.md) holds starter JSON recipes (including `underwater-basin.json` and `canyon-arch.json`) for the [procedural world generation workflow](../workflows/procedural-world-generation/README.md), paired with the [Godot 4 bundle loader](godot/procgen/README.md) and [Unreal 5.x integration guide](unreal/procgen/README.md).
+
+## Painted, animated companions
+
+[companion_studio](blender/companion_studio/README.md) (Blender Python) and [painted_companion](godot/painted_companion/README.md) (Godot shader include)
+are the runtime-side pieces of the [painted-animated-companions workflow](../workflows/painted-animated-companions/README.md): a per-texel painted
+albedo atlas for part-built characters, pose-function clips with a shared tail wave and a planted-foot stepper, and lighting that keeps painted colour
+on screen. Games vendor them with `tools/companion_pipeline.py vendor`.
 
 ## Unreal game feel
 

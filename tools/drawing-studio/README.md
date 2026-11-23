@@ -1,5 +1,15 @@
 # Drawing Atelier
 
+**Agent entry point:** [GameCore MCP quickstart](MCP.md). Discover `drawing_production`,
+validate a manually authored geometry-first lesson, launch a persistent advanced
+study job, and reuse verified results. For musical game paintings and ArcoreCut
+editing, see [Drawing to song](../../workflows/game-music-video/drawing.md).
+
+**Personal art:** `drawing_import_reference` preserves an uploaded local drawing.
+Default MCP `mode: "trace"` is **Draw & Paint**, skipping construction shapes. Optional
+`mode: "advanced"` is **Shapes First**, using user/artist-authored guides. The CLI
+equivalent for the simple path is `render_gif.py --lesson <lesson.json> --skip-construction`.
+
 A local, dependency-free drawing and painting simulator. The supplied spider study starts with hand-placed head/body masses, face axes, eye circles and leg segments. A textured pencil pass follows structural contours extracted from the reference; hatching builds the values, then broad and fine color-sampled brush strokes paint the subject. This is a reference-driven simulation, not a recording of a human artist or a generative art model.
 
 ## CLI and animated GIF export

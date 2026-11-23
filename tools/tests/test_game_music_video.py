@@ -99,10 +99,12 @@ class GameMusicVideoTests(unittest.TestCase):
             lock = gmv.vendor(project, module="world-life")
             names = [f["name"] for f in lock["files"]]
             self.assertEqual(names[:2], ["world_life_kit.gd", "sea_breach.gd"])
-            self.assertIn("beat_dance.gd", names);self.assertIn("celebration_burst.gd", names);self.assertEqual(len(names), 12)
+            self.assertIn("beat_dance.gd", names);self.assertIn("celebration_burst.gd", names);self.assertEqual(len(names), 21)
+            self.assertIn("painting_coverage.gd", names);self.assertIn("sand_reveal.gd", names);self.assertIn("companion_follow.gd", names)
+            self.assertIn("flutter_swarm.gd", names);self.assertIn("wing_patterns.gd", names);self.assertIn("timed_stroke_track.gd", names)
             for f in lock["files"]:
                 self.assertEqual(f["sha256"], gmv.sha256(project / "addons/gamecore_world_life" / f["name"]))
-            self.assertEqual(lock["version"], "0.2.0")
+            self.assertEqual(lock["version"], "0.5.0")
             breach = project / "addons/gamecore_world_life/sea_breach.gd"
             breach.write_text(breach.read_text(encoding="utf-8") + "\n# local edit\n", encoding="utf-8")
             with self.assertRaises(SystemExit):

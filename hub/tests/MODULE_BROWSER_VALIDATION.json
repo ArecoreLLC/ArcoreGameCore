@@ -1,0 +1,38 @@
+{
+  "date": "2026-11-22",
+  "head": "2f7f91137553f4c0a13c07983417f468e345ae57",
+  "working_tree": "Uncommitted; existing edits preserved",
+  "checks": {
+    "python_godot": 169,
+    "rust": 20,
+    "ui_unit": 27,
+    "desktop_smoke": "passed; examples, filters, paging, persistent module add/remove, language editor; isolated SQLite backup",
+    "mcp": "passed; 11 requests"
+  },
+  "desktop_evidence": "hub/test-results/modules-ui-1795372294711",
+  "logs": [
+    ".gamecore/module-ui-python.log",
+    ".gamecore/module-ui-rust.log",
+    ".gamecore/module-ui-unit.log",
+    ".gamecore/module-ui-mcp.json",
+    ".gamecore/module-ui-build.log"
+  ],
+  "sha256": {
+    "hub/src/ModulesView.tsx": "8e7b8d3ce7cc3dc3d206e51dbde54da9ef2f18071c6237dfa2123941a0d52d29",
+    "hub/src/moduleCatalog.ts": "44fde0b80d7594bfe667c4008bbb72aa95eb456373aa3a1946d95d03b888f0f8",
+    "hub/src/main.tsx": "1a8b334b496099d92268c4dbdee5999c3d8b27b0b9fc223930af9651db20162b",
+    "hub/src/modules.css": "093dd1a7a3b63b0a8dcbcfe08969dfc3dfed0f844c06799bb91c8046f4ebc08c",
+    "hub/src/style.css": "2979c6a003ecb1197eb053eb769f1c0c1f9a4e1a1aa7928b8a9953634133cb44",
+    "hub/src-tauri/src/main.rs": "e26a68554749883e944d396b449316faeb7d1f0cc9d6f98e0a4e20887b3bd47d",
+    "hub/src-tauri/src/module_search.rs": "73c345134e16c1b327d969018d718b27b3ff22f8533008e16eaca64183f8c15f",
+    "hub/src-tauri/src/store.rs": "008ff848b36caee8197c01b5a962ed99ee3a411bcaec97a8e83e3a236432e618",
+    "shared/modules.json": "7c4d7600d60cbcb5acac8b8077bfbf2b9b411cb7082c18b477c3597fdf506376",
+    "hub/src-tauri/target/release/gamecore-library.exe": "34e4afff019d80d333d3e7b2f85ebec62153e8fa060df1b9fc98fc1cd05059cd"
+  },
+  "limits": [
+    "Guide reading requires original GameCore checkout; missing files are reported.",
+    "Browser preview does not provide native module search or writes.",
+    "Capability associations describe domains, not verified adoption.",
+    "Tags do not install code; no live game tags were changed by tests."
+  ]
+}

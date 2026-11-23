@@ -1,0 +1,15 @@
+[package]
+name = "arcore_procgen_cli"
+description = "Offline bake/validate command for arcore_procgen world recipes"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+
+[[bin]]
+name = "arcore-procgen"
+path = "src/main.rs"
+
+[dependencies]
+arcore_procgen = { path = "../arcore_procgen" }
+serde_json.workspace = true

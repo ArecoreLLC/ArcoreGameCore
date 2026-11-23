@@ -1,5 +1,8 @@
 # Add ambient world life to a game
 
+For extracted butterfly spawning/flight, species JSON and the broader source audit,
+see [world-life reuse modules](../../3d/godot/world_life/REUSE_AUDIT.md).
+
 A world can work and still feel deserted. This workflow takes a game from that note to a set of small, reusable
 ambient systems: creatures, weather, props and close-up behaviour that make every shot feel inhabited. It runs
 from review to backlog, then build, staging hooks, tests, a frame-cost check and a showcase.
@@ -61,6 +64,11 @@ Each reusable piece has its own short workflow and a Godot component in the worl
   `KIT.merge` (bears, puffers, kites, lanterns). Synthesise simple sounds with `KIT.tone`.
 
 ## Build rules
+
+- Before extracting or specializing a helper, record the
+  [reuse suitability review](../../shared/module-specialization.md#reuse-suitability-review).
+  Game-specific content and policy belong in adapters; revise shared boundaries
+  when new requirements expose coupling. Keep the registry and API guide aligned.
 
 - One module per family, with species, counts, paths and timing as parameters.
 - Pool everything; spawn near the camera; hide distant life; no shadows on small animals; use visibility ranges.

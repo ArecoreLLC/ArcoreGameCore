@@ -1,0 +1,21 @@
+[workspace]
+resolver = "2"
+members = ["crates/arcore_procgen", "crates/arcore_procgen_cli"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.75"
+publish = false
+
+[workspace.dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[profile.release]
+opt-level = 3
+codegen-units = 1
+
+# Tests generate small worlds; keep them quick without a release build.
+[profile.test]
+opt-level = 2

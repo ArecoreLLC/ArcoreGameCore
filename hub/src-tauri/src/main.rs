@@ -4,6 +4,8 @@ mod roadmap;
 mod store;
 mod iteration;
 mod mcp;
+mod module_search;
+mod drawing;
 mod video_bridge;
 mod animation_pipeline;
 mod music;
@@ -148,6 +150,37 @@ fn library(state: State<AppState>) -> Result<Value> {
     Ok(
         json!({"projects":s.values("SELECT data FROM projects ORDER BY name")?,"taxonomy":s.values("SELECT data FROM taxonomy ORDER BY id")?,"media":s.values("SELECT data FROM media")?,"storage":s.root,"schema_version":1}),
     )
+}
+#[tauri::command]
+fn search_modules(arguments: Value) -> Result<Value> { module_search::search(&arguments) }
+#[tauri::command]
+fn tag_game_module(project_id: String, key: String, add: bool, state: State<AppState>) -> Result<()> {
+    let found=module_search::search(&json!({"key":key}))?;
+    let entry=found["entries"].as_array().and_then(|v|v.first()).ok_or("Unknown module")?;
+    let store=state.lock().map_err(|e|e.to_string())?;
+    let mut project=store.project(&project_id)?;
+    let mut keys=project["module_keys"].as_array().cloned().unwrap_or_default();
+    keys.retain(|v|v.as_str()!=Some(&key));
+    if add {keys.push(json!(key));}
+    project["module_keys"]=json!(keys);
+    if add {
+        let mut languages=project["languages"].as_array().cloned().unwrap_or_else(|| {
+            let engine=project["engine"].as_str().unwrap_or("").to_lowercase();
+            [("c++","cpp"),("c#","csharp"),("gdscript","gdscript"),("python","python"),("typescript","typescript"),("javascript","javascript"),("rust","rust")].iter().filter(|(word,_)|engine.contains(word)).map(|(_,language)|json!(language)).collect()
+        });
+        for language in entry["languages"].as_array().into_iter().flatten() {if !languages.contains(language) {languages.push(language.clone());}}
+        project["languages"]=json!(languages);
+    }
+    store.save_project(project)
+}
+#[tauri::command]
+fn module_guide(key: String) -> Result<String> {
+    let result=module_search::search(&json!({"key":key}))?;
+    let guide=result["entries"][0]["guide"].as_str().ok_or("Unknown module")?;
+    let root=std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../..").canonicalize().map_err(|e|e.to_string())?;
+    let path=root.join(guide).canonicalize().map_err(|_|"Guide is unavailable in this checkout".to_string())?;
+    if !path.starts_with(&root) || path.extension().and_then(|v|v.to_str())!=Some("md") {return Err("Invalid guide path".into());}
+    std::fs::read_to_string(path).map_err(|e|e.to_string())
 }
 #[tauri::command]
 fn save_project(project: Value, state: State<AppState>) -> Result<()> {
@@ -299,6 +332,9 @@ fn main() {
         })
         .invoke_handler(tauri::generate_handler![
             library,
+            search_modules,
+            tag_game_module,
+            module_guide,
             roadmap,
             save_roadmap,
             music_designs,
