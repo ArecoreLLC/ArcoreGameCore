@@ -1,0 +1,3 @@
+# Versioned interaction source hashes use LF on every platform.
+art_admission.py text eol=lf
+interaction_modules.py text eol=lf

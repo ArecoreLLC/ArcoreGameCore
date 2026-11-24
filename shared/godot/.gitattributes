@@ -1,0 +1,2 @@
+# Versioned interaction modules must retain their manifest SHA-256 on checkout.
+*.gd text eol=lf

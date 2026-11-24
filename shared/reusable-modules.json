@@ -854,6 +854,206 @@
         "blender"
       ],
       "review_decision": "extract-adapter"
+    },
+    {
+      "id": "verified-art-admission",
+      "name": "Verified rendered-art admission",
+      "status": "extracted",
+      "version": "0.1.0",
+      "engine": "Python",
+      "dimension": "any",
+      "languages": [
+        "python"
+      ],
+      "files": [
+        "tools/art_admission.py"
+      ],
+      "guide": "shared/inkfury/ART_ADMISSION.md",
+      "consumer_paths": [
+        "tools/gamecore/art_admission.py"
+      ],
+      "source_project_ids": [],
+      "capability_ids": [],
+      "source_project": "InkFury",
+      "tags": [
+        "art",
+        "sprites",
+        "rig",
+        "validation",
+        "pipeline"
+      ],
+      "review_decision": "extract-adapter",
+      "disposition": "reusable-source",
+      "limitations": "One consumer plus synthetic fixtures; no second-game, fresh device or cross-engine validation. See guide and shared/inkfury/VALIDATION.md.",
+      "installer": "tools/interaction_modules.py",
+      "manifest": "shared/interaction-modules.json"
+    },
+    {
+      "id": "recoverable-checkpoints",
+      "name": "Recoverable validated checkpoints",
+      "status": "extracted",
+      "version": "0.1.0",
+      "engine": "Godot 4",
+      "dimension": "any",
+      "languages": [
+        "gdscript"
+      ],
+      "files": [
+        "shared/godot/checkpoints/checkpoint_store.gd"
+      ],
+      "guide": "shared/godot/checkpoints/README.md",
+      "consumer_paths": [
+        "game/addons/gamecore/checkpoints"
+      ],
+      "source_project_ids": [],
+      "capability_ids": [],
+      "source_project": "InkFury",
+      "tags": [
+        "save",
+        "checkpoint",
+        "recovery",
+        "checksum"
+      ],
+      "review_decision": "extract-adapter",
+      "disposition": "reusable-source",
+      "limitations": "One consumer plus synthetic fixtures; no second-game, fresh device or cross-engine validation. See guide and shared/inkfury/VALIDATION.md.",
+      "installer": "tools/interaction_modules.py",
+      "manifest": "shared/interaction-modules.json"
+    },
+    {
+      "id": "stroke-analysis",
+      "name": "Stroke geometry and motion analysis",
+      "status": "extracted",
+      "version": "0.1.0",
+      "engine": "Godot 4",
+      "dimension": "any",
+      "languages": [
+        "gdscript"
+      ],
+      "files": [
+        "shared/godot/strokes/dtw.gd",
+        "shared/godot/strokes/ink_geom.gd",
+        "shared/godot/strokes/ink_stroke.gd",
+        "shared/godot/strokes/motion.gd",
+        "shared/godot/strokes/pdollar.gd",
+        "shared/godot/strokes/sample_math.gd"
+      ],
+      "guide": "shared/godot/strokes/README.md",
+      "consumer_paths": [
+        "game/addons/gamecore/strokes"
+      ],
+      "source_project_ids": [],
+      "capability_ids": [],
+      "source_project": "InkFury",
+      "tags": [
+        "gesture",
+        "stroke",
+        "recognition",
+        "motion"
+      ],
+      "review_decision": "extract-adapter",
+      "disposition": "reusable-source",
+      "limitations": "One consumer plus synthetic fixtures; no second-game, fresh device or cross-engine validation. See guide and shared/inkfury/VALIDATION.md.",
+      "installer": "tools/interaction_modules.py",
+      "manifest": "shared/interaction-modules.json"
+    },
+    {
+      "id": "turn-simulation",
+      "name": "Committed-turn rules and simulation",
+      "status": "extracted",
+      "version": "0.1.0",
+      "engine": "Godot 4",
+      "dimension": "any",
+      "languages": [
+        "gdscript"
+      ],
+      "files": [
+        "shared/godot/turns/cooldowns.gd",
+        "shared/godot/turns/turn_driver.gd"
+      ],
+      "guide": "shared/godot/turns/README.md",
+      "consumer_paths": [
+        "game/addons/gamecore/turns"
+      ],
+      "source_project_ids": [],
+      "capability_ids": [],
+      "source_project": "InkFury",
+      "tags": [
+        "turn",
+        "preview",
+        "simulation",
+        "cooldown"
+      ],
+      "review_decision": "extract-adapter",
+      "disposition": "reusable-source",
+      "limitations": "One consumer plus synthetic fixtures; no second-game, fresh device or cross-engine validation. See guide and shared/inkfury/VALIDATION.md.",
+      "installer": "tools/interaction_modules.py",
+      "manifest": "shared/interaction-modules.json"
+    },
+    {
+      "id": "pen-contact-tracking",
+      "name": "Pen contact tracking and recovery",
+      "status": "extracted",
+      "version": "0.1.0",
+      "engine": "Godot 4",
+      "dimension": "any",
+      "languages": [
+        "gdscript"
+      ],
+      "files": [
+        "shared/godot/pen_input/contact_tracker.gd"
+      ],
+      "guide": "shared/godot/pen_input/README.md",
+      "consumer_paths": [
+        "game/addons/gamecore/pen_input"
+      ],
+      "source_project_ids": [],
+      "capability_ids": [],
+      "source_project": "InkFury",
+      "tags": [
+        "pen",
+        "stylus",
+        "input",
+        "contact"
+      ],
+      "review_decision": "extract-adapter",
+      "disposition": "reusable-source",
+      "limitations": "One consumer plus synthetic fixtures; no second-game, fresh device or cross-engine validation. See guide and shared/inkfury/VALIDATION.md.",
+      "installer": "tools/interaction_modules.py",
+      "manifest": "shared/interaction-modules.json"
+    },
+    {
+      "id": "recorded-input-replay",
+      "name": "Recorded input replay and evaluation",
+      "status": "extracted",
+      "version": "0.1.0",
+      "engine": "Godot 4",
+      "dimension": "any",
+      "languages": [
+        "gdscript"
+      ],
+      "files": [
+        "shared/godot/replay/recorded_replay.gd",
+        "shared/godot/replay/telemetry_codec.gd"
+      ],
+      "guide": "shared/godot/replay/README.md",
+      "consumer_paths": [
+        "game/addons/gamecore/replay"
+      ],
+      "source_project_ids": [],
+      "capability_ids": [],
+      "source_project": "InkFury",
+      "tags": [
+        "replay",
+        "telemetry",
+        "recording",
+        "regression"
+      ],
+      "review_decision": "extract-adapter",
+      "disposition": "reusable-source",
+      "limitations": "One consumer plus synthetic fixtures; no second-game, fresh device or cross-engine validation. See guide and shared/inkfury/VALIDATION.md.",
+      "installer": "tools/interaction_modules.py",
+      "manifest": "shared/interaction-modules.json"
     }
   ]
 }

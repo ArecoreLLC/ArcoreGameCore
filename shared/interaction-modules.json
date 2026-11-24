@@ -1,0 +1,120 @@
+{
+  "schema": "gamecore.interaction-modules.v1",
+  "modules": [
+    {
+      "id": "verified-art-admission",
+      "version": "0.1.0",
+      "runtime": "python",
+      "dependencies": [],
+      "files": [
+        {
+          "source": "tools/art_admission.py",
+          "destination": "tools/gamecore/art_admission.py",
+          "sha256": "7a7549bcb6399facf92cf56a08d8253ba529d2f8727c05e64bb86f3ceb4cc9f0"
+        }
+      ]
+    },
+    {
+      "id": "recoverable-checkpoints",
+      "version": "0.1.0",
+      "runtime": "godot",
+      "dependencies": [],
+      "files": [
+        {
+          "source": "shared/godot/checkpoints/checkpoint_store.gd",
+          "destination": "addons/gamecore/checkpoints/checkpoint_store.gd",
+          "sha256": "21440da9568afe58cdb93264dab69f286dc7161ec0e8e3be45c1e77d38d633c5"
+        }
+      ]
+    },
+    {
+      "id": "stroke-analysis",
+      "version": "0.1.0",
+      "runtime": "godot",
+      "dependencies": [],
+      "files": [
+        {
+          "source": "shared/godot/strokes/dtw.gd",
+          "destination": "addons/gamecore/strokes/dtw.gd",
+          "sha256": "d70cd8cba003c2ea79f37667b90ce15852e25c5919d1fe66219474d806c7bd4c"
+        },
+        {
+          "source": "shared/godot/strokes/ink_geom.gd",
+          "destination": "addons/gamecore/strokes/ink_geom.gd",
+          "sha256": "b13534e4dcd3dddf103ccbc7c01b09a0a283815b3149d131f03db00439ddfb27"
+        },
+        {
+          "source": "shared/godot/strokes/ink_stroke.gd",
+          "destination": "addons/gamecore/strokes/ink_stroke.gd",
+          "sha256": "4525459d8cd1a14d824b9944765aa3848aa3eb49a74fe3303d8880f82bcd7d8a"
+        },
+        {
+          "source": "shared/godot/strokes/motion.gd",
+          "destination": "addons/gamecore/strokes/motion.gd",
+          "sha256": "692337972d2265ede6fbb20bf7bc0d239f68a859b92452cb714cf1c29f1baadd"
+        },
+        {
+          "source": "shared/godot/strokes/pdollar.gd",
+          "destination": "addons/gamecore/strokes/pdollar.gd",
+          "sha256": "3610799efbe631870a00f2806a469b0420f910ac49e2849b0b3796bc49659ebd"
+        },
+        {
+          "source": "shared/godot/strokes/sample_math.gd",
+          "destination": "addons/gamecore/strokes/sample_math.gd",
+          "sha256": "2eb8ca1ac1ff756ed6fa1b16a8cadc623d6a49b7f7b9d9dbac203e3ac2fb8cc2"
+        }
+      ]
+    },
+    {
+      "id": "turn-simulation",
+      "version": "0.1.0",
+      "runtime": "godot",
+      "dependencies": [],
+      "files": [
+        {
+          "source": "shared/godot/turns/cooldowns.gd",
+          "destination": "addons/gamecore/turns/cooldowns.gd",
+          "sha256": "7071036f0a036e0ff5cc1ea8dd3f5521a53d64fafc2bfdcba49f39e21533847f"
+        },
+        {
+          "source": "shared/godot/turns/turn_driver.gd",
+          "destination": "addons/gamecore/turns/turn_driver.gd",
+          "sha256": "a58b95e1d89eb564b74963cd25c4b702cda778def67de8c5b150464ce0275c0f"
+        }
+      ]
+    },
+    {
+      "id": "pen-contact-tracking",
+      "version": "0.1.0",
+      "runtime": "godot",
+      "dependencies": [],
+      "files": [
+        {
+          "source": "shared/godot/pen_input/contact_tracker.gd",
+          "destination": "addons/gamecore/pen_input/contact_tracker.gd",
+          "sha256": "a38e74d3ff8b7178fe4472343977988d624e8a4a3e254f82cb197997cd1e4fc1"
+        }
+      ]
+    },
+    {
+      "id": "recorded-input-replay",
+      "version": "0.1.0",
+      "runtime": "godot",
+      "dependencies": [
+        "stroke-analysis"
+      ],
+      "files": [
+        {
+          "source": "shared/godot/replay/recorded_replay.gd",
+          "destination": "addons/gamecore/replay/recorded_replay.gd",
+          "sha256": "24250bc7c0b302eb410b666d316c53609f4830e2f1ecf502646e61c41fea69c9"
+        },
+        {
+          "source": "shared/godot/replay/telemetry_codec.gd",
+          "destination": "addons/gamecore/replay/telemetry_codec.gd",
+          "sha256": "4ed8530777603f23c038551580353dcc8798a4a362e942ec363447507870888b"
+        }
+      ]
+    }
+  ]
+}
