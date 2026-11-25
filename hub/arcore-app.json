@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "id": "arcoregamecore-hub",
+  "name": "GameCore",
+  "group": "game-studio",
+  "stage": "dev",
+  "port_block": {
+    "start": 40120,
+    "size": 10
+  },
+  "ports": {
+    "ui": 40120,
+    "cdp-native": 40121,
+    "cdp-marketing": 40122,
+    "cdp-roadmap": 40123,
+    "cdp-approvals": 40124,
+    "cdp-export": 40125,
+    "cdp-clipboard": 40126
+  }
+}

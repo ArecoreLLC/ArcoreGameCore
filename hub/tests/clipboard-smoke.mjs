@@ -6,10 +6,10 @@ import assert from 'node:assert/strict';
 const root=path.resolve(import.meta.dirname,'..'),output=path.join(root,'test-results','clipboard-'+Date.now());
 await fs.mkdir(output,{recursive:true});
 const exe=process.env.GAMECORE_TEST_EXE||path.join(root,'src-tauri','target','release','gamecore-library.exe');
-const app=spawn(exe,[],{windowsHide:true,stdio:'ignore',env:{...process.env,GAMECORE_DATA_DIR:path.join(output,'library'),WEBVIEW2_USER_DATA_FOLDER:path.join(output,'webview'),WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS:'--remote-debugging-port=9453'}});
+const app=spawn(exe,[],{windowsHide:true,stdio:'ignore',env:{...process.env,GAMECORE_DATA_DIR:path.join(output,'library'),WEBVIEW2_USER_DATA_FOLDER:path.join(output,'webview'),WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS:'--remote-debugging-port=40126'}});
 let browser;
 try{
- for(let i=0;i<100;i++){try{browser=await chromium.connectOverCDP('http://127.0.0.1:9453');break}catch{await new Promise(r=>setTimeout(r,400))}}
+ for(let i=0;i<100;i++){try{browser=await chromium.connectOverCDP('http://127.0.0.1:40126');break}catch{await new Promise(r=>setTimeout(r,400))}}
  assert.ok(browser);const page=browser.contexts()[0].pages()[0];
  await page.locator('.game-card').first().waitFor({timeout:45000});
  const invoke=(command,args={})=>page.evaluate(({command,args})=>window.__TAURI_INTERNALS__.invoke(command,args),{command,args});

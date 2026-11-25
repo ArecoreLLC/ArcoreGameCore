@@ -9,11 +9,11 @@ const root=path.resolve(import.meta.dirname,'..');
 const output=path.join(root,'test-results','approvals-'+Date.now());
 await fs.mkdir(output,{recursive:true});
 const exe=process.env.GAMECORE_TEST_EXE||path.join(root,'src-tauri','target','release','gamecore-library.exe');
-const env={...process.env,GAMECORE_DATA_DIR:path.join(output,'library'),WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS:'--remote-debugging-port=9450',WEBVIEW2_USER_DATA_FOLDER:path.join(output,'webview')};
+const env={...process.env,GAMECORE_DATA_DIR:path.join(output,'library'),WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS:'--remote-debugging-port=40124',WEBVIEW2_USER_DATA_FOLDER:path.join(output,'webview')};
 let app,browser;const checks=[];
 async function start(){
  app=spawn(exe,[],{env,windowsHide:true,stdio:'ignore'});
- for(let i=0;i<100;i++){try{browser=await chromium.connectOverCDP('http://127.0.0.1:9450');break}catch{await new Promise(r=>setTimeout(r,400))}}
+ for(let i=0;i<100;i++){try{browser=await chromium.connectOverCDP('http://127.0.0.1:40124');break}catch{await new Promise(r=>setTimeout(r,400))}}
  assert.ok(browser,'Native WebView exposed the test debug port');
  const page=browser.contexts()[0].pages()[0];
  await page.setViewportSize({width:1440,height:900}).catch(()=>{});

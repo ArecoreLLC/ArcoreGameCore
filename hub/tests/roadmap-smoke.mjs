@@ -14,7 +14,7 @@ for (raw,) in b.execute('SELECT data FROM media'):
 a.close();b.close()`,source,copy]);
 const exe=process.env.GAMECORE_TEST_EXE||path.join(root,'src-tauri','target-json-export','release','gamecore-library.exe');let app,browser;
 const checks=[];
-async function start(){app=spawn(exe,[],{windowsHide:true,stdio:'ignore',env:{...process.env,GAMECORE_DATA_DIR:copy,WEBVIEW2_USER_DATA_FOLDER:path.join(output,'webview'),WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS:'--remote-debugging-port=9449'}});for(let i=0;i<100;i++){try{browser=await chromium.connectOverCDP('http://127.0.0.1:9449');break}catch{await new Promise(r=>setTimeout(r,400))}}assert.ok(browser);const page=browser.contexts()[0].pages()[0];await page.getByRole('heading',{name:'Game library',exact:true}).waitFor({timeout:45000});return page;}
+async function start(){app=spawn(exe,[],{windowsHide:true,stdio:'ignore',env:{...process.env,GAMECORE_DATA_DIR:copy,WEBVIEW2_USER_DATA_FOLDER:path.join(output,'webview'),WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS:'--remote-debugging-port=40123'}});for(let i=0;i<100;i++){try{browser=await chromium.connectOverCDP('http://127.0.0.1:40123');break}catch{await new Promise(r=>setTimeout(r,400))}}assert.ok(browser);const page=browser.contexts()[0].pages()[0];await page.getByRole('heading',{name:'Game library',exact:true}).waitFor({timeout:45000});return page;}
 function stop(){if(app?.pid)execFileSync('taskkill',['/PID',String(app.pid),'/T','/F'],{windowsHide:true,stdio:'ignore'});app=null;}
 try{
  let page=await start();const errors=[];page.on('pageerror',e=>errors.push(e.message));

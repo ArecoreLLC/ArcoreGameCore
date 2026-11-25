@@ -30,10 +30,10 @@ for (raw,) in b.execute('SELECT data FROM media'):
  m=json.loads(raw);p=Path(m['stored_path']);shutil.copy2(p,dst/'media'/p.name)
 a.close();b.close()`,source,copy]);
 const exe=process.env.GAMECORE_TEST_EXE||path.join(root,'src-tauri','target','release','gamecore-library.exe');
-const app=spawn(exe,[],{windowsHide:true,stdio:'ignore',env:{...process.env,GAMECORE_DATA_DIR:copy,WEBVIEW2_USER_DATA_FOLDER:path.join(output,'webview'),WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS:'--remote-debugging-port=9448'}});
+const app=spawn(exe,[],{windowsHide:true,stdio:'ignore',env:{...process.env,GAMECORE_DATA_DIR:copy,WEBVIEW2_USER_DATA_FOLDER:path.join(output,'webview'),WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS:'--remote-debugging-port=40122'}});
 let browser;const checks=[];
 try{
- for(let i=0;i<100;i++){try{browser=await chromium.connectOverCDP('http://127.0.0.1:9448');break;}catch{await new Promise(r=>setTimeout(r,400));}}
+ for(let i=0;i<100;i++){try{browser=await chromium.connectOverCDP('http://127.0.0.1:40122');break;}catch{await new Promise(r=>setTimeout(r,400));}}
  assert.ok(browser,'Native WebView started');
  const page=browser.contexts()[0].pages()[0];const errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.getByRole('heading',{name:'Game library',exact:true}).waitFor({timeout:45000});

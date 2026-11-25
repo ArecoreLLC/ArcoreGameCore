@@ -8,9 +8,9 @@ import assert from 'node:assert/strict';
 const root=path.resolve(import.meta.dirname,'..');
 const output=path.join(root,'test-results','modules-ui-'+Date.now());
 await fs.mkdir(output,{recursive:true});
-const port=9448;
+const port=40122;
 async function isListening(port){return new Promise(resolve=>{const s=net.connect({host:'127.0.0.1',port});s.setTimeout(500);s.once('connect',()=>{s.destroy();resolve(true)});s.once('error',()=>resolve(false));s.once('timeout',()=>{s.destroy();resolve(false)})});}
-assert.equal(await isListening(1437),false,'Stop the dev server before testing standalone assets');
+assert.equal(await isListening(40120),false,'Stop the dev server before testing standalone assets');
 assert.equal(await isListening(port),false,'Test debugging port already occupied');
 const source=path.join(process.env.APPDATA,'com.arcore.gamecore','catalog.sqlite3');
 const copy=path.join(output,'library');await fs.mkdir(copy);
@@ -24,7 +24,7 @@ try {
  const page=browser.contexts()[0].pages()[0];
  const errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.getByRole('heading',{name:'Game library',exact:true}).waitFor({timeout:30000});
- assert.ok(!page.url().includes(':1437'),'UI still depends on Vite');
+ assert.ok(!page.url().includes(':40120'),'UI still depends on Vite');
  const library=await page.evaluate(()=>window.__TAURI_INTERNALS__.invoke('library'));
  assert.ok(library.projects.length>=31,'Existing catalog not loaded');
  await page.getByRole('button',{name:'Modules',exact:true}).click();

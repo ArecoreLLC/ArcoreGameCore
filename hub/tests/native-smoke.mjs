@@ -7,12 +7,12 @@ const root=path.resolve(import.meta.dirname,'..');
 const output=path.join(root,'test-results','native-'+Date.now());
 await fs.mkdir(output,{recursive:true});
 const exe=process.env.GAMECORE_TEST_EXE||path.join(root,'src-tauri','target','debug','gamecore-library.exe');
-const env={...process.env,GAMECORE_DATA_DIR:path.join(output,'library'),WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS:'--remote-debugging-port=9447',WEBVIEW2_USER_DATA_FOLDER:path.join(output,'webview')};
+const env={...process.env,GAMECORE_DATA_DIR:path.join(output,'library'),WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS:'--remote-debugging-port=40121',WEBVIEW2_USER_DATA_FOLDER:path.join(output,'webview')};
 let app,browser;
 async function start(){
  app=spawn(exe,[],{env,windowsHide:true,stdio:'ignore'});
  for(let i=0;i<100;i++){
-  try{browser=await chromium.connectOverCDP('http://127.0.0.1:9447');break;}catch{await new Promise(r=>setTimeout(r,400))}
+  try{browser=await chromium.connectOverCDP('http://127.0.0.1:40121');break;}catch{await new Promise(r=>setTimeout(r,400))}
  }
  if(!browser)throw new Error('Native WebView did not expose the test debug port');
  const page=browser.contexts()[0].pages()[0];
