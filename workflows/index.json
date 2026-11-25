@@ -369,6 +369,19 @@
         "3d/godot/procgen/README.md",
         "3d/unreal/procgen/README.md"
       ]
+    },
+    {
+      "id": "storyboard-motion-clips",
+      "status": "scaffold",
+      "dimensions": [
+        "3d"
+      ],
+      "guide": "workflows/storyboard-motion-clips/README.md",
+      "example": "workflows/storyboard-motion-clips/example.md",
+      "shared": [
+        "shared/migration-contract.md",
+        "shared/ecosystem.json"
+      ]
     }
   ]
 }

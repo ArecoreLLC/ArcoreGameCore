@@ -23,6 +23,7 @@ Choose a use case, then the [2D](../2d/README.md) or [3D](../3d/README.md) catal
 | ↳ Boost gates along a route | [Guide](route-boost-gates/README.md) | [ShammyVerse](route-boost-gates/example.md) | Scaffold |
 | ↳ Arrival celebrations | [Guide](arrival-celebration/README.md) | [ShammyVerse](arrival-celebration/example.md) | Scaffold |
 | ↳ Sea leaps and splashes | [Guide](sea-leap-and-splash/README.md) | [ShammyVerse](sea-leap-and-splash/example.md) | Scaffold |
+| Storyboard → animation clips | [Guide](storyboard-motion-clips/README.md) | [Poofy and Plumpy swim](storyboard-motion-clips/example.md) | Scaffold |
 | Hair, fur and card textures | [Guide](hair-fur-textures/README.md) | [Short fur, 16 shells](hair-fur-textures/example.md) | Exploratory |
 | Recorded music â†’ vocals + MIDI instruments | [Guide](music-reconstruction/README.md) | [Recorded game theme](music-reconstruction/example.md) | Exploratory |
 

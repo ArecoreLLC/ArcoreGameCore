@@ -37,6 +37,12 @@ are the runtime-side pieces of the [painted-animated-companions workflow](../wor
 albedo atlas for part-built characters, pose-function clips with a shared tail wave and a planted-foot stepper, and lighting that keeps painted colour
 on screen. Games vendor them with `tools/companion_pipeline.py vendor`.
 
+## Storyboard to animation clips
+
+The [storyboard-motion-clips workflow](../workflows/storyboard-motion-clips/README.md) adds clips to a rigged character that has no reference
+video to read them from: ArcoreAnimate authors them as a motion pack on the rig's joints and writes a new model version, ModelForge archives
+it, and the game maps its states to the clips. First used for Poofy's and Plumpy's swimming in ShammyVerse's Coral Deep.
+
 ## Unreal game feel
 
 [GameFeel](unreal/GameFeel.md) catalogs reusable buffered input and feedback envelopes
