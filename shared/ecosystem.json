@@ -282,10 +282,20 @@
           "set_model_source",
           "list_references",
           "add_reference",
-          "verify_file_integrity"
+          "verify_file_integrity",
+          "check_file",
+          "diff_versions",
+          "blender_review",
+          "set_model_rules",
+          "set_version_state",
+          "link_version"
         ],
         "write_tools": [
           "blender_run",
+          "blender_review",
+          "set_model_rules",
+          "set_version_state",
+          "link_version",
           "create_design_iteration",
           "check_model",
           "import_files",
@@ -410,9 +420,17 @@
           "video_replace",
           "video_jobs",
           "video_cancel",
-          "video_workflows"
+          "video_workflows",
+          "video_compare",
+          "video_copy_edit",
+          "video_archive",
+          "video_frame_sheet"
         ],
         "write_tools": [
+          "video_compare",
+          "video_copy_edit",
+          "video_archive",
+          "video_frame_sheet",
           "video_package",
           "video_lighting_studio",
           "video_lighting",
@@ -501,7 +519,7 @@
           "../ArcoreGameCore/tools/drawing-studio/.venv-vision/Scripts/python.exe",
           "studio/mcp_server.py"
         ],
-        "connection": "GameCore animation_production routes here. animate_app starts or inspects the local Animate service; service discovery stays in LocalAppData/ArcoreAnimate/service.json. Detailed jobs remain in Animate.",
+        "connection": "GameCore animation_production routes here. animate_app starts or inspects the local Animate service; service discovery stays in LocalAppData/ArcoreAnimate/service.json. Detailed jobs remain in Animate. animate_app also carries the file actions that need no open case: clip_report (walking, or swimming with heading), author_clips (motion pack to model with clips) and pose_sheet.",
         "auth": {
           "type": "none"
         },
