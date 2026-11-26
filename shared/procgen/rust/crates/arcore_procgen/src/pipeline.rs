@@ -1,23 +1,30 @@
 //! Pipeline runner: executes the ordered stages and records a report per stage.
 
+use crate::common::parallel::par_ranges;
 use crate::recipe::Recipe;
 use crate::stages::cells::{split_mesh, CellGrid, CellId};
 use crate::stages::field::{build_field, DensityField};
 use crate::stages::parametric::build_mesh;
 use crate::stages::scatter::{place_props, scatter_layer, LayerInstances, PlacedProp};
-use crate::stages::surface::{surface_nets, Mesh};
+use crate::stages::occlusion::bake_vertex_occlusion;
+use crate::stages::surface::{surface_nets_threaded, Mesh};
 use serde::Serialize;
 use std::time::Instant;
 
 pub const GENERATOR: &str = "arcore_procgen";
 pub const VERSION: &str = env!("CARGO_PKG_VERSION");
+/// Suffix of the lower-detail twin of a library mesh (see `BakeOptions::mesh_detail`).
+pub const LOD_SUFFIX: &str = "__lod";
 
 #[derive(Clone, Debug, Serialize)]
 pub struct BakeOptions {
-    /// Worker threads for the field stage (does not change results).
+    /// Worker threads for the field, surface and scatter stages (does not change results).
     pub threads: usize,
     /// Multiplier on every scatter density (quality tiers: e.g. 0.25 / 0.5 / 1.0).
     pub density_scale: f32,
+    /// Extra tessellation for library meshes: 0 = as the recipe says, 1 or 2 = rounder
+    /// rocks, smoother lathes, more blade segments, fuller tree canopies.
+    pub mesh_detail: u32,
 }
 
 impl Default for BakeOptions {
@@ -25,6 +32,7 @@ impl Default for BakeOptions {
         Self {
             threads: std::thread::available_parallelism().map(|n| n.get()).unwrap_or(1),
             density_scale: 1.0,
+            mesh_detail: 0,
         }
     }
 }
@@ -103,8 +111,13 @@ pub fn bake(recipe: &Recipe, options: BakeOptions) -> Result<WorldBake, BakeErro
     timed("field", t, format!("{}x{}x{} samples, {:.1}% solid", d[0], d[1], d[2], field.solid_fraction() * 100.0));
 
     let t = Instant::now();
-    let surface = surface_nets(&field);
-    timed("surface", t, format!("{} vertices, {} triangles", surface.positions.len(), surface.triangle_count()));
+    let mut surface = surface_nets_threaded(&field, options.threads);
+    bake_vertex_occlusion(&mut surface, &field, options.threads);
+    timed(
+        "surface",
+        t,
+        format!("{} vertices, {} triangles, vertex AO", surface.positions.len(), surface.triangle_count()),
+    );
 
     let t = Instant::now();
     let cells = CellGrid::new(&field.spec, recipe.cells.size);
@@ -113,12 +126,30 @@ pub fn bake(recipe: &Recipe, options: BakeOptions) -> Result<WorldBake, BakeErro
     timed("cells", t, format!("{} of {} cells occupied", terrain_chunks.len(), cells.len()));
 
     let t = Instant::now();
-    let meshes: Vec<(String, Mesh)> = recipe.meshes.iter().map(|m| (m.id.clone(), build_mesh(m, recipe.seed))).collect();
+    let mut meshes: Vec<(String, Mesh)> = Vec::new();
+    for m in &recipe.meshes {
+        let detailed = build_mesh(m, recipe.seed, options.mesh_detail);
+        // With extra detail, the recipe-level mesh ships alongside as "<id>__lod" so
+        // consumers can draw the heavy one nearby only.
+        if options.mesh_detail > 0 {
+            let plain = build_mesh(m, recipe.seed, 0);
+            if plain.triangle_count() < detailed.triangle_count() {
+                meshes.push((format!("{}{LOD_SUFFIX}", m.id), plain));
+            }
+        }
+        meshes.push((m.id.clone(), detailed));
+    }
     timed("parametric", t, format!("{} meshes", meshes.len()));
 
     let t = Instant::now();
-    let layers: Vec<LayerInstances> =
-        recipe.scatter.iter().map(|l| scatter_layer(recipe, l, &terrain_chunks, options.density_scale)).collect();
+    // Layers have independent RNG streams, so they can be placed concurrently.
+    let layers: Vec<LayerInstances> = par_ranges(recipe.scatter.len(), options.threads, |range| {
+        recipe.scatter[range]
+            .iter()
+            .map(|l| scatter_layer(recipe, l, &terrain_chunks, options.density_scale))
+            .collect::<Vec<_>>()
+    })
+    .concat();
     let props = place_props(&recipe.props, &field, &cells);
     let total: usize = layers.iter().map(|l| l.count()).sum();
     timed("scatter", t, format!("{total} instances, {} props", props.len()));

@@ -157,6 +157,9 @@ pub struct Zone {
     pub radius: f32,
     #[serde(default)]
     pub falloff: f32,
+    /// Keep every scatter layer out of this zone (craters, plazas, landing pads).
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub clear: bool,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
@@ -185,6 +188,104 @@ pub enum MeshKind {
         #[serde(default)]
         bend: f32,
     },
+    /// Seeded branching tubes growing along +Y from the origin (corals, bushes, dead trees).
+    Branch {
+        /// Approximate overall height in meters.
+        height: f32,
+        /// Trunk radius at the base.
+        radius: f32,
+        /// Generations of branching, including the trunk (1 = a single tapered stem).
+        #[serde(default = "default_branch_levels")]
+        levels: u32,
+        /// Children per branch tip.
+        #[serde(default = "default_branch_children")]
+        branches: u32,
+        /// Angle between a child and its parent, in degrees.
+        #[serde(default = "default_branch_spread")]
+        spread_deg: f32,
+        /// Tube cross-section vertex count.
+        #[serde(default = "default_branch_sides")]
+        sides: u32,
+    },
+    /// Sailing-ship shell (hull, deck, masts, bowsprit): keel on y = 0, bow toward +Z.
+    /// Single-sided surfaces (render double-sided); vertex colors hold a part shade.
+    Ship {
+        length: f32,
+        beam: f32,
+        /// Keel-to-gunwale height amidships.
+        depth: f32,
+        #[serde(default = "default_ship_masts")]
+        masts: u32,
+        #[serde(default = "default_ship_mast_height")]
+        mast_height: f32,
+        /// 0 = intact, 1 = heavily holed wreck with snapped masts (seeded).
+        #[serde(default)]
+        damage: f32,
+    },
+    /// A clump of blades sharing one root patch (grass carpets, reed beds): `blades`
+    /// strips of `length` x `width` leaning outward within `radius`. Render
+    /// double-sided, with the same material as a single blade.
+    Tuft {
+        blades: u32,
+        radius: f32,
+        length: f32,
+        width: f32,
+    },
+    /// Stylized tree growing along +Y from the origin: trunk plus seeded foliage.
+    /// Vertex colors hold the part (`r`: 0 = trunk, 1 = foliage) and a seeded
+    /// per-lobe shade (`g` in [0, 1]) so one material can paint both.
+    Tree {
+        /// Overall height in meters.
+        height: f32,
+        #[serde(default = "default_tree_trunk")]
+        trunk_radius: f32,
+        /// Foliage radius (round lobes, pine skirt, palm frond length).
+        canopy_radius: f32,
+        #[serde(default)]
+        style: TreeStyle,
+        /// Foliage pieces: canopy lobes, pine tiers or palm fronds.
+        #[serde(default = "default_tree_lobes")]
+        lobes: u32,
+    },
+}
+
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum TreeStyle {
+    /// Lumpy broadleaf canopy of noise-displaced blobs.
+    #[default]
+    Round,
+    /// Stacked cone tiers.
+    Pine,
+    /// Leaning segmented trunk with drooping fronds (render double-sided).
+    Palm,
+}
+
+fn default_tree_trunk() -> f32 {
+    0.3
+}
+fn default_tree_lobes() -> u32 {
+    4
+}
+
+fn default_ship_masts() -> u32 {
+    2
+}
+fn default_ship_mast_height() -> f32 {
+    10.0
+}
+
+fn default_branch_levels() -> u32 {
+    3
+}
+fn default_branch_children() -> u32 {
+    3
+}
+fn default_branch_spread() -> f32 {
+    34.0
+}
+fn default_branch_sides() -> u32 {
+    5
 }
 
 fn default_subdiv() -> u32 {
@@ -264,6 +365,10 @@ pub struct ScatterLayer {
     /// Cap per cell, after density.
     #[serde(default)]
     pub max_per_cell: Option<u32>,
+    /// Only place this layer when the bake's density scale is at least this
+    /// (0 = always). Lets one recipe carry extra dressing for dense, high-end bakes.
+    #[serde(default, skip_serializing_if = "is_zero")]
+    pub min_density_scale: f32,
 }
 
 fn default_max_slope() -> f32 {
@@ -283,6 +388,9 @@ pub struct PropSpec {
     pub position: [f32; 3],
     #[serde(default)]
     pub yaw_deg: f32,
+    /// Lean about the prop's own forward (+Z) axis, applied before the yaw (heeled wrecks, toppled pillars).
+    #[serde(default, skip_serializing_if = "is_zero")]
+    pub roll_deg: f32,
     #[serde(default = "default_one")]
     pub scale: f32,
     /// Drop the prop onto the first surface below `position` (within the bounds).
@@ -292,6 +400,12 @@ pub struct PropSpec {
 
 fn default_one() -> f32 {
     1.0
+}
+fn is_false(v: &bool) -> bool {
+    !*v
+}
+fn is_zero(v: &f32) -> bool {
+    *v == 0.0
 }
 
 impl Recipe {
@@ -386,6 +500,46 @@ impl Recipe {
                 MeshKind::Blade { length, width, segments, .. } => {
                     if *length <= 0.0 || *width <= 0.0 || *segments < 1 {
                         err(format!("mesh {:?}: blade needs positive length/width", m.id));
+                    }
+                }
+                MeshKind::Ship { length, beam, depth, masts, mast_height, damage } => {
+                    if *length <= 0.0
+                        || *beam <= 0.0
+                        || *depth <= 0.0
+                        || *mast_height <= 0.0
+                        || *masts > 4
+                        || !(0.0..=1.0).contains(damage)
+                    {
+                        err(format!(
+                            "mesh {:?}: ship needs positive length/beam/depth/mast_height, masts <= 4, damage 0-1",
+                            m.id
+                        ));
+                    }
+                }
+                MeshKind::Tuft { blades, radius, length, width } => {
+                    if !(1..=32).contains(blades) || *radius < 0.0 || *length <= 0.0 || *width <= 0.0 {
+                        err(format!("mesh {:?}: tuft needs 1-32 blades and positive length/width", m.id));
+                    }
+                }
+                MeshKind::Tree { height, trunk_radius, canopy_radius, lobes, .. } => {
+                    if *height <= 0.0 || *trunk_radius <= 0.0 || *canopy_radius <= 0.0 || !(1..=8).contains(lobes) {
+                        err(format!(
+                            "mesh {:?}: tree needs positive height/trunk_radius/canopy_radius, lobes 1-8",
+                            m.id
+                        ));
+                    }
+                }
+                MeshKind::Branch { height, radius, levels, branches, sides, .. } => {
+                    if *height <= 0.0
+                        || *radius <= 0.0
+                        || !(1..=4).contains(levels)
+                        || !(1..=5).contains(branches)
+                        || !(3..=12).contains(sides)
+                    {
+                        err(format!(
+                            "mesh {:?}: branch needs positive height/radius, levels 1-4, branches 1-5, sides 3-12",
+                            m.id
+                        ));
                     }
                 }
             }

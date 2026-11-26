@@ -12,6 +12,7 @@
 //! (Godot, Unreal) consume the exported bundle or link this crate behind their own
 //! boundary. Presentation (materials, palettes, fog, audio) stays consumer-owned.
 
+mod biomes;
 pub mod common;
 pub mod export;
 pub mod pipeline;
@@ -21,5 +22,5 @@ pub mod runtime;
 pub mod stages;
 
 pub use pipeline::{bake, BakeOptions, WorldBake};
-pub use randomize::{randomize_recipe, RandomizeConfig, Theme};
-pub use recipe::Recipe;
+pub use randomize::{randomize_recipe, randomize_stack, RandomizeConfig, Theme};
+pub use recipe::{Recipe, TreeStyle};

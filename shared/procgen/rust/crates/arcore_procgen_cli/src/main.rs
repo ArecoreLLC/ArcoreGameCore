@@ -1,17 +1,19 @@
 //! `arcore-procgen` — validate recipes and bake engine-neutral world bundles.
 
 use arcore_procgen::export::bundle::write_bundle;
-use arcore_procgen::{bake, randomize_recipe, BakeOptions, RandomizeConfig, Recipe, Theme};
+use arcore_procgen::{bake, randomize_recipe, randomize_stack, BakeOptions, RandomizeConfig, Recipe, Theme};
 use std::path::PathBuf;
 use std::process::ExitCode;
 
 const USAGE: &str = "\
 usage:
   arcore-procgen validate <recipe.json>...
-  arcore-procgen bake <recipe.json> --out <dir> [--threads N] [--density-scale F] [--quality low|medium|high]
-  arcore-procgen randomize --seed <N> --out <recipe.json> [--name <name>] [--theme underwater-cartoon|underwater-basin|canyon-arch]
+  arcore-procgen bake <recipe.json> --out <dir> [--threads N] [--density-scale F] [--quality low|medium|high] [--mesh-detail 0|1|2]
+  arcore-procgen randomize --seed <N> --out <recipe.json> [--name <name>] [--theme underwater-cartoon|underwater-basin|canyon-arch|overland-cartoon|sky-islands]
                            [--world-size F] [--voxel F] [--mesas N] [--arches N] [--tunnels N]
-                           [--kelp-density F] [--external-prop <mesh_key>]...
+                           [--kelp-density F] [--shipwreck] [--vents N] [--no-ruins] [--crater] [--external-prop <mesh_key>]...
+  arcore-procgen stack --seed <N> --out-dir <dir> [--names reef,overland,sky] [same knobs as randomize]
+                           (writes <dir>/<name>/recipe.json for linked reef, overland and sky worlds, plus <dir>/stack.json)
 
 Bundle: terrain.glb, meshes.glb, instances.json, manifest.json (glTF +Y up, meters).
 Quality presets scale scatter density by 0.25 / 0.5 / 1.0; --density-scale overrides.";
@@ -72,6 +74,9 @@ fn run(args: Vec<String>) -> Result<(), String> {
                         options.density_scale =
                             value("--density-scale")?.parse().map_err(|_| "--density-scale expects a number")?
                     }
+                    "--mesh-detail" => {
+                        options.mesh_detail = value("--mesh-detail")?.parse().map_err(|_| "--mesh-detail expects 0, 1 or 2")?
+                    }
                     "--quality" => {
                         options.density_scale = match value("--quality")?.as_str() {
                             "low" => 0.25,
@@ -97,14 +102,24 @@ fn run(args: Vec<String>) -> Result<(), String> {
             println!("wrote   manifest.json -> {}", out.display());
             Ok(())
         }
-        Some("randomize") => {
+        Some(cmd @ ("randomize" | "stack")) => {
+            let stack = cmd == "stack";
             let mut cfg = RandomizeConfig::default();
             let mut out: Option<PathBuf> = None;
+            let mut out_dir: Option<PathBuf> = None;
+            let mut names = vec!["coral_reef_01".to_string(), "overland_01".into(), "sky_islands_01".into()];
             let mut custom_props: Vec<String> = Vec::new();
             while let Some(a) = it.next() {
                 let mut value = |name: &str| it.next().ok_or_else(|| format!("{name} needs a value"));
                 match a.as_str() {
                     "--out" => out = Some(PathBuf::from(value("--out")?)),
+                    "--out-dir" => out_dir = Some(PathBuf::from(value("--out-dir")?)),
+                    "--names" => {
+                        names = value("--names")?.split(',').map(|s| s.trim().to_string()).collect();
+                        if names.len() != 3 {
+                            return Err("--names expects three comma-separated names".into());
+                        }
+                    }
                     "--name" => cfg.name = value("--name")?,
                     "--seed" => cfg.seed = value("--seed")?.parse().map_err(|_| "--seed expects u64")?,
                     "--theme" => cfg.theme = Theme::parse(&value("--theme")?)?,
@@ -118,12 +133,39 @@ fn run(args: Vec<String>) -> Result<(), String> {
                     "--kelp-density" => {
                         cfg.kelp_density = value("--kelp-density")?.parse().map_err(|_| "--kelp-density expects f32")?
                     }
+                    "--shipwreck" => cfg.shipwreck = true,
+                    "--no-ruins" => cfg.ruins = false,
+                    "--crater" => cfg.crater = true,
+                    "--vents" => cfg.vents = value("--vents")?.parse().map_err(|_| "--vents expects usize")?,
                     "--external-prop" => custom_props.push(value("--external-prop")?),
                     s => return Err(format!("unknown option {s}\n{USAGE}")),
                 }
             }
             if !custom_props.is_empty() {
                 cfg.external_props = custom_props;
+            } else if cfg.shipwreck {
+                // A generated wreck replaces the default external shipwreck slot.
+                cfg.external_props.clear();
+            }
+            if stack {
+                let dir = out_dir.ok_or_else(|| USAGE.to_string())?;
+                let (worlds, receipt) = randomize_stack(&cfg, [&names[0], &names[1], &names[2]]);
+                for (name, recipe) in &worlds {
+                    let errors = recipe.validate();
+                    if !errors.is_empty() {
+                        return Err(format!("{name}: stacked recipe failed validation: {}", errors.join("; ")));
+                    }
+                    let path = dir.join(name).join("recipe.json");
+                    std::fs::create_dir_all(path.parent().unwrap()).map_err(|e| format!("{}: {e}", path.display()))?;
+                    let pretty = serde_json::to_string_pretty(recipe).map_err(|e| e.to_string())?;
+                    std::fs::write(&path, pretty).map_err(|e| format!("{}: {e}", path.display()))?;
+                    println!("wrote   {} (seed={}, primitives={})", path.display(), recipe.seed, recipe.terrain.primitives.len());
+                }
+                let path = dir.join("stack.json");
+                let pretty = serde_json::to_string_pretty(&receipt).map_err(|e| e.to_string())?;
+                std::fs::write(&path, pretty).map_err(|e| format!("{}: {e}", path.display()))?;
+                println!("wrote   {}", path.display());
+                return Ok(());
             }
             let out = out.ok_or_else(|| USAGE.to_string())?;
             let recipe = randomize_recipe(&cfg);

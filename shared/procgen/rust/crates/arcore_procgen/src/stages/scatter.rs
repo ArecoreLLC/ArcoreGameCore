@@ -59,12 +59,13 @@ pub fn scatter_layer(
     let zone = layer.zone.as_ref().and_then(|id| recipe.zones.iter().find(|z| &z.id == id));
     let cluster_seed = sub_seed(recipe.seed, &format!("scatter.{}.cluster", layer.id));
     let (cos_min, cos_max) = (layer.min_slope_deg.to_radians().cos(), layer.max_slope_deg.to_radians().cos());
-    let density = layer.density * density_scale.max(0.0);
+    // Layers reserved for dense bakes contribute nothing below their threshold.
+    let density = if density_scale < layer.min_density_scale { 0.0 } else { layer.density * density_scale.max(0.0) };
     let mut cells = Vec::new();
     for (cell, mesh) in chunks {
         let mut rng = Rng::derive(recipe.seed, &[hash_str(&layer.id), cell[0] as u64, cell[1] as u64]);
         let mut out = Vec::new();
-        'tris: for t in mesh.indices.chunks_exact(3) {
+        for t in mesh.indices.chunks_exact(3) {
             let (a, b, c) = (mesh.position(t[0]), mesh.position(t[1]), mesh.position(t[2]));
             let cr = (b - a).cross(c - a);
             let area = 0.5 * cr.length();
@@ -102,6 +103,9 @@ pub fn scatter_layer(
                         ZoneMode::Exclude => 1.0 - zw,
                     };
                 }
+                for z in recipe.zones.iter().filter(|z| z.clear) {
+                    w *= 1.0 - zone_weight(z, p.x, p.z);
+                }
                 if let Some(cl) = &layer.clustering {
                     let m = fbm2(cluster_seed, p.x * cl.frequency, p.z * cl.frequency, 3, 2.0, 0.5);
                     w *= smoothstep(cl.threshold - cl.softness, cl.threshold + cl.softness, m);
@@ -117,10 +121,18 @@ pub fn scatter_layer(
                     rotation: rotation.0,
                     scale,
                 });
-                if layer.max_per_cell.is_some_and(|m| out.len() as u32 >= m) {
-                    break 'tris;
-                }
             }
+        }
+        // Shuffle (Fisher-Yates) so instances are in random spatial order: the per-cell
+        // cap then thins evenly instead of emptying part of the cell, and consumers
+        // can draw any prefix of a cell as a lower level of detail.
+        for i in (1..out.len()).rev() {
+            let j = (rng.next_u64() % (i as u64 + 1)) as usize;
+            out.swap(i, j);
+        }
+        if let Some(cap) = layer.max_per_cell {
+            // A density scale above 1 (denser bakes for high-end tiers) lifts the cap with it.
+            out.truncate((cap as f32 * density_scale.max(1.0)).round() as usize);
         }
         if !out.is_empty() {
             cells.push(CellInstances { cell: *cell, instances: out });
@@ -161,7 +173,9 @@ pub fn place_props(props: &[PropSpec], field: &DensityField, cells: &CellGrid) -
                 cell: cells.cell_of(pos),
                 instance: Instance {
                     position: pos.to_array(),
-                    rotation: Quat::from_axis_angle(Vec3::Y, p.yaw_deg.to_radians()).0,
+                    rotation: Quat::from_axis_angle(Vec3::Y, p.yaw_deg.to_radians())
+                        .mul(Quat::from_axis_angle(Vec3::new(0.0, 0.0, 1.0), p.roll_deg.to_radians()))
+                        .0,
                     scale: p.scale,
                 },
                 grounded,

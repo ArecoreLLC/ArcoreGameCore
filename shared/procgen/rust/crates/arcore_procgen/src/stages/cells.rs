@@ -5,7 +5,6 @@ use super::field::GridSpec;
 use super::surface::Mesh;
 use crate::common::math::Vec3;
 use serde::Serialize;
-use std::collections::{BTreeMap, HashMap};
 
 #[derive(Clone, Copy, Debug, PartialEq, Serialize)]
 pub struct CellGrid {
@@ -45,20 +44,48 @@ impl CellGrid {
 }
 
 /// Split a mesh into per-cell meshes by triangle centroid. Cells are returned in
-/// ascending (x, z) order; empty cells are omitted.
+/// ascending (x, z) order; empty cells are omitted. Vertex colors are carried over.
 pub fn split_mesh(mesh: &Mesh, cells: &CellGrid) -> Vec<(CellId, Mesh)> {
-    let mut buckets: BTreeMap<CellId, (Mesh, HashMap<u32, u32>)> = BTreeMap::new();
-    for t in mesh.indices.chunks_exact(3) {
-        let c = (mesh.position(t[0]) + mesh.position(t[1]) + mesh.position(t[2])) * (1.0 / 3.0);
-        let (out, remap) = buckets.entry(cells.cell_of(c)).or_default();
-        for &i in t {
-            let slot = *remap.entry(i).or_insert_with(|| {
-                out.positions.push(mesh.positions[i as usize]);
-                out.normals.push(mesh.normals[i as usize]);
-                (out.positions.len() - 1) as u32
-            });
-            out.indices.push(slot);
-        }
+    const UNSET: u32 = u32::MAX;
+    let has_colors = mesh.has_colors();
+    // Bucket triangles by cell, preserving triangle order within each cell.
+    let mut buckets: Vec<Vec<u32>> = vec![Vec::new(); cells.len()];
+    for (t, tri) in mesh.indices.chunks_exact(3).enumerate() {
+        let c = (mesh.position(tri[0]) + mesh.position(tri[1]) + mesh.position(tri[2])) * (1.0 / 3.0);
+        let [cx, cz] = cells.cell_of(c);
+        buckets[(cx * cells.counts[1] + cz) as usize].push(t as u32);
     }
-    buckets.into_iter().map(|(id, (m, _))| (id, m)).collect()
+    // One shared remap table; each cell resets only the slots it touched.
+    let mut remap = vec![UNSET; mesh.positions.len()];
+    let mut touched: Vec<u32> = Vec::new();
+    let mut chunks = Vec::new();
+    for (slot, tris) in buckets.iter().enumerate() {
+        if tris.is_empty() {
+            continue;
+        }
+        let mut out = Mesh::default();
+        out.indices.reserve_exact(tris.len() * 3);
+        for &t in tris {
+            let t = t as usize * 3;
+            for &i in &mesh.indices[t..t + 3] {
+                let entry = &mut remap[i as usize];
+                if *entry == UNSET {
+                    *entry = out.positions.len() as u32;
+                    touched.push(i);
+                    out.positions.push(mesh.positions[i as usize]);
+                    out.normals.push(mesh.normals[i as usize]);
+                    if has_colors {
+                        out.colors.push(mesh.colors[i as usize]);
+                    }
+                }
+                out.indices.push(*entry);
+            }
+        }
+        for i in touched.drain(..) {
+            remap[i as usize] = UNSET;
+        }
+        let slot = slot as u32;
+        chunks.push(([slot / cells.counts[1], slot % cells.counts[1]], out));
+    }
+    chunks
 }

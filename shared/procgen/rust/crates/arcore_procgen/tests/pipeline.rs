@@ -5,7 +5,7 @@ use arcore_procgen::recipe::Recipe;
 use arcore_procgen::runtime::collision::{glide, raycast};
 use arcore_procgen::stages::field::build_field;
 use arcore_procgen::stages::surface::surface_nets;
-use arcore_procgen::{bake, randomize_recipe, BakeOptions, RandomizeConfig, Theme};
+use arcore_procgen::{bake, randomize_recipe, randomize_stack, BakeOptions, RandomizeConfig, Theme};
 use std::collections::HashMap;
 use std::path::PathBuf;
 
@@ -32,7 +32,7 @@ fn flat(extra: serde_json::Value) -> Recipe {
 }
 
 fn opts(threads: usize) -> BakeOptions {
-    BakeOptions { threads, density_scale: 1.0 }
+    BakeOptions { threads, density_scale: 1.0 , mesh_detail: 0 }
 }
 
 #[test]
@@ -138,7 +138,7 @@ fn scatter_respects_density_slope_and_zones() {
     }
     assert!(layer("capped").cells.iter().all(|c| c.instances.len() <= 10));
     // Half the density scale gives roughly half the instances.
-    let half = bake(&r, BakeOptions { threads: 2, density_scale: 0.5 }).unwrap();
+    let half = bake(&r, BakeOptions { threads: 2, density_scale: 0.5 , mesh_detail: 0 }).unwrap();
     let h = half.layers[0].count() as f32;
     assert!((h / all - 0.5).abs() < 0.08, "density scale ratio {}", h / all);
 }
@@ -160,6 +160,67 @@ fn glb_outputs_are_well_formed() {
     let instances: serde_json::Value = serde_json::from_slice(&files[2].bytes).unwrap();
     assert_eq!(instances["schema"], "arcore.procgen.instances.v1");
     assert_eq!(instances["props"][0]["id"], "landmark");
+}
+
+#[test]
+fn terrain_carries_baked_vertex_occlusion() {
+    // Flat floor with a narrow trench: the trench floor must read darker than open ground.
+    let r = flat(serde_json::json!({"terrain": {
+        "base_height": 0.0, "height": {"amplitude": 0.0, "frequency": 0.0},
+        "primitives": [{"shape": "box", "center": [0.0, -2.0, 0.0], "half_extents": [0.75, 2.0, 10.0], "op": "subtract"}]}}));
+    let w = bake(&r, opts(3)).unwrap();
+    let (mut open, mut trench) = (Vec::new(), Vec::new());
+    for (_, m) in &w.terrain_chunks {
+        assert!(m.has_colors(), "every terrain chunk carries vertex colors");
+        for (p, c) in m.positions.iter().zip(&m.colors) {
+            assert!((0.0..=1.0).contains(&c[0]) && c[3] == 1.0);
+            if p[0].abs() > 6.0 && p[2].abs() < 10.0 {
+                open.push(c[0]);
+            } else if p[0].abs() < 0.3 && p[1] < -3.0 && p[2].abs() < 6.0 {
+                trench.push(c[0]);
+            }
+        }
+    }
+    let mean = |v: &[f32]| v.iter().sum::<f32>() / v.len().max(1) as f32;
+    assert!(!open.is_empty() && !trench.is_empty());
+    assert!(mean(&open) > 0.9, "open ground should be unoccluded, got {}", mean(&open));
+    assert!(mean(&trench) < mean(&open) - 0.2, "trench {} vs open {}", mean(&trench), mean(&open));
+
+    let files = encode_outputs(&w);
+    let doc = read_glb_json(&files[0].bytes).unwrap();
+    assert!(doc["meshes"][0]["primitives"][0]["attributes"]["COLOR_0"].is_u64());
+    let lib = read_glb_json(&files[1].bytes).unwrap();
+    assert!(lib["meshes"].is_null(), "no library meshes in this recipe");
+}
+
+#[test]
+fn randomized_reef_has_varied_dressing() {
+    let r = randomize_recipe(&RandomizeConfig { name: "reef".into(), world_size: 96.0, ..Default::default() });
+    assert!(r.validate().is_empty(), "errors: {:?}", r.validate());
+    let w = bake(&r, opts(4)).unwrap();
+    for layer in ["kelp_forest", "coral_garden", "brain_corals", "table_corals", "sea_grass", "pebbles"] {
+        let n = w.layers.iter().find(|l| l.layer == layer).map(|l| l.count());
+        assert!(n.is_some_and(|n| n > 0), "layer {layer} should place instances, got {n:?}");
+    }
+    assert!(w.meshes.iter().any(|(id, m)| id == "branch_coral" && m.triangle_count() > 100));
+}
+
+#[test]
+fn randomized_shipwreck_is_a_grounded_heeled_library_prop() {
+    let cfg = RandomizeConfig { name: "wreck".into(), world_size: 96.0, shipwreck: true, external_props: vec![], ..Default::default() };
+    let r = randomize_recipe(&cfg);
+    assert!(r.validate().is_empty(), "errors: {:?}", r.validate());
+    let w = bake(&r, opts(4)).unwrap();
+    let wreck = w.props.iter().find(|p| p.id == "shipwreck").expect("shipwreck prop");
+    assert!(!wreck.external && wreck.grounded);
+    // Heeled over: the prop's up axis is tilted but still mostly upright.
+    let [x, y, z, s] = wreck.instance.rotation;
+    let up_y = 1.0 - 2.0 * (x * x + z * z);
+    assert!(up_y < 0.98 && up_y > 0.85, "up.y = {up_y} (w = {s}, y = {y})");
+    assert!(w.meshes.iter().any(|(id, m)| id == "shipwreck" && m.has_colors() && m.triangle_count() > 300));
+    let lib = read_glb_json(&encode_outputs(&w)[1].bytes).unwrap();
+    let ship = lib["meshes"].as_array().unwrap().iter().find(|m| m["name"] == "shipwreck").unwrap();
+    assert!(ship["primitives"][0]["attributes"]["COLOR_0"].is_u64());
 }
 
 #[test]
@@ -195,7 +256,7 @@ fn shipped_recipes_validate() {
 
 #[test]
 fn randomize_produces_valid_deterministic_bakeable_recipes() {
-    for theme in [Theme::UnderwaterCartoon, Theme::UnderwaterBasin, Theme::CanyonArch] {
+    for theme in [Theme::UnderwaterCartoon, Theme::UnderwaterBasin, Theme::CanyonArch, Theme::OverlandCartoon, Theme::SkyIslands] {
         let cfg = RandomizeConfig {
             name: format!("test-{}", theme.as_str()),
             seed: 4242,
@@ -207,6 +268,12 @@ fn randomize_produces_valid_deterministic_bakeable_recipes() {
             tunnels: 1,
             kelp_density: 0.1,
             external_props: vec!["custom_ship".into()],
+            shipwreck: false,
+            vents: 0,
+            ruins: false,
+            crater: false,
+            link_center: None,
+            island_hints: vec![],
         };
         let r1 = randomize_recipe(&cfg);
         let r2 = randomize_recipe(&cfg);
@@ -217,4 +284,113 @@ fn randomize_produces_valid_deterministic_bakeable_recipes() {
         assert_eq!(w.props.len(), 1);
         assert!(w.props[0].external && w.props[0].grounded);
     }
+}
+
+fn layer_count(w: &arcore_procgen::WorldBake, layer: &str) -> usize {
+    w.layers.iter().find(|l| l.layer == layer).map_or(0, |l| l.count())
+}
+
+#[test]
+fn reef_extras_add_fans_anemones_and_a_vent_field() {
+    let cfg = RandomizeConfig { name: "vents".into(), world_size: 128.0, vents: 3, external_props: vec![], ..Default::default() };
+    let r = randomize_recipe(&cfg);
+    assert!(r.validate().is_empty(), "errors: {:?}", r.validate());
+    let w = bake(&r, opts(4)).unwrap();
+    let vents: Vec<_> = w.props.iter().filter(|p| p.id.starts_with("vent_chimney")).collect();
+    assert_eq!(vents.len(), 3);
+    assert!(vents.iter().all(|p| p.grounded));
+    for layer in ["sea_fans", "anemones", "tube_worms"] {
+        assert!(layer_count(&w, layer) > 0, "layer {layer} should place instances");
+    }
+}
+
+#[test]
+fn overland_theme_grows_forests_meadows_and_a_lake() {
+    let cfg = RandomizeConfig { name: "land".into(), theme: Theme::OverlandCartoon, world_size: 160.0, external_props: vec![], ..Default::default() };
+    let r = randomize_recipe(&cfg);
+    assert!(r.validate().is_empty(), "errors: {:?}", r.validate());
+    assert_eq!(r.water_level, Some(0.0));
+    let w = bake(&r, opts(4)).unwrap();
+    for layer in ["pine_forest", "meadow_grass", "wildflowers", "bushes"] {
+        assert!(layer_count(&w, layer) > 0, "layer {layer} should place instances");
+    }
+    let pine = w.meshes.iter().find(|(id, _)| id == "pine_tree").expect("pine mesh");
+    assert!(pine.1.has_colors());
+}
+
+#[test]
+fn sky_islands_float_with_vines_underneath() {
+    let cfg = RandomizeConfig { name: "sky".into(), theme: Theme::SkyIslands, world_size: 192.0, external_props: vec![], ..Default::default() };
+    let r = randomize_recipe(&cfg);
+    assert!(r.validate().is_empty(), "errors: {:?}", r.validate());
+    assert_eq!(r.water_level, None);
+    let w = bake(&r, opts(4)).unwrap();
+    // Open air under the islands: the bottom layer of the field is empty.
+    let [nx, _, nz] = w.field.spec.dims;
+    assert!((0..nz).all(|z| (0..nx).all(|x| w.field.at(x, 0, z) < 0.0)));
+    for layer in ["island_grass", "hanging_vines", "island_oaks"] {
+        assert!(layer_count(&w, layer) > 0, "layer {layer} should place instances");
+    }
+}
+#[test]
+fn stack_links_lake_to_anchor_and_islands_to_hills() {
+    let (worlds, receipt) = randomize_stack(&RandomizeConfig { seed: 77, external_props: vec![], ..Default::default() }, ["r", "o", "s"]);
+    assert_eq!(worlds.len(), 3);
+    for (_, r) in &worlds {
+        assert!(r.validate().is_empty(), "{}: {:?}", r.name, r.validate());
+    }
+    let lake = worlds[1].1.zones.iter().find(|z| z.id == "lake").unwrap();
+    assert_eq!(lake.center, [0.0, 0.0]);
+    let hints = receipt["anchors"]["island_hints"].as_array().unwrap();
+    assert!(!hints.is_empty());
+    // At least one island sits exactly over a hint.
+    let islands: Vec<_> = worlds[2].1.zones.iter().filter(|z| z.id.starts_with("island-")).collect();
+    assert!(hints.iter().any(|h| islands.iter().any(|z| (z.center[0] as f64 - h[0].as_f64().unwrap()).abs() < 1e-3)));
+    let w = bake(&worlds[2].1, opts(4)).unwrap();
+    let preview = arcore_procgen::export::preview::build_preview(&w.field, None, 32);
+    assert!(preview["bottom"].as_array().unwrap().iter().any(|b| !b.is_null()), "islands have undersides");
+}
+#[test]
+fn crater_zone_is_carved_and_kept_clear_of_scatter() {
+    let cfg = RandomizeConfig { name: "crash".into(), theme: Theme::OverlandCartoon, world_size: 192.0, crater: true, external_props: vec![], ..Default::default() };
+    let r = randomize_recipe(&cfg);
+    assert!(r.validate().is_empty(), "errors: {:?}", r.validate());
+    let zone = r.zones.iter().find(|z| z.id == "crater").expect("crater zone");
+    assert!(zone.clear);
+    let w = bake(&r, opts(4)).unwrap();
+    let inside = w.layers.iter().flat_map(|l| l.cells.iter()).flat_map(|c| c.instances.iter()).filter(|i| {
+        ((i.position[0] - zone.center[0]).powi(2) + (i.position[2] - zone.center[1]).powi(2)).sqrt() < zone.radius
+    });
+    assert_eq!(inside.count(), 0, "nothing is scattered inside a clear zone");
+}
+#[test]
+fn mesh_detail_refines_large_meshes_and_ships_lod_twins() {
+    let cfg = RandomizeConfig { name: "detail".into(), world_size: 96.0, external_props: vec![], ..Default::default() };
+    let r = randomize_recipe(&cfg);
+    let plain = bake(&r, opts(4)).unwrap();
+    let fine = bake(&r, BakeOptions { threads: 4, density_scale: 1.0, mesh_detail: 1 }).unwrap();
+    let tris = |w: &arcore_procgen::WorldBake, id: &str| w.meshes.iter().find(|(m, _)| m == id).map(|(_, m)| m.triangle_count());
+    assert!(plain.meshes.iter().all(|(id, _)| !id.ends_with("__lod")), "no twins without extra detail");
+    // A boulder is big enough to refine; its twin is the recipe-level mesh.
+    assert!(tris(&fine, "boulder").unwrap() > tris(&plain, "boulder").unwrap());
+    assert_eq!(tris(&fine, "boulder__lod"), tris(&plain, "boulder"));
+    // A pebble is too small for the extra triangles to show: unchanged, and no twin.
+    assert_eq!(tris(&fine, "pebble"), tris(&plain, "pebble"));
+    assert_eq!(tris(&fine, "pebble__lod"), None);
+    // Placement does not depend on mesh detail.
+    assert_eq!(layer_count(&fine, "seabed_rocks"), layer_count(&plain, "seabed_rocks"));
+}
+
+#[test]
+fn density_scale_above_one_lifts_the_per_cell_cap() {
+    let cfg = RandomizeConfig { name: "dense".into(), world_size: 96.0, external_props: vec![], ..Default::default() };
+    let r = randomize_recipe(&cfg);
+    let cap = r.scatter.iter().find(|l| l.id == "sea_grass").unwrap().max_per_cell.unwrap() as usize;
+    let most = |w: &arcore_procgen::WorldBake| {
+        w.layers.iter().find(|l| l.layer == "sea_grass").unwrap().cells.iter().map(|c| c.instances.len()).max().unwrap()
+    };
+    let base = bake(&r, opts(4)).unwrap();
+    let dense = bake(&r, BakeOptions { threads: 4, density_scale: 3.0, mesh_detail: 0 }).unwrap();
+    assert!(most(&base) <= cap);
+    assert!(most(&dense) > cap && most(&dense) <= cap * 3, "cap scales with density: {} vs {cap}", most(&dense));
 }

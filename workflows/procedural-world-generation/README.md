@@ -11,7 +11,7 @@ Generate deterministic, engine-neutral 3D world bundles from JSON recipes using 
 
 1. **Author or randomize a recipe** (`arcore.procgen.world-recipe.v1`) under `3d/procgen/recipes/` (or in the consumer project):
    ```powershell
-   cargo run --release --manifest-path shared/procgen/rust/Cargo.toml -- randomize --seed 20261123 --theme underwater-cartoon --out <out_dir>/recipe.json --external-prop hero_shipwreck
+   cargo run --release --manifest-path shared/procgen/rust/Cargo.toml -- randomize --seed 20261123 --theme underwater-cartoon --out <out_dir>/recipe.json --shipwreck --external-prop treasure_chest
    ```
 2. **Validate** bounds, CSG primitives, zones, mesh references, and scatter constraints:
    ```powershell

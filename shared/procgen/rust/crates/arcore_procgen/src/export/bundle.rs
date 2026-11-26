@@ -3,9 +3,11 @@
 //! - `terrain.glb`    one mesh node per non-empty cell (`cell_<x>_<z>`)
 //! - `meshes.glb`     generated mesh library (node name = recipe mesh id)
 //! - `instances.json` scatter layers and props, grouped by cell
+//! - `preview.json`   coarse height grid for neighboring levels (see `preview.rs`)
 //! - `manifest.json`  provenance receipt (recipe hash, counts, timings, output SHA-256)
 
 use super::glb::write_glb;
+use super::preview::{build_preview, PREVIEW_RESOLUTION};
 use crate::common::sha256::sha256_hex;
 use crate::pipeline::{WorldBake, GENERATOR, VERSION};
 use crate::recipe::Recipe;
@@ -23,6 +25,11 @@ pub struct BundleFile {
 
 /// Encode the deterministic outputs (everything except the manifest).
 pub fn encode_outputs(bake: &WorldBake) -> Vec<BundleFile> {
+    encode_outputs_with_water(bake, None)
+}
+
+/// As [`encode_outputs`], recording `water_level` in the preview.
+pub fn encode_outputs_with_water(bake: &WorldBake, water_level: Option<f32>) -> Vec<BundleFile> {
     let generator = format!("{GENERATOR} {VERSION}");
     let terrain: Vec<(String, &_)> = bake
         .terrain_chunks
@@ -44,6 +51,11 @@ pub fn encode_outputs(bake: &WorldBake) -> Vec<BundleFile> {
             name: "instances.json",
             bytes: serde_json::to_vec(&instances).expect("instances serialize"),
         },
+        BundleFile {
+            name: "preview.json",
+            bytes: serde_json::to_vec(&build_preview(&bake.field, water_level, PREVIEW_RESOLUTION))
+                .expect("preview serializes"),
+        },
     ]
 }
 
@@ -55,7 +67,7 @@ pub fn write_bundle(
     dir: &Path,
 ) -> std::io::Result<serde_json::Value> {
     fs::create_dir_all(dir)?;
-    let files = encode_outputs(bake);
+    let files = encode_outputs_with_water(bake, recipe.water_level);
     let mut outputs = Vec::new();
     for f in &files {
         fs::write(dir.join(f.name), &f.bytes)?;

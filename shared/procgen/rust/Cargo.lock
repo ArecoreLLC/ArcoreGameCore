@@ -4,7 +4,7 @@ version = 3
 
 [[package]]
 name = "arcore_procgen"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "serde",
  "serde_json",
@@ -12,7 +12,7 @@ dependencies = [
 
 [[package]]
 name = "arcore_procgen_cli"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "arcore_procgen",
  "serde_json",

@@ -8,7 +8,7 @@ Recorded on Windows with `rustc 1.99.1` / `cargo 1.99.1` against [`3d/procgen/re
 cargo test --offline --manifest-path shared/procgen/rust/Cargo.toml
 ```
 
-Result: **passed** (`7` unit tests + `8` integration tests in `tests/pipeline.rs`, covering Surface Nets watertightness/winding, thread-count determinism, SDF glide/tunnel collision, raycast, scatter density/slope/zone gating, GLB validity, and shipped recipe validation).
+Result: **passed** (`12` unit tests + `12` integration tests in `tests/pipeline.rs`, covering Surface Nets watertightness/winding, thread-count determinism, primitive culling equivalence, SDF glide/tunnel collision, raycast, scatter density/slope/zone gating, baked vertex occlusion, randomized reef dressing, generated shipwreck placement, GLB validity, and shipped recipe validation).
 
 ## 2. Validate & Bake Starter Recipes
 
@@ -36,7 +36,19 @@ cargo run --release --offline --manifest-path shared/procgen/rust/Cargo.toml -- 
 - `scatter`: `1.0 ms` (`279` instances, `1` prop)
 - Artifacts: `terrain.glb` (`1,163,376` bytes), `meshes.glb` (`9,536` bytes), `instances.json` (`52,072` bytes), `manifest.json`
 
+### Measured Output (`arcore_procgen` 0.2.0, randomized `underwater-cartoon`, seed `20261123`, `--quality medium`, 20 threads)
+
+Same terrain as the 0.1.0 run of this recipe (`field 43 ms`, `surface 28 ms`, `cells 7 ms`, `scatter 5 ms`, 1,894 instances, no occlusion):
+
+- `field`: `~10 ms` (`193×57×193` samples; primitive culling + banded detail noise)
+- `surface`: `~9 ms` (`55,221` vertices, `109,628` triangles, including vertex occlusion)
+- `cells`: `~3 ms`
+- `parametric`: `0.2 ms` (`9` meshes)
+- `scatter`: `~4 ms` (`9,009` instances in `9` layers, `2` props)
+
+The per-recipe timings above this section were recorded with 0.1.0 and have not been re-measured.
+
 ## 3. Remaining Unverified Steps
 
-- Godot 4 runtime loading of `3d/godot/procgen/procgen_world_loader.gd`: `not_run` (no Godot 4 binary installed on `PATH` in this environment).
+- Godot 4 runtime loading of `3d/godot/procgen/procgen_world_loader.gd`: verified only through the `ShammyGodotSandbox` consumer (Godot 4.7.2); no automated Godot test in this repository.
 - Unreal 5.x Interchange glTF import + HISM population: `not_run` (consumer-owned).

@@ -2,5 +2,6 @@
 
 pub mod math;
 pub mod noise;
+pub mod parallel;
 pub mod rng;
 pub mod sha256;

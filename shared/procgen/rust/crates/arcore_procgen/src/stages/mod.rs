@@ -3,13 +3,16 @@
 //!
 //! 0. `recipe`      (crate::recipe) load + validate
 //! 1. `field`       density grid
-//! 2. `surface`     Surface Nets mesh
+//! 2. `surface`     Surface Nets mesh (+ `occlusion`: baked vertex AO)
 //! 3. `cells`       XZ cell grid + per-cell chunks
 //! 4. `parametric`  generated mesh library
 //! 5. `scatter`     instances per layer/cell, placed props
 
 pub mod cells;
 pub mod field;
+pub mod occlusion;
 pub mod parametric;
 pub mod scatter;
+pub mod ship;
 pub mod surface;
+pub mod tree;

@@ -1,5 +1,5 @@
 //! Minimal glTF 2.0 binary (.glb) writer: one node per named mesh, POSITION +
-//! NORMAL + u32 indices. Imports in Godot 4 and Unreal (Interchange glTF).
+//! NORMAL (+ COLOR_0 when the mesh has vertex colors) + u32 indices. Imports in Godot 4 and Unreal (Interchange glTF).
 
 use crate::stages::surface::Mesh;
 use serde_json::{json, Value};
@@ -50,8 +50,16 @@ pub fn write_glb(meshes: &[(String, &Mesh)], generator: &str) -> Vec<u8> {
         accessors.push(json!({"bufferView": iv, "componentType": UNSIGNED_INT, "count": mesh.indices.len(), "type": "SCALAR"}));
         let idx_acc = accessors.len() - 1;
 
+        let mut attributes = json!({"POSITION": pos_acc, "NORMAL": nrm_acc});
+        if mesh.has_colors() {
+            let bytes: Vec<u8> = mesh.colors.iter().flatten().flat_map(|f| f.to_le_bytes()).collect();
+            let cv = view(&bytes, ARRAY_BUFFER, &mut bin);
+            accessors.push(json!({"bufferView": cv, "componentType": FLOAT, "count": mesh.colors.len(), "type": "VEC4"}));
+            attributes["COLOR_0"] = json!(accessors.len() - 1);
+        }
+
         gl_meshes.push(json!({"name": name, "primitives": [{
-            "attributes": {"POSITION": pos_acc, "NORMAL": nrm_acc}, "indices": idx_acc, "mode": 4}]}));
+            "attributes": attributes, "indices": idx_acc, "mode": 4}]}));
         nodes.push(json!({"name": name, "mesh": gl_meshes.len() - 1}));
     }
     pad4(&mut bin, 0);
