@@ -51,6 +51,47 @@ fn export_roadmap_json(directory: String, document: Value) -> Result<String> {
 }
 
 #[tauri::command]
+fn export_games_json(directory: String, document: Value, file_name: String) -> Result<String> {
+    if document["format"] != "gamecore.games-export"
+        || document["schema_version"] != 1
+        || !document["games"].is_array()
+    {
+        return Err("Invalid games export document".into());
+    }
+    let safe = file_name
+        .chars()
+        .all(|c| c.is_ascii_alphanumeric() || c == '-' || c == '_' || c == '.');
+    if !safe || !file_name.ends_with(".json") || file_name.starts_with('.') {
+        return Err("Invalid export file name".into());
+    }
+    let folder = std::path::Path::new(&directory)
+        .canonicalize()
+        .map_err(|e| e.to_string())?;
+    if !folder.is_dir() {
+        return Err("Choose an export folder".into());
+    }
+    let mut path = folder.join(&file_name);
+    let stem = file_name.trim_end_matches(".json");
+    let mut n = 2;
+    while path.exists() {
+        path = folder.join(format!("{stem}-{n}.json"));
+        n += 1;
+    }
+    use std::io::Write;
+    let mut file = std::fs::OpenOptions::new()
+        .write(true)
+        .create_new(true)
+        .open(&path)
+        .map_err(|e| e.to_string())?;
+    let bytes = serde_json::to_vec_pretty(&document).map_err(|e| e.to_string())?;
+    file.write_all(&bytes)
+        .and_then(|_| file.write_all(b"\n"))
+        .and_then(|_| file.sync_all())
+        .map_err(|e| e.to_string())?;
+    Ok(path.to_string_lossy().into_owned())
+}
+
+#[tauri::command]
 fn roadmap(state: State<AppState>) -> Result<Vec<Value>> {
     state
         .lock()
@@ -346,6 +387,7 @@ fn main() {
             save_pipeline_proposal,
             export_pipeline_proposal,
             export_roadmap_json,
+            export_games_json,
             open_folder_for_path,
             reveal_indexed_file,
             save_project,

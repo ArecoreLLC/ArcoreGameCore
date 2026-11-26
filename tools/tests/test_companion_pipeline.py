@@ -115,7 +115,7 @@ class VendorTests(unittest.TestCase):
             target = Path(tmp) / 'studio'; godot = Path(tmp) / 'addons'
             code, text = run(['vendor', '--target', str(target), '--godot', str(godot)]); self.assertEqual(code, 0)
             lock = json.loads((target / pipeline.LOCK).read_text()); self.assertEqual(lock['module'], pipeline.MODULE)
-            self.assertEqual({f['name'] for f in lock['files']}, {'painterly.py', 'motion.py', 'painted_lighting.gdshaderinc'})
+            self.assertEqual({f['name'] for f in lock['files']}, {'painterly.py', 'motion.py', 'reference.py', 'painted_lighting.gdshaderinc'})
             self.assertEqual(run(['vendor', '--target', str(target), '--check'])[0], 0)
             (target / 'motion.py').write_text('changed')
             code, text = run(['vendor', '--target', str(target), '--check']); self.assertEqual(code, 1)

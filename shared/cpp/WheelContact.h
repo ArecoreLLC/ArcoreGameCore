@@ -3,6 +3,17 @@
 #include <cmath>
 
 namespace gamecore {
+// Signed normalized drive demand. Speed limiting only attenuates motion in the
+// requested direction, so reversing input retains authority while overspeed.
+inline double DriveDemand(double input, double speed, double forwardLimit, double reverseLimit) {
+    if (!std::isfinite(input) || !std::isfinite(speed) ||
+        !std::isfinite(forwardLimit) || !std::isfinite(reverseLimit) ||
+        forwardLimit <= 0 || reverseLimit <= 0) return 0;
+    input = std::max(-1.0, std::min(1.0, input));
+    const double directedSpeed = input >= 0 ? speed : -speed;
+    const double limit = input >= 0 ? forwardLimit : reverseLimit;
+    return input * (1.0 - std::max(0.0, std::min(1.0, directedSpeed / limit)));
+}
 // SI units throughout: metres, seconds, newtons. Compression velocity is positive
 // when the suspension shortens. Unilateral contact never pulls the wheel down.
 inline double SuspensionForce(double compression, double compressionVelocity,

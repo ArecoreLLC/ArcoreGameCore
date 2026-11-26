@@ -18,3 +18,26 @@ uses the versioned module manifest and lock; normal builds never sync headers.
 ## 0.3.0: active work progress
 
 `Progress(now)` returns completion in [0,1]. Idle/reset, nonfinite and pre-start queries return zero; completion and later finite queries return one. Successful zero-duration windows are immediately complete. Failed starts preserve progress. Flotsam Citadel uses this for salvage reeling and repair feedback. Existing APIs are preserved.
+
+## 0.4.0: recovery progress
+
+`RecoveryProgress(now)` returns elapsed completion of the entire start-to-ready interval
+(including active work) in [0,1]. Idle/reset, invalid and pre-start queries return zero;
+completed and successful zero-duration windows return one. Rejected starts preserve it.
+This lets consumers render recharge meters without duplicating stored durations.
+Reuse boundary: timing only; consumers retain action policy and presentation. Synthetic
+four-second recharge boundary tests accompany Flotsam's eight-second brace adapter.
+Existing query behavior is unchanged; second-engine validation remains unverified.
+
+## 0.4.0: adapter deadlines
+
+`ActiveDeadline()` and `ReadyDeadline()` expose absolute caller-clock timestamps
+without mutation. Idle/reset returns zero; rejected starts preserve both values.
+Network adapters can replicate deadlines without duplicating timing arithmetic.
+They still own synchronized clocks and authority; these getters are not prediction.
+See AbilityTimingReview.md for the reuse boundary and synthetic alternate case.
+
+## 0.5.0: consolidated timing queries
+
+Consolidates concurrent 0.4.0 recovery-progress and deadline additions into one
+versioned header. Both APIs and their tests are preserved; no timing rules change.

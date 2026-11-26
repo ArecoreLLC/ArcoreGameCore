@@ -1,4 +1,4 @@
-# Presentation motion 0.3.0
+# Presentation motion 0.4.0
 
 Engine-neutral C++11 header for exponential interpolation and retriggerable feedback.
 `ResponseAlpha(dt, halfLife)` returns a lerp weight in [0,1]. A constant target
@@ -24,3 +24,24 @@ Version 0.3.0 adds optional Trigger(strength): finite positive strength clamps t
 
 Lumen-Weaver adopts FeedbackPulse for mirror turns, with native decay/reset checks
 in LumenWeaver.Light.Chamber. Its Docs/VALIDATION.md records consumer evidence.
+
+## 0.4.0: normalized easing
+
+`SmoothStep01(progress)` clamps finite progress and returns cubic easing with zero
+endpoint velocity. Nonfinite input returns zero. Use for scalar opacity or spatial
+interpolation; consumers own time and endpoints. See [reuse review](TugboatMotionReview.md).
+
+Version 0.4.0 adds `TriggerPeak(strength)`: restarts duration while preserving the greater of current visible intensity and incoming strength. Invalid/nonpositive strengths are no-ops. Existing Trigger replacement behavior is unchanged. Synthetic camera and UI tests exercise clustered events; timing, camera direction and game policy remain consumer-owned.
+
+## 0.5.0: finite transitions
+
+FiniteTransition(duration) supplies explicit Start/Reset, linear Progress and cubic
+Value. Advance(delta) returns true exactly once on completion. Idle/reset is zero;
+completed is one. Nonpositive/nonfinite deltas are no-ops; hitches saturate without
+overshoot. Invalid durations default to one second. Restart begins at zero; callers
+own interruption policy, transforms and collision. Existing APIs are unchanged.
+
+Reuse review: parameterize engine-neutral elapsed time and easing; no game state or
+asset dependencies. Echo-Forge owns gate/bridge endpoints and clearance. Synthetic
+opacity reveal and frame-partition tests cover an alternate use; a second game for
+FiniteTransition has not been validated. Consumer review: Docs/REFINEMENT_REVIEW.md.

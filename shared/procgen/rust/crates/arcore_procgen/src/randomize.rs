@@ -64,7 +64,8 @@ pub struct RandomizeConfig {
     /// Add a landmark of weathered stone columns (sunken ruins on the reef, a
     /// standing-stone ring overland, a temple ring on the main sky island).
     pub ruins: bool,
-    /// Add an impact crater with a skid trench and a cleared zone (overland-cartoon).
+    /// Add an impact crater with a skid trench and a cleared zone (overland-cartoon);
+    /// on the reef (underwater-cartoon), a cleared `wreck_piece` zone for a piece that sank.
     pub crater: bool,
     /// Stack link (overland-cartoon): put the lake, the way down to the reef, here.
     pub link_center: Option<[f32; 2]>,
@@ -306,6 +307,7 @@ pub fn randomize_recipe(cfg: &RandomizeConfig) -> Recipe {
                 normal_offset: -0.15,
                 max_per_cell: Some(180),
                 min_density_scale: 0.0,
+                tilt_deg: [0.0, 0.0],
             },
             ScatterLayer {
                 id: "grotto_sponges".into(),
@@ -323,6 +325,7 @@ pub fn randomize_recipe(cfg: &RandomizeConfig) -> Recipe {
                 normal_offset: -0.1,
                 max_per_cell: Some(48),
                 min_density_scale: 0.0,
+                tilt_deg: [0.0, 0.0],
             },
             ScatterLayer {
                 id: "seabed_rocks".into(),
@@ -340,6 +343,7 @@ pub fn randomize_recipe(cfg: &RandomizeConfig) -> Recipe {
                 normal_offset: -0.25,
                 max_per_cell: Some(32),
                 min_density_scale: 0.0,
+                tilt_deg: [0.0, 0.0],
             },
             // Reef dressing: corals favor the raised rock, grass and pebbles the sandy flats.
             ScatterLayer {
@@ -358,6 +362,7 @@ pub fn randomize_recipe(cfg: &RandomizeConfig) -> Recipe {
                 normal_offset: -0.1,
                 max_per_cell: Some(110),
                 min_density_scale: 0.0,
+                tilt_deg: [0.0, 0.0],
             },
             ScatterLayer {
                 id: "brain_corals".into(),
@@ -375,6 +380,7 @@ pub fn randomize_recipe(cfg: &RandomizeConfig) -> Recipe {
                 normal_offset: -0.3,
                 max_per_cell: Some(40),
                 min_density_scale: 0.0,
+                tilt_deg: [0.0, 0.0],
             },
             ScatterLayer {
                 id: "table_corals".into(),
@@ -392,6 +398,7 @@ pub fn randomize_recipe(cfg: &RandomizeConfig) -> Recipe {
                 normal_offset: -0.06,
                 max_per_cell: Some(48),
                 min_density_scale: 0.0,
+                tilt_deg: [0.0, 0.0],
             },
             ScatterLayer {
                 id: "tube_sponges".into(),
@@ -409,6 +416,7 @@ pub fn randomize_recipe(cfg: &RandomizeConfig) -> Recipe {
                 normal_offset: -0.08,
                 max_per_cell: Some(64),
                 min_density_scale: 0.0,
+                tilt_deg: [0.0, 0.0],
             },
             ScatterLayer {
                 id: "sea_grass".into(),
@@ -426,6 +434,7 @@ pub fn randomize_recipe(cfg: &RandomizeConfig) -> Recipe {
                 normal_offset: -0.05,
                 max_per_cell: Some(360),
                 min_density_scale: 0.0,
+                tilt_deg: [0.0, 0.0],
             },
             ScatterLayer {
                 id: "pebbles".into(),
@@ -443,6 +452,7 @@ pub fn randomize_recipe(cfg: &RandomizeConfig) -> Recipe {
                 normal_offset: -0.06,
                 max_per_cell: Some(160),
                 min_density_scale: 0.0,
+                tilt_deg: [0.0, 0.0],
             },
         ]
     } else {
@@ -463,6 +473,7 @@ pub fn randomize_recipe(cfg: &RandomizeConfig) -> Recipe {
                 normal_offset: -0.15,
                 max_per_cell: Some(40),
                 min_density_scale: 0.0,
+                tilt_deg: [0.0, 0.0],
             },
             ScatterLayer {
                 id: "floor_scrub".into(),
@@ -480,6 +491,7 @@ pub fn randomize_recipe(cfg: &RandomizeConfig) -> Recipe {
                 normal_offset: -0.05,
                 max_per_cell: Some(64),
                 min_density_scale: 0.0,
+                tilt_deg: [0.0, 0.0],
             },
         ]
     };
@@ -540,6 +552,13 @@ pub fn randomize_recipe(cfg: &RandomizeConfig) -> Recipe {
         add_reef_extras(cfg, &mut rng, base_y, origin_y + height_y - 2.0, &mut meshes, &mut scatter, &mut props, &mut zones, |rng, r| {
             pick_spot(rng, &mut placed, r, 6.0)
         });
+        if cfg.crater {
+            // Something crashed on the land above and a piece of it sank here: a patch of
+            // seabed kept clear for it, picked from its own stream so nothing else moves.
+            let mut own = Rng::derive(cfg.seed, &[hash_str("randomize"), hash_str("wreck-piece")]);
+            let [wx, wz] = pick_spot(&mut own, &mut placed, 15.0, 6.0);
+            zones.push(Zone { id: "wreck_piece".into(), center: [wx, wz], radius: 15.0, falloff: 4.0, clear: true });
+        }
     }
 
     let presentation = match cfg.theme {
@@ -655,6 +674,7 @@ fn add_reef_extras(
         normal_offset: -0.05,
         max_per_cell: None,
         min_density_scale: 0.0,
+        tilt_deg: [0.0, 0.0],
     };
     scatter.push(ScatterLayer {
         min_slope_deg: 22.0,
@@ -714,6 +734,64 @@ fn add_reef_extras(
         normal_offset: -0.15,
         max_per_cell: Some(24),
         ..reef_layer("staghorn_thickets", "staghorn_coral", 0.02)
+    });
+    // Starfish on sand and rock, vase sponges on the flats, sea whips on the
+    // slopes and leafy cabbage corals on the high rock.
+    meshes.push(MeshSpec {
+        id: "starfish".into(),
+        kind: MeshKind::Rosette { petals: 5, length: 0.42, width: 0.2, tilt_deg: 3.0, curl_deg: -8.0, rows: 1, thickness: 0.07 },
+    });
+    meshes.push(MeshSpec {
+        id: "vase_sponge".into(),
+        kind: MeshKind::Lathe {
+            profile: vec![[0.3, 0.0], [0.56, 0.5], [0.62, 1.1], [0.5, 1.5], [0.38, 1.46], [0.32, 0.9], [0.1, 0.5]],
+            segments: 12,
+        },
+    });
+    meshes.push(MeshSpec {
+        id: "sea_whip".into(),
+        kind: MeshKind::Branch { height: 3.0, radius: 0.05, levels: 2, branches: 4, spread_deg: 13.0, sides: 3 },
+    });
+    meshes.push(MeshSpec {
+        id: "cabbage_coral".into(),
+        kind: MeshKind::Rosette { petals: 7, length: 0.75, width: 0.55, tilt_deg: 26.0, curl_deg: 38.0, rows: 3, thickness: 0.035 },
+    });
+    scatter.push(ScatterLayer {
+        max_slope_deg: 55.0,
+        clustering: Some(Clustering { frequency: 0.1, threshold: 0.1, softness: 0.25 }),
+        scale_range: [0.6, 1.5],
+        align_to_normal: true,
+        normal_offset: 0.03,
+        max_per_cell: Some(40),
+        ..reef_layer("starfish", "starfish", 0.035)
+    });
+    scatter.push(ScatterLayer {
+        max_slope_deg: 24.0,
+        clustering: Some(Clustering { frequency: 0.06, threshold: 0.2, softness: 0.2 }),
+        scale_range: [0.7, 1.8],
+        normal_offset: -0.12,
+        max_per_cell: Some(8),
+        ..reef_layer("vase_sponges", "vase_sponge", 0.008)
+    });
+    scatter.push(ScatterLayer {
+        min_slope_deg: 14.0,
+        max_slope_deg: 65.0,
+        clustering: Some(Clustering { frequency: 0.09, threshold: 0.25, softness: 0.2 }),
+        scale_range: [0.6, 1.4],
+        normal_offset: -0.1,
+        max_per_cell: Some(30),
+        tilt_deg: [0.0, 10.0],
+        ..reef_layer("sea_whips", "sea_whip", 0.12)
+    });
+    scatter.push(ScatterLayer {
+        max_slope_deg: 45.0,
+        height_range: Some([base_y - 2.0, base_y + 34.0]),
+        clustering: Some(Clustering { frequency: 0.07, threshold: 0.15, softness: 0.2 }),
+        scale_range: [0.7, 1.9],
+        align_to_normal: true,
+        normal_offset: -0.04,
+        max_per_cell: Some(18),
+        ..reef_layer("cabbage_corals", "cabbage_coral", 0.06)
     });
     if cfg.ruins {
         let [rx, rz] = pick(rng, 11.0);

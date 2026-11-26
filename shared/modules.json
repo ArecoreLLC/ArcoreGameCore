@@ -49,13 +49,13 @@
     },
     {
       "id": "combat-window",
-      "version": "0.3.0",
+      "version": "0.5.0",
       "description": "Active and recovery timing",
       "language": "cpp",
       "kind": "header-only",
       "maturity": "pilot",
       "source": "shared/cpp/CombatWindow.h",
-      "sha256": "0781d616ab4fe9e89e3f4591d43b205c48da0c4a3cb494a3b1b89f271bbabb5d",
+      "sha256": "d6456d77d32b5786b5320f9c2d818dd3876876185d42c5ffdaf0e178937c23ea",
       "documentation": "shared/cpp/CombatWindow.md",
       "dependencies": [],
       "tests": [
@@ -64,7 +64,8 @@
       "known_consumers": [
         "Scrapshift-Arena",
         "Flotsam-Citadel",
-        "Pocket-Fort-Patrol"
+        "Pocket-Fort-Patrol",
+        "Haunt-and-Haul"
       ],
       "validation_note": "Test source references only; not a fresh test result. Consumer tests remain game-owned.",
       "capability_ids": [
@@ -272,13 +273,13 @@
     },
     {
       "id": "wheel-contact",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "description": "Unilateral suspension and combined tire friction forces in SI units",
       "language": "cpp",
       "kind": "header-only",
       "maturity": "pilot",
       "source": "shared/cpp/WheelContact.h",
-      "sha256": "495815092162cc304559fdd94dca6917bdc471e5064237c2fff8f910a8f5f4fa",
+      "sha256": "56abdeba9729855197233156cf2d20d5b620ddb89ee53effa2ac2eccfeb8a983",
       "documentation": "shared/cpp/WheelContact.md",
       "dependencies": [],
       "tests": [
@@ -626,13 +627,13 @@
     },
     {
       "id": "presentation-motion",
-      "version": "0.3.0",
+      "version": "0.5.0",
       "description": "Frame-independent interpolation and retriggerable feedback pulses",
       "language": "cpp",
       "kind": "header-only",
       "maturity": "pilot",
       "source": "shared/cpp/PresentationMotion.h",
-      "sha256": "34d18a88414a4997d3f178f2a357e9810f623337365c4e47334dcf9967023941",
+      "sha256": "11346d3889cbd9ce9c911a4327b7a1d66c2207802682af21995848770cf44bdd",
       "documentation": "shared/cpp/PresentationMotion.md",
       "dependencies": [],
       "tests": [
@@ -648,7 +649,8 @@
         "Tugboat-Tumble",
         "Skybound-Sabotage",
         "Lumen-Weaver",
-        "Lantern-Heist"
+        "Lantern-Heist",
+        "Echo-Forge"
       ],
       "validation_note": "Test references only; consumer receipts record actual execution.",
       "capability_ids": [
@@ -736,7 +738,8 @@
         "shared/cpp/tests/ActionCooldownTests.cpp"
       ],
       "known_consumers": [
-        "Box-Fort-Brigade"
+        "Box-Fort-Brigade",
+        "Skybound-Sabotage"
       ],
       "validation_note": "Consumer-owned firing/reset evidence; portable tests are separate.",
       "capability_ids": [
@@ -745,19 +748,22 @@
     },
     {
       "id": "unreal-world-ring",
-      "version": "0.2.0",
+      "version": "0.3.0",
       "description": "Bounded Canvas projected planar feedback ring",
       "language": "cpp",
       "kind": "header-only",
       "maturity": "pilot",
       "source": "3d/unreal/WorldRing.h",
-      "sha256": "42309a574ee87860b39019e9e2241bf82458d22c0688f04ea246566c639e604d",
+      "sha256": "e1e4088e50673520fb932dfba80d1330d4855b6bab57aafb09f793f8c201be6c",
       "documentation": "3d/unreal/WorldRing.md",
       "dependencies": [],
-      "tests": [],
+      "tests": [
+        "3d/unreal/tests/TestWorldRing.py"
+      ],
       "known_consumers": [
         "Dungeon-Dash-Market",
-        "Lantern-Heist"
+        "Lantern-Heist",
+        "Skybound-Sabotage"
       ],
       "validation_note": "Consumer-owned build and rendered smoke; no packaged verification.",
       "capability_ids": [
@@ -807,6 +813,132 @@
       "capability_ids": [
         "audio"
       ]
+    },
+    {
+      "id": "formation-slots",
+      "version": "0.1.0",
+      "description": "Centered planar formation slots with centered partial rows",
+      "language": "cpp",
+      "kind": "header-only",
+      "maturity": "pilot",
+      "source": "shared/cpp/FormationSlots.h",
+      "sha256": "2b4c5fa78884a086dac87ede180bbca17271132dbac3a4d0653ae32c8529deb3",
+      "documentation": "shared/cpp/FormationSlots.md",
+      "dependencies": [],
+      "tests": [
+        "shared/cpp/tests/FormationSlotsTests.cpp"
+      ],
+      "known_consumers": [
+        "Pebblekin-Command"
+      ],
+      "validation_note": "Synthetic slot tests and consumer automation; no second-game or avoidance validation.",
+      "capability_ids": [
+        "formation"
+      ]
+    },
+    {
+      "id": "swept-sphere-contact",
+      "version": "0.1.0",
+      "description": "Finite relative segment contact against a combined sphere radius",
+      "language": "cpp",
+      "kind": "header-only",
+      "maturity": "pilot",
+      "source": "shared/cpp/SweptSphereContact.h",
+      "sha256": "5223e50509bd704c639a79403cf5a584dcd9a9d61e32a94acc033bf2e25ef6a2",
+      "documentation": "shared/cpp/SweptSphereContact.md",
+      "dependencies": [],
+      "tests": [
+        "shared/cpp/tests/SweptSphereContactTests.cpp"
+      ],
+      "known_consumers": [
+        "Skybound-Sabotage"
+      ],
+      "validation_note": "Portable geometry tests; consumer owns curved sampling, authority and teleport exclusion.",
+      "capability_ids": [
+        "combat"
+      ]
+    },
+    {
+      "id": "segment-motion",
+      "version": "0.1.0",
+      "description": "Waypoint time-budget consumption",
+      "language": "cpp",
+      "kind": "header-only",
+      "maturity": "pilot",
+      "source": "shared/cpp/SegmentMotion.h",
+      "sha256": "0d66289fea76e1f186c0acce70d1fc0ab0dd5b1f46bb17ab81e189f1333f1685",
+      "documentation": "shared/cpp/SegmentMotion.md",
+      "dependencies": [],
+      "tests": [
+        "shared/cpp/tests/SegmentMotionTests.cpp"
+      ],
+      "known_consumers": [
+        "Pocket-Fort-Patrol"
+      ],
+      "validation_note": "See consumer iteration 5 evidence; no physics or network guarantee.",
+      "capability_ids": [
+        "navigation"
+      ]
+    },
+    {
+      "id": "held-repeat",
+      "version": "0.1.0",
+      "description": "Held input repeat with first delay and bounded hitch behavior",
+      "language": "cpp",
+      "kind": "header-only",
+      "maturity": "pilot",
+      "source": "shared/cpp/HeldRepeat.h",
+      "sha256": "7729e5d64b7768540042db6159ca45d9f1571ced3c6f4c6509b47cbb8cbdd1eb",
+      "documentation": "shared/cpp/HeldRepeat.md",
+      "dependencies": [],
+      "tests": [
+        "shared/cpp/tests/HeldRepeatTests.cpp"
+      ],
+      "known_consumers": [
+        "Lumen-Weaver"
+      ],
+      "validation_note": "Consumer owns input eligibility and target identity; see consumer evidence."
+    },
+    {
+      "id": "stable-selection",
+      "version": "0.1.0",
+      "description": "Eligible score selection with bounded switching hysteresis",
+      "language": "cpp",
+      "kind": "header-only",
+      "maturity": "pilot",
+      "source": "shared/cpp/StableSelection.h",
+      "sha256": "5503168e25047ca58f7fb3cfe223dd8604c937bb30b1443bfb97c850a68176e8",
+      "documentation": "shared/cpp/StableSelection.md",
+      "dependencies": [],
+      "tests": [
+        "shared/cpp/tests/StableSelectionTests.cpp"
+      ],
+      "known_consumers": [
+        "Gully-Giants"
+      ],
+      "validation_note": "Synthetic portable fixtures; consumer owns visibility and runtime evidence.",
+      "capability_ids": [
+        "traversal"
+      ]
+    },
+    {
+      "id": "fixed-step",
+      "version": "0.1.1",
+      "description": "Bounded fixed-step scheduling with caller-owned remainder",
+      "language": "cpp",
+      "kind": "header-only",
+      "maturity": "pilot",
+      "source": "shared/cpp/FixedStep.h",
+      "sha256": "11d80cee9ee847dd3fae59af627d4a769f5c5f82237f032c9c4682483b8df90d",
+      "documentation": "shared/cpp/FixedStep.md",
+      "dependencies": [],
+      "tests": [
+        "shared/cpp/tests/FixedStepTests.cpp"
+      ],
+      "known_consumers": [
+        "Critter-Contraptions"
+      ],
+      "validation_note": "Consumer evidence: Docs/GAMEPLAY_REFINEMENT.md; synthetic alternate adapter, no second-game claim."
     }
   ]
 }

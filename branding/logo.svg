@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" fill="none"><title>ArcoreGameCore</title>
+<path d="M150 140 H362 Q438 140 462 222 L490 344 Q502 418 440 420 Q404 420 382 382 L360 344 H152 L130 382 Q108 420 72 420 Q10 418 22 344 L50 222 Q74 140 150 140 Z" fill="#2e1065" stroke="#c4b5fd" stroke-width="14" stroke-linejoin="round"/>
+<path d="M84 238 h20 v-20 h20 v20 h20 v20 h-20 v20 h-20 v-20 h-20 Z" fill="#c4b5fd"/><circle cx="404" cy="232" r="14" fill="#86efac"/><circle cx="436" cy="268" r="14" fill="#f9a8d4"/>
+<path d="M335.6 243.1 L335.6 216.0 L256.0 170.0 L176.4 216.0 L176.4 308.0 L256.0 354.0 L335.6 308.0 L335.6 280.9" fill="none" stroke="#ddd6fe" stroke-width="18.4" stroke-linejoin="miter"/>
+<path d="M252.3 165.4 L316.7 268.0 L262.0 357.7 L179.6 307.1 Z" fill="none" stroke="#f5f3ff" stroke-width="15.6" stroke-linejoin="miter"/>
+<path d="M253.2 207.3 L302.9 267.1 L262.0 328.7 L210.9 279.5 Z" fill="none" stroke="#a78bfa" stroke-width="11.0" stroke-linejoin="miter"/>
+<circle cx="257.4" cy="267.5" r="10.1" fill="#86efac" stroke="#ffffff" stroke-width="2.3"/>
+</svg>

@@ -7,6 +7,7 @@
     compare  reference.png render.png [--box x0,y0,x1,y1]                the same clusters in a render
     sheet    out.png --row "label=a.png,b.png,c.png" --row ...           contact sheet
     gif      frames_folder out.gif [--box x0,y0,x1,y1] [--size 300]      motion preview from stepped frames
+    paper    colour.png reference.png [--seed 0]                         watercolour paper finish for a model render (reference.py)
 """
 import argparse
 import json
@@ -101,6 +102,32 @@ def gif(frames, out, box=None, size=300, milliseconds=67, colours=64, caption=No
     return {'gif': str(out), 'frames': len(images), 'megabytes': round(Path(out).stat().st_size / 1e6, 2)}
 
 
+def paper(render, out, seed=0, ivory=(244, 235, 214)):
+    """Give a model render on a transparent film (reference.py's colour.png) a watercolour paper finish:
+    hand-wobbled edges, pigment pooled along the silhouette, granulation, a paper-white ground.
+    Pixels inside the model never go lighter than `ivory`, because palette builders read near-white as bare paper."""
+    np = _np(); from PIL import Image, ImageFilter
+    rng = np.random.default_rng(seed); limit = np.array(ivory) / 255
+    def field(shape, cells):
+        h, w = shape; small = rng.uniform(-1, 1, (max(2, round(cells * h / w)), cells)).astype(np.float32)
+        return np.asarray(Image.fromarray(small).resize((w, h), Image.Resampling.BICUBIC))
+    rgba = np.asarray(Image.open(render).convert('RGBA')).astype(np.float32) / 255; h, w = rgba.shape[:2]
+    yy, xx = np.mgrid[0:h, 0:w]
+    sx = np.clip(xx + field((h, w), 26) * 2.2, 0, w - 1).round().astype(int); sy = np.clip(yy + field((h, w), 26) * 2.2, 0, h - 1).round().astype(int)
+    rgba = rgba[sy, sx]
+    alpha = rgba[..., 3]; colour = np.minimum(rgba[..., :3] / np.maximum(alpha, 1e-4)[..., None], limit)
+    blur = lambda a, r: np.asarray(Image.fromarray((np.clip(a, 0, 1) * 255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(r))).astype(np.float32) / 255
+    pooled = np.clip(alpha * (1 - blur(alpha, 7)) * 2.4, 0, 1)
+    drift = 1 + .07 * field((h, w), 9) + .05 * field((h, w), 60) + .035 * rng.uniform(-1, 1, (h, w))
+    colour = np.clip(colour, 1e-4, 1) ** ((1 + .30 * pooled) * drift)[..., None]
+    colour = colour * .95 + .05
+    soft = np.clip(blur(alpha, 1.6) * np.clip(1 + .25 * field((h, w), 40), .7, 1.2), 0, 1)[..., None]
+    ground = 1 - .012 * (rng.uniform(0, 1, (h, w, 1)) > .5)
+    image = Image.fromarray((np.clip(colour * soft + ground * (1 - soft), 0, 1) * 255).round().astype(np.uint8)).filter(ImageFilter.GaussianBlur(.6))
+    Path(out).parent.mkdir(parents=True, exist_ok=True); image.save(out)
+    return {'reference': str(out), 'size': list(image.size), 'seed': seed}
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__.split('\n')[0]); sub = parser.add_subparsers(dest='command', required=True)
     p = sub.add_parser('sample'); p.add_argument('reference'); p.add_argument('--points', required=True, help='"name=x,y name=x,y"')
@@ -109,6 +136,7 @@ def main(argv=None):
     p.add_argument('--box'); p.add_argument('--keep-paper', action='store_true')
     p = sub.add_parser('sheet'); p.add_argument('out'); p.add_argument('--row', action='append', required=True, help='"label=a.png,b.png"'); p.add_argument('--cell', type=int, default=300); p.add_argument('--box')
     p = sub.add_parser('gif'); p.add_argument('frames'); p.add_argument('out'); p.add_argument('--box'); p.add_argument('--size', type=int, default=300)
+    p = sub.add_parser('paper'); p.add_argument('render'); p.add_argument('out'); p.add_argument('--seed', type=int, default=0)
     args = parser.parse_args(argv)
     if args.command == 'sample':
         points = {}
@@ -117,6 +145,7 @@ def main(argv=None):
         result = sample_points(args.reference, points)
     elif args.command == 'palette': result = painting_palette(args.reference, args.clusters, args.keep_paper)[0]
     elif args.command == 'compare': result = compare(args.reference, args.render, args.clusters, _box(args.box), args.keep_paper)
+    elif args.command == 'paper': result = paper(args.render, args.out, args.seed)
     elif args.command == 'sheet': result = sheet(args.out, [(r.split('=', 1)[0], r.split('=', 1)[1].split(',')) for r in args.row], args.cell, _box(args.box))
     else: result = gif(args.frames, args.out, _box(args.box), args.size)
     print(json.dumps(result, indent=2)); return 0

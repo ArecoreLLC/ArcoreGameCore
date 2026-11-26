@@ -1,6 +1,6 @@
 # Painted, animated companions
 
-Status: scaffold; 3D consumers. One consumer so far (ShammyVerse, seven animals); see the [worked example](example.md).
+Status: scaffold; 3D consumers. One consumer so far (ShammyVerse, seven animals, then seven more built model-first on 2026-11-25); see the [worked example](example.md).
 
 Take a part-built, vertex-coloured character with a simple rig and a reference painting, and bring it to a
 painted, animated, checked and archived game asset: a texture that matches the painting, clips that walk at the
@@ -15,10 +15,11 @@ shapes is the consumer's own builder script. Neither is repeated here.
 | Piece | Where | Role |
 |---|---|---|
 | Painting engine | [`3d/blender/companion_studio/painterly.py`](../../3d/blender/companion_studio/README.md) | Charts, atlas, per-texel colour, pigment wash, contact pooling, fibre handling, GLB-ready material |
+| Reference renderer | [`3d/blender/companion_studio/reference.py`](../../3d/blender/companion_studio/README.md) | Model-first painting reference: picture, stroke regions and drawing guides projected from the master |
 | Motion engine | [`3d/blender/companion_studio/motion.py`](../../3d/blender/companion_studio/README.md) | Pose/Animator, shared tail wave, planted-foot stepper, seated-animal Idle/Walk/Greet |
 | Engine lighting | [`3d/godot/painted_companion/`](../../3d/godot/painted_companion/README.md) | Shader include that keeps on-screen colour close to the painted colour |
 | Pipeline tool | [`tools/companion_pipeline.py`](../../tools/README.md) | `vendor` (copy with hash lock), `stages`, `validate-glb`; standard library only |
-| Review tool | [`tools/companion_review.py`](../../tools/README.md) | `sample`, `palette`, `compare`, `sheet`, `gif`; needs numpy and Pillow (`.venv-vision`) |
+| Review tool | [`tools/companion_review.py`](../../tools/README.md) | `sample`, `palette`, `compare`, `sheet`, `gif`, `paper`; needs numpy and Pillow (`.venv-vision`) |
 | Stage list | [`stages.json`](stages.json) | Every stage with inputs, outputs, check and the kind of automation it suits |
 
 The consumer keeps what is its own: the builder, the markings file, per-animal motion settings and any species
@@ -32,6 +33,8 @@ Run `python tools/companion_pipeline.py stages` for the current list. In order:
 2. **Sample colours** from the reference: `companion_review.py sample` at named points and `palette` for clusters. Use these values as display sRGB in the markings.
 3. **Author markings** as `painter(T)`: functions of rest position that return colour. Place each marking relative to the *model's* landmarks, not the painting's pixels.
 4. **Bake** in the build: `painterly.bake(name, version, parts, out_dir, painter, fibers, ellipsoids)` before saving the Blender master and exporting. The image is embedded in the GLB as `painted_albedo`.
+4a. **Model-first reference** (optional, when the model exists before any painting): `reference.render(master, out, spec)` in Blender, then `companion_review.py paper colour.png reference.png`. The picture, its drawing guides and its stroke regions all come from the model, so steps 2 and 3 only choose colours and markings for the model itself. A person still approves the look.
+4b. **Shape-sketch polish** (after 4a): look at the construction overlay and edit the guide list, then re-render. The code places shapes; this pass decides which shapes teach the drawing. See the table in the [studio README](../../3d/blender/companion_studio/README.md#referencepy).
 5. **Engine material**: multiply the texture into albedo and use the painted lighting include. Capture in the real scene and run `companion_review.py compare reference.png render.png --box ...`; tune the include's uniforms until the dominant pigments are within about ±15 per channel.
 6. **Rig chains** for tails, trunks, manes and wings where the archetype wants them.
 7. **Clips**: `motion.seated_clips(Animator(rig), style, tail)` for seated animals; `Stepper` plus your own routine for others. Give the **game's movement speed**; the stride is derived from it.
@@ -62,10 +65,10 @@ These came from one consumer. Tighten or loosen them with evidence from the next
 
 | Kind | Stages | Why |
 |---|---|---|
-| **Procedural** (deterministic code) | sample-colours, bake, rig-chains, clip-report, captures, model-check, game-tests, archive | Same inputs, same outputs. No model in the loop. |
+| **Procedural** (deterministic code) | sample-colours, bake, model-reference, rig-chains, clip-report, captures, model-check, game-tests, archive | Same inputs, same outputs. No model in the loop. |
 | **Algorithmic search** (measure, adjust, repeat) | engine-material, once the shader has the right terms | The palette comparison is a metric, so tuning light, fill and ambient is a search. |
 | **Local model is enough** | clips-archetype | Filling settings for an existing routine; the clip report catches bad values. |
-| **Frontier multimodal model or a person** | reference, geometry, markings, engine-material the first time, clips-new-motion, visual-review | Reasoning from a posed 2D picture into 3D code, designing motion that does not exist yet, and diagnosing why a render is wrong. |
+| **Frontier multimodal model or a person** | reference, geometry, markings, guide-polish, engine-material the first time, clips-new-motion, visual-review | Reasoning from a posed 2D picture into 3D code, designing motion that does not exist yet, and diagnosing why a render is wrong. |
 | **Person** | approval | Publication. |
 
 Three lessons that decide where a frontier model is and is not worth its cost:

@@ -21,7 +21,7 @@ The math helpers import without Blender; Animator needs bpy.
 """
 import math
 
-VERSION = '1.0.0'
+VERSION = '1.1.0'
 TAU = math.tau
 FPS = 30
 

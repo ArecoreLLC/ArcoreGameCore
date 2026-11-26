@@ -1,4 +1,4 @@
-# Wheel contact 0.1.0
+# Wheel contact 0.2.0
 
 Engine-neutral, stateless C++14 force rules in SI units. `SuspensionForce` takes positive compression (metres), positive compression rate (metres/second), spring stiffness (N/m), damping (N s/m) and a force cap (N). It returns a nonnegative capped contact force. Zero/negative compression has no contact force, including damping. Invalid/nonfinite inputs and overflow return zero.
 
@@ -7,3 +7,5 @@ Engine-neutral, stateless C++14 force rules in SI units. `SuspensionForce` takes
 Consumers own contact queries, surface normals, wheel geometry, sprung mass, unit conversion, force application, integration/substeps, visuals and network authority. These are raycast-wheel building blocks, not a complete tire, constraint or drivetrain simulator. Snap Rally is the first consumer; no second-engine parity is claimed.
 
 Regression source: `tests/WheelContactTests.cpp` (C++14, assertions enabled). Covers compression/rebound signs, clipping, unloaded tires, combined traction, invalid values and a damped quarter-car settling at 30/60/120 Hz. Unreal integration evidence belongs to the consuming game.
+
+`DriveDemand(input, speed, forwardLimit, reverseLimit)` returns signed normalized demand. Inputs clamp to [-1,1]; speed limits must be finite and positive. Only speed in the requested direction attenuates demand, preserving braking authority against opposing motion. Invalid values return zero. Added compatibly in 0.2.0; acceleration, brake priority and integration remain consumer policy. Synthetic asymmetric utility-vehicle tests supplement the first consumer; no second-game validation.

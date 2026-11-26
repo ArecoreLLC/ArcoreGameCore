@@ -22,6 +22,15 @@ public:
   if (now >= ActiveUntil) return 1.0;
   return (now - LastTime) / (ActiveUntil - LastTime);
  }
+ // Elapsed fraction of the whole action/recovery interval, not just active work.
+ double RecoveryProgress(double now) const {
+  if (!Started || !std::isfinite(now) || now < LastTime) return 0.0;
+  if (now >= ReadyAt) return 1.0;
+  return (now - LastTime) / (ReadyAt - LastTime);
+ }
+ // Absolute caller-clock deadlines; idle/reset returns zero. Read-only for adapters.
+ double ActiveDeadline() const { return ActiveUntil; }
+ double ReadyDeadline() const { return ReadyAt; }
  void Reset() { ReadyAt=ActiveUntil=LastTime=0.0; Started=false; }
 private:
  bool Started = false;

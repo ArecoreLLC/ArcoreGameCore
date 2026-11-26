@@ -70,6 +70,7 @@ fn layer(id: &str, mesh: &str, density: f32) -> ScatterLayer {
         normal_offset: 0.0,
         max_per_cell: None,
         min_density_scale: 0.0,
+        tilt_deg: [0.0, 0.0],
     }
 }
 
@@ -242,7 +243,7 @@ pub fn overland_recipe(cfg: &RandomizeConfig) -> Recipe {
     ];
     let dry = Some([water + 0.8, origin_y + height_y]);
     let forest = Some("forest".to_string());
-    let scatter = vec![
+    let mut scatter = vec![
         // Palms lean over the water's edge; pebbles line the shore.
         ScatterLayer {
             max_slope_deg: 24.0,
@@ -410,7 +411,11 @@ pub fn overland_recipe(cfg: &RandomizeConfig) -> Recipe {
             1.5,
         ));
         zones.push(Zone { id: "crater".into(), center: [cx, cz], radius: 11.0, falloff: 5.0, clear: true });
+        // Open ground beside the crater, off the trench's line, for whoever comes to help.
+        let side = a + std::f32::consts::FRAC_PI_2;
+        zones.push(Zone { id: "camp".into(), center: [cx + side.cos() * 25.0, cz + side.sin() * 25.0], radius: 8.0, falloff: 3.0, clear: true });
     }
+    overland_details(cfg, &mut spots, base_y, water, &mut primitives, &mut zones, &mut meshes, &mut scatter);
     Recipe {
         schema: RECIPE_SCHEMA.into(),
         name: cfg.name.clone(),
@@ -451,6 +456,234 @@ pub fn overland_recipe(cfg: &RandomizeConfig) -> Recipe {
     }
 }
 
+/// Second pass of overland dressing: ponds, a cluster of stone needles, a golden
+/// field, fallen logs, cattails and rock rosettes. It draws from its own random
+/// stream, so the layout the first pass produces for a seed does not move.
+#[allow(clippy::too_many_arguments)]
+fn overland_details(
+    cfg: &RandomizeConfig,
+    spots: &mut Spots,
+    base_y: f32,
+    water: f32,
+    primitives: &mut Vec<Primitive>,
+    zones: &mut Vec<Zone>,
+    meshes: &mut Vec<MeshSpec>,
+    scatter: &mut Vec<ScatterLayer>,
+) {
+    let mut rng = Rng::derive(cfg.seed, &[hash_str("randomize"), hash_str("overland-details")]);
+    // Ponds: bowls cut below the water line, so the lake's surface fills them.
+    for i in 0..2 {
+        let r = rng.range(6.5, 9.5);
+        let [x, z] = spots.pick(&mut rng, r, 6.0);
+        primitives.push(prim(
+            format!("pond-{}", i + 1),
+            Shape::Sphere { center: [x, water - 1.6 + r, z], radius: r },
+            CsgOp::Subtract,
+            3.0,
+        ));
+        zones.push(Zone { id: format!("pond-{}", i + 1), center: [x, z], radius: r * 0.7, falloff: 3.0, clear: false });
+    }
+    // Stone needles: thin leaning spires standing together.
+    let [nx, nz] = spots.pick(&mut rng, 10.0, 6.0);
+    zones.push(Zone { id: "needles".into(), center: [nx, nz], radius: 10.0, falloff: 4.0, clear: false });
+    for i in 0..6 {
+        let a = TAU * i as f32 / 6.0 + rng.range(-0.4, 0.4);
+        let d = if i == 0 { 0.0 } else { rng.range(4.0, 8.5) };
+        let (x, z) = (nx + a.cos() * d, nz + a.sin() * d);
+        let h = if i == 0 { rng.range(20.0, 26.0) } else { rng.range(9.0, 18.0) };
+        primitives.push(prim(
+            format!("needle-{}", i + 1),
+            Shape::Capsule {
+                a: [x, base_y - 4.0, z],
+                b: [x + rng.range(-2.0, 2.0), base_y + h, z + rng.range(-2.0, 2.0)],
+                radius: rng.range(1.5, 2.3),
+            },
+            CsgOp::Union,
+            1.2,
+        ));
+    }
+    // A field of tall golden grass on open ground.
+    let field_r = rng.range(13.0, 17.0);
+    let [gx, gz] = spots.pick(&mut rng, field_r * 0.8, 4.0);
+    zones.push(Zone { id: "golden_field".into(), center: [gx, gz], radius: field_r, falloff: 3.0, clear: false });
+
+    meshes.extend([
+        mesh("wheat_sheaf", MeshKind::Tuft { blades: 8, radius: 0.34, length: 1.25, width: 0.1 }),
+        mesh("fallen_log", MeshKind::Lathe { profile: vec![[0.0, 0.0], [0.3, 0.03], [0.26, 3.4], [0.0, 3.44]], segments: 8 }),
+        mesh(
+            "cattail",
+            MeshKind::Lathe {
+                profile: vec![[0.02, 0.0], [0.02, 1.3], [0.075, 1.34], [0.075, 1.72], [0.015, 1.76], [0.012, 2.0], [0.0, 2.02]],
+                segments: 6,
+            },
+        ),
+        mesh(
+            "rock_rosette",
+            MeshKind::Rosette { petals: 9, length: 0.85, width: 0.2, tilt_deg: 28.0, curl_deg: 30.0, rows: 2, thickness: 0.035 },
+        ),
+    ]);
+    let dry = Some([water + 0.8, 1000.0]);
+    scatter.extend([
+        ScatterLayer {
+            max_slope_deg: 22.0,
+            height_range: dry,
+            zone: Some("golden_field".into()),
+            scale_range: [0.8, 1.3],
+            normal_offset: -0.05,
+            max_per_cell: Some(900),
+            ..layer("golden_field", "wheat_sheaf", 2.4)
+        },
+        // Logs lie where they fell on the forest floor.
+        ScatterLayer {
+            max_slope_deg: 20.0,
+            height_range: dry,
+            zone: Some("forest".into()),
+            scale_range: [0.7, 1.3],
+            normal_offset: 0.18,
+            max_per_cell: Some(5),
+            tilt_deg: [86.0, 92.0],
+            ..layer("fallen_logs", "fallen_log", 0.006)
+        },
+        ScatterLayer {
+            max_slope_deg: 30.0,
+            height_range: Some([water - 0.45, water + 0.7]),
+            clustering: clump(0.1, 0.05),
+            scale_range: [0.7, 1.3],
+            normal_offset: -0.05,
+            max_per_cell: Some(90),
+            tilt_deg: [0.0, 9.0],
+            ..layer("cattails", "cattail", 0.3)
+        },
+        // Spiky rosettes cling to the rocky slopes where grass gives out.
+        ScatterLayer {
+            min_slope_deg: 24.0,
+            max_slope_deg: 62.0,
+            height_range: dry,
+            clustering: clump(0.09, 0.1),
+            scale_range: [0.6, 1.6],
+            align_to_normal: true,
+            normal_offset: -0.03,
+            max_per_cell: Some(40),
+            ..layer("rock_rosettes", "rock_rosette", 0.06)
+        },
+    ]);
+}
+
+/// Second pass of sky-island dressing: rock bridges arching between neighbouring
+/// islands, a pond on the second island's knoll, giant glowing mushrooms, great
+/// leaning crystals and star blossoms. Uses its own random stream (see
+/// `overland_details`).
+fn sky_details(
+    cfg: &RandomizeConfig,
+    islands: &[[f32; 4]],
+    knolls: &[[f32; 2]],
+    primitives: &mut Vec<Primitive>,
+    zones: &mut Vec<Zone>,
+    meshes: &mut Vec<MeshSpec>,
+    scatter: &mut Vec<ScatterLayer>,
+) {
+    let mut rng = Rng::derive(cfg.seed, &[hash_str("randomize"), hash_str("sky-details")]);
+    // Bridges: each island reaches for its nearest neighbour when the gap and the
+    // climb are small enough to span with a single arch.
+    let mut bridges = 0;
+    for (i, a) in islands.iter().enumerate() {
+        let near = islands
+            .iter()
+            .enumerate()
+            .filter(|(j, _)| *j > i)
+            .map(|(_, b)| (((a[0] - b[0]).powi(2) + (a[2] - b[2]).powi(2)).sqrt() - a[3] - b[3], b))
+            .filter(|(gap, b)| *gap > 3.0 && *gap < 46.0 && (a[1] - b[1]).abs() < gap * 0.7 + 4.0)
+            .min_by(|x, y| x.0.total_cmp(&y.0));
+        let Some((gap, b)) = near else { continue };
+        if bridges >= 4 {
+            break;
+        }
+        bridges += 1;
+        let span = gap + a[3] + b[3];
+        let dir = [(b[0] - a[0]) / span, (b[2] - a[2]) / span];
+        // From just inside one rim to just inside the other, through a raised keystone.
+        let from = [a[0] + dir[0] * (a[3] - 2.0), a[1] - 1.2, a[2] + dir[1] * (a[3] - 2.0)];
+        let to = [b[0] - dir[0] * (b[3] - 2.0), b[1] - 1.2, b[2] - dir[1] * (b[3] - 2.0)];
+        let lift = gap * 0.16 + 1.0;
+        let pts: Vec<[f32; 3]> = (0..=4)
+            .map(|k| {
+                let t = k as f32 / 4.0;
+                [
+                    from[0] + (to[0] - from[0]) * t,
+                    from[1] + (to[1] - from[1]) * t + lift * (1.0 - (2.0 * t - 1.0).powi(2)),
+                    from[2] + (to[2] - from[2]) * t,
+                ]
+            })
+            .collect();
+        let radius = rng.range(2.0, 2.6);
+        for (k, w) in pts.windows(2).enumerate() {
+            primitives.push(prim(
+                format!("bridge-{bridges}-{}", k + 1),
+                Shape::Capsule { a: w[0], b: w[1], radius },
+                CsgOp::Union,
+                1.5,
+            ));
+        }
+    }
+    // A pond in a bowl on top of the second island's knoll.
+    if let (Some(isl), Some(k)) = (islands.get(1), knolls.get(1)) {
+        let r = isl[3] * 0.5;
+        let crest = isl[1] + isl[3] * 0.2;
+        primitives.push(prim(
+            "sky-pond".into(),
+            Shape::Sphere { center: [k[0], crest - 3.2 + r, k[1]], radius: r },
+            CsgOp::Subtract,
+            1.0,
+        ));
+        zones.push(Zone { id: "sky_pond".into(), center: *k, radius: r, falloff: 2.0, clear: true });
+    }
+
+    meshes.extend([
+        mesh(
+            "giant_cap",
+            MeshKind::Lathe {
+                profile: vec![[0.36, 0.0], [0.26, 2.7], [0.5, 3.05], [2.3, 3.1], [2.0, 3.9], [1.0, 4.5], [0.0, 4.7]],
+                segments: 14,
+            },
+        ),
+        mesh("great_crystal", MeshKind::Lathe { profile: vec![[0.0, -0.6], [0.7, 0.0], [0.9, 3.6], [0.0, 5.2]], segments: 6 }),
+        mesh(
+            "star_blossom",
+            MeshKind::Rosette { petals: 7, length: 0.7, width: 0.26, tilt_deg: 24.0, curl_deg: 34.0, rows: 2, thickness: 0.03 },
+        ),
+    ]);
+    scatter.extend([
+        ScatterLayer {
+            max_slope_deg: 26.0,
+            zone: Some("feature_zone".into()),
+            zone_mode: ZoneMode::Exclude,
+            clustering: clump(0.05, 0.25),
+            scale_range: [0.6, 1.5],
+            normal_offset: -0.2,
+            max_per_cell: Some(6),
+            ..layer("giant_caps", "giant_cap", 0.03)
+        },
+        ScatterLayer {
+            max_slope_deg: 55.0,
+            clustering: clump(0.07, 0.3),
+            scale_range: [0.5, 1.2],
+            normal_offset: -0.3,
+            max_per_cell: Some(4),
+            tilt_deg: [4.0, 24.0],
+            ..layer("great_crystals", "great_crystal", 0.014)
+        },
+        ScatterLayer {
+            max_slope_deg: 34.0,
+            clustering: clump(0.1, 0.1),
+            scale_range: [0.7, 1.7],
+            align_to_normal: true,
+            normal_offset: 0.02,
+            max_per_cell: Some(60),
+            ..layer("star_blossoms", "star_blossom", 0.07)
+        },
+    ]);
+}
+
 /// Floating islands high in open air: flat grassy tops on hanging rock roots,
 /// small rock satellites, and stone rings to fly through. Nothing below.
 pub fn sky_recipe(cfg: &RandomizeConfig) -> Recipe {
@@ -461,6 +694,7 @@ pub fn sky_recipe(cfg: &RandomizeConfig) -> Recipe {
     let mut primitives = Vec::new();
     let mut zones = Vec::new();
     let mut islands: Vec<[f32; 4]> = Vec::new(); // x, top, z, radius
+    let mut knolls: Vec<[f32; 2]> = Vec::new(); // XZ of each island's knoll
 
     let count = (cfg.mesas + 4).max(3);
     for i in 0..count {
@@ -511,6 +745,7 @@ pub fn sky_recipe(cfg: &RandomizeConfig) -> Recipe {
         ));
         zones.push(Zone { id: format!("island-{id}"), center: [x, z], radius: r, falloff: 2.0, clear: false });
         islands.push([x, top, z, r]);
+        knolls.push([x + jx * 0.6, z + jz * 0.6]);
     }
     // Satellite boulders drifting near the islands.
     for (i, isl) in islands.clone().iter().enumerate() {
@@ -563,7 +798,7 @@ pub fn sky_recipe(cfg: &RandomizeConfig) -> Recipe {
             MeshKind::Lathe { profile: vec![[0.02, 0.0], [0.02, 0.45], [0.12, 0.5], [0.16, 0.57], [0.0, 0.61]], segments: 6 },
         ),
     ];
-    let scatter = vec![
+    let mut scatter = vec![
         // Glowing mushrooms cluster in the shade; ferns fringe the island rims.
         ScatterLayer {
             max_slope_deg: 40.0,
@@ -650,6 +885,8 @@ pub fn sky_recipe(cfg: &RandomizeConfig) -> Recipe {
         },
     ];
 
+    sky_details(cfg, &islands, &knolls, &mut primitives, &mut zones, &mut meshes, &mut scatter);
+
     // External props land on island tops, so they always find ground.
     let mut props = Vec::new();
     if cfg.ruins {
@@ -657,7 +894,8 @@ pub fn sky_recipe(cfg: &RandomizeConfig) -> Recipe {
         push_column_ring(&mut rng, &mut meshes, &mut props, [main[0], main[2]], (main[1] + 14.0).min(origin_y + height_y - 1.0), main[3] * 0.5, 6, true);
     }
     for (i, key) in cfg.external_props.iter().enumerate() {
-        let isl = islands[(i + 1) % islands.len()];
+        // The second island holds the pond, so slots start on the third.
+        let isl = islands[(i + 2) % islands.len()];
         props.push(PropSpec {
             id: format!("custom_prop_{}_{}", i + 1, key),
             mesh: key.clone(),

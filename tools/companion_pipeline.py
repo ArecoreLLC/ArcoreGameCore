@@ -20,7 +20,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 STAGES = ROOT / 'workflows/painted-animated-companions/stages.json'
 MODULE = 'gamecore.blender.companion-studio'
-BLENDER_FILES = ['painterly.py', 'motion.py']
+BLENDER_FILES = ['painterly.py', 'motion.py', 'reference.py']
 GODOT_FILES = ['painted_lighting.gdshaderinc']
 BLENDER_SOURCE = ROOT / '3d/blender/companion_studio'
 GODOT_SOURCE = ROOT / '3d/godot/painted_companion'

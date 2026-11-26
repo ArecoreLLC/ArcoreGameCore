@@ -216,8 +216,12 @@ def probe_server(server, components, env=os.environ):
             # Match the hub: a relative executable path resolves against the component root.
             if len(Path(command[0]).parts) > 1 and (root / command[0]).exists():
                 command[0] = str(root / command[0])
-            if not (root / command[-1]).exists() and len(command) > 1:
-                return {'id': sid, 'status': 'not_installed', 'detail': f'{command[-1]} not found in {root}'}
+            # What has to exist: the script an interpreter runs, or the built executable itself. Flags such as
+            # --mcp are not files (checking the last argument reported a built ArcoreCut as not installed).
+            script = next((c for c in command[1:] if not c.startswith('-')), None)
+            needed = root / script if script else Path(command[0])
+            if (script or len(needed.parts) > 1) and not needed.exists():
+                return {'id': sid, 'status': 'not_installed', 'detail': f'{script or command[0]} not found in {root}'}
             info, tools = probe_stdio(command, str(root), child_env)
     except (urllib.error.URLError, ConnectionError, TimeoutError) as exc:
         return {'id': sid, 'status': 'not_running', 'detail': str(getattr(exc, 'reason', exc))}

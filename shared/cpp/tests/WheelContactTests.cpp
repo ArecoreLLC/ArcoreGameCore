@@ -3,6 +3,19 @@
 #include <limits>
 int main() {
     using namespace gamecore;
+    assert(DriveDemand(-1,19,19,8) == -1);
+    assert(DriveDemand(1,-12,19,8) == 1);
+    assert(DriveDemand(1,19,19,8) == 0);
+    assert(DriveDemand(-1,-8,19,8) == 0);
+    assert(DriveDemand(2,0,19,8) == 1);
+    assert(DriveDemand(0,10,19,8) == 0);
+    // Synthetic utility vehicle: different limits and partial input.
+    assert(DriveDemand(.5,2,4,2) == .25);
+    assert(DriveDemand(-.5,-1,4,2) == -.25);
+    assert(DriveDemand(-1,10,4,2) == -1);
+    assert(DriveDemand(1,0,0,8) == 0);
+    assert(DriveDemand(1,std::numeric_limits<double>::infinity(),19,8) == 0);
+    assert(DriveDemand(std::numeric_limits<double>::quiet_NaN(),0,19,8) == 0);
     assert(SuspensionForce(.1,0,20000,2000,8000) == 2000);
     assert(SuspensionForce(.1,1,20000,2000,8000) == 4000);
     assert(SuspensionForce(.1,-2,20000,2000,8000) == 0);

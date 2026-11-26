@@ -5,6 +5,8 @@ import {invoke,isTauri} from '@tauri-apps/api/core';
 import {open} from '@tauri-apps/plugin-dialog';
 
 import {roadmapReviewExport} from './roadmapExport';
+import GameExportDialog,{type ExportScope} from './GameExportDialog';
+import {gamesExportDocument,pipelineGameExport} from './gameExport';
 
 import {ArrowLeft,ArrowUpRight,FolderOpen,Save,Search} from 'lucide-react';
 
@@ -25,7 +27,7 @@ function Field({label,value,onChange,multi=false}:{label:string;value:string;onC
 
 export default function Roadmap({lib,musicRecords=[],onSaveMusicRecord,onDirty,onBusy,openGame}:{lib:Library;musicRecords?:MusicDesignRecord[];onSaveMusicRecord?:(rec:MusicDesignRecord)=>Promise<void>;onDirty:(v:boolean)=>void;onBusy:(v:boolean)=>void;openGame:(g:Game)=>void}){
 
- const [rows,setRows]=useState<RoadmapGame[]>([]),[draft,setDraft]=useState<RoadmapGame|null>(null),[dirty,setDirty]=useState(false),[busy,setBusy]=useState(false),[error,setError]=useState(''),[notice,setNotice]=useState('');
+ const [rows,setRows]=useState<RoadmapGame[]>([]),[draft,setDraft]=useState<RoadmapGame|null>(null),[dirty,setDirty]=useState(false),[busy,setBusy]=useState(false),[error,setError]=useState(''),[notice,setNotice]=useState(''),[gameExport,setGameExport]=useState(false);
 
  const [exportText,setExportText]=useState(''),[exportMessage,setExportMessage]=useState('');
 
@@ -85,7 +87,7 @@ export default function Roadmap({lib,musicRecords=[],onSaveMusicRecord,onDirty,o
 
    <button className="back" onClick={()=>{if(leave()){setDraft(null);setDirty(false)}}}><ArrowLeft size={16}/> All roadmap games</button>
 
-   <div className="page-heading"><div><div className="eyebrow">WAVE {draft.wave} · PRIORITY {draft.priority}</div><h1>{draft.title}</h1><p>{draft.pitch}</p></div><div className="inline"><button disabled={busy} onClick={reviewJson}>Export JSON</button><button className="primary" disabled={!native||busy||!dirty} onClick={save}><Save size={16}/> Save roadmap</button></div></div>
+   <div className="page-heading"><div><div className="eyebrow">WAVE {draft.wave} · PRIORITY {draft.priority}</div><h1>{draft.title}</h1><p>{draft.pitch}</p></div><div className="inline"><button disabled={busy} onClick={reviewJson}>Export JSON</button><button disabled={busy} onClick={()=>setGameExport(true)}>Export game</button><button className="primary" disabled={!native||busy||!dirty} onClick={save}><Save size={16}/> Save roadmap</button></div></div>
 
    <div className="roadmap-summary"><span>{progress(draft).accepted}/{progress(draft).total} accepted targets</span><span>{progress(draft).first}/{draft.first_slice_capabilities.length} first-slice targets</span><span>{unmet(draft,rows).length} first-slice gates · {unmet(draft,rows,'later').length} later gates</span><span>{draft.technical_risk} technical risk</span></div>
 
@@ -144,7 +146,7 @@ export default function Roadmap({lib,musicRecords=[],onSaveMusicRecord,onDirty,o
 
   </>:<>
 
-   <div className="page-heading compact"><div><h1>Game roadmap</h1><p>{rows.length} game tracks · Priorities, prerequisite milestones and evidence-backed progress.</p></div><div className="inline"><button disabled={busy||!rows.length} onClick={reviewJson}>Export JSON</button><button disabled={busy} onClick={load}>Refresh roadmap</button></div></div>
+   <div className="page-heading compact"><div><h1>Game roadmap</h1><p>{rows.length} game tracks · Priorities, prerequisite milestones and evidence-backed progress.</p></div><div className="inline"><button disabled={busy||!rows.length} onClick={reviewJson}>Export JSON</button><button disabled={busy||!rows.length} onClick={()=>setGameExport(true)}>Export games</button><button disabled={busy} onClick={load}>Refresh roadmap</button></div></div>
 
    <div className="stats"><div><strong>{rows.length}</strong><span>Planned game tracks</span></div><div><strong>{unique.size}</strong><span>Unique capability targets</span></div><div><strong>{acceptedUnique.size}</strong><span>With accepted roadmap evidence</span></div><div><strong>{rows.reduce((n,g)=>n+progress(g).accepted,0)}/{rows.reduce((n,g)=>n+g.capability_ids.length,0)}</strong><span>Accepted game–capability targets</span></div></div>
 
@@ -158,6 +160,9 @@ export default function Roadmap({lib,musicRecords=[],onSaveMusicRecord,onDirty,o
 
   </>}
 
+ {gameExport&&<GameExportDialog source="pipeline" heading="Export pipeline games" filteredCount={visible.length} totalCount={rows.length} selectedName={draft?.title}
+  build={(scope:ExportScope)=>{const snap=dirty&&draft?rows.map(g=>g.id===draft.id?draft:g):rows;const pick=scope==='selected'&&draft?[draft]:scope==='all'?snap:visible.map(v=>snap.find(g=>g.id===v.id)||v);return gamesExportDocument('pipeline',pick.map(g=>pipelineGameExport(g,lib,musicFor(g.id))),lib,{scope,total:rows.length,filters:scope==='filtered'?{query,wave,genre:genreFilter,sub_genre:subGenreFilter,archetype:archFilter,sub_archetype:subArchFilter,state:filter}:undefined})}}
+  onClose={()=>setGameExport(false)}/>}
  {exportText&&<div className="overlay"><section className="modal roadmap-export" role="dialog" aria-modal="true" aria-label="Export roadmap JSON"><div className="section-heading"><div><h2>Roadmap JSON for feedback</h2><p>All games, regardless of filters. Includes priorities, dependencies, progress, donor references and review questions.</p></div><button onClick={()=>setExportText('')}>Close export</button></div><p className="muted">Includes notes, evidence and local reference paths; no source-code or media file contents. Any unsaved game edits are explicitly marked in snapshot.unsaved_game_ids.</p><label className="field"><span>Review JSON · {(new Blob([exportText]).size/1024).toFixed(0)} KB</span><textarea id="roadmap-json" aria-label="Roadmap JSON" readOnly value={exportText} spellCheck={false}/></label>{exportMessage&&<p role="status">{exportMessage}</p>}<div className="modal-actions"><button onClick={()=>{const t=document.getElementById('roadmap-json') as HTMLTextAreaElement;t.focus();t.select()}}>Select all JSON</button><button onClick={saveJson}>Save JSON file</button><button className="primary" onClick={copyJson}>Copy JSON</button></div></section></div>}
 
  </div>

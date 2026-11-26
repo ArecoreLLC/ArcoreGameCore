@@ -394,3 +394,40 @@ fn density_scale_above_one_lifts_the_per_cell_cap() {
     assert!(most(&base) <= cap);
     assert!(most(&dense) > cap && most(&dense) <= cap * 3, "cap scales with density: {} vs {cap}", most(&dense));
 }
+
+#[test]
+fn detail_passes_add_landmarks_without_moving_the_first_layout() {
+    let cfg = RandomizeConfig { name: "land".into(), theme: Theme::OverlandCartoon, world_size: 192.0, external_props: vec![], ..Default::default() };
+    let r = randomize_recipe(&cfg);
+    for zone in ["pond-1", "pond-2", "needles", "golden_field"] {
+        assert!(r.zones.iter().any(|z| z.id == zone), "zone {zone}");
+    }
+    // The second pass has its own random stream: the lake, hills and forest of a seed stay put.
+    let ids: Vec<_> = r.terrain.primitives.iter().filter_map(|p| p.id.clone()).collect();
+    let first_detail = ids.iter().position(|id| id.starts_with("pond-")).unwrap();
+    assert!(ids[..first_detail].iter().all(|id| !id.starts_with("needle-")) && ids[0] == "lake");
+    let w = bake(&r, opts(4)).unwrap();
+    for layer in ["golden_field", "fallen_logs", "cattails", "rock_rosettes"] {
+        assert!(layer_count(&w, layer) > 0, "layer {layer} should place instances");
+    }
+    // Fallen logs lie down: their up axis ends up near the horizon. Untilted layers stay upright.
+    let up_y = |layer: &str| -> Vec<f32> {
+        w.layers.iter().find(|l| l.layer == layer).unwrap().cells.iter().flat_map(|c| c.instances.iter()).map(|i| {
+            let [x, _, z, _] = i.rotation;
+            1.0 - 2.0 * (x * x + z * z)
+        }).collect()
+    };
+    assert!(up_y("fallen_logs").iter().all(|y| y.abs() < 0.12), "logs lie flat");
+    assert!(up_y("pine_forest").iter().all(|y| *y > 0.999), "pines stand upright");
+
+    let sky = randomize_recipe(&RandomizeConfig { name: "sky".into(), theme: Theme::SkyIslands, world_size: 224.0, external_props: vec![], ..Default::default() });
+    assert!(sky.validate().is_empty(), "errors: {:?}", sky.validate());
+    assert!(sky.zones.iter().any(|z| z.id == "sky_pond" && z.clear));
+    let w = bake(&sky, opts(4)).unwrap();
+    assert!(layer_count(&w, "giant_caps") + layer_count(&w, "great_crystals") + layer_count(&w, "star_blossoms") > 0);
+
+    let reef = bake(&randomize_recipe(&RandomizeConfig { name: "reef".into(), world_size: 128.0, external_props: vec![], ..Default::default() }), opts(4)).unwrap();
+    for layer in ["starfish", "vase_sponges", "sea_whips", "cabbage_corals"] {
+        assert!(layer_count(&reef, layer) > 0, "layer {layer} should place instances");
+    }
+}

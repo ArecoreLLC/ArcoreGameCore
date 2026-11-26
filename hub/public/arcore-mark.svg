@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 144" fill="none">
+<defs><linearGradient id="metal" x1="25" y1="15" x2="102" y2="125" gradientUnits="userSpaceOnUse"><stop stop-color="#f0f8ff"/><stop offset=".45" stop-color="#a9ceef"/><stop offset="1" stop-color="#577bbd"/></linearGradient><linearGradient id="core" x1="54" y1="62" x2="75" y2="83" gradientUnits="userSpaceOnUse"><stop stop-color="#e2fbff"/><stop offset="1" stop-color="#73b9e3"/></linearGradient></defs>
+<!-- Compact vector interpretation of the Arcore v2b emblem; no wordmark. -->
+<path d="M66 10 113 37V61H102V44L66 23 27 45V99L66 122 102 101V86H113V108L66 135 16 106V38Z" fill="url(#metal)" stroke="#d3e9fa" stroke-width="2"/>
+<path d="M62 7 94 72 65 137 32 78Z" fill="#172638" stroke="#8faed2" stroke-width="2"/>
+<path d="M62 7 94 72H80L60 31 25 102 13 101Z" fill="url(#metal)" stroke="#d5eaff" stroke-width="2" stroke-linejoin="round"/>
+<path d="M94 72 65 137 34 80 46 70 65 108 80 72Z" fill="url(#metal)" stroke="#c1def8" stroke-width="2" stroke-linejoin="round"/>
+<path d="M62 42 77 72 64 99 49 72Z" fill="#c6ddec"/>
+<path d="m64 62 9 5v10l-9 6-9-6V67Z" fill="url(#core)" stroke="#f0fcff" stroke-width="2"/>
+<path d="m59 68 5-3 5 3M58 72v3l6 4" stroke="#fff" stroke-opacity=".6" stroke-width="1.5"/>
+</svg>

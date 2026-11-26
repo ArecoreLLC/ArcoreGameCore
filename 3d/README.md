@@ -28,7 +28,7 @@ formation, musical stones, time of day, ambient chatter, route gates, arrival ce
 
 ## Procedural world generation
 
-[3d/procgen](procgen/README.md) holds starter JSON recipes (including `underwater-basin.json` and `canyon-arch.json`) for the [procedural world generation workflow](../workflows/procedural-world-generation/README.md), paired with the [Godot 4 bundle loader](godot/procgen/README.md) and [Unreal 5.x integration guide](unreal/procgen/README.md).
+[3d/procgen](procgen/README.md) holds starter JSON recipes (including `underwater-basin.json` and `canyon-arch.json`) for the [procedural world generation workflow](../workflows/procedural-world-generation/README.md), dressed by the [toon reef module](godot/toon_reef/README.md) underwater and the [toon biome module](godot/toon_biome/README.md) in the open air, and paired with the [Godot 4 bundle loader](godot/procgen/README.md) and [Unreal 5.x integration guide](unreal/procgen/README.md).
 
 ## Painted, animated companions
 
@@ -36,6 +36,12 @@ formation, musical stones, time of day, ambient chatter, route gates, arrival ce
 are the runtime-side pieces of the [painted-animated-companions workflow](../workflows/painted-animated-companions/README.md): a per-texel painted
 albedo atlas for part-built characters, pose-function clips with a shared tail wave and a planted-foot stepper, and lighting that keeps painted colour
 on screen. Games vendor them with `tools/companion_pipeline.py vendor`.
+
+## Storyboard to animation clips
+
+The [storyboard-motion-clips workflow](../workflows/storyboard-motion-clips/README.md) adds clips to a rigged character that has no reference
+video to read them from: ArcoreAnimate authors them as a motion pack on the rig's joints and writes a new model version, ModelForge archives
+it, and the game maps its states to the clips. First used for Poofy's and Plumpy's swimming in ShammyVerse's Coral Deep.
 
 ## Unreal game feel
 

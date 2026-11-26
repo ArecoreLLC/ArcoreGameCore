@@ -1,0 +1,39 @@
+{
+  "date": "2026-11-23",
+  "workflow": "game-project-integration",
+  "dimension": "3d",
+  "scope": "Hub presentation only: v2b-inspired vector mark, sidebar, startup, favicon, Help/About",
+  "baseline_revision": "adf6f04da78b8e8783dca6799292e7bdf99646dc",
+  "target": "working tree on Windows; Node 24.11.0, Vite 7.3.8, React 19, Tauri 2",
+  "baseline": "Generic Boxes icon and GameCore / ARCORE STUDIO sidebar wordmark",
+  "asset_source": "User-provided ArecoreLLCMarketingBrand/arcore-logo/v2b/final-contact.png visual reference; original assets unchanged",
+  "reuse_review": {
+    "decision": "retain",
+    "reason": "Application-owned branding; no reusable runtime module or game policy changes",
+    "remaining_limits": [
+      "Vector interpretation, not a render of the Blender source",
+      "Native executable packaging not tested"
+    ]
+  },
+  "checks": [
+    {
+      "status": "passed",
+      "command": "npm run build (hub)",
+      "note": "Existing large-chunk advisory remains"
+    },
+    {
+      "status": "passed",
+      "command": "Headless Edge via Playwright against npm run dev",
+      "note": "Logo loads; no sidebar wordmark; Help/About opens; Escape and Close dismiss; focus returns to trigger. Initial StrictMode close-event issue corrected and rechecked.",
+      "screenshots": [
+        "test-results/branding-library.png",
+        "test-results/branding-about.png"
+      ]
+    },
+    {
+      "status": "not_run",
+      "command": "Native desktop build/playtest",
+      "note": "Frontend integration only; no engine or scaffold changes"
+    }
+  ]
+}

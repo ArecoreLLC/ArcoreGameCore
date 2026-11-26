@@ -61,6 +61,7 @@ pub fn scatter_layer(
     let (cos_min, cos_max) = (layer.min_slope_deg.to_radians().cos(), layer.max_slope_deg.to_radians().cos());
     // Layers reserved for dense bakes contribute nothing below their threshold.
     let density = if density_scale < layer.min_density_scale { 0.0 } else { layer.density * density_scale.max(0.0) };
+    let leans = layer.tilt_deg[1] > 0.0;
     let mut cells = Vec::new();
     for (cell, mesh) in chunks {
         let mut rng = Rng::derive(recipe.seed, &[hash_str(&layer.id), cell[0] as u64, cell[1] as u64]);
@@ -90,6 +91,8 @@ pub fn scatter_layer(
                 let p = a + (b - a) * u + (c - a) * v;
                 // Draw every random value up front so gating never shifts the stream.
                 let (keep, yaw, s) = (rng.next_f32(), rng.next_f32(), rng.next_f32());
+                // Layers without a tilt draw nothing extra, so their placement is unchanged.
+                let lean = if leans { layer.tilt_deg[0] + (layer.tilt_deg[1] - layer.tilt_deg[0]) * rng.next_f32() } else { 0.0 };
                 if let Some([lo, hi]) = layer.height_range {
                     if p.y < lo || p.y > hi {
                         continue;
@@ -114,7 +117,10 @@ pub fn scatter_layer(
                     continue;
                 }
                 let spin = Quat::from_axis_angle(Vec3::Y, yaw * std::f32::consts::TAU);
-                let rotation = if layer.align_to_normal { Quat::from_y_to(n).mul(spin) } else { spin };
+                let mut rotation = if layer.align_to_normal { Quat::from_y_to(n).mul(spin) } else { spin };
+                if leans {
+                    rotation = rotation.mul(Quat::from_axis_angle(Vec3::new(1.0, 0.0, 0.0), lean.to_radians()));
+                }
                 let scale = layer.scale_range[0] + (layer.scale_range[1] - layer.scale_range[0]) * s;
                 out.push(Instance {
                     position: (p + n * layer.normal_offset).to_array(),

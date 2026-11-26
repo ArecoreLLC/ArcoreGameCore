@@ -39,7 +39,7 @@ func _ready() -> void:
 - **Wrecks.** Props whose mesh id is in `WRECK_MESH_IDS` (`shipwreck`) get the timber material, which reads the ship mesh's part shade from vertex color.
 - **Vents.** Props whose mesh id is in `VENT_MESH_IDS` (`vent_chimney`, from the randomizer's `--vents`) get a basalt material with an ember rim in `presentation.vent_color`, and `add_life()` gives each a bubble plume and light. `add_life()` also takes `jellyfish` (default 24; 0 disables).
 - **Ruins.** Props whose mesh id is in `RUIN_MESH_IDS` (`ruin_column`) get a pale stone material (`presentation.stone_color`).
-- **Extra reef layers.** `sea_fans`, `anemones`, `tube_worms`, `sea_urchins`, `giant_clams` and `staghorn_thickets` have styles; `fan_palette` and `anemone_palette` in `presentation` recolor them.
+- **Extra reef layers.** `sea_fans`, `anemones`, `tube_worms`, `sea_urchins`, `giant_clams`, `staghorn_thickets`, `starfish`, `vase_sponges`, `sea_whips` and `cabbage_corals` have styles; `fan_palette` and `anemone_palette` in `presentation` recolor them.
 
 ## Consumer Boundary
 

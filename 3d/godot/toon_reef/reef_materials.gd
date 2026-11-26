@@ -76,6 +76,22 @@ const LAYER_STYLES := {
 		"kind": "prop", "colors": [Color(1.0, 0.30, 0.26), Color(0.98, 0.94, 0.88), Color(1.0, 0.52, 0.30)],
 		"emission": 0.30, "sway": 0.06, "shadow": false, "range": 80.0,
 	},
+	"starfish": {
+		"kind": "prop", "colors": [Color(1.0, 0.52, 0.24), Color(0.96, 0.30, 0.34), Color(0.62, 0.42, 0.94), Color(0.30, 0.56, 0.98)],
+		"emission": 0.12, "rim": 0.4, "shadow": false, "range": 70.0,
+	},
+	"vase_sponges": {
+		"kind": "prop", "colors": [Color(0.96, 0.50, 0.30), Color(0.66, 0.40, 0.86), Color(0.98, 0.78, 0.34)],
+		"emission": 0.14, "outline": 0.022, "range": 130.0,
+	},
+	"sea_whips": {
+		"kind": "prop", "colors": [Color(1.0, 0.44, 0.30), Color(1.0, 0.84, 0.36), Color(0.96, 0.96, 0.90)],
+		"emission": 0.18, "sway": 0.16, "shadow": false, "range": 120.0,
+	},
+	"cabbage_corals": {
+		"kind": "prop", "palette_key": "coral_palette", "colors": DEFAULT_CORAL_PALETTE,
+		"emission": 0.12, "rim": 0.4, "outline": 0.016, "range": 130.0,
+	},
 }
 ## Weathered stone for ruin columns (`stone_color` in the manifest overrides it).
 const STONE_COLORS: Array[Color] = [Color(0.70, 0.74, 0.78)]

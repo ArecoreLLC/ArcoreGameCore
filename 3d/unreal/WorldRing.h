@@ -28,4 +28,15 @@ inline void DrawWorldRing(AHUD& hud, const FVector& center, float radius,
 {
     DrawWorldArc(hud, center, radius, 0.f, 2.f * PI, color, thickness, segments);
 }
+// A normalized world-space meter. Invalid progress draws nothing; finite values
+// clamp to [0,1]. The caller owns meaning, palette, timing and accessibility text.
+inline void DrawWorldProgressRing(AHUD& hud, const FVector& center, float radius,
+    float progress, FLinearColor foreground, FLinearColor track,
+    float thickness = 2.f, int32 segments = 48)
+{
+    if (!FMath::IsFinite(progress)) return;
+    DrawWorldRing(hud, center, radius, track, thickness, segments);
+    DrawWorldArc(hud, center, radius, -PI / 2.f,
+        2.f * PI * FMath::Clamp(progress, 0.f, 1.f), foreground, thickness, segments);
+}
 }

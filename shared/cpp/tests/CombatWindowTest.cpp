@@ -37,5 +37,22 @@ int main() {
  assert(w.ActiveRemaining(std::numeric_limits<double>::quiet_NaN())==0);
  assert(!w.TryStart(10.1,.5,1) && w.ActiveRemaining(10.125)==.125);
  w.Reset(); assert(w.ActiveRemaining(10)==0);
+ w.Reset(); assert(w.RecoveryProgress(100)==0);
+ assert(w.TryStart(2,2,4));
+ assert(w.RecoveryProgress(1)==0 && w.RecoveryProgress(2)==0);
+ assert(w.RecoveryProgress(4)==.5 && w.RecoveryProgress(6)==1);
+ assert(w.RecoveryProgress(100)==1);
+ assert(w.RecoveryProgress(std::numeric_limits<double>::quiet_NaN())==0);
+ assert(w.RecoveryProgress(std::numeric_limits<double>::infinity())==0);
+ assert(!w.TryStart(3,1,1) && w.RecoveryProgress(4)==.5);
+ w.Reset(); assert(w.TryStart(0,0,0)); assert(w.RecoveryProgress(0)==1);
+ assert(w.ActiveDeadline()==0 && w.ReadyDeadline()==0);
+ assert(w.TryStart(20,1.5,8));
+ assert(w.ActiveDeadline()==21.5 && w.ReadyDeadline()==28);
+ assert(!w.TryStart(21,2,10));
+ assert(w.ActiveDeadline()==21.5 && w.ReadyDeadline()==28);
+ w.Reset(); assert(w.TryStart(100,0,30));
+ assert(w.ActiveDeadline()==100 && w.ReadyDeadline()==130);
+ assert(!w.Active(100) && w.Remaining(100)==30);
  return 0;
 }

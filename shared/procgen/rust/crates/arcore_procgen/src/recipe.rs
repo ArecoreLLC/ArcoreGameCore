@@ -231,6 +231,24 @@ pub enum MeshKind {
         length: f32,
         width: f32,
     },
+    /// A ring of solid, tapered petals radiating from the origin (starfish, succulents,
+    /// cabbage corals, big blossoms). `tilt_deg` lifts the petals off the ground,
+    /// `curl_deg` bends them further along their length (negative droops), and each
+    /// extra row is smaller, steeper and turned half a step.
+    Rosette {
+        petals: u32,
+        length: f32,
+        width: f32,
+        #[serde(default = "default_rosette_tilt")]
+        tilt_deg: f32,
+        #[serde(default)]
+        curl_deg: f32,
+        #[serde(default = "default_rosette_rows")]
+        rows: u32,
+        /// Half-thickness of a petal at its widest, in meters.
+        #[serde(default = "default_rosette_thickness")]
+        thickness: f32,
+    },
     /// Stylized tree growing along +Y from the origin: trunk plus seeded foliage.
     /// Vertex colors hold the part (`r`: 0 = trunk, 1 = foliage) and a seeded
     /// per-lobe shade (`g` in [0, 1]) so one material can paint both.
@@ -259,6 +277,16 @@ pub enum TreeStyle {
     Pine,
     /// Leaning segmented trunk with drooping fronds (render double-sided).
     Palm,
+}
+
+fn default_rosette_tilt() -> f32 {
+    20.0
+}
+fn default_rosette_rows() -> u32 {
+    1
+}
+fn default_rosette_thickness() -> f32 {
+    0.04
 }
 
 fn default_tree_trunk() -> f32 {
@@ -369,6 +397,14 @@ pub struct ScatterLayer {
     /// (0 = always). Lets one recipe carry extra dressing for dense, high-end bakes.
     #[serde(default, skip_serializing_if = "is_zero")]
     pub min_density_scale: f32,
+    /// Random lean away from upright, `[min, max]` degrees, toward each instance's
+    /// own heading (90 lays a mesh on its side: fallen logs, toppled stones).
+    #[serde(default, skip_serializing_if = "is_no_tilt")]
+    pub tilt_deg: [f32; 2],
+}
+
+fn is_no_tilt(v: &[f32; 2]) -> bool {
+    *v == [0.0, 0.0]
 }
 
 fn default_max_slope() -> f32 {
@@ -521,6 +557,11 @@ impl Recipe {
                         err(format!("mesh {:?}: tuft needs 1-32 blades and positive length/width", m.id));
                     }
                 }
+                MeshKind::Rosette { petals, length, width, rows, thickness, .. } => {
+                    if !(2..=24).contains(petals) || !(1..=4).contains(rows) || *length <= 0.0 || *width <= 0.0 || *thickness <= 0.0 {
+                        err(format!("mesh {:?}: rosette needs 2-24 petals, 1-4 rows and positive length/width/thickness", m.id));
+                    }
+                }
                 MeshKind::Tree { height, trunk_radius, canopy_radius, lobes, .. } => {
                     if *height <= 0.0 || *trunk_radius <= 0.0 || *canopy_radius <= 0.0 || !(1..=8).contains(lobes) {
                         err(format!(
@@ -565,6 +606,9 @@ impl Recipe {
                 || l.min_slope_deg > l.max_slope_deg
             {
                 err(format!("scatter {:?}: slopes must satisfy 0 <= min <= max <= 180", l.id));
+            }
+            if !(0.0..=180.0).contains(&l.tilt_deg[0]) || !(0.0..=180.0).contains(&l.tilt_deg[1]) || l.tilt_deg[0] > l.tilt_deg[1] {
+                err(format!("scatter {:?}: tilt_deg must satisfy 0 <= min <= max <= 180", l.id));
             }
             if l.scale_range[0] <= 0.0 || l.scale_range[0] > l.scale_range[1] {
                 err(format!("scatter {:?}: scale_range must be 0 < min <= max", l.id));

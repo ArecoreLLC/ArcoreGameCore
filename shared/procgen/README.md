@@ -28,21 +28,27 @@ recipe ─► field ─► surface ─► cells ─► parametric ─► scatter
 
 | Theme | World |
 | :--- | :--- |
-| `underwater-cartoon` | Reef basin: mesas, arches, tunnels, glowing grotto, kelp, corals, sponges, sea fans, anemones, optional shipwreck (`--shipwreck`) and hydrothermal vent field with tube worms (`--vents N`). |
+| `underwater-cartoon` | Reef basin: mesas, arches, tunnels, glowing grotto, kelp, corals, sponges, sea fans, anemones, starfish, sea whips, cabbage corals, optional shipwreck (`--shipwreck`) and hydrothermal vent field with tube worms (`--vents N`). |
 | `underwater-basin` | Same layout with the atmospheric palette. |
 | `canyon-arch` | Dry desert canyon with arches. |
-| `overland-cartoon` | Rolling hills, a lake fed by a meandering river (`water_level` 0), rocky outcrops with caves, arches, pine forest, oak groves, birch stands, wildflower meadow, reeds, mushrooms. |
-| `sky-islands` | Floating islands in open air (`base_height` far below the bounds), each a flat top on a hanging rock root, with satellite boulders, stone rings, trees, hanging vines and crystals. |
+| `overland-cartoon` | Rolling hills, a lake fed by a meandering river (`water_level` 0), rocky outcrops with caves, arches, pine forest, oak groves, birch stands, wildflower meadow, reeds, mushrooms, ponds, stone needles, a golden field, fallen logs and cattails. |
+| `sky-islands` | Floating islands in open air (`base_height` far below the bounds), each a flat top on a hanging rock root, with satellite boulders, stone rings, trees, hanging vines and crystals, rock bridges between neighbouring islands, a pond bowl, giant mushrooms and star blossoms. |
 
 Every themed world also gets a landmark of weathered stone columns unless `--no-ruins` is passed (sunken ruins on the reef, a standing-stone ring overland, a temple ring on the main sky island).
 
 Scatter instances are stored in random order within each cell, so the per-cell cap thins evenly and a consumer can draw any prefix of a cell as a lower level of detail (the sandbox's quality presets do exactly this).
 
-Zones may set `clear: true` to keep every scatter layer out (craters, plazas, landing pads); `--crater` adds an impact crater with a skid trench and a cleared zone to `overland-cartoon`.
+Zones may set `clear: true` to keep every scatter layer out (craters, plazas, landing pads); `--crater` adds an impact crater with a skid trench and a cleared zone to `overland-cartoon` (plus a cleared `camp` zone beside it), and a cleared `wreck_piece` zone on the `underwater-cartoon` seabed for a piece that sank.
 
 `bake --mesh-detail 1|2` adds tessellation to library meshes large enough to show it and also writes each changed mesh's recipe-level twin as `<id>__lod`, so a consumer can draw the heavy mesh nearby only (the Godot loader's `lod_distance`). A `--density-scale` above 1 lifts per-cell caps with it, for denser high-end bakes of the same layout.
 
 A scatter layer may set `min_density_scale` so it is only placed in bakes at or above that density scale; the `grass_carpet` layers (mesh kind `tuft`, a clump of blades) use it, so one recipe serves a lean bake and a dense one.
+
+A scatter layer may also set `tilt_deg: [min, max]` to lean each instance away from upright toward its own heading (fallen logs lie at about 90, cattails and great crystals lean a little). Layers without it place exactly as before.
+
+Mesh kind `rosette` is a ring of solid, tapered petals (`petals`, `length`, `width`, `tilt_deg`, `curl_deg`, `rows`, `thickness`): flat with five petals it is a starfish, cupped with three rows a cabbage coral, and in between the rock rosettes and star blossoms of the open-air themes.
+
+Each themed recipe is built in two passes. The second (`overland_details`, `sky_details` in `biomes.rs`, and the tail of `add_reef_extras`) adds further landmarks and layers from its own random stream, so extending it never moves what the first pass placed for a seed: ponds, stone needles, a golden field, fallen logs, cattails and a cleared `camp` zone beside the crater overland; rock bridges between neighbouring islands, a pond bowl (zone `sky_pond`), giant mushrooms and great crystals in the sky; starfish, vase sponges, sea whips and cabbage corals on the reef.
 
 ### Linked stacks and previews
 

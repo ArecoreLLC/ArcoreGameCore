@@ -63,6 +63,27 @@
       "tools": ["3d/blender/companion_studio/painterly.py bake", "ModelForge blender_run"]
     },
     {
+      "id": "model-reference",
+      "title": "Model-first painting reference (alternative to starting from generated art)",
+      "automation": "procedural",
+      "inputs": ["Blender master with the baked atlas", "guide groups: which parts make the head, body, legs", "optional region overrides and camera angle"],
+      "outputs": ["colour.png", "regions.png", "projection.json (guides, part regions, camera, model size)", "reference.png with a paper finish"],
+      "check": "Every palette group has pixels; the construction overlay sits on the picture; a person still approves the look.",
+      "why": "When the 3D model exists first, the picture the player paints can be a render of it. Guides and stroke regions are then projections of the model's own parts, so the markings stage's hardest problem (placing things on a model whose proportions differ from the painting) does not arise. The cost is style: the result is a rendered model with a paper finish, not hand or generated watercolour. Second ShammyVerse roster, seven animals, 2026-11-25.",
+      "tools": ["3d/blender/companion_studio/reference.py render", "tools/companion_review.py paper", "ModelForge blender_run"]
+    },
+    {
+      "id": "guide-polish",
+      "title": "Shape-sketch polish (second pass over the projected guides)",
+      "automation": "frontier-model",
+      "fallback": "human",
+      "inputs": ["construction overlay (steps 1 and 2 over the picture)", "projection.json", "the guide list in the consumer's spec"],
+      "outputs": ["edited guide list (grow, corners, under_fraction, extra or removed guides)", "a re-render"],
+      "check": "A person can redraw the animal from step 1 and step 2 alone; no shape spills past the silhouette; nothing important is missing.",
+      "why": "The renderer places every shape exactly, but it cannot tell which shapes teach the drawing. Choosing what to leave out, where an oval should be a wedge, how far a leg guide should climb into the body, whether a wing reads as a bat wing, and when two correct shapes together look like a knot are judgements made by looking at the overlay. Each fix is still a small edit to the guide list followed by a procedural re-render, so the expensive model only decides; it never places.",
+      "tools": ["3d/blender/companion_studio/reference.py guide options", "construction overlay"]
+    },
+    {
       "id": "engine-material",
       "title": "Engine material and lighting calibration",
       "automation": "algorithmic-search",

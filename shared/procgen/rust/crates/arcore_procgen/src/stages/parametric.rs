@@ -50,6 +50,9 @@ pub fn build_mesh(spec: &MeshSpec, seed: u64, detail: u32) -> Mesh {
         MeshKind::Tuft { blades, radius, length, width } => {
             tuft(*blades, *radius, *length, *width, sub_seed(seed, &format!("mesh.{}", spec.id)))
         }
+        MeshKind::Rosette { petals, length, width, tilt_deg, curl_deg, rows, thickness } => {
+            rosette(*petals, *length, *width, *tilt_deg, *curl_deg, *rows, *thickness, 4 + 2 * over(*length, 0.8))
+        }
         MeshKind::Tree { height, trunk_radius, canopy_radius, style, lobes } => tree(
             &TreeParams {
                 height: *height,
@@ -191,6 +194,55 @@ pub fn tuft(blades: u32, radius: f32, length: f32, width: f32, seed: u64) -> Mes
     m
 }
 
+/// Rows of solid petals around +Y. A petal is a diamond-section strip that leaves
+/// the origin `tilt_deg` above the ground, bends by `curl_deg` along its length,
+/// swells to `width` a third of the way out and tapers to a point. Each further
+/// row is 0.72x the size, halfway more upright and turned half a step.
+#[allow(clippy::too_many_arguments)]
+pub fn rosette(petals: u32, length: f32, width: f32, tilt_deg: f32, curl_deg: f32, rows: u32, thickness: f32, segments: u32) -> Mesh {
+    let (petals, rows, n) = (petals.max(2), rows.max(1), segments.max(2));
+    let mut m = Mesh::default();
+    for row in 0..rows {
+        let size = 0.72f32.powi(row as i32);
+        let tilt = tilt_deg + (90.0 - tilt_deg) * 0.5 * row as f32 / rows as f32;
+        for p in 0..petals {
+            let a = TAU * (p as f32 + 0.5 * row as f32) / petals as f32;
+            let out = Vec3::new(a.cos(), 0.0, a.sin());
+            let side = Vec3::Y.cross(out);
+            let ring0 = m.positions.len() as u32;
+            let mut spine = Vec3::ZERO;
+            for i in 0..=n {
+                let t = i as f32 / n as f32;
+                let pitch = (tilt + curl_deg * t).to_radians();
+                let along = out * pitch.cos() + Vec3::Y * pitch.sin();
+                let up = Vec3::Y * pitch.cos() - out * pitch.sin();
+                if i > 0 {
+                    spine = spine + along * (length * size / n as f32);
+                }
+                let swell = if t < 0.35 { 0.5 + 0.5 * smooth(t / 0.35) } else { 1.0 - 0.96 * ((t - 0.35) / 0.65).powf(1.5) };
+                let (half, thick) = (0.5 * width * size * swell, thickness * size * swell);
+                for corner in [spine - side * half, spine + up * thick, spine + side * half, spine - up * (thick * 0.6)] {
+                    m.positions.push(corner.to_array());
+                }
+            }
+            for i in 0..n {
+                for s in 0..4 {
+                    let (i0, i1) = (ring0 + i * 4 + s, ring0 + i * 4 + (s + 1) % 4);
+                    let (j0, j1) = (i0 + 4, i1 + 4);
+                    m.indices.extend_from_slice(&[i0, j0, i1, i1, j0, j1]);
+                }
+            }
+        }
+    }
+    m.recompute_normals();
+    m
+}
+
+fn smooth(t: f32) -> f32 {
+    let t = t.clamp(0.0, 1.0);
+    t * t * (3.0 - 2.0 * t)
+}
+
 /// Child length and tip radius relative to the parent branch.
 const LENGTH_FALLOFF: f32 = 0.68;
 const TAPER: f32 = 0.62;
@@ -298,6 +350,28 @@ mod tests {
         let b = blade(2.0, 0.3, 4, 0.2);
         assert_eq!(b.triangle_count(), 8);
         assert!(b.normals.iter().all(|n| n[2] > 0.5), "blade faces +Z");
+    }
+
+    #[test]
+    fn rosette_petals_are_solid_and_follow_tilt_and_rows() {
+        // A flat five-armed star: 5 petals x 4 segments x 4 sides x 2 triangles.
+        let star = rosette(5, 1.0, 0.4, 0.0, 0.0, 1, 0.1, 4);
+        assert_eq!(star.triangle_count(), 5 * 4 * 4 * 2);
+        let (lo, hi) = star.bounds().unwrap();
+        assert!(hi.x > 0.95 && hi.x < 1.05 && hi.y <= 0.11 && lo.y >= -0.07, "flat star: {lo:?} {hi:?}");
+        // Petal tops face up, undersides face down.
+        for (i, n) in star.normals.iter().enumerate() {
+            match i % 4 {
+                1 => assert!(n[1] > 0.5, "top vertex {i} normal {n:?}"),
+                3 => assert!(n[1] < -0.5, "bottom vertex {i} normal {n:?}"),
+                _ => {}
+            }
+        }
+        // Tilted and curled petals rise; extra rows add petals without widening the plant.
+        let cup = rosette(7, 1.0, 0.4, 30.0, 40.0, 3, 0.05, 4);
+        assert_eq!(cup.triangle_count(), 3 * 7 * 4 * 4 * 2);
+        let (lo, hi) = cup.bounds().unwrap();
+        assert!(hi.y > 0.6 && hi.x < 0.9 && lo.y > -0.1, "cupped rosette: {lo:?} {hi:?}");
     }
 
     #[test]

@@ -3,6 +3,43 @@
 
 namespace GameCore
 {
+// Bounded cubic easing with zero endpoint velocity. Nonfinite input fails closed.
+// Consumers own clocks, interpolation endpoints and spatial paths.
+inline double SmoothStep01(double progress)
+{
+    if (!std::isfinite(progress) || progress <= 0.0) return 0.0;
+    if (progress >= 1.0) return 1.0;
+    return progress * progress * (3.0 - 2.0 * progress);
+}
+
+// Finite one-shot timeline. Advance returns true only on the completion edge.
+// Idle/reset starts at zero; completed stays at one until explicitly restarted.
+class FiniteTransition
+{
+public:
+    explicit FiniteTransition(double duration = 1.0)
+        : Duration(std::isfinite(duration) && duration > 0.0 ? duration : 1.0) {}
+    void Start() { Elapsed = 0.0; Active = true; }
+    void Reset() { Elapsed = 0.0; Active = false; }
+    bool Advance(double seconds)
+    {
+        if (!Active || !std::isfinite(seconds) || seconds <= 0.0) return false;
+        if (seconds >= Duration - Elapsed)
+        {
+            Elapsed = Duration; Active = false; return true;
+        }
+        Elapsed += seconds;
+        return false;
+    }
+    bool IsActive() const { return Active; }
+    double Progress() const { return Elapsed / Duration; }
+    double Value() const { return SmoothStep01(Progress()); }
+private:
+    double Duration;
+    double Elapsed = 0.0;
+    bool Active = false;
+};
+
 // Exact exponential response for a stationary target. Apply to scalar or vector
 // lerp in the engine adapter; zero/invalid time never advances presentation.
 inline double ResponseAlpha(double seconds, double halfLife)
@@ -25,6 +62,12 @@ public:
         if (!std::isfinite(strength) || strength <= 0.0) return;
         Strength = strength > 1.0 ? 1.0 : strength;
         Remaining = Duration;
+    }
+    // Preserve the currently visible peak when clustered events retrigger.
+    void TriggerPeak(double strength = 1.0)
+    {
+        if (!std::isfinite(strength) || strength <= 0.0) return;
+        Trigger(strength > Value() ? strength : Value());
     }
     void Reset() { Remaining = 0.0; }
     void Advance(double seconds)

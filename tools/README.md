@@ -18,6 +18,8 @@ The validator checks required workflow IDs, statuses, dimensions, referenced fil
 
 `mcp_setup.py` opens a local checklist page of the apps the hub talks to (ModelForge, SoundCore, the Unreal editor, Flow). Tick the ones to use and it shows each one's live status. Connections are found automatically: the environment variables the registry names come first, then the file each app writes for local clients (ModelForge's `~/.modelvault/settings.json`, SoundCore's `service.json`). Tokens stay in the script's memory; the page sees status only, and the selection is saved as server ids in `.gamecore/mcp-selection.json` (gitignored).
 
+`forge_job.py` runs ModelForge work from a shell through the hub and waits for it, so a character folder needs no runner of its own: `python tools/forge_job.py run <model_id> build.py [args...]` queues the script in headless Blender, polls, prints what it logged and exits 1 if it failed; `python tools/forge_job.py call <operation> '<json>'` (or `@file.json`) calls any `model_production` operation and waits when the answer is a Blender job. Other scripts can import `hub_call` and `forge` from it.
+
 `mcp_registry.py` checks the MCP registry in `shared/ecosystem.json`. `--probe` performs MCP initialize and tools/list against each downstream server, using the same connection lookup, and never calls a tool. `--selected` probes only the apps ticked in the checklist.
 
 `validate_wizards.py` checks every `wizard` template listed in the index against [the wizard schema](../shared/wizard/README.md) and its cross-reference rules.
@@ -64,5 +66,6 @@ and [game-music-video](../workflows/game-music-video/README.md) workflows. It ne
 `companion_pipeline.py` is standard library only: `vendor` copies the Blender studio and the Godot shader include into a game with a SHA-256 lock
 (`--check` reports drift), `stages` lists the pipeline with the kind of automation each stage suits, and `validate-glb` checks geometry, skin weights,
 UVs, textures, expected clips and loop closure. `companion_review.py` needs numpy and Pillow (`tools/drawing-studio/.venv-vision`): `sample` and
-`palette` read pigment colours from a reference, `compare` finds those colours in a render, `sheet` and `gif` assemble captures. Its test is skipped
+`palette` read pigment colours from a reference, `compare` finds those colours in a render, `sheet` and `gif` assemble captures. `paper` gives a model render
+from the studio's `reference.py` a watercolour paper finish. Its test is skipped
 without those packages.
