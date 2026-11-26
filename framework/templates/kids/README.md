@@ -1,8 +1,21 @@
 # Printable game design workbooks
 
-Four separate editable Word documents per grade, from kindergarten through grade 10, for 44 documents total. Print on US Letter paper at actual size. The initial design workbook has three pages; each phase-specific worksheet has two. Each document includes creative prompts, drawing space, an example trigger/condition/action diagram with yes and no paths, a blank rule to design, and a paper playtest reflection.
+Four separate editable Word documents per grade, from kindergarten through grade 10, plus two player-versus-player sets covering K–3 and 4–12, for 46 documents total. Print on US Letter paper at actual size. The initial design and player-versus-player workbooks have three pages; each phase-specific worksheet has two. Each document includes creative prompts, drawing space, an example trigger/condition/action diagram with yes and no paths, a blank rule to design, and a paper playtest reflection.
 
 These are flexible creative activities, not curriculum standards or assessments. Choose a workbook by the child's comfort with reading, writing, and game rules. Children can draw, dictate, or use extra paper at any level. Use one page at a time if that suits the child.
+
+## Player-versus-player games (characters optional)
+
+Use these sets for games with tiles, cards, paddles, shapes, words, puzzles, racing pieces, or characters. No story or hero is required. Each set has three worksheets: game idea and play area; rules and fairness; and a rule diagram with playtest reflection.
+
+| Grade band | Printable, editable set | Focus |
+|---|---|---|
+| K–3 | [Word workbook](player-vs-player/Grades_K-3_Player_vs_Player_Workbook.docx) | Draw or dictate player actions, turns, scoring, winning, ties, and fair play |
+| 4–12 | [Word workbook](player-vs-player/Grades_4-12_Player_vs_Player_Workbook.docx) | Define setup, legal actions, opponent responses, edge cases, balance, and playtest results |
+
+For K–3, a helper can read the prompts and record the child's words. For 4–12, use the main prompts at any comfortable level; optional stretch work explores luck, hidden information, and unequal starting abilities. Older students can write more precise rules and gather more playtest evidence. These bands are flexible activity levels, not curriculum standards.
+
+Start with paper pieces, explain how each player can win, then play again with starting roles swapped. Characters and stories can be added if the designer wants them.
 
 ## Choose a phase and grade
 
@@ -50,7 +63,7 @@ Start with initial design when inventing a game. Once a small playable version e
 
 ## Working together
 
-Let the child choose the hero, problem, and solution. Record their words before suggesting changes. A parent or development partner can turn the completed map and rules into implementation tasks in the [project brief](../PROJECT_BRIEF.md). Keep the original worksheet so the child can compare the playable result with their design. Use the [iteration record](../ITERATION_RECORD.md) to record what changed after playtesting.
+Let the child choose the game idea, player roles, and rules. Record their words before suggesting changes. A parent or development partner can turn the completed map and rules into implementation tasks in the [project brief](../PROJECT_BRIEF.md). Keep the original worksheet so the child can compare the playable result with their design. Use the [iteration record](../ITERATION_RECORD.md) to record what changed after playtesting.
 
 No game engine is required. Start with a paper map and a coin as the player. Act out each rule, including both answers to the condition. Ask what the tester did, then change one thing and try again.
 
@@ -62,4 +75,6 @@ Run [build_phase_workbooks.py](build_phase_workbooks.py) to regenerate the 33 fe
 
 [verify_in_word.ps1](verify_in_word.ps1) opens the generated files read-only in Microsoft Word, checks page counts, and exports temporary PDFs to a specified QA folder. It requires installed Microsoft Word. Preview files are not part of the workbook set.
 
-To verify the phase documents, use `-Recurse -FilePattern '*_Design.docx'` along with `-OutputDirectory`. To verify all 44 documents, use `-Recurse` with the default file pattern.
+To verify the phase documents, use `-Recurse -FilePattern '*_Design.docx'` along with `-OutputDirectory`. To verify all 46 documents, use `-Recurse` with the default file pattern.
+
+Run [build_pvp_workbooks.py](build_pvp_workbooks.py) with Python and `python-docx` to regenerate the two three-page player-versus-player sets. It uses the existing Word layout and drawing helpers. Rebuilding overwrites the blank templates; save completed worksheets elsewhere first. To verify just these sets in Word, use `-Recurse -FilePattern '*_Player_vs_Player_Workbook.docx'`.
